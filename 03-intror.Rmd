@@ -73,13 +73,13 @@ You can follow this workshop in different ways based on your preferences as well
 
 Future workshops will be interactive and allow you to write your own code into code boxes on the website - unfortunately, I was not able to integrate that for this workshop.
 
-# Preparation{-}
+## Preparation{-}
 
 Before you actually open R or RStudio, there things to consider that make working in R much easier and give your workflow a better structure. 
 
 Imagine it like this: when you want to write a book, you could simply take pen and paper and start writing *or* you could think about what you want to write about, what different chapters your book would consist of, which chapters to write first, what these chapters will deal with, etc. The same is true for R: you could simply open R and start writing code *or* you can prepare you session and structure what you will be doing.
 
-## Folder Structure and R projects{-}
+### Folder Structure and R projects{-}
 
 Before actually starting with writing code, you should prepare the session by going through the following steps:
 
@@ -187,7 +187,7 @@ knitr::include_graphics("https://slcladal.github.io/images/RStudio_editMD.png")
 When you write in the R Notebook, you use what is called `R Markdown` which is explained below.
 
 
-## R Markdown{-}
+### R Markdown{-}
 
 The Notebook is an [R Markdown document](http://rmarkdown.rstudio.com/): a Rmd (R Markdown) file is more than a flat text document: it's a program that you can run in R and which allows you to combine prose and code, so readers can see the technical aspects of your work while reading about their interpretive significance. 
 
@@ -210,11 +210,11 @@ Markdown is really quite simple to learn and these resources may help:
 
 + This [interactive Markdown tutorial](http://www.markdowntutorial.com/) will teach you the syntax in a few minutes.
 
-# R and RStudio Basics{-}
+## R and RStudio Basics{-}
 
 RStudio is a so-called IDE - Integrated Development Environment. The interface provides easy access to R. The advantage of this application is that R programs and files as well as a project directory can be managed easily. The environment is capable of editing and running program code, viewing outputs and rendering graphics. Furthermore, it is possible to view variables and data objects of an R-script directly in the interface. 
 
-## RStudio: Panes{-}
+### RStudio: Panes{-}
 
 The GUI - Graphical User Interface - that RStudio provides divides the screen into four areas that are called **panes**:
 
@@ -293,11 +293,11 @@ In contrast to the R console, which quickly runs code, the Script Editor (in the
 
 Now, that we have explored RStudio, we are ready to get started with R!
 
-# Getting started with R{-}
+## Getting started with R{-}
 
 This section introduces some basic concepts and procedures that help optimize your workflow in R. 
 
-## Setting up an R session{-}
+### Setting up an R session{-}
 
 At the beginning of a session, it is common practice to define some basic parameters. This is not required or even necessary, but it may just help further down the line. This session preparation may include specifying options. In the present case, we 
 
@@ -320,7 +320,7 @@ In script editor pane of RStudio, this would look like this:
 knitr::include_graphics("https://slcladal.github.io/images/RStudio_preparation.png")
 ``` 
 
-## Packages{-}
+### Packages{-}
 
 When using R, most of the functions are not loaded or even installing automatically. Instead, most functions are in contained in what are called **packages**. 
 
@@ -367,11 +367,11 @@ In script editor pane of RStudio, the code blocks that install and activate pack
 knitr::include_graphics("https://slcladal.github.io/images/RStudio_packages.png")
 ``` 
 
-## Getting help{-}
+### Getting help{-}
 
 When working with R, you will encounter issues and face challenges. A very good thing about R is that it provides various ways to get help or find information about the issues you face.
 
-### Finding help within R{-}
+#### Finding help within R{-}
 
 To get help regrading what functions a package contains, which arguments a function takes or to get information about how to use a function, you can use the `help` function or the `apropos`. function or you can simply type a `?` before the package or two `??` if this does not give you any answers. 
 
@@ -391,25 +391,25 @@ There are also other "official" help resources from R/RStudio.
 
 * Check out the keyboard shortcuts `Help` under `Tools` in RStudio for some good tips 
 
-### Finding help online{-}
+#### Finding help online{-}
 
 One great thing about R is that you can very often find an answer to your question online.
 
 * Google your error! See <http://r4ds.had.co.nz/introduction.html#getting-help-and-learning-more> for excellent suggestions on how to find help for a specific question online.
 
-# Working with tables{-}
+## Working with tables{-}
 
 We will now start working with data in R. As most of the data that we work with comes in tables, we will focus on this first before moving on to working with text data.
 
 
 
-## Loading data from the web{-}
+### Loading data from the web{-}
 
 To show, how data can be downloaded from the web, we will download a tab-separated txt-file. Translated to prose, the code below means *Create an object called *icebio *and in that object, store the result of the `read.delim` function*. 
 
 `read.delim` stands for *read delimited file* and it takes the URL from which to load the data (or the path to the data on your computer) as its first argument. The `sep` stand for separator and the `\t` stands for tab-separated and represents the second argument that the `read.delim` function takes. The third argument, `header`, can take either T(RUE) or F(ALSE) and it tells R if the data has column names (headers) or not. 
 
-## Functions and Objects{-}
+### Functions and Objects{-}
 
 In R, functions always have the following form: `function(argument1, argument2, ..., argumentN)`. Typically a function does something to an object (e.g. a table), so that the first argument typically specifies the data to which the function is applied. Other arguments then allow to add some information. Just as a side note, functions are also objects that do not contain data but instructions.
 
@@ -421,7 +421,7 @@ icebio <- read.delim("https://slcladal.github.io/data/BiodataIceIreland.txt",
                       sep = "\t", header = T)
 ```
 
-## Inspecting data{-}
+### Inspecting data{-}
 
 There are many ways to inspect data. We will briefly go over the most common ways to inspect data.
 
@@ -466,7 +466,7 @@ head(icebio, 4)
 
 
 
-## Accessing individual cells in a table{-}
+### Accessing individual cells in a table{-}
 
 If you want to access specific cells in a table, you can do so by typing the name of the object and then specify the rows and columns in square brackets (i.e. **data[row, column]**). For example, `icebio[2, 4]` would show the value of the cell in the second row and fourth column of the object `icebio`. We can also use the colon to define a range (as shown below, where 1:5 means from 1 to 5 and 1:3 means from 1 to 3) The command `icebio[1:5, 1:3]` thus means:
 
@@ -521,7 +521,7 @@ The `summary` function summarizes the data.
 summary(icebio)
 ```
 
-## Tabulating data{-}
+### Tabulating data{-}
 
 We can use the `table` function to create basic tables that extract raw frequency information. The following command tells us how many instances there are of each level of the variable `date` in the `icebio`. 
 
@@ -591,7 +591,7 @@ ftable(icebio$age, icebio$sex)
 ***
 
 
-## Saving data to your computer{-}
+### Saving data to your computer{-}
 
 To save tabular data on your computer, you can use the `write.table`  function. This function requires the data that you want to save as its first argument, the location where you want to save the data as the second argument and the type of delimiter as the third argument. 
 
@@ -609,7 +609,7 @@ In this case, we want to access the file `icebio` (which is a `txt` file and thu
 
 Another thing that is notable in the sequence `here::here("data", "icebio.txt")` is that I specified that the `here` function is part of the `here` package. This is what I meant by writing `here::here` which simply means use the `here` function from `here` package (`package::function`). This may appear to be somewhat redundant but it happens quite frequently, that different packages have functions that have the same names. In such cases, R will simply choose the function from the package that was loaded last. To prevent R from using the wrong function, it makes sense to specify the package AND the function (as I did in the sequence `here::here`). I only use functions without specify the package if the function is part of base R.
 
-## Loading data from your computer{-}
+### Loading data from your computer{-}
 
  To load tabular data from within your project folder (if it is in a tab-separated txt-file) you can also use the `read.delim` function. The only difference to loading from the web is that you use a path instead of a URL. If the txt-file is in the folder called *data* in your project folder, you would load the data as shown below. 
 
@@ -642,7 +642,7 @@ To if this has worked, we will use the `head` function to see first 6 rows of th
 head(icebio)
 ```
 
-## Loading Excel data{-}
+### Loading Excel data{-}
 
 To load Excel spreadsheets, you can use the `read_excel` function from the `readxl` package as shown below. However, it may be necessary to install and activate the `readxl` package first. 
 
@@ -656,7 +656,7 @@ We now briefly check column names to see if the loading of the data has worked.
 colnames(icebio)
 ```
 
-## Loading text data{-}
+### Loading text data{-}
 
 There are many functions that we can use to load text data into R. For example, we can use the `readLines` function as shown below.
 
@@ -689,7 +689,7 @@ texts <- list.files(here::here("data/testcorpus"), full.names = T, pattern = ".*
 texts[1]
 ```
 
-## Renaming, Piping, and Filtering {-}
+### Renaming, Piping, and Filtering {-}
 
 To rename existing columns in a table, you can use the `rename` command which takes the table as the first argument, the new name as the second argument, the an equal sign (=), and finally, the old name es the third argument. For example, renaming a column *OldName* as *NewName* in a table called *MyTable* would look like this: `rename(MyTable, NewName = OldName)`.  
 
@@ -743,7 +743,7 @@ icebio_selection2 <- icebio_edit2 %>%
 head(icebio_selection2)
 ```
 
-## Ordering data{-}
+### Ordering data{-}
 
 To order data, for instance, in ascending order according to a specific column you can use the `arrange` function.
 
@@ -795,7 +795,7 @@ The output shows that the female speaker in file S2A-005 with the speaker identi
 ***
 
 
-## Creating and changing variables{-}
+### Creating and changing variables{-}
 
 New columns are created, and existing columns can be changed, by using the `mutate` function. The `mutate` function takes two arguments (if the data does not have to be specified): the first argument is the (new) name of column that you want to create and the second is what you want to store in that column. The = tells R that the new column will contain the result of the second argument.
 
@@ -825,7 +825,7 @@ icebio_texttype <- icebio_selection2 %>%
 head(icebio_texttype)
 ```
 
-## If-statements{-}
+### If-statements{-}
 
 We should briefly talk about if-statements (or `case_when` in the present case). The `case_when` function is both very powerful and extremely helpful as it allows you to assign values based on a test. As such, `case_when`-statements can be read as:
 
@@ -872,7 +872,7 @@ The nice thing about `ifelse` or `case_when`-statements is that they can be used
 
 ***
 
-## Summarizing data{-}
+### Summarizing data{-}
 
 Summarizing is really helpful and can be done using the `summarise` function.
 
@@ -944,7 +944,7 @@ head(icebio_summary2)
 ***
 
 
-## Gathering and spreading data{-}
+### Gathering and spreading data{-}
 
 The `tidyr` package has two very useful functions for gathering and spreading data that can be sued to transform data to long and wide formats (you will see what this means below). The functions are called `gather` and `spread`.
 
@@ -971,561 +971,13 @@ icebio_summary_long <- icebio_summary_wide %>%
 icebio_summary_long
 ```
 
-# More on working with text{-}
 
-We have now worked though how to load, save, and edit tabulated data. However, R is also perfectly equipped for working with textual data which is what we going to concentrate on now. 
 
-## Loading text data{-}
-
-To load text data from the web, we can use the `read_file` function which takes the URL of the text as its first argument. In this case will will load the 2016 rally speeches Donald Trump.
-
-```{r, message=FALSE, warning=FALSE}
-Trump <-base::readRDS(url("https://slcladal.github.io/data/Trump.rda", "rb"))
-# inspect data
-str(Trump)
-```
-
-It is very easy to extract frequency information and to create frequency lists. We can do this by first using the `unnest_tokens`  function which splits texts into individual words, an then use the `count` function to get the raw frequencies of all word types in a text.
-
-```{r, message=FALSE, warning=FALSE}
-Trump %>%
-  tibble(text = SPEECH) %>%
-  unnest_tokens(word, text) %>%
-  dplyr::count(word, sort=T)
-```
-
-Extracting N-grams is also very easy as the `unnest_tokens`  function can an argument called `token` in which we can specify that we want to extract n-grams, If we do this, then we need to specify the `n` as a separate argument. Below we specify that we want the frequencies of all 4-grams.
-
-```{r, message=FALSE, warning=FALSE}
-Trump %>%
-  tibble(text = SPEECH) %>%
-  unnest_tokens(word, text, token="ngrams", n=4) %>%
-  dplyr::count(word, sort=T) %>%
-  head(10)
-```
-
-## Splitting-up texts{-}
-
-We can use the `str_split` function to split texts. However, there are two issues when using this (very useful) function:
-
-  + the pattern that we want to split on disappears 
-
-  + the output is a list (a special type of data format)
-
-To remedy these issues, we 
-
-  + combine the `str_split` function with the `unlist` function 
-
-  + add something right at the beginning of the pattern that we use to split the text. 
-To add something to the beginning of the pattern that we want to split the text by, we use the `str_replace_all` function. The `str_replace_all` function takes three arguments, 1. the **text**, 2. the **pattern** that should be replaced, 3. the **replacement**. In the example below, we add `~~~` to the sequence `SPEECH` and then split on the `~~~` rather than on the sequence "SPEECH" (in other words, we replace `SPEECH` with `~~~SPEECH` and then split on `~~~`).
-
-```{r, message=FALSE, warning=FALSE}
-Trump_split <- unlist(str_split(
-  stringr::str_replace_all(Trump, "SPEECH", "~~~SPEECH"),
-  pattern = "~~~"))
-# inspect data
-nchar(Trump_split)#; str(Trump_split)
-```
-
-## Cleaning texts{-}
-
-When working with texts, we usually need to clean the data. Below, we do some very basic cleaning using a pipeline.
-
-```{r, message=FALSE, warning=FALSE}
-Trump_split_clean <- Trump_split %>%
-  # replace elements
-  stringr::str_replace_all(fixed("\n"), " ") %>%
-  # remove strange symbols
-  stringr::str_replace_all("[^[:alnum:][:punct:]]+", " ") %>%
-  # combine contractions
-  stringr::str_replace_all(" re ", "'re ") %>%
-  stringr::str_replace_all(" ll ", "'ll ") %>%
-  stringr::str_replace_all(" d ", "'d ") %>%
-  stringr::str_replace_all(" m ", "'m ") %>%
-  stringr::str_replace_all(" s ", "'s ") %>%
-  stringr::str_replace_all("n t ", "n't ") %>%
-  # remove \"
-  stringr::str_remove_all("\"") %>%
-  # remove superfluous white spaces
-  stringr::str_squish()
-# remove very short elements
-Trump_split_clean <- Trump_split_clean[nchar(Trump_split_clean) > 5]
-# inspect data
-nchar(Trump_split_clean)
-```
-
-Inspect text
-
-```{r, eval = F, echo=T, message=FALSE, warning=FALSE}
-Trump_split_clean[5]
-```
-
-## Concordancing and KWICs{-}
-
-Creating concordances or key-word-in-context displays is one of the most common practices when dealing with text data. Fortunately, there exist ready-made functions that make this a very easy task in R. We will use the `kwic` function from the `quanteda` package to create kwics here. 
-
-```{r, message=FALSE, warning=FALSE}
-kwic_multiple <- quanteda::kwic(Trump_split_clean, 
-       pattern = phrase("great again"),
-       window = 3, 
-       valuetype = "regex") %>%
-  as.data.frame()
-# inspect data
-head(kwic_multiple)
-```
-
-We can now also select concordances based on specific features. For example, we only want those instances of "great again" if the preceding word was "america". 
-
-```{r, message=FALSE, warning=FALSE}
-kwic_multiple_select <- kwic_multiple %>%
-  # last element before search term is "america"
-  dplyr::filter(str_detect(pre, "america$"))
-# inspect data
-head(kwic_multiple_select)
-```
-
-Again, we can use the `write.table` function to save our kwics to disc.
-
-```{r, echo = T, eval = F, message=FALSE, warning=FALSE}
-write.table(kwic_multiple_select, here::here("data", "kwic_multiple_select.txt"), sep = "\t")
-```
-
-As most of the data that we use is on out computers (rather than being somewhere on the web), we now load files with text from your computer. It is important to note that you need to use `\\` when you want to load data from a Windows PC (rather than single `\`). 
-
-To load many files, we first create a list of all files in a the directory that we want to load data from and then use the `sapply` function (which works just like a loop). The `sapply` function takes a a vector of elements and then performs a sequence of steps on each of these elements. In the example below, we feed the file locations to the `sapply` function and then we scan each text (i.e. we read it into R), then we paste all the content of one file together.
-
-***
-
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>NOTE</b><br>You may have to change the path to the data!</p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
-
-***
-
-
-```{r, message=FALSE, warning=FALSE}
-files <- list.files(here::here("data", "ICEIrelandSample"),
-                    pattern = ".txt", full.names = T)
-ICE_Ire_sample <- sapply(files, function(x) {
-  x <- scan(x, what = "char")
-  x <- paste(x, sep = " ", collapse = " ")
-  })
-# inspect data
-str(ICE_Ire_sample)
-```
-
-As the texts do not have column names (but simply names), we can clean these by removing everything before a `/` and by removing the .txt.
-
-```{r, message=FALSE, warning=FALSE}
-names(ICE_Ire_sample) <- names(ICE_Ire_sample) %>%
-  stringr::str_remove_all(".*/") %>%
-  stringr::str_remove_all(".txt")
-# inspect
-names(ICE_Ire_sample)
-```
-
-## Further splitting of texts{-}
-
-To split the texts into speech units where each speech unit begins with the speaker that has uttered it, we again use the `sapply` function.
-
-```{r, message=FALSE, warning=FALSE}
-ICE_Ire_split <- as.vector(unlist(sapply(ICE_Ire_sample, function(x){
- x <- as.vector(str_split(str_replace_all(x, "(<S1A-)", "~~~\\1"), "~~~"))  
-})))
-# inspect
-head(ICE_Ire_split)
-```
-
-## Basics of regular expressions{-}
-
-Next, we extract the File and the Speaker and combine Text, File, and Speaker in a table.
-
-We use this to show the power of **regular expressions** (to learn more about regular expression, have a look at this very recommendable  [tutorial](https://stringr.tidyverse.org/articles/regular-expressions.html)). Regular expressions are symbols or sequences of symbols that stand for 
-
-  + symbols or patterns (e.g. `[a-z]` stands for any lowercase character)
-  + the frequency of symbols or patterns (e.g. `{1,3}` stands for between 1 and 3)
-  + classes of symbols (e.g. `[:punct:]` stands for any punctuation symbol)
-  + structural properties (e.g. `[^[:blank:]]` stands for any non-space character, `\t` stands for tab-stop and `\n` stands for a line break)
-  
-We can not go into any detail here and only touch upon the power of regular expressions. 
-
-The symbol `.` is one of the most powerful and most universal regular expressions as it represents (literally) any symbol or character and it thus stands for a pattern. The `*` is a regular expression that refers to the frequency of a pattern and it stands for 0 to an infinite number of instances. Thus, `.*` stands for 0 to an infinite number of any character. You can find an overview of the regular expressions that you can use in R [here](https://slcladal.github.io/regularexpressions.html).
-
-Also, if you put patterns in round brackets, R will remember the sequence within brackets and you can paste it back into a string from memory when you replace something. 
-
-When referring to symbols that are used a regular expressions such as `\` or `\$`, you need to inform R that you actually mean the real symbol and not the regular expression and you do that by typing two `\\` before the sequence in question. Have a look at the example below and try to see what the regular expressions (`.*(S1A-[0-9]{3,3}).*`, `\n`, and `.*\\$([A-Z]{1,2}\\?{0,1})>.*`) stand for. 
-
-```{r, message=FALSE, warning=FALSE}
-ICE_Ire_split_tb <- ICE_Ire_split %>%
-  as.data.frame()
-# add column names
-colnames(ICE_Ire_split_tb)[1] <- "Text"
-# add file and speaker
-ICE_Ire_split_tb <- ICE_Ire_split_tb %>%
-  dplyr::filter(!str_detect(Text, "<I>"),
-         Text != "") %>%
-  dplyr::mutate(File = str_replace_all(Text, ".*(S1A-[0-9]{3,3}).*", "\\1"),
-         File = str_remove_all(File, "\\\n"),
-         Speaker = str_replace_all(Text, ".*\\$([A-Z]{1,2}\\?{0,1})>.*", "\\1"),
-         Speaker = str_remove_all(Speaker, "\\\n"))
-```
-
-```{r tc12b, echo = F, message=FALSE, warning=FALSE}
-# inspect data
-ICE_Ire_split_tb %>%
-  as.data.frame() %>%
-  head(10) %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .95, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "")  %>%
-  flextable::border_outer()
-```
-
-
-## Combining tables{-}
-
-We often want to combine different tables. This is very easy in R and we will show how it can be done by combining our bio data about speakers that are represented in the ICE Ireland corpus with the texts themselves so that we get a table which holds both the text as well as the speaker information.
-
-Thus, we now join the text data with the bio data by using the `left_join` function. We join the text with the bio data based on the contents of the File and the Speaker columns. In contract to `right_join`, and `full_join`, `left_join` will drop all rows from the *right* table that are not present in *left* table (and vice verse for `right_join`. In contrast, `full_join` will retain all rows from both the left and the right table.
-
-```{r, message=FALSE, warning=FALSE}
-ICE_Ire <- dplyr::left_join(ICE_Ire_split_tb, icebio_edit, by = c("File", "Speaker"))
-```
-
-
-```{r cb12b, echo = F, message=FALSE, warning=FALSE}
-# inspect data
-ICE_Ire %>%
-  as.data.frame() %>%
-  head(10) %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .95, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "")  %>%
-  flextable::border_outer()
-```
-
-You can then perform concordancing on the Text column in the table.
-
-```{r, message=FALSE, warning=FALSE}
-kwic_iceire <- quanteda::kwic(ICE_Ire$Text,
-                 pattern = phrase("Irish"),
-                 window = 5, 
-                 valuetype = "regex") %>%
-  as.data.frame()
-```
-
-
-
-```{r cb12c, echo = F, message=FALSE, warning=FALSE}
-# inspect data
-kwic_iceire %>%
-  as.data.frame() %>%
-  head(10) %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .95, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "")  %>%
-  flextable::border_outer()
-```
-
-## Tokenization and counting words{-}
-
-We will now use the `tokenize_words` function from the tokenizer package to find out how many words are in each file. Before we count the words, however, we will clean the data by removing everything between pointy brackets (e.g. <#>) as well as all punctuation.
- 
-```{r, message=FALSE, warning=FALSE}
-words <- as.vector(sapply(Trump_split_clean, function(x){
-  x <- tm::removeNumbers(x)
-  x <- tm::removePunctuation(x)
-  x <- unlist(tokenize_words(x))
-  x <- length(x)}))
-words
-```
-
-The nice thing about the tokenizer package is that it also allows to split texts into sentences.
-To show this, we return to the rally speeches by Donald Trump and split the first of his rally speeches into sentences.
-
-```{r, message=FALSE, warning=FALSE}
-Sentences <- unlist(tokenize_sentences(Trump_split_clean[6]))
-# inspect
-head(Sentences)
-```
-
-We now want to find associations between words. To do this, we convert all characters to lower case, remove (some) non lexical words (also called stop words), remove punctuation, and superfluous white spaces and then create a  document-term-matrix (DTM) which shows how often any word occurs in any of the sentences (in this case, the sentences are treated as documents).
-
-Once we have a DTM, we can then use the `findAssocs` function to see which words associate most strongly with target words that we want to investigate. We can use the argument "corlimit" to show the terms that are most strongly associated with our target words.
-
-```{r, message=FALSE, warning=FALSE}
-# clean sentences
-Sentences <- Sentences %>%
-  # convert to lowercase
-  tolower() %>%
-  # remove stop words
-  tm::removeWords(stopwords("english")) %>%
-  # remove punctuation
-  tm::removePunctuation() %>%
-  # remove numbers
-  tm::removeNumbers() %>%
-  # remove superfluous white spaces
-  stringr::str_squish()
-# create DTM
-DTM <- DocumentTermMatrix(VCorpus(VectorSource(Sentences)))
-findAssocs(DTM, c("problems", "america"), corlimit = c(.5, .5))
-```
-
-We now turn to data visualization basics.
-
-# Working with figures{-}
-
-There are numerous function in R that we can use to visualize data. We will use the `ggplot` function from the `ggplot2` package here to visualize the data. 
-
-The `ggplot2` package was developed by Hadley Wickham in 2005 and it implements the graphics scheme described in the book *The Grammar of Graphics* by Leland Wilkinson.
-
-The idea behind the  *Grammar of Graphics* can be boiled down to 5 bullet points (see Wickham 2016: 4):
-
-- a statistical graphic is a mapping from data to **aes**thetic attributes (location, color, shape, size) of **geom**etric objects (points, lines, bars). 
-
-- the geometric objects are drawn in a specific **coord**inate system.
-
-- **scale**s control the mapping from data to aesthetics and provide tools to read the plot (i.e., axes and legends).
-
-- the plot may also contain **stat**istical transformations of the data (means, medians, bins of data, trend lines).
-
-- **facet**ing can be used to generate the same plot for different subsets of the data.
-
-
-## Basics of ggplot2 syntax{-} 
-
-**Specify data, aesthetics and geometric shapes** 
-
-`ggplot(data, aes(x=, y=, color=, shape=, size=)) +`   
-`geom_point()`, or `geom_histogram()`, or `geom_boxplot()`, etc.   
-
-- This combination is very effective for exploratory graphs. 
-
-- The data must be a data frame.
-
-- The `aes()` function maps columns of the data frame to aesthetic properties of geometric shapes to be plotted.
-
-- `ggplot()` defines the plot; the `geoms` show the data; each component is added with `+` 
-
-- Some examples should make this clear
-
-## Practical examples{-}  
-
-We will now create some basic visualizations or plots.
-
-Before we start plotting, we will create data that we want to plot. In this case, we will extract the mean word counts by gender and age.
-
-```{r, message=FALSE, warning=FALSE}
-plotdata <- ICE_Ire %>%
-  # only private dialogue
-  dplyr::filter(stringr::str_detect(File, "S1A"),
-         # without speaker younger than 19
-         Age != "0-18",
-         Age != "NA") %>%
-  dplyr::group_by(Sex, Age) %>%
-  dplyr::summarise(Words = mean(Word.count))
-# inspect
-head(plotdata)
-```
-
-
-In the example below, we specify that we want to visualize the `plotdata` and that the x-axis should represent `Age` and the y-axis `Words`(the mean frequency of words). We also tell R that we want to group the data by `Sex` (i.e. that we want to distinguish between men and women). Then, we add `geom_line` which tells R that we want a line graph. The result of this is shown below. 
-
-```{r, message=FALSE, warning=FALSE}
-ggplot(plotdata, aes(x = Age, y = Words, color = Sex, group = Sex)) +
-  geom_line()
-```
-
-Once you have a basic plot like the one above, you can prettify the plot. For example, you can 
-
-+ change the width of the lines (`size = 1.25`)
-
-+ change the y-axis limits (`coord_cartesian(ylim = c(0, 1000)) `)
-
-+ use a different theme (`theme_bw()` means black and white theme)
-
-+ move the legend to the top
-
-+ change the default colors to colors you like (*scale_color_manual ...`)
-
-+ change the linetype (`scale_linetype_manual ...`)
-
-```{r, message=FALSE, warning=FALSE}
-ggplot(plotdata, aes(x = Age, y = Words,
-                     color = Sex, 
-                     group = Sex, 
-                     linetype = Sex)) +
-  geom_line(size = 1.25) +
-  coord_cartesian(ylim = c(0, 1500)) +
-  theme_bw() + 
-  theme(legend.position = "top") + 
-  scale_color_manual(breaks = c("female", "male"),
-                     values = c("gray20", "gray50")) +
-  scale_linetype_manual(breaks = c("female", "male"),
-                        values = c("solid", "dotted"))
-```
-
-
-An additional and very handy feature of this way of producing graphs is that you 
-
-+ can integrate them into pipes 
-
-+ can easily combine plots.
-
-```{r, message=FALSE, warning=FALSE}
-ICE_Ire %>%
-  dplyr::filter(Sex != "NA",
-         Age != "NA",
-         is.na(Sex) == F,
-         is.na(Age) == F) %>%
-  dplyr::mutate(Age = factor(Age),
-         Sex = factor(Sex)) %>%
-  ggplot(aes(x = Age, 
-             y = Word.count,
-             color = Sex,
-             linetype = Sex)) +
-  geom_point() +
-  stat_summary(fun=mean, geom="line", aes(group=Sex)) +
-  coord_cartesian(ylim = c(0, 2000)) +
-  theme_bw() + 
-  theme(legend.position = "top") + 
-  scale_color_manual(breaks = c("female", "male"),
-                     values = c("indianred", "darkblue")) +
-  scale_linetype_manual(breaks = c("female", "male"),
-                        values = c("solid", "dotted"))
-```
-
-You can also create different types of graphs very easily and split them into different facets.
-
-```{r, message=FALSE, warning=FALSE}
-ICE_Ire %>%
-  drop_na() %>%
-  dplyr::filter(Age != "NA") %>%
-  dplyr::mutate(Date = factor(Date)) %>%
-  ggplot(aes(x = Age, 
-             y = Word.count, 
-             fill = Sex)) +
-  facet_grid(vars(Date)) +
-  geom_boxplot() +
-  coord_cartesian(ylim = c(0, 2000)) +
-  theme_bw() + 
-  theme(legend.position = "top") + 
-  scale_fill_manual(breaks = c("female", "male"),
-                     values = c("#E69F00", "#56B4E9"))
-```
-
-***
-
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>EXERCISE TIME!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
-
-<div class="question">` 
-
-1. Create a box plot showing the `Date` on the x-axis and the words uttered by speakers on the y-axis and group by `Sex`.
-
-<details>
-  <summary>Answer</summary>
-  ```{r}
-  ICE_Ire %>%
-  drop_na() %>%
-  dplyr::filter(Sex != "NA") %>%
-  dplyr::mutate(Date = factor(Date)) %>%
-  ggplot(aes(x = Date, 
-             y = Word.count, 
-             fill = Sex)) +
-  geom_boxplot() +
-  coord_cartesian(ylim = c(0, 2000)) +
-  theme_bw() + 
-  theme(legend.position = "top") + 
-  scale_fill_manual(breaks = c("female", "male"),
-                     values = c("#E69F00", "#56B4E9"))
-  ```
-</details>
-
-2. Create a scatter plot showing the `Date` on the x-axis and the words uttered by speakers on the y-axis and create different facets for `Sex`.
-
-
-<details>
-  <summary>Answer</summary>
-  ```{r}
-  ICE_Ire %>%
-  drop_na() %>%
-  dplyr::filter(Sex != "NA",
-         Date != "NA") %>%
-  dplyr::mutate(Date = factor(Date),
-         Sex = factor(Sex)) %>%
-  ggplot(aes(Date, Word.count,
-         color = Date)) +
-  facet_wrap(vars(Sex), ncol = 2) +
-  geom_point() +
-  coord_cartesian(ylim = c(0, 2000)) +
-  theme_bw() + 
-  scale_color_manual(breaks = c("1990-1994", "2002-2005"),
-                     values = c("#E69F00", "#56B4E9"))
-  ```
-</details>
-
-</div>`
-
-***
-
-
-**Advanced**
-
-Create a bar plot showing the number of men and women by `Date`.
-
-<details>
-<summary> <span style="color: purple;"> Solution </span> </summary>
-
-```{r, echo = F, eval = F, message=FALSE, warning=FALSE}
-ICE_Ire %>%
-  drop_na() %>%
-  dplyr::select(Date, Sex, File) %>%
-  unique() %>%
-  dplyr::filter(Sex != "NA",
-         Date != "NA") %>%
-  dplyr::group_by(Date, Sex) %>%
-  dplyr::summarize(NumberOfSpeakers = n()) %>%
-  ggplot(aes(Date, NumberOfSpeakers,
-         fill = Date)) +
-  facet_wrap(vars(Sex), ncol = 2) +
-  geom_bar(stat = "identity") +
-  coord_cartesian(ylim = c(0, 20)) +
-  theme_bw() + 
-  scale_fill_manual(breaks = c("1990-1994", "2002-2005"),
-                     values = c("#E69F00", "#56B4E9"))
-```
-
-</details>
-
-***
-
-# Ending R sessions{-}
+## Ending R sessions{-}
 
 At the end of each session, you can extract information about the session itself (e.g. which R version you used and which versions of packages). This can help others (or even your future self) to reproduce the analysis that you have done.
 
-## Extracting session information{-}
+### Extracting session information{-}
 
 You can extract the session information by running the `sessionInfo` function (without any arguments)
 
@@ -1533,7 +985,7 @@ You can extract the session information by running the `sessionInfo` function (w
 sessionInfo()
 ```
 
-# Going further{-}
+## Going further{-}
 
 If you want to know more, would like to get some more practice, or would like to have another approach to R, please check out the workshops and resources on R provided by the [UQ library](https://web.library.uq.edu.au/library-services/training). In addition, there are various online resources available to learn R (you can check out a very recommendable introduction [here](https://uvastatlab.github.io/phdplus/intror.html)). 
 
@@ -1551,7 +1003,7 @@ Here are also some additional resources that you may find helpful:
 
 
 
-# Citation & Session Info {-}
+## Citation & Session Info {-}
 
 Schweinberger, Martin. `r format(Sys.time(), '%Y')`. *Getting started with R - for (absolute) beginners*. Brisbane: The University of Queensland. url: https://slcladal.github.io/intror.html  (Version `r format(Sys.time(), '%Y.%m.%d')`).
 
@@ -1572,14 +1024,9 @@ Schweinberger, Martin. `r format(Sys.time(), '%Y')`. *Getting started with R - f
 sessionInfo()
 ```
 
-***
 
 [Back to top](#getting_started)
 
-
-***
-
-# References {-}
 
 
 

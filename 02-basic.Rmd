@@ -11,7 +11,7 @@ I also have a very practical approach to statistics and like to think of statist
 To get a better understanding of how we *do science*, this tutorial introduces basic concepts that underpin (all) quantitative analyses. To this end, we will try to understand what hypotheses are, how to formulate them, and  what logic underpins hypothesis testing. To begin with, we will focus on a practical example to avoid talking merely about abstract ideas. The example we will look at is the English comparative construction. 
 
 
-# Primer: English Comparatives 
+## Primer: English Comparatives 
 
 In English, the comparative forms of adjectives can be formed according to two strategies: either synthetically (also called morphologically) as in [(1)](#1ex) or analytically (also called periphrastically) as in [(2)](#2ex).
 
@@ -60,7 +60,7 @@ It helps to create an overview table for the variables that have been shown in t
 
 An example for such a hypothesis would, for instance, be *If an adjectives has only one syllable, then a typical native speaker will prefer the morphological variant*. The next question then is how to test such a hypothesis and which concepts underlie hypothesis testing. And these questions and issues are addressed below.
 
-# Hypotheses
+## Hypotheses
 
 Probably the most important task in empirical research is hypothesis testing. A proper scientific hypothesis is commonly - but not necessarily - a general assumption in the form of a statement. Hypotheses are tested by comparing systematic observation with the predictions of the hypothesis. More specifically, in order to test hypothesis one seeks for observations which contradict and are at odds with the hypothesis. If we find such a counter example and we have determined that it is an accurate observation, then the hypothesis is falsified, i.e. is is not correct. 
 
@@ -148,7 +148,7 @@ Universality cannot be considered a defining feature of hypotheses, because it i
 ***
 
 
-## Types of Hypotheses{-}
+### Types of Hypotheses{-}
 
 On a very fundamental level, we can differentiate between null-hypotheses (H$_{0}$), that claim non-existence of either a state of being or a difference, and alternative or test-hypothesis (H$_{1}$) that claim or postulate the existence of of either a state of being or a difference. Among test-hypotheses, we can furthermore distinguish between non-directed hypotheses which claim that one sample is different from another sample, and directed hypotheses which claim that a feature of one sample is bigger, smaller, more frequent, or less frequent, etc. Thus, a hypothesis that group A will perform better in an exam is a directed test-hypothesis while an non-directed hypothesis would merely claim that they differ in their test results. In contrast, the null-hypothesis would claim that there is no difference between the groups in terms of their performance in that exam. 
 
@@ -158,7 +158,7 @@ An additional distinction among hypotheses is the difference between determinist
 
 (11) If the length of two words in an English phrase is different, then it is more likely for the shorter word to proceed the longer word than vice versa. 
 
-## Why test the H0?!{-}
+### Why test the H0?!{-}
 
 Although it is counter-intuitive, we do not actually test the test-hypothesis but we test the null-hypothesis. We will now have a closer look at how to formulate hypotheses and that formulating hypotheses is formulating expected outcomes/explanations in a formal description.  
 
@@ -208,13 +208,13 @@ What does that mean and what are we testing? In non-technical terms, we test how
 
 ***
 
-# Data and Research Designs
+## Data and Research Designs
 
 In the previous section, we have dealt with hypotheses and in this section, we want to focus on how we can test hypotheses. To this end, we will focus on data and different research designs.
 
 Before we turn to different designs that are used to test hypotheses, however, let us briefly talk about the terms **sample** and **population** as this will be important to our discussion of how we can test hypotheses. A *sample* is a selection from a *population* that should reflect the features of the population one is interested in. We speak of *a* population instead of *the* population, because there are many different populations and we need to be very conscious about what population we are able to infer something about. For example, if the sample includes only Germans between 20 and 30, then the population the sample is drawn from is not the totality of all Germans, but only the population of Germans between 20 and 30 at this point in time. Of course, this is very simplistic, as other factors are ignored in this example.  
 
-## Research Designs{-}
+### Research Designs{-}
 
 Now that the terms sample and population are clear, we can continue to think about how we could test hypotheses. In the empirical sciences, we try to answer questions we have by analyzing data. However, before we can attempt to answer a question and test if we are right with the answer we have in mind (our hypothesis), we have to decide on how to tackle the question. Thus, we have to come up with a plan about how to test our hypothesis. This plan is called a **research design**. The research design informs how to collect, process, visualize, and analyze the data. As such, the research design focuses on all aspects of research that are related to the data.
 
@@ -298,7 +298,7 @@ designs %>%
 
 We will now briefly focus on each design and discuss it.
 
-### Experimental research{-}
+#### Experimental research{-}
 
 Experimental designs can determine if there is a causal link between predictors and response which sets experimental designs apart from observational designs. Experiments typically take place in very well-controlled, but unnatural environments, .e.g, in laboratories. 
 
@@ -308,13 +308,13 @@ During an experiment, subjects are shown *stimuli* (e.g., sentences, words, pict
 
 In addition to the ability to establish causality, experimental designs allow a very direct access to a phenomenon and have *high internal validity* which means that experiments can test the phenomena in a very well-circumscribed and precise manner. Disadvantages of experimental designs are that they are typically rather costly and labor intensive and that the results are not necessarily generalizable due to the un-natural setting of most experiments (*low external validity*).
 
-### Quasi-experimental research{-}
+#### Quasi-experimental research{-}
 
 In contract to experimental designs, subjects (or participants) in quasi-experimental designs are *not randomly* assigned to groups. Because of this, quasi-experimental designs can be affected by confounding (i.e., that changes in the dependent variable are caused by a variable that is not controlled for). As such, quasi-experimental designs are **not** experimental designs but can be considered observational. Examples for quasi-experimental designs are corpus-based variationist studies of the occurrence of linguistics variants in a variable context.
 
 Quasi-experimental designs encompass studies where subjects cannot be randomly assigned into test groups because either, this is not practically possible because the observation has already taken place or because the characteristic is inherent in the participants themselves. For instance, analyses of historical data can at best be quasi-experimental because the data have already been collected and the experimenter cannot assign participants to test groups. Also, some studies that analyze sex differences via the behavior of men and women cannot be experimental because participants cannot be randomly assigned to the *male* or *female* group.
 
-### Observational designs{-}
+#### Observational designs{-}
 
 In the language sciences, observational designs encompass all forms of data acquisition and collection where the subjects are observed in their "natural habitat". Hence, observational or behavioral designs are the most natural and thus have *high external validity* which means that we can assume that the results are  transferable to the *real world*. The most common type of this design are corpus studies in which texts (which encompasses both written and transcribed spoken language) are searched for the occurrence of certain linguistic patterns and then correlated with some other feature, the use of a certain linguistic construction such as a specific suffix or a fixed expression like *in order that* in two different time periods or dialects.
 
@@ -322,19 +322,19 @@ The cost and labor intensity of corpus studies depends heavily upon if the corpu
 
 The problem with observational designs are that the contexts in which the data were collected were not controlled with means that the results are more likely to be affected by contextual or confounding factors that the researchers have no control over or don't even know about.
 
-### Archival research and reviews{-}
+#### Archival research and reviews{-}
 
 Archival research is more common in historical linguistics where researchers look for primary texts or records in archives. However, archival research also encompasses digital archives such as libraries which means that systematic literature reviews also fall under this research design.
 
 The advantages of archival research designs are that the data collections is typically comparatively easy and associated with minimal costs. Also, depending on the phenomenon, the access to the phenomenon can be quite indirect, for example, entirely filtered through the eyes of eye witnesses or experts. 
 
-### Introspection{-}
+#### Introspection{-}
 
 Introspection has been the dominant form of "data collection" in the 20^th century and it is strongly connected to what is called *armchair linguistics* (linguists coming to insights about language by musing about what they can or would say and what they could or would not say). Introspection is, of course, by far the easiest and cheapest way to "collect data". Unfortunately, introspection is *subjective* and can be heavily biased by the expectations and theoretical framework of subjects. Nonetheless, introspection can be and is extremely useful in particular regarding hypothesis generation and finding potential predictors for a certain linguistic behavior that can then be tested empirically.
 
 Since the 1990s and the rise of empirical linguistics, which is characterized by the employment of both experimental designs as well as corpus linguistics and increased use of questionnaire designs, introspection has been relegated to playing a part of other designs while only rarely being used as the sole source of data collection. 
 
-### Questionnaire designs{-}
+#### Questionnaire designs{-}
 
 Questionnaire designs represent any method of data collection where respondents are asked to provide (conscious) information to answers or ratings/evaluations to prompts (such as statements). The process to ask for information from respondents is called *elicitation*. 
 
@@ -344,7 +344,7 @@ A type of elicitation that is special in the language science is called *discour
 
 To counter *fatigue effects* (respondents get tired or annoyed and do no longer answer to the best of their knowledge/ability), questionnaire items are often randomized so that their order differs between respondents. To counter what is called *agreeability effects*, researchers commonly have respondents rate test items (items that contain the phenomenon researchers are interested in) and fillers (items that do not contain what researchers are interested in). Fillers are included to disguise what the questionnaire aim to test so that respondents cannot (unconsciously) try to provide agreeable answers (the answers that researchers hope to get).  
 
-# Variables and Validity
+## Variables and Validity
 
 A statistical variable is a characteristic that can take on a specific form. A variable, in contrast to the constant, can take on at least two different stages or levels. The variables in your hypothesis must be operationalized, i.e., you need to determine what exactly needs to be investigated, what counts, what is measured. In other words, *operationalization* is the measurement of a variable. If possible, a variable should be operationalized so that its measurement is as good as possible reflects the underlying concept. 
 
@@ -356,19 +356,19 @@ There are two types of variables, *dependent* and *independent*. The independent
 
 It is extremely important to know the type of variable, as this has a direct impact on what statistical analysis is possible for the data at hand. We will therefore discuss various types of variables and their properties below.
 
-## Variable Types (Scaling){-}
+### Variable Types (Scaling){-}
 
 In the following, variable types (also referred to as *scaling level* or *scaling*) are discussed. It is very important to know which type of variables one is dealing with because the type of variable has affects many of the methods discussed, both in descriptive and in inferential statistics.
 
-### Nominal and Categorical Variables{-}
+#### Nominal and Categorical Variables{-}
 
 Nominal and categorical variables only list the membership of a particular class. For nominal variables, there are exactly two occurrences (yes/no or on/off), while for categorical variables there can be several groups, e.g. the state in which someone was born.
 
-### Ordinal Variables{-}
+#### Ordinal Variables{-}
 
 With *ordinal variables* it is possible to rank the values, but the distances between the ranks can not be exactly quantified. An example of an ordinal variable is the ranking in a 100-meter dash. The 2^nd^ in a 100-meter dash did not go twice as fast as the 4^th^. It is often the case that ordinal variables consist of integer, positive numbers (1, 2, 3, 4, etc.).
 
-### (True) Numeric Variables{-}
+#### (True) Numeric Variables{-}
 
 There are two basic types of numeric variables: *interval-scaled variables* and *ratio-scaled variables*. For *interval scaled variables*, the differences between levels are significant, but not the relationship between levels. For instance, 20 degree Celsius is not twice as hot as 10 degree Celsius.
 
@@ -464,7 +464,7 @@ variableextb %>%
 ***
 
 
-# Relationsships between variables
+## Relationsships between variables
 
 Most research aims to understand how something (or many things) influence something else. This means that research is interested in the relationships between variables. In statistics, a relationship between variables is commonly referred to as *correlation*. There are different types of relationships (correlations) and they can be classified along several dimensions: 
 
@@ -516,14 +516,14 @@ dat %>%
 ```
 
 
-# Significance and Probability
+## Significance and Probability
 
 Hypothesis testing fundamentally builds on probabilities - or more precisely probabilities of error which is an estimation for the likelihood of the H~0~ being true given the data. In other words, we are interested in how likely the null hypothesis (H~0~) is. If the null hypothesis (H~0~) is very unlikely, for instance lower than 5 percent, we can assume that the null hypothesis is not true and thus reject it and instead assume that our test hypothesis (H~1~) is correct.
  
 
 This type of probability, the probability ( the probability that the null hypothesis is true) is typically provided in the form of p-values. In a more prosaic (and also coarse-grained, imprecise manner), p-values are an estimate of how likely an outcome is a result of chance. We will delve a little deeper into probabilities and how they relate to hypothesis testing below.
 
-## Significance Levels{-}
+### Significance Levels{-}
 
 Before conducting a study, it is advisable to determine the so-called significance level or $\alpha$ level. This $\alpha$ level or level of significance indicates how high the p-value can be without having to assume that there is a significant relationship between the variables. It is customary to differentiate between three levels of significance (also called $\alpha$ levels):
 
@@ -537,7 +537,7 @@ Variables with a p value that is smaller than .1 but larger than .05 are sometim
 
 Variables that are not significant are commonly referred to or labeled as *n.s.* (not significant). As we stated above, before we perform a test, we determine a value above which we reject the null hypothesis, the so-called significance level. It's usually 5%. If the error probability is less than 5% (p <. 05), we reject the null hypothesis. Conclusion: The relationship between the variables is statistically significant. It is important to note here that the H~1~ (or Test Hypothesis) is correct only because the null hypothesis can be rejected! Statistics can NEVER prove hypotheses but only reject Null Hypotheses which leads us to accept the H~1~ as preliminary accepted or not-yet-rejected. So all knowledge is preliminary in the empirical sciences.
 
-## Probability{-}
+### Probability{-}
 
 In the following, we will turn to probability and try to understand why probability is relevant for testing hypotheses. This is important at this point because statistics, and thus hypothesis testing, fundamentally builds upon probabilities and probability distributions. In order to understand how probability works, we will investigate what happens when we flip a coin. The first question that we will be addressing is "*What is the probability of getting three Heads when flipping a coin three times?*".
 
@@ -772,7 +772,7 @@ ggplot(df, aes(x = w100, y = p100, fill = col)) +
 When comparing the two figures above, it is notable that the number at which you can claim I cheated differs according to whether the H~1~ as one- or two-tailed. When formulating a one-tailed hypothesis, then the number is lower compared with the the number at which you can reject the H~0~ if your H~1~ is two-tailed. This is actually the reason for why it is  preferable to formulate more precise, one-tailed hypotheses (because then, it is easier for the data to be sufficient to reject the H~0~). 
 
 
-## The Normal Distribution{-}
+### The Normal Distribution{-}
 
 It is important to note here that the above described calculation of probabilities does not work for numeric variables that are interval-scaled. The reason for this is that it is not possible to calculate the probabilities for all possible outcomes of a reaction time experiment (where time is a continuous variable). In such cases, we rely on *distributions* in order to determine how likely or probable a certain outcome is. 
 
@@ -917,11 +917,11 @@ These properties are extremely useful when determining the likelihood of values 
 ***
 
 
-## Non-normality: skewness and kurtosis{-}
+### Non-normality: skewness and kurtosis{-}
 
 Depending on the phenomenon you are investigating, the distribution of that phenomenon can be distributed non-normally. Two factors causing distributions to differ from the normal distribution (that is two factors causing distributions to be non-normal) are *skewness* and *kurtosis*.
 
-### Skewness{-}
+#### Skewness{-}
 
 Skewed distributions are asymmetrical and they can be positively or negatively skewed. The tail of a *negatively skewed distribution* points towards negative values (to the left) which means that the distribution leans towards the right (towards positive values) while the tail of a *positively skewed distribution* points towards positive values (to the right) which means that the distribution leans towards the left (towards negative values). 
 
@@ -990,7 +990,7 @@ skewness(SampleValues, type = 2)
 
 If the reported skewness value is negative, then  the distribution is positively skewed. If the value is positive, then the distribution is negatively skewed. If the value is lower than -1 or greater than +1, then the distribution can be assumed to be substantively skewed [@hair2017dist]. 
 
-### Kurtosis{-}
+#### Kurtosis{-}
 
 Another way in which distributions can differ from the normal distribution  relates to the thickness of the tails and the spikiness of the distribution. If distributions are bell-shaped like the normal distribution, they are called *mesokurtic*. If distributions are symmetrical but they are more spiky than the normal distribution, they are called *leptokurtic*. If symmetrical distributions are flatter and have bigger tails than the normal distribution, the distributions are called *platykurtic*.  
 
@@ -1034,7 +1034,7 @@ The kurtosis score can thus be interpreted as follows:
 * Values between 0.5 and 1 mean that the distribution is *moderately leptokurtic* with values greater than 1 indicating that the distribution is *leptokurtic*
 
 
-## The Binomial Distribution{-}
+### The Binomial Distribution{-}
 
 A distribution which is very similar to the normal distribution is the "binomial distribution". The binomial distribution displays the probability of binary outcomes. So, in fact, the distribution of the coin flips above represents a binomial distribution. However, the binomial distribution cane be (as above in case of the coin flips) but does not have to be symmetric (like the normal distribution). 
 
@@ -1094,7 +1094,7 @@ text(75, 0.06, expression(paste(mu^1 !=  mu^2, sep = "")))
 In addition to the normal distribution and the binomial distribution, there are many other distributions which underlay common procedures in quantitative analyses. For instance, the t- and the F-distribution or the Chi-distribution. However, we will not deal with these distributions here.
 
 
-# z-scores
+## z-scores
 
 We have encountered z-scores before - the values on the x-axis in the figures showing the normal distributions are, in fact, z-scores. This means that z-scores reflect how many standard deviations a score is distant from the mean of a distribution. But why are these z-scores useful?
 
@@ -1194,7 +1194,7 @@ zdf %>%
   geom_histogram(binwidth = 5)
 ```
 
-# Alpha and Beta Errors
+## Alpha and Beta Errors
 
 One practice that unfortunately still very frequent, which is a very serious problem in data analysis, and which has led to the development of multivariate techniques is the increase of the error rates in multiple or repeated testing. 
 
@@ -1251,7 +1251,7 @@ Regarding the difference between $\alpha$ and $\beta$ errors, it can be said tha
 
 Now that we have clarified what types of errors exist and that errors accumulate, we will examine a related concept: *Independence*.
 
-# Independence
+## Independence
 
 If errors would always add up, then statistics would not be possible, since every new test would have to take all previous tests into account. This is obviously absurd and cannot be the case. The question now arises about what determines, if errors accumulate or not? The answer is called *independence*.
 
@@ -1294,7 +1294,7 @@ When we performed the ordinary Pearson's $\chi$^2^ test we tested whether emotio
 
 A second and perhaps more important feature of independence is that independent variables must not be correlated. If they are, however, this is called *collinearity* (or *multicollinearity*) and they are referred to as being *collinear* (more on this when we look at multiple regression).
 
-# Corrections
+## Corrections
 
 Now that we know about error accumulation and issues of independence, how can we test multiple hypotheses (simultaneously)? One option is to use multivariate methods, as we will see in the section on "Advanced Statistics". Another option is to incorporate corrections to ensure that the $\alpha$-level remains at 5% even with repeated or multiple testing.
 
@@ -1302,7 +1302,7 @@ The best known and probably the most widely used correction is the *Bonferroni* 
 
 Other common corrections are the Holm and the Benjamini-Hochberg corrections. However, we will not discuss them here. The interested reader is referred to @field2012discovering, pp. 429-430. 
 
-# Transformations
+## Transformations
 
 We have now a basic understanding of the normal distribution and its characteristics. The normal distribution is relevant in statistics because tests build on assumptions that involve the distributions of variables or residuals. If the data is not distributed normally but the test you want to use assumes and therefore requires normality, then there is a problem. In this section, we will have a look at ways to *normalize* data. In this context, normalization refers to transformations of data that cause the data to exhibit different distributional characteristics (e.g. being more normal). As such, transformations can give answers to questions about what can be done if the distribution of something (errors, data, etc.) is not normal, but it should be normal?
 
@@ -1522,7 +1522,7 @@ shapiro.test(tdat$SquarerootWordcount)  # square root transforming appropriate h
 
 Unfortunately, even the square root transformation has not made the data fully normal as the distribution of the transformed data still differs significantly from a normal distribution as shown by the Shapiro-Wilk test.
 
-# Bayes Theorem
+## Bayes Theorem
 
 Bayes theorem is a different approach to statistics that does not rely on the normal distribution but on conditional probabilities. *Conditional probability* means the probability of something (A) given something else (B). Bayes Theorem is represented by the equation below.
 
@@ -1566,7 +1566,7 @@ Imagine now, that the test reports that a patient has cancer. What is probabilit
 
 Because the test reports cancer, the patient is in the top row of the table. However, it could be a true positive or a false positive. The chances of a true positive (the patient has cancer and the tests reports it) are = 1% \times 80% = .008% (0.8%). The chances of a false positive (the patient does not have cancer but the test reports that the patient has cancer) are = 99% \times 9.6% = 0.09504 (9.5%). 
 
-# Citation & Session Info {-}
+## Citation & Session Info {-}
 
 Schweinberger, Martin. `r format(Sys.time(), '%Y')`. *Basic Concepts in Quantitative Research*. Brisbane: The University of Queensland. url: https://slcladal.github.io/basicquant.html   (Version `r format(Sys.time(), '%Y.%m.%d')`).
 
@@ -1593,6 +1593,6 @@ sessionInfo()
 
 ***
 
-# References {-}
+## References {-}
 
 
