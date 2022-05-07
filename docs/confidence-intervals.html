@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Week 9 Confidence Intervals | SLAT7855 Quantitative Research Methods in Applied Linguistics</title>
+  <meta name="description" content="Week 9 Confidence Intervals | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Week 9 Confidence Intervals | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Week 9 Confidence Intervals | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  
+  
+  
+
+<meta name="author" content="Martin Schweinberger" />
+
+
+<meta name="date" content="2022-05-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="measures-of-variability.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SLAT7855</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#basic-course-information"><i class="fa fa-check"></i>Basic Course Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i>Course Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-introduction"><i class="fa fa-check"></i>Course Introduction</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#timetable"><i class="fa fa-check"></i>Timetable</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#aims-objectives-graduate-attributes"><i class="fa fa-check"></i>Aims, Objectives &amp; Graduate Attributes</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aims"><i class="fa fa-check"></i>Course Aims</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-resources"><i class="fa fa-check"></i>Learning Resources</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#required-resources"><i class="fa fa-check"></i>Required Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-resources"><i class="fa fa-check"></i>Recommended Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#university-learning-resources"><i class="fa fa-check"></i>University Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#school-of-languages-and-cultures-learning-resources"><i class="fa fa-check"></i>School of Languages and Cultures Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-learning-resources-information"><i class="fa fa-check"></i>Other Learning Resources &amp; Information</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#teaching-learning-activities"><i class="fa fa-check"></i>Teaching &amp; Learning Activities</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-activities"><i class="fa fa-check"></i>Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-plan"><i class="fa fa-check"></i>Course plan</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#why-do-we-need-science"><i class="fa fa-check"></i><b>1.1</b> Why do we need science?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#errare-humanum-est"><i class="fa fa-check"></i><b>1.2</b> Errare Humanum Est</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#the-monty-hall-problem"><i class="fa fa-check"></i><b>1.2.1</b> The Monty Hall Problem</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#the-birthday-conundrum"><i class="fa fa-check"></i><b>1.2.2</b> The Birthday Conundrum</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#fast-and-slow-thinking"><i class="fa fa-check"></i><b>1.2.3</b> Fast and Slow Thinking</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#randomness"><i class="fa fa-check"></i><b>1.2.4</b> Randomness</a></li>
+<li class="chapter" data-level="1.2.5" data-path="introduction.html"><a href="introduction.html#patterns-and-matters-of-habit"><i class="fa fa-check"></i><b>1.2.5</b> Patterns and Matters of Habit</a></li>
+<li class="chapter" data-level="1.2.6" data-path="introduction.html"><a href="introduction.html#locical-fallacies-and-biases"><i class="fa fa-check"></i><b>1.2.6</b> Locical Fallacies and Biases</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#what-is-science"><i class="fa fa-check"></i><b>1.3</b> What is science?</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#clever-hans"><i class="fa fa-check"></i><b>1.3.1</b> Clever Hans</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#popper-falsification-and-scientific-progress"><i class="fa fa-check"></i><b>1.3.2</b> Popper, falsification, and scientific progress</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#what-is-empirical-linguistics"><i class="fa fa-check"></i><b>1.3.3</b> What is (empirical) Linguistics?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html"><i class="fa fa-check"></i><b>2</b> Basic Concepts in Quantitative Research 1</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#hypotheses"><i class="fa fa-check"></i><b>2.1</b> Hypotheses</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#types-of-hypotheses"><i class="fa fa-check"></i>Types of Hypotheses</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#why-test-the-h0"><i class="fa fa-check"></i>Why test the H0?!</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#data-and-research-designs"><i class="fa fa-check"></i><b>2.2</b> Data and Research Designs</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#research-designs"><i class="fa fa-check"></i>Research Designs</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#variables-and-validity"><i class="fa fa-check"></i><b>2.3</b> Variables and Validity</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#variable-types-scaling"><i class="fa fa-check"></i>Variable Types (Scaling)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#relationships-between-variables"><i class="fa fa-check"></i><b>2.4</b> Relationships between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html"><i class="fa fa-check"></i><b>3</b> Basic Concepts in Quantitative Research 2</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#significance-and-probability"><i class="fa fa-check"></i><b>3.1</b> Significance and Probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#significance-levels"><i class="fa fa-check"></i>Significance Levels</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#probability"><i class="fa fa-check"></i>Probability</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#the-normal-distribution"><i class="fa fa-check"></i>The Normal Distribution</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#non-normality-skewness-and-kurtosis"><i class="fa fa-check"></i>Non-normality: skewness and kurtosis</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#the-binomial-distribution"><i class="fa fa-check"></i>The Binomial Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#z-scores"><i class="fa fa-check"></i><b>3.2</b> z-scores</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#alpha-and-beta-errors"><i class="fa fa-check"></i><b>3.3</b> Alpha and Beta Errors</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#independence"><i class="fa fa-check"></i><b>3.4</b> Independence</a></li>
+<li class="chapter" data-level="3.5" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#corrections"><i class="fa fa-check"></i><b>3.5</b> Corrections</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html"><i class="fa fa-check"></i><b>4</b> Getting Started with R and RStudio 1</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#goals-of-this-tutorial"><i class="fa fa-check"></i><b>4.1</b> Goals of this tutorial</a></li>
+<li class="chapter" data-level="4.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#audience"><i class="fa fa-check"></i><b>4.2</b> Audience</a></li>
+<li class="chapter" data-level="4.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>4.3</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#how-to-use-the-workshop-materials"><i class="fa fa-check"></i><b>4.3.1</b> How to use the workshop materials</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#preparation"><i class="fa fa-check"></i><b>4.4</b> Preparation</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#folder-structure-and-r-projects"><i class="fa fa-check"></i><b>4.4.1</b> Folder Structure and R projects</a></li>
+<li class="chapter" data-level="4.4.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#create-a-folder-for-your-project"><i class="fa fa-check"></i><b>4.4.2</b> 1. Create a folder for your project</a></li>
+<li class="chapter" data-level="4.4.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#open-rstudio"><i class="fa fa-check"></i><b>4.4.3</b> 3. Open RStudio</a></li>
+<li class="chapter" data-level="4.4.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-projects"><i class="fa fa-check"></i><b>4.4.4</b> 4. R Projects</a></li>
+<li class="chapter" data-level="4.4.5" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-notebooks"><i class="fa fa-check"></i><b>4.4.5</b> 5. R Notebooks</a></li>
+<li class="chapter" data-level="4.4.6" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#updating-r"><i class="fa fa-check"></i><b>4.4.6</b> 6. Updating R</a></li>
+<li class="chapter" data-level="4.4.7" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#optimizing-r-project-options"><i class="fa fa-check"></i><b>4.4.7</b> 7. Optimizing R project options</a></li>
+<li class="chapter" data-level="4.4.8" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-started-with-r-notebooks"><i class="fa fa-check"></i><b>4.4.8</b> 8. Getting started with R Notebooks</a></li>
+<li class="chapter" data-level="4.4.9" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-markdown"><i class="fa fa-check"></i><b>4.4.9</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-and-rstudio-basics"><i class="fa fa-check"></i><b>4.5</b> R and RStudio Basics</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#rstudio-panes"><i class="fa fa-check"></i><b>4.5.1</b> RStudio: Panes</a></li>
+<li class="chapter" data-level="4.5.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-console-bottom-left-pane"><i class="fa fa-check"></i><b>4.5.2</b> R Console (bottom left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#running-commands-from-a-script"><i class="fa fa-check"></i><b>4.6</b> Running commands from a script</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#script-editor-top-left-pane"><i class="fa fa-check"></i><b>4.6.1</b> Script Editor (top left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>4.7</b> Getting started with R</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#setting-up-an-r-session"><i class="fa fa-check"></i><b>4.7.1</b> Setting up an R session</a></li>
+<li class="chapter" data-level="4.7.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#packages"><i class="fa fa-check"></i><b>4.7.2</b> Packages</a></li>
+<li class="chapter" data-level="4.7.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-help"><i class="fa fa-check"></i><b>4.7.3</b> Getting help</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#working-with-tables"><i class="fa fa-check"></i><b>4.8</b> Working with tables</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#loading-data-from-the-web"><i class="fa fa-check"></i><b>4.8.1</b> Loading data from the web</a></li>
+<li class="chapter" data-level="4.8.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#functions-and-objects"><i class="fa fa-check"></i><b>4.8.2</b> Functions and Objects</a></li>
+<li class="chapter" data-level="4.8.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#inspecting-data"><i class="fa fa-check"></i><b>4.8.3</b> Inspecting data</a></li>
+<li class="chapter" data-level="4.8.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#accessing-individual-cells-in-a-table"><i class="fa fa-check"></i><b>4.8.4</b> Accessing individual cells in a table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html"><i class="fa fa-check"></i><b>5</b> Getting Started with R and RStudio 2</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#working-with-tables-1"><i class="fa fa-check"></i><b>5.1</b> Working with tables</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#tabulating-data"><i class="fa fa-check"></i><b>5.1.1</b> Tabulating data</a></li>
+<li class="chapter" data-level="5.1.2" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#saving-data-to-your-computer"><i class="fa fa-check"></i><b>5.1.2</b> Saving data to your computer</a></li>
+<li class="chapter" data-level="5.1.3" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-data-from-your-computer"><i class="fa fa-check"></i><b>5.1.3</b> Loading data from your computer</a></li>
+<li class="chapter" data-level="5.1.4" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-excel-data"><i class="fa fa-check"></i><b>5.1.4</b> Loading Excel data</a></li>
+<li class="chapter" data-level="5.1.5" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-text-data"><i class="fa fa-check"></i><b>5.1.5</b> Loading text data</a></li>
+<li class="chapter" data-level="5.1.6" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#renaming-piping-and-filtering"><i class="fa fa-check"></i><b>5.1.6</b> Renaming, Piping, and Filtering</a></li>
+<li class="chapter" data-level="5.1.7" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#ordering-data"><i class="fa fa-check"></i><b>5.1.7</b> Ordering data</a></li>
+<li class="chapter" data-level="5.1.8" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#creating-and-changing-variables"><i class="fa fa-check"></i><b>5.1.8</b> Creating and changing variables</a></li>
+<li class="chapter" data-level="5.1.9" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#if-statements"><i class="fa fa-check"></i><b>5.1.9</b> If-statements</a></li>
+<li class="chapter" data-level="5.1.10" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#summarizing-data"><i class="fa fa-check"></i><b>5.1.10</b> Summarizing data</a></li>
+<li class="chapter" data-level="5.1.11" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#gathering-and-spreading-data"><i class="fa fa-check"></i><b>5.1.11</b> Gathering and spreading data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#ending-r-sessions"><i class="fa fa-check"></i><b>5.2</b> Ending R sessions</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#extracting-session-information"><i class="fa fa-check"></i><b>5.2.1</b> Extracting session information</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#going-further"><i class="fa fa-check"></i><b>5.3</b> Going further</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a></li>
+<li class="chapter" data-level="7" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html"><i class="fa fa-check"></i><b>7</b> Measures of Centrality</a>
+<ul>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#mean"><i class="fa fa-check"></i>Mean</a></li>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#median"><i class="fa fa-check"></i>Median</a></li>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#mode"><i class="fa fa-check"></i>Mode</a></li>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#geometric-mean"><i class="fa fa-check"></i>Geometric mean</a></li>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#harmonic-mean"><i class="fa fa-check"></i>Harmonic mean</a></li>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#notes-on-measures-of-centrality"><i class="fa fa-check"></i>Notes on Measures of Centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="measures-of-variability.html"><a href="measures-of-variability.html"><i class="fa fa-check"></i><b>8</b> Measures of Variability</a>
+<ul>
+<li class="chapter" data-level="" data-path="measures-of-variability.html"><a href="measures-of-variability.html#range"><i class="fa fa-check"></i>Range</a></li>
+<li class="chapter" data-level="" data-path="measures-of-variability.html"><a href="measures-of-variability.html#interquartile-range-iqr"><i class="fa fa-check"></i>Interquartile range (IQR)</a></li>
+<li class="chapter" data-level="" data-path="measures-of-variability.html"><a href="measures-of-variability.html#variance"><i class="fa fa-check"></i>Variance</a></li>
+<li class="chapter" data-level="" data-path="measures-of-variability.html"><a href="measures-of-variability.html#standard-deviation"><i class="fa fa-check"></i>Standard deviation</a></li>
+<li class="chapter" data-level="" data-path="measures-of-variability.html"><a href="measures-of-variability.html#standard-error"><i class="fa fa-check"></i>Standard Error</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>9</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-for-simple-vectors"><i class="fa fa-check"></i>Confidence Intervals for Simple Vectors</a></li>
+<li class="chapter" data-level="" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-for-grouped-data"><i class="fa fa-check"></i>Confidence Intervals for Grouped Data</a></li>
+<li class="chapter" data-level="" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-for-nominal-data"><i class="fa fa-check"></i>Confidence Intervals for Nominal Data</a></li>
+<li class="chapter" data-level="" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-for-multinomial-data"><i class="fa fa-check"></i>Confidence Intervals for Multinomial Data</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SLAT7855 Quantitative Research Methods in Applied Linguistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="confidence-intervals" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Week 9</span> Confidence Intervals<a href="confidence-intervals.html#confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Confidence intervals provide an estimation of in-between which values the reported value would lie in the population with a confidence of, e.g., 95 percent.</p>
+<p><span class="math display">\[\begin{equation}
+  \bar{x} \mp z \frac{s}{\sqrt{n}}
+\end{equation}\]</span></p>
+<p>The z-value for 95% probability (a two-tailed) of a normal distribution is 1.96. To check this, we can use the <code>qnorm</code> function and extract the z-value for a probability of .975 - we do not use .95 because we want 2.5% of the lower tail (-1.96) and 2.5% of the higher tail (1.96).</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="confidence-intervals.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.975</span>)   </span></code></pre></div>
+<pre><code>## [1] 1.95996398454</code></pre>
+<p>This means that for a 95% confidence interval for normally distributed data, we can use the formula shown below.</p>
+<p><span class="math display">\[\begin{equation}
+  \bar{x} \mp 1.96 \frac{s}{\sqrt{n}}
+\end{equation}\]</span></p>
+<p>If we have a vector of values (e.g., 4,5,2,3,1,4,3,6,3,2,4,1), we can easily calculate the confidence intervals for the mean as follows.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="confidence-intervals.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate mean</span></span>
+<span id="cb37-2"><a href="confidence-intervals.html#cb37-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">1</span>))</span>
+<span id="cb37-3"><a href="confidence-intervals.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate standard deviation</span></span>
+<span id="cb37-4"><a href="confidence-intervals.html#cb37-4" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">1</span>))</span>
+<span id="cb37-5"><a href="confidence-intervals.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate n</span></span>
+<span id="cb37-6"><a href="confidence-intervals.html#cb37-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">1</span>))</span>
+<span id="cb37-7"><a href="confidence-intervals.html#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate lower and upper ci</span></span>
+<span id="cb37-8"><a href="confidence-intervals.html#cb37-8" aria-hidden="true" tabindex="-1"></a>lower <span class="ot">&lt;-</span> m<span class="fl">-1.96</span><span class="sc">*</span>(s<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb37-9"><a href="confidence-intervals.html#cb37-9" aria-hidden="true" tabindex="-1"></a>upper <span class="ot">&lt;-</span> m<span class="fl">+1.96</span><span class="sc">*</span>(s<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb37-10"><a href="confidence-intervals.html#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co"># show lower ci, mean, and upper ci</span></span>
+<span id="cb37-11"><a href="confidence-intervals.html#cb37-11" aria-hidden="true" tabindex="-1"></a>lower; m; upper</span></code></pre></div>
+<pre><code>## [1] 2.30238790505</code></pre>
+<pre><code>## [1] 3.16666666667</code></pre>
+<pre><code>## [1] 4.03094542828</code></pre>
+<p>There are several functions in R to extract confidence intervals. To show how you can do this for different types of elements, we will continue to work with the reaction times data.</p>
+<hr />
+<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>EXERCISE TIME!</b>
+</p>
+<p style="margin-left:1em;">
+</p>
+<p></span></p>
+</div>
+<div class="question">
+<p>`</p>
+<ol style="list-style-type: decimal">
+<li>Calculate the mean and confidence interval: 1, 2, 3, 4, 5, 6, 7, 8, 9<br></li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="confidence-intervals.html#cb41-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate mean</span></span>
+<span id="cb41-2"><a href="confidence-intervals.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>))</span>
+<span id="cb41-3"><a href="confidence-intervals.html#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate standard deviation</span></span>
+<span id="cb41-4"><a href="confidence-intervals.html#cb41-4" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>))</span>
+<span id="cb41-5"><a href="confidence-intervals.html#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate n</span></span>
+<span id="cb41-6"><a href="confidence-intervals.html#cb41-6" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>))</span>
+<span id="cb41-7"><a href="confidence-intervals.html#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate lower and upper ci</span></span>
+<span id="cb41-8"><a href="confidence-intervals.html#cb41-8" aria-hidden="true" tabindex="-1"></a>  lower <span class="ot">&lt;-</span> m<span class="fl">-1.96</span><span class="sc">*</span>(s<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb41-9"><a href="confidence-intervals.html#cb41-9" aria-hidden="true" tabindex="-1"></a>  upper <span class="ot">&lt;-</span> m<span class="fl">+1.96</span><span class="sc">*</span>(s<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb41-10"><a href="confidence-intervals.html#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># show lower ci, mean, and upper ci</span></span>
+<span id="cb41-11"><a href="confidence-intervals.html#cb41-11" aria-hidden="true" tabindex="-1"></a>  lower; m; upper</span></code></pre></div>
+<pre><code>  ## [1] 3.21077297882</code></pre>
+<pre><code>  ## [1] 5</code></pre>
+<pre><code>  ## [1] 6.78922702118</code></pre>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Calculate the mean and confidence interval: 3, 4, 5, 4, 3, 4, 5, 4, 3<br></li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="confidence-intervals.html#cb45-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate mean</span></span>
+<span id="cb45-2"><a href="confidence-intervals.html#cb45-2" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>))</span>
+<span id="cb45-3"><a href="confidence-intervals.html#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate standard deviation</span></span>
+<span id="cb45-4"><a href="confidence-intervals.html#cb45-4" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>))</span>
+<span id="cb45-5"><a href="confidence-intervals.html#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate n</span></span>
+<span id="cb45-6"><a href="confidence-intervals.html#cb45-6" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>))</span>
+<span id="cb45-7"><a href="confidence-intervals.html#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate lower and upper ci</span></span>
+<span id="cb45-8"><a href="confidence-intervals.html#cb45-8" aria-hidden="true" tabindex="-1"></a>  lower <span class="ot">&lt;-</span> m<span class="fl">-1.96</span><span class="sc">*</span>(s<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb45-9"><a href="confidence-intervals.html#cb45-9" aria-hidden="true" tabindex="-1"></a>  upper <span class="ot">&lt;-</span> m<span class="fl">+1.96</span><span class="sc">*</span>(s<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb45-10"><a href="confidence-intervals.html#cb45-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># show lower ci, mean, and upper ci</span></span>
+<span id="cb45-11"><a href="confidence-intervals.html#cb45-11" aria-hidden="true" tabindex="-1"></a>  lower; m; upper</span></code></pre></div>
+<pre><code>  ## [1] 3.37815472837</code></pre>
+<pre><code>  ## [1] 3.88888888889</code></pre>
+<pre><code>  ## [1] 4.3996230494</code></pre>
+</details>
+</div>
+<p>`</p>
+<hr />
+<div id="confidence-intervals-for-simple-vectors" class="section level2 unnumbered hasAnchor">
+<h2>Confidence Intervals for Simple Vectors<a href="confidence-intervals.html#confidence-intervals-for-simple-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Confidence intervals (CIs) give a range thatâ€™s likely to include a population value with a certain degree of confidence. As such, CIs tell us how likely it is to get a value within a certain range if we drew another sample from the same population.</p>
+<p>One easy method for extracting confidence intervals is to apply the <code>CI</code> function from the <code>Rmisc</code> package.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="confidence-intervals.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract mean and confidence intervals</span></span>
+<span id="cb49-2"><a href="confidence-intervals.html#cb49-2" aria-hidden="true" tabindex="-1"></a>Rmisc<span class="sc">::</span><span class="fu">CI</span>(rts<span class="sc">$</span>RT, <span class="at">ci=</span><span class="fl">0.95</span>)   </span></code></pre></div>
+<pre><code>##         upper          mean         lower 
+## 462.238192381 431.325800000 400.413407619</code></pre>
+<p>The Â´CIÂ´ function provides the mean reaction time (431.3258) and the 95 percent confidence band. With 95 percent confidence, the mean reaction time will have a mean between 400.41 and 462.24 milliseconds (ms).</p>
+<p>Another way to extract the mean and its confidence intervals is by using <code>t.test</code> function.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="confidence-intervals.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract mean and confidence intervals</span></span>
+<span id="cb51-2"><a href="confidence-intervals.html#cb51-2" aria-hidden="true" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">t.test</span>(rts<span class="sc">$</span>RT, <span class="at">conf.level=</span><span class="fl">0.95</span>)  </span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  rts$RT
+## t = 29.20431598, df = 19, p-value &lt; 0.0000000000000002220446
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  400.413407619 462.238192381
+## sample estimates:
+## mean of x 
+##  431.3258</code></pre>
+<p>Another alternative to extract the man ans the confidence interval from a range of values is to use the <code>MeanCI</code> function from the <code>DescTools</code> package.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="confidence-intervals.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract mean and confidence intervals</span></span>
+<span id="cb53-2"><a href="confidence-intervals.html#cb53-2" aria-hidden="true" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">MeanCI</span>(rts<span class="sc">$</span>RT, <span class="at">conf.level=</span><span class="fl">0.95</span>)   </span></code></pre></div>
+<pre><code>##          mean        lwr.ci        upr.ci 
+## 431.325800000 400.413407619 462.238192381</code></pre>
+<p>A very interesting alternative to extract the mean and the confidence intervals from a range of values is to apply the <code>MeanCI</code> function from the <code>DescTools</code> package. This method is particularly interesting because it uses bootstrapping or resampling the data. As such, it is an empirical method to extract the mean and the confidence intervals. The values will differ given how many samples are drawn and we can get very precise estimates using this method.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="confidence-intervals.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract mean CIs</span></span>
+<span id="cb55-2"><a href="confidence-intervals.html#cb55-2" aria-hidden="true" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">MeanCI</span>(rts<span class="sc">$</span>RT, <span class="at">method=</span><span class="st">&quot;boot&quot;</span>, <span class="at">type=</span><span class="st">&quot;norm&quot;</span>, <span class="at">R=</span><span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>##          mean        lwr.ci        upr.ci 
+## 431.325800000 402.065920019 459.599597681</code></pre>
+<p>Because this is a data-driven approach, the results will vary, depending on the characteristics of the resampled data. To illustrate, compare the values provided above to the values generated below.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="confidence-intervals.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract mean CIs</span></span>
+<span id="cb57-2"><a href="confidence-intervals.html#cb57-2" aria-hidden="true" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">MeanCI</span>(rts<span class="sc">$</span>RT, <span class="at">method=</span><span class="st">&quot;boot&quot;</span>, <span class="at">type=</span><span class="st">&quot;norm&quot;</span>, <span class="at">R=</span><span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>##          mean        lwr.ci        upr.ci 
+## 431.325800000 403.272504877 458.846973023</code></pre>
+<p>Another method for extracting the mean and the confidence intervals from a range of values using bootstrapping is to use the <code>boot</code> function from the <code>boot</code> package.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="confidence-intervals.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function to extract values</span></span>
+<span id="cb59-2"><a href="confidence-intervals.html#cb59-2" aria-hidden="true" tabindex="-1"></a>BootFunction <span class="ot">=</span> <span class="cf">function</span>(x, index) {                        </span>
+<span id="cb59-3"><a href="confidence-intervals.html#cb59-3" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">return</span>(<span class="fu">c</span>(<span class="fu">mean</span>(x[index]),</span>
+<span id="cb59-4"><a href="confidence-intervals.html#cb59-4" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">var</span>(x[index]) <span class="sc">/</span> <span class="fu">length</span>(index)))</span>
+<span id="cb59-5"><a href="confidence-intervals.html#cb59-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb59-6"><a href="confidence-intervals.html#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="co"># apply function to data</span></span>
+<span id="cb59-7"><a href="confidence-intervals.html#cb59-7" aria-hidden="true" tabindex="-1"></a>Bootstrapped <span class="ot">=</span> <span class="fu">boot</span>(<span class="at">data=</span>rts<span class="sc">$</span>RT,     </span>
+<span id="cb59-8"><a href="confidence-intervals.html#cb59-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">statistic=</span>BootFunction,</span>
+<span id="cb59-9"><a href="confidence-intervals.html#cb59-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">R=</span><span class="dv">1000</span>)</span>
+<span id="cb59-10"><a href="confidence-intervals.html#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="co"># extract values</span></span>
+<span id="cb59-11"><a href="confidence-intervals.html#cb59-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Bootstrapped<span class="sc">$</span>t[,<span class="dv">1</span>])                                   </span></code></pre></div>
+<pre><code>## [1] 431.4550746</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="confidence-intervals.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative to extract values</span></span>
+<span id="cb61-2"><a href="confidence-intervals.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boot.ci</span>(Bootstrapped, <span class="at">conf=</span><span class="fl">0.95</span>)                           </span></code></pre></div>
+<pre><code>## BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
+## Based on 1000 bootstrap replicates
+## 
+## CALL : 
+## boot.ci(boot.out = Bootstrapped, conf = 0.95)
+## 
+## Intervals : 
+## Level      Normal              Basic             Studentized     
+## 95%   (402.9, 459.5 )   (402.8, 460.4 )   (397.6, 463.3 )  
+## 
+## Level     Percentile            BCa          
+## 95%   (402.2, 459.9 )   (400.1, 457.6 )  
+## Calculations and Intervals on Original Scale</code></pre>
+<p>The advantage of using bootstrapping methods lies in the fact that the data is (frequently) not distributed normally which is not an issue for the bootstrapping and it will thus provide more reliable results as it does not rely on distributional assumptions about the data.</p>
+</div>
+<div id="confidence-intervals-for-grouped-data" class="section level2 unnumbered hasAnchor">
+<h2>Confidence Intervals for Grouped Data<a href="confidence-intervals.html#confidence-intervals-for-grouped-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To extract the confidence intervals for grouped data, we can sue the <code>summarySE</code> function from the <code>Rmisc</code> package.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="confidence-intervals.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># apply summarySE function to data</span></span>
+<span id="cb63-2"><a href="confidence-intervals.html#cb63-2" aria-hidden="true" tabindex="-1"></a>Rmisc<span class="sc">::</span><span class="fu">summarySE</span>(<span class="at">data=</span>rts,   </span>
+<span id="cb63-3"><a href="confidence-intervals.html#cb63-3" aria-hidden="true" tabindex="-1"></a>                 <span class="co"># define variable representing frequencies</span></span>
+<span id="cb63-4"><a href="confidence-intervals.html#cb63-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">measurevar=</span><span class="st">&quot;RT&quot;</span>, </span>
+<span id="cb63-5"><a href="confidence-intervals.html#cb63-5" aria-hidden="true" tabindex="-1"></a>                 <span class="co"># define grouping variable</span></span>
+<span id="cb63-6"><a href="confidence-intervals.html#cb63-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">groupvars=</span><span class="st">&quot;Gender&quot;</span>,</span>
+<span id="cb63-7"><a href="confidence-intervals.html#cb63-7" aria-hidden="true" tabindex="-1"></a>                 <span class="co"># extract standard deviation, standard error, and confidence intervals</span></span>
+<span id="cb63-8"><a href="confidence-intervals.html#cb63-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">conf.interval =</span> <span class="fl">0.95</span>)   </span></code></pre></div>
+<pre><code>##   Gender  N       RT            sd            se            ci
+## 1 Female 10 421.7544 82.8522922089 26.2001952746 59.2689594071
+## 2   Male 10 440.8972 46.2804393809 14.6351599557 33.1070319225</code></pre>
+</div>
+<div id="confidence-intervals-for-nominal-data" class="section level2 unnumbered hasAnchor">
+<h2>Confidence Intervals for Nominal Data<a href="confidence-intervals.html#confidence-intervals-for-nominal-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We now turn to confidence intervals for nominal data <span class="citation">(see also <a href="#ref-thomas1975confidence" role="doc-biblioref">Thomas and Grunkemeier 1975</a>)</span>. When dealing with nominal data, confidence intervals can be determined with the <code>binom.test</code> function in the in-built <code>stats</code> package. Alternative methods are available via the <code>BinomCI</code> and <code>MultinomCI</code> functions from the <code>DescTools</code> package. More advanced techniques for confidence intervals on nominal data are available via the <code>PropCIs</code> package.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="confidence-intervals.html#cb65-1" aria-hidden="true" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">binom.test</span>(<span class="dv">2</span>, <span class="dv">20</span>, <span class="fl">0.5</span>,              <span class="co"># binom.test(x, n, p = 0.5, ...)</span></span>
+<span id="cb65-2"><a href="confidence-intervals.html#cb65-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">alternative=</span><span class="st">&quot;two.sided&quot;</span>, <span class="co"># define sidedness</span></span>
+<span id="cb65-3"><a href="confidence-intervals.html#cb65-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">conf.level=</span><span class="fl">0.95</span>)         <span class="co"># define confidence level</span></span></code></pre></div>
+<pre><code>## 
+##  Exact binomial test
+## 
+## data:  2 and 20
+## number of successes = 2, number of trials = 20, p-value =
+## 0.000402450562
+## alternative hypothesis: true probability of success is not equal to 0.5
+## 95 percent confidence interval:
+##  0.0123485271703 0.3169827140191
+## sample estimates:
+## probability of success 
+##                    0.1</code></pre>
+<p>Another way to use the <code>BinomCI</code> function is shown below.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="confidence-intervals.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract CIs                  </span></span>
+<span id="cb67-2"><a href="confidence-intervals.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BinomCI</span>(<span class="dv">2</span>, <span class="dv">20</span>,                        <span class="co"># apply BinomCI function</span></span>
+<span id="cb67-3"><a href="confidence-intervals.html#cb67-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">conf.level =</span> <span class="fl">0.95</span>,            <span class="co"># define ci</span></span>
+<span id="cb67-4"><a href="confidence-intervals.html#cb67-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">method =</span> <span class="st">&quot;modified wilson&quot;</span>)   <span class="co"># define method for ci extraction</span></span></code></pre></div>
+<pre><code>##      est          lwr.ci         upr.ci
+## [1,] 0.1 0.0177680755349 0.301033645228</code></pre>
+</div>
+<div id="confidence-intervals-for-multinomial-data" class="section level2 unnumbered hasAnchor">
+<h2>Confidence Intervals for Multinomial Data<a href="confidence-intervals.html#confidence-intervals-for-multinomial-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We use the <code>MultinomCI</code> function to extract the confidence intervals form multinominal data.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="confidence-intervals.html#cb69-1" aria-hidden="true" tabindex="-1"></a>observed <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">35</span>,<span class="dv">74</span>,<span class="dv">22</span>,<span class="dv">69</span>)       <span class="co"># define multinominal vector</span></span>
+<span id="cb69-2"><a href="confidence-intervals.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">MultinomCI</span>(observed,            <span class="co"># apply MultinomCI function</span></span>
+<span id="cb69-3"><a href="confidence-intervals.html#cb69-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">conf.level=</span><span class="fl">0.95</span>,     <span class="co"># define ci</span></span>
+<span id="cb69-4"><a href="confidence-intervals.html#cb69-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">method=</span><span class="st">&quot;goodman&quot;</span>)    <span class="co"># define method for ci extraction</span></span></code></pre></div>
+<pre><code>##        est          lwr.ci         upr.ci
+## [1,] 0.175 0.1125321503865 0.261910646274
+## [2,] 0.370 0.2811364343551 0.468640684309
+## [3,] 0.110 0.0622433796475 0.187087976345
+## [4,] 0.345 0.2584619757815 0.443195358010</code></pre>
+<p><a href="#descriptive_statistics">Back to top</a></p>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Bickel, Peter J, and Erich L Lehmann. 2012. <span>“Descriptive Statistics for Nonparametric Models IV. Spread.”</span> In <em>Selected Works of EL Lehmann</em>, 519–26. Springer.
+</div>
+<div class="csl-entry">
+Gaddis, Gary M, and Monica L Gaddis. 1990. <span>“Introduction to Biostatistics: Part 2, Descriptive Statistics.”</span> <em>Annals of Emergency Medicine</em> 19 (3): 309–15.
+</div>
+<div class="csl-entry">
+Thomas, David R, and Gary L Grunkemeier. 1975. <span>“Confidence Interval Estimation of Survival Probabilities for Censored Data.”</span> <em>Journal of the American Statistical Association</em> 70 (352): 865–71.
+</div>
+<div class="csl-entry">
+Thompson, Cheryl Bagley. 2009. <span>“Descriptive Data Analysis.”</span> <em>Air Medical Journal</em> 28 (2): 56–59.
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-thomas1975confidence" class="csl-entry">
+Thomas, David R, and Gary L Grunkemeier. 1975. <span>“Confidence Interval Estimation of Survival Probabilities for Censored Data.”</span> <em>Journal of the American Statistical Association</em> 70 (352): 865–71.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="measures-of-variability.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/edit/master/06-dstats.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/blob/master/06-dstats.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

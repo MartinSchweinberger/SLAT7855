@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Week 7 Measures of Centrality | SLAT7855 Quantitative Research Methods in Applied Linguistics</title>
+  <meta name="description" content="Week 7 Measures of Centrality | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Week 7 Measures of Centrality | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Week 7 Measures of Centrality | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  
+  
+  
+
+<meta name="author" content="Martin Schweinberger" />
+
+
+<meta name="date" content="2022-05-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="descriptive-statistics.html"/>
+<link rel="next" href="measures-of-variability.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SLAT7855</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#basic-course-information"><i class="fa fa-check"></i>Basic Course Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i>Course Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-introduction"><i class="fa fa-check"></i>Course Introduction</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#timetable"><i class="fa fa-check"></i>Timetable</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#aims-objectives-graduate-attributes"><i class="fa fa-check"></i>Aims, Objectives &amp; Graduate Attributes</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aims"><i class="fa fa-check"></i>Course Aims</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-resources"><i class="fa fa-check"></i>Learning Resources</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#required-resources"><i class="fa fa-check"></i>Required Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-resources"><i class="fa fa-check"></i>Recommended Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#university-learning-resources"><i class="fa fa-check"></i>University Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#school-of-languages-and-cultures-learning-resources"><i class="fa fa-check"></i>School of Languages and Cultures Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-learning-resources-information"><i class="fa fa-check"></i>Other Learning Resources &amp; Information</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#teaching-learning-activities"><i class="fa fa-check"></i>Teaching &amp; Learning Activities</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-activities"><i class="fa fa-check"></i>Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-plan"><i class="fa fa-check"></i>Course plan</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#why-do-we-need-science"><i class="fa fa-check"></i><b>1.1</b> Why do we need science?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#errare-humanum-est"><i class="fa fa-check"></i><b>1.2</b> Errare Humanum Est</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#the-monty-hall-problem"><i class="fa fa-check"></i><b>1.2.1</b> The Monty Hall Problem</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#the-birthday-conundrum"><i class="fa fa-check"></i><b>1.2.2</b> The Birthday Conundrum</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#fast-and-slow-thinking"><i class="fa fa-check"></i><b>1.2.3</b> Fast and Slow Thinking</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#randomness"><i class="fa fa-check"></i><b>1.2.4</b> Randomness</a></li>
+<li class="chapter" data-level="1.2.5" data-path="introduction.html"><a href="introduction.html#patterns-and-matters-of-habit"><i class="fa fa-check"></i><b>1.2.5</b> Patterns and Matters of Habit</a></li>
+<li class="chapter" data-level="1.2.6" data-path="introduction.html"><a href="introduction.html#locical-fallacies-and-biases"><i class="fa fa-check"></i><b>1.2.6</b> Locical Fallacies and Biases</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#what-is-science"><i class="fa fa-check"></i><b>1.3</b> What is science?</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#clever-hans"><i class="fa fa-check"></i><b>1.3.1</b> Clever Hans</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#popper-falsification-and-scientific-progress"><i class="fa fa-check"></i><b>1.3.2</b> Popper, falsification, and scientific progress</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#what-is-empirical-linguistics"><i class="fa fa-check"></i><b>1.3.3</b> What is (empirical) Linguistics?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html"><i class="fa fa-check"></i><b>2</b> Basic Concepts in Quantitative Research 1</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#hypotheses"><i class="fa fa-check"></i><b>2.1</b> Hypotheses</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#types-of-hypotheses"><i class="fa fa-check"></i>Types of Hypotheses</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#why-test-the-h0"><i class="fa fa-check"></i>Why test the H0?!</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#data-and-research-designs"><i class="fa fa-check"></i><b>2.2</b> Data and Research Designs</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#research-designs"><i class="fa fa-check"></i>Research Designs</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#variables-and-validity"><i class="fa fa-check"></i><b>2.3</b> Variables and Validity</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#variable-types-scaling"><i class="fa fa-check"></i>Variable Types (Scaling)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#relationships-between-variables"><i class="fa fa-check"></i><b>2.4</b> Relationships between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html"><i class="fa fa-check"></i><b>3</b> Basic Concepts in Quantitative Research 2</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#significance-and-probability"><i class="fa fa-check"></i><b>3.1</b> Significance and Probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#significance-levels"><i class="fa fa-check"></i>Significance Levels</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#probability"><i class="fa fa-check"></i>Probability</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#the-normal-distribution"><i class="fa fa-check"></i>The Normal Distribution</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#non-normality-skewness-and-kurtosis"><i class="fa fa-check"></i>Non-normality: skewness and kurtosis</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#the-binomial-distribution"><i class="fa fa-check"></i>The Binomial Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#z-scores"><i class="fa fa-check"></i><b>3.2</b> z-scores</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#alpha-and-beta-errors"><i class="fa fa-check"></i><b>3.3</b> Alpha and Beta Errors</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#independence"><i class="fa fa-check"></i><b>3.4</b> Independence</a></li>
+<li class="chapter" data-level="3.5" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#corrections"><i class="fa fa-check"></i><b>3.5</b> Corrections</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html"><i class="fa fa-check"></i><b>4</b> Getting Started with R and RStudio 1</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#goals-of-this-tutorial"><i class="fa fa-check"></i><b>4.1</b> Goals of this tutorial</a></li>
+<li class="chapter" data-level="4.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#audience"><i class="fa fa-check"></i><b>4.2</b> Audience</a></li>
+<li class="chapter" data-level="4.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>4.3</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#how-to-use-the-workshop-materials"><i class="fa fa-check"></i><b>4.3.1</b> How to use the workshop materials</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#preparation"><i class="fa fa-check"></i><b>4.4</b> Preparation</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#folder-structure-and-r-projects"><i class="fa fa-check"></i><b>4.4.1</b> Folder Structure and R projects</a></li>
+<li class="chapter" data-level="4.4.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#create-a-folder-for-your-project"><i class="fa fa-check"></i><b>4.4.2</b> 1. Create a folder for your project</a></li>
+<li class="chapter" data-level="4.4.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#open-rstudio"><i class="fa fa-check"></i><b>4.4.3</b> 3. Open RStudio</a></li>
+<li class="chapter" data-level="4.4.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-projects"><i class="fa fa-check"></i><b>4.4.4</b> 4. R Projects</a></li>
+<li class="chapter" data-level="4.4.5" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-notebooks"><i class="fa fa-check"></i><b>4.4.5</b> 5. R Notebooks</a></li>
+<li class="chapter" data-level="4.4.6" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#updating-r"><i class="fa fa-check"></i><b>4.4.6</b> 6. Updating R</a></li>
+<li class="chapter" data-level="4.4.7" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#optimizing-r-project-options"><i class="fa fa-check"></i><b>4.4.7</b> 7. Optimizing R project options</a></li>
+<li class="chapter" data-level="4.4.8" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-started-with-r-notebooks"><i class="fa fa-check"></i><b>4.4.8</b> 8. Getting started with R Notebooks</a></li>
+<li class="chapter" data-level="4.4.9" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-markdown"><i class="fa fa-check"></i><b>4.4.9</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-and-rstudio-basics"><i class="fa fa-check"></i><b>4.5</b> R and RStudio Basics</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#rstudio-panes"><i class="fa fa-check"></i><b>4.5.1</b> RStudio: Panes</a></li>
+<li class="chapter" data-level="4.5.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-console-bottom-left-pane"><i class="fa fa-check"></i><b>4.5.2</b> R Console (bottom left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#running-commands-from-a-script"><i class="fa fa-check"></i><b>4.6</b> Running commands from a script</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#script-editor-top-left-pane"><i class="fa fa-check"></i><b>4.6.1</b> Script Editor (top left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>4.7</b> Getting started with R</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#setting-up-an-r-session"><i class="fa fa-check"></i><b>4.7.1</b> Setting up an R session</a></li>
+<li class="chapter" data-level="4.7.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#packages"><i class="fa fa-check"></i><b>4.7.2</b> Packages</a></li>
+<li class="chapter" data-level="4.7.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-help"><i class="fa fa-check"></i><b>4.7.3</b> Getting help</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#working-with-tables"><i class="fa fa-check"></i><b>4.8</b> Working with tables</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#loading-data-from-the-web"><i class="fa fa-check"></i><b>4.8.1</b> Loading data from the web</a></li>
+<li class="chapter" data-level="4.8.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#functions-and-objects"><i class="fa fa-check"></i><b>4.8.2</b> Functions and Objects</a></li>
+<li class="chapter" data-level="4.8.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#inspecting-data"><i class="fa fa-check"></i><b>4.8.3</b> Inspecting data</a></li>
+<li class="chapter" data-level="4.8.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#accessing-individual-cells-in-a-table"><i class="fa fa-check"></i><b>4.8.4</b> Accessing individual cells in a table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html"><i class="fa fa-check"></i><b>5</b> Getting Started with R and RStudio 2</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#working-with-tables-1"><i class="fa fa-check"></i><b>5.1</b> Working with tables</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#tabulating-data"><i class="fa fa-check"></i><b>5.1.1</b> Tabulating data</a></li>
+<li class="chapter" data-level="5.1.2" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#saving-data-to-your-computer"><i class="fa fa-check"></i><b>5.1.2</b> Saving data to your computer</a></li>
+<li class="chapter" data-level="5.1.3" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-data-from-your-computer"><i class="fa fa-check"></i><b>5.1.3</b> Loading data from your computer</a></li>
+<li class="chapter" data-level="5.1.4" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-excel-data"><i class="fa fa-check"></i><b>5.1.4</b> Loading Excel data</a></li>
+<li class="chapter" data-level="5.1.5" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-text-data"><i class="fa fa-check"></i><b>5.1.5</b> Loading text data</a></li>
+<li class="chapter" data-level="5.1.6" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#renaming-piping-and-filtering"><i class="fa fa-check"></i><b>5.1.6</b> Renaming, Piping, and Filtering</a></li>
+<li class="chapter" data-level="5.1.7" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#ordering-data"><i class="fa fa-check"></i><b>5.1.7</b> Ordering data</a></li>
+<li class="chapter" data-level="5.1.8" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#creating-and-changing-variables"><i class="fa fa-check"></i><b>5.1.8</b> Creating and changing variables</a></li>
+<li class="chapter" data-level="5.1.9" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#if-statements"><i class="fa fa-check"></i><b>5.1.9</b> If-statements</a></li>
+<li class="chapter" data-level="5.1.10" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#summarizing-data"><i class="fa fa-check"></i><b>5.1.10</b> Summarizing data</a></li>
+<li class="chapter" data-level="5.1.11" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#gathering-and-spreading-data"><i class="fa fa-check"></i><b>5.1.11</b> Gathering and spreading data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#ending-r-sessions"><i class="fa fa-check"></i><b>5.2</b> Ending R sessions</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#extracting-session-information"><i class="fa fa-check"></i><b>5.2.1</b> Extracting session information</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#going-further"><i class="fa fa-check"></i><b>5.3</b> Going further</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a></li>
+<li class="chapter" data-level="7" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html"><i class="fa fa-check"></i><b>7</b> Measures of Centrality</a>
+<ul>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#mean"><i class="fa fa-check"></i>Mean</a></li>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#median"><i class="fa fa-check"></i>Median</a></li>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#mode"><i class="fa fa-check"></i>Mode</a></li>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#geometric-mean"><i class="fa fa-check"></i>Geometric mean</a></li>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#harmonic-mean"><i class="fa fa-check"></i>Harmonic mean</a></li>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#notes-on-measures-of-centrality"><i class="fa fa-check"></i>Notes on Measures of Centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="measures-of-variability.html"><a href="measures-of-variability.html"><i class="fa fa-check"></i><b>8</b> Measures of Variability</a>
+<ul>
+<li class="chapter" data-level="" data-path="measures-of-variability.html"><a href="measures-of-variability.html#range"><i class="fa fa-check"></i>Range</a></li>
+<li class="chapter" data-level="" data-path="measures-of-variability.html"><a href="measures-of-variability.html#interquartile-range-iqr"><i class="fa fa-check"></i>Interquartile range (IQR)</a></li>
+<li class="chapter" data-level="" data-path="measures-of-variability.html"><a href="measures-of-variability.html#variance"><i class="fa fa-check"></i>Variance</a></li>
+<li class="chapter" data-level="" data-path="measures-of-variability.html"><a href="measures-of-variability.html#standard-deviation"><i class="fa fa-check"></i>Standard deviation</a></li>
+<li class="chapter" data-level="" data-path="measures-of-variability.html"><a href="measures-of-variability.html#standard-error"><i class="fa fa-check"></i>Standard Error</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>9</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-for-simple-vectors"><i class="fa fa-check"></i>Confidence Intervals for Simple Vectors</a></li>
+<li class="chapter" data-level="" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-for-grouped-data"><i class="fa fa-check"></i>Confidence Intervals for Grouped Data</a></li>
+<li class="chapter" data-level="" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-for-nominal-data"><i class="fa fa-check"></i>Confidence Intervals for Nominal Data</a></li>
+<li class="chapter" data-level="" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-for-multinomial-data"><i class="fa fa-check"></i>Confidence Intervals for Multinomial Data</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SLAT7855 Quantitative Research Methods in Applied Linguistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="measures-of-centrality" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Week 7</span> Measures of Centrality<a href="measures-of-centrality.html#measures-of-centrality" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In linguistics three measures of centrality or measures of central tendency are of particular relevance: the <em>mean</em>, the <em>median</em> and the <em>mode</em> <span class="citation">(<a href="#ref-gaddis1990introduction" role="doc-biblioref">Gaddis and Gaddis 1990</a>)</span>. In addition, there are two more measures of central tendency, the geometric and the harmonic mean which we will only briefly discuss as they are not that relevant for language research. What measure is appropriate depends on the type of variable scaling, the distribution of the data, and what is the intended aim of the data summary.</p>
+<template id="46b0930a-deb6-42f4-873d-b8e4fc72dfe9"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-58457ade{table-layout:auto;width:95%;}.cl-582aa2e0{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-582aa2ea{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-582ad300{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-582b0dca{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-582b0dd4{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-582b0dd5{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-582b0dd6{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-582b0dde{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-582b0ddf{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-582b0de0{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-582b0de8{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-58457ade'>
+<caption class="Table Caption">
+<p><span id="tab:ds02">Table 7.1: </span>Measures of central tendency and their use.</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-582b0de0"><p class="cl-582ad300"><span class="cl-582aa2e0">Means</span></p></td><td class="cl-582b0de8"><p class="cl-582ad300"><span class="cl-582aa2e0">Use</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-582b0dca"><p class="cl-582ad300"><span class="cl-582aa2ea">(Arithmetic) mean (average)</span></p></td><td class="cl-582b0dd4"><p class="cl-582ad300"><span class="cl-582aa2ea">Description of normally distributed numeric variables (most common measure of central tendency)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-582b0dd6"><p class="cl-582ad300"><span class="cl-582aa2ea">Median (middle value)</span></p></td><td class="cl-582b0dd5"><p class="cl-582ad300"><span class="cl-582aa2ea">Description of non-normal numeric variables or ordinal variables (skewed data or influential outliers)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-582b0dca"><p class="cl-582ad300"><span class="cl-582aa2ea">Mode (most frequent value)</span></p></td><td class="cl-582b0dd4"><p class="cl-582ad300"><span class="cl-582aa2ea">Description of nominal and categorical variables</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-582b0dd6"><p class="cl-582ad300"><span class="cl-582aa2ea">Geometric mean (average factor)</span></p></td><td class="cl-582b0dd5"><p class="cl-582ad300"><span class="cl-582aa2ea">Description of dynamic processes such as growth rates</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-582b0dde"><p class="cl-582ad300"><span class="cl-582aa2ea">Harmonic mean (average rate)</span></p></td><td class="cl-582b0ddf"><p class="cl-582ad300"><span class="cl-582aa2ea">Description of dynamic processes such as velocities</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="a8046a7d-bcaa-412d-aa2f-3a0b4c5e6fbd"></div>
+<script>
+var dest = document.getElementById("a8046a7d-bcaa-412d-aa2f-3a0b4c5e6fbd");
+var template = document.getElementById("46b0930a-deb6-42f4-873d-b8e4fc72dfe9");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>In the following we will go over these types of measures of central tendencies, exemplify their use, describe their strengths and weaknesses, and show how to calculate them in R.</p>
+<div id="mean" class="section level2 unnumbered hasAnchor">
+<h2>Mean<a href="measures-of-centrality.html#mean" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The mean is used when the data is numeric and normally distributed. The mean is calculated by applying the formula shown below.</p>
+<p><span class="math display">\[\begin{equation}
+  \bar{x}=\frac{1}{n} \sum_{i=1}^n x_i = \frac{x_{1}+x_{2}+ \dots + x_{n}}{n}
+\end{equation}\]</span></p>
+<p>To calculate the mean, sum up all values and divide by the number of values. See the example below for clarification.</p>
+<p><img src="bookdownproj_files/figure-html/ds03-1.png" width="672" /></p>
+<p>Consider, we are interested in the mean length of sentences in a short text, then the first thing we could do would be to list the sentences and their length in a table.</p>
+<template id="928e8a7e-abc0-4690-a92b-281a98a2b264"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-589e468c{table-layout:auto;width:95%;}.cl-58920fa2{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-58920fac{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-58922b72{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-58922b7c{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-58927118{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-58927122{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-58927140{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-58927141{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5892714a{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5892714b{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5892714c{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-58927154{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-589e468c'>
+<caption class="Table Caption">
+<p><span id="tab:ds05">Table 7.2: </span>Sentences of the first paragraph of Herman Melville’s <em>Moby Dick</em> and the number of words in each sentence.</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-5892714c"><p class="cl-58922b72"><span class="cl-58920fa2">Sentences</span></p></td><td class="cl-58927154"><p class="cl-58922b7c"><span class="cl-58920fa2">Words</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-58927122"><p class="cl-58922b72"><span class="cl-58920fac">Call me Ishmael</span></p></td><td class="cl-58927118"><p class="cl-58922b7c"><span class="cl-58920fac">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-58927141"><p class="cl-58922b72"><span class="cl-58920fac">Some years ago -- never mind how long precisely -- having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.</span></p></td><td class="cl-58927140"><p class="cl-58922b7c"><span class="cl-58920fac">40</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-58927122"><p class="cl-58922b72"><span class="cl-58920fac">It is a way I have of driving off the spleen, and regulating the circulation.</span></p></td><td class="cl-58927118"><p class="cl-58922b7c"><span class="cl-58920fac">15</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5892714a"><p class="cl-58922b72"><span class="cl-58920fac">Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people's hats off--then, I account it high time to get to sea as soon as I can.</span></p></td><td class="cl-5892714b"><p class="cl-58922b7c"><span class="cl-58920fac">87</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="61adc587-db06-4cdc-a56f-943798dd3181"></div>
+<script>
+var dest = document.getElementById("61adc587-db06-4cdc-a56f-943798dd3181");
+var template = document.getElementById("928e8a7e-abc0-4690-a92b-281a98a2b264");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>To calculate the mean, we need to divide the sum of the number of words per sentence (145) by the number of sentences (7) (see the equation below).</p>
+<p><span class="math display">\[\begin{equation}
+\frac{3+40+15+87}{4} = \frac{145}{4} = 36.25
+\label{eq:mittel2}
+\end{equation}\]</span></p>
+<p>The mean sentences length in our example is 36.25 words</p>
+<p>In R, the <em>mean</em> is calculated as follows.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r klippy"><code class="sourceCode r"><span id="cb3-1"><a href="measures-of-centrality.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create numeric vector</span></span>
+<span id="cb3-2"><a href="measures-of-centrality.html#cb3-2" aria-hidden="true" tabindex="-1"></a>frequencies <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">40</span>, <span class="dv">15</span>, <span class="dv">87</span>)</span>
+<span id="cb3-3"><a href="measures-of-centrality.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate mean</span></span>
+<span id="cb3-4"><a href="measures-of-centrality.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(frequencies)</span></code></pre></div>
+<pre><code>## [1] 36.25</code></pre>
+<p>The mean is the most common way to summarize numeric variables and it is very easy and intuitive to understand. A disadvantage of the mean is that it is very strongly affected by outliers which is why the median is the preferable measure of centrality when dealing with data that is not normal or that contains outliers.</p>
+<hr />
+<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>EXERCISE TIME!</b>
+</p>
+<p style="margin-left:1em;">
+</p>
+<p></span></p>
+</div>
+<div class="question">
+<p>`</p>
+<ol style="list-style-type: decimal">
+<li>Calculate the arithmetic mean: 1, 2, 3, 4, 5, 6<br></li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="measures-of-centrality.html#cb5-1" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">4</span> <span class="sc">+</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">6</span>)<span class="sc">/</span><span class="dv">6</span></span></code></pre></div>
+<pre><code>  ## [1] 3.5</code></pre>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Calculate the arithmetic mean for the following values using the <code>mean</code> function: 4, 3, 6, 2, 1, 5, 6, 8<br></li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="measures-of-centrality.html#cb7-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">8</span>))</span></code></pre></div>
+<pre><code>  ## [1] 4.375</code></pre>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>Create a vector out of the following values and calculate the arithmetic mean using the <code>mean</code> function: 1, 5, 5, 9<br></li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="measures-of-centrality.html#cb9-1" aria-hidden="true" tabindex="-1"></a>  vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">9</span>)</span>
+<span id="cb9-2"><a href="measures-of-centrality.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(vec)</span></code></pre></div>
+<pre><code>  ## [1] 5</code></pre>
+</details>
+</div>
+<p>`</p>
+<hr />
+</div>
+<div id="median" class="section level2 unnumbered hasAnchor">
+<h2>Median<a href="measures-of-centrality.html#median" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The median can be used for both numeric and ordinal variables. In contract to the mean, it is more robust and not as easily affected by outliers. While the mean is commonly associated with numeric data that is normally distributed, the median is typically used when dealing with non-normal numeric or ordinal variables, i.e. variables that are ordered but not truly numeric. The median is the central value in a de- or increasing ordering of values in a vector. In other words, 50 percent of values are above and 50 percent of values are below the median in a given vector.</p>
+<p>If the vector contains an even number of elements, then the two central values are summed up and divided by 2. If the vector contains an uneven number of elements, the median represents the central value.</p>
+<p><span class="math display">\[\begin{equation}
+median_{x}=
+\begin{cases}
+x_{\frac{n+1}{2}} &amp; n\text{ uneven} \\
+\frac{1}{2}\bigl(x_{\frac{n}{2}}+x_{\frac{n+1}{2}}\bigr) &amp; n\text{ even}
+\end{cases}
+\label{eq:median}
+\end{equation}\]</span></p>
+<p><img src="bookdownproj_files/figure-html/ds07-1.png" width="672" /></p>
+<p>Let’s have a look at an example. Consider you are interested in the age stratification of speakers in the private dialogue section of the Irish component of the <em>International Corpus of English</em> (ICE). When tabulating and plotting the age variable you get the following table and graph.</p>
+<template id="804b59ed-afe7-4cf9-b440-be2ddbd4a8ca"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-58f612fe{table-layout:auto;width:50%;}.cl-58eb8a32{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-58eb8a3c{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-58ebaa6c{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-58ebaa76{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-58ebdd0c{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-58ebdd16{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-58ebdd20{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-58ebdd21{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-58ebdd22{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-58ebdd23{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-58ebdd2a{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-58ebdd2b{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-58f612fe'>
+<caption class="Table Caption">
+<p><span id="tab:ds08">Table 7.3: </span>Number of speakers across age groups in the private dialogue section of the Irish component of the <em>International Corpus of English</em> (ICE).</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-58ebdd2a"><p class="cl-58ebaa6c"><span class="cl-58eb8a32">Age</span></p></td><td class="cl-58ebdd2b"><p class="cl-58ebaa76"><span class="cl-58eb8a32">Counts</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-58ebdd0c"><p class="cl-58ebaa6c"><span class="cl-58eb8a3c">0-18</span></p></td><td class="cl-58ebdd16"><p class="cl-58ebaa76"><span class="cl-58eb8a3c">9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-58ebdd20"><p class="cl-58ebaa6c"><span class="cl-58eb8a3c">19-25</span></p></td><td class="cl-58ebdd21"><p class="cl-58ebaa76"><span class="cl-58eb8a3c">160</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-58ebdd0c"><p class="cl-58ebaa6c"><span class="cl-58eb8a3c">26-33</span></p></td><td class="cl-58ebdd16"><p class="cl-58ebaa76"><span class="cl-58eb8a3c">70</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-58ebdd20"><p class="cl-58ebaa6c"><span class="cl-58eb8a3c">34-41</span></p></td><td class="cl-58ebdd21"><p class="cl-58ebaa76"><span class="cl-58eb8a3c">15</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-58ebdd0c"><p class="cl-58ebaa6c"><span class="cl-58eb8a3c">42-49</span></p></td><td class="cl-58ebdd16"><p class="cl-58ebaa76"><span class="cl-58eb8a3c">9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-58ebdd22"><p class="cl-58ebaa6c"><span class="cl-58eb8a3c">50+</span></p></td><td class="cl-58ebdd23"><p class="cl-58ebaa76"><span class="cl-58eb8a3c">57</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="23446009-9fb8-4e71-b398-7c4ce1ce9e69"></div>
+<script>
+var dest = document.getElementById("23446009-9fb8-4e71-b398-7c4ce1ce9e69");
+var template = document.getElementById("804b59ed-afe7-4cf9-b440-be2ddbd4a8ca");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p><img src="bookdownproj_files/figure-html/ds09-1.png" width="672" /></p>
+<p>The age groups represent an order factor which means that there are categories with a natural order (here from old to young or vice versa). If we order speakers according to their age from young to old, we get a vector of length 320. If we then take the central value, i.e. the value of the 160<sup>th</sup> speaker, we get the median age in the private dialogue section of the Irish component of the <em>International Corpus of English</em> (ICE).</p>
+<p>In R, the <em>median</em> is calculated as shown below.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="measures-of-centrality.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector consisting out of ranks</span></span>
+<span id="cb11-2"><a href="measures-of-centrality.html#cb11-2" aria-hidden="true" tabindex="-1"></a>ranks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">9</span>), <span class="fu">rep</span>(<span class="dv">2</span>, <span class="dv">160</span>), <span class="fu">rep</span>(<span class="dv">3</span>, <span class="dv">70</span>), <span class="fu">rep</span>(<span class="dv">4</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="dv">5</span>, <span class="dv">9</span>), <span class="fu">rep</span>(<span class="dv">6</span>, <span class="dv">57</span>))</span>
+<span id="cb11-3"><a href="measures-of-centrality.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate median</span></span>
+<span id="cb11-4"><a href="measures-of-centrality.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(ranks)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>In our case, the median age is <em>19-25</em> because the 160<sup>th</sup> speaker belongs to the 2<sup>nd</sup> age group, i.e. the age group with speakers between 19 and 25 years old.</p>
+<hr />
+<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>EXERCISE TIME!</b>
+</p>
+<p style="margin-left:1em;">
+</p>
+<p></span></p>
+</div>
+<div class="question">
+<p>`</p>
+<ol style="list-style-type: decimal">
+<li>Calculate the median: 1, 2, 3, 4, 5, 6<br></li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="measures-of-centrality.html#cb13-1" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">3</span> <span class="sc">+</span> <span class="dv">4</span>)<span class="sc">/</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>  ## [1] 3.5</code></pre>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Calculate the median for the following values using the <code>median</code> function: 4, 3, 6, 2, 1, 5, 6, 8<br></li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="measures-of-centrality.html#cb15-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">8</span>))</span></code></pre></div>
+<pre><code>  ## [1] 4.5</code></pre>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>Create a vector out of the following values and calculate the median using the <code>median</code> function: 1, 5, 5, 9<br></li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="measures-of-centrality.html#cb17-1" aria-hidden="true" tabindex="-1"></a>  vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">9</span>)</span>
+<span id="cb17-2"><a href="measures-of-centrality.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>(vec)</span></code></pre></div>
+<pre><code>  ## [1] 5</code></pre>
+</details>
+</div>
+<p>`</p>
+<hr />
+</div>
+<div id="mode" class="section level2 unnumbered hasAnchor">
+<h2>Mode<a href="measures-of-centrality.html#mode" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The mode is typically used when dealing with categorical variables and it reports which level of a factor or a categorical variable is the most frequent.</p>
+<p><img src="bookdownproj_files/figure-html/ds13-1.png" width="672" /></p>
+<p>Here is an example to illustrate the mode. Consider you are interested where most speakers in the private dialogue section of the Irish component of the <em>International Corpus of English</em> are currently residing and you get the following distribution.</p>
+<template id="556c54b2-2e84-4201-8bc8-9ce0d8b8c3c4"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-5975fece{table-layout:auto;width:50%;}.cl-596aff24{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-596aff38{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-596b1658{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-596b1659{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-596b5136{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-596b5140{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-596b514a{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-596b514b{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-596b5154{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-596b5155{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-596b5156{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-596b5157{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-5975fece'>
+<caption class="Table Caption">
+<p><span id="tab:ds14">Table 7.4: </span>Number of speakers across counties of current residency in the private dialogue section of the Irish component of the <em>International Corpus of English</em> (ICE).</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-596b5156"><p class="cl-596b1658"><span class="cl-596aff24">CurrentResidence</span></p></td><td class="cl-596b5157"><p class="cl-596b1659"><span class="cl-596aff24">Speakers</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-596b5136"><p class="cl-596b1658"><span class="cl-596aff38">Belfast</span></p></td><td class="cl-596b5140"><p class="cl-596b1659"><span class="cl-596aff38">98</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-596b514b"><p class="cl-596b1658"><span class="cl-596aff38">Down</span></p></td><td class="cl-596b514a"><p class="cl-596b1659"><span class="cl-596aff38">20</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-596b5136"><p class="cl-596b1658"><span class="cl-596aff38">Dublin (city)</span></p></td><td class="cl-596b5140"><p class="cl-596b1659"><span class="cl-596aff38">110</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-596b514b"><p class="cl-596b1658"><span class="cl-596aff38">Limerick</span></p></td><td class="cl-596b514a"><p class="cl-596b1659"><span class="cl-596aff38">13</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-596b5154"><p class="cl-596b1658"><span class="cl-596aff38">Tipperary</span></p></td><td class="cl-596b5155"><p class="cl-596b1659"><span class="cl-596aff38">19</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="c3ba1fb8-94d9-4496-80a1-23e07ed80fee"></div>
+<script>
+var dest = document.getElementById("c3ba1fb8-94d9-4496-80a1-23e07ed80fee");
+var template = document.getElementById("556c54b2-2e84-4201-8bc8-9ce0d8b8c3c4");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p><img src="bookdownproj_files/figure-html/ds15-1.png" width="672" /></p>
+<p>The tabulated and visualized data show that the mode is <em>Dublin (City)</em>, because the largest group (110 speakers) of speakers in the corpus are speakers from the city of Dublin. This means that the <em>average</em> speaker in in the private dialogue section of the Irish component of the <em>International Corpus of English</em> (ICE) is from Dublin city.</p>
+<p>In R the <em>mode</em> is calculated as shown below:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="measures-of-centrality.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a factor with the current residence of speakers</span></span>
+<span id="cb19-2"><a href="measures-of-centrality.html#cb19-2" aria-hidden="true" tabindex="-1"></a>CurrentResidence <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;Belfast&quot;</span>, <span class="dv">98</span>),         <span class="co"># repeat &quot;Belfast&quot; 98 times</span></span>
+<span id="cb19-3"><a href="measures-of-centrality.html#cb19-3" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">rep</span>(<span class="st">&quot;Down&quot;</span>, <span class="dv">20</span>),            <span class="co"># repeat &quot;Down&quot; 20 times</span></span>
+<span id="cb19-4"><a href="measures-of-centrality.html#cb19-4" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">rep</span>(<span class="st">&quot;Dublin (city)&quot;</span>, <span class="dv">110</span>),  <span class="co"># repeat &quot;Dublin (city)&quot; 110 times</span></span>
+<span id="cb19-5"><a href="measures-of-centrality.html#cb19-5" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">rep</span>(<span class="st">&quot;Limerick&quot;</span>, <span class="dv">13</span>),        <span class="co"># repeat &quot;Limerick&quot; 13 times</span></span>
+<span id="cb19-6"><a href="measures-of-centrality.html#cb19-6" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">rep</span>(<span class="st">&quot;Tipperary&quot;</span>, <span class="dv">19</span>))       <span class="co"># repeat &quot;Tipperary&quot; 19 times</span></span>
+<span id="cb19-7"><a href="measures-of-centrality.html#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate mode</span></span>
+<span id="cb19-8"><a href="measures-of-centrality.html#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">which.max</span>(<span class="fu">table</span>(CurrentResidence)))         <span class="co"># extract which level occurs most frequently</span></span></code></pre></div>
+<pre><code>## [1] &quot;Dublin (city)&quot;</code></pre>
+<p>A word of warning is in order here as only the first(!) maximal value is provided by R even if several categories have the same frequency.</p>
+</div>
+<div id="geometric-mean" class="section level2 unnumbered hasAnchor">
+<h2>Geometric mean<a href="measures-of-centrality.html#geometric-mean" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The geometric mean represents a measure of central tendency that is used when dealing with dynamic processes where the later elements are dependent on the previous elements. The geometric mean is calculated according to the equation below.</p>
+<p><span class="math display">\[\begin{equation}
+\bar{x}_{geometric} = \sqrt[n]{x_1 \times x_{i+1} \times \dots \times x_n}
+\end{equation}\]</span></p>
+<p>Imagine you have the option to buy two different stock packages and you have to buy one of them. Which one would you buy?</p>
+<template id="1a74142f-d3e4-491b-8327-1f5629844a4c"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-59c0f3ac{table-layout:auto;width:75%;}.cl-59b6440c{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-59b64416{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-59b6668a{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-59b69b46{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59b69b50{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59b69b5a{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59b69b5b{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59b69b5c{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59b69b64{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59b69b65{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59b69b66{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59b69b67{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59b69b6e{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59b69b6f{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59b69b70{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-59c0f3ac'>
+<caption class="Table Caption">
+<p><span id="tab:ds17">Table 7.5: </span>Performance of two stock packages.</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-59b69b70"><p class="cl-59b6668a"><span class="cl-59b6440c">Year</span></p></td><td class="cl-59b69b6e"><p class="cl-59b6668a"><span class="cl-59b6440c">Package1</span></p></td><td class="cl-59b69b6f"><p class="cl-59b6668a"><span class="cl-59b6440c">Package2</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-59b69b50"><p class="cl-59b6668a"><span class="cl-59b64416">Year 1</span></p></td><td class="cl-59b69b5a"><p class="cl-59b6668a"><span class="cl-59b64416">+5%</span></p></td><td class="cl-59b69b46"><p class="cl-59b6668a"><span class="cl-59b64416">+20%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-59b69b5b"><p class="cl-59b6668a"><span class="cl-59b64416">Year 2</span></p></td><td class="cl-59b69b64"><p class="cl-59b6668a"><span class="cl-59b64416">-5%</span></p></td><td class="cl-59b69b5c"><p class="cl-59b6668a"><span class="cl-59b64416">-20%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-59b69b50"><p class="cl-59b6668a"><span class="cl-59b64416">Year 3</span></p></td><td class="cl-59b69b5a"><p class="cl-59b6668a"><span class="cl-59b64416">+5%</span></p></td><td class="cl-59b69b46"><p class="cl-59b6668a"><span class="cl-59b64416">+20%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-59b69b67"><p class="cl-59b6668a"><span class="cl-59b64416">Year 4</span></p></td><td class="cl-59b69b65"><p class="cl-59b6668a"><span class="cl-59b64416">-5%</span></p></td><td class="cl-59b69b66"><p class="cl-59b6668a"><span class="cl-59b64416">-20%</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="1a8d972c-3d7b-4cf6-b3c1-18e70c01d45a"></div>
+<script>
+var dest = document.getElementById("1a8d972c-3d7b-4cf6-b3c1-18e70c01d45a");
+var template = document.getElementById("1a74142f-d3e4-491b-8327-1f5629844a4c");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>Is one package better than the other? Did one package perform better than the other?</p>
+<ul>
+<li>Package 1:
+<ul>
+<li>Return: <span class="math inline">\(1.05 \times .95 \times 1.05 \times .95 = .995\)</span> (0.5% loss)</li>
+<li>Year-over-year average: <span class="math inline">\(.995^{1/4}\)</span> = ~0.125% loss per year</li>
+</ul></li>
+<li>Package 2:
+<ul>
+<li>Return: <span class="math inline">\(1.2 \times .8 \times 1.2 \times .8 = 0.9216\)</span> (7.84% loss)</li>
+<li>Year-over-year average: <span class="math inline">\(.9216^{1/4}\)</span> = ~2% loss per year.</li>
+</ul></li>
+</ul>
+<p>Package 2 performs substantially worse because here, the changes in growth depend on the previous growth rates.</p>
+</div>
+<div id="harmonic-mean" class="section level2 unnumbered hasAnchor">
+<h2>Harmonic mean<a href="measures-of-centrality.html#harmonic-mean" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The harmonic mean is a measure of central tendency that provides us with the average rate and is used when dealing with dynamic processes that involve velocities and distances. The harmonic mean is calculated according to the equation below.</p>
+<p><span class="math display">\[\begin{equation}
+\bar{x}_{harmonic} =
+\frac{n}{\frac{1}{x_i} + \frac{1}{x_{i+1}} + \frac{1}{x_{i+\dots}} + \frac{1}{x_n}}
+\end{equation}\]</span></p>
+<p>Let’s use an example to see what the harmonic mean describes. Imagine you assign group projects to students and you are interested in the average time it takes them to finalize the projects. The crucial thing is that the end state is the same: the finished project.</p>
+<p>Let us say there are two groups, group A and group B. It takes group A 30 hours and group B 60 hours to finish their project. What is the average rate at which these two groups have finished their projects? If we used the arithmetic mean, we would say it takes them on average 45 hours to finish their projects but this is not appropriate in the present case.</p>
+<p><span class="math display">\[\begin{equation}
+\bar{x}_{harmonic} =
+\frac{2}{\frac{1}{30} + \frac{1}{60}} = \frac{2}{\frac{2}{60} + \frac{1}{60}} = \frac{2}{\frac{3}{60}} = \frac{2}{1} \times \frac{60}{3} = \frac{120}{3} = 40
+\end{equation}\]</span></p>
+<p>The harmonic mean is used when two rates contribute to the same workload (for instance when we download a file). Each installment is in a relay race and contributes the same amount to the issue. For example, we make a round trip to work and back. The way to work is 60 kilometers. On the way to work, we can only travel at 30 kph while we can go 60 kph on the way back. The distance is the same. Half of the results (distance traveled) comes from the first rate (30 kilometers per hour) and the other half from the second rate (60 kilometers per hour). The result is that is takes us 3 hours to get to work and back.</p>
+<p>The reason why using the arithmetic mean is inappropriate in such cases is the following: The idea behind the arithmetic mean is that we calculate a single value that can replace all values in a given distribution and the sum of the mean values is identical to the sum of the observed values. So, the average is a single element that replaces each element. In our example, we have to drive at 40 kilometers per hour (instead of 30) to work and 40 kilometers per hour (instead of 60) to get back from work in the same amount of time. If we went with 45 kilometers per hour, then the result would not be 3 hours but 2 hours and 40 minutes so that the result would not be the same.</p>
+</div>
+<div id="notes-on-measures-of-centrality" class="section level2 unnumbered hasAnchor">
+<h2>Notes on Measures of Centrality<a href="measures-of-centrality.html#notes-on-measures-of-centrality" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As suggested above, the mean is strongly affected by outliers (which is why in sch cases, the median is the more appropriate measure fo central tendency). To illustrate this, imagine you are interested whether the use of discourse particles differs across two corpora. The two corpora represent the speech of the same five speakers but in different situations and the speech thus represents different registers. In a first step, you calculate the relative frequency of discourse particle use and both corpora have a mean of 13.4 particles per 1,000 words. Given the mean, the two corpora do not seem to differ. However, when tabulating and plotting the use of particles by speaker and across these two corpora, it becomes immediately clear that the mean is not the appropriate measure of central tendency as the distributions are very dissimilar.</p>
+<template id="6815318b-369f-413a-8574-37d939615c9a"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-59de5bc2{table-layout:auto;width:50%;}.cl-59d3a182{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-59d3a18c{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-59d3b8d4{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-59d3b8d5{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-59d3fba0{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59d3fbaa{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59d3fbab{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59d3fbb4{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59d3fbb5{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59d3fbbe{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59d3fbbf{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59d3fbc0{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59d3fbc8{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59d3fbc9{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59d3fbca{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-59d3fbd2{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-59de5bc2'>
+<caption class="Table Caption">
+<p><span id="tab:ds18">Table 7.6: </span>Relative frequencies of discourse particles per speaker in two corpora.</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-59d3fbc9"><p class="cl-59d3b8d4"><span class="cl-59d3a182">Corpus</span></p></td><td class="cl-59d3fbca"><p class="cl-59d3b8d4"><span class="cl-59d3a182">Speaker</span></p></td><td class="cl-59d3fbd2"><p class="cl-59d3b8d5"><span class="cl-59d3a182">Frequency</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-59d3fba0"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">C1</span></p></td><td class="cl-59d3fbab"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">A</span></p></td><td class="cl-59d3fbaa"><p class="cl-59d3b8d5"><span class="cl-59d3a18c">11.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-59d3fbbf"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">C1</span></p></td><td class="cl-59d3fbc8"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">B</span></p></td><td class="cl-59d3fbc0"><p class="cl-59d3b8d5"><span class="cl-59d3a18c">5.2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-59d3fba0"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">C1</span></p></td><td class="cl-59d3fbab"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">C</span></p></td><td class="cl-59d3fbaa"><p class="cl-59d3b8d5"><span class="cl-59d3a18c">27.1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-59d3fbbf"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">C1</span></p></td><td class="cl-59d3fbc8"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">D</span></p></td><td class="cl-59d3fbc0"><p class="cl-59d3b8d5"><span class="cl-59d3a18c">9.6</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-59d3fba0"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">C1</span></p></td><td class="cl-59d3fbab"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">E</span></p></td><td class="cl-59d3fbaa"><p class="cl-59d3b8d5"><span class="cl-59d3a18c">13.7</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-59d3fbbf"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">C2</span></p></td><td class="cl-59d3fbc8"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">A</span></p></td><td class="cl-59d3fbc0"><p class="cl-59d3b8d5"><span class="cl-59d3a18c">0.2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-59d3fba0"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">C2</span></p></td><td class="cl-59d3fbab"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">B</span></p></td><td class="cl-59d3fbaa"><p class="cl-59d3b8d5"><span class="cl-59d3a18c">0.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-59d3fbbf"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">C2</span></p></td><td class="cl-59d3fbc8"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">C</span></p></td><td class="cl-59d3fbc0"><p class="cl-59d3b8d5"><span class="cl-59d3a18c">1.1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-59d3fba0"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">C2</span></p></td><td class="cl-59d3fbab"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">D</span></p></td><td class="cl-59d3fbaa"><p class="cl-59d3b8d5"><span class="cl-59d3a18c">65.3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-59d3fbb4"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">C2</span></p></td><td class="cl-59d3fbbe"><p class="cl-59d3b8d4"><span class="cl-59d3a18c">E</span></p></td><td class="cl-59d3fbb5"><p class="cl-59d3b8d5"><span class="cl-59d3a18c">0.4</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="a29836ac-8066-46f9-98d7-4fa12e622915"></div>
+<script>
+var dest = document.getElementById("a29836ac-8066-46f9-98d7-4fa12e622915");
+var template = document.getElementById("6815318b-369f-413a-8574-37d939615c9a");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p><img src="bookdownproj_files/figure-html/ds20a-1.png" width="672" /></p>
+<p>The Figure above shows that the use of discourse particles is distributed rather evenly across speakers in Corpus 1 while the distribution is very uneven in corpus 2. In corpus 2, 4 out of 5 speakers use almost no discourse particles and only one speaker, speaker D, makes excessive use of discourse particles in corpus 2. The high usage frequency of discourse particles by speaker D in corpus 2 causes the mean of corpus 2 to be identical to the mean reported for corpus 1 although the distribution of usage rates differs drastically. This means that reporting the median in addition to the mean can be useful if the distribution of values is very uneven (or non-normal or skewed).</p>
+<p>To exemplify, we will summarize the distribution of discourse particles in the two corpora: the use of discourse particles in corpus 1 (mean = 13.4, median = 11.4) is substantially different from the use of discourse particles in corpus 2 (mean = 13.4, median = 0.4).</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-gaddis1990introduction" class="csl-entry">
+Gaddis, Gary M, and Monica L Gaddis. 1990. <span>“Introduction to Biostatistics: Part 2, Descriptive Statistics.”</span> <em>Annals of Emergency Medicine</em> 19 (3): 309–15.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="descriptive-statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="measures-of-variability.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/edit/master/06-dstats.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/blob/master/06-dstats.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

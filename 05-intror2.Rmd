@@ -492,9 +492,7 @@ Here are also some additional resources that you may find helpful:
 
 
 
-
-
-[Back to top](#[Back to top](#getting_started_with_r_and_rstudio_2)
+[Back to top](#getting_started_with_r_and_rstudio_2)
 
 
 

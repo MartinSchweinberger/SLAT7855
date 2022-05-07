@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Week 8 Measures of Variability | SLAT7855 Quantitative Research Methods in Applied Linguistics</title>
+  <meta name="description" content="Week 8 Measures of Variability | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Week 8 Measures of Variability | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Week 8 Measures of Variability | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  
+  
+  
+
+<meta name="author" content="Martin Schweinberger" />
+
+
+<meta name="date" content="2022-05-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="measures-of-centrality.html"/>
+<link rel="next" href="confidence-intervals.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SLAT7855</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#basic-course-information"><i class="fa fa-check"></i>Basic Course Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i>Course Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-introduction"><i class="fa fa-check"></i>Course Introduction</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#timetable"><i class="fa fa-check"></i>Timetable</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#aims-objectives-graduate-attributes"><i class="fa fa-check"></i>Aims, Objectives &amp; Graduate Attributes</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aims"><i class="fa fa-check"></i>Course Aims</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-resources"><i class="fa fa-check"></i>Learning Resources</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#required-resources"><i class="fa fa-check"></i>Required Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-resources"><i class="fa fa-check"></i>Recommended Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#university-learning-resources"><i class="fa fa-check"></i>University Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#school-of-languages-and-cultures-learning-resources"><i class="fa fa-check"></i>School of Languages and Cultures Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-learning-resources-information"><i class="fa fa-check"></i>Other Learning Resources &amp; Information</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#teaching-learning-activities"><i class="fa fa-check"></i>Teaching &amp; Learning Activities</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-activities"><i class="fa fa-check"></i>Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-plan"><i class="fa fa-check"></i>Course plan</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#why-do-we-need-science"><i class="fa fa-check"></i><b>1.1</b> Why do we need science?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#errare-humanum-est"><i class="fa fa-check"></i><b>1.2</b> Errare Humanum Est</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#the-monty-hall-problem"><i class="fa fa-check"></i><b>1.2.1</b> The Monty Hall Problem</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#the-birthday-conundrum"><i class="fa fa-check"></i><b>1.2.2</b> The Birthday Conundrum</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#fast-and-slow-thinking"><i class="fa fa-check"></i><b>1.2.3</b> Fast and Slow Thinking</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#randomness"><i class="fa fa-check"></i><b>1.2.4</b> Randomness</a></li>
+<li class="chapter" data-level="1.2.5" data-path="introduction.html"><a href="introduction.html#patterns-and-matters-of-habit"><i class="fa fa-check"></i><b>1.2.5</b> Patterns and Matters of Habit</a></li>
+<li class="chapter" data-level="1.2.6" data-path="introduction.html"><a href="introduction.html#locical-fallacies-and-biases"><i class="fa fa-check"></i><b>1.2.6</b> Locical Fallacies and Biases</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#what-is-science"><i class="fa fa-check"></i><b>1.3</b> What is science?</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#clever-hans"><i class="fa fa-check"></i><b>1.3.1</b> Clever Hans</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#popper-falsification-and-scientific-progress"><i class="fa fa-check"></i><b>1.3.2</b> Popper, falsification, and scientific progress</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#what-is-empirical-linguistics"><i class="fa fa-check"></i><b>1.3.3</b> What is (empirical) Linguistics?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html"><i class="fa fa-check"></i><b>2</b> Basic Concepts in Quantitative Research 1</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#hypotheses"><i class="fa fa-check"></i><b>2.1</b> Hypotheses</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#types-of-hypotheses"><i class="fa fa-check"></i>Types of Hypotheses</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#why-test-the-h0"><i class="fa fa-check"></i>Why test the H0?!</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#data-and-research-designs"><i class="fa fa-check"></i><b>2.2</b> Data and Research Designs</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#research-designs"><i class="fa fa-check"></i>Research Designs</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#variables-and-validity"><i class="fa fa-check"></i><b>2.3</b> Variables and Validity</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#variable-types-scaling"><i class="fa fa-check"></i>Variable Types (Scaling)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#relationships-between-variables"><i class="fa fa-check"></i><b>2.4</b> Relationships between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html"><i class="fa fa-check"></i><b>3</b> Basic Concepts in Quantitative Research 2</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#significance-and-probability"><i class="fa fa-check"></i><b>3.1</b> Significance and Probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#significance-levels"><i class="fa fa-check"></i>Significance Levels</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#probability"><i class="fa fa-check"></i>Probability</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#the-normal-distribution"><i class="fa fa-check"></i>The Normal Distribution</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#non-normality-skewness-and-kurtosis"><i class="fa fa-check"></i>Non-normality: skewness and kurtosis</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#the-binomial-distribution"><i class="fa fa-check"></i>The Binomial Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#z-scores"><i class="fa fa-check"></i><b>3.2</b> z-scores</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#alpha-and-beta-errors"><i class="fa fa-check"></i><b>3.3</b> Alpha and Beta Errors</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#independence"><i class="fa fa-check"></i><b>3.4</b> Independence</a></li>
+<li class="chapter" data-level="3.5" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#corrections"><i class="fa fa-check"></i><b>3.5</b> Corrections</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html"><i class="fa fa-check"></i><b>4</b> Getting Started with R and RStudio 1</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#goals-of-this-tutorial"><i class="fa fa-check"></i><b>4.1</b> Goals of this tutorial</a></li>
+<li class="chapter" data-level="4.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#audience"><i class="fa fa-check"></i><b>4.2</b> Audience</a></li>
+<li class="chapter" data-level="4.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>4.3</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#how-to-use-the-workshop-materials"><i class="fa fa-check"></i><b>4.3.1</b> How to use the workshop materials</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#preparation"><i class="fa fa-check"></i><b>4.4</b> Preparation</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#folder-structure-and-r-projects"><i class="fa fa-check"></i><b>4.4.1</b> Folder Structure and R projects</a></li>
+<li class="chapter" data-level="4.4.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#create-a-folder-for-your-project"><i class="fa fa-check"></i><b>4.4.2</b> 1. Create a folder for your project</a></li>
+<li class="chapter" data-level="4.4.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#open-rstudio"><i class="fa fa-check"></i><b>4.4.3</b> 3. Open RStudio</a></li>
+<li class="chapter" data-level="4.4.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-projects"><i class="fa fa-check"></i><b>4.4.4</b> 4. R Projects</a></li>
+<li class="chapter" data-level="4.4.5" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-notebooks"><i class="fa fa-check"></i><b>4.4.5</b> 5. R Notebooks</a></li>
+<li class="chapter" data-level="4.4.6" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#updating-r"><i class="fa fa-check"></i><b>4.4.6</b> 6. Updating R</a></li>
+<li class="chapter" data-level="4.4.7" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#optimizing-r-project-options"><i class="fa fa-check"></i><b>4.4.7</b> 7. Optimizing R project options</a></li>
+<li class="chapter" data-level="4.4.8" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-started-with-r-notebooks"><i class="fa fa-check"></i><b>4.4.8</b> 8. Getting started with R Notebooks</a></li>
+<li class="chapter" data-level="4.4.9" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-markdown"><i class="fa fa-check"></i><b>4.4.9</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-and-rstudio-basics"><i class="fa fa-check"></i><b>4.5</b> R and RStudio Basics</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#rstudio-panes"><i class="fa fa-check"></i><b>4.5.1</b> RStudio: Panes</a></li>
+<li class="chapter" data-level="4.5.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-console-bottom-left-pane"><i class="fa fa-check"></i><b>4.5.2</b> R Console (bottom left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#running-commands-from-a-script"><i class="fa fa-check"></i><b>4.6</b> Running commands from a script</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#script-editor-top-left-pane"><i class="fa fa-check"></i><b>4.6.1</b> Script Editor (top left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>4.7</b> Getting started with R</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#setting-up-an-r-session"><i class="fa fa-check"></i><b>4.7.1</b> Setting up an R session</a></li>
+<li class="chapter" data-level="4.7.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#packages"><i class="fa fa-check"></i><b>4.7.2</b> Packages</a></li>
+<li class="chapter" data-level="4.7.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-help"><i class="fa fa-check"></i><b>4.7.3</b> Getting help</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#working-with-tables"><i class="fa fa-check"></i><b>4.8</b> Working with tables</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#loading-data-from-the-web"><i class="fa fa-check"></i><b>4.8.1</b> Loading data from the web</a></li>
+<li class="chapter" data-level="4.8.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#functions-and-objects"><i class="fa fa-check"></i><b>4.8.2</b> Functions and Objects</a></li>
+<li class="chapter" data-level="4.8.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#inspecting-data"><i class="fa fa-check"></i><b>4.8.3</b> Inspecting data</a></li>
+<li class="chapter" data-level="4.8.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#accessing-individual-cells-in-a-table"><i class="fa fa-check"></i><b>4.8.4</b> Accessing individual cells in a table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html"><i class="fa fa-check"></i><b>5</b> Getting Started with R and RStudio 2</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#working-with-tables-1"><i class="fa fa-check"></i><b>5.1</b> Working with tables</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#tabulating-data"><i class="fa fa-check"></i><b>5.1.1</b> Tabulating data</a></li>
+<li class="chapter" data-level="5.1.2" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#saving-data-to-your-computer"><i class="fa fa-check"></i><b>5.1.2</b> Saving data to your computer</a></li>
+<li class="chapter" data-level="5.1.3" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-data-from-your-computer"><i class="fa fa-check"></i><b>5.1.3</b> Loading data from your computer</a></li>
+<li class="chapter" data-level="5.1.4" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-excel-data"><i class="fa fa-check"></i><b>5.1.4</b> Loading Excel data</a></li>
+<li class="chapter" data-level="5.1.5" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-text-data"><i class="fa fa-check"></i><b>5.1.5</b> Loading text data</a></li>
+<li class="chapter" data-level="5.1.6" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#renaming-piping-and-filtering"><i class="fa fa-check"></i><b>5.1.6</b> Renaming, Piping, and Filtering</a></li>
+<li class="chapter" data-level="5.1.7" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#ordering-data"><i class="fa fa-check"></i><b>5.1.7</b> Ordering data</a></li>
+<li class="chapter" data-level="5.1.8" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#creating-and-changing-variables"><i class="fa fa-check"></i><b>5.1.8</b> Creating and changing variables</a></li>
+<li class="chapter" data-level="5.1.9" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#if-statements"><i class="fa fa-check"></i><b>5.1.9</b> If-statements</a></li>
+<li class="chapter" data-level="5.1.10" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#summarizing-data"><i class="fa fa-check"></i><b>5.1.10</b> Summarizing data</a></li>
+<li class="chapter" data-level="5.1.11" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#gathering-and-spreading-data"><i class="fa fa-check"></i><b>5.1.11</b> Gathering and spreading data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#ending-r-sessions"><i class="fa fa-check"></i><b>5.2</b> Ending R sessions</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#extracting-session-information"><i class="fa fa-check"></i><b>5.2.1</b> Extracting session information</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#going-further"><i class="fa fa-check"></i><b>5.3</b> Going further</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a></li>
+<li class="chapter" data-level="7" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html"><i class="fa fa-check"></i><b>7</b> Measures of Centrality</a>
+<ul>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#mean"><i class="fa fa-check"></i>Mean</a></li>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#median"><i class="fa fa-check"></i>Median</a></li>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#mode"><i class="fa fa-check"></i>Mode</a></li>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#geometric-mean"><i class="fa fa-check"></i>Geometric mean</a></li>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#harmonic-mean"><i class="fa fa-check"></i>Harmonic mean</a></li>
+<li class="chapter" data-level="" data-path="measures-of-centrality.html"><a href="measures-of-centrality.html#notes-on-measures-of-centrality"><i class="fa fa-check"></i>Notes on Measures of Centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="measures-of-variability.html"><a href="measures-of-variability.html"><i class="fa fa-check"></i><b>8</b> Measures of Variability</a>
+<ul>
+<li class="chapter" data-level="" data-path="measures-of-variability.html"><a href="measures-of-variability.html#range"><i class="fa fa-check"></i>Range</a></li>
+<li class="chapter" data-level="" data-path="measures-of-variability.html"><a href="measures-of-variability.html#interquartile-range-iqr"><i class="fa fa-check"></i>Interquartile range (IQR)</a></li>
+<li class="chapter" data-level="" data-path="measures-of-variability.html"><a href="measures-of-variability.html#variance"><i class="fa fa-check"></i>Variance</a></li>
+<li class="chapter" data-level="" data-path="measures-of-variability.html"><a href="measures-of-variability.html#standard-deviation"><i class="fa fa-check"></i>Standard deviation</a></li>
+<li class="chapter" data-level="" data-path="measures-of-variability.html"><a href="measures-of-variability.html#standard-error"><i class="fa fa-check"></i>Standard Error</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>9</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-for-simple-vectors"><i class="fa fa-check"></i>Confidence Intervals for Simple Vectors</a></li>
+<li class="chapter" data-level="" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-for-grouped-data"><i class="fa fa-check"></i>Confidence Intervals for Grouped Data</a></li>
+<li class="chapter" data-level="" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-for-nominal-data"><i class="fa fa-check"></i>Confidence Intervals for Nominal Data</a></li>
+<li class="chapter" data-level="" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-for-multinomial-data"><i class="fa fa-check"></i>Confidence Intervals for Multinomial Data</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SLAT7855 Quantitative Research Methods in Applied Linguistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="measures-of-variability" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Week 8</span> Measures of Variability<a href="measures-of-variability.html#measures-of-variability" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Measures of variability provide information about the distribution of values such as whether the data are distributed evenly and do not differ substantially or whether the data are rather heterogeneous and are distributed very unevenly <span class="citation">(<a href="#ref-thompson2009descriptive" role="doc-biblioref">Thompson 2009</a>)</span>. In the following, we will have a look at the <em>variance</em> and the <em>standard deviation</em>.</p>
+<p>As before, we will use a practical example to see the usefulness of applying measures of variability. Imagine you dealing with two cities, let’s say Moscow and Hamburg, that have the same mean temperature per year. However, the variability of temperatures varies differs dramatically between the Moscow and Hamburg.</p>
+<template id="e36e9b1f-11f9-4607-8968-62694ba98027"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-5a407014{table-layout:auto;width:75%;}.cl-5a35b62e{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-5a35b642{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-5a35de56{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-5a35de60{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-5a36580e{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5a365818{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5a365822{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5a36582c{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5a36582d{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5a365836{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5a365837{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5a365840{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5a365841{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5a36584a{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5a36584b{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5a36584c{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-5a407014'>
+<caption class="Table Caption">
+<p><span id="tab:ds21">Table 8.1: </span>Average temperature in Hamburg and Moscow by month.</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-5a36584b"><p class="cl-5a35de56"><span class="cl-5a35b62e">Month</span></p></td><td class="cl-5a36584c"><p class="cl-5a35de60"><span class="cl-5a35b62e">Moscow</span></p></td><td class="cl-5a36584a"><p class="cl-5a35de60"><span class="cl-5a35b62e">Hamburg</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-5a365818"><p class="cl-5a35de56"><span class="cl-5a35b642">January</span></p></td><td class="cl-5a36580e"><p class="cl-5a35de60"><span class="cl-5a35b642">-5.00</span></p></td><td class="cl-5a365822"><p class="cl-5a35de60"><span class="cl-5a35b642">7.00</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5a36582d"><p class="cl-5a35de56"><span class="cl-5a35b642">February</span></p></td><td class="cl-5a36582c"><p class="cl-5a35de60"><span class="cl-5a35b642">-12.00</span></p></td><td class="cl-5a365836"><p class="cl-5a35de60"><span class="cl-5a35b642">7.00</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5a365818"><p class="cl-5a35de56"><span class="cl-5a35b642">March</span></p></td><td class="cl-5a36580e"><p class="cl-5a35de60"><span class="cl-5a35b642">5.00</span></p></td><td class="cl-5a365822"><p class="cl-5a35de60"><span class="cl-5a35b642">8.00</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5a36582d"><p class="cl-5a35de56"><span class="cl-5a35b642">April</span></p></td><td class="cl-5a36582c"><p class="cl-5a35de60"><span class="cl-5a35b642">12.00</span></p></td><td class="cl-5a365836"><p class="cl-5a35de60"><span class="cl-5a35b642">9.00</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5a365818"><p class="cl-5a35de56"><span class="cl-5a35b642">May</span></p></td><td class="cl-5a36580e"><p class="cl-5a35de60"><span class="cl-5a35b642">15.00</span></p></td><td class="cl-5a365822"><p class="cl-5a35de60"><span class="cl-5a35b642">10.00</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5a36582d"><p class="cl-5a35de56"><span class="cl-5a35b642">June</span></p></td><td class="cl-5a36582c"><p class="cl-5a35de60"><span class="cl-5a35b642">18.00</span></p></td><td class="cl-5a365836"><p class="cl-5a35de60"><span class="cl-5a35b642">13.00</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5a365818"><p class="cl-5a35de56"><span class="cl-5a35b642">July</span></p></td><td class="cl-5a36580e"><p class="cl-5a35de60"><span class="cl-5a35b642">22.00</span></p></td><td class="cl-5a365822"><p class="cl-5a35de60"><span class="cl-5a35b642">15.00</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5a36582d"><p class="cl-5a35de56"><span class="cl-5a35b642">August</span></p></td><td class="cl-5a36582c"><p class="cl-5a35de60"><span class="cl-5a35b642">23.00</span></p></td><td class="cl-5a365836"><p class="cl-5a35de60"><span class="cl-5a35b642">15.00</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5a365818"><p class="cl-5a35de56"><span class="cl-5a35b642">September</span></p></td><td class="cl-5a36580e"><p class="cl-5a35de60"><span class="cl-5a35b642">20.00</span></p></td><td class="cl-5a365822"><p class="cl-5a35de60"><span class="cl-5a35b642">13.00</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5a36582d"><p class="cl-5a35de56"><span class="cl-5a35b642">October</span></p></td><td class="cl-5a36582c"><p class="cl-5a35de60"><span class="cl-5a35b642">16.00</span></p></td><td class="cl-5a365836"><p class="cl-5a35de60"><span class="cl-5a35b642">11.00</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5a365818"><p class="cl-5a35de56"><span class="cl-5a35b642">November</span></p></td><td class="cl-5a36580e"><p class="cl-5a35de60"><span class="cl-5a35b642">8.00</span></p></td><td class="cl-5a365822"><p class="cl-5a35de60"><span class="cl-5a35b642">8.00</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5a36582d"><p class="cl-5a35de56"><span class="cl-5a35b642">December</span></p></td><td class="cl-5a36582c"><p class="cl-5a35de60"><span class="cl-5a35b642">1.00</span></p></td><td class="cl-5a365836"><p class="cl-5a35de60"><span class="cl-5a35b642">7.00</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5a365840"><p class="cl-5a35de56"><span class="cl-5a35b642">Mean</span></p></td><td class="cl-5a365841"><p class="cl-5a35de60"><span class="cl-5a35b642">10.25</span></p></td><td class="cl-5a365837"><p class="cl-5a35de60"><span class="cl-5a35b642">10.25</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="200b340a-98da-41b4-b0ba-513da0af01f4"></div>
+<script>
+var dest = document.getElementById("200b340a-98da-41b4-b0ba-513da0af01f4");
+var template = document.getElementById("e36e9b1f-11f9-4607-8968-62694ba98027");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p><img src="bookdownproj_files/figure-html/ds22-1.png" width="672" /></p>
+<p>In the following, we will discuss and calculate different measures of variability for the two cities.</p>
+<div id="range" class="section level2 unnumbered hasAnchor">
+<h2>Range<a href="measures-of-variability.html#range" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The range is the simplest measure of variability and reports the lowest and highest value of a distribution. That is, the range provides minimum and maximum of a vector to show the span of values within a distribution.</p>
+<p>In R, the <em>range</em> is extracted as shown below.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="measures-of-variability.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a numeric vector</span></span>
+<span id="cb21-2"><a href="measures-of-variability.html#cb21-2" aria-hidden="true" tabindex="-1"></a>Moscow <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="sc">-</span><span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">8</span>, <span class="dv">1</span>)</span>
+<span id="cb21-3"><a href="measures-of-variability.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(Moscow); <span class="fu">max</span>(Moscow) <span class="co"># extract range</span></span></code></pre></div>
+<pre><code>## [1] -12</code></pre>
+<pre><code>## [1] 23</code></pre>
+<p>The lowest temperature value for Moscow is -12 degrees Celsius and the highest value is 23 degrees Celsius. The range thus spans from -12 to 23.</p>
+</div>
+<div id="interquartile-range-iqr" class="section level2 unnumbered hasAnchor">
+<h2>Interquartile range (IQR)<a href="measures-of-variability.html#interquartile-range-iqr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The interquartile range (IQR) denotes the range that encompasses the central 50 percent of data points and thus informs about how values are distributed. This means that the IQR spans from the first quartile that encompasses 25 percent of the data to the third quartile that encompasses 75 percent of the data.</p>
+<p>The easiest way to extract the IQR in R is to apply the <code>summary</code> function to a vector as shown below and then subtract the value of the 1<sup>st</sup> quartile from the value of the 3<sup>rd</sup> quartile.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="measures-of-variability.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Moscow) <span class="co"># extract IQR</span></span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  -12.00    4.00   13.50   10.25   18.50   23.00</code></pre>
+<p>The <code>summary</code> function reports that the minimum temperature is -12 degrees Celsius and that the maximum temperature is 23 degrees Celsius. Also, the lower 25 percent of the data fall within -12 and 4 degrees Celsius (from the minimum value to the 1<sup>st</sup> quartile) and the upper 25 percent fall within 18.5 and 23 degrees Celsius (from the 3<sup>rd</sup> quartile to the maximum value). The IQR range represents a range that encompasses the central 50% of the data and thus represents the value that can be calculated by subtracting the value of the 1<sup>st</sup> from the value of the 3<sup>rd</sup> quartile..</p>
+<p>Thus, the IQR is 18.5 - 4 = 14.5</p>
+<p>.</p>
+</div>
+<div id="variance" class="section level2 unnumbered hasAnchor">
+<h2>Variance<a href="measures-of-variability.html#variance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The variance is calculated according to the formula below. To calculate the variance, each value is subtracted from the mean and the result is squared. The squared values are then added and the resulting sum is divided by the number of values minus 1.</p>
+<p><span class="math inline">\(s = \sigma^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^{2}\)</span></p>
+<p>For our example, the variance of temperatures for Moscow is 123.6591 and 9.477273 for Hamburg.</p>
+<p>In R, the <em>variance</em> is calculated as shown below.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="measures-of-variability.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Moscow)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 123.659090909</code></pre>
+</div>
+<div id="standard-deviation" class="section level2 unnumbered hasAnchor">
+<h2>Standard deviation<a href="measures-of-variability.html#standard-deviation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The standard deviation (abbreviated with capital <span class="math inline">\(sigma\)</span> <span class="math inline">\(\sigma\)</span>) is calculated according to first equation shown below or, alternatively, according to second equation shown below and it is the square root of the squared variance.</p>
+<p><span class="math inline">\(\sigma = \sqrt{s} = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2}\)</span></p>
+<p><span class="math inline">\(\sigma = \sqrt{\frac{ \sum_{i=1}^{n} (x_i - \bar{x})^2}{n-1}}\)</span></p>
+<p>For our example, the first equation shown above provides a standard deviation of 11.12 for Moscow and a standard deviation of 3.08 for Hamburg.</p>
+<p>In R, the <em>standard deviation</em> is calculated as shown below.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="measures-of-variability.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate standard deviation</span></span>
+<span id="cb28-2"><a href="measures-of-variability.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Moscow) </span></code></pre></div>
+<pre><code>## [1] 11.1202109202</code></pre>
+<p>The standard deviation of temperature values of Moscow is 11.12.</p>
+<hr />
+<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>EXERCISE TIME!</b>
+</p>
+<p style="margin-left:1em;">
+</p>
+<p></span></p>
+</div>
+<div class="question">
+<p>`</p>
+<ol style="list-style-type: decimal">
+<li>Calculate the mean, median, and mode as well as the standard deviation for the following two vectors<br>A: 1, 3, 6, 2, 1, 1, 6, 8, 4, 2, 3, 5, 0, 0, 2, 1, 2, 1, 0<br>B: 3, 2, 5, 1, 1, 4, 0, 0, 2, 3, 0, 3, 0, 5, 4, 5, 3, 3, 4<br></li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="measures-of-variability.html#cb30-1" aria-hidden="true" tabindex="-1"></a>  A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb30-2"><a href="measures-of-variability.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  B <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb30-3"><a href="measures-of-variability.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(A)</span>
+<span id="cb30-4"><a href="measures-of-variability.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>(A)</span>
+<span id="cb30-5"><a href="measures-of-variability.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">max</span>(A)</span>
+<span id="cb30-6"><a href="measures-of-variability.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sd</span>(A)</span>
+<span id="cb30-7"><a href="measures-of-variability.html#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(B)</span>
+<span id="cb30-8"><a href="measures-of-variability.html#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>(B)</span>
+<span id="cb30-9"><a href="measures-of-variability.html#cb30-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">max</span>(B)</span>
+<span id="cb30-10"><a href="measures-of-variability.html#cb30-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sd</span>(B)</span></code></pre></div>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Find a partner and discuss which measure of central tendency is appropriate when dealing with grades. Then, find another partner and see whether they have come to the same conclusion or discuss why if not. Finally, discuss the advantages and disadvantages of calculating the mean when dealing with grades.</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+The problem is that - strictly speaking - grades are ordinal and not numeric (i.e., interval- or ratio-scaled). This means that calculating the arithmetic mean is somewhat controversial. To resolve this issue, it is recommendable to either calculate the median (rather than the mean) or to be transparent about this issue and inform readers that the mean was used despite dealing with an ordinal variable.
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>Where are mean, median, and mode when dealing with normal data (i.e., when the data approximate a normal distribution)?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+When dealing with normally distributed data, the arithmetic mean, median, and mode would ideally be identical (which is extremely rare when working with empirical data) or, at least, very similar.
+</details>
+<ol start="4" style="list-style-type: decimal">
+<li>Go and find a partner and discuss what it means - on a conceptual level rather than on a statistical/mathematical level - that two groups have different ranges for a certain feature (be careful, this is not as trivial as it may seem!).</li>
+</ol>
+</div>
+<p>`</p>
+<hr />
+</div>
+<div id="standard-error" class="section level2 unnumbered hasAnchor">
+<h2>Standard Error<a href="measures-of-variability.html#standard-error" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The standard error is a measure of variability and it reports the average distance from some parameters (most often from the mean). It is calculated as the standard deviation of the residuals of the parameter in question. To exemplify the standard error, we will have a look at reaction times which show how fast participants realized that a sequence of letters were either existing words or just a sequence of letters.</p>
+<template id="f3dd0aa1-cf88-4974-a42f-96360076838b"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-5ab72b5a{table-layout:auto;width:75%;}.cl-5aaa5d8a{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-5aaa5d94{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-5aaa7450{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-5aaa745a{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-5aaab87a{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5aaab884{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5aaab885{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5aaab886{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5aaab88e{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5aaab88f{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5aaab890{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5aaab898{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5aaab899{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5aaab89a{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5aaab8a2{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5aaab8a3{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-5ab72b5a'>
+<caption class="Table Caption">
+<p><span id="tab:ds30">Table 8.2: </span>Reaction times while sober and drunk.</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-5aaab8a3"><p class="cl-5aaa7450"><span class="cl-5aaa5d8a">RT</span></p></td><td class="cl-5aaab89a"><p class="cl-5aaa745a"><span class="cl-5aaa5d8a">State</span></p></td><td class="cl-5aaab8a2"><p class="cl-5aaa745a"><span class="cl-5aaa5d8a">Gender</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-5aaab884"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">429.276</span></p></td><td class="cl-5aaab87a"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Sober</span></p></td><td class="cl-5aaab885"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Male</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab886"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">435.473</span></p></td><td class="cl-5aaab88e"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Sober</span></p></td><td class="cl-5aaab88f"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Male</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab884"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">394.535</span></p></td><td class="cl-5aaab87a"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Sober</span></p></td><td class="cl-5aaab885"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Male</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab886"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">377.325</span></p></td><td class="cl-5aaab88e"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Sober</span></p></td><td class="cl-5aaab88f"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Male</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab884"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">430.294</span></p></td><td class="cl-5aaab87a"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Sober</span></p></td><td class="cl-5aaab885"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Male</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab886"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">289.102</span></p></td><td class="cl-5aaab88e"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Sober</span></p></td><td class="cl-5aaab88f"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Female</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab884"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">411.505</span></p></td><td class="cl-5aaab87a"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Sober</span></p></td><td class="cl-5aaab885"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Female</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab886"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">366.191</span></p></td><td class="cl-5aaab88e"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Sober</span></p></td><td class="cl-5aaab88f"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Female</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab884"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">365.792</span></p></td><td class="cl-5aaab87a"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Sober</span></p></td><td class="cl-5aaab885"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Female</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab886"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">334.034</span></p></td><td class="cl-5aaab88e"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Sober</span></p></td><td class="cl-5aaab88f"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Female</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab884"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">444.188</span></p></td><td class="cl-5aaab87a"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Drunk</span></p></td><td class="cl-5aaab885"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Male</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab886"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">540.866</span></p></td><td class="cl-5aaab88e"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Drunk</span></p></td><td class="cl-5aaab88f"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Male</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab884"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">468.531</span></p></td><td class="cl-5aaab87a"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Drunk</span></p></td><td class="cl-5aaab885"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Male</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab886"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">476.011</span></p></td><td class="cl-5aaab88e"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Drunk</span></p></td><td class="cl-5aaab88f"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Male</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab884"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">412.473</span></p></td><td class="cl-5aaab87a"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Drunk</span></p></td><td class="cl-5aaab885"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Male</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab886"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">520.845</span></p></td><td class="cl-5aaab88e"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Drunk</span></p></td><td class="cl-5aaab88f"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Female</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab884"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">435.682</span></p></td><td class="cl-5aaab87a"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Drunk</span></p></td><td class="cl-5aaab885"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Female</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab886"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">463.421</span></p></td><td class="cl-5aaab88e"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Drunk</span></p></td><td class="cl-5aaab88f"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Female</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab884"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">536.036</span></p></td><td class="cl-5aaab87a"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Drunk</span></p></td><td class="cl-5aaab885"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Female</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5aaab890"><p class="cl-5aaa7450"><span class="cl-5aaa5d94">494.936</span></p></td><td class="cl-5aaab899"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Drunk</span></p></td><td class="cl-5aaab898"><p class="cl-5aaa745a"><span class="cl-5aaa5d94">Female</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="012b19a7-51ac-4175-9828-3ae48628c212"></div>
+<script>
+var dest = document.getElementById("012b19a7-51ac-4175-9828-3ae48628c212");
+var template = document.getElementById("f3dd0aa1-cf88-4974-a42f-96360076838b");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>The standard error of the mean is calculated using the equation below.</p>
+<p><span class="math display">\[\begin{equation}
+\sigma~{\bar{x}}~ =\frac{\sigma}{\sqrt{n}}
+\end{equation}\]</span></p>
+<p>The standard error can be calculated manually (see below) by implementing the equation from above.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="measures-of-variability.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(rts<span class="sc">$</span>RT, <span class="at">na.rm=</span><span class="cn">TRUE</span>) <span class="sc">/</span>  </span>
+<span id="cb31-2"><a href="measures-of-variability.html#cb31-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">sqrt</span>(<span class="fu">length</span>(rts<span class="sc">$</span>RT[<span class="sc">!</span><span class="fu">is.na</span>(rts<span class="sc">$</span>RT)]))  </span></code></pre></div>
+<pre><code>## [1] 14.7692485022</code></pre>
+<p>An easier way to extract standard errors is to use the <code>describe</code> function from the <code>psych</code> package (see below)</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="measures-of-variability.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># describe data</span></span>
+<span id="cb33-2"><a href="measures-of-variability.html#cb33-2" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(rts<span class="sc">$</span>RT, <span class="at">type=</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##    vars  n   mean    sd median trimmed  mad   min    max  range skew kurtosis
+## X1    1 20 431.33 66.05 432.88   432.9 60.4 289.1 540.87 251.76 -0.2    -0.13
+##       se
+## X1 14.77</code></pre>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-thompson2009descriptive" class="csl-entry">
+Thompson, Cheryl Bagley. 2009. <span>“Descriptive Data Analysis.”</span> <em>Air Medical Journal</em> 28 (2): 56–59.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="measures-of-centrality.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="confidence-intervals.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/edit/master/06-dstats.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/blob/master/06-dstats.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
