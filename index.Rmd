@@ -127,6 +127,51 @@ See Blackboard for Learning Resources.
 
 Recording of Lectures: Please be aware that teaching at UQ may be recorded for the benefit of student learning. If you would prefer not to be captured either by voice or image, please advise your course coordinator before class so accommodations can be made. For further information see PPL 3.20.06 Recording of Teaching at UQ.
 
+### Course plan {-}
 
-
+```{r tt, echo = F, eval = T, message=FALSE, warning=FALSE}
+library(dplyr)
+library(flextable)
+weeks <- paste0("Week ", 1:13)
+content <- c(
+  "Introduction to the course",
+  "Basic concepts 1",
+  "Basic concepts 2",
+  "Getting started with R and Rstudio 1",
+  "Getting started with R and Rstudio 2",
+  "Descriptive Statistics",
+  "Introduction to Data Visualization",
+  "Introduction to Inferential Statistics",
+  "Regression Analysis 1: Model Fitting",
+  "Regression Analysis 2: Testing assumption",
+  "Regression Analysis 3: Types of Regressions",
+  "Regression Analysis 4: From fixed to mixed",
+  "Trees and round-up"
+)
+scriptchapter <- c(
+  "Preface and Introduction",
+  "Basic Concepts in Quantitative Research",
+  "Basic Concepts in Quantitative Research",
+  "Getting started with R and RStudio",
+  "Introduction to R and RStudio",
+  "Descriptive Statistics",
+  "Introduction to Data Visualization with R",
+  "Descriptive Statistics",
+  "Simple and Multiple Regression",
+  "Simple and Multiple Regression",
+  "Logistic Regression",
+  "Mixed-Effects Regression",
+  "Tree-based Models"
+)
+data.frame(weeks, content, scriptchapter) %>%
+  as.data.frame() %>%
+  flextable::flextable() %>%
+  flextable::set_table_properties(width = .95, layout = "autofit") %>%
+  flextable::theme_zebra() %>%
+  flextable::fontsize(size = 12) %>%
+  flextable::fontsize(size = 12, part = "header") %>%
+  flextable::align_text_col(align = "left") %>%
+  flextable::set_caption(caption = "Overview of the course activities by week.")  %>%
+  flextable::border_outer()
+```
 

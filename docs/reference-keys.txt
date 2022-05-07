@@ -24,3 +24,5 @@ popper-falsification-and-scientific-progress
 what-is-empirical-linguistics
 citation-session-info
 references
+tab:tt
+getting-started-with-r-and-rstudio
