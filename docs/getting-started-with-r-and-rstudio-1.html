@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Week 4 Getting Started with R and RStudio 1 | SLAT7855 Quantitative Research Methods in Applied Linguistics</title>
+  <meta name="description" content="Week 4 Getting Started with R and RStudio 1 | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Week 4 Getting Started with R and RStudio 1 | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Week 4 Getting Started with R and RStudio 1 | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  
+  
+  
+
+<meta name="author" content="Martin Schweinberger" />
+
+
+<meta name="date" content="2022-05-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="basic-concepts-in-quantitative-research-2.html"/>
+<link rel="next" href="getting-started-with-r-and-rstudio-2.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SLAT7855</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#basic-course-information"><i class="fa fa-check"></i>Basic Course Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i>Course Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-introduction"><i class="fa fa-check"></i>Course Introduction</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#timetable"><i class="fa fa-check"></i>Timetable</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#aims-objectives-graduate-attributes"><i class="fa fa-check"></i>Aims, Objectives &amp; Graduate Attributes</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aims"><i class="fa fa-check"></i>Course Aims</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-resources"><i class="fa fa-check"></i>Learning Resources</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#required-resources"><i class="fa fa-check"></i>Required Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-resources"><i class="fa fa-check"></i>Recommended Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#university-learning-resources"><i class="fa fa-check"></i>University Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#school-of-languages-and-cultures-learning-resources"><i class="fa fa-check"></i>School of Languages and Cultures Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-learning-resources-information"><i class="fa fa-check"></i>Other Learning Resources &amp; Information</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#teaching-learning-activities"><i class="fa fa-check"></i>Teaching &amp; Learning Activities</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-activities"><i class="fa fa-check"></i>Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-plan"><i class="fa fa-check"></i>Course plan</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#why-do-we-need-science"><i class="fa fa-check"></i><b>1.1</b> Why do we need science?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#errare-humanum-est"><i class="fa fa-check"></i><b>1.2</b> Errare Humanum Est</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#the-monty-hall-problem"><i class="fa fa-check"></i><b>1.2.1</b> The Monty Hall Problem</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#the-birthday-conundrum"><i class="fa fa-check"></i><b>1.2.2</b> The Birthday Conundrum</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#fast-and-slow-thinking"><i class="fa fa-check"></i><b>1.2.3</b> Fast and Slow Thinking</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#randomness"><i class="fa fa-check"></i><b>1.2.4</b> Randomness</a></li>
+<li class="chapter" data-level="1.2.5" data-path="introduction.html"><a href="introduction.html#patterns-and-matters-of-habit"><i class="fa fa-check"></i><b>1.2.5</b> Patterns and Matters of Habit</a></li>
+<li class="chapter" data-level="1.2.6" data-path="introduction.html"><a href="introduction.html#locical-fallacies-and-biases"><i class="fa fa-check"></i><b>1.2.6</b> Locical Fallacies and Biases</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#what-is-science"><i class="fa fa-check"></i><b>1.3</b> What is science?</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#clever-hans"><i class="fa fa-check"></i><b>1.3.1</b> Clever Hans</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#popper-falsification-and-scientific-progress"><i class="fa fa-check"></i><b>1.3.2</b> Popper, falsification, and scientific progress</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#what-is-empirical-linguistics"><i class="fa fa-check"></i><b>1.3.3</b> What is (empirical) Linguistics?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html"><i class="fa fa-check"></i><b>2</b> Basic Concepts in Quantitative Research 1</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#hypotheses"><i class="fa fa-check"></i><b>2.1</b> Hypotheses</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#types-of-hypotheses"><i class="fa fa-check"></i>Types of Hypotheses</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#why-test-the-h0"><i class="fa fa-check"></i>Why test the H0?!</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#data-and-research-designs"><i class="fa fa-check"></i><b>2.2</b> Data and Research Designs</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#research-designs"><i class="fa fa-check"></i>Research Designs</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#variables-and-validity"><i class="fa fa-check"></i><b>2.3</b> Variables and Validity</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#variable-types-scaling"><i class="fa fa-check"></i>Variable Types (Scaling)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#relationships-between-variables"><i class="fa fa-check"></i><b>2.4</b> Relationships between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html"><i class="fa fa-check"></i><b>3</b> Basic Concepts in Quantitative Research 2</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#significance-and-probability"><i class="fa fa-check"></i><b>3.1</b> Significance and Probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#significance-levels"><i class="fa fa-check"></i>Significance Levels</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#probability"><i class="fa fa-check"></i>Probability</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#the-normal-distribution"><i class="fa fa-check"></i>The Normal Distribution</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#non-normality-skewness-and-kurtosis"><i class="fa fa-check"></i>Non-normality: skewness and kurtosis</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#the-binomial-distribution"><i class="fa fa-check"></i>The Binomial Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#z-scores"><i class="fa fa-check"></i><b>3.2</b> z-scores</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#alpha-and-beta-errors"><i class="fa fa-check"></i><b>3.3</b> Alpha and Beta Errors</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#independence"><i class="fa fa-check"></i><b>3.4</b> Independence</a></li>
+<li class="chapter" data-level="3.5" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#corrections"><i class="fa fa-check"></i><b>3.5</b> Corrections</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html"><i class="fa fa-check"></i><b>4</b> Getting Started with R and RStudio 1</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#goals-of-this-tutorial"><i class="fa fa-check"></i><b>4.1</b> Goals of this tutorial</a></li>
+<li class="chapter" data-level="4.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#audience"><i class="fa fa-check"></i><b>4.2</b> Audience</a></li>
+<li class="chapter" data-level="4.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>4.3</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#how-to-use-the-workshop-materials"><i class="fa fa-check"></i><b>4.3.1</b> How to use the workshop materials</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#preparation"><i class="fa fa-check"></i><b>4.4</b> Preparation</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#folder-structure-and-r-projects"><i class="fa fa-check"></i><b>4.4.1</b> Folder Structure and R projects</a></li>
+<li class="chapter" data-level="4.4.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#create-a-folder-for-your-project"><i class="fa fa-check"></i><b>4.4.2</b> 1. Create a folder for your project</a></li>
+<li class="chapter" data-level="4.4.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#open-rstudio"><i class="fa fa-check"></i><b>4.4.3</b> 3. Open RStudio</a></li>
+<li class="chapter" data-level="4.4.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-projects"><i class="fa fa-check"></i><b>4.4.4</b> 4. R Projects</a></li>
+<li class="chapter" data-level="4.4.5" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-notebooks"><i class="fa fa-check"></i><b>4.4.5</b> 5. R Notebooks</a></li>
+<li class="chapter" data-level="4.4.6" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#updating-r"><i class="fa fa-check"></i><b>4.4.6</b> 6. Updating R</a></li>
+<li class="chapter" data-level="4.4.7" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#optimizing-r-project-options"><i class="fa fa-check"></i><b>4.4.7</b> 7. Optimizing R project options</a></li>
+<li class="chapter" data-level="4.4.8" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-started-with-r-notebooks"><i class="fa fa-check"></i><b>4.4.8</b> 8. Getting started with R Notebooks</a></li>
+<li class="chapter" data-level="4.4.9" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-markdown"><i class="fa fa-check"></i><b>4.4.9</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-and-rstudio-basics"><i class="fa fa-check"></i><b>4.5</b> R and RStudio Basics</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#rstudio-panes"><i class="fa fa-check"></i><b>4.5.1</b> RStudio: Panes</a></li>
+<li class="chapter" data-level="4.5.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-console-bottom-left-pane"><i class="fa fa-check"></i><b>4.5.2</b> R Console (bottom left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#running-commands-from-a-script"><i class="fa fa-check"></i><b>4.6</b> Running commands from a script</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#script-editor-top-left-pane"><i class="fa fa-check"></i><b>4.6.1</b> Script Editor (top left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>4.7</b> Getting started with R</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#setting-up-an-r-session"><i class="fa fa-check"></i><b>4.7.1</b> Setting up an R session</a></li>
+<li class="chapter" data-level="4.7.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#packages"><i class="fa fa-check"></i><b>4.7.2</b> Packages</a></li>
+<li class="chapter" data-level="4.7.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-help"><i class="fa fa-check"></i><b>4.7.3</b> Getting help</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#working-with-tables"><i class="fa fa-check"></i><b>4.8</b> Working with tables</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#loading-data-from-the-web"><i class="fa fa-check"></i><b>4.8.1</b> Loading data from the web</a></li>
+<li class="chapter" data-level="4.8.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#functions-and-objects"><i class="fa fa-check"></i><b>4.8.2</b> Functions and Objects</a></li>
+<li class="chapter" data-level="4.8.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#inspecting-data"><i class="fa fa-check"></i><b>4.8.3</b> Inspecting data</a></li>
+<li class="chapter" data-level="4.8.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#accessing-individual-cells-in-a-table"><i class="fa fa-check"></i><b>4.8.4</b> Accessing individual cells in a table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html"><i class="fa fa-check"></i><b>5</b> Getting Started with R and RStudio 2</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#working-with-tables-1"><i class="fa fa-check"></i><b>5.1</b> Working with tables</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#tabulating-data"><i class="fa fa-check"></i><b>5.1.1</b> Tabulating data</a></li>
+<li class="chapter" data-level="5.1.2" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#saving-data-to-your-computer"><i class="fa fa-check"></i><b>5.1.2</b> Saving data to your computer</a></li>
+<li class="chapter" data-level="5.1.3" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-data-from-your-computer"><i class="fa fa-check"></i><b>5.1.3</b> Loading data from your computer</a></li>
+<li class="chapter" data-level="5.1.4" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-excel-data"><i class="fa fa-check"></i><b>5.1.4</b> Loading Excel data</a></li>
+<li class="chapter" data-level="5.1.5" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-text-data"><i class="fa fa-check"></i><b>5.1.5</b> Loading text data</a></li>
+<li class="chapter" data-level="5.1.6" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#renaming-piping-and-filtering"><i class="fa fa-check"></i><b>5.1.6</b> Renaming, Piping, and Filtering</a></li>
+<li class="chapter" data-level="5.1.7" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#ordering-data"><i class="fa fa-check"></i><b>5.1.7</b> Ordering data</a></li>
+<li class="chapter" data-level="5.1.8" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#creating-and-changing-variables"><i class="fa fa-check"></i><b>5.1.8</b> Creating and changing variables</a></li>
+<li class="chapter" data-level="5.1.9" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#if-statements"><i class="fa fa-check"></i><b>5.1.9</b> If-statements</a></li>
+<li class="chapter" data-level="5.1.10" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#summarizing-data"><i class="fa fa-check"></i><b>5.1.10</b> Summarizing data</a></li>
+<li class="chapter" data-level="5.1.11" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#gathering-and-spreading-data"><i class="fa fa-check"></i><b>5.1.11</b> Gathering and spreading data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#ending-r-sessions"><i class="fa fa-check"></i><b>5.2</b> Ending R sessions</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#extracting-session-information"><i class="fa fa-check"></i><b>5.2.1</b> Extracting session information</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#going-further"><i class="fa fa-check"></i><b>5.3</b> Going further</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SLAT7855 Quantitative Research Methods in Applied Linguistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="getting-started-with-r-and-rstudio-1" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Week 4</span> Getting Started with R and RStudio 1<a href="getting-started-with-r-and-rstudio-1.html#getting-started-with-r-and-rstudio-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This tutorial shows how to get started with R and it specifically focuses on R for analyzing language data but it offers valuable information for anyone who wants to get started with R. As such, this tutorial is aimed at fresh users or beginners with the aim of showcasing how to set up a R session in RStudio, how to set up R projects, and how to do basic operations using R. The aim is not to provide a fully-fledged from beginner-to-expert, all-you-need-to-know tutorial but rather to show how to properly and tidily set up a project before you start coding and exemplify common operations such as loading and manipulation tabular data and generating basic visualization using R.</p>
+<p>If you already have experience with R, both <span class="citation">Wickham and Grolemund (<a href="#ref-wickham2016r" role="doc-biblioref">2016</a>)</span> (see <a href="https://r4ds.had.co.nz/">here</a>) and <span class="citation">Gillespie and Lovelace (<a href="#ref-gillespie2016efficient" role="doc-biblioref">2016</a>)</span> (see <a href="https://bookdown.org/csgillespie/efficientR/">here</a>) are highly recommendable and excellent resources for improving your coding abilities and workflows in R.</p>
+<div id="goals-of-this-tutorial" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Goals of this tutorial<a href="getting-started-with-r-and-rstudio-1.html#goals-of-this-tutorial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The goals of this tutorial are:</p>
+<ul>
+<li>How to get started with R</li>
+<li>How to orient yourself to R and RStudio</li>
+<li>How to create and work in R projects</li>
+<li>How to know where to look for help and to learn more about R</li>
+<li>Understand the basics of working with data: load data, save data, working with tables, create a simple plot</li>
+<li>Learn some best practices for using R scripts, using data, and projects</li>
+<li>Understand the basics of objects, functions, and indexing</li>
+</ul>
+</div>
+<div id="audience" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Audience<a href="getting-started-with-r-and-rstudio-1.html#audience" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The intended audience for this tutorial is beginner-level, with no previous experience using R. Thus, no prior knowledge of R is required.</p>
+<p>If you want to know more, would like to get some more practice, or would like to have another approach to R, please check out the workshops and resources on R provided by the <a href="https://web.library.uq.edu.au/library-services/training">UQ library</a>. In addition, there are various online resources available to learn R (you can check out a very recommendable introduction <a href="https://uvastatlab.github.io/phdplus/intror.html">here</a>).</p>
+</div>
+<div id="installing-r-and-rstudio" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Installing R and RStudio<a href="getting-started-with-r-and-rstudio-1.html#installing-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>You have NOT yet installed <strong>R</strong> on your computer?</p>
+<ul>
+<li><p>You have a Windows computer? Then click <a href="https://cran.r-project.org/bin/windows/base/R-4.0.2-win.exe">here</a> for downloading and installing R</p></li>
+<li><p>You have a Mac? Then click <a href="https://cran.r-project.org/bin/macosx/R-4.0.2.pkg">here</a> for downloading and installing R</p></li>
+</ul></li>
+<li><p>You have NOT yet installed <strong>RStudio</strong> on your computer?</p>
+<ul>
+<li>Click <a href="https://rstudio.com/products/rstudio/download/#download">here</a> for downloading and installing RStudio.</li>
+</ul></li>
+<li><p>You have NOT yet downloaded the <strong>materials</strong> for this workshop?</p>
+<ul>
+<li><p>Click <a href="https://slcladal.github.io/data/data.zip">here</a> to download the data for this session</p></li>
+<li><p>Click <a href="https://slcladal.github.io/intror.Rmd">here</a> to download the Rmd-file of this workshop</p></li>
+</ul></li>
+</ul>
+<p>You can find a more elaborate explanation of how to download and install R and RStudio <a href="https://gitlab.com/stragu/DSH/blob/master/R/Installation.md">here</a> that was created by the UQ library.</p>
+<div id="how-to-use-the-workshop-materials" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> How to use the workshop materials<a href="getting-started-with-r-and-rstudio-1.html#how-to-use-the-workshop-materials" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can follow this workshop in different ways based on your preferences as well as prior experience and knowledge of R (the suggestions listed below are ordered from less engaged/easy/no knowledge required to more engaged/more complex/more knowledge is required)</p>
+<ul>
+<li><p>You can simply <strong>sit back and follow</strong> the workshop</p></li>
+<li><p>You can load the Rmd-file in RStudio and <strong>execute the code snippets</strong> in this Rmd-file as we go (we will talk about what Rmd-file are, how they work, and how to work in RStudio below)</p>
+<ul>
+<li>If you decide on doing this, then I suggest, that you use a section of your screen for Zoom (to see what I do) and another section of your screen to work within your own R project (we will see what an R project is below)</li>
+</ul></li>
+<li><p>You can load the Rmd-file in RStudio, <strong>create a new Rmd-file</strong> (or R Notebook) and then copy and paste the code snippets in this new Rmd-file and execute them as we go.</p>
+<ul>
+<li><p>This option requires some knowledge of R and RStudio</p></li>
+<li><p>If you decide on doing this, then I suggest, that you use a section of your screen for Zoom (to see what I do) and another section of your screen to work within your own R project (as with the previous option)</p></li>
+</ul></li>
+</ul>
+<p>Future workshops will be interactive and allow you to write your own code into code boxes on the website - unfortunately, I was not able to integrate that for this workshop.</p>
+</div>
+</div>
+<div id="preparation" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Preparation<a href="getting-started-with-r-and-rstudio-1.html#preparation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before you actually open R or RStudio, there things to consider that make working in R much easier and give your workflow a better structure.</p>
+<p>Imagine it like this: when you want to write a book, you could simply take pen and paper and start writing <em>or</em> you could think about what you want to write about, what different chapters your book would consist of, which chapters to write first, what these chapters will deal with, etc. The same is true for R: you could simply open R and start writing code <em>or</em> you can prepare you session and structure what you will be doing.</p>
+<div id="folder-structure-and-r-projects" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Folder Structure and R projects<a href="getting-started-with-r-and-rstudio-1.html#folder-structure-and-r-projects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Before actually starting with writing code, you should prepare the session by going through the following steps:</p>
+</div>
+<div id="create-a-folder-for-your-project" class="section level3 hasAnchor" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> 1. Create a folder for your project<a href="getting-started-with-r-and-rstudio-1.html#create-a-folder-for-your-project" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In that folder, create the following sub-folders (you can, of course, adapt this folder template to match your needs)</p>
+<ul>
+<li>data (you do not create this folder for the present workshop as you can simply use the data folder that you downloaded for this workshop instead)</li>
+<li>images</li>
+<li>tables</li>
+<li>docs</li>
+</ul>
+<p>The folder for your project could look like the the one shown below.</p>
+<p><img src="https://slcladal.github.io/images/RStudio_newfolder.png" width="75%" /></p>
+<p>Once you have created your project folder, you can go ahead with RStudio.</p>
+</div>
+<div id="open-rstudio" class="section level3 hasAnchor" number="4.4.3">
+<h3><span class="header-section-number">4.4.3</span> 3. Open RStudio<a href="getting-started-with-r-and-rstudio-1.html#open-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This is what RStudio looks like when you first open it:</p>
+<p><img src="https://slcladal.github.io/images/RStudio_empty.png" width="100%" /></p>
+<p>In RStudio, click on <code>File</code></p>
+<p><img src="https://slcladal.github.io/images/RStudio_file.png" width="50%" /></p>
+<p>You can use the drop-down menu to create a <code>R project</code></p>
+</div>
+<div id="r-projects" class="section level3 hasAnchor" number="4.4.4">
+<h3><span class="header-section-number">4.4.4</span> 4. R Projects<a href="getting-started-with-r-and-rstudio-1.html#r-projects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In RStudio, click on <code>New Project</code></p>
+<p><img src="https://slcladal.github.io/images/RStudio_newfile.png" width="50%" /></p>
+<p>Next, confirm by clicking <code>OK</code> and select <code>Existing Directory</code>.</p>
+<p>Then, navigate to where you have just created the project folder for this workshop.</p>
+<p><img src="https://slcladal.github.io/images/RStudio_existingdirectory.png" width="30%" /></p>
+<p>Once you click on <code>Open</code>, you have created a new <code>R project</code></p>
+</div>
+<div id="r-notebooks" class="section level3 hasAnchor" number="4.4.5">
+<h3><span class="header-section-number">4.4.5</span> 5. R Notebooks<a href="getting-started-with-r-and-rstudio-1.html#r-notebooks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this project, click on <code>File</code></p>
+<p><img src="https://slcladal.github.io/images/RStudio_file.png" width="50%" /></p>
+<p>Click on <code>New File</code> and then on <code>R Notebook</code> as shown below.</p>
+<p><img src="https://slcladal.github.io/images/RStudio_newnotebook.png" width="50%" /></p>
+<p>This <code>R Notebook</code> will be the file in which you do all your work.</p>
+</div>
+<div id="updating-r" class="section level3 hasAnchor" number="4.4.6">
+<h3><span class="header-section-number">4.4.6</span> 6. Updating R<a href="getting-started-with-r-and-rstudio-1.html#updating-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In case you encounter issues when opening the R Notebook (e.g., if you receive an error message saying that you need to update packages which then do not install properly), you may have to <em>update your R version</em>.</p>
+<p>To update your current R version to the recent release please copy the code chunk shown below into the console pane (the bottom left pane) and click on <code>Enter</code> to run the code. The code will automatically update your version of R to the most recent release. During the update, you may be asked to specify some options - in that case, you can simply click on <em>Accept</em> and <em>Next</em> and accept the default settings.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="getting-started-with-r-and-rstudio-1.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install installr package</span></span>
+<span id="cb1-2"><a href="getting-started-with-r-and-rstudio-1.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;installr&quot;</span>)</span>
+<span id="cb1-3"><a href="getting-started-with-r-and-rstudio-1.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load installr package</span></span>
+<span id="cb1-4"><a href="getting-started-with-r-and-rstudio-1.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(installr)</span>
+<span id="cb1-5"><a href="getting-started-with-r-and-rstudio-1.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># update r</span></span>
+<span id="cb1-6"><a href="getting-started-with-r-and-rstudio-1.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">updateR</span>()</span></code></pre></div>
+</div>
+<div id="optimizing-r-project-options" class="section level3 hasAnchor" number="4.4.7">
+<h3><span class="header-section-number">4.4.7</span> 7. Optimizing R project options<a href="getting-started-with-r-and-rstudio-1.html#optimizing-r-project-options" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When you work with projects, it is recommendable to control the so-called <em>environment</em>. This means that you make your R Project self-contained by storing all packages that are used in project in a library <em>in the R Project</em> (instead of in the general R library on your computer). Having a library in your R Project means that you can share your project folder wit other people and they will automatically have the same package versions that you have sued which makes your code more robust and reproducible.</p>
+<p>So, how to create such an environment? You simply click on <code>Tools</code> (at the very top right of RStudio), then click on<code>Project Options</code> then click on <code>Environments</code> and then check <code>Use renv with this project</code>. Now, when you install packages, they will be installed in the package library (rather than the general R library on your computer).</p>
+</div>
+<div id="getting-started-with-r-notebooks" class="section level3 hasAnchor" number="4.4.8">
+<h3><span class="header-section-number">4.4.8</span> 8. Getting started with R Notebooks<a href="getting-started-with-r-and-rstudio-1.html#getting-started-with-r-notebooks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can now start writing in this R Notebook. For instance, you could start by changing the title of the R Notebook and describe what you are doing (what this Notebook contains).</p>
+<p>Below is a picture of what this document looked like when I started writing it.</p>
+<p><img src="https://slcladal.github.io/images/RStudio_editMD.png" width="100%" /></p>
+<p>When you write in the R Notebook, you use what is called <code>R Markdown</code> which is explained below.</p>
+</div>
+<div id="r-markdown" class="section level3 hasAnchor" number="4.4.9">
+<h3><span class="header-section-number">4.4.9</span> R Markdown<a href="getting-started-with-r-and-rstudio-1.html#r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The Notebook is an <a href="http://rmarkdown.rstudio.com/">R Markdown document</a>: a Rmd (R Markdown) file is more than a flat text document: it’s a program that you can run in R and which allows you to combine prose and code, so readers can see the technical aspects of your work while reading about their interpretive significance.</p>
+<p>You can get a nice and short overview of the formatting options in R Markdown (Rmd) files <a href="https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">here</a>.</p>
+<p>R Markdown allows you to make your research fully transparent and reproducible! If a couple of years down the line another researcher or a journal editor asked you how you have done your analysis, you can simply send them the Notebook or even the entire R-project folder.</p>
+<p>As such, Rmd files are a type of document that allows to</p>
+<ul>
+<li><p>include snippets of code (and any outputs such as tables or graphs) in plain text while</p></li>
+<li><p>encoding the <em>structure</em> of your document by using simple typographical symbols to encode formatting (rather than HTML tags or format types such as <em>Main header</em> or <em>Header level 1</em> in Word).</p></li>
+</ul>
+<p>Markdown is really quite simple to learn and these resources may help:</p>
+<ul>
+<li><p>The <a href="https://en.wikipedia.org/wiki/Markdown">Markdown Wikipedia page</a> includes a very handy chart of the syntax.</p></li>
+<li><p>John Gruber developed Markdown and his <a href="https://daringfireball.net/projects/markdown/syntax">introduction to the syntax</a> is worth browsing.</p></li>
+<li><p>This <a href="http://www.markdowntutorial.com/">interactive Markdown tutorial</a> will teach you the syntax in a few minutes.</p></li>
+</ul>
+</div>
+</div>
+<div id="r-and-rstudio-basics" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> R and RStudio Basics<a href="getting-started-with-r-and-rstudio-1.html#r-and-rstudio-basics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>RStudio is a so-called IDE - Integrated Development Environment. The interface provides easy access to R. The advantage of this application is that R programs and files as well as a project directory can be managed easily. The environment is capable of editing and running program code, viewing outputs and rendering graphics. Furthermore, it is possible to view variables and data objects of an R-script directly in the interface.</p>
+<div id="rstudio-panes" class="section level3 hasAnchor" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> RStudio: Panes<a href="getting-started-with-r-and-rstudio-1.html#rstudio-panes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The GUI - Graphical User Interface - that RStudio provides divides the screen into four areas that are called <strong>panes</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>File editor</li>
+<li>Environment variables</li>
+<li>R console</li>
+<li>Management panes (File browser, plots, help display and R packages).</li>
+</ol>
+<p>The two most important are the R console (bottom left) and the File editor (or Script in the top left).
+The Environment variables and Management panes are on the right of the screen and they contain:</p>
+<ul>
+<li><strong>Environment</strong> (top): Lists all currently defined objects and data sets</li>
+<li><strong>History</strong> (top): Lists all commands recently used or associated with a project</li>
+<li><strong>Plots</strong> (bottom): Graphical output goes here</li>
+<li><strong>Help</strong> (bottom): Find help for R packages and functions. Don’t forget you can type <code>?</code> before a function name in the console to get info in the Help section.</li>
+<li><strong>Files</strong> (bottom): Shows the files available to you in your working directory</li>
+</ul>
+<p>These RStudio panes are shown below.</p>
+<p><img src="https://slcladal.github.io/images/RStudioscreenshot.png" /><!-- --></p>
+</div>
+<div id="r-console-bottom-left-pane" class="section level3 hasAnchor" number="4.5.2">
+<h3><span class="header-section-number">4.5.2</span> R Console (bottom left pane)<a href="getting-started-with-r-and-rstudio-1.html#r-console-bottom-left-pane" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The console pane allows you to quickly and immediately execute R code. You can experiment with functions here, or quickly print data for viewing.</p>
+<p>Type next to the <code>&gt;</code> and press <code>Enter</code> to execute.</p>
+<hr />
+<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>EXERCISE TIME!</b>
+</p>
+<p style="margin-left:1em;">
+</p>
+<p></span></p>
+</div>
+<div class="question">
+<p>`</p>
+<ol style="list-style-type: decimal">
+<li>You can use R like a calculator. Try typing <code>2+8</code> into the <strong>R console</strong>.</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="getting-started-with-r-and-rstudio-1.html#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span><span class="sc">+</span><span class="dv">8</span></span></code></pre></div>
+<pre><code>  ## [1] 10</code></pre>
+</details>
+</div>
+<p>`</p>
+<hr />
+<p>Here, the plus sign is the <strong>operator</strong>. Operators are symbols that represent some sort of action. However, R is, of course, much more than a simple calculator. To use R more fully, we need to understand <strong>objects</strong>, <strong>functions</strong>, and <strong>indexing</strong> - which we will learn about as we go.</p>
+<p>For now, think of <em>objects as nouns</em> and <em>functions as verbs</em>.</p>
+</div>
+</div>
+<div id="running-commands-from-a-script" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Running commands from a script<a href="getting-started-with-r-and-rstudio-1.html#running-commands-from-a-script" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To run code from a script, insert your cursor on a line with a command, and press <code>CTRL/CMD+Enter</code>.</p>
+<p>Or highlight some code to only run certain sections of the command, then press <code>CTRL/CMD+Enter</code> to run.</p>
+<p>Alternatively, use the <code>Run</code> button at the top of the pane to execute the current line or selection (see below).</p>
+<p><img src="https://slcladal.github.io/images/RStudio_run.png" width="50%" /></p>
+<div id="script-editor-top-left-pane" class="section level3 hasAnchor" number="4.6.1">
+<h3><span class="header-section-number">4.6.1</span> Script Editor (top left pane)<a href="getting-started-with-r-and-rstudio-1.html#script-editor-top-left-pane" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In contrast to the R console, which quickly runs code, the Script Editor (in the top left) does not automatically execute code. The Script Editor allows you to save the code essential to your analysis. You can re-use that code in the moment, refer back to it later, or publish it for replication.</p>
+<p>Now, that we have explored RStudio, we are ready to get started with R!</p>
+</div>
+</div>
+<div id="getting-started-with-r" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Getting started with R<a href="getting-started-with-r-and-rstudio-1.html#getting-started-with-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section introduces some basic concepts and procedures that help optimize your workflow in R.</p>
+<div id="setting-up-an-r-session" class="section level3 hasAnchor" number="4.7.1">
+<h3><span class="header-section-number">4.7.1</span> Setting up an R session<a href="getting-started-with-r-and-rstudio-1.html#setting-up-an-r-session" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>At the beginning of a session, it is common practice to define some basic parameters. This is not required or even necessary, but it may just help further down the line. This session preparation may include specifying options. In the present case, we</p>
+<ul>
+<li><p>want R to show numbers as numbers up to 100 decimal points (and not show them in mathematical notation (in mathematical notation, 0.007 would be represented as 0.7e<sup>-3</sup>))</p></li>
+<li><p>want R to show maximally 100 results (otherwise, it can happen that R prints out pages-after-pages of some numbers).</p></li>
+</ul>
+<p>Again, the session preparation is not required or necessary but it can help avoid errors.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="getting-started-with-r-and-rstudio-1.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set options</span></span>
+<span id="cb4-2"><a href="getting-started-with-r-and-rstudio-1.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> F)                           </span>
+<span id="cb4-3"><a href="getting-started-with-r-and-rstudio-1.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">100</span>) </span>
+<span id="cb4-4"><a href="getting-started-with-r-and-rstudio-1.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">max.print=</span><span class="dv">100</span>) </span></code></pre></div>
+<p>In script editor pane of RStudio, this would look like this:</p>
+<p><img src="https://slcladal.github.io/images/RStudio_preparation.png" width="100%" /></p>
+</div>
+<div id="packages" class="section level3 hasAnchor" number="4.7.2">
+<h3><span class="header-section-number">4.7.2</span> Packages<a href="getting-started-with-r-and-rstudio-1.html#packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When using R, most of the functions are not loaded or even installing automatically. Instead, most functions are in contained in what are called <strong>packages</strong>.</p>
+<p>R comes with about 30 packages (“base R”). There are over 10,000 user-contributed packages; you can discover these packages online. A prevalent collection of packages is the Tidyverse, which includes ggplot2, a package for making graphics.</p>
+<p>Before being able to use a package, we need to install the package (using the <code>install.packages</code> function) and load the package (using the <code>library</code> function). However, a package only needs to be installed once(!) and can then simply be loaded. When you install a package, this will likely install several other packages it depends on. You should have already installed tidyverse before the workshop.</p>
+<p>You must load the package in any new R session where you want to use that package. Below I show what you need to type when you want to install the <code>tidyverse</code>, the <code>tidytext</code>, the <code>quanteda</code>, the <code>readxl</code>, and the <code>tm</code> packages (which are the packages that we will need in this workshop).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="getting-started-with-r-and-rstudio-1.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb5-2"><a href="getting-started-with-r-and-rstudio-1.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidytext&quot;</span>)</span>
+<span id="cb5-3"><a href="getting-started-with-r-and-rstudio-1.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;quanteda&quot;</span>)</span>
+<span id="cb5-4"><a href="getting-started-with-r-and-rstudio-1.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</span>
+<span id="cb5-5"><a href="getting-started-with-r-and-rstudio-1.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tm&quot;</span>)</span>
+<span id="cb5-6"><a href="getting-started-with-r-and-rstudio-1.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tokenizers&quot;</span>)</span>
+<span id="cb5-7"><a href="getting-started-with-r-and-rstudio-1.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;here&quot;</span>)</span>
+<span id="cb5-8"><a href="getting-started-with-r-and-rstudio-1.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;flextable&quot;</span>)</span>
+<span id="cb5-9"><a href="getting-started-with-r-and-rstudio-1.html#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># install klippy for copy-to-clipboard button in code chunks</span></span>
+<span id="cb5-10"><a href="getting-started-with-r-and-rstudio-1.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb5-11"><a href="getting-started-with-r-and-rstudio-1.html#cb5-11" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;rlesur/klippy&quot;</span>)</span></code></pre></div>
+<p>To load these packages, use the <code>library</code> function which takes the package name as its main argument.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="getting-started-with-r-and-rstudio-1.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-2"><a href="getting-started-with-r-and-rstudio-1.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb6-3"><a href="getting-started-with-r-and-rstudio-1.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
+<span id="cb6-4"><a href="getting-started-with-r-and-rstudio-1.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb6-5"><a href="getting-started-with-r-and-rstudio-1.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span>
+<span id="cb6-6"><a href="getting-started-with-r-and-rstudio-1.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tokenizers)</span>
+<span id="cb6-7"><a href="getting-started-with-r-and-rstudio-1.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb6-8"><a href="getting-started-with-r-and-rstudio-1.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb6-9"><a href="getting-started-with-r-and-rstudio-1.html#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># activate klippy for copy-to-clipboard button</span></span>
+<span id="cb6-10"><a href="getting-started-with-r-and-rstudio-1.html#cb6-10" aria-hidden="true" tabindex="-1"></a>klippy<span class="sc">::</span><span class="fu">klippy</span>()</span></code></pre></div>
+<script>
+  addClassKlippyTo("pre.r, pre.markdown");
+  addKlippy('left', 'top', 'auto', '1', 'Copy code', 'Copied!');
+</script>
+<p>The session preparation section of your Rmd file will thus also state which packages a script relies on.</p>
+<p>In script editor pane of RStudio, the code blocks that install and activate packages would look like this:</p>
+<p><img src="https://slcladal.github.io/images/RStudio_packages.png" width="100%" /></p>
+</div>
+<div id="getting-help" class="section level3 hasAnchor" number="4.7.3">
+<h3><span class="header-section-number">4.7.3</span> Getting help<a href="getting-started-with-r-and-rstudio-1.html#getting-help" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When working with R, you will encounter issues and face challenges. A very good thing about R is that it provides various ways to get help or find information about the issues you face.</p>
+<div id="finding-help-within-r" class="section level4 hasAnchor" number="4.7.3.1">
+<h4><span class="header-section-number">4.7.3.1</span> Finding help within R<a href="getting-started-with-r-and-rstudio-1.html#finding-help-within-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To get help regrading what functions a package contains, which arguments a function takes or to get information about how to use a function, you can use the <code>help</code> function or the <code>apropos</code>. function or you can simply type a <code>?</code> before the package or two <code>??</code> if this does not give you any answers.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="getting-started-with-r-and-rstudio-1.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(tidyverse) </span>
+<span id="cb7-2"><a href="getting-started-with-r-and-rstudio-1.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apropos</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb7-3"><a href="getting-started-with-r-and-rstudio-1.html#cb7-3" aria-hidden="true" tabindex="-1"></a>?require</span></code></pre></div>
+<p>There are also other “official” help resources from R/RStudio.</p>
+<ul>
+<li><p>Read official package documentation, see vignettes, e.g., Tidyverse <a href="https://cran.r-project.org/package=tidyverse" class="uri">https://cran.r-project.org/package=tidyverse</a></p></li>
+<li><p>Use the RStudio Cheat Sheets at <a href="https://www.rstudio.com/resources/cheatsheets/" class="uri">https://www.rstudio.com/resources/cheatsheets/</a></p></li>
+<li><p>Use the RStudio Help viewer by typing <code>?</code> before a function or package</p></li>
+<li><p>Check out the keyboard shortcuts <code>Help</code> under <code>Tools</code> in RStudio for some good tips</p></li>
+</ul>
+</div>
+<div id="finding-help-online" class="section level4 hasAnchor" number="4.7.3.2">
+<h4><span class="header-section-number">4.7.3.2</span> Finding help online<a href="getting-started-with-r-and-rstudio-1.html#finding-help-online" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>One great thing about R is that you can very often find an answer to your question online.</p>
+<ul>
+<li>Google your error! See <a href="http://r4ds.had.co.nz/introduction.html#getting-help-and-learning-more" class="uri">http://r4ds.had.co.nz/introduction.html#getting-help-and-learning-more</a> for excellent suggestions on how to find help for a specific question online.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="working-with-tables" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> Working with tables<a href="getting-started-with-r-and-rstudio-1.html#working-with-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will now start working with data in R. As most of the data that we work with comes in tables, we will focus on this first before moving on to working with text data.</p>
+<div id="loading-data-from-the-web" class="section level3 hasAnchor" number="4.8.1">
+<h3><span class="header-section-number">4.8.1</span> Loading data from the web<a href="getting-started-with-r-and-rstudio-1.html#loading-data-from-the-web" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To show, how data can be downloaded from the web, we will download a tab-separated txt-file. Translated to prose, the code below means <em>Create an object called </em>icebio <em>and in that object, store the result of the <code>read.delim</code> function</em>.</p>
+<p><code>read.delim</code> stands for <em>read delimited file</em> and it takes the URL from which to load the data (or the path to the data on your computer) as its first argument. The <code>sep</code> stand for separator and the <code>\t</code> stands for tab-separated and represents the second argument that the <code>read.delim</code> function takes. The third argument, <code>header</code>, can take either T(RUE) or F(ALSE) and it tells R if the data has column names (headers) or not.</p>
+</div>
+<div id="functions-and-objects" class="section level3 hasAnchor" number="4.8.2">
+<h3><span class="header-section-number">4.8.2</span> Functions and Objects<a href="getting-started-with-r-and-rstudio-1.html#functions-and-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In R, functions always have the following form: <code>function(argument1, argument2, ..., argumentN)</code>. Typically a function does something to an object (e.g. a table), so that the first argument typically specifies the data to which the function is applied. Other arguments then allow to add some information. Just as a side note, functions are also objects that do not contain data but instructions.</p>
+<p>To assign content to an object, we use <code>&lt;-</code> or <code>=</code> so that the we provide a name for an object, and then assign some content to it. For example, <code>MyObject &lt;- 1:3</code> means <em>Create an object called <code>MyObject</code>. this object should contain the numbers 1 to 3</em>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="getting-started-with-r-and-rstudio-1.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb8-2"><a href="getting-started-with-r-and-rstudio-1.html#cb8-2" aria-hidden="true" tabindex="-1"></a>icebio <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;https://slcladal.github.io/data/BiodataIceIreland.txt&quot;</span>, </span>
+<span id="cb8-3"><a href="getting-started-with-r-and-rstudio-1.html#cb8-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> T)</span></code></pre></div>
+</div>
+<div id="inspecting-data" class="section level3 hasAnchor" number="4.8.3">
+<h3><span class="header-section-number">4.8.3</span> Inspecting data<a href="getting-started-with-r-and-rstudio-1.html#inspecting-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are many ways to inspect data. We will briefly go over the most common ways to inspect data.</p>
+<p>The <code>head</code> function takes the data-object as its first argument and automatically shows the first 6 elements of an object (or rows if the data-object has a table format).</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="getting-started-with-r-and-rstudio-1.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(icebio)</span></code></pre></div>
+<pre><code>##   id file.speaker.id text.id spk.ref             zone      date    sex   age
+## 1  1     &lt;S1A-001$A&gt; S1A-001       A northern ireland 1990-1994   male 34-41
+## 2  2     &lt;S1A-001$B&gt; S1A-001       B northern ireland 1990-1994 female 34-41
+## 3  3     &lt;S1A-002$?&gt; S1A-002       ?             &lt;NA&gt;      &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;
+## 4  4     &lt;S1A-002$A&gt; S1A-002       A northern ireland 2002-2005 female 26-33
+## 5  5     &lt;S1A-002$B&gt; S1A-002       B northern ireland 2002-2005 female 19-25
+## 6  6     &lt;S1A-002$C&gt; S1A-002       C northern ireland 2002-2005   male   50+
+##   word.count
+## 1        765
+## 2       1298
+## 3         23
+## 4        391
+## 5         47
+## 6        200</code></pre>
+<p>We can also use the <code>head</code> function to inspect more or less elements and we can specify the number of elements (or rows) that we want to inspect as a second argument. In the example below, the <code>4</code> tells R that we only want to see the first 4 rows of the data.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="getting-started-with-r-and-rstudio-1.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(icebio, <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>##   id file.speaker.id text.id spk.ref             zone      date    sex   age
+## 1  1     &lt;S1A-001$A&gt; S1A-001       A northern ireland 1990-1994   male 34-41
+## 2  2     &lt;S1A-001$B&gt; S1A-001       B northern ireland 1990-1994 female 34-41
+## 3  3     &lt;S1A-002$?&gt; S1A-002       ?             &lt;NA&gt;      &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;
+## 4  4     &lt;S1A-002$A&gt; S1A-002       A northern ireland 2002-2005 female 26-33
+##   word.count
+## 1        765
+## 2       1298
+## 3         23
+## 4        391</code></pre>
+<hr />
+<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>EXERCISE TIME!</b>
+</p>
+<p style="margin-left:1em;">
+</p>
+<p></span></p>
+</div>
+<div class="question">
+<p>`</p>
+<ol style="list-style-type: decimal">
+<li>Download and inspect the first 7 rows of the data set that you can find under this URL: <code>https://slcladal.github.io/data/lmmdata.txt</code>. Can you guess what the data is about?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="getting-started-with-r-and-rstudio-1.html#cb13-1" aria-hidden="true" tabindex="-1"></a>  ex1data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;https://slcladal.github.io/data/lmmdata.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span>
+<span id="cb13-2"><a href="getting-started-with-r-and-rstudio-1.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(ex1data, <span class="dv">7</span>)</span></code></pre></div>
+<pre><code>  ##   Date         Genre    Text Prepositions Region
+  ## 1 1736       Science   albin       166.01  North
+  ## 2 1711     Education    anon       139.86  North
+  ## 3 1808 PrivateLetter  austen       130.78  North
+  ## 4 1878     Education    bain       151.29  North
+  ## 5 1743     Education barclay       145.72  North
+  ## 6 1908     Education  benson       120.77  North
+  ## 7 1906         Diary  benson       119.17  North</code></pre>
+The data is about texts and the different columns provide information about the texts such as when the texts were written (<code>Date</code>), the genre the texts represent (<code>Genre</code>), the name of the texts (<code>Text</code>), the relative frequencies of prepositions the texts contain (<code>Prepositions</code>), and the region where the author was from (<code>Region</code>).
+</details>
+</div>
+<p>`</p>
+<hr />
+</div>
+<div id="accessing-individual-cells-in-a-table" class="section level3 hasAnchor" number="4.8.4">
+<h3><span class="header-section-number">4.8.4</span> Accessing individual cells in a table<a href="getting-started-with-r-and-rstudio-1.html#accessing-individual-cells-in-a-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you want to access specific cells in a table, you can do so by typing the name of the object and then specify the rows and columns in square brackets (i.e. <strong>data[row, column]</strong>). For example, <code>icebio[2, 4]</code> would show the value of the cell in the second row and fourth column of the object <code>icebio</code>. We can also use the colon to define a range (as shown below, where 1:5 means from 1 to 5 and 1:3 means from 1 to 3) The command <code>icebio[1:5, 1:3]</code> thus means:</p>
+<p><em>Show me the first 5 rows and the first 3 columns of the data-object that is called icebio</em>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="getting-started-with-r-and-rstudio-1.html#cb15-1" aria-hidden="true" tabindex="-1"></a>icebio[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<pre><code>##   id file.speaker.id text.id
+## 1  1     &lt;S1A-001$A&gt; S1A-001
+## 2  2     &lt;S1A-001$B&gt; S1A-001
+## 3  3     &lt;S1A-002$?&gt; S1A-002
+## 4  4     &lt;S1A-002$A&gt; S1A-002
+## 5  5     &lt;S1A-002$B&gt; S1A-002</code></pre>
+<hr />
+<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>EXERCISE TIME!</b>
+</p>
+<p style="margin-left:1em;">
+</p>
+<p></span></p>
+</div>
+<div class="question">
+<p>`</p>
+<ol style="list-style-type: decimal">
+<li>How would you inspect the content of the cells in 4<sup>th</sup> column, rows 3 to 5 of the <code>icebio</code> data set?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="getting-started-with-r-and-rstudio-1.html#cb17-1" aria-hidden="true" tabindex="-1"></a>  icebio[<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">4</span>]</span></code></pre></div>
+<pre><code>  ## [1] &quot;?&quot; &quot;A&quot; &quot;B&quot;</code></pre>
+</details>
+</div>
+<p>`</p>
+<hr />
+<p><strong>Inspecting the structure of data</strong></p>
+<p>You can use the <code>str</code> function to inspect the structure of a data set. This means that this function will show the number of observations (rows) and variables (columns) and tell you what type of variables the data consists of</p>
+<ul>
+<li><strong>int</strong> = integer</li>
+<li><strong>chr</strong> = character string</li>
+<li><strong>num</strong> = numeric</li>
+<li><strong>fct</strong> = factor</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="getting-started-with-r-and-rstudio-1.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(icebio)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    1332 obs. of  9 variables:
+##  $ id             : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ file.speaker.id: chr  &quot;&lt;S1A-001$A&gt;&quot; &quot;&lt;S1A-001$B&gt;&quot; &quot;&lt;S1A-002$?&gt;&quot; &quot;&lt;S1A-002$A&gt;&quot; ...
+##  $ text.id        : chr  &quot;S1A-001&quot; &quot;S1A-001&quot; &quot;S1A-002&quot; &quot;S1A-002&quot; ...
+##  $ spk.ref        : chr  &quot;A&quot; &quot;B&quot; &quot;?&quot; &quot;A&quot; ...
+##  $ zone           : chr  &quot;northern ireland&quot; &quot;northern ireland&quot; NA &quot;northern ireland&quot; ...
+##  $ date           : chr  &quot;1990-1994&quot; &quot;1990-1994&quot; NA &quot;2002-2005&quot; ...
+##  $ sex            : chr  &quot;male&quot; &quot;female&quot; NA &quot;female&quot; ...
+##  $ age            : chr  &quot;34-41&quot; &quot;34-41&quot; NA &quot;26-33&quot; ...
+##  $ word.count     : int  765 1298 23 391 47 200 464 639 308 78 ...</code></pre>
+<p>The <code>summary</code> function summarizes the data.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="getting-started-with-r-and-rstudio-1.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(icebio)</span></code></pre></div>
+<pre><code>##        id         file.speaker.id      text.id            spk.ref         
+##  Min.   :   1.0   Length:1332        Length:1332        Length:1332       
+##  1st Qu.: 333.8   Class :character   Class :character   Class :character  
+##  Median : 666.5   Mode  :character   Mode  :character   Mode  :character  
+##  Mean   : 666.5                                                           
+##  3rd Qu.: 999.2                                                           
+##  Max.   :1332.0                                                           
+##      zone               date               sex                age           
+##  Length:1332        Length:1332        Length:1332        Length:1332       
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                             
+##                                                                             
+##                                                                             
+##    word.count    
+##  Min.   :   0.0  
+##  1st Qu.:  66.0  
+##  Median : 240.5  
+##  Mean   : 449.9  
+##  3rd Qu.: 638.2  
+##  Max.   :2565.0</code></pre>
+<p><a href="#getting_started_with_r_and_rstudio_1">Back to top</a></p>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-gillespie2016efficient" class="csl-entry">
+Gillespie, Colin, and Robin Lovelace. 2016. <em>Efficient r Programming: A Practical Guide to Smarter Programming</em>. " O’Reilly Media, Inc.".
+</div>
+<div id="ref-wickham2016r" class="csl-entry">
+Wickham, Hadley, and Garrett Grolemund. 2016. <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. " O’Reilly Media, Inc.".
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="basic-concepts-in-quantitative-research-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="getting-started-with-r-and-rstudio-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/edit/master/04-intror1.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/blob/master/04-intror1.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

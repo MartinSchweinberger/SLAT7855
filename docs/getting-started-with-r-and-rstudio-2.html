@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Week 5 Getting Started with R and RStudio 2 | SLAT7855 Quantitative Research Methods in Applied Linguistics</title>
+  <meta name="description" content="Week 5 Getting Started with R and RStudio 2 | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Week 5 Getting Started with R and RStudio 2 | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Week 5 Getting Started with R and RStudio 2 | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  
+  
+  
+
+<meta name="author" content="Martin Schweinberger" />
+
+
+<meta name="date" content="2022-05-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="getting-started-with-r-and-rstudio-1.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SLAT7855</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#basic-course-information"><i class="fa fa-check"></i>Basic Course Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i>Course Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-introduction"><i class="fa fa-check"></i>Course Introduction</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#timetable"><i class="fa fa-check"></i>Timetable</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#aims-objectives-graduate-attributes"><i class="fa fa-check"></i>Aims, Objectives &amp; Graduate Attributes</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aims"><i class="fa fa-check"></i>Course Aims</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-resources"><i class="fa fa-check"></i>Learning Resources</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#required-resources"><i class="fa fa-check"></i>Required Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-resources"><i class="fa fa-check"></i>Recommended Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#university-learning-resources"><i class="fa fa-check"></i>University Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#school-of-languages-and-cultures-learning-resources"><i class="fa fa-check"></i>School of Languages and Cultures Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-learning-resources-information"><i class="fa fa-check"></i>Other Learning Resources &amp; Information</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#teaching-learning-activities"><i class="fa fa-check"></i>Teaching &amp; Learning Activities</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-activities"><i class="fa fa-check"></i>Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-plan"><i class="fa fa-check"></i>Course plan</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#why-do-we-need-science"><i class="fa fa-check"></i><b>1.1</b> Why do we need science?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#errare-humanum-est"><i class="fa fa-check"></i><b>1.2</b> Errare Humanum Est</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#the-monty-hall-problem"><i class="fa fa-check"></i><b>1.2.1</b> The Monty Hall Problem</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#the-birthday-conundrum"><i class="fa fa-check"></i><b>1.2.2</b> The Birthday Conundrum</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#fast-and-slow-thinking"><i class="fa fa-check"></i><b>1.2.3</b> Fast and Slow Thinking</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#randomness"><i class="fa fa-check"></i><b>1.2.4</b> Randomness</a></li>
+<li class="chapter" data-level="1.2.5" data-path="introduction.html"><a href="introduction.html#patterns-and-matters-of-habit"><i class="fa fa-check"></i><b>1.2.5</b> Patterns and Matters of Habit</a></li>
+<li class="chapter" data-level="1.2.6" data-path="introduction.html"><a href="introduction.html#locical-fallacies-and-biases"><i class="fa fa-check"></i><b>1.2.6</b> Locical Fallacies and Biases</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#what-is-science"><i class="fa fa-check"></i><b>1.3</b> What is science?</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#clever-hans"><i class="fa fa-check"></i><b>1.3.1</b> Clever Hans</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#popper-falsification-and-scientific-progress"><i class="fa fa-check"></i><b>1.3.2</b> Popper, falsification, and scientific progress</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#what-is-empirical-linguistics"><i class="fa fa-check"></i><b>1.3.3</b> What is (empirical) Linguistics?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html"><i class="fa fa-check"></i><b>2</b> Basic Concepts in Quantitative Research 1</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#hypotheses"><i class="fa fa-check"></i><b>2.1</b> Hypotheses</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#types-of-hypotheses"><i class="fa fa-check"></i>Types of Hypotheses</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#why-test-the-h0"><i class="fa fa-check"></i>Why test the H0?!</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#data-and-research-designs"><i class="fa fa-check"></i><b>2.2</b> Data and Research Designs</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#research-designs"><i class="fa fa-check"></i>Research Designs</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#variables-and-validity"><i class="fa fa-check"></i><b>2.3</b> Variables and Validity</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#variable-types-scaling"><i class="fa fa-check"></i>Variable Types (Scaling)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#relationships-between-variables"><i class="fa fa-check"></i><b>2.4</b> Relationships between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html"><i class="fa fa-check"></i><b>3</b> Basic Concepts in Quantitative Research 2</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#significance-and-probability"><i class="fa fa-check"></i><b>3.1</b> Significance and Probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#significance-levels"><i class="fa fa-check"></i>Significance Levels</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#probability"><i class="fa fa-check"></i>Probability</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#the-normal-distribution"><i class="fa fa-check"></i>The Normal Distribution</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#non-normality-skewness-and-kurtosis"><i class="fa fa-check"></i>Non-normality: skewness and kurtosis</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#the-binomial-distribution"><i class="fa fa-check"></i>The Binomial Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#z-scores"><i class="fa fa-check"></i><b>3.2</b> z-scores</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#alpha-and-beta-errors"><i class="fa fa-check"></i><b>3.3</b> Alpha and Beta Errors</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#independence"><i class="fa fa-check"></i><b>3.4</b> Independence</a></li>
+<li class="chapter" data-level="3.5" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#corrections"><i class="fa fa-check"></i><b>3.5</b> Corrections</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html"><i class="fa fa-check"></i><b>4</b> Getting Started with R and RStudio 1</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#goals-of-this-tutorial"><i class="fa fa-check"></i><b>4.1</b> Goals of this tutorial</a></li>
+<li class="chapter" data-level="4.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#audience"><i class="fa fa-check"></i><b>4.2</b> Audience</a></li>
+<li class="chapter" data-level="4.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>4.3</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#how-to-use-the-workshop-materials"><i class="fa fa-check"></i><b>4.3.1</b> How to use the workshop materials</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#preparation"><i class="fa fa-check"></i><b>4.4</b> Preparation</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#folder-structure-and-r-projects"><i class="fa fa-check"></i><b>4.4.1</b> Folder Structure and R projects</a></li>
+<li class="chapter" data-level="4.4.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#create-a-folder-for-your-project"><i class="fa fa-check"></i><b>4.4.2</b> 1. Create a folder for your project</a></li>
+<li class="chapter" data-level="4.4.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#open-rstudio"><i class="fa fa-check"></i><b>4.4.3</b> 3. Open RStudio</a></li>
+<li class="chapter" data-level="4.4.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-projects"><i class="fa fa-check"></i><b>4.4.4</b> 4. R Projects</a></li>
+<li class="chapter" data-level="4.4.5" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-notebooks"><i class="fa fa-check"></i><b>4.4.5</b> 5. R Notebooks</a></li>
+<li class="chapter" data-level="4.4.6" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#updating-r"><i class="fa fa-check"></i><b>4.4.6</b> 6. Updating R</a></li>
+<li class="chapter" data-level="4.4.7" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#optimizing-r-project-options"><i class="fa fa-check"></i><b>4.4.7</b> 7. Optimizing R project options</a></li>
+<li class="chapter" data-level="4.4.8" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-started-with-r-notebooks"><i class="fa fa-check"></i><b>4.4.8</b> 8. Getting started with R Notebooks</a></li>
+<li class="chapter" data-level="4.4.9" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-markdown"><i class="fa fa-check"></i><b>4.4.9</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-and-rstudio-basics"><i class="fa fa-check"></i><b>4.5</b> R and RStudio Basics</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#rstudio-panes"><i class="fa fa-check"></i><b>4.5.1</b> RStudio: Panes</a></li>
+<li class="chapter" data-level="4.5.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-console-bottom-left-pane"><i class="fa fa-check"></i><b>4.5.2</b> R Console (bottom left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#running-commands-from-a-script"><i class="fa fa-check"></i><b>4.6</b> Running commands from a script</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#script-editor-top-left-pane"><i class="fa fa-check"></i><b>4.6.1</b> Script Editor (top left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>4.7</b> Getting started with R</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#setting-up-an-r-session"><i class="fa fa-check"></i><b>4.7.1</b> Setting up an R session</a></li>
+<li class="chapter" data-level="4.7.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#packages"><i class="fa fa-check"></i><b>4.7.2</b> Packages</a></li>
+<li class="chapter" data-level="4.7.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-help"><i class="fa fa-check"></i><b>4.7.3</b> Getting help</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#working-with-tables"><i class="fa fa-check"></i><b>4.8</b> Working with tables</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#loading-data-from-the-web"><i class="fa fa-check"></i><b>4.8.1</b> Loading data from the web</a></li>
+<li class="chapter" data-level="4.8.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#functions-and-objects"><i class="fa fa-check"></i><b>4.8.2</b> Functions and Objects</a></li>
+<li class="chapter" data-level="4.8.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#inspecting-data"><i class="fa fa-check"></i><b>4.8.3</b> Inspecting data</a></li>
+<li class="chapter" data-level="4.8.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#accessing-individual-cells-in-a-table"><i class="fa fa-check"></i><b>4.8.4</b> Accessing individual cells in a table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html"><i class="fa fa-check"></i><b>5</b> Getting Started with R and RStudio 2</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#working-with-tables-1"><i class="fa fa-check"></i><b>5.1</b> Working with tables</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#tabulating-data"><i class="fa fa-check"></i><b>5.1.1</b> Tabulating data</a></li>
+<li class="chapter" data-level="5.1.2" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#saving-data-to-your-computer"><i class="fa fa-check"></i><b>5.1.2</b> Saving data to your computer</a></li>
+<li class="chapter" data-level="5.1.3" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-data-from-your-computer"><i class="fa fa-check"></i><b>5.1.3</b> Loading data from your computer</a></li>
+<li class="chapter" data-level="5.1.4" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-excel-data"><i class="fa fa-check"></i><b>5.1.4</b> Loading Excel data</a></li>
+<li class="chapter" data-level="5.1.5" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-text-data"><i class="fa fa-check"></i><b>5.1.5</b> Loading text data</a></li>
+<li class="chapter" data-level="5.1.6" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#renaming-piping-and-filtering"><i class="fa fa-check"></i><b>5.1.6</b> Renaming, Piping, and Filtering</a></li>
+<li class="chapter" data-level="5.1.7" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#ordering-data"><i class="fa fa-check"></i><b>5.1.7</b> Ordering data</a></li>
+<li class="chapter" data-level="5.1.8" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#creating-and-changing-variables"><i class="fa fa-check"></i><b>5.1.8</b> Creating and changing variables</a></li>
+<li class="chapter" data-level="5.1.9" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#if-statements"><i class="fa fa-check"></i><b>5.1.9</b> If-statements</a></li>
+<li class="chapter" data-level="5.1.10" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#summarizing-data"><i class="fa fa-check"></i><b>5.1.10</b> Summarizing data</a></li>
+<li class="chapter" data-level="5.1.11" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#gathering-and-spreading-data"><i class="fa fa-check"></i><b>5.1.11</b> Gathering and spreading data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#ending-r-sessions"><i class="fa fa-check"></i><b>5.2</b> Ending R sessions</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#extracting-session-information"><i class="fa fa-check"></i><b>5.2.1</b> Extracting session information</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#going-further"><i class="fa fa-check"></i><b>5.3</b> Going further</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SLAT7855 Quantitative Research Methods in Applied Linguistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="getting-started-with-r-and-rstudio-2" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Week 5</span> Getting Started with R and RStudio 2<a href="getting-started-with-r-and-rstudio-2.html#getting-started-with-r-and-rstudio-2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This week, we will continue to explore R and RStudio.</p>
+<div id="working-with-tables-1" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Working with tables<a href="getting-started-with-r-and-rstudio-2.html#working-with-tables-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tabulating-data" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Tabulating data<a href="getting-started-with-r-and-rstudio-2.html#tabulating-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can use the <code>table</code> function to create basic tables that extract raw frequency information. The following command tells us how many instances there are of each level of the variable <code>date</code> in the <code>icebio</code>.</p>
+<hr />
+<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>TIP</b>
+</p>
+<p style="margin-left:1em;">
+</p>
+<p></span></p>
+</div>
+<div class="question">
+<p>`</p>
+<p>In order to access specific columns of a data frame, you can first type the name of the data set followed by a <code>$</code> symbol and then the name of the column (or variable).</p>
+</div>
+<p>`</p>
+<hr />
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="getting-started-with-r-and-rstudio-2.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(icebio<span class="sc">$</span>date) </span></code></pre></div>
+<pre><code>## 
+## 1990-1994 1995-2001 2002-2005 
+##       905        67       270</code></pre>
+<p>Alternatively, you could, of course, index the column by using its position in the data set like this: <code>icebio[, 6]</code> - the result of <code>table(icebio[, 6])</code> and <code>table(icebio$date)</code> are the same! Also note that here we leave out indexes for rows to tell R that we want all rows.</p>
+<p>When you want to cross-tabulate columns, it is often better to use the <code>ftable</code> function (<code>ftable</code> stands for <em>frequency table</em>).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="getting-started-with-r-and-rstudio-2.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(icebio<span class="sc">$</span>age, icebio<span class="sc">$</span>sex)</span></code></pre></div>
+<pre><code>##        female male
+##                   
+## 0-18        5    7
+## 19-25     163   65
+## 26-33      83   36
+## 34-41      35   58
+## 42-49      35   97
+## 50+        63  138</code></pre>
+<hr />
+<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>EXERCISE TIME!</b>
+</p>
+<p style="margin-left:1em;">
+</p>
+<p></span></p>
+</div>
+<div class="question">
+<p>`</p>
+<ol style="list-style-type: decimal">
+<li>Using the <code>table</code> function, how many women are in the data collected between 2002 and 2005?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="getting-started-with-r-and-rstudio-2.html#cb5-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>(icebio<span class="sc">$</span>date, icebio<span class="sc">$</span>sex)</span></code></pre></div>
+<pre><code>  ##            
+  ##             female male
+  ##   1990-1994    338  562
+  ##   1995-2001      4   58
+  ##   2002-2005    186   84</code></pre>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Using the <code>ftable</code> function, how many men are are from northern Ireland in the data collected between 1990 and 1994?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="getting-started-with-r-and-rstudio-2.html#cb7-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ftable</span>(icebio<span class="sc">$</span>date, icebio<span class="sc">$</span>zone, icebio<span class="sc">$</span>sex)</span></code></pre></div>
+<pre><code>  ##                                     female male
+  ##                                                
+  ## 1990-1994 mixed between ni and roi      18   13
+  ##           non-corpus speaker             7   22
+  ##           northern ireland             104  289
+  ##           republic of ireland          209  238
+  ## 1995-2001 mixed between ni and roi       0    0
+  ##           non-corpus speaker             1    1
+  ##           northern ireland               2   36
+  ##           republic of ireland            1   21
+  ## 2002-2005 mixed between ni and roi      19    7
+  ##           non-corpus speaker             7    9
+  ##           northern ireland             122   41
+  ##           republic of ireland           38   27</code></pre>
+</details>
+</div>
+<p>`</p>
+<hr />
+</div>
+<div id="saving-data-to-your-computer" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Saving data to your computer<a href="getting-started-with-r-and-rstudio-2.html#saving-data-to-your-computer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To save tabular data on your computer, you can use the <code>write.table</code> function. This function requires the data that you want to save as its first argument, the location where you want to save the data as the second argument and the type of delimiter as the third argument.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="getting-started-with-r-and-rstudio-2.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(icebio, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;icebio.txt&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>) </span></code></pre></div>
+<p><strong>A word about paths</strong></p>
+<p>In the code chunk above, the sequence <code>here::here("data", "icebio.txt")</code> is a handy way to define a path. A path is simply the location where a file is stored on your computer or on the internet (which typically is a server - which is just a fancy term for a computer - somewhere on the globe). The <code>here</code> function from the<code>here</code> package allows to simply state in which folder a certain file is and what file you are talking about.</p>
+<p>In this case, we want to access the file <code>icebio</code> (which is a <code>txt</code> file and thus has the appendix <code>.txt</code>) in the <code>data</code> folder. R will always start looking in the folder in which your project is stored. If you want to access a file that is stored somewhere else on your computer, you can also define the full path to the folder in which the file is. In my case, this would be <code>D:/Uni/UQ/SLC/LADAL/SLCLADAL.github.io/data</code>. However, as the <code>data</code> folder in in the folder where my Rproj file is, I only need to specify that the file is in the <code>data</code> folder within the folder in which my Rproj file is located.</p>
+<p><strong>A word about package naming</strong></p>
+<p>Another thing that is notable in the sequence <code>here::here("data", "icebio.txt")</code> is that I specified that the <code>here</code> function is part of the <code>here</code> package. This is what I meant by writing <code>here::here</code> which simply means use the <code>here</code> function from <code>here</code> package (<code>package::function</code>). This may appear to be somewhat redundant but it happens quite frequently, that different packages have functions that have the same names. In such cases, R will simply choose the function from the package that was loaded last. To prevent R from using the wrong function, it makes sense to specify the package AND the function (as I did in the sequence <code>here::here</code>). I only use functions without specify the package if the function is part of base R.</p>
+</div>
+<div id="loading-data-from-your-computer" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Loading data from your computer<a href="getting-started-with-r-and-rstudio-2.html#loading-data-from-your-computer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To load tabular data from within your project folder (if it is in a tab-separated txt-file) you can also use the <code>read.delim</code> function. The only difference to loading from the web is that you use a path instead of a URL. If the txt-file is in the folder called <em>data</em> in your project folder, you would load the data as shown below.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="getting-started-with-r-and-rstudio-2.html#cb10-1" aria-hidden="true" tabindex="-1"></a>icebio <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;icebio.txt&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> T)</span></code></pre></div>
+<p>However, you can always just use the full path (and you must do this is the data is not in your project folder).</p>
+<hr />
+<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>NOTE</b><br>You may have to change the path to the data!
+</p>
+<p style="margin-left:1em;">
+</p>
+<p></span></p>
+</div>
+<hr />
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="getting-started-with-r-and-rstudio-2.html#cb11-1" aria-hidden="true" tabindex="-1"></a>icebio <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;icebio.txt&quot;</span>), </span>
+<span id="cb11-2"><a href="getting-started-with-r-and-rstudio-2.html#cb11-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> T)</span></code></pre></div>
+<p>To if this has worked, we will use the <code>head</code> function to see first 6 rows of the data</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="getting-started-with-r-and-rstudio-2.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(icebio)</span></code></pre></div>
+<pre><code>##   id file.speaker.id text.id spk.ref             zone      date    sex   age
+## 1  1     &lt;S1A-001$A&gt; S1A-001       A northern ireland 1990-1994   male 34-41
+## 2  2     &lt;S1A-001$B&gt; S1A-001       B northern ireland 1990-1994 female 34-41
+## 3  3     &lt;S1A-002$?&gt; S1A-002       ?             &lt;NA&gt;      &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;
+## 4  4     &lt;S1A-002$A&gt; S1A-002       A northern ireland 2002-2005 female 26-33
+## 5  5     &lt;S1A-002$B&gt; S1A-002       B northern ireland 2002-2005 female 19-25
+## 6  6     &lt;S1A-002$C&gt; S1A-002       C northern ireland 2002-2005   male   50+
+##   word.count
+## 1        765
+## 2       1298
+## 3         23
+## 4        391
+## 5         47
+## 6        200</code></pre>
+</div>
+<div id="loading-excel-data" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Loading Excel data<a href="getting-started-with-r-and-rstudio-2.html#loading-excel-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To load Excel spreadsheets, you can use the <code>read_excel</code> function from the <code>readxl</code> package as shown below. However, it may be necessary to install and activate the <code>readxl</code> package first.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="getting-started-with-r-and-rstudio-2.html#cb14-1" aria-hidden="true" tabindex="-1"></a>icebio <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;ICEdata.xlsx&quot;</span>))</span></code></pre></div>
+<p>We now briefly check column names to see if the loading of the data has worked.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="getting-started-with-r-and-rstudio-2.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(icebio)</span></code></pre></div>
+<pre><code>## [1] &quot;id&quot;              &quot;file.speaker.id&quot; &quot;text.id&quot;         &quot;spk.ref&quot;        
+## [5] &quot;zone&quot;            &quot;date&quot;            &quot;sex&quot;             &quot;age&quot;            
+## [9] &quot;word.count&quot;</code></pre>
+</div>
+<div id="loading-text-data" class="section level3 hasAnchor" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> Loading text data<a href="getting-started-with-r-and-rstudio-2.html#loading-text-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are many functions that we can use to load text data into R. For example, we can use the <code>readLines</code> function as shown below.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="getting-started-with-r-and-rstudio-2.html#cb17-1" aria-hidden="true" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="fu">readLines</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;text2.txt&quot;</span>))</span>
+<span id="cb17-2"><a href="getting-started-with-r-and-rstudio-2.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect first text element</span></span>
+<span id="cb17-3"><a href="getting-started-with-r-and-rstudio-2.html#cb17-3" aria-hidden="true" tabindex="-1"></a>text[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;The book is presented as a manuscript written by its protagonist, a middle-aged man named Harry Haller, who leaves it to a chance acquaintance, the nephew of his landlady. The acquaintance adds a short preface of his own and then has the manuscript published. The title of this \&quot;real\&quot; book-in-the-book is Harry Haller&#39;s Records (For Madmen Only).&quot;</code></pre>
+<p>To load many texts, we can use a loop to read all texts in a folder as shown below. In a first step, we define the paths of the texts and then, we use the <code>sapply</code> function to loop over the paths and read them into R.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="getting-started-with-r-and-rstudio-2.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define paths</span></span>
+<span id="cb19-2"><a href="getting-started-with-r-and-rstudio-2.html#cb19-2" aria-hidden="true" tabindex="-1"></a>paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data/testcorpus&quot;</span>), <span class="at">full.names =</span> T)</span>
+<span id="cb19-3"><a href="getting-started-with-r-and-rstudio-2.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load texts</span></span>
+<span id="cb19-4"><a href="getting-started-with-r-and-rstudio-2.html#cb19-4" aria-hidden="true" tabindex="-1"></a>texts <span class="ot">&lt;-</span> <span class="fu">sapply</span>(paths, <span class="cf">function</span>(x){ <span class="fu">readLines</span>(x) })</span>
+<span id="cb19-5"><a href="getting-started-with-r-and-rstudio-2.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect first text element</span></span>
+<span id="cb19-6"><a href="getting-started-with-r-and-rstudio-2.html#cb19-6" aria-hidden="true" tabindex="-1"></a>texts[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## $&lt;NA&gt;
+## NULL</code></pre>
+<p>A method achieving the same result which uses piping (more on what that is below) and tidyverse R code is shown below.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="getting-started-with-r-and-rstudio-2.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define paths</span></span>
+<span id="cb21-2"><a href="getting-started-with-r-and-rstudio-2.html#cb21-2" aria-hidden="true" tabindex="-1"></a>texts <span class="ot">&lt;-</span> <span class="fu">list.files</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data/testcorpus&quot;</span>), <span class="at">full.names =</span> T, <span class="at">pattern =</span> <span class="st">&quot;.*txt&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="getting-started-with-r-and-rstudio-2.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map_chr</span>(<span class="sc">~</span> readr<span class="sc">::</span><span class="fu">read_file</span>(.))</span>
+<span id="cb21-4"><a href="getting-started-with-r-and-rstudio-2.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect first text element</span></span>
+<span id="cb21-5"><a href="getting-started-with-r-and-rstudio-2.html#cb21-5" aria-hidden="true" tabindex="-1"></a>texts[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+</div>
+<div id="renaming-piping-and-filtering" class="section level3 hasAnchor" number="5.1.6">
+<h3><span class="header-section-number">5.1.6</span> Renaming, Piping, and Filtering<a href="getting-started-with-r-and-rstudio-2.html#renaming-piping-and-filtering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To rename existing columns in a table, you can use the <code>rename</code> command which takes the table as the first argument, the new name as the second argument, the an equal sign (=), and finally, the old name es the third argument. For example, renaming a column <em>OldName</em> as <em>NewName</em> in a table called <em>MyTable</em> would look like this: <code>rename(MyTable, NewName = OldName)</code>.</p>
+<p>Piping is done using the <code>%&gt;%</code> sequence and it can be translated as <strong>and then</strong>. In the example below, we create a new object (icebio_edit) from the existing object (icebio) <em>and then</em> we rename the columns in the new object. When we use piping, we do not need to name the data we are using as this is provided by the previous step.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="getting-started-with-r-and-rstudio-2.html#cb23-1" aria-hidden="true" tabindex="-1"></a>icebio_edit <span class="ot">&lt;-</span> icebio <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="getting-started-with-r-and-rstudio-2.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">Id =</span> id,</span>
+<span id="cb23-3"><a href="getting-started-with-r-and-rstudio-2.html#cb23-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">FileSpeakerId =</span> file.speaker.id,</span>
+<span id="cb23-4"><a href="getting-started-with-r-and-rstudio-2.html#cb23-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">File =</span> <span class="fu">colnames</span>(icebio)[<span class="dv">3</span>],</span>
+<span id="cb23-5"><a href="getting-started-with-r-and-rstudio-2.html#cb23-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">Speaker =</span> <span class="fu">colnames</span>(icebio)[<span class="dv">4</span>])</span>
+<span id="cb23-6"><a href="getting-started-with-r-and-rstudio-2.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb23-7"><a href="getting-started-with-r-and-rstudio-2.html#cb23-7" aria-hidden="true" tabindex="-1"></a>icebio_edit[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 6
+##      Id FileSpeakerId File    Speaker zone             date     
+##   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;            &lt;chr&gt;    
+## 1     1 &lt;S1A-001$A&gt;   S1A-001 A       northern ireland 1990-1994
+## 2     2 &lt;S1A-001$B&gt;   S1A-001 B       northern ireland 1990-1994
+## 3     3 &lt;S1A-002$?&gt;   S1A-002 ?       NA               NA       
+## 4     4 &lt;S1A-002$A&gt;   S1A-002 A       northern ireland 2002-2005
+## 5     5 &lt;S1A-002$B&gt;   S1A-002 B       northern ireland 2002-2005</code></pre>
+<p>A very handy way to rename many columns simultaneously, you can use the <code>str_to_title</code> function which capitalizes first letter of a word. In the example below, we capitalize all first letters of the column names of our current data.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="getting-started-with-r-and-rstudio-2.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(icebio_edit) <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_to_title</span>(<span class="fu">colnames</span>(icebio_edit))</span>
+<span id="cb25-2"><a href="getting-started-with-r-and-rstudio-2.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb25-3"><a href="getting-started-with-r-and-rstudio-2.html#cb25-3" aria-hidden="true" tabindex="-1"></a>icebio_edit[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 6
+##      Id Filespeakerid File    Speaker Zone             Date     
+##   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;            &lt;chr&gt;    
+## 1     1 &lt;S1A-001$A&gt;   S1A-001 A       northern ireland 1990-1994
+## 2     2 &lt;S1A-001$B&gt;   S1A-001 B       northern ireland 1990-1994
+## 3     3 &lt;S1A-002$?&gt;   S1A-002 ?       NA               NA       
+## 4     4 &lt;S1A-002$A&gt;   S1A-002 A       northern ireland 2002-2005
+## 5     5 &lt;S1A-002$B&gt;   S1A-002 B       northern ireland 2002-2005</code></pre>
+<p>To remove rows based on values in columns you can use the <code>filter</code> function.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="getting-started-with-r-and-rstudio-2.html#cb27-1" aria-hidden="true" tabindex="-1"></a>icebio_edit2 <span class="ot">&lt;-</span> icebio_edit <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="getting-started-with-r-and-rstudio-2.html#cb27-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Speaker <span class="sc">!=</span> <span class="st">&quot;?&quot;</span>,</span>
+<span id="cb27-3"><a href="getting-started-with-r-and-rstudio-2.html#cb27-3" aria-hidden="true" tabindex="-1"></a>         Zone <span class="sc">!=</span> <span class="fu">is.na</span>(Zone),</span>
+<span id="cb27-4"><a href="getting-started-with-r-and-rstudio-2.html#cb27-4" aria-hidden="true" tabindex="-1"></a>         Date <span class="sc">==</span> <span class="st">&quot;2002-2005&quot;</span>,</span>
+<span id="cb27-5"><a href="getting-started-with-r-and-rstudio-2.html#cb27-5" aria-hidden="true" tabindex="-1"></a>         Word.count <span class="sc">&gt;</span> <span class="dv">5</span>)</span>
+<span id="cb27-6"><a href="getting-started-with-r-and-rstudio-2.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb27-7"><a href="getting-started-with-r-and-rstudio-2.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(icebio_edit2)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 9
+##      Id Filespeakerid File    Speaker Zone          Date  Sex   Age   Word.count
+##   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
+## 1     4 &lt;S1A-002$A&gt;   S1A-002 A       northern ire… 2002… fema… 26-33        391
+## 2     5 &lt;S1A-002$B&gt;   S1A-002 B       northern ire… 2002… fema… 19-25         47
+## 3     6 &lt;S1A-002$C&gt;   S1A-002 C       northern ire… 2002… male  50+          200
+## 4     7 &lt;S1A-002$D&gt;   S1A-002 D       northern ire… 2002… fema… 50+          464
+## 5     8 &lt;S1A-002$E&gt;   S1A-002 E       mixed betwee… 2002… male  34-41        639
+## 6     9 &lt;S1A-002$F&gt;   S1A-002 F       northern ire… 2002… fema… 26-33        308</code></pre>
+<p>To select specific columns you can use the <code>select</code> function.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="getting-started-with-r-and-rstudio-2.html#cb29-1" aria-hidden="true" tabindex="-1"></a>icebio_selection <span class="ot">&lt;-</span> icebio_edit2 <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="getting-started-with-r-and-rstudio-2.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(File, Speaker, Word.count)</span>
+<span id="cb29-3"><a href="getting-started-with-r-and-rstudio-2.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb29-4"><a href="getting-started-with-r-and-rstudio-2.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(icebio_selection)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##   File    Speaker Word.count
+##   &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;
+## 1 S1A-002 A              391
+## 2 S1A-002 B               47
+## 3 S1A-002 C              200
+## 4 S1A-002 D              464
+## 5 S1A-002 E              639
+## 6 S1A-002 F              308</code></pre>
+<p>You can also use the <code>select</code> function to remove specific columns.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="getting-started-with-r-and-rstudio-2.html#cb31-1" aria-hidden="true" tabindex="-1"></a>icebio_selection2 <span class="ot">&lt;-</span> icebio_edit2 <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="getting-started-with-r-and-rstudio-2.html#cb31-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Id, <span class="sc">-</span>File, <span class="sc">-</span>Speaker, <span class="sc">-</span>Date, <span class="sc">-</span>Zone, <span class="sc">-</span>Age)</span>
+<span id="cb31-3"><a href="getting-started-with-r-and-rstudio-2.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb31-4"><a href="getting-started-with-r-and-rstudio-2.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(icebio_selection2)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##   Filespeakerid Sex    Word.count
+##   &lt;chr&gt;         &lt;chr&gt;       &lt;dbl&gt;
+## 1 &lt;S1A-002$A&gt;   female        391
+## 2 &lt;S1A-002$B&gt;   female         47
+## 3 &lt;S1A-002$C&gt;   male          200
+## 4 &lt;S1A-002$D&gt;   female        464
+## 5 &lt;S1A-002$E&gt;   male          639
+## 6 &lt;S1A-002$F&gt;   female        308</code></pre>
+</div>
+<div id="ordering-data" class="section level3 hasAnchor" number="5.1.7">
+<h3><span class="header-section-number">5.1.7</span> Ordering data<a href="getting-started-with-r-and-rstudio-2.html#ordering-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To order data, for instance, in ascending order according to a specific column you can use the <code>arrange</code> function.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="getting-started-with-r-and-rstudio-2.html#cb33-1" aria-hidden="true" tabindex="-1"></a>icebio_ordered_asc <span class="ot">&lt;-</span> icebio_selection2 <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="getting-started-with-r-and-rstudio-2.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(Word.count)</span>
+<span id="cb33-3"><a href="getting-started-with-r-and-rstudio-2.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb33-4"><a href="getting-started-with-r-and-rstudio-2.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(icebio_ordered_asc)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##   Filespeakerid Sex    Word.count
+##   &lt;chr&gt;         &lt;chr&gt;       &lt;dbl&gt;
+## 1 &lt;S1B-009$D&gt;   female          6
+## 2 &lt;S1B-005$C&gt;   female          7
+## 3 &lt;S1B-009$C&gt;   male            7
+## 4 &lt;S1B-020$F&gt;   male            7
+## 5 &lt;S1B-006$G&gt;   female          9
+## 6 &lt;S2A-050$B&gt;   male            9</code></pre>
+<p>To order data in descending order you can also use the <code>arrange</code> function and simply add a - before the column according to which you want to order the data.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="getting-started-with-r-and-rstudio-2.html#cb35-1" aria-hidden="true" tabindex="-1"></a>icebio_ordered_desc <span class="ot">&lt;-</span> icebio_selection2 <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="getting-started-with-r-and-rstudio-2.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="sc">-</span>Word.count)</span>
+<span id="cb35-3"><a href="getting-started-with-r-and-rstudio-2.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb35-4"><a href="getting-started-with-r-and-rstudio-2.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(icebio_ordered_desc)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##   Filespeakerid Sex    Word.count
+##   &lt;chr&gt;         &lt;chr&gt;       &lt;dbl&gt;
+## 1 &lt;S2A-055$A&gt;   female       2355
+## 2 &lt;S2A-047$A&gt;   male         2340
+## 3 &lt;S2A-035$A&gt;   female       2244
+## 4 &lt;S2A-048$A&gt;   male         2200
+## 5 &lt;S2A-015$A&gt;   male         2172
+## 6 &lt;S2A-054$A&gt;   female       2113</code></pre>
+<p>The output shows that the female speaker in file S2A-005 with the speaker identity A has the highest word count with 2,355 words.</p>
+<hr />
+<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>EXERCISE TIME!</b>
+</p>
+<p style="margin-left:1em;">
+</p>
+<p></span></p>
+</div>
+<div class="question">
+<p>`</p>
+<ol style="list-style-type: decimal">
+<li>Using the data called <code>icebio</code>, create a new data set called <code>ICE_Ire_ordered</code> and arrange the data in descending order by the number of words that each speaker has uttered. Who is the speaker with the highest word count?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="getting-started-with-r-and-rstudio-2.html#cb37-1" aria-hidden="true" tabindex="-1"></a>  ICE_Ire_ordered <span class="ot">&lt;-</span> icebio <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a href="getting-started-with-r-and-rstudio-2.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="sc">-</span>word.count)</span>
+<span id="cb37-3"><a href="getting-started-with-r-and-rstudio-2.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># inspect data</span></span>
+<span id="cb37-4"><a href="getting-started-with-r-and-rstudio-2.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(ICE_Ire_ordered)</span></code></pre></div>
+<pre><code>  ## # A tibble: 6 × 9
+  ##      id file.speaker.id text.id spk.ref zone        date  sex   age   word.count
+  ##   &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
+  ## 1   956 &lt;S2A-037$A&gt;     S2A-037 A       republic o… 1990… male  NA          2565
+  ## 2   919 &lt;S2A-016$A&gt;     S2A-016 A       republic o… 1995… fema… 34-41       2482
+  ## 3   933 &lt;S2A-023$A&gt;     S2A-023 A       northern i… 1990… male  50+         2367
+  ## 4   992 &lt;S2A-055$A&gt;     S2A-055 A       northern i… 2002… fema… 42-49       2355
+  ## 5   979 &lt;S2A-047$A&gt;     S2A-047 A       republic o… 2002… male  50+         2340
+  ## 6   997 &lt;S2A-059$A&gt;     S2A-059 A       republic o… 1990… fema… NA          2305</code></pre>
+</details>
+</div>
+<p>`</p>
+<hr />
+</div>
+<div id="creating-and-changing-variables" class="section level3 hasAnchor" number="5.1.8">
+<h3><span class="header-section-number">5.1.8</span> Creating and changing variables<a href="getting-started-with-r-and-rstudio-2.html#creating-and-changing-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>New columns are created, and existing columns can be changed, by using the <code>mutate</code> function. The <code>mutate</code> function takes two arguments (if the data does not have to be specified): the first argument is the (new) name of column that you want to create and the second is what you want to store in that column. The = tells R that the new column will contain the result of the second argument.</p>
+<p>In the example below, we create a new column called <em>Texttype</em>.</p>
+<p>This new column should contain</p>
+<ul>
+<li><p>the value <em>PrivateDialoge</em> if <em>Filespeakerid</em> contains the sequence <em>S1A</em>,</p></li>
+<li><p>the value <em>PublicDialogue</em> if <em>Filespeakerid</em> contains the sequence <em>S1B</em>,</p></li>
+<li><p>the value <em>UnscriptedMonologue</em> if <em>Filespeakerid</em> contains the sequence <em>S2A</em>,</p></li>
+<li><p>the value <em>ScriptedMonologue</em> if <em>Filespeakerid</em> contains the sequence <em>S2B</em>,</p></li>
+<li><p>the value of <em>Filespeakerid</em> if <em>Filespeakerid</em> neither contains <em>S1A</em>, <em>S1B</em>, <em>S2A</em>, nor <em>S2B</em>.</p></li>
+</ul>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="getting-started-with-r-and-rstudio-2.html#cb39-1" aria-hidden="true" tabindex="-1"></a>icebio_texttype <span class="ot">&lt;-</span> icebio_selection2 <span class="sc">%&gt;%</span></span>
+<span id="cb39-2"><a href="getting-started-with-r-and-rstudio-2.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Texttype =</span> </span>
+<span id="cb39-3"><a href="getting-started-with-r-and-rstudio-2.html#cb39-3" aria-hidden="true" tabindex="-1"></a>                  dplyr<span class="sc">::</span><span class="fu">case_when</span>(stringr<span class="sc">::</span><span class="fu">str_detect</span>(Filespeakerid ,<span class="st">&quot;S1A&quot;</span>) <span class="sc">~</span> <span class="st">&quot;PrivateDialoge&quot;</span>,</span>
+<span id="cb39-4"><a href="getting-started-with-r-and-rstudio-2.html#cb39-4" aria-hidden="true" tabindex="-1"></a>                                   stringr<span class="sc">::</span><span class="fu">str_detect</span>(Filespeakerid ,<span class="st">&quot;S1B&quot;</span>) <span class="sc">~</span> <span class="st">&quot;PublicDialogue&quot;</span>,</span>
+<span id="cb39-5"><a href="getting-started-with-r-and-rstudio-2.html#cb39-5" aria-hidden="true" tabindex="-1"></a>                                   stringr<span class="sc">::</span><span class="fu">str_detect</span>(Filespeakerid ,<span class="st">&quot;S2A&quot;</span>) <span class="sc">~</span> <span class="st">&quot;UnscriptedMonologue&quot;</span>,</span>
+<span id="cb39-6"><a href="getting-started-with-r-and-rstudio-2.html#cb39-6" aria-hidden="true" tabindex="-1"></a>                                   stringr<span class="sc">::</span><span class="fu">str_detect</span>(Filespeakerid ,<span class="st">&quot;S2B&quot;</span>) <span class="sc">~</span> <span class="st">&quot;ScriptedMonologue&quot;</span>,</span>
+<span id="cb39-7"><a href="getting-started-with-r-and-rstudio-2.html#cb39-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="cn">TRUE</span> <span class="sc">~</span> Filespeakerid))</span>
+<span id="cb39-8"><a href="getting-started-with-r-and-rstudio-2.html#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb39-9"><a href="getting-started-with-r-and-rstudio-2.html#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(icebio_texttype)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 4
+##   Filespeakerid Sex    Word.count Texttype      
+##   &lt;chr&gt;         &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;         
+## 1 &lt;S1A-002$A&gt;   female        391 PrivateDialoge
+## 2 &lt;S1A-002$B&gt;   female         47 PrivateDialoge
+## 3 &lt;S1A-002$C&gt;   male          200 PrivateDialoge
+## 4 &lt;S1A-002$D&gt;   female        464 PrivateDialoge
+## 5 &lt;S1A-002$E&gt;   male          639 PrivateDialoge
+## 6 &lt;S1A-002$F&gt;   female        308 PrivateDialoge</code></pre>
+</div>
+<div id="if-statements" class="section level3 hasAnchor" number="5.1.9">
+<h3><span class="header-section-number">5.1.9</span> If-statements<a href="getting-started-with-r-and-rstudio-2.html#if-statements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We should briefly talk about if-statements (or <code>case_when</code> in the present case). The <code>case_when</code> function is both very powerful and extremely helpful as it allows you to assign values based on a test. As such, <code>case_when</code>-statements can be read as:</p>
+<p><em>When/If X is the case, then do A and if X is not the case do B!</em> (When/If -&gt; Then -&gt; Else)</p>
+<p>The nice thing about <code>ifelse</code> or <code>case_when</code>-statements is that they can be used in succession as we have done above. This can then be read as:</p>
+<p><em>If X is the case, then do A, if Y is the case, then do B, else do Z</em></p>
+<hr />
+<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>EXERCISE TIME!</b>
+</p>
+<p style="margin-left:1em;">
+</p>
+<p></span></p>
+</div>
+<div class="question">
+<p>`</p>
+<p>1.Using the data called <code>icebio</code>, create a new data set called <code>ICE_Ire_AgeGroup</code> in which you create a column called <code>AgeGroup</code> where all speakers who are younger than 42 have the value <em>young</em> and all speakers aged 42 and over <em>old</em>.</p>
+<p><strong>Tip</strong>: use if-statements to assign the <em>old</em> and <em>young</em> values.</p>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="getting-started-with-r-and-rstudio-2.html#cb41-1" aria-hidden="true" tabindex="-1"></a>  ICE_Ire_AgeGroup <span class="ot">&lt;-</span> icebio <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="getting-started-with-r-and-rstudio-2.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">AgeGroup =</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(age <span class="sc">==</span> <span class="st">&quot;42-49&quot;</span> <span class="sc">~</span> <span class="st">&quot;old&quot;</span>,</span>
+<span id="cb41-3"><a href="getting-started-with-r-and-rstudio-2.html#cb41-3" aria-hidden="true" tabindex="-1"></a>                                            age <span class="sc">==</span> <span class="st">&quot;50+&quot;</span> <span class="sc">~</span> <span class="st">&quot;old&quot;</span>, </span>
+<span id="cb41-4"><a href="getting-started-with-r-and-rstudio-2.html#cb41-4" aria-hidden="true" tabindex="-1"></a>                                            age <span class="sc">==</span> <span class="st">&quot;0-18&quot;</span> <span class="sc">~</span> <span class="st">&quot;young&quot;</span>,</span>
+<span id="cb41-5"><a href="getting-started-with-r-and-rstudio-2.html#cb41-5" aria-hidden="true" tabindex="-1"></a>                                            age <span class="sc">==</span> <span class="st">&quot;19-25&quot;</span> <span class="sc">~</span> <span class="st">&quot;young&quot;</span>,</span>
+<span id="cb41-6"><a href="getting-started-with-r-and-rstudio-2.html#cb41-6" aria-hidden="true" tabindex="-1"></a>                                            age <span class="sc">==</span> <span class="st">&quot;26-33&quot;</span> <span class="sc">~</span> <span class="st">&quot;young&quot;</span>,</span>
+<span id="cb41-7"><a href="getting-started-with-r-and-rstudio-2.html#cb41-7" aria-hidden="true" tabindex="-1"></a>                                            age <span class="sc">==</span> <span class="st">&quot;34-41&quot;</span> <span class="sc">~</span> <span class="st">&quot;young&quot;</span>, </span>
+<span id="cb41-8"><a href="getting-started-with-r-and-rstudio-2.html#cb41-8" aria-hidden="true" tabindex="-1"></a>                                            <span class="cn">TRUE</span> <span class="sc">~</span>age))</span>
+<span id="cb41-9"><a href="getting-started-with-r-and-rstudio-2.html#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># inspect data</span></span>
+<span id="cb41-10"><a href="getting-started-with-r-and-rstudio-2.html#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(ICE_Ire_AgeGroup); <span class="fu">table</span>(ICE_Ire_AgeGroup<span class="sc">$</span>AgeGroup)</span></code></pre></div>
+<pre><code>  ## # A tibble: 6 × 10
+  ##      id file.speaker.id text.id spk.ref zone        date  sex   age   word.count
+  ##   &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
+  ## 1     1 &lt;S1A-001$A&gt;     S1A-001 A       northern i… 1990… male  34-41        765
+  ## 2     2 &lt;S1A-001$B&gt;     S1A-001 B       northern i… 1990… fema… 34-41       1298
+  ## 3     3 &lt;S1A-002$?&gt;     S1A-002 ?       NA          NA    NA    NA            23
+  ## 4     4 &lt;S1A-002$A&gt;     S1A-002 A       northern i… 2002… fema… 26-33        391
+  ## 5     5 &lt;S1A-002$B&gt;     S1A-002 B       northern i… 2002… fema… 19-25         47
+  ## 6     6 &lt;S1A-002$C&gt;     S1A-002 C       northern i… 2002… male  50+          200
+  ## # … with 1 more variable: AgeGroup &lt;chr&gt;</code></pre>
+<pre><code>  ## 
+  ##    NA   old young 
+  ##   547   333   452</code></pre>
+</details>
+</div>
+<p>`</p>
+<hr />
+</div>
+<div id="summarizing-data" class="section level3 hasAnchor" number="5.1.10">
+<h3><span class="header-section-number">5.1.10</span> Summarizing data<a href="getting-started-with-r-and-rstudio-2.html#summarizing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Summarizing is really helpful and can be done using the <code>summarise</code> function.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="getting-started-with-r-and-rstudio-2.html#cb44-1" aria-hidden="true" tabindex="-1"></a>icebio_summary1 <span class="ot">&lt;-</span> icebio_texttype <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="getting-started-with-r-and-rstudio-2.html#cb44-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">Words =</span> <span class="fu">sum</span>(Word.count))</span>
+<span id="cb44-3"><a href="getting-started-with-r-and-rstudio-2.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb44-4"><a href="getting-started-with-r-and-rstudio-2.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(icebio_summary1)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
+##    Words
+##    &lt;dbl&gt;
+## 1 141876</code></pre>
+<p>To get summaries of sub-groups or by variable level, we can use the <code>group_by</code> function and then use the <code>summarise</code> function.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="getting-started-with-r-and-rstudio-2.html#cb46-1" aria-hidden="true" tabindex="-1"></a>icebio_summary2 <span class="ot">&lt;-</span> icebio_texttype <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href="getting-started-with-r-and-rstudio-2.html#cb46-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Texttype, Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a href="getting-started-with-r-and-rstudio-2.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">Speakers =</span> <span class="fu">n</span>(),</span>
+<span id="cb46-4"><a href="getting-started-with-r-and-rstudio-2.html#cb46-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Words =</span> <span class="fu">sum</span>(Word.count))</span>
+<span id="cb46-5"><a href="getting-started-with-r-and-rstudio-2.html#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb46-6"><a href="getting-started-with-r-and-rstudio-2.html#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(icebio_summary2)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 4
+## # Groups:   Texttype [3]
+##   Texttype            Sex    Speakers Words
+##   &lt;chr&gt;               &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt;
+## 1 PrivateDialoge      female      105 60024
+## 2 PrivateDialoge      male         18  9628
+## 3 PublicDialogue      female       63 24647
+## 4 PublicDialogue      male         41 16783
+## 5 UnscriptedMonologue female        3  6712
+## 6 UnscriptedMonologue male         16 24082</code></pre>
+<hr />
+<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>EXERCISE TIME!</b>
+</p>
+<p style="margin-left:1em;">
+</p>
+<p></span></p>
+</div>
+<div class="question">
+<p>`</p>
+<ol style="list-style-type: decimal">
+<li>Use the <code>icebio</code> and determine the number of words uttered by female speakers from Northern Ireland above an age of 50.</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="getting-started-with-r-and-rstudio-2.html#cb48-1" aria-hidden="true" tabindex="-1"></a>  words_fni50 <span class="ot">&lt;-</span> icebio <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a href="getting-started-with-r-and-rstudio-2.html#cb48-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(zone, sex, age, word.count) <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="getting-started-with-r-and-rstudio-2.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(zone, sex, age) <span class="sc">%&gt;%</span></span>
+<span id="cb48-4"><a href="getting-started-with-r-and-rstudio-2.html#cb48-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">Words =</span> <span class="fu">sum</span>(word.count)) <span class="sc">%&gt;%</span></span>
+<span id="cb48-5"><a href="getting-started-with-r-and-rstudio-2.html#cb48-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span>,</span>
+<span id="cb48-6"><a href="getting-started-with-r-and-rstudio-2.html#cb48-6" aria-hidden="true" tabindex="-1"></a>         age <span class="sc">==</span> <span class="st">&quot;50+&quot;</span>,</span>
+<span id="cb48-7"><a href="getting-started-with-r-and-rstudio-2.html#cb48-7" aria-hidden="true" tabindex="-1"></a>         zone <span class="sc">==</span> <span class="st">&quot;northern ireland&quot;</span>)</span></code></pre></div>
+<pre><code>  ## `summarise()` has grouped output by &#39;zone&#39;, &#39;sex&#39;. You can override using the
+  ## `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="getting-started-with-r-and-rstudio-2.html#cb50-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># inspect data</span></span>
+<span id="cb50-2"><a href="getting-started-with-r-and-rstudio-2.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  words_fni50</span></code></pre></div>
+<pre><code>  ## # A tibble: 1 × 4
+  ## # Groups:   zone, sex [1]
+  ##   zone             sex    age   Words
+  ##   &lt;chr&gt;            &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;
+  ## 1 northern ireland female 50+   23210</code></pre>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Load the file <em>exercisedata.txt</em> and determine the mean scores of groups A and B.</li>
+</ol>
+<p><strong>Tip</strong>: to extract the mean, combine the <code>summary</code> function with the <code>mean</code> function.</p>
+<details>
+<summary>
+Answer
+</summary>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="getting-started-with-r-and-rstudio-2.html#cb52-1" aria-hidden="true" tabindex="-1"></a>  exercisedata <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;data/exercisedata.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="getting-started-with-r-and-rstudio-2.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Group) <span class="sc">%&gt;%</span></span>
+<span id="cb52-3"><a href="getting-started-with-r-and-rstudio-2.html#cb52-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">Mean =</span> <span class="fu">mean</span>(Score))</span>
+<span id="cb52-4"><a href="getting-started-with-r-and-rstudio-2.html#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># inspect data</span></span>
+<span id="cb52-5"><a href="getting-started-with-r-and-rstudio-2.html#cb52-5" aria-hidden="true" tabindex="-1"></a>  exercisedata</span></code></pre></div>
+<pre><code>  ## # A tibble: 2 × 2
+  ##   Group  Mean
+  ##   &lt;chr&gt; &lt;dbl&gt;
+  ## 1 A      14.9
+  ## 2 B      11.8</code></pre>
+</details>
+</div>
+<p>`</p>
+<hr />
+</div>
+<div id="gathering-and-spreading-data" class="section level3 hasAnchor" number="5.1.11">
+<h3><span class="header-section-number">5.1.11</span> Gathering and spreading data<a href="getting-started-with-r-and-rstudio-2.html#gathering-and-spreading-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>tidyr</code> package has two very useful functions for gathering and spreading data that can be sued to transform data to long and wide formats (you will see what this means below). The functions are called <code>gather</code> and <code>spread</code>.</p>
+<p>We will use the data set called <code>icebio_summary2</code>, which we created above, to demonstrate how this works.</p>
+<p>We will first check out the <code>spread</code>-function to create different columns for women and men that show how many of them are represented in the different text types.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="getting-started-with-r-and-rstudio-2.html#cb54-1" aria-hidden="true" tabindex="-1"></a>icebio_summary_wide <span class="ot">&lt;-</span> icebio_summary2 <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="getting-started-with-r-and-rstudio-2.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Words) <span class="sc">%&gt;%</span></span>
+<span id="cb54-3"><a href="getting-started-with-r-and-rstudio-2.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">spread</span>(Sex, Speakers)</span>
+<span id="cb54-4"><a href="getting-started-with-r-and-rstudio-2.html#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect</span></span>
+<span id="cb54-5"><a href="getting-started-with-r-and-rstudio-2.html#cb54-5" aria-hidden="true" tabindex="-1"></a>icebio_summary_wide</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 3
+## # Groups:   Texttype [3]
+##   Texttype            female  male
+##   &lt;chr&gt;                &lt;int&gt; &lt;int&gt;
+## 1 PrivateDialoge         105    18
+## 2 PublicDialogue          63    41
+## 3 UnscriptedMonologue      3    16</code></pre>
+<p>The data is now in what is called a <code>wide</code>-format as values are distributed across columns.</p>
+<p>To reformat this back to a <code>long</code>-format where each column represents exactly one variable, we use the <code>gather</code>-function:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="getting-started-with-r-and-rstudio-2.html#cb56-1" aria-hidden="true" tabindex="-1"></a>icebio_summary_long <span class="ot">&lt;-</span> icebio_summary_wide <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a href="getting-started-with-r-and-rstudio-2.html#cb56-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">gather</span>(Sex, Speakers, female<span class="sc">:</span>male)</span>
+<span id="cb56-3"><a href="getting-started-with-r-and-rstudio-2.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect</span></span>
+<span id="cb56-4"><a href="getting-started-with-r-and-rstudio-2.html#cb56-4" aria-hidden="true" tabindex="-1"></a>icebio_summary_long</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+## # Groups:   Texttype [3]
+##   Texttype            Sex    Speakers
+##   &lt;chr&gt;               &lt;chr&gt;     &lt;int&gt;
+## 1 PrivateDialoge      female      105
+## 2 PublicDialogue      female       63
+## 3 UnscriptedMonologue female        3
+## 4 PrivateDialoge      male         18
+## 5 PublicDialogue      male         41
+## 6 UnscriptedMonologue male         16</code></pre>
+</div>
+</div>
+<div id="ending-r-sessions" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Ending R sessions<a href="getting-started-with-r-and-rstudio-2.html#ending-r-sessions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>At the end of each session, you can extract information about the session itself (e.g. which R version you used and which versions of packages). This can help others (or even your future self) to reproduce the analysis that you have done.</p>
+<div id="extracting-session-information" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Extracting session information<a href="getting-started-with-r-and-rstudio-2.html#extracting-session-information" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can extract the session information by running the <code>sessionInfo</code> function (without any arguments)</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="getting-started-with-r-and-rstudio-2.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<pre><code>## R version 4.2.0 (2022-04-22 ucrt)
+## Platform: x86_64-w64-mingw32/x64 (64-bit)
+## Running under: Windows 10 x64 (build 19043)
+## 
+## Matrix products: default
+## 
+## locale:
+## [1] LC_COLLATE=German_Germany.utf8  LC_CTYPE=German_Germany.utf8   
+## [3] LC_MONETARY=German_Germany.utf8 LC_NUMERIC=C                   
+## [5] LC_TIME=German_Germany.utf8    
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices datasets  utils     methods   base     
+## 
+## other attached packages:
+## [1] forcats_0.5.1   stringr_1.4.0   dplyr_1.0.9     purrr_0.3.4    
+## [5] readr_2.1.2     tidyr_1.2.0     tibble_3.1.7    ggplot2_3.3.6  
+## [9] tidyverse_1.3.1
+## 
+## loaded via a namespace (and not attached):
+##  [1] tidyselect_1.1.2 xfun_0.30        bslib_0.3.1      haven_2.5.0     
+##  [5] colorspace_2.0-3 vctrs_0.4.1      generics_0.1.2   htmltools_0.5.2 
+##  [9] yaml_2.3.5       utf8_1.2.2       rlang_1.0.2      jquerylib_0.1.4 
+## [13] pillar_1.7.0     withr_2.5.0      glue_1.6.2       DBI_1.1.2       
+## [17] dbplyr_2.1.1     readxl_1.4.0     modelr_0.1.8     lifecycle_1.0.1 
+## [21] cellranger_1.1.0 munsell_0.5.0    gtable_0.3.0     rvest_1.0.2     
+## [25] evaluate_0.15    knitr_1.39       tzdb_0.3.0       fastmap_1.1.0   
+## [29] fansi_1.0.3      broom_0.8.0      renv_0.15.4      backports_1.4.1 
+## [33] scales_1.2.0     jsonlite_1.8.0   fs_1.5.2         hms_1.1.1       
+## [37] digest_0.6.29    stringi_1.7.6    bookdown_0.26    rprojroot_2.0.3 
+## [41] grid_4.2.0       here_1.0.1       cli_3.3.0        tools_4.2.0     
+## [45] magrittr_2.0.3   sass_0.4.1       crayon_1.5.1     pkgconfig_2.0.3 
+## [49] ellipsis_0.3.2   xml2_1.3.3       reprex_2.0.1     lubridate_1.8.0 
+## [53] assertthat_0.2.1 rmarkdown_2.14   httr_1.4.3       rstudioapi_0.13 
+## [57] R6_2.5.1         compiler_4.2.0</code></pre>
+</div>
+</div>
+<div id="going-further" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Going further<a href="getting-started-with-r-and-rstudio-2.html#going-further" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you want to know more, would like to get some more practice, or would like to have another approach to R, please check out the workshops and resources on R provided by the <a href="https://web.library.uq.edu.au/library-services/training">UQ library</a>. In addition, there are various online resources available to learn R (you can check out a very recommendable introduction <a href="https://uvastatlab.github.io/phdplus/intror.html">here</a>).</p>
+<p>Here are also some additional resources that you may find helpful:</p>
+<ul>
+<li>Grolemund. G., and Wickham, H., <a href="http://r4ds.had.co.nz/"><em>R 4 Data Science</em></a>, 2017.
+<ul>
+<li>Highly recommended! (especially chapters 1, 2, 4, 6, and 8)</li>
+</ul></li>
+<li>Stat545 - Data wrangling, exploration, and analysis with R. University of British Columbia. <a href="http://stat545.com/" class="uri">http://stat545.com/</a></li>
+<li>Swirlstats, a package that teaches you R and statistics within R: <a href="https://swirlstats.com/" class="uri">https://swirlstats.com/</a></li>
+<li>DataCamp’s (free) <em>Intro to R</em> interactive tutorial: <a href="https://www.datacamp.com/courses/free-introduction-to-r" class="uri">https://www.datacamp.com/courses/free-introduction-to-r</a>
+<ul>
+<li>DataCamp’s advanced R tutorials require a subscription.
+*Twitter:</li>
+<li>Explore RStudio Tips <a href="https://twitter.com/rstudiotips" class="uri">https://twitter.com/rstudiotips</a></li>
+<li>Explore #rstats, #rstudioconf</li>
+</ul></li>
+</ul>
+<p>[Back to top](#<a href="#getting_started_with_r_and_rstudio_2">Back to top</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="getting-started-with-r-and-rstudio-1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/edit/master/05-intror2.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/blob/master/05-intror2.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
