@@ -1,4 +1,4 @@
-# Basic Concepts in Quantitative Research 2
+# Significance, Probability and the Normal Distribution
 
 ## Significance and Probability
 

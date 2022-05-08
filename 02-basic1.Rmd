@@ -1,4 +1,4 @@
-# Basic Concepts in Quantitative Research 1
+# Hypotheses and Variables
 
 Perhaps the most trivial and important issues related to the processing and analysis of data are the questions *What is statistics?* and *Why should I use statistics?*. A simple answer to the first question is that statistics is a way to find out about the world around us in quantitative terms. Statistics therefore comprises methods that perform *quantitative analyses*. Quantitative analyses use numeric information to understand the world and they are very important in science (which I take here to refer to any approach that uses the scientific method to gain a reliable understanding of the world around us). The answer to the second question is more complicated but we can say that we use statistics for three main purposes:
 

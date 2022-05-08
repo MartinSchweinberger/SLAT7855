@@ -202,3 +202,11 @@ tree-structure-model-basics
 classification-and-regression-trees
 conditional-inference-trees
 multiple-linear-regression-1
+the-basics-of-multiple-linear-regression
+automatic-model-fitting
+model-diagnostics-4
+basic-concepts-in-quantitative-research-hypotheses-and-variables
+significance-probability-and-the-normal-distribution
+hypotheses-and-variables
+working-with-tables-in-r-and-rstudio-2
+introduction-to-data-visualization

@@ -1,4 +1,4 @@
-# Data Visualization
+# Introduction to Data Visualization
 
 This week, we focus on data visualization. A more in-depth and highly recommendable resource for data visualization in R is @wickham2016ggplot2. A more general introduction to data visualization - which is still highly recommendable is @healy2018data.  
 

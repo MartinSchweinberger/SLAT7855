@@ -1,36 +1,25 @@
 # Multiple Linear Regression
 
 
-This week, we continue with regression analyses and expand on last week by including multiple predictors and by using a regression to analyse a nominal dependent variable. 
+This week, we continue with regression analysis and expand on last week by including multiple predictors. 
 
 **Preparation and session set up**
 
-This tutorial is based on R. If you have not installed R or are new to it, you will find an introduction to and more information how to use R [here](https://slcladal.github.io/intror.html). For this tutorials, we need to install certain *packages* from an R *library* so that the scripts shown below are executed without errors. Before turning to the code below, please install the packages by running the code below this paragraph. If you have already installed the packages mentioned below, then you can skip ahead and ignore this section. To install the necessary packages, simply run the following code - it may take some time (between 1 and 5 minutes to install all of the libraries so you do not need to worry if it takes some time).
+For this week's content, we need to install certain *packages* from an R *library* so that the scripts shown below are executed without errors. hence, before turning to the code below, please install the packages by running the code below this paragraph - it may take some time (between 1 and 5 minutes to install all of the libraries so you do not need to worry if it takes some time).
 
 ```{r prep0, echo=T, eval = F, warning=F, message=F}
 # install
-install.packages("Boruta")
 install.packages("car")
-install.packages("emmeans")
-install.packages("effects")
 install.packages("flextable")
 install.packages("ggplot2")
-install.packages("ggpubr")
 install.packages("Hmisc")
 install.packages("knitr")
-install.packages("lme4")
 install.packages("MASS")
-install.packages("mclogit")
-install.packages("MuMIn")
-install.packages("nlme")
-install.packages("ordinal")
 install.packages("rms")
-install.packages("robustbase")
 install.packages("sjPlot")
 install.packages("stringr")
-install.packages("tibble")
+install.packages("report")
 install.packages("dplyr")
-install.packages("vcd")
 install.packages("vip")
 # install klippy for copy-to-clipboard button in code chunks
 install.packages("remotes")
@@ -45,28 +34,17 @@ options(stringsAsFactors = F)          # no automatic data transformation
 options("scipen" = 100, "digits" = 12) # suppress math annotation
 # load packages
 library(dplyr)
-library(Boruta)
 library(car)
-library(effects)
-library(emmeans)
 library(flextable)
 library(ggfortify)
 library(ggplot2)
-library(ggpubr)
 library(Hmisc)
 library(knitr)
-library(lme4)
 library(MASS)
-library(mclogit)
-library(MuMIn)
-library(nlme)
-library(ordinal)
 library(rms)
-library(robustbase)
+library(report)
 library(sjPlot)
 library(stringr)
-library(tibble)
-library(vcd)
 library(vip)
 # activate klippy for copy-to-clipboard button
 klippy::klippy()
@@ -76,9 +54,9 @@ klippy::klippy()
 Once you have installed R and RStudio and initiated the session by executing the code shown above, you are good to go.
 
 
-## Multiple Linear Regression
+## The Basics of Multiple Linear Regression
 
-In contrast to simple linear regression, which estimates the effect of a single predictor, multiple linear regression estimates the effect of various predictor (see the equation below). A multiple linear regression can thus test the effects of various predictors simultaneously.
+In contrast to simple linear regression, which estimates the effect of a single predictor, multiple linear regression estimates the effect of various predictors simultaneously (see the equation below).
 
 \begin{equation}
 
@@ -86,34 +64,9 @@ f_{(x)} = \alpha + \beta_{1}x_{i} + \beta_{2}x_{i+1} + \dots + \beta_{n}x_{i+n} 
 
 \end{equation}
 
-There exists a wealth of literature focusing on multiple linear regressions and the concepts it is based on.  For instance, there are @achen1982interpreting, @bortz2006statistik, @crawley2005statistics, @faraway2002practical, @field2012discovering (my personal favorite), @gries2021statistics, @levshina2015linguistics,  and @wilcox2009basic to name just a few. Introductions to regression modeling in R are @baayen2008analyzing, @crawley2012r, @gries2021statistics, or @levshina2015linguistics.
+There exists a wealth of literature focusing on multiple linear regressions and the concepts it is based on.  For instance, there are @achen1982interpreting, @bortz2006statistik, @crawley2005statistics, @faraway2002practical, @field2012discovering, @gries2021statistics, @levshina2015linguistics,  @wilcox2009basic, and @winter2019statistics to name just a few. Introductions to regression modeling in R are @baayen2008analyzing, @crawley2012r, @gries2021statistics, @levshina2015linguistics, and @winter2019statistics.
 
-The model diagnostics we are dealing with here are partly identical to the diagnostic methods discussed in the section on simple linear regression. Because of this overlap, diagnostics will only be described in more detail if they have not been described in the section on simple linear regression.
-
-***
-
-<div class="warning" style='padding:0.1em; background-color:#f2f2f2; color:#51247a'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>EXCURSION</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
-
-<div class="question">` 
-
-<details>
-  <summary>A note on sample size and power</summary>
-  A brief note on minimum necessary sample or data set size appears necessary here. Although there appears to be a general assumption that 25 data points per group are sufficient, this is not necessarily correct (it is merely a general rule of thumb that is actually often incorrect). Such rules of thumb are inadequate because the required sample size depends on the number of variables in a given model, the size of the effect and the variance of the effect - in other words, the minimum necessary sample size relates to *statistical power* (see [here](https://slcladal.github.io/pwr.html) for a tutorial on power). If a model contains many variables, then this requires a larger sample size than a model which only uses very few predictors. 
-
-  Also, to detect an effect with a very minor effect size, one needs a substantially larger sample compared to cases where the effect is very strong. In fact, when dealing with small effects, model require a minimum of 600 cases to reliably detect these effects. Finally, effects that are very robust and do not vary much require a much smaller sample size compared with effects that are spurious and vary substantially. Since the sample size depends on the effect size and variance as well as the number of variables, there is no final one-size-fits-all answer to what the best sample size is.
-  
-  Another, slightly better but still incorrect, rule of thumb is that the more data, the better. This is not correct because models based on too many cases are prone for overfitting and thus report correlations as being significant that are not. However, given that there are procedures that can correct for overfitting, larger data sets are still preferable to data sets that are simply too small to warrant reliable results. In conclusion, it remains true that the sample size depends on the effect under investigation.
-</details>
-
-</div>`
-
-***
+The model diagnostics we are dealing with here are partly identical to the diagnostic methods discussed last week when wefocused on simple linear regression. Because of this overlap, diagnostics will only be described in more detail if they have not been described in the section on simple linear regression.
 
 Despite there being no ultimate rule of thumb, @field2012discovering[273-275], based on @green1991many, provide data-driven suggestions for the minimal size of data required for regression models that aim to find medium sized effects (k = number of predictors; categorical variables with more than two levels should be transformed into dummy variables):
 
@@ -153,43 +106,24 @@ The data set consist of three variables stored in three columns. The first colum
 
 ```{r mlr3, message=F, warning=F}
 # create plots
-p1 <- ggplot(mlrdata, aes(status, money)) +   # data + x/y-axes
-  geom_boxplot(fill=c("grey30", "grey70")) +  # def. col.
-  theme_bw(base_size = 8)+   # black and white theme
-  labs(x = "") +                              # x-axis label
-  labs(y = "Money spent on present (AUD)", cex = .75) +   # y-axis label
-  coord_cartesian(ylim = c(0, 250)) +         # y-axis range
-  guides(fill = FALSE) +                      # no legend
-  ggtitle("Status")                           # title
+p1 <- ggplot(mlrdata, aes(status, money)) +   
+  geom_boxplot() + 
+  theme_bw()
 # plot 2
 p2 <- ggplot(mlrdata, aes(attraction, money)) +
-  geom_boxplot(fill=c("grey30", "grey70")) +
-  theme_bw(base_size = 8) +
-  labs(x = "") +                              # x-axis label
-  labs(y = "Money spent on present (AUD)") +  # y-axis label
-  coord_cartesian(ylim = c(0, 250)) +
-  guides(fill = FALSE) +
-  ggtitle("Attraction")
+  geom_boxplot() +
+  theme_bw()
 # plot 3
 p3 <- ggplot(mlrdata, aes(x = money)) +
-  geom_histogram(aes(y=..density..),          # add density statistic
-                 binwidth = 10,               # def. bin width
-                 colour = "black",            # def. bar edge colour
-                 fill = "white") +            # def. bar col.
-  theme_bw() +                                # black-white theme
-  geom_density(alpha=.2, fill = "gray50") +   # def. col. of overlay
-  labs(x = "Money spent on present (AUD)") +
-  labs(y = "Density of frequency")
+  geom_histogram(aes(y=..density..)) +           
+  theme_bw() +                               
+  geom_density()
 # plot 4
 p4 <- ggplot(mlrdata, aes(status, money)) +
-  geom_boxplot(notch = F, aes(fill = factor(status))) + # create boxplot
-  scale_fill_manual(values = c("grey30", "grey70")) +   # def. col. palette
-  facet_wrap(~ attraction, nrow = 1) +        # separate panels for attraction
-  labs(x = "") +
-  labs(y = "Money spent on present (AUD)") +
-  coord_cartesian(ylim = c(0, 250)) +
+  geom_boxplot(aes(fill = factor(status))) + 
+  facet_wrap(~ attraction) +       
   guides(fill = FALSE) +
-  theme_bw(base_size = 8)
+  theme_bw()
 # show plots
 vip::grid.arrange(grobs = list(p1, p2, p3, p4), widths = c(1, 1), layout_matrix = rbind(c(1, 2), c(3, 4)))
 ```
@@ -206,21 +140,24 @@ We will now start to implement the regression model. In a first step, we create 
 
 ```{r mlr4}
 m1.mlr = lm(                      # generate lm regression object
-  money ~ 1 + attraction*status,  # def. regression formula (1 = intercept)
+  money ~ attraction*status,  # def. regression formula
   data = mlrdata)                 # def. data
 m1.glm = glm(                     # generate glm regression object
-  money ~ 1 + attraction*status,  # def. regression formula (1 = intercept)
+  money ~ attraction*status,  # def. regression formula
   family = gaussian,              # def. linkage function
   data = mlrdata)                 # def. data
 ```
 
 After generating the saturated models we can now start with the model fitting. Model fitting refers to a process that aims at find the model that explains a maximum of variance with a minimum of predictors [see @field2012discovering 318]. Model fitting is therefore based on the *principle of parsimony* which is related to Occam's razor according to which explanations that require fewer assumptions are more likely to be true.
 
-### Automatic Model Fitting and Why You Should Not Use It
+### (Automatic) Model Fitting
 
-In this section, we will use a step-wise step-down procedure that uses decreases in AIC (*Akaike Information Criterion*) as the criterion to minimize the model in a step-wise manner. This procedure aims at finding the model with the lowest AIC values by evaluating - step-by-step - whether the removal of a predictor (term) leads to a lower AIC value.
+Model fitting means that we check what of the predictors should be included in the model and what predictors do not have any impact on the outcome and thus should not be part of the model (because they merely add noise to the data.
 
-We use this method here just so that you know it exists and how to implement it but you should rather avoid using automated model fitting. The reason for avoiding automated model fitting is that the algorithm only checks if the AIC has decreased but not if the model is stable or reliable. Thus, automated model fitting has the problem that you can never be sure that the way that lead you to the final model is reliable and that all models were indeed stable. Imagine you want to climb down from a roof top and you have a ladder. The problem is that you do not know if and how many steps are broken. This is similar to using automated model fitting. In other sections, we will explore better methods to fit models (manual step-wise step-up and step-down procedures, for example).
+In this example, we use a step-wise step-down procedure that uses decreases in AIC (*Akaike Information Criterion*) as the criterion to minimize the model in a step-wise manner. This procedure aims at finding the model with the lowest AIC values by evaluating - step-by-step - whether the removal of a predictor (term) leads to a lower AIC value.
+
+Other options for model fitting would, e.g., be step-wise step-up or forced entry. We will use step-wise step-up in another week and if you want to find out more about model fitting procedures, check ou @field2012discovering, 264-265.
+
 
 The AIC is calculated using the equation below. The lower the AIC value, the better the balance between explained variance and the number of predictors. AIC values can and should only be compared for models that are fit on the same data set with the same (number of) cases (*LL* stands for *logged likelihood* or *LogLikelihood* and *k* represents the number of predictors in the model (including the intercept); the LL represents a measure of how good the model fits the data).
 
@@ -228,13 +165,7 @@ The AIC is calculated using the equation below. The lower the AIC value, the bet
 Akaike Information Criterion (AIC) = -2LL + 2k
 \end{equation}
 
-An alternative to the AIC is the BIC (Bayesian Information Criterion). Both AIC and BIC penalize models for including variables in a model. The penalty of the BIC is bigger than the penalty of the AIC and it includes the number of cases in the model (*LL* stands for *logged likelihood* or *LogLikelihood*, *k* represents the number of predictors in the model (including the intercept), and *N* represents the number of cases in the model). 
-
-\begin{equation}
-Bayesian Information Criterion (BIC) = -2LL + 2k * log(N)
-\end{equation}
-
-Interactions are evaluated first and only if all insignificant interactions have been removed would the procedure start removing insignificant main effects (that are not part of significant interactions). Other model fitting procedures (forced entry, step-wise step up, hierarchical) are discussed during the implementation of other regression models. We cannot discuss all procedures here as model fitting is rather complex and a discussion of even the most common procedures would to lengthy and time consuming at this point. It is important to note though that there is not perfect model fitting procedure and automated approaches should be handled with care as they are likely to ignore violations of model parameters that can be detected during manual - but time consuming - model fitting procedures. As a general rule of thumb, it is advisable to fit models as carefully and deliberately as possible. We will now begin to fit the model.
+When fitting a model step-wise step-down, interactions are evaluated first and only if all insignificant interactions have been removed would the procedure start removing insignificant main effects (that are not part of significant interactions). Other model fitting procedures (forced entry, step-wise step up, hierarchical) are discussed during the implementation of other regression models. We cannot discuss all procedures here as model fitting is rather complex and a discussion of even the most common procedures would to lengthy and time consuming at this point. It is important to note though that there is not perfect model fitting procedure and automated approaches should be handled with care as they are likely to ignore violations of model parameters that can be detected during manual - but time consuming - model fitting procedures. As a general rule of thumb, it is advisable to fit models as carefully and deliberately as possible. We will now begin to fit the model.
 
 ```{r mlr5}
 # automated AIC based model fitting
@@ -248,7 +179,7 @@ m2.mlr = lm(                       # generate lm regression object
   money ~ (status + attraction)^2, # def. regression formula
   data = mlrdata)                  # def. data
 m2.glm = glm(                      # generate glm regression object
-  money ~ (status + attraction)^2, # def. regression formula
+  money ~ status * attraction,     # def. regression formula
   family = gaussian,               # def. linkage function
   data = mlrdata)                  # def. data
 # inspect final minimal model
@@ -307,7 +238,7 @@ Anova(m0.mlr, m2.mlr, type = "III")
 
 The comparison between the two model confirms that the minimal adequate model performs significantly better (makes significantly more accurate estimates of the outcome variable) compared with the baseline model.
 
-### Outlier Detection
+### Model Diagnostics 
 
 After implementing the multiple regression, we now need to look for outliers and perform the model diagnostics by testing whether removing data points disproportionately decreases model fit. To begin with, we generate diagnostic plots.
 
@@ -329,28 +260,7 @@ qqPlot(m2.mlr, main="QQ Plot") # create qq-plot
 plot(m2.mlr, which=4, cook.levels = cutoff); par(mfrow = c(1, 1))
 ```
 
-The graphs indicate that data points 52, 64, and 83 may be problematic. We will therefore statistically evaluate whether these data points need to be removed. In order to find out which data points require removal, we extract the influence measure statistics and add them to out data set.
-
-```{r mlr13}
-# extract influence statistics
-infl <- influence.measures(m2.mlr)
-# add infl. statistics to data
-mlrdata <- data.frame(mlrdata, infl[[1]], infl[[2]])
-# annotate too influential data points
-remove <- apply(infl$is.inf, 1, function(x) {
-  ifelse(x == TRUE, return("remove"), return("keep")) } )
-# add annotation to data
-mlrdata <- data.frame(mlrdata, remove)
-# number of rows before removing outliers
-nrow(mlrdata)
-# remove outliers
-mlrdata <- mlrdata[mlrdata$remove == "keep", ]
-# number of rows after removing outliers
-nrow(mlrdata)
-```
-
-The difference in row in the data set before and after removing data points indicate that two data points which represented outliers have been removed.
-
+The graphs indicate that data points 52, 64, and 83 may be problematic but they do not seem to overly affect the results and we will thus ignore this issue here. In a real analysis, you would take the data points out, re-run the regression and see if removing the data points leads to noticeably different results. If the results are not substantively different, I would suggest to keep these data points in as simply removing data points is not a good practice (see below).
 
 
 <div class="warning" style='padding:0.1em; background-color:#f2f2f2; color:#51247a'>
@@ -364,72 +274,39 @@ The difference in row in the data set before and after removing data points indi
 <br>
 
 
-### Rerun Regression
+When the diagnostic plots indicate potential outliers the following parameters should be considered:
 
-As we have decided to remove the outliers which means that we are now dealing with a different data set, we need to rerun the regression analysis. As the steps are identical to the regression analysis performed above, the steps will not be described in greater detail.
+1) Data points with standardized residuals > 3.29 should be removed [@field2012discovering 269]
 
-```{r mlr14}
-# recreate regression models on new data
-m0.mlr = lm(money ~ 1, data = mlrdata)
-m0.glm = glm(money ~ 1, family = gaussian, data = mlrdata)
-m1.mlr = lm(money ~ (status + attraction)^2, data = mlrdata)
-m1.glm = glm(money ~ status * attraction, family = gaussian,
-             data = mlrdata)
-# automated AIC based model fitting
-step(m1.mlr, direction = "both")
-```
+2) If more than 1 percent of data points have standardized residuals exceeding values > 2.58, then the error rate of the model is unacceptable [@field2012discovering 269].
 
+3) If more than 5 percent of data points have standardized residuals exceeding values   > 1.96, then the error rate of the model is unacceptable [@field2012discovering 269]
 
-```{r mlr15}
-# create new final models
-m2.mlr = lm(money ~ (status + attraction)^2, data = mlrdata)
-m2.glm = glm(money ~ status * attraction, family = gaussian,
-             data = mlrdata)
-# inspect final minimal model
-summary(m2.mlr)
-```
+4) In addition, data points with Cook's D-values > 1 should be removed [@field2012discovering 269]
 
-```{r mlr16}
-# extract confidence intervals of the coefficients
-confint(m2.mlr)
-```
+5) Also, data points with leverage values higher than $3(k + 1)/N$ or $2(k + 1)/N$ (k = Number of predictors, N = Number of cases in model) should be removed [@field2012discovering 270]
 
-```{r mlr17}
-# compare baseline with final model
-anova(m0.mlr, m2.mlr)
-```
+6) There should not be (any) autocorrelation among predictors. This means that independent variables cannot be correlated with itself (for instance, because data points come from the same subject). If there is autocorrelation among predictors, then a Repeated Measures Design or a (hierarchical) mixed-effects model should be implemented instead.
 
-```{r mlr18}
-# compare baseline with final model
-Anova(m0.mlr, m2.mlr, type = "III")
-```
-
-### Additional Model Diagnostics
-
-After rerunning the regression analysis on the updated data set, we again create diagnostic plots in order to check whether there are potentially problematic data points.
-
-```{r mlr19}
-# generate plots
-autoplot(m2.mlr) + 
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  theme_bw()
-```
+7) Predictors cannot substantially correlate with each other (multicollinearity) (see the [subsection on (multi-)collinearity](https://slcladal.github.io/regression.html#Multicollinearity) in the section of multiple binomial logistic regression for more details about (multi-)collinearity). If a model contains predictors that have variance inflation factors (VIF) > 10 the model is unreliable [@myers1990classical] and predictors causing such VIFs should be removed. Indeed, even VIFs of 2.5 can be problematic [@szmrecsanyi2006morphosyntactic 215] Indeed, @zuur2010protocol propose that variables with VIFs exceeding 3 should be removed! 
 
 
+<div class="warning" style='padding:0.1em; background-color:#f2f2f2; color:#51247a'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>NOTE</b><br><br>However, (multi-)collinearity is only an issue if one is interested in interpreting regression results!  If the interpretation is irrelevant because what is relevant is prediction(!), then it does not matter if the model contains collinear predictors! See @gries2021statistics for a more elaborate explanation.</p>
+<p style='margin-left:1em;'>
+</p></span>
+</div>
 
-```{r mlr20}
-# determine a cutoff for data points that have
-# D-values higher than 4/(n-k-1)
-cutoff <- 4/((nrow(mlrdata)-length(m2.mlr$coefficients)-2))
-# start plotting
-par(mfrow = c(1, 2))           # display plots in 1 row/2 columns
-qqPlot(m2.mlr, main="QQ Plot") # create qq-plot
-plot(m2.mlr, which=4, cook.levels = cutoff); par(mfrow = c(1, 1))
-```
+<br>
 
-Although the diagnostic plots indicate that additional points may be problematic, but these data points deviate substantially less from the trend than was the case with the data points that have already been removed. To make sure that retaining the data points that are deemed potentially problematic by the diagnostic plots, is acceptable, we extract diagnostic statistics and add them to the data.
+8) The mean value of VIFs should be ~ 1 [@bowerman1990linear].
 
-```{r mlr21}
+The following code chunk creates and evaluates these criteria.
+
+
+```{r}
 # add model diagnostics to the data
 mlrdata <- mlrdata %>%
   dplyr::mutate(residuals = resid(m2.mlr),
@@ -442,9 +319,9 @@ mlrdata <- mlrdata %>%
                 fitted = m2.mlr$fitted.values)
 ```
 
-We can now use these diagnostic statistics to create more precise diagnostic plots.
+Visually assessing the model fit.
 
-```{r mlr22, message=FALSE, warning=FALSE}
+```{r}
 # plot 5
 p5 <- ggplot(mlrdata,
              aes(studentized.residuals)) +
@@ -474,36 +351,7 @@ p7 <- qplot(sample = mlrdata$studentized.residuals, stat="qq") +
 vip::grid.arrange(p5, p6, p7, nrow = 1)
 ```
 
-The new diagnostic plots do not indicate outliers that require removal. With respect to such data points the following parameters should be considered:
-
-1) Data points with standardized residuals > 3.29 should be removed [@field2012discovering 269]
-
-2) If more than 1 percent of data points have standardized residuals exceeding values > 2.58, then the error rate of the model is unacceptable [@field2012discovering 269].
-
-3) If more than 5 percent of data points have standardized residuals exceeding values   > 1.96, then the error rate of the model is unacceptable [@field2012discovering 269]
-
-4) In addition, data points with Cook's D-values > 1 should be removed [@field2012discovering 269]
-
-5) Also, data points with leverage values higher than $3(k + 1)/N$ or $2(k + 1)/N$ (k = Number of predictors, N = Number of cases in model) should be removed [@field2012discovering 270]
-
-6) There should not be (any) autocorrelation among predictors. This means that independent variables cannot be correlated with itself (for instance, because data points come from the same subject). If there is autocorrelation among predictors, then a Repeated Measures Design or a (hierarchical) mixed-effects model should be implemented instead.
-
-7) Predictors cannot substantially correlate with each other (multicollinearity) (see the [subsection on (multi-)collinearity](https://slcladal.github.io/regression.html#Multicollinearity) in the section of multiple binomial logistic regression for more details about (multi-)collinearity). If a model contains predictors that have variance inflation factors (VIF) > 10 the model is unreliable [@myers1990classical] and predictors causing such VIFs should be removed. Indeed, even VIFs of 2.5 can be problematic [@szmrecsanyi2006morphosyntactic 215] Indeed, @zuur2010protocol propose that variables with VIFs exceeding 3 should be removed! 
-
-
-<div class="warning" style='padding:0.1em; background-color:#f2f2f2; color:#51247a'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>NOTE</b><br><br>However, (multi-)collinearity is only an issue if one is interested in interpreting regression results!  If the interpretation is irrelevant because what is relevant is prediction(!), then it does not matter if the model contains collinear predictors! See @gries2021statistics for a more elaborate explanation.</p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
-
-<br>
-
-8) The mean value of VIFs should be ~ 1 [@bowerman1990linear].
-
-The following code chunk evaluates these criteria.
+Statistically assessing the model fit.
 
 ```{r mlr23}
 # 1: optimal = 0
@@ -566,9 +414,39 @@ smplesz(m2.mlr)
 expR(m2.mlr)
 ```
 
-The function `smplesz` reports that the sample size is insufficient by 9 data points according to @green1991many. The likelihood of $\beta$-errors, however, is very small (0.0309). As a last step, we summarize the results of the regression analysis.
+The function `smplesz` reports that the sample size is insufficient by 9 data points according to @green1991many. The likelihood of $\beta$-errors, however, is very small (0.0309). 
+
+***
+
+<div class="warning" style='padding:0.1em; background-color:#f2f2f2; color:#51247a'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>EXCURSION</b></p>
+<p style='margin-left:1em;'>
+</p></span>
+</div>
+
+<div class="question">` 
+
+<details>
+  <summary>A note on sample size and power</summary>
+  A brief note on minimum necessary sample or data set size appears necessary here. Although there appears to be a general assumption that 25 data points per group are sufficient, this is not necessarily correct (it is merely a general rule of thumb that is actually often incorrect). Such rules of thumb are inadequate because the required sample size depends on the number of variables in a given model, the size of the effect and the variance of the effect - in other words, the minimum necessary sample size relates to *statistical power* (see [here](https://slcladal.github.io/pwr.html) for a tutorial on power). If a model contains many variables, then this requires a larger sample size than a model which only uses very few predictors. 
+
+  Also, to detect an effect with a very minor effect size, one needs a substantially larger sample compared to cases where the effect is very strong. In fact, when dealing with small effects, model require a minimum of 600 cases to reliably detect these effects. Finally, effects that are very robust and do not vary much require a much smaller sample size compared with effects that are spurious and vary substantially. Since the sample size depends on the effect size and variance as well as the number of variables, there is no final one-size-fits-all answer to what the best sample size is.
+  
+  Another, slightly better but still incorrect, rule of thumb is that the more data, the better. This is not correct because models based on too many cases are prone for overfitting and thus report correlations as being significant that are not. However, given that there are procedures that can correct for overfitting, larger data sets are still preferable to data sets that are simply too small to warrant reliable results. In conclusion, it remains true that the sample size depends on the effect under investigation.
+</details>
+
+</div>`
+
+***
+
+
+As a last step, we summarize the results of the regression analysis.
 
 ```{r mlr25}
+# generate base line model
+m0.glm = glm( money ~ 1, family = gaussian, data = mlrdata) 
 # tabulate model results
 sjPlot::tab_model(m0.glm, m2.glm)
 ```
