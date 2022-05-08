@@ -210,3 +210,12 @@ significance-probability-and-the-normal-distribution
 hypotheses-and-variables
 working-with-tables-in-r-and-rstudio-2
 introduction-to-data-visualization
+mixed-effects-regression-1
+basic-concepts
+example-eh-in-kiwi-english
+logistic-mixed-effects-regression
+basic-concepts-1
+tree-based-models
+basic-concepts-2
+prettifying-your-cit-tree
+problems-of-conditional-inference-trees

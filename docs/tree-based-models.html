@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Week 13 Tree-Based Models | Untitled</title>
+  <meta name="description" content="Week 13 Tree-Based Models | Untitled" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Week 13 Tree-Based Models | Untitled" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Week 13 Tree-Based Models | Untitled" />
+  
+  
+  
+
+<meta name="author" content="Martin Schweinberger" />
+
+
+<meta name="date" content="2022-05-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="logistic-mixed-effects-regression.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SLAT7855</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#basic-course-information"><i class="fa fa-check"></i>Basic Course Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i>Course Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-introduction"><i class="fa fa-check"></i>Course Introduction</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#timetable"><i class="fa fa-check"></i>Timetable</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#aims-objectives-graduate-attributes"><i class="fa fa-check"></i>Aims, Objectives &amp; Graduate Attributes</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aims"><i class="fa fa-check"></i>Course Aims</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-resources"><i class="fa fa-check"></i>Learning Resources</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#required-resources"><i class="fa fa-check"></i>Required Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-resources"><i class="fa fa-check"></i>Recommended Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#university-learning-resources"><i class="fa fa-check"></i>University Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#school-of-languages-and-cultures-learning-resources"><i class="fa fa-check"></i>School of Languages and Cultures Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-learning-resources-information"><i class="fa fa-check"></i>Other Learning Resources &amp; Information</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#teaching-learning-activities"><i class="fa fa-check"></i>Teaching &amp; Learning Activities</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-activities"><i class="fa fa-check"></i>Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-plan"><i class="fa fa-check"></i>Course plan</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#why-do-we-need-science"><i class="fa fa-check"></i><b>1.1</b> Why do we need science?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#errare-humanum-est"><i class="fa fa-check"></i><b>1.2</b> Errare Humanum Est</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#the-monty-hall-problem"><i class="fa fa-check"></i><b>1.2.1</b> The Monty Hall Problem</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#the-birthday-conundrum"><i class="fa fa-check"></i><b>1.2.2</b> The Birthday Conundrum</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#fast-and-slow-thinking"><i class="fa fa-check"></i><b>1.2.3</b> Fast and Slow Thinking</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#randomness"><i class="fa fa-check"></i><b>1.2.4</b> Randomness</a></li>
+<li class="chapter" data-level="1.2.5" data-path="introduction.html"><a href="introduction.html#patterns-and-matters-of-habit"><i class="fa fa-check"></i><b>1.2.5</b> Patterns and Matters of Habit</a></li>
+<li class="chapter" data-level="1.2.6" data-path="introduction.html"><a href="introduction.html#locical-fallacies-and-biases"><i class="fa fa-check"></i><b>1.2.6</b> Locical Fallacies and Biases</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#what-is-science"><i class="fa fa-check"></i><b>1.3</b> What is science?</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#clever-hans"><i class="fa fa-check"></i><b>1.3.1</b> Clever Hans</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#popper-falsification-and-scientific-progress"><i class="fa fa-check"></i><b>1.3.2</b> Popper, falsification, and scientific progress</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#what-is-empirical-linguistics"><i class="fa fa-check"></i><b>1.3.3</b> What is (empirical) Linguistics?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html"><i class="fa fa-check"></i><b>2</b> Hypotheses and Variables</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#hypotheses"><i class="fa fa-check"></i><b>2.1</b> Hypotheses</a>
+<ul>
+<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#types-of-hypotheses"><i class="fa fa-check"></i>Types of Hypotheses</a></li>
+<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#why-test-the-h0"><i class="fa fa-check"></i>Why test the H0?!</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#data-and-research-designs"><i class="fa fa-check"></i><b>2.2</b> Data and Research Designs</a>
+<ul>
+<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#research-designs"><i class="fa fa-check"></i>Research Designs</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#variables-and-validity"><i class="fa fa-check"></i><b>2.3</b> Variables and Validity</a>
+<ul>
+<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#variable-types-scaling"><i class="fa fa-check"></i>Variable Types (Scaling)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#relationships-between-variables"><i class="fa fa-check"></i><b>2.4</b> Relationships between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html"><i class="fa fa-check"></i><b>3</b> Significance, Probability and the Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#significance-and-probability"><i class="fa fa-check"></i><b>3.1</b> Significance and Probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#significance-levels"><i class="fa fa-check"></i>Significance Levels</a></li>
+<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#probability"><i class="fa fa-check"></i>Probability</a></li>
+<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#the-normal-distribution"><i class="fa fa-check"></i>The Normal Distribution</a></li>
+<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#non-normality-skewness-and-kurtosis"><i class="fa fa-check"></i>Non-normality: skewness and kurtosis</a></li>
+<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#the-binomial-distribution"><i class="fa fa-check"></i>The Binomial Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#z-scores"><i class="fa fa-check"></i><b>3.2</b> z-scores</a></li>
+<li class="chapter" data-level="3.3" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#alpha-and-beta-errors"><i class="fa fa-check"></i><b>3.3</b> Alpha and Beta Errors</a></li>
+<li class="chapter" data-level="3.4" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#independence"><i class="fa fa-check"></i><b>3.4</b> Independence</a></li>
+<li class="chapter" data-level="3.5" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#corrections"><i class="fa fa-check"></i><b>3.5</b> Corrections</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html"><i class="fa fa-check"></i><b>4</b> Getting Started with R and RStudio</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#goals-of-this-tutorial"><i class="fa fa-check"></i><b>4.1</b> Goals of this tutorial</a></li>
+<li class="chapter" data-level="4.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#audience"><i class="fa fa-check"></i><b>4.2</b> Audience</a></li>
+<li class="chapter" data-level="4.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>4.3</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#how-to-use-the-workshop-materials"><i class="fa fa-check"></i><b>4.3.1</b> How to use the workshop materials</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#preparation"><i class="fa fa-check"></i><b>4.4</b> Preparation</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#folder-structure-and-r-projects"><i class="fa fa-check"></i><b>4.4.1</b> Folder Structure and R projects</a></li>
+<li class="chapter" data-level="4.4.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#create-a-folder-for-your-project"><i class="fa fa-check"></i><b>4.4.2</b> 1. Create a folder for your project</a></li>
+<li class="chapter" data-level="4.4.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#open-rstudio"><i class="fa fa-check"></i><b>4.4.3</b> 3. Open RStudio</a></li>
+<li class="chapter" data-level="4.4.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-projects"><i class="fa fa-check"></i><b>4.4.4</b> 4. R Projects</a></li>
+<li class="chapter" data-level="4.4.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-notebooks"><i class="fa fa-check"></i><b>4.4.5</b> 5. R Notebooks</a></li>
+<li class="chapter" data-level="4.4.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#updating-r"><i class="fa fa-check"></i><b>4.4.6</b> 6. Updating R</a></li>
+<li class="chapter" data-level="4.4.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#optimizing-r-project-options"><i class="fa fa-check"></i><b>4.4.7</b> 7. Optimizing R project options</a></li>
+<li class="chapter" data-level="4.4.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-started-with-r-notebooks"><i class="fa fa-check"></i><b>4.4.8</b> 8. Getting started with R Notebooks</a></li>
+<li class="chapter" data-level="4.4.9" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-markdown"><i class="fa fa-check"></i><b>4.4.9</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-and-rstudio-basics"><i class="fa fa-check"></i><b>4.5</b> R and RStudio Basics</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#rstudio-panes"><i class="fa fa-check"></i><b>4.5.1</b> RStudio: Panes</a></li>
+<li class="chapter" data-level="4.5.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-console-bottom-left-pane"><i class="fa fa-check"></i><b>4.5.2</b> R Console (bottom left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#running-commands-from-a-script"><i class="fa fa-check"></i><b>4.6</b> Running commands from a script</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#script-editor-top-left-pane"><i class="fa fa-check"></i><b>4.6.1</b> Script Editor (top left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-started-with-r"><i class="fa fa-check"></i><b>4.7</b> Getting started with R</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#setting-up-an-r-session"><i class="fa fa-check"></i><b>4.7.1</b> Setting up an R session</a></li>
+<li class="chapter" data-level="4.7.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#packages"><i class="fa fa-check"></i><b>4.7.2</b> Packages</a></li>
+<li class="chapter" data-level="4.7.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-help"><i class="fa fa-check"></i><b>4.7.3</b> Getting help</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#working-with-tables"><i class="fa fa-check"></i><b>4.8</b> Working with tables</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#loading-data-from-the-web"><i class="fa fa-check"></i><b>4.8.1</b> Loading data from the web</a></li>
+<li class="chapter" data-level="4.8.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#functions-and-objects"><i class="fa fa-check"></i><b>4.8.2</b> Functions and Objects</a></li>
+<li class="chapter" data-level="4.8.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#inspecting-data"><i class="fa fa-check"></i><b>4.8.3</b> Inspecting data</a></li>
+<li class="chapter" data-level="4.8.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#accessing-individual-cells-in-a-table"><i class="fa fa-check"></i><b>4.8.4</b> Accessing individual cells in a table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html"><i class="fa fa-check"></i><b>5</b> Working with Tables in R and RStudio 2</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#working-with-tables-1"><i class="fa fa-check"></i><b>5.1</b> Working with tables</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#tabulating-data"><i class="fa fa-check"></i><b>5.1.1</b> Tabulating data</a></li>
+<li class="chapter" data-level="5.1.2" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#saving-data-to-your-computer"><i class="fa fa-check"></i><b>5.1.2</b> Saving data to your computer</a></li>
+<li class="chapter" data-level="5.1.3" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#loading-data-from-your-computer"><i class="fa fa-check"></i><b>5.1.3</b> Loading data from your computer</a></li>
+<li class="chapter" data-level="5.1.4" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#loading-excel-data"><i class="fa fa-check"></i><b>5.1.4</b> Loading Excel data</a></li>
+<li class="chapter" data-level="5.1.5" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#loading-text-data"><i class="fa fa-check"></i><b>5.1.5</b> Loading text data</a></li>
+<li class="chapter" data-level="5.1.6" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#renaming-piping-and-filtering"><i class="fa fa-check"></i><b>5.1.6</b> Renaming, Piping, and Filtering</a></li>
+<li class="chapter" data-level="5.1.7" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#ordering-data"><i class="fa fa-check"></i><b>5.1.7</b> Ordering data</a></li>
+<li class="chapter" data-level="5.1.8" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#creating-and-changing-variables"><i class="fa fa-check"></i><b>5.1.8</b> Creating and changing variables</a></li>
+<li class="chapter" data-level="5.1.9" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#if-statements"><i class="fa fa-check"></i><b>5.1.9</b> If-statements</a></li>
+<li class="chapter" data-level="5.1.10" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#summarizing-data"><i class="fa fa-check"></i><b>5.1.10</b> Summarizing data</a></li>
+<li class="chapter" data-level="5.1.11" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#gathering-and-spreading-data"><i class="fa fa-check"></i><b>5.1.11</b> Gathering and spreading data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#ending-r-sessions"><i class="fa fa-check"></i><b>5.2</b> Ending R sessions</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#extracting-session-information"><i class="fa fa-check"></i><b>5.2.1</b> Extracting session information</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#going-further"><i class="fa fa-check"></i><b>5.3</b> Going further</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-centrality"><i class="fa fa-check"></i><b>6.1</b> Measures of Centrality</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#mean"><i class="fa fa-check"></i>Mean</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#median"><i class="fa fa-check"></i>Median</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#mode"><i class="fa fa-check"></i>Mode</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#geometric-mean"><i class="fa fa-check"></i>Geometric mean</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#harmonic-mean"><i class="fa fa-check"></i>Harmonic mean</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#notes-on-measures-of-centrality"><i class="fa fa-check"></i>Notes on Measures of Centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-variability"><i class="fa fa-check"></i><b>6.2</b> Measures of Variability</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#range"><i class="fa fa-check"></i>Range</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#interquartile-range-iqr"><i class="fa fa-check"></i>Interquartile range (IQR)</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#variance"><i class="fa fa-check"></i>Variance</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#standard-deviation"><i class="fa fa-check"></i>Standard deviation</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#standard-error"><i class="fa fa-check"></i>Standard Error</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals"><i class="fa fa-check"></i><b>6.3</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals-for-simple-vectors"><i class="fa fa-check"></i>Confidence Intervals for Simple Vectors</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals-for-grouped-data"><i class="fa fa-check"></i>Confidence Intervals for Grouped Data</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals-for-nominal-data"><i class="fa fa-check"></i>Confidence Intervals for Nominal Data</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals-for-multinomial-data"><i class="fa fa-check"></i>Confidence Intervals for Multinomial Data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html"><i class="fa fa-check"></i><b>7</b> Introduction to Data Visualization</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#getting-started"><i class="fa fa-check"></i><b>7.1</b> Getting started</a></li>
+<li class="chapter" data-level="7.2" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#dot-and-scatter-plots"><i class="fa fa-check"></i><b>7.2</b> Dot and Scatter Plots</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#scatter-plots-in-base"><i class="fa fa-check"></i><b>7.2.1</b> Scatter Plots in base</a></li>
+<li class="chapter" data-level="7.2.2" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#scatter-plots-in-ggplot2"><i class="fa fa-check"></i><b>7.2.2</b> Scatter Plots in ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#line-graphs"><i class="fa fa-check"></i><b>7.3</b> Line Graphs</a></li>
+<li class="chapter" data-level="7.4" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#histograms"><i class="fa fa-check"></i><b>7.4</b> Histograms</a></li>
+<li class="chapter" data-level="7.5" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#bar-plots"><i class="fa fa-check"></i><b>7.5</b> Bar plots</a></li>
+<li class="chapter" data-level="7.6" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#boxplots"><i class="fa fa-check"></i><b>7.6</b> Boxplots</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="basic-inferential-statistics-regression-analysis.html"><a href="basic-inferential-statistics-regression-analysis.html"><i class="fa fa-check"></i><b>8</b> Basic Inferential Statistics: Regression Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="basic-inferential-statistics-regression-analysis.html"><a href="basic-inferential-statistics-regression-analysis.html#the-basic-principle"><i class="fa fa-check"></i><b>8.1</b> The basic principle</a></li>
+<li class="chapter" data-level="8.2" data-path="basic-inferential-statistics-regression-analysis.html"><a href="basic-inferential-statistics-regression-analysis.html#simple-linear-regression"><i class="fa fa-check"></i><b>8.2</b> Simple Linear Regression</a></li>
+<li class="chapter" data-level="8.3" data-path="basic-inferential-statistics-regression-analysis.html"><a href="basic-inferential-statistics-regression-analysis.html#example-1-preposition-use-across-real-time"><i class="fa fa-check"></i><b>8.3</b> Example 1: Preposition Use across Real-Time</a></li>
+<li class="chapter" data-level="8.4" data-path="basic-inferential-statistics-regression-analysis.html"><a href="basic-inferential-statistics-regression-analysis.html#example-2-teaching-styles"><i class="fa fa-check"></i><b>8.4</b> Example 2: Teaching Styles</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>9</b> Multiple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#the-basics-of-multiple-linear-regression"><i class="fa fa-check"></i><b>9.1</b> The Basics of Multiple Linear Regression</a></li>
+<li class="chapter" data-level="9.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#example-gifts-and-availability"><i class="fa fa-check"></i><b>9.2</b> Example: Gifts and Availability</a></li>
+<li class="chapter" data-level="9.3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#automatic-model-fitting"><i class="fa fa-check"></i><b>9.3</b> (Automatic) Model Fitting</a></li>
+<li class="chapter" data-level="9.4" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#model-diagnostics"><i class="fa fa-check"></i><b>9.4</b> Model Diagnostics</a></li>
+<li class="chapter" data-level="9.5" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#evaluation-of-sample-size"><i class="fa fa-check"></i><b>9.5</b> Evaluation of Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="multiple-binomial-logistic-regression.html"><a href="multiple-binomial-logistic-regression.html"><i class="fa fa-check"></i><b>10</b> Multiple Binomial Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="multiple-binomial-logistic-regression.html"><a href="multiple-binomial-logistic-regression.html#basic-concepts"><i class="fa fa-check"></i><b>10.1</b> Basic Concepts</a></li>
+<li class="chapter" data-level="10.2" data-path="multiple-binomial-logistic-regression.html"><a href="multiple-binomial-logistic-regression.html#example-eh-in-kiwi-english"><i class="fa fa-check"></i><b>10.2</b> Example: EH in Kiwi English</a></li>
+<li class="chapter" data-level="10.3" data-path="multiple-binomial-logistic-regression.html"><a href="multiple-binomial-logistic-regression.html#model-building"><i class="fa fa-check"></i><b>10.3</b> Model Building</a></li>
+<li class="chapter" data-level="10.4" data-path="multiple-binomial-logistic-regression.html"><a href="multiple-binomial-logistic-regression.html#model-fitting"><i class="fa fa-check"></i><b>10.4</b> Model Fitting</a></li>
+<li class="chapter" data-level="10.5" data-path="multiple-binomial-logistic-regression.html"><a href="multiple-binomial-logistic-regression.html#effect-size"><i class="fa fa-check"></i><b>10.5</b> Effect Size</a></li>
+<li class="chapter" data-level="10.6" data-path="multiple-binomial-logistic-regression.html"><a href="multiple-binomial-logistic-regression.html#prediction-accuracy"><i class="fa fa-check"></i><b>10.6</b> Prediction Accuracy</a></li>
+<li class="chapter" data-level="10.7" data-path="multiple-binomial-logistic-regression.html"><a href="multiple-binomial-logistic-regression.html#summarizing-results"><i class="fa fa-check"></i><b>10.7</b> Summarizing Results</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html"><i class="fa fa-check"></i><b>11</b> Mixed-Effects Regression</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#introduction-1"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#random-effects"><i class="fa fa-check"></i><b>11.2</b> Random Effects</a></li>
+<li class="chapter" data-level="11.3" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#example-preposition-use-across-time-by-genre"><i class="fa fa-check"></i><b>11.3</b> Example: Preposition Use across Time by Genre</a></li>
+<li class="chapter" data-level="11.4" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#testing-random-effects"><i class="fa fa-check"></i><b>11.4</b> Testing Random Effects</a></li>
+<li class="chapter" data-level="11.5" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#model-fitting-1"><i class="fa fa-check"></i><b>11.5</b> Model Fitting</a></li>
+<li class="chapter" data-level="11.6" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#effect-sizes"><i class="fa fa-check"></i><b>11.6</b> Effect Sizes</a></li>
+<li class="chapter" data-level="11.7" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#model-diagnostics-1"><i class="fa fa-check"></i><b>11.7</b> Model Diagnostics</a></li>
+<li class="chapter" data-level="11.8" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#reporting-results"><i class="fa fa-check"></i><b>11.8</b> Reporting Results</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html"><i class="fa fa-check"></i><b>12</b> Logistic Mixed-Effects Regression</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html#introduction-2"><i class="fa fa-check"></i><b>12.1</b> Introduction</a></li>
+<li class="chapter" data-level="12.2" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html#basic-concepts-1"><i class="fa fa-check"></i><b>12.2</b> Basic concepts</a></li>
+<li class="chapter" data-level="12.3" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html#example-discourse-like-in-irish-english"><i class="fa fa-check"></i><b>12.3</b> Example: Discourse LIKE in Irish English</a></li>
+<li class="chapter" data-level="12.4" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html#model-building-1"><i class="fa fa-check"></i><b>12.4</b> Model Building</a></li>
+<li class="chapter" data-level="12.5" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html#model-fitting-2"><i class="fa fa-check"></i><b>12.5</b> Model Fitting</a></li>
+<li class="chapter" data-level="12.6" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html#visualizing-effects"><i class="fa fa-check"></i><b>12.6</b> Visualizing Effects</a></li>
+<li class="chapter" data-level="12.7" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html#extracting-model-fit-parameters"><i class="fa fa-check"></i><b>12.7</b> Extracting Model Fit Parameters</a></li>
+<li class="chapter" data-level="12.8" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html#model-diagnostics-2"><i class="fa fa-check"></i><b>12.8</b> Model Diagnostics</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="tree-based-models.html"><a href="tree-based-models.html"><i class="fa fa-check"></i><b>13</b> Tree-Based Models</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="tree-based-models.html"><a href="tree-based-models.html#basic-concepts-2"><i class="fa fa-check"></i><b>13.1</b> Basic Concepts</a></li>
+<li class="chapter" data-level="13.2" data-path="tree-based-models.html"><a href="tree-based-models.html#classification-and-regression-trees"><i class="fa fa-check"></i><b>13.2</b> Classification And Regression Trees</a></li>
+<li class="chapter" data-level="13.3" data-path="tree-based-models.html"><a href="tree-based-models.html#conditional-inference-trees"><i class="fa fa-check"></i><b>13.3</b> Conditional Inference Trees</a></li>
+<li class="chapter" data-level="13.4" data-path="tree-based-models.html"><a href="tree-based-models.html#problems-of-conditional-inference-trees"><i class="fa fa-check"></i><b>13.4</b> Problems of Conditional Inference Trees</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Untitled</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tree-based-models" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Week 13</span> Tree-Based Models<a href="tree-based-models.html#tree-based-models" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This week, we focus on tree-based models and their implementation in R. For the more advanced, a recommendable resource for tree-based modeling is <span class="citation">Prasad, Iverson, and Liaw (<a href="#ref-prasad2006newer" role="doc-biblioref">2006</a>)</span> or <span class="citation">Gries (<a href="#ref-gries2021statistics" role="doc-biblioref">2021</a>)</span>. Very good papers dealing with many critical issues related to tree-based models are <span class="citation">Strobl, Malley, and Tutz (<a href="#ref-strobl2009tree" role="doc-biblioref">2009</a>)</span> and <span class="citation">Breiman (<a href="#ref-breiman2001modeling" role="doc-biblioref">2001</a>)</span>. The aim of this week is to show how to implement and perform basic tree-based modeling and classification using R.</p>
+<p><strong>Preparation and session set up</strong></p>
+<p>For this week, we need to install certain <em>packages</em> from an R <em>library</em> so that the scripts shown below are executed without errors. Before turning to the code below, please install the packages by running the code below this paragraph - it may take some time (between 1 and 5 minutes to install all of the libraries so you do not need to worry if it takes some time).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="tree-based-models.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install packages</span></span>
+<span id="cb1-2"><a href="tree-based-models.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;Boruta&quot;</span>)</span>
+<span id="cb1-3"><a href="tree-based-models.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tree&quot;</span>)</span>
+<span id="cb1-4"><a href="tree-based-models.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;caret&quot;</span>)</span>
+<span id="cb1-5"><a href="tree-based-models.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;cowplot&quot;</span>)</span>
+<span id="cb1-6"><a href="tree-based-models.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb1-7"><a href="tree-based-models.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggparty&quot;</span>)</span>
+<span id="cb1-8"><a href="tree-based-models.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;Gmisc&quot;</span>)</span>
+<span id="cb1-9"><a href="tree-based-models.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;grid&quot;</span>)</span>
+<span id="cb1-10"><a href="tree-based-models.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;Hmisc&quot;</span>)</span>
+<span id="cb1-11"><a href="tree-based-models.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;party&quot;</span>)</span>
+<span id="cb1-12"><a href="tree-based-models.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;partykit&quot;</span>)</span>
+<span id="cb1-13"><a href="tree-based-models.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;randomForest&quot;</span>)</span>
+<span id="cb1-14"><a href="tree-based-models.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;Rling&quot;)</span></span>
+<span id="cb1-15"><a href="tree-based-models.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pdp&quot;</span>)</span>
+<span id="cb1-16"><a href="tree-based-models.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span>
+<span id="cb1-17"><a href="tree-based-models.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;RCurl&quot;</span>)</span>
+<span id="cb1-18"><a href="tree-based-models.html#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;vip&quot;</span>)</span>
+<span id="cb1-19"><a href="tree-based-models.html#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;flextable&quot;</span>)</span>
+<span id="cb1-20"><a href="tree-based-models.html#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># install klippy for copy-to-clipboard button in code chunks</span></span>
+<span id="cb1-21"><a href="tree-based-models.html#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb1-22"><a href="tree-based-models.html#cb1-22" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;rlesur/klippy&quot;</span>)</span></code></pre></div>
+<p>Now that we have installed the packages, we can activate them as shown below.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="tree-based-models.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set options</span></span>
+<span id="cb2-2"><a href="tree-based-models.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> F)</span>
+<span id="cb2-3"><a href="tree-based-models.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
+<span id="cb2-4"><a href="tree-based-models.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">max.print=</span><span class="dv">10000</span>)</span>
+<span id="cb2-5"><a href="tree-based-models.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
+<span id="cb2-6"><a href="tree-based-models.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Boruta)</span>
+<span id="cb2-7"><a href="tree-based-models.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tree)</span>
+<span id="cb2-8"><a href="tree-based-models.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb2-9"><a href="tree-based-models.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb2-10"><a href="tree-based-models.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-11"><a href="tree-based-models.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggparty)</span>
+<span id="cb2-12"><a href="tree-based-models.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Gmisc)</span>
+<span id="cb2-13"><a href="tree-based-models.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb2-14"><a href="tree-based-models.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span>
+<span id="cb2-15"><a href="tree-based-models.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(party)</span>
+<span id="cb2-16"><a href="tree-based-models.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(partykit)</span>
+<span id="cb2-17"><a href="tree-based-models.html#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span>
+<span id="cb2-18"><a href="tree-based-models.html#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#library(Rling)</span></span>
+<span id="cb2-19"><a href="tree-based-models.html#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pdp)</span>
+<span id="cb2-20"><a href="tree-based-models.html#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RCurl)</span>
+<span id="cb2-21"><a href="tree-based-models.html#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb2-22"><a href="tree-based-models.html#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vip)</span>
+<span id="cb2-23"><a href="tree-based-models.html#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb2-24"><a href="tree-based-models.html#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># activate klippy for copy-to-clipboard button</span></span>
+<span id="cb2-25"><a href="tree-based-models.html#cb2-25" aria-hidden="true" tabindex="-1"></a>klippy<span class="sc">::</span><span class="fu">klippy</span>()</span></code></pre></div>
+<script>
+  addClassKlippyTo("pre.r, pre.markdown");
+  addKlippy('left', 'top', 'auto', '1', 'Copy code', 'Copied!');
+</script>
+<div id="basic-concepts-2" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Basic Concepts<a href="tree-based-models.html#basic-concepts-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section deals with tree-structure models which fall into the machine-learning rather than the inference statistics category as they are commonly used for classification and prediction tasks rather than explanation of relationships between variables.</p>
+<p>The most basic type of tree-structure model is a decision tree or CART (classification and regression tree). A more optimized version of CARTs are conditional inference trees (CITs) - although CART and CITs are commonly treated as one and the same thing although CITs differ from CARTs in that they provide more accurate variable importance measures. Like random forests, inference trees are non-parametric and thus do not rely on distributional requirements (or at least on fewer). The tree structure represents recursive partitioning of the data to minimize residual deviance. Several advantages have been associated with using tree-based models:</p>
+<ol style="list-style-type: decimal">
+<li><p>Tree-structure models are very useful because they can deal with different types of variables and provide a very good understanding of the structure in the data.</p></li>
+<li><p>Tree-structure models have been deemed particularly interesting for linguists because they can handle moderate sample sizes and many high-order interactions better then regression models shows that there can be issues especially when dealing with small data samples, single trees (rather than forests), and data where the variance is predictable based on a single interaction (as shown by <span class="citation">Gries (<a href="#ref-gries2021statistics" role="doc-biblioref">2021</a>)</span>, chapter 7).</p></li>
+<li><p>Tree-structure models are (supposedly) better at detecting non-linear or non-monotonic relationships between predictors and dependent variables.</p></li>
+<li><p>Tree-structure models are easy to implement in R and do not require the model selection, validation, and diagnostics associated with regression models.</p></li>
+<li><p>Tree-structure models can be used as variable-selection procedure which informs about which variables have any sort of significant relationship with the dependent variable and can thereby inform model fitting.</p></li>
+</ol>
+<p>Despite these potential advantages, a word of warning is in order: <span class="citation">Gries (<a href="#ref-gries2021statistics" role="doc-biblioref">2021</a>)</span> admits that tree-based models can be very useful but there are some issues that but some serious short-comings of tree-structure models remain under-explored. For instance,</p>
+<ol style="list-style-type: decimal">
+<li><p>Tree-structure models only inform about the importance of a variable but not if the variable is important as a main effect or as part of interactions (or both)! The importance only shows that there is some important connection between the predictor and the dependent variable.</p></li>
+<li><p>Simple tree-structure models have been shown to fail in detecting the correct predictors if the variance is solely determined by a single interaction <span class="citation">(<a href="#ref-gries2021statistics" role="doc-biblioref">Gries 2021, chap. 7.3</a>)</span>. This failure is caused by the fact that the predictor used in the first split of a tree is selected as the one with the strongest main effect <span class="citation">(<a href="#ref-boulesteix2015interaction" role="doc-biblioref">Boulesteix et al. 2015, 344</a>)</span>. This issue can, however, be avoided by hard-coding the interactions as predictors plus using ensemble methods such as random forests rather than individual trees <span class="citation">(see <a href="#ref-gries2021statistics" role="doc-biblioref">Gries 2021, chap. 7.3</a>)</span>.</p></li>
+<li><p>Another shortcoming is that tree-structure models partition the data (rather than “fitting a line” through the data which can lead to more coarse-grained predictions compared to regression models when dealing with numeric dependent variables <span class="citation">(again, see <a href="#ref-gries2021statistics" role="doc-biblioref">Gries 2021, chap. 7.3</a>)</span>.</p></li>
+<li><p><span class="citation">Boulesteix et al. (<a href="#ref-boulesteix2015interaction" role="doc-biblioref">2015</a>)</span>, 341 state that high correlations between predictors can hinder the detection of interactions when using small data sets. However, regression do not fare better here as they are even more strongly affected by (multi-)collinearity (see @<span class="citation">Gries (<a href="#ref-gries2021statistics" role="doc-biblioref">2021</a>)</span>, chapter 7.3).</p></li>
+<li><p>Tree-structure models are bad a detecting interactions when the variables have strong main effects which is, unfortunately, common when dealing with linguistic data <span class="citation">(<a href="#ref-wrigt2016interac" role="doc-biblioref">Wright, Ziegler, and König 2016</a>)</span>.</p></li>
+</ol>
+<p>Before we implement a conditional inference tree in R, we will have a look at how decision trees work. We will do this in more detail here as random forests and Boruta analyses are extensions of inference trees and are therefore based on the same concepts.</p>
+</div>
+<div id="classification-and-regression-trees" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Classification And Regression Trees<a href="tree-based-models.html#classification-and-regression-trees" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The most basic type of tree-structure model is a decision tree which is a type of classification and regression tree (CART). A more elaborate version of a CART is called a Conditional Inference Tree (CIT). The difference between a CART and a CIT is that CITs use significance tests, e.g. the p-values, to select and split variables rather than some information measures like the Gini coefficient <span class="citation">(<a href="#ref-gries2021statistics" role="doc-biblioref">Gries 2021</a>)</span>.</p>
+<p>Below is an example of a decision tree which shows what what response to expect - in this case whether a speaker uses discourse <em>like</em> or not. Decision trees, like all CARTs and CITs, answer a simple question, namely <em>How do we best classify elements based on the given predictors?</em>. The answer that decision trees provide is the classification of the elements based on the levels of the predictors. In simple decision trees, all predictors, even those that are not significant are included in the decision tree. The decision tree shows that the best (or most important) predictor for the use of discourse <em>like</em> is age as it is the highest node. Among young speakers, those with high status use <em>like</em> more compared with speakers of lower social status. Among old speakers, women use discourse <em>like</em> more than men.</p>
+<p><img src="bookdownproj_files/figure-html/cit1a-1.png" width="672" /></p>
+<p>The <em>yes</em> and <em>no</em> at the bottom show if the speaker should be classified as a user of discourse <em>like</em> (<em>yes</em> or <em>no</em>). Each split can be read as <em>true</em> to the left and <em>false</em> to the right. So that, at the first split, if the person is between the ages of 15 and 40, we need to follow the branch to the left while we need to follow to the right if the person is not 15 to 40.</p>
+<p>Before going through how this conditional decision tree is generated, let us first go over some basic concepts. The top of the decision tree is called <em>root</em> or <em>root node</em>, the categories at the end of branches are called <em>leaves</em> or <em>leaf nodes</em>. Nodes that are in-between the root and leaves are called <em>internal nodes</em> or just <em>nodes</em>. The root node has only arrows or lines pointing away from it, internal nodes have lines going to and from them, while leaf nodes only have lines pointing towards them.</p>
+<p>How to prune and evaluate the accuracy of decision trees is not shown here. If you are interested in this, please check out chapter 7 of <span class="citation">Gries (<a href="#ref-gries2021statistics" role="doc-biblioref">2021</a>)</span> which is a highly recommendable resource that provide a lot of additional information about decision trees and CARTs.</p>
+<p>Let us now go over the process by which the decision tree above is generated. In our example, we want to predict whether a person makes use of discourse <em>like</em> given their age, gender, and social status.</p>
+<p>In a first step, we load and inspect the data that we will use in this tutorial. As tree-based models require either numeric or factorized data, we factorize the “character” variables in our data.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="tree-based-models.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb3-2"><a href="tree-based-models.html#cb3-2" aria-hidden="true" tabindex="-1"></a>citdata <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;https://slcladal.github.io/data/treedata.txt&quot;</span>, <span class="at">header =</span> T, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)  <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="tree-based-models.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># factorize variables (cit require factors instead of character vectors)</span></span>
+<span id="cb3-4"><a href="tree-based-models.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(is.character, factor)</span></code></pre></div>
+<template id="43dda952-9938-45e9-a5ad-815ca82cbb4e"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-a75ab162{table-layout:auto;width:75%;}.cl-a74f4d2c{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a74f4d36{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a74f6a46{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a74fa844{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a74fa84e{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a74fa84f{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a74fa850{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a74fa858{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a74fa859{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a74fa85a{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a74fa862{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a74fa863{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a74fa864{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a74fa865{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a74fa86c{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-a75ab162'>
+<caption class="Table Caption">
+<p><span id="tab:cit4g">Table 13.1: </span>First 10 rows of the factorized citdata data</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-a74fa864"><p class="cl-a74f6a46"><span class="cl-a74f4d2c">Age</span></p></td><td class="cl-a74fa865"><p class="cl-a74f6a46"><span class="cl-a74f4d2c">Gender</span></p></td><td class="cl-a74fa865"><p class="cl-a74f6a46"><span class="cl-a74f4d2c">Status</span></p></td><td class="cl-a74fa86c"><p class="cl-a74f6a46"><span class="cl-a74f4d2c">LikeUser</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-a74fa84e"><p class="cl-a74f6a46"><span class="cl-a74f4d36">15-40</span></p></td><td class="cl-a74fa844"><p class="cl-a74f6a46"><span class="cl-a74f4d36">female</span></p></td><td class="cl-a74fa844"><p class="cl-a74f6a46"><span class="cl-a74f4d36">high</span></p></td><td class="cl-a74fa84f"><p class="cl-a74f6a46"><span class="cl-a74f4d36">no</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a74fa862"><p class="cl-a74f6a46"><span class="cl-a74f4d36">15-40</span></p></td><td class="cl-a74fa85a"><p class="cl-a74f6a46"><span class="cl-a74f4d36">female</span></p></td><td class="cl-a74fa85a"><p class="cl-a74f6a46"><span class="cl-a74f4d36">high</span></p></td><td class="cl-a74fa863"><p class="cl-a74f6a46"><span class="cl-a74f4d36">no</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a74fa84e"><p class="cl-a74f6a46"><span class="cl-a74f4d36">15-40</span></p></td><td class="cl-a74fa844"><p class="cl-a74f6a46"><span class="cl-a74f4d36">male</span></p></td><td class="cl-a74fa844"><p class="cl-a74f6a46"><span class="cl-a74f4d36">high</span></p></td><td class="cl-a74fa84f"><p class="cl-a74f6a46"><span class="cl-a74f4d36">no</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a74fa862"><p class="cl-a74f6a46"><span class="cl-a74f4d36">41-80</span></p></td><td class="cl-a74fa85a"><p class="cl-a74f6a46"><span class="cl-a74f4d36">female</span></p></td><td class="cl-a74fa85a"><p class="cl-a74f6a46"><span class="cl-a74f4d36">low</span></p></td><td class="cl-a74fa863"><p class="cl-a74f6a46"><span class="cl-a74f4d36">yes</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a74fa84e"><p class="cl-a74f6a46"><span class="cl-a74f4d36">41-80</span></p></td><td class="cl-a74fa844"><p class="cl-a74f6a46"><span class="cl-a74f4d36">male</span></p></td><td class="cl-a74fa844"><p class="cl-a74f6a46"><span class="cl-a74f4d36">high</span></p></td><td class="cl-a74fa84f"><p class="cl-a74f6a46"><span class="cl-a74f4d36">no</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a74fa862"><p class="cl-a74f6a46"><span class="cl-a74f4d36">41-80</span></p></td><td class="cl-a74fa85a"><p class="cl-a74f6a46"><span class="cl-a74f4d36">male</span></p></td><td class="cl-a74fa85a"><p class="cl-a74f6a46"><span class="cl-a74f4d36">low</span></p></td><td class="cl-a74fa863"><p class="cl-a74f6a46"><span class="cl-a74f4d36">no</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a74fa84e"><p class="cl-a74f6a46"><span class="cl-a74f4d36">41-80</span></p></td><td class="cl-a74fa844"><p class="cl-a74f6a46"><span class="cl-a74f4d36">female</span></p></td><td class="cl-a74fa844"><p class="cl-a74f6a46"><span class="cl-a74f4d36">low</span></p></td><td class="cl-a74fa84f"><p class="cl-a74f6a46"><span class="cl-a74f4d36">yes</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a74fa862"><p class="cl-a74f6a46"><span class="cl-a74f4d36">15-40</span></p></td><td class="cl-a74fa85a"><p class="cl-a74f6a46"><span class="cl-a74f4d36">male</span></p></td><td class="cl-a74fa85a"><p class="cl-a74f6a46"><span class="cl-a74f4d36">high</span></p></td><td class="cl-a74fa863"><p class="cl-a74f6a46"><span class="cl-a74f4d36">no</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a74fa84e"><p class="cl-a74f6a46"><span class="cl-a74f4d36">41-80</span></p></td><td class="cl-a74fa844"><p class="cl-a74f6a46"><span class="cl-a74f4d36">male</span></p></td><td class="cl-a74fa844"><p class="cl-a74f6a46"><span class="cl-a74f4d36">low</span></p></td><td class="cl-a74fa84f"><p class="cl-a74f6a46"><span class="cl-a74f4d36">no</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a74fa859"><p class="cl-a74f6a46"><span class="cl-a74f4d36">41-80</span></p></td><td class="cl-a74fa850"><p class="cl-a74f6a46"><span class="cl-a74f4d36">male</span></p></td><td class="cl-a74fa850"><p class="cl-a74f6a46"><span class="cl-a74f4d36">low</span></p></td><td class="cl-a74fa858"><p class="cl-a74f6a46"><span class="cl-a74f4d36">no</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="bfc42ae9-ec98-4193-9ca9-068b9ce151f7"></div>
+<script>
+var dest = document.getElementById("bfc42ae9-ec98-4193-9ca9-068b9ce151f7");
+var template = document.getElementById("43dda952-9938-45e9-a5ad-815ca82cbb4e");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>The data now consists of factors which two levels each.</p>
+</div>
+<div id="conditional-inference-trees" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Conditional Inference Trees<a href="tree-based-models.html#conditional-inference-trees" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Conditional Inference Trees (CITs) are much better at determining the <em>true</em> effect of a predictor, i.e. the effect of a predictor if all other effects are simultaneously considered. In contrast to CARTs, CITs use p-values to determine splits in the data. Below is a conditional inference tree which shows how and what factors contribute to the use of discourse <em>like</em>. In conditional inference trees predictors are only included if the predictor is significant (i.e. if these predictors are necessary).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="tree-based-models.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)        <span class="co"># set.seed</span></span>
+<span id="cb4-2"><a href="tree-based-models.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># apply bonferroni correction (1 minus alpha multiplied by n of predictors)</span></span>
+<span id="cb4-3"><a href="tree-based-models.html#cb4-3" aria-hidden="true" tabindex="-1"></a>control <span class="ot">=</span> <span class="fu">ctree_control</span>(<span class="at">mincriterion =</span> <span class="dv">1</span><span class="sc">-</span>(.<span class="dv">05</span><span class="sc">*</span><span class="fu">ncol</span>(citdata)<span class="sc">-</span><span class="dv">1</span>))</span>
+<span id="cb4-4"><a href="tree-based-models.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create initial conditional inference tree model</span></span>
+<span id="cb4-5"><a href="tree-based-models.html#cb4-5" aria-hidden="true" tabindex="-1"></a>citd.ctree <span class="ot">&lt;-</span> partykit<span class="sc">::</span><span class="fu">ctree</span>(LikeUser <span class="sc">~</span> Age <span class="sc">+</span> Gender <span class="sc">+</span> Status,</span>
+<span id="cb4-6"><a href="tree-based-models.html#cb4-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> citdata)</span>
+<span id="cb4-7"><a href="tree-based-models.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot final ctree</span></span>
+<span id="cb4-8"><a href="tree-based-models.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(citd.ctree, <span class="at">gp =</span> <span class="fu">gpar</span>(<span class="at">fontsize =</span> <span class="dv">8</span>)) </span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/cit1b-1.png" width="672" /></p>
+</div>
+<div id="problems-of-conditional-inference-trees" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> Problems of Conditional Inference Trees<a href="tree-based-models.html#problems-of-conditional-inference-trees" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Like other tree-based methods, CITs are very intuitive, multivariate, non-parametric, they do not require large data sets, and they are easy to implement. Despite these obvious advantages, they have at least one major short coming compared to other, more sophisticated tree-structure models (in addition to the general issues that tree-structure models exhibit as discussed in the section <a href="#tree-structuremodelbasics">Tree-Structure Model Basics</a>): they are prone to overfitting which means that they fit the observed data very well but preform much worse when being applied to new data.</p>
+<p>An extension which remedies this problem is to use a so-called ensemble method which grows many varied trees. The most common ensemble method is called a <em>Random Forest Analysis</em> but we will not discuss this here and stop.</p>
+<p><a href="introduction.html#introduction">Back to top</a></p>
+
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="tree-based-models.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Model Diagnostics</span></span>
+<span id="cb5-2"><a href="tree-based-models.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="tree-based-models.html#cb5-3" aria-hidden="true" tabindex="-1"></a>We can now evaluate the goodness of fit of the model and check <span class="cf">if</span> mathematical requirements and assumptions have been violated. In a first step, we generate diagnostic plots that focus on the random effect structure.</span>
+<span id="cb5-4"><a href="tree-based-models.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="tree-based-models.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#```{r lmm14}</span></span>
+<span id="cb5-6"><a href="tree-based-models.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m1.lmer, Genre <span class="sc">~</span> <span class="fu">resid</span>(.), <span class="at">abline =</span> <span class="dv">0</span> ) <span class="co"># generate diagnostic plots</span></span>
+<span id="cb5-7"><a href="tree-based-models.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#```</span></span>
+<span id="cb5-8"><a href="tree-based-models.html#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="tree-based-models.html#cb5-9" aria-hidden="true" tabindex="-1"></a>The plot shows that there are some <span class="fu">outliers</span> (points outside the boxes) and that the variability within letters is greater than <span class="cf">in</span> other genres we therefore examine the genres <span class="cf">in</span> isolation standardized residuals versus fitted values [<span class="sc">@</span>pinheiro2000mixedmodels <span class="dv">175</span>].</span>
+<span id="cb5-10"><a href="tree-based-models.html#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="tree-based-models.html#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#```{r lmm15}</span></span>
+<span id="cb5-12"><a href="tree-based-models.html#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m1.lmer, <span class="fu">resid</span>(., <span class="at">type =</span> <span class="st">&quot;pearson&quot;</span>) <span class="sc">~</span> <span class="fu">fitted</span>(.) <span class="sc">|</span> Genre, <span class="at">id =</span> <span class="fl">0.05</span>, </span>
+<span id="cb5-13"><a href="tree-based-models.html#cb5-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">adj =</span> <span class="sc">-</span><span class="fl">0.3</span>, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">&quot;gray40&quot;</span>)</span>
+<span id="cb5-14"><a href="tree-based-models.html#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#```</span></span>
+<span id="cb5-15"><a href="tree-based-models.html#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="tree-based-models.html#cb5-16" aria-hidden="true" tabindex="-1"></a>The plot shows the standardized <span class="fu">residuals</span> (or Pearson<span class="st">&#39;s residuals) versus fitted values and suggests that there are outliers in the data (the names elements in the plots). This is not ideal and we could now use a  Levene&#39;</span>s test to check <span class="cf">if</span> the variance is distributed <span class="fu">homogeneously</span> (homoscedasticity) or whether the assumption of variance homogeneity is <span class="fu">violated</span> (due to the outliers). If the test did indeed confirm that there is a problem, we would then add weights to our <span class="fu">model</span> (adding weights means that we make outliers less important and give points that are more central extra weight). However, we will not do this here to keep things simple. To see how to add weights, have a look at [this tutorial](https<span class="sc">:</span><span class="er">//</span>slcladal.github.io<span class="sc">/</span>regression.html<span class="co">#Additional_Model_Diagnostics).</span></span></code></pre></div>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Boulesteix, Anne-Laure, Silke Janitza, Alexander Hapfelmeier, Kristel Van Steen, and Carolin Strobl. 2015. <span>“Letter to the Editor: On the Term <span>‘Interaction’</span> and Related Phrases in the Literature on RandomForests.”</span> <em>Briefings in Bioinformatics</em> 16 (2): 338–45. <a href="https://academic.oup.com/bib/article/16/2/338/246566">https://academic.oup.com/bib/article/16/2/338/246566</a>.
+</div>
+<div class="csl-entry">
+Breiman, Leo. 2001. <span>“Statistical Modeling: The Two Cultures.”</span> <em>Statistical Science</em> 16: 199–231. <a href="https://projecteuclid.org/euclid.ss/1009213726">https://projecteuclid.org/euclid.ss/1009213726</a>.
+</div>
+<div class="csl-entry">
+Gries, Stefan Th. 2021. <em>Statistics for Linguistics Using r: A Practical Introduction</em>. Berlin &amp; New York: Mouton de Gruyter.
+</div>
+<div class="csl-entry">
+Prasad, Anantha M, Louis R Iverson, and Andy Liaw. 2006. <span>“Newer Classification and Regression Tree Techniques: Bagging and Random Forests for Ecological Prediction.”</span> <em>Ecosystems</em> 9 (2): 181–99.
+</div>
+<div class="csl-entry">
+Strobl, Carolin, James Malley, and Gerhard Tutz. 2009. <span>“An Introduction to Recursive Partitioning: Rationale,application and Characteristics of Classification and Regression Trees, Bagging and Random Forests.”</span> <em>Psychological Methods</em> 14 (4): 323–48. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2927982/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2927982/</a>.
+</div>
+<div class="csl-entry">
+Wright, Marvin N., Andreas Ziegler, and Inke R. König. 2016. <span>“Do Little Interactions Get Lost in Dark Random Forests?”</span> 17 (145). <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-016-0995-8">https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-016-0995-8</a>.
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-boulesteix2015interaction" class="csl-entry">
+Boulesteix, Anne-Laure, Silke Janitza, Alexander Hapfelmeier, Kristel Van Steen, and Carolin Strobl. 2015. <span>“Letter to the Editor: On the Term <span>‘Interaction’</span> and Related Phrases in the Literature on RandomForests.”</span> <em>Briefings in Bioinformatics</em> 16 (2): 338–45. <a href="https://academic.oup.com/bib/article/16/2/338/246566">https://academic.oup.com/bib/article/16/2/338/246566</a>.
+</div>
+<div id="ref-breiman2001modeling" class="csl-entry">
+Breiman, Leo. 2001. <span>“Statistical Modeling: The Two Cultures.”</span> <em>Statistical Science</em> 16: 199–231. <a href="https://projecteuclid.org/euclid.ss/1009213726">https://projecteuclid.org/euclid.ss/1009213726</a>.
+</div>
+<div id="ref-gries2021statistics" class="csl-entry">
+Gries, Stefan Th. 2021. <em>Statistics for Linguistics Using r: A Practical Introduction</em>. Berlin &amp; New York: Mouton de Gruyter.
+</div>
+<div id="ref-prasad2006newer" class="csl-entry">
+Prasad, Anantha M, Louis R Iverson, and Andy Liaw. 2006. <span>“Newer Classification and Regression Tree Techniques: Bagging and Random Forests for Ecological Prediction.”</span> <em>Ecosystems</em> 9 (2): 181–99.
+</div>
+<div id="ref-strobl2009tree" class="csl-entry">
+Strobl, Carolin, James Malley, and Gerhard Tutz. 2009. <span>“An Introduction to Recursive Partitioning: Rationale,application and Characteristics of Classification and Regression Trees, Bagging and Random Forests.”</span> <em>Psychological Methods</em> 14 (4): 323–48. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2927982/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2927982/</a>.
+</div>
+<div id="ref-wrigt2016interac" class="csl-entry">
+Wright, Marvin N., Andreas Ziegler, and Inke R. König. 2016. <span>“Do Little Interactions Get Lost in Dark Random Forests?”</span> 17 (145). <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-016-0995-8">https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-016-0995-8</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="logistic-mixed-effects-regression.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/edit/master/13-trees.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/blob/master/13-trees.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -177,7 +177,7 @@ ggplot(pdat, aes(Date, Prepositions, color = GenreRedux, shape = GenreRedux)) +
 
 ## Line Graphs
 
-Line graphs are used when we have numeric values that are linked (in one way or another) because they come from the same speaker or genre as in our case). 
+Line graphs are used when we have numeric values that are linked (in one way or another) because they come from the same speaker or genre as in our case). It is important though that there is only one value per time period (or x-axis level). So we group our data by genre and then take the mean so that we only have one value per genre and time period before plotting the data.
 
 ```{r line1, warning=F, message=F}
 pdat %>%

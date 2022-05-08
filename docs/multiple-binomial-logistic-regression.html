@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Week 10 Multiple Binomial Logistic Regression | Untitled</title>
+  <meta name="description" content="Week 10 Multiple Binomial Logistic Regression | Untitled" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Week 10 Multiple Binomial Logistic Regression | Untitled" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Week 10 Multiple Binomial Logistic Regression | Untitled" />
+  
+  
+  
+
+<meta name="author" content="Martin Schweinberger" />
+
+
+<meta name="date" content="2022-05-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="multiple-linear-regression.html"/>
+<link rel="next" href="mixed-effects-regression.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SLAT7855</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#basic-course-information"><i class="fa fa-check"></i>Basic Course Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i>Course Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-introduction"><i class="fa fa-check"></i>Course Introduction</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#timetable"><i class="fa fa-check"></i>Timetable</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#aims-objectives-graduate-attributes"><i class="fa fa-check"></i>Aims, Objectives &amp; Graduate Attributes</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aims"><i class="fa fa-check"></i>Course Aims</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-resources"><i class="fa fa-check"></i>Learning Resources</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#required-resources"><i class="fa fa-check"></i>Required Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-resources"><i class="fa fa-check"></i>Recommended Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#university-learning-resources"><i class="fa fa-check"></i>University Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#school-of-languages-and-cultures-learning-resources"><i class="fa fa-check"></i>School of Languages and Cultures Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-learning-resources-information"><i class="fa fa-check"></i>Other Learning Resources &amp; Information</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#teaching-learning-activities"><i class="fa fa-check"></i>Teaching &amp; Learning Activities</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-activities"><i class="fa fa-check"></i>Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-plan"><i class="fa fa-check"></i>Course plan</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#why-do-we-need-science"><i class="fa fa-check"></i><b>1.1</b> Why do we need science?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#errare-humanum-est"><i class="fa fa-check"></i><b>1.2</b> Errare Humanum Est</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#the-monty-hall-problem"><i class="fa fa-check"></i><b>1.2.1</b> The Monty Hall Problem</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#the-birthday-conundrum"><i class="fa fa-check"></i><b>1.2.2</b> The Birthday Conundrum</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#fast-and-slow-thinking"><i class="fa fa-check"></i><b>1.2.3</b> Fast and Slow Thinking</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#randomness"><i class="fa fa-check"></i><b>1.2.4</b> Randomness</a></li>
+<li class="chapter" data-level="1.2.5" data-path="introduction.html"><a href="introduction.html#patterns-and-matters-of-habit"><i class="fa fa-check"></i><b>1.2.5</b> Patterns and Matters of Habit</a></li>
+<li class="chapter" data-level="1.2.6" data-path="introduction.html"><a href="introduction.html#locical-fallacies-and-biases"><i class="fa fa-check"></i><b>1.2.6</b> Locical Fallacies and Biases</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#what-is-science"><i class="fa fa-check"></i><b>1.3</b> What is science?</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#clever-hans"><i class="fa fa-check"></i><b>1.3.1</b> Clever Hans</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#popper-falsification-and-scientific-progress"><i class="fa fa-check"></i><b>1.3.2</b> Popper, falsification, and scientific progress</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#what-is-empirical-linguistics"><i class="fa fa-check"></i><b>1.3.3</b> What is (empirical) Linguistics?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html"><i class="fa fa-check"></i><b>2</b> Hypotheses and Variables</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#hypotheses"><i class="fa fa-check"></i><b>2.1</b> Hypotheses</a>
+<ul>
+<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#types-of-hypotheses"><i class="fa fa-check"></i>Types of Hypotheses</a></li>
+<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#why-test-the-h0"><i class="fa fa-check"></i>Why test the H0?!</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#data-and-research-designs"><i class="fa fa-check"></i><b>2.2</b> Data and Research Designs</a>
+<ul>
+<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#research-designs"><i class="fa fa-check"></i>Research Designs</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#variables-and-validity"><i class="fa fa-check"></i><b>2.3</b> Variables and Validity</a>
+<ul>
+<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#variable-types-scaling"><i class="fa fa-check"></i>Variable Types (Scaling)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#relationships-between-variables"><i class="fa fa-check"></i><b>2.4</b> Relationships between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html"><i class="fa fa-check"></i><b>3</b> Significance, Probability and the Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#significance-and-probability"><i class="fa fa-check"></i><b>3.1</b> Significance and Probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#significance-levels"><i class="fa fa-check"></i>Significance Levels</a></li>
+<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#probability"><i class="fa fa-check"></i>Probability</a></li>
+<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#the-normal-distribution"><i class="fa fa-check"></i>The Normal Distribution</a></li>
+<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#non-normality-skewness-and-kurtosis"><i class="fa fa-check"></i>Non-normality: skewness and kurtosis</a></li>
+<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#the-binomial-distribution"><i class="fa fa-check"></i>The Binomial Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#z-scores"><i class="fa fa-check"></i><b>3.2</b> z-scores</a></li>
+<li class="chapter" data-level="3.3" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#alpha-and-beta-errors"><i class="fa fa-check"></i><b>3.3</b> Alpha and Beta Errors</a></li>
+<li class="chapter" data-level="3.4" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#independence"><i class="fa fa-check"></i><b>3.4</b> Independence</a></li>
+<li class="chapter" data-level="3.5" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#corrections"><i class="fa fa-check"></i><b>3.5</b> Corrections</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html"><i class="fa fa-check"></i><b>4</b> Getting Started with R and RStudio</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#goals-of-this-tutorial"><i class="fa fa-check"></i><b>4.1</b> Goals of this tutorial</a></li>
+<li class="chapter" data-level="4.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#audience"><i class="fa fa-check"></i><b>4.2</b> Audience</a></li>
+<li class="chapter" data-level="4.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>4.3</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#how-to-use-the-workshop-materials"><i class="fa fa-check"></i><b>4.3.1</b> How to use the workshop materials</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#preparation"><i class="fa fa-check"></i><b>4.4</b> Preparation</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#folder-structure-and-r-projects"><i class="fa fa-check"></i><b>4.4.1</b> Folder Structure and R projects</a></li>
+<li class="chapter" data-level="4.4.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#create-a-folder-for-your-project"><i class="fa fa-check"></i><b>4.4.2</b> 1. Create a folder for your project</a></li>
+<li class="chapter" data-level="4.4.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#open-rstudio"><i class="fa fa-check"></i><b>4.4.3</b> 3. Open RStudio</a></li>
+<li class="chapter" data-level="4.4.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-projects"><i class="fa fa-check"></i><b>4.4.4</b> 4. R Projects</a></li>
+<li class="chapter" data-level="4.4.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-notebooks"><i class="fa fa-check"></i><b>4.4.5</b> 5. R Notebooks</a></li>
+<li class="chapter" data-level="4.4.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#updating-r"><i class="fa fa-check"></i><b>4.4.6</b> 6. Updating R</a></li>
+<li class="chapter" data-level="4.4.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#optimizing-r-project-options"><i class="fa fa-check"></i><b>4.4.7</b> 7. Optimizing R project options</a></li>
+<li class="chapter" data-level="4.4.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-started-with-r-notebooks"><i class="fa fa-check"></i><b>4.4.8</b> 8. Getting started with R Notebooks</a></li>
+<li class="chapter" data-level="4.4.9" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-markdown"><i class="fa fa-check"></i><b>4.4.9</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-and-rstudio-basics"><i class="fa fa-check"></i><b>4.5</b> R and RStudio Basics</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#rstudio-panes"><i class="fa fa-check"></i><b>4.5.1</b> RStudio: Panes</a></li>
+<li class="chapter" data-level="4.5.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-console-bottom-left-pane"><i class="fa fa-check"></i><b>4.5.2</b> R Console (bottom left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#running-commands-from-a-script"><i class="fa fa-check"></i><b>4.6</b> Running commands from a script</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#script-editor-top-left-pane"><i class="fa fa-check"></i><b>4.6.1</b> Script Editor (top left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-started-with-r"><i class="fa fa-check"></i><b>4.7</b> Getting started with R</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#setting-up-an-r-session"><i class="fa fa-check"></i><b>4.7.1</b> Setting up an R session</a></li>
+<li class="chapter" data-level="4.7.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#packages"><i class="fa fa-check"></i><b>4.7.2</b> Packages</a></li>
+<li class="chapter" data-level="4.7.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-help"><i class="fa fa-check"></i><b>4.7.3</b> Getting help</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#working-with-tables"><i class="fa fa-check"></i><b>4.8</b> Working with tables</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#loading-data-from-the-web"><i class="fa fa-check"></i><b>4.8.1</b> Loading data from the web</a></li>
+<li class="chapter" data-level="4.8.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#functions-and-objects"><i class="fa fa-check"></i><b>4.8.2</b> Functions and Objects</a></li>
+<li class="chapter" data-level="4.8.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#inspecting-data"><i class="fa fa-check"></i><b>4.8.3</b> Inspecting data</a></li>
+<li class="chapter" data-level="4.8.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#accessing-individual-cells-in-a-table"><i class="fa fa-check"></i><b>4.8.4</b> Accessing individual cells in a table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html"><i class="fa fa-check"></i><b>5</b> Working with Tables in R and RStudio 2</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#working-with-tables-1"><i class="fa fa-check"></i><b>5.1</b> Working with tables</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#tabulating-data"><i class="fa fa-check"></i><b>5.1.1</b> Tabulating data</a></li>
+<li class="chapter" data-level="5.1.2" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#saving-data-to-your-computer"><i class="fa fa-check"></i><b>5.1.2</b> Saving data to your computer</a></li>
+<li class="chapter" data-level="5.1.3" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#loading-data-from-your-computer"><i class="fa fa-check"></i><b>5.1.3</b> Loading data from your computer</a></li>
+<li class="chapter" data-level="5.1.4" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#loading-excel-data"><i class="fa fa-check"></i><b>5.1.4</b> Loading Excel data</a></li>
+<li class="chapter" data-level="5.1.5" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#loading-text-data"><i class="fa fa-check"></i><b>5.1.5</b> Loading text data</a></li>
+<li class="chapter" data-level="5.1.6" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#renaming-piping-and-filtering"><i class="fa fa-check"></i><b>5.1.6</b> Renaming, Piping, and Filtering</a></li>
+<li class="chapter" data-level="5.1.7" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#ordering-data"><i class="fa fa-check"></i><b>5.1.7</b> Ordering data</a></li>
+<li class="chapter" data-level="5.1.8" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#creating-and-changing-variables"><i class="fa fa-check"></i><b>5.1.8</b> Creating and changing variables</a></li>
+<li class="chapter" data-level="5.1.9" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#if-statements"><i class="fa fa-check"></i><b>5.1.9</b> If-statements</a></li>
+<li class="chapter" data-level="5.1.10" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#summarizing-data"><i class="fa fa-check"></i><b>5.1.10</b> Summarizing data</a></li>
+<li class="chapter" data-level="5.1.11" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#gathering-and-spreading-data"><i class="fa fa-check"></i><b>5.1.11</b> Gathering and spreading data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#ending-r-sessions"><i class="fa fa-check"></i><b>5.2</b> Ending R sessions</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#extracting-session-information"><i class="fa fa-check"></i><b>5.2.1</b> Extracting session information</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="working-with-tables-in-r-and-rstudio-2.html"><a href="working-with-tables-in-r-and-rstudio-2.html#going-further"><i class="fa fa-check"></i><b>5.3</b> Going further</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-centrality"><i class="fa fa-check"></i><b>6.1</b> Measures of Centrality</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#mean"><i class="fa fa-check"></i>Mean</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#median"><i class="fa fa-check"></i>Median</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#mode"><i class="fa fa-check"></i>Mode</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#geometric-mean"><i class="fa fa-check"></i>Geometric mean</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#harmonic-mean"><i class="fa fa-check"></i>Harmonic mean</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#notes-on-measures-of-centrality"><i class="fa fa-check"></i>Notes on Measures of Centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-variability"><i class="fa fa-check"></i><b>6.2</b> Measures of Variability</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#range"><i class="fa fa-check"></i>Range</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#interquartile-range-iqr"><i class="fa fa-check"></i>Interquartile range (IQR)</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#variance"><i class="fa fa-check"></i>Variance</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#standard-deviation"><i class="fa fa-check"></i>Standard deviation</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#standard-error"><i class="fa fa-check"></i>Standard Error</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals"><i class="fa fa-check"></i><b>6.3</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals-for-simple-vectors"><i class="fa fa-check"></i>Confidence Intervals for Simple Vectors</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals-for-grouped-data"><i class="fa fa-check"></i>Confidence Intervals for Grouped Data</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals-for-nominal-data"><i class="fa fa-check"></i>Confidence Intervals for Nominal Data</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals-for-multinomial-data"><i class="fa fa-check"></i>Confidence Intervals for Multinomial Data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html"><i class="fa fa-check"></i><b>7</b> Introduction to Data Visualization</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#getting-started"><i class="fa fa-check"></i><b>7.1</b> Getting started</a></li>
+<li class="chapter" data-level="7.2" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#dot-and-scatter-plots"><i class="fa fa-check"></i><b>7.2</b> Dot and Scatter Plots</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#scatter-plots-in-base"><i class="fa fa-check"></i><b>7.2.1</b> Scatter Plots in base</a></li>
+<li class="chapter" data-level="7.2.2" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#scatter-plots-in-ggplot2"><i class="fa fa-check"></i><b>7.2.2</b> Scatter Plots in ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#line-graphs"><i class="fa fa-check"></i><b>7.3</b> Line Graphs</a></li>
+<li class="chapter" data-level="7.4" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#histograms"><i class="fa fa-check"></i><b>7.4</b> Histograms</a></li>
+<li class="chapter" data-level="7.5" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#bar-plots"><i class="fa fa-check"></i><b>7.5</b> Bar plots</a></li>
+<li class="chapter" data-level="7.6" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#boxplots"><i class="fa fa-check"></i><b>7.6</b> Boxplots</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="basic-inferential-statistics-regression-analysis.html"><a href="basic-inferential-statistics-regression-analysis.html"><i class="fa fa-check"></i><b>8</b> Basic Inferential Statistics: Regression Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="basic-inferential-statistics-regression-analysis.html"><a href="basic-inferential-statistics-regression-analysis.html#the-basic-principle"><i class="fa fa-check"></i><b>8.1</b> The basic principle</a></li>
+<li class="chapter" data-level="8.2" data-path="basic-inferential-statistics-regression-analysis.html"><a href="basic-inferential-statistics-regression-analysis.html#simple-linear-regression"><i class="fa fa-check"></i><b>8.2</b> Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="basic-inferential-statistics-regression-analysis.html"><a href="basic-inferential-statistics-regression-analysis.html#example-1-preposition-use-across-real-time"><i class="fa fa-check"></i><b>8.2.1</b> Example 1: Preposition Use across Real-Time</a></li>
+<li class="chapter" data-level="8.2.2" data-path="basic-inferential-statistics-regression-analysis.html"><a href="basic-inferential-statistics-regression-analysis.html#example-2-teaching-styles"><i class="fa fa-check"></i><b>8.2.2</b> Example 2: Teaching Styles</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>9</b> Multiple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#the-basics-of-multiple-linear-regression"><i class="fa fa-check"></i><b>9.1</b> The Basics of Multiple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#example-gifts-and-availability"><i class="fa fa-check"></i><b>9.1.1</b> Example: Gifts and Availability</a></li>
+<li class="chapter" data-level="9.1.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#automatic-model-fitting"><i class="fa fa-check"></i><b>9.1.2</b> (Automatic) Model Fitting</a></li>
+<li class="chapter" data-level="9.1.3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#model-diagnostics"><i class="fa fa-check"></i><b>9.1.3</b> Model Diagnostics</a></li>
+<li class="chapter" data-level="9.1.4" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#evaluation-of-sample-size"><i class="fa fa-check"></i><b>9.1.4</b> Evaluation of Sample Size</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="multiple-binomial-logistic-regression.html"><a href="multiple-binomial-logistic-regression.html"><i class="fa fa-check"></i><b>10</b> Multiple Binomial Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="multiple-binomial-logistic-regression.html"><a href="multiple-binomial-logistic-regression.html#basic-concepts"><i class="fa fa-check"></i><b>10.1</b> Basic Concepts</a></li>
+<li class="chapter" data-level="10.2" data-path="multiple-binomial-logistic-regression.html"><a href="multiple-binomial-logistic-regression.html#example-eh-in-kiwi-english"><i class="fa fa-check"></i><b>10.2</b> Example: EH in Kiwi English</a></li>
+<li class="chapter" data-level="10.3" data-path="multiple-binomial-logistic-regression.html"><a href="multiple-binomial-logistic-regression.html#model-building"><i class="fa fa-check"></i><b>10.3</b> Model Building</a></li>
+<li class="chapter" data-level="10.4" data-path="multiple-binomial-logistic-regression.html"><a href="multiple-binomial-logistic-regression.html#model-fitting"><i class="fa fa-check"></i><b>10.4</b> Model Fitting</a></li>
+<li class="chapter" data-level="10.5" data-path="multiple-binomial-logistic-regression.html"><a href="multiple-binomial-logistic-regression.html#effect-size"><i class="fa fa-check"></i><b>10.5</b> Effect Size</a></li>
+<li class="chapter" data-level="10.6" data-path="multiple-binomial-logistic-regression.html"><a href="multiple-binomial-logistic-regression.html#prediction-accuracy"><i class="fa fa-check"></i><b>10.6</b> Prediction Accuracy</a></li>
+<li class="chapter" data-level="10.7" data-path="multiple-binomial-logistic-regression.html"><a href="multiple-binomial-logistic-regression.html#summarizing-results"><i class="fa fa-check"></i><b>10.7</b> Summarizing Results</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html"><i class="fa fa-check"></i><b>11</b> Mixed-Effects Regression</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#introduction-1"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#random-effects"><i class="fa fa-check"></i><b>11.2</b> Random Effects</a></li>
+<li class="chapter" data-level="11.3" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#example-preposition-use-across-time-by-genre"><i class="fa fa-check"></i><b>11.3</b> Example: Preposition Use across Time by Genre</a></li>
+<li class="chapter" data-level="11.4" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#testing-random-effects"><i class="fa fa-check"></i><b>11.4</b> Testing Random Effects</a></li>
+<li class="chapter" data-level="11.5" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#model-fitting-1"><i class="fa fa-check"></i><b>11.5</b> Model Fitting</a></li>
+<li class="chapter" data-level="11.6" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#effect-sizes"><i class="fa fa-check"></i><b>11.6</b> Effect Sizes</a></li>
+<li class="chapter" data-level="11.7" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#model-diagnostics-1"><i class="fa fa-check"></i><b>11.7</b> Model Diagnostics</a></li>
+<li class="chapter" data-level="11.8" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#reporting-results"><i class="fa fa-check"></i><b>11.8</b> Reporting Results</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html"><i class="fa fa-check"></i><b>12</b> Logistic Mixed-Effects Regression</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html#introduction-2"><i class="fa fa-check"></i><b>12.1</b> Introduction</a></li>
+<li class="chapter" data-level="12.2" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html#basic-concepts-1"><i class="fa fa-check"></i><b>12.2</b> Basic concepts</a></li>
+<li class="chapter" data-level="12.3" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html#example-discourse-like-in-irish-english"><i class="fa fa-check"></i><b>12.3</b> Example: Discourse LIKE in Irish English</a></li>
+<li class="chapter" data-level="12.4" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html#model-building-1"><i class="fa fa-check"></i><b>12.4</b> Model Building</a></li>
+<li class="chapter" data-level="12.5" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html#model-fitting-2"><i class="fa fa-check"></i><b>12.5</b> Model Fitting</a></li>
+<li class="chapter" data-level="12.6" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html#visualizing-effects"><i class="fa fa-check"></i><b>12.6</b> Visualizing Effects</a></li>
+<li class="chapter" data-level="12.7" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html#extracting-model-fit-parameters"><i class="fa fa-check"></i><b>12.7</b> Extracting Model Fit Parameters</a></li>
+<li class="chapter" data-level="12.8" data-path="logistic-mixed-effects-regression.html"><a href="logistic-mixed-effects-regression.html#model-diagnostics-2"><i class="fa fa-check"></i><b>12.8</b> Model Diagnostics</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="tree-based-models-in-r.html"><a href="tree-based-models-in-r.html"><i class="fa fa-check"></i><b>13</b> Tree-Based Models in R</a>
+<ul>
+<li class="chapter" data-level="" data-path="tree-based-models-in-r.html"><a href="tree-based-models-in-r.html#splitting-numeric-ordinal-and-true-categorical-variables"><i class="fa fa-check"></i>Splitting numeric, ordinal, and true categorical variables</a></li>
+<li class="chapter" data-level="" data-path="tree-based-models-in-r.html"><a href="tree-based-models-in-r.html#prettifying-your-cit-tree"><i class="fa fa-check"></i>Prettifying your CIT tree</a></li>
+<li class="chapter" data-level="" data-path="tree-based-models-in-r.html"><a href="tree-based-models-in-r.html#problems-of-conditional-inference-trees"><i class="fa fa-check"></i>Problems of Conditional Inference Trees</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Untitled</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="multiple-binomial-logistic-regression" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Week 10</span> Multiple Binomial Logistic Regression<a href="multiple-binomial-logistic-regression.html#multiple-binomial-logistic-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This week, we continue with regression analyses and expand on last week by using a regression to analyse a nominal dependent variable.</p>
+<p><strong>Preparation and session set up</strong></p>
+<p>This tutorial is based on R. If you have not installed R or are new to it, you will find an introduction to and more information how to use R <a href="https://slcladal.github.io/intror.html">here</a>. For this tutorials, we need to install certain <em>packages</em> from an R <em>library</em> so that the scripts shown below are executed without errors. Before turning to the code below, please install the packages by running the code below this paragraph. If you have already installed the packages mentioned below, then you can skip ahead and ignore this section. To install the necessary packages, simply run the following code - it may take some time (between 1 and 5 minutes to install all of the libraries so you do not need to worry if it takes some time).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="multiple-binomial-logistic-regression.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install</span></span>
+<span id="cb1-2"><a href="multiple-binomial-logistic-regression.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;car&quot;</span>)</span>
+<span id="cb1-3"><a href="multiple-binomial-logistic-regression.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;emmeans&quot;</span>)</span>
+<span id="cb1-4"><a href="multiple-binomial-logistic-regression.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;effects&quot;</span>)</span>
+<span id="cb1-5"><a href="multiple-binomial-logistic-regression.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;flextable&quot;</span>)</span>
+<span id="cb1-6"><a href="multiple-binomial-logistic-regression.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb1-7"><a href="multiple-binomial-logistic-regression.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggpubr&quot;</span>)</span>
+<span id="cb1-8"><a href="multiple-binomial-logistic-regression.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;Hmisc&quot;</span>)</span>
+<span id="cb1-9"><a href="multiple-binomial-logistic-regression.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;knitr&quot;</span>)</span>
+<span id="cb1-10"><a href="multiple-binomial-logistic-regression.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lme4&quot;</span>)</span>
+<span id="cb1-11"><a href="multiple-binomial-logistic-regression.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;MASS&quot;</span>)</span>
+<span id="cb1-12"><a href="multiple-binomial-logistic-regression.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;mclogit&quot;</span>)</span>
+<span id="cb1-13"><a href="multiple-binomial-logistic-regression.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;MuMIn&quot;</span>)</span>
+<span id="cb1-14"><a href="multiple-binomial-logistic-regression.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;nlme&quot;</span>)</span>
+<span id="cb1-15"><a href="multiple-binomial-logistic-regression.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ordinal&quot;</span>)</span>
+<span id="cb1-16"><a href="multiple-binomial-logistic-regression.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rms&quot;</span>)</span>
+<span id="cb1-17"><a href="multiple-binomial-logistic-regression.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;robustbase&quot;</span>)</span>
+<span id="cb1-18"><a href="multiple-binomial-logistic-regression.html#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sjPlot&quot;</span>)</span>
+<span id="cb1-19"><a href="multiple-binomial-logistic-regression.html#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;stringr&quot;</span>)</span>
+<span id="cb1-20"><a href="multiple-binomial-logistic-regression.html#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tibble&quot;</span>)</span>
+<span id="cb1-21"><a href="multiple-binomial-logistic-regression.html#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb1-22"><a href="multiple-binomial-logistic-regression.html#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;vcd&quot;</span>)</span>
+<span id="cb1-23"><a href="multiple-binomial-logistic-regression.html#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;vip&quot;</span>)</span>
+<span id="cb1-24"><a href="multiple-binomial-logistic-regression.html#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># install klippy for copy-to-clipboard button in code chunks</span></span>
+<span id="cb1-25"><a href="multiple-binomial-logistic-regression.html#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb1-26"><a href="multiple-binomial-logistic-regression.html#cb1-26" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;rlesur/klippy&quot;</span>)</span></code></pre></div>
+<p>Now that we have installed the packages, we activate them as shown below.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="multiple-binomial-logistic-regression.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set options</span></span>
+<span id="cb2-2"><a href="multiple-binomial-logistic-regression.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> F)          <span class="co"># no automatic data transformation</span></span>
+<span id="cb2-3"><a href="multiple-binomial-logistic-regression.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="st">&quot;scipen&quot;</span> <span class="ot">=</span> <span class="dv">100</span>, <span class="st">&quot;digits&quot;</span> <span class="ot">=</span> <span class="dv">12</span>) <span class="co"># suppress math annotation</span></span>
+<span id="cb2-4"><a href="multiple-binomial-logistic-regression.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
+<span id="cb2-5"><a href="multiple-binomial-logistic-regression.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-6"><a href="multiple-binomial-logistic-regression.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Boruta)</span>
+<span id="cb2-7"><a href="multiple-binomial-logistic-regression.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb2-8"><a href="multiple-binomial-logistic-regression.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
+<span id="cb2-9"><a href="multiple-binomial-logistic-regression.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb2-10"><a href="multiple-binomial-logistic-regression.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb2-11"><a href="multiple-binomial-logistic-regression.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggfortify)</span>
+<span id="cb2-12"><a href="multiple-binomial-logistic-regression.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-13"><a href="multiple-binomial-logistic-regression.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb2-14"><a href="multiple-binomial-logistic-regression.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span>
+<span id="cb2-15"><a href="multiple-binomial-logistic-regression.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb2-16"><a href="multiple-binomial-logistic-regression.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb2-17"><a href="multiple-binomial-logistic-regression.html#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb2-18"><a href="multiple-binomial-logistic-regression.html#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mclogit)</span>
+<span id="cb2-19"><a href="multiple-binomial-logistic-regression.html#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MuMIn)</span>
+<span id="cb2-20"><a href="multiple-binomial-logistic-regression.html#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nlme)</span>
+<span id="cb2-21"><a href="multiple-binomial-logistic-regression.html#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ordinal)</span>
+<span id="cb2-22"><a href="multiple-binomial-logistic-regression.html#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rms)</span>
+<span id="cb2-23"><a href="multiple-binomial-logistic-regression.html#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(robustbase)</span>
+<span id="cb2-24"><a href="multiple-binomial-logistic-regression.html#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb2-25"><a href="multiple-binomial-logistic-regression.html#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb2-26"><a href="multiple-binomial-logistic-regression.html#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb2-27"><a href="multiple-binomial-logistic-regression.html#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
+<span id="cb2-28"><a href="multiple-binomial-logistic-regression.html#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vip)</span>
+<span id="cb2-29"><a href="multiple-binomial-logistic-regression.html#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># activate klippy for copy-to-clipboard button</span></span>
+<span id="cb2-30"><a href="multiple-binomial-logistic-regression.html#cb2-30" aria-hidden="true" tabindex="-1"></a>klippy<span class="sc">::</span><span class="fu">klippy</span>()</span></code></pre></div>
+<script>
+  addClassKlippyTo("pre.r, pre.markdown");
+  addKlippy('left', 'top', 'auto', '1', 'Copy code', 'Copied!');
+</script>
+<p>Once you have installed R and RStudio and initiated the session by executing the code shown above, you are good to go.</p>
+<div id="basic-concepts" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Basic Concepts<a href="multiple-binomial-logistic-regression.html#basic-concepts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Logistic regression is a multivariate analysis technique that builds on and is very similar in terms of its implementation to linear regression but logistic regressions take dependent variables that represent nominal rather than numeric scaling <span class="citation">(<a href="#ref-harrell2015regression" role="doc-biblioref">Harrell Jr 2015</a>)</span>. The difference requires that the linear regression must be modified in certain ways to avoid producing non-sensical outcomes. The most fundamental difference between logistic and linear regressions is that logistic regression work on the probabilities of an outcome (the likelihood), rather than the outcome itself. In addition, the likelihoods on which the logistic regression works must be logged (logarithmized) in order to avoid produce predictions that produce values greater than 1 (instance occurs) and 0 (instance does not occur). You can check this by logging the values from -10 to 10 using the <code>plogis</code> function as shown below.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="multiple-binomial-logistic-regression.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">10</span><span class="sc">:</span><span class="dv">10</span>), <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##  [1] 0.00005 0.00012 0.00034 0.00091 0.00247 0.00669 0.01799 0.04743 0.11920
+## [10] 0.26894 0.50000 0.73106 0.88080 0.95257 0.98201 0.99331 0.99753 0.99909
+## [19] 0.99966 0.99988 0.99995</code></pre>
+<p>If we visualize these logged values, we get an S-shaped curve which reflects the logistic function.</p>
+<p><img src="bookdownproj_files/figure-html/blm0b-1.png" width="672" /></p>
+<p>To understand what this mean, we will use a very simple example. In this example, we want to see whether the height of men affect their likelihood of being in a relationship. The data we use represents a data set consisting of two variables: height and relationship.</p>
+<p><img src="bookdownproj_files/figure-html/blm1-1.png" width="672" /></p>
+<p>The left panel of the Figure above shows that a linear model would predict values for the relationship status, which represents a factor (0 = Single and 1 = In a Relationship), that are nonsensical because values above 1 or below 0 do not make sense. In contrast to a linear regression, which predicts actual values, such as the frequencies of prepositions in a certain text, a logistic regression predicts <em>probabilities</em> of events (for example, being in a relationship) rather than actual values. The center panel shows the predictions of a logistic regression and we see that a logistic regression also has an intercept and a (very steep) slope but that the regression line also predicts values that are above 1 and below 0. However, when we log the predicted values we these predicted values are transformed into probabilities with values between 0 and 1. And the logged regression line has a S-shape which reflects the logistic function. Furthermore, we can then find the optimal line (the line with the lowest residual deviance) by comparing the sum of residuals - just as we did for a simple linear model and that way, we find the regression line for a logistic regression.</p>
+</div>
+<div id="example-eh-in-kiwi-english" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Example: EH in Kiwi English<a href="multiple-binomial-logistic-regression.html#example-eh-in-kiwi-english" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To exemplify how to implement a logistic regression in R <span class="citation">(see <a href="#ref-agresti1996introduction" role="doc-biblioref">Agresti 1996</a>; <a href="#ref-agresti2011categorical" role="doc-biblioref">Agresti and Kateri 2011</a>)</span> for very good and thorough introductions to this topic], we will analyze the use of the discourse particle <em>eh</em> in New Zealand English and test which factors correlate with its occurrence. The data set represents speech units in a corpus that were coded for the speaker who uttered a given speech unit, the gender, ethnicity, and age of that speaker and whether or not the speech unit contained an <em>eh</em>. To begin with, we clean the current work space, set option, install and activate relevant packages, load customized functions, and load the example data set.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="multiple-binomial-logistic-regression.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb5-2"><a href="multiple-binomial-logistic-regression.html#cb5-2" aria-hidden="true" tabindex="-1"></a>blrdata  <span class="ot">&lt;-</span> base<span class="sc">::</span><span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">&quot;https://slcladal.github.io/data/bld.rda&quot;</span>, <span class="st">&quot;rb&quot;</span>))</span></code></pre></div>
+<template id="484b4fac-0ded-469f-a519-b085152dc90f"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-4f840ff2{table-layout:auto;width:75%;}.cl-4f774844{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4f774858{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4f7776b6{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-4f7776c0{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-4f7812ce{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4f7812d8{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4f7812e2{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4f7812e3{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4f7812e4{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4f7812ec{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4f7812ed{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4f7812f6{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4f7812f7{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4f781300{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4f781301{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4f78130a{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-4f840ff2'>
+<caption class="Table Caption">
+<p><span id="tab:blm4">Table 10.1: </span>First 15 rows of the blrdata.</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-4f781300"><p class="cl-4f7776b6"><span class="cl-4f774844">ID</span></p></td><td class="cl-4f781301"><p class="cl-4f7776b6"><span class="cl-4f774844">Gender</span></p></td><td class="cl-4f781301"><p class="cl-4f7776b6"><span class="cl-4f774844">Age</span></p></td><td class="cl-4f781301"><p class="cl-4f7776b6"><span class="cl-4f774844">Ethnicity</span></p></td><td class="cl-4f78130a"><p class="cl-4f7776c0"><span class="cl-4f774844">EH</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-4f7812e2"><p class="cl-4f7776b6"><span class="cl-4f774858">&lt;S1A-001#M&gt;</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Men</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Young</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Pakeha</span></p></td><td class="cl-4f7812ce"><p class="cl-4f7776c0"><span class="cl-4f774858">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4f7812ec"><p class="cl-4f7776b6"><span class="cl-4f774858">&lt;S1A-001#M&gt;</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Men</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Young</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Pakeha</span></p></td><td class="cl-4f7812e4"><p class="cl-4f7776c0"><span class="cl-4f774858">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4f7812e2"><p class="cl-4f7776b6"><span class="cl-4f774858">&lt;S1A-001#M&gt;</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Men</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Young</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Pakeha</span></p></td><td class="cl-4f7812ce"><p class="cl-4f7776c0"><span class="cl-4f774858">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4f7812ec"><p class="cl-4f7776b6"><span class="cl-4f774858">&lt;S1A-001#M&gt;</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Men</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Young</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Pakeha</span></p></td><td class="cl-4f7812e4"><p class="cl-4f7776c0"><span class="cl-4f774858">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4f7812e2"><p class="cl-4f7776b6"><span class="cl-4f774858">&lt;S1A-001#M&gt;</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Men</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Young</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Pakeha</span></p></td><td class="cl-4f7812ce"><p class="cl-4f7776c0"><span class="cl-4f774858">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4f7812ec"><p class="cl-4f7776b6"><span class="cl-4f774858">&lt;S1A-001#M&gt;</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Men</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Young</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Pakeha</span></p></td><td class="cl-4f7812e4"><p class="cl-4f7776c0"><span class="cl-4f774858">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4f7812e2"><p class="cl-4f7776b6"><span class="cl-4f774858">&lt;S1A-001#M&gt;</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Men</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Young</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Pakeha</span></p></td><td class="cl-4f7812ce"><p class="cl-4f7776c0"><span class="cl-4f774858">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4f7812ec"><p class="cl-4f7776b6"><span class="cl-4f774858">&lt;S1A-001#M&gt;</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Men</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Young</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Pakeha</span></p></td><td class="cl-4f7812e4"><p class="cl-4f7776c0"><span class="cl-4f774858">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4f7812e2"><p class="cl-4f7776b6"><span class="cl-4f774858">&lt;S1A-001#M&gt;</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Men</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Young</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Pakeha</span></p></td><td class="cl-4f7812ce"><p class="cl-4f7776c0"><span class="cl-4f774858">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4f7812ec"><p class="cl-4f7776b6"><span class="cl-4f774858">&lt;S1A-001#M&gt;</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Men</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Young</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Pakeha</span></p></td><td class="cl-4f7812e4"><p class="cl-4f7776c0"><span class="cl-4f774858">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4f7812e2"><p class="cl-4f7776b6"><span class="cl-4f774858">&lt;S1A-001#M&gt;</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Men</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Young</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Pakeha</span></p></td><td class="cl-4f7812ce"><p class="cl-4f7776c0"><span class="cl-4f774858">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4f7812ec"><p class="cl-4f7776b6"><span class="cl-4f774858">&lt;S1A-001#M&gt;</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Men</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Young</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Pakeha</span></p></td><td class="cl-4f7812e4"><p class="cl-4f7776c0"><span class="cl-4f774858">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4f7812e2"><p class="cl-4f7776b6"><span class="cl-4f774858">&lt;S1A-001#M&gt;</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Men</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Young</span></p></td><td class="cl-4f7812d8"><p class="cl-4f7776b6"><span class="cl-4f774858">Pakeha</span></p></td><td class="cl-4f7812ce"><p class="cl-4f7776c0"><span class="cl-4f774858">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4f7812ec"><p class="cl-4f7776b6"><span class="cl-4f774858">&lt;S1A-001#M&gt;</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Men</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Young</span></p></td><td class="cl-4f7812e3"><p class="cl-4f7776b6"><span class="cl-4f774858">Pakeha</span></p></td><td class="cl-4f7812e4"><p class="cl-4f7776c0"><span class="cl-4f774858">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4f7812f6"><p class="cl-4f7776b6"><span class="cl-4f774858">&lt;S1A-001#M&gt;</span></p></td><td class="cl-4f7812ed"><p class="cl-4f7776b6"><span class="cl-4f774858">Men</span></p></td><td class="cl-4f7812ed"><p class="cl-4f7776b6"><span class="cl-4f774858">Young</span></p></td><td class="cl-4f7812ed"><p class="cl-4f7776b6"><span class="cl-4f774858">Pakeha</span></p></td><td class="cl-4f7812f7"><p class="cl-4f7776c0"><span class="cl-4f774858">0</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="8c550681-80c4-4d5b-9387-3954e662b606"></div>
+<script>
+var dest = document.getElementById("8c550681-80c4-4d5b-9387-3954e662b606");
+var template = document.getElementById("484b4fac-0ded-469f-a519-b085152dc90f");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>The summary of the data show that the data set contains 25,821 observations of five variables. The variable <code>ID</code> contains strings that represent a combination file and speaker of a speech unit. The second variable represents the gender, the third the age, and the fourth the ethnicity of speakers. The fifth variable represents whether or not a speech unit contained the discourse particle <em>eh</em>.</p>
+<p>Next, we factorize the variables in our data set. In other words, we specify that the strings represent variable levels and define new reference levels because as a default <code>R</code> will use the variable level which first occurs in alphabet ordering as the reference level for each variable, we redefine the variable levels for Age and Ethnicity.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="multiple-binomial-logistic-regression.html#cb6-1" aria-hidden="true" tabindex="-1"></a>blrdata <span class="ot">&lt;-</span> blrdata <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="multiple-binomial-logistic-regression.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># factorize variables</span></span>
+<span id="cb6-3"><a href="multiple-binomial-logistic-regression.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(is.character, factor) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="multiple-binomial-logistic-regression.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># relevel Age (Reference = Young) and Ethnicity (Reference= Pakeha))</span></span>
+<span id="cb6-5"><a href="multiple-binomial-logistic-regression.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Age =</span> <span class="fu">relevel</span>(Age, <span class="st">&quot;Young&quot;</span>),</span>
+<span id="cb6-6"><a href="multiple-binomial-logistic-regression.html#cb6-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">Ethnicity =</span> <span class="fu">relevel</span>(Ethnicity, <span class="st">&quot;Pakeha&quot;</span>))</span></code></pre></div>
+<p>After preparing the data, we will now plot the data to get an overview of potential relationships between variables.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="multiple-binomial-logistic-regression.html#cb7-1" aria-hidden="true" tabindex="-1"></a>blrdata <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="multiple-binomial-logistic-regression.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">EH =</span> <span class="fu">ifelse</span>(EH <span class="sc">==</span> <span class="st">&quot;0&quot;</span>, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="multiple-binomial-logistic-regression.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Age, EH, <span class="at">color =</span> Gender)) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="multiple-binomial-logistic-regression.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Ethnicity) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="multiple-binomial-logistic-regression.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="multiple-binomial-logistic-regression.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_cl_boot, <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="multiple-binomial-logistic-regression.html#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_set</span>(<span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="multiple-binomial-logistic-regression.html#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="multiple-binomial-logistic-regression.html#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Observed Probabilty of eh&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-10"><a href="multiple-binomial-logistic-regression.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;gray20&quot;</span>, <span class="st">&quot;gray70&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/blm6-1.png" width="672" /></p>
+<p>With respect to main effects, the Figure above indicates that men use <em>eh</em> more frequently than women, that young speakers use it more frequently compared with old speakers, and that speakers that are descendants of European settlers (Pakeha) use <em>eh</em> more frequently compared with Maori (the native inhabitants of New Zealand).</p>
+<p>The plots in the lower panels do not indicate significant interactions between use of <em>eh</em> and the Age, Gender, and Ethnicity of speakers. In a next step, we will start building the logistic regression model.</p>
+</div>
+<div id="model-building" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Model Building<a href="multiple-binomial-logistic-regression.html#model-building" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As a first step, we need to define contrasts and use the <code>datadist</code> function to store aspects of our variables that can be accessed later when plotting and summarizing the model. Contrasts define what and how variable levels should be compared and therefore influences how the results of the regression analysis are presented. In this case, we use treatment contrasts which are in-built. Treatment contrasts mean that we assess the significance of levels of a predictor against a baseline which is the reference level of a predictor. <span class="citation">Field, Miles, and Field (<a href="#ref-field2012discovering" role="doc-biblioref">2012, 414–27</a>)</span> and <span class="citation">Gries (<a href="#ref-gries2021statistics" role="doc-biblioref">2021</a>)</span> provide very good and accessible explanations of contrasts and how to manually define contrasts if you would like to know more.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="multiple-binomial-logistic-regression.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set contrasts</span></span>
+<span id="cb8-2"><a href="multiple-binomial-logistic-regression.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts  =</span><span class="fu">c</span>(<span class="st">&quot;contr.treatment&quot;</span>, <span class="st">&quot;contr.poly&quot;</span>))</span>
+<span id="cb8-3"><a href="multiple-binomial-logistic-regression.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create distance matrix</span></span>
+<span id="cb8-4"><a href="multiple-binomial-logistic-regression.html#cb8-4" aria-hidden="true" tabindex="-1"></a>blrdata.dist <span class="ot">&lt;-</span> <span class="fu">datadist</span>(blrdata)</span>
+<span id="cb8-5"><a href="multiple-binomial-logistic-regression.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># include distance matrix in options</span></span>
+<span id="cb8-6"><a href="multiple-binomial-logistic-regression.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">datadist =</span> <span class="st">&quot;blrdata.dist&quot;</span>)</span></code></pre></div>
+<p>Next, we generate a minimal model that predicts the use of <em>eh</em> solely based on the intercept.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="multiple-binomial-logistic-regression.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># baseline glm model</span></span>
+<span id="cb9-2"><a href="multiple-binomial-logistic-regression.html#cb9-2" aria-hidden="true" tabindex="-1"></a>m0.glm <span class="ot">=</span> <span class="fu">glm</span>(EH <span class="sc">~</span> <span class="dv">1</span>, <span class="at">family =</span> binomial, <span class="at">data =</span> blrdata)</span></code></pre></div>
+</div>
+<div id="model-fitting" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Model Fitting<a href="multiple-binomial-logistic-regression.html#model-fitting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will now start with the model fitting procedure. In the present case, we will use a manual step-wise step-up procedure during which predictors are added to the model if they significantly improve the model fit. In addition, we will perform diagnostics as we fit the model at each step of the model fitting process rather than after the fitting.</p>
+<p>We will test two things in particular: whether the data has incomplete information or complete separation and if the model suffers from (multi-)collinearity.</p>
+<p><strong>Incomplete information</strong> means that the data does not contain all combinations of the predictor or the dependent variable.</p>
+<p><strong>Complete separation</strong> is important because if the data does not contain cases of all combinations, the model will assume that it has found a perfect predictor. In such cases the model overestimates the effect of that that predictor and the results of that model are no longer reliable. For example, if <em>eh</em> was only used by young speakers in the data, the model would jump on that fact and say <em>Ha! If there is an old speaker, that means that that speaker will never ever and under no circumstances say </em>eh* - I can therefore ignore all other factors!*</p>
+<p><strong>Multicollinearity</strong> means that predictors correlate and have shared variance. This means that whichever predictor is included first will take all the variance that it can explain and the remaining part of the variable that is shared will not be attributed to the other predictor. This may lead to reporting that a factor is not significant because all of the variance it can explain is already accounted for. However, if the other predictor were included first, then the original predictor would be returned as insignificant. This means that- depending on the order in which predictors are added - the results of the regression can differ dramatically and the model is therefore not reliable. Multicollinearity is actually a very common problem and there are various ways to deal with it but it cannot be ignored (at least in regression analyses).</p>
+<p>We will start by adding <em>Age</em> to the minimal adequate model.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="multiple-binomial-logistic-regression.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check incomplete information</span></span>
+<span id="cb10-2"><a href="multiple-binomial-logistic-regression.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">min</span>(<span class="fu">ftable</span>(blrdata<span class="sc">$</span>Age, blrdata<span class="sc">$</span>EH)) <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;not possible&quot;</span>, <span class="st">&quot;possible&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;possible&quot;</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="multiple-binomial-logistic-regression.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add age to the model</span></span>
+<span id="cb12-2"><a href="multiple-binomial-logistic-regression.html#cb12-2" aria-hidden="true" tabindex="-1"></a>m1.glm <span class="ot">=</span> <span class="fu">glm</span>(EH <span class="sc">~</span> Age, <span class="at">family =</span> binomial, <span class="at">data =</span> blrdata)</span>
+<span id="cb12-3"><a href="multiple-binomial-logistic-regression.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># check multicollinearity (vifs should have values of 3 or lower for main effects)</span></span>
+<span id="cb12-4"><a href="multiple-binomial-logistic-regression.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">max</span>(<span class="fu">vif</span>(m1.glm)) <span class="sc">&lt;=</span> <span class="dv">3</span>,  <span class="st">&quot;vifs ok&quot;</span>, <span class="st">&quot;WARNING: high vifs!&quot;</span>) <span class="co"># VIFs ok</span></span></code></pre></div>
+<pre><code>## [1] &quot;vifs ok&quot;</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="multiple-binomial-logistic-regression.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check if adding Age significantly improves model fit</span></span>
+<span id="cb14-2"><a href="multiple-binomial-logistic-regression.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m1.glm, m0.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
+<pre><code>## Analysis of Deviance Table
+## 
+## Model 1: EH ~ Age
+## Model 2: EH ~ 1
+##   Resid. Df  Resid. Dev Df     Deviance               Pr(&gt;Chi)    
+## 1     25819 32376.86081                                           
+## 2     25820 33007.75469 -1 -630.8938871 &lt; 0.000000000000000222 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>As the data does not contain incomplete information, the vif values are below 3, and adding <em>Age</em> has significantly improved the model fit (the p-value of the ANOVA is lower than .05). We therefore proceed with <em>Age</em> included.</p>
+<p>We continue by adding <em>Gender</em>. We add a second ANOVA test to see if including Gender affects the significance of other predictors in the model. If this were the case - if adding Gender would cause Age to become insignificant - then we could change the ordering in which we include predictors into our model.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="multiple-binomial-logistic-regression.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">min</span>(<span class="fu">ftable</span>(blrdata<span class="sc">$</span>Gender, blrdata<span class="sc">$</span>EH)) <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;not possible&quot;</span>, <span class="st">&quot;possible&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;possible&quot;</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="multiple-binomial-logistic-regression.html#cb18-1" aria-hidden="true" tabindex="-1"></a>m2.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m1.glm, . <span class="sc">~</span> . <span class="sc">+</span>Gender)</span>
+<span id="cb18-2"><a href="multiple-binomial-logistic-regression.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">max</span>(<span class="fu">vif</span>(m2.glm)) <span class="sc">&lt;=</span> <span class="dv">3</span>,  <span class="st">&quot;vifs ok&quot;</span>, <span class="st">&quot;WARNING: high vifs!&quot;</span>) <span class="co"># VIFs ok</span></span></code></pre></div>
+<pre><code>## [1] &quot;vifs ok&quot;</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="multiple-binomial-logistic-regression.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m2.glm, m1.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
+<pre><code>## Analysis of Deviance Table
+## 
+## Model 1: EH ~ Age + Gender
+## Model 2: EH ~ Age
+##   Resid. Df  Resid. Dev Df    Deviance               Pr(&gt;Chi)    
+## 1     25818 32139.54089                                          
+## 2     25819 32376.86081 -1 -237.319914 &lt; 0.000000000000000222 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="multiple-binomial-logistic-regression.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Anova</span>(m2.glm, <span class="at">test =</span> <span class="st">&quot;LR&quot;</span>)</span></code></pre></div>
+<pre><code>## Analysis of Deviance Table (Type II tests)
+## 
+## Response: EH
+##           LR Chisq Df             Pr(&gt;Chisq)    
+## Age    668.6350712  1 &lt; 0.000000000000000222 ***
+## Gender 237.3199140  1 &lt; 0.000000000000000222 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Again, including <em>Gender</em> significantly improves model fit and the data does not contain incomplete information or complete separation. Also, including <em>Gender</em> does not affect the significance of <em>Age</em>. Now, we include <em>Ethnicity</em>.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="multiple-binomial-logistic-regression.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">min</span>(<span class="fu">ftable</span>(blrdata<span class="sc">$</span>Ethnicity, blrdata<span class="sc">$</span>EH)) <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;not possible&quot;</span>, <span class="st">&quot;possible&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;possible&quot;</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="multiple-binomial-logistic-regression.html#cb26-1" aria-hidden="true" tabindex="-1"></a>m3.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m2.glm, . <span class="sc">~</span> . <span class="sc">+</span>Ethnicity)</span>
+<span id="cb26-2"><a href="multiple-binomial-logistic-regression.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">max</span>(<span class="fu">vif</span>(m3.glm)) <span class="sc">&lt;=</span> <span class="dv">3</span>,  <span class="st">&quot;vifs ok&quot;</span>, <span class="st">&quot;WARNING: high vifs!&quot;</span>) <span class="co"># VIFs ok</span></span></code></pre></div>
+<pre><code>## [1] &quot;vifs ok&quot;</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="multiple-binomial-logistic-regression.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m3.glm, m2.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
+<pre><code>## Analysis of Deviance Table
+## 
+## Model 1: EH ~ Age + Gender + Ethnicity
+## Model 2: EH ~ Age + Gender
+##   Resid. Df  Resid. Dev Df      Deviance Pr(&gt;Chi)
+## 1     25817 32139.27988                          
+## 2     25818 32139.54089 -1 -0.2610145387  0.60942</code></pre>
+<p>Since adding <em>Ethnicity</em> does not significantly improve the model fit, we do not need to test if its inclusion affects the significance of other predictors. We continue without <em>Ethnicity</em> and include the interaction between <em>Age</em> and <em>Gender</em>.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="multiple-binomial-logistic-regression.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">min</span>(<span class="fu">ftable</span>(blrdata<span class="sc">$</span>Age, blrdata<span class="sc">$</span>Gender, blrdata<span class="sc">$</span>EH)) <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;not possible&quot;</span>, <span class="st">&quot;possible&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;possible&quot;</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="multiple-binomial-logistic-regression.html#cb32-1" aria-hidden="true" tabindex="-1"></a>m4.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m2.glm, . <span class="sc">~</span> . <span class="sc">+</span>Age<span class="sc">*</span>Gender)</span>
+<span id="cb32-2"><a href="multiple-binomial-logistic-regression.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">max</span>(<span class="fu">vif</span>(m4.glm)) <span class="sc">&lt;=</span> <span class="dv">3</span>,  <span class="st">&quot;vifs ok&quot;</span>, <span class="st">&quot;WARNING: high vifs!&quot;</span>) <span class="co"># VIFs ok</span></span></code></pre></div>
+<pre><code>## [1] &quot;vifs ok&quot;</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="multiple-binomial-logistic-regression.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m4.glm, m2.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
+<pre><code>## Analysis of Deviance Table
+## 
+## Model 1: EH ~ Age + Gender + Age:Gender
+## Model 2: EH ~ Age + Gender
+##   Resid. Df  Resid. Dev Df     Deviance Pr(&gt;Chi)
+## 1     25817 32139.41665                         
+## 2     25818 32139.54089 -1 -0.124239923  0.72448</code></pre>
+<p>The interaction between <em>Age</em> and <em>Gender</em> is not significant which means that men and women do not behave differently with respect to their use of <code>EH</code> as they age. Also, the data does not contain incomplete information and the model does not suffer from multicollinearity - the predictors are not collinear. We can now include if there is a significant interaction between <em>Age</em> and <em>Ethnicity</em>.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="multiple-binomial-logistic-regression.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">min</span>(<span class="fu">ftable</span>(blrdata<span class="sc">$</span>Age, blrdata<span class="sc">$</span>Ethnicity, blrdata<span class="sc">$</span>EH)) <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;not possible&quot;</span>, <span class="st">&quot;possible&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;possible&quot;</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="multiple-binomial-logistic-regression.html#cb38-1" aria-hidden="true" tabindex="-1"></a>m5.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m2.glm, . <span class="sc">~</span> . <span class="sc">+</span>Age<span class="sc">*</span>Ethnicity)</span>
+<span id="cb38-2"><a href="multiple-binomial-logistic-regression.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">max</span>(<span class="fu">vif</span>(m5.glm)) <span class="sc">&lt;=</span> <span class="dv">3</span>,  <span class="st">&quot;vifs ok&quot;</span>, <span class="st">&quot;WARNING: high vifs!&quot;</span>) <span class="co"># VIFs ok</span></span></code></pre></div>
+<pre><code>## [1] &quot;vifs ok&quot;</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="multiple-binomial-logistic-regression.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m5.glm, m2.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
+<pre><code>## Analysis of Deviance Table
+## 
+## Model 1: EH ~ Age + Gender + Ethnicity + Age:Ethnicity
+## Model 2: EH ~ Age + Gender
+##   Resid. Df  Resid. Dev Df     Deviance Pr(&gt;Chi)
+## 1     25816 32136.47224                         
+## 2     25818 32139.54089 -2 -3.068654514   0.2156</code></pre>
+<p>Again, no incomplete information or multicollinearity and no significant interaction. Now, we test if there exists a significant interaction between <em>Gender</em> and <em>Ethnicity</em>.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="multiple-binomial-logistic-regression.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">min</span>(<span class="fu">ftable</span>(blrdata<span class="sc">$</span>Gender, blrdata<span class="sc">$</span>Ethnicity, blrdata<span class="sc">$</span>EH)) <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;not possible&quot;</span>, <span class="st">&quot;possible&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;possible&quot;</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="multiple-binomial-logistic-regression.html#cb44-1" aria-hidden="true" tabindex="-1"></a>m6.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m2.glm, . <span class="sc">~</span> . <span class="sc">+</span>Gender<span class="sc">*</span>Ethnicity)</span>
+<span id="cb44-2"><a href="multiple-binomial-logistic-regression.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">max</span>(<span class="fu">vif</span>(m6.glm)) <span class="sc">&lt;=</span> <span class="dv">3</span>,  <span class="st">&quot;vifs ok&quot;</span>, <span class="st">&quot;WARNING: high vifs!&quot;</span>) <span class="co"># VIFs ok</span></span></code></pre></div>
+<pre><code>## [1] &quot;vifs ok&quot;</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="multiple-binomial-logistic-regression.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m6.glm, m2.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
+<pre><code>## Analysis of Deviance Table
+## 
+## Model 1: EH ~ Age + Gender + Ethnicity + Gender:Ethnicity
+## Model 2: EH ~ Age + Gender
+##   Resid. Df  Resid. Dev Df      Deviance Pr(&gt;Chi)
+## 1     25816 32139.26864                          
+## 2     25818 32139.54089 -2 -0.2722521835  0.87273</code></pre>
+<p>As the interaction between <em>Gender</em> and <em>Ethnicity</em> is not significant, we continue without it. In a final step, we include the three-way interaction between <em>Age</em>, <em>Gender</em>, and <em>Ethnicity</em>.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="multiple-binomial-logistic-regression.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">min</span>(<span class="fu">ftable</span>(blrdata<span class="sc">$</span>Age, blrdata<span class="sc">$</span>Gender, blrdata<span class="sc">$</span>Ethnicity, blrdata<span class="sc">$</span>EH)) <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;not possible&quot;</span>, <span class="st">&quot;possible&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;possible&quot;</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="multiple-binomial-logistic-regression.html#cb50-1" aria-hidden="true" tabindex="-1"></a>m7.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m2.glm, . <span class="sc">~</span> . <span class="sc">+</span>Gender<span class="sc">*</span>Ethnicity)</span>
+<span id="cb50-2"><a href="multiple-binomial-logistic-regression.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">max</span>(<span class="fu">vif</span>(m7.glm)) <span class="sc">&lt;=</span> <span class="dv">3</span>,  <span class="st">&quot;vifs ok&quot;</span>, <span class="st">&quot;WARNING: high vifs!&quot;</span>) <span class="co"># VIFs ok</span></span></code></pre></div>
+<pre><code>## [1] &quot;vifs ok&quot;</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="multiple-binomial-logistic-regression.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m7.glm, m2.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
+<pre><code>## Analysis of Deviance Table
+## 
+## Model 1: EH ~ Age + Gender + Ethnicity + Gender:Ethnicity
+## Model 2: EH ~ Age + Gender
+##   Resid. Df  Resid. Dev Df      Deviance Pr(&gt;Chi)
+## 1     25816 32139.26864                          
+## 2     25818 32139.54089 -2 -0.2722521835  0.87273</code></pre>
+<p>We have found our final minimal adequate model because the 3-way interaction is also insignificant. As we have now arrived at the final minimal adequate model (m2.glm), we generate a final minimal model using the lrm function.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="multiple-binomial-logistic-regression.html#cb54-1" aria-hidden="true" tabindex="-1"></a>m2.lrm <span class="ot">&lt;-</span> <span class="fu">lrm</span>(EH <span class="sc">~</span> Age<span class="sc">+</span>Gender, <span class="at">data =</span> blrdata, <span class="at">x =</span> T, <span class="at">y =</span> T, <span class="at">linear.predictors =</span> T)</span>
+<span id="cb54-2"><a href="multiple-binomial-logistic-regression.html#cb54-2" aria-hidden="true" tabindex="-1"></a>m2.lrm</span></code></pre></div>
+<pre><code>## Logistic Regression Model
+##  
+##  lrm(formula = EH ~ Age + Gender, data = blrdata, x = T, y = T, 
+##      linear.predictors = T)
+##  
+##                         Model Likelihood        Discrimination    Rank Discrim.    
+##                               Ratio Test               Indexes          Indexes    
+##  Obs         25821    LR chi2     868.21        R2       0.046    C       0.602    
+##   0          17114    d.f.             2      R2(2,25821)0.033    Dxy     0.203    
+##   1           8707    Pr(&gt; chi2) &lt;0.0001    R2(2,17312.8)0.049    gamma   0.302    
+##  max |deriv| 3e-10                              Brier    0.216    tau-a   0.091    
+##  
+##               Coef    S.E.   Wald Z Pr(&gt;|Z|)
+##  Intercept    -0.2324 0.0223 -10.44 &lt;0.0001 
+##  Age=Old      -0.8305 0.0335 -24.78 &lt;0.0001 
+##  Gender=Women -0.4201 0.0273 -15.42 &lt;0.0001 
+## </code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="multiple-binomial-logistic-regression.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m2.lrm)</span></code></pre></div>
+<pre><code>##                 Wald Statistics          Response: EH 
+## 
+##  Factor     Chi-Square d.f. P     
+##  Age        614.04     1    &lt;.0001
+##  Gender     237.65     1    &lt;.0001
+##  TOTAL      802.65     2    &lt;.0001</code></pre>
+<p>Next, we extract the confidence intervals for the coefficients of the model.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="multiple-binomial-logistic-regression.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract the confidence intervals for the coefficients</span></span>
+<span id="cb58-2"><a href="multiple-binomial-logistic-regression.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(m2.glm)</span></code></pre></div>
+<pre><code>##                       2.5 %          97.5 %
+## (Intercept) -0.276050866670 -0.188778707810
+## AgeOld      -0.896486392278 -0.765095825382
+## GenderWomen -0.473530977637 -0.366703827307</code></pre>
+<p>Despite having low explanatory and predictive power, the age of speakers and their gender are significant as the confidence intervals of the coefficients do not overlap with 0.</p>
+</div>
+<div id="effect-size" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Effect Size<a href="multiple-binomial-logistic-regression.html#effect-size" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In a next step, we compute odds ratios and their confidence intervals. Odds Ratios represent a common measure of effect size and can be used to compare effect sizes across models. Odds ratios rang between 0 and infinity. Values of 1 indicate that there is no effect. The further away the values are from 1, the stronger the effect. If the values are lower than 1, then the variable level correlates negatively with the occurrence of the outcome (the probability decreases) while values above 1 indicate a positive correlation and show that the variable level causes an increase in the probability of the outcome (the occurrence of EH).</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="multiple-binomial-logistic-regression.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(m2.glm<span class="sc">$</span>coefficients) <span class="co"># odds ratios</span></span></code></pre></div>
+<pre><code>##    (Intercept)         AgeOld    GenderWomen 
+## 0.792642499264 0.435815384592 0.656972294902</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="multiple-binomial-logistic-regression.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(m2.glm))     <span class="co"># confidence intervals of the odds ratios</span></span></code></pre></div>
+<pre><code>## Es wird auf das Profilieren gewartet ...</code></pre>
+<pre><code>##                      2.5 %         97.5 %
+## (Intercept) 0.758774333456 0.827969709653
+## AgeOld      0.408000698619 0.465289342309
+## GenderWomen 0.622799290871 0.693014866732</code></pre>
+<p>The odds ratios confirm that older speakers use <em>eh</em> significantly less often compared with younger speakers and that women use <em>eh</em> less frequently than men as the confidence intervals of the odds rations do not overlap with 1. In a next step, we calculate the prediction accuracy of the model.</p>
+</div>
+<div id="prediction-accuracy" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> Prediction Accuracy<a href="multiple-binomial-logistic-regression.html#prediction-accuracy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In order to calculate the prediction accuracy of the model, we generate a variable called <em>Prediction</em> that contains the predictions of pour model and which we add to the data. Then, we use the <code>confusionMatrix</code> function from the <code>caret</code> package <span class="citation">(<a href="#ref-caret" role="doc-biblioref">Kuhn 2021</a>)</span> to extract the prediction accuracy.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="multiple-binomial-logistic-regression.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create variable with contains the prediction of the model</span></span>
+<span id="cb65-2"><a href="multiple-binomial-logistic-regression.html#cb65-2" aria-hidden="true" tabindex="-1"></a>blrdata <span class="ot">&lt;-</span> blrdata <span class="sc">%&gt;%</span></span>
+<span id="cb65-3"><a href="multiple-binomial-logistic-regression.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Prediction =</span> <span class="fu">predict</span>(m2.glm, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>),</span>
+<span id="cb65-4"><a href="multiple-binomial-logistic-regression.html#cb65-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">Prediction =</span> <span class="fu">ifelse</span>(Prediction <span class="sc">&gt;</span> .<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb65-5"><a href="multiple-binomial-logistic-regression.html#cb65-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">Prediction =</span> <span class="fu">factor</span>(Prediction, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;1&quot;</span>)),</span>
+<span id="cb65-6"><a href="multiple-binomial-logistic-regression.html#cb65-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">EH =</span> <span class="fu">factor</span>(EH, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;1&quot;</span>)))</span>
+<span id="cb65-7"><a href="multiple-binomial-logistic-regression.html#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create a confusion matrix with compares observed against predicted values</span></span>
+<span id="cb65-8"><a href="multiple-binomial-logistic-regression.html#cb65-8" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">confusionMatrix</span>(blrdata<span class="sc">$</span>Prediction, blrdata<span class="sc">$</span>EH)</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction     0     1
+##          0 17114  8707
+##          1     0     0
+##                                                     
+##                Accuracy : 0.66279385                
+##                  95% CI : (0.656990096, 0.668560948)
+##     No Information Rate : 0.66279385                
+##     P-Value [Acc &gt; NIR] : 0.5029107                 
+##                                                     
+##                   Kappa : 0                         
+##                                                     
+##  Mcnemar&#39;s Test P-Value : &lt; 0.00000000000000022     
+##                                                     
+##             Sensitivity : 1.00000000                
+##             Specificity : 0.00000000                
+##          Pos Pred Value : 0.66279385                
+##          Neg Pred Value :        NaN                
+##              Prevalence : 0.66279385                
+##          Detection Rate : 0.66279385                
+##    Detection Prevalence : 1.00000000                
+##       Balanced Accuracy : 0.50000000                
+##                                                     
+##        &#39;Positive&#39; Class : 0                         
+## </code></pre>
+<p>We can see that out model has never predicted the use of <em>eh</em> which is common when dealing with rare phenomena. This is expected as the event s so rare that the probability of it not occurring substantively outweighs the probability of it occurring. As such, the prediction accuracy of our model is not significantly better compared to the prediction accuracy of the baseline model which is the no-information rate (NIR)) (p = 0.5029).</p>
+<p>We can use the <code>plot_model</code> function from the <code>sjPlot</code> package <span class="citation">(<a href="#ref-sjPlot" role="doc-biblioref">Lüdecke 2021</a>)</span> to visualize the effects.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="multiple-binomial-logistic-regression.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># predicted probability</span></span>
+<span id="cb67-2"><a href="multiple-binomial-logistic-regression.html#cb67-2" aria-hidden="true" tabindex="-1"></a>efp1 <span class="ot">&lt;-</span> <span class="fu">plot_model</span>(m2.glm, <span class="at">type =</span> <span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">&quot;Age&quot;</span>), <span class="at">axis.lim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) </span>
+<span id="cb67-3"><a href="multiple-binomial-logistic-regression.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="co"># predicted percentage</span></span>
+<span id="cb67-4"><a href="multiple-binomial-logistic-regression.html#cb67-4" aria-hidden="true" tabindex="-1"></a>efp2 <span class="ot">&lt;-</span> <span class="fu">plot_model</span>(m2.glm, <span class="at">type =</span> <span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">&quot;Gender&quot;</span>), <span class="at">axis.lim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) </span>
+<span id="cb67-5"><a href="multiple-binomial-logistic-regression.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(efp1, efp2, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/blm27-1.png" width="672" /></p>
+<p>And we can also combine the visualization of the effects in a single plot as shown below.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="multiple-binomial-logistic-regression.html#cb68-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_model</span>(m2.glm, <span class="at">type =</span> <span class="st">&quot;pred&quot;</span>, </span>
+<span id="cb68-2"><a href="multiple-binomial-logistic-regression.html#cb68-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Gender&quot;</span>), </span>
+<span id="cb68-3"><a href="multiple-binomial-logistic-regression.html#cb68-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">axis.lim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb68-4"><a href="multiple-binomial-logistic-regression.html#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>) <span class="sc">+</span></span>
+<span id="cb68-5"><a href="multiple-binomial-logistic-regression.html#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Predicted Probabilty of eh&quot;</span>, <span class="at">title =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb68-6"><a href="multiple-binomial-logistic-regression.html#cb68-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;gray20&quot;</span>, <span class="st">&quot;gray70&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/blm28-1.png" width="672" /></p>
+</div>
+<div id="summarizing-results" class="section level2 hasAnchor" number="10.7">
+<h2><span class="header-section-number">10.7</span> Summarizing Results<a href="multiple-binomial-logistic-regression.html#summarizing-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As a final step, we summarize our findings in tabulated form.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="multiple-binomial-logistic-regression.html#cb69-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(m2.glm)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+EH
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Odds Ratios
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+CI
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+p
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.79
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.76 – 0.83
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+Age [Old]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.44
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.41 – 0.47
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+Gender [Women]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.66
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.62 – 0.69
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">
+25821
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
+R<sup>2</sup> Tjur
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">
+0.032
+</td>
+</tr>
+</table>
+<p>We can use the <code>reports</code> package <span class="citation">(<a href="#ref-report" role="doc-biblioref">Makowski et al. 2021</a>)</span> to summarize the analysis.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="multiple-binomial-logistic-regression.html#cb70-1" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(m2.glm)</span></code></pre></div>
+<pre><code>## We fitted a logistic model (estimated using ML) to predict EH with Age and Gender (formula: EH ~ Age + Gender). The model&#39;s explanatory power is weak (Tjur&#39;s R2 = 0.03). The model&#39;s intercept, corresponding to Age = Young and Gender = Men, is at -0.23 (95% CI [-0.28, -0.19], p &lt; .001). Within this model:
+## 
+##   - The effect of Age [Old] is statistically significant and negative (beta = -0.83, 95% CI [-0.90, -0.77], p &lt; .001; Std. beta = -0.83, 95% CI [-0.90, -0.77])
+##   - The effect of Gender [Women] is statistically significant and negative (beta = -0.42, 95% CI [-0.47, -0.37], p &lt; .001; Std. beta = -0.42, 95% CI [-0.47, -0.37])
+## 
+## Standardized parameters were obtained by fitting the model on a standardized version of the dataset. 95% Confidence Intervals (CIs) and p-values were computed using</code></pre>
+<p>We can use this output to write up a final report:</p>
+<p>We fitted a logistic model (estimated using ML) to predict the use of the utterance-final discourse particle <em>eh</em> with Age and Gender (formula: EH ~ Age + Gender). The model’s explanatory power is weak (Tjur’s R<sup>2</sup> = 0.03). The model’s intercept, corresponding to Age = Young and Gender = Men, is at -0.23 (95% CI [-0.28, -0.19], p &lt; .001). Within this model:</p>
+<ul>
+<li><p>The effect of Age [Old] is statistically significant and negative (beta = -0.83, 95% CI [-0.90, -0.77], p &lt; .001; Std. beta = -0.83, 95% CI [-0.90, -0.77])</p></li>
+<li><p>The effect of Gender [Women] is statistically significant and negative (beta = -0.42, 95% CI [-0.47, -0.37], p &lt; .001; Std. beta = -0.42, 95% CI [-0.47, -0.37])</p></li>
+</ul>
+<p>Standardized parameters were obtained by fitting the model on a standardized version of the dataset. 95% Confidence Intervals (CIs) and p-values were computed using</p>
+<p><a href="introduction.html#introduction">Back to top</a></p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-agresti1996introduction" class="csl-entry">
+Agresti, Alan. 1996. <em>An Introduction to Categorical Data Analysis</em>. Hoboken, NJ: JohnWiley &amp; Sons.
+</div>
+<div id="ref-agresti2011categorical" class="csl-entry">
+Agresti, Alan, and Maria Kateri. 2011. <em>Categorical Data Analysis</em>. Springer.
+</div>
+<div id="ref-field2012discovering" class="csl-entry">
+Field, Andy, Jeremy Miles, and Zoe Field. 2012. <em>Discovering Statistics Using r</em>. Sage.
+</div>
+<div id="ref-gries2021statistics" class="csl-entry">
+Gries, Stefan Th. 2021. <em>Statistics for Linguistics Using r: A Practical Introduction</em>. Berlin &amp; New York: Mouton de Gruyter.
+</div>
+<div id="ref-harrell2015regression" class="csl-entry">
+Harrell Jr, Frank E. 2015. <em>Regression Modeling Strategies: With Applications to Linear Models, Logistic and Ordinal Regression, and Survival Analysis</em>. Springer.
+</div>
+<div id="ref-caret" class="csl-entry">
+Kuhn, Max. 2021. <em>Caret: Classification and Regression Training</em>. <a href="https://CRAN.R-project.org/package=caret">https://CRAN.R-project.org/package=caret</a>.
+</div>
+<div id="ref-sjPlot" class="csl-entry">
+Lüdecke, Daniel. 2021. <em>sjPlot: Data Visualization for Statistics in Social Science</em>. <a href="https://CRAN.R-project.org/package=sjPlot">https://CRAN.R-project.org/package=sjPlot</a>.
+</div>
+<div id="ref-report" class="csl-entry">
+Makowski, Dominique, Mattan S. Ben-Shachar, Indrajeet Patil, and Daniel Lüdecke. 2021. <span>“Automated Results Reporting as a Practical Tool to Improve Reproducibility and Methodological Best Practices Adoption.”</span> <em>CRAN</em>. <a href="https://github.com/easystats/report">https://github.com/easystats/report</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="multiple-linear-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mixed-effects-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/edit/master/10-logreg.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/blob/master/10-logreg.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

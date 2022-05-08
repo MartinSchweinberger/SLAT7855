@@ -1,0 +1,27 @@
+---
+title: "Untitled"
+author: "Martin Schweinberger"
+date: '2022-05-08'
+output: html_document
+---
+
+```{r left overs, eval = F}
+
+### Model Diagnostics
+
+We can now evaluate the goodness of fit of the model and check if mathematical requirements and assumptions have been violated. In a first step, we generate diagnostic plots that focus on the random effect structure.
+
+#```{r lmm14}
+plot(m1.lmer, Genre ~ resid(.), abline = 0 ) # generate diagnostic plots
+#```
+
+The plot shows that there are some outliers (points outside the boxes) and that the variability within letters is greater than in other genres we therefore examine the genres in isolation standardized residuals versus fitted values [@pinheiro2000mixedmodels 175].
+
+#```{r lmm15}
+plot(m1.lmer, resid(., type = "pearson") ~ fitted(.) | Genre, id = 0.05, 
+     adj = -0.3, pch = 20, col = "gray40")
+#```
+
+The plot shows the standardized residuals (or Pearson's residuals) versus fitted values and suggests that there are outliers in the data (the names elements in the plots). This is not ideal and we could now use a  Levene's test to check if the variance is distributed homogeneously (homoscedasticity) or whether the assumption of variance homogeneity is violated (due to the outliers). If the test did indeed confirm that there is a problem, we would then add weights to our model (adding weights means that we make outliers less important and give points that are more central extra weight). However, we will not do this here to keep things simple. To see how to add weights, have a look at [this tutorial](https://slcladal.github.io/regression.html#Additional_Model_Diagnostics).
+```
+

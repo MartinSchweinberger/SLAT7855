@@ -68,17 +68,7 @@ There exists a wealth of literature focusing on multiple linear regressions and 
 
 The model diagnostics we are dealing with here are partly identical to the diagnostic methods discussed last week when wefocused on simple linear regression. Because of this overlap, diagnostics will only be described in more detail if they have not been described in the section on simple linear regression.
 
-Despite there being no ultimate rule of thumb, @field2012discovering[273-275], based on @green1991many, provide data-driven suggestions for the minimal size of data required for regression models that aim to find medium sized effects (k = number of predictors; categorical variables with more than two levels should be transformed into dummy variables):
-
-* If one is merely interested in the overall model fit (something I have not encountered), then the sample size should be at least 50 + k (k = number of predictors in model).
-
-*  If one is only interested in the effect of specific variables, then the sample size should be at least 104 + k (k = number of predictors in model).
-
-*  If one is only interested in both model fit and the effect of specific variables, then the sample size should be at least the higher value of 50 + k or 104 + k (k = number of predictors in model).
-
-You will see in the R code below that there is already a function that tests whether the sample size is sufficient.
-
-### Example: Gifts and Availability
+## Example: Gifts and Availability
 
 The example we will go through here is taken from @field2012discovering. In this example, the research question is if the money that men spend on presents for women depends on the women's attractiveness and their relationship status. To answer this research question, we will implement a multiple linear regression and start by loading the data and inspect its structure and properties.
 
@@ -136,21 +126,17 @@ The histogram in the lower left panel shows that, although the mean amount of mo
 
 The boxplot in the lower right panel confirms the existence of an interaction (a non-additive term) as men only spend more money on  women if the men single *and* they are interested in the women. If men are not interested in the women, then the relationship has no effect as they spend an equal amount of money on the women regardless of whether they are in a relationship or not.
 
-We will now start to implement the regression model. In a first step, we create two saturated models that contain all possible predictors (main effects and interactions). The two models are identical but one is generated with the `lm` and the other with the `glm` function as these functions offer different model parameters in their output.
+We will now start to implement the regression model. In a first step, we create a saturated model that contain all possible predictors (main effects and interactions). 
 
 ```{r mlr4}
 m1.mlr = lm(                      # generate lm regression object
   money ~ attraction*status,  # def. regression formula
   data = mlrdata)                 # def. data
-m1.glm = glm(                     # generate glm regression object
-  money ~ attraction*status,  # def. regression formula
-  family = gaussian,              # def. linkage function
-  data = mlrdata)                 # def. data
 ```
 
 After generating the saturated models we can now start with the model fitting. Model fitting refers to a process that aims at find the model that explains a maximum of variance with a minimum of predictors [see @field2012discovering 318]. Model fitting is therefore based on the *principle of parsimony* which is related to Occam's razor according to which explanations that require fewer assumptions are more likely to be true.
 
-### (Automatic) Model Fitting
+## (Automatic) Model Fitting
 
 Model fitting means that we check what of the predictors should be included in the model and what predictors do not have any impact on the outcome and thus should not be part of the model (because they merely add noise to the data.
 
@@ -177,10 +163,6 @@ The automated model fitting procedure informs us that removing predictors has no
 ```{r mlr6}
 m2.mlr = lm(                       # generate lm regression object
   money ~ (status + attraction)^2, # def. regression formula
-  data = mlrdata)                  # def. data
-m2.glm = glm(                      # generate glm regression object
-  money ~ status * attraction,     # def. regression formula
-  family = gaussian,               # def. linkage function
   data = mlrdata)                  # def. data
 # inspect final minimal model
 summary(m2.mlr)
@@ -238,7 +220,7 @@ Anova(m0.mlr, m2.mlr, type = "III")
 
 The comparison between the two model confirms that the minimal adequate model performs significantly better (makes significantly more accurate estimates of the outcome variable) compared with the baseline model.
 
-### Model Diagnostics 
+## Model Diagnostics 
 
 After implementing the multiple regression, we now need to look for outliers and perform the model diagnostics by testing whether removing data points disproportionately decreases model fit. To begin with, we generate diagnostic plots.
 
@@ -400,9 +382,21 @@ Except for the mean VIF value (2.307) which should not exceed 1, all diagnostics
 
 * if you are interested in both: take the higher value!
 
-### Evaluation of Sample Size
+## Evaluation of Sample Size
 
 After performing the diagnostics, we will now test whether the sample size is adequate and what the values of R would be based on a random distribution in order to be able to estimate how likely a $\beta$-error is given the present sample size [see @field2012discovering 274]. Beta errors (or $\beta$-errors) refer to the erroneous assumption that a predictor is not significant (based on the analysis and given the sample) although it does have an effect in the population. In other words, $\beta$-error means to overlook a significant effect because of weaknesses of the analysis. The test statistics ranges between 0 and 1 where lower values are better. If the values approximate 1, then there is serious concern as the model is not reliable given the sample size. In such cases, unfortunately, the best option is to increase the sample size.
+
+
+Despite there being no ultimate rule of thumb, @field2012discovering[273-275], based on @green1991many, provide data-driven suggestions for the minimal size of data required for regression models that aim to find medium sized effects (k = number of predictors; categorical variables with more than two levels should be transformed into dummy variables):
+
+* If one is merely interested in the overall model fit (something I have not encountered), then the sample size should be at least 50 + k (k = number of predictors in model).
+
+*  If one is only interested in the effect of specific variables, then the sample size should be at least 104 + k (k = number of predictors in model).
+
+*  If one is only interested in both model fit and the effect of specific variables, then the sample size should be at least the higher value of 50 + k or 104 + k (k = number of predictors in model).
+
+You will see in the R code below that there is already a function that tests whether the sample size is sufficient.
+
 
 ```{r mlr24, eval = T, echo=T}
 # load functions
@@ -445,10 +439,8 @@ The function `smplesz` reports that the sample size is insufficient by 9 data po
 As a last step, we summarize the results of the regression analysis.
 
 ```{r mlr25}
-# generate base line model
-m0.glm = glm( money ~ 1, family = gaussian, data = mlrdata) 
 # tabulate model results
-sjPlot::tab_model(m0.glm, m2.glm)
+sjPlot::tab_model(m2.mlr)
 ```
 
 ***
@@ -463,23 +455,18 @@ sjPlot::tab_model(m0.glm, m2.glm)
 
 <br>
 
-Additionally, we can inspect the summary of the regression model as shown below to extract additional information. 
-
-```{r mlr25b}
-summary(m2.mlr)
-```
+Additionally, we can inspect the summary of the regression model as shown below to extract additional information. We can use the `reports` package [@report] to summarize the analysis.
 
 Although @field2012discovering suggest that the main effects of the predictors involved in the interaction should not be interpreted, they are interpreted here to illustrate how the results of a multiple linear regression can be reported. 
-
-
-We can use the `reports` package [@report] to summarize the analysis.
-
 
 ```{r mlr_report, message=F, warning = F}
 report::report(m2.mlr)
 ```
 
-We can use this output to write up a final report: 
+
+Although @field2012discovering suggest that the main effects of the predictors involved in the interaction should not be interpreted, they are interpreted here to illustrate how the results of a multiple linear regression can be reported.
+
+We can use the output of the `report` function to write up a final report: 
 
 
 A multiple linear regression was fitted to the data using an automated, step-wise, AIC-based (Akaike's Information Criterion) procedure. The model fitting arrived at a final minimal model. During the model diagnostics, two outliers were detected and removed. Further diagnostics did not find other issues after the removal.
