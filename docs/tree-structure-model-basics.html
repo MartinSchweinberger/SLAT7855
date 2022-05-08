@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Week 13 Tree-Structure Model Basics | SLAT7855 Quantitative Research Methods in Applied Linguistics</title>
+  <meta name="description" content="Week 13 Tree-Structure Model Basics | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Week 13 Tree-Structure Model Basics | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Week 13 Tree-Structure Model Basics | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  
+  
+  
+
+<meta name="author" content="Martin Schweinberger" />
+
+
+<meta name="date" content="2022-05-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="tree-based-models-in-r.html"/>
+<link rel="next" href="classification-and-regression-trees.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SLAT7855</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#basic-course-information"><i class="fa fa-check"></i>Basic Course Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i>Course Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-introduction"><i class="fa fa-check"></i>Course Introduction</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#timetable"><i class="fa fa-check"></i>Timetable</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#aims-objectives-graduate-attributes"><i class="fa fa-check"></i>Aims, Objectives &amp; Graduate Attributes</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aims"><i class="fa fa-check"></i>Course Aims</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-resources"><i class="fa fa-check"></i>Learning Resources</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#required-resources"><i class="fa fa-check"></i>Required Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-resources"><i class="fa fa-check"></i>Recommended Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#university-learning-resources"><i class="fa fa-check"></i>University Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#school-of-languages-and-cultures-learning-resources"><i class="fa fa-check"></i>School of Languages and Cultures Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-learning-resources-information"><i class="fa fa-check"></i>Other Learning Resources &amp; Information</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#teaching-learning-activities"><i class="fa fa-check"></i>Teaching &amp; Learning Activities</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-activities"><i class="fa fa-check"></i>Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-plan"><i class="fa fa-check"></i>Course plan</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#why-do-we-need-science"><i class="fa fa-check"></i><b>1.1</b> Why do we need science?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#errare-humanum-est"><i class="fa fa-check"></i><b>1.2</b> Errare Humanum Est</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#the-monty-hall-problem"><i class="fa fa-check"></i><b>1.2.1</b> The Monty Hall Problem</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#the-birthday-conundrum"><i class="fa fa-check"></i><b>1.2.2</b> The Birthday Conundrum</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#fast-and-slow-thinking"><i class="fa fa-check"></i><b>1.2.3</b> Fast and Slow Thinking</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#randomness"><i class="fa fa-check"></i><b>1.2.4</b> Randomness</a></li>
+<li class="chapter" data-level="1.2.5" data-path="introduction.html"><a href="introduction.html#patterns-and-matters-of-habit"><i class="fa fa-check"></i><b>1.2.5</b> Patterns and Matters of Habit</a></li>
+<li class="chapter" data-level="1.2.6" data-path="introduction.html"><a href="introduction.html#locical-fallacies-and-biases"><i class="fa fa-check"></i><b>1.2.6</b> Locical Fallacies and Biases</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#what-is-science"><i class="fa fa-check"></i><b>1.3</b> What is science?</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#clever-hans"><i class="fa fa-check"></i><b>1.3.1</b> Clever Hans</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#popper-falsification-and-scientific-progress"><i class="fa fa-check"></i><b>1.3.2</b> Popper, falsification, and scientific progress</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#what-is-empirical-linguistics"><i class="fa fa-check"></i><b>1.3.3</b> What is (empirical) Linguistics?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html"><i class="fa fa-check"></i><b>2</b> Basic Concepts in Quantitative Research 1</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#hypotheses"><i class="fa fa-check"></i><b>2.1</b> Hypotheses</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#types-of-hypotheses"><i class="fa fa-check"></i>Types of Hypotheses</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#why-test-the-h0"><i class="fa fa-check"></i>Why test the H0?!</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#data-and-research-designs"><i class="fa fa-check"></i><b>2.2</b> Data and Research Designs</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#research-designs"><i class="fa fa-check"></i>Research Designs</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#variables-and-validity"><i class="fa fa-check"></i><b>2.3</b> Variables and Validity</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#variable-types-scaling"><i class="fa fa-check"></i>Variable Types (Scaling)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="basic-concepts-in-quantitative-research-1.html"><a href="basic-concepts-in-quantitative-research-1.html#relationships-between-variables"><i class="fa fa-check"></i><b>2.4</b> Relationships between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html"><i class="fa fa-check"></i><b>3</b> Basic Concepts in Quantitative Research 2</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#significance-and-probability"><i class="fa fa-check"></i><b>3.1</b> Significance and Probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#significance-levels"><i class="fa fa-check"></i>Significance Levels</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#probability"><i class="fa fa-check"></i>Probability</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#the-normal-distribution"><i class="fa fa-check"></i>The Normal Distribution</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#non-normality-skewness-and-kurtosis"><i class="fa fa-check"></i>Non-normality: skewness and kurtosis</a></li>
+<li class="chapter" data-level="" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#the-binomial-distribution"><i class="fa fa-check"></i>The Binomial Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#z-scores"><i class="fa fa-check"></i><b>3.2</b> z-scores</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#alpha-and-beta-errors"><i class="fa fa-check"></i><b>3.3</b> Alpha and Beta Errors</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#independence"><i class="fa fa-check"></i><b>3.4</b> Independence</a></li>
+<li class="chapter" data-level="3.5" data-path="basic-concepts-in-quantitative-research-2.html"><a href="basic-concepts-in-quantitative-research-2.html#corrections"><i class="fa fa-check"></i><b>3.5</b> Corrections</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html"><i class="fa fa-check"></i><b>4</b> Getting Started with R and RStudio 1</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#goals-of-this-tutorial"><i class="fa fa-check"></i><b>4.1</b> Goals of this tutorial</a></li>
+<li class="chapter" data-level="4.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#audience"><i class="fa fa-check"></i><b>4.2</b> Audience</a></li>
+<li class="chapter" data-level="4.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>4.3</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#how-to-use-the-workshop-materials"><i class="fa fa-check"></i><b>4.3.1</b> How to use the workshop materials</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#preparation"><i class="fa fa-check"></i><b>4.4</b> Preparation</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#folder-structure-and-r-projects"><i class="fa fa-check"></i><b>4.4.1</b> Folder Structure and R projects</a></li>
+<li class="chapter" data-level="4.4.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#create-a-folder-for-your-project"><i class="fa fa-check"></i><b>4.4.2</b> 1. Create a folder for your project</a></li>
+<li class="chapter" data-level="4.4.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#open-rstudio"><i class="fa fa-check"></i><b>4.4.3</b> 3. Open RStudio</a></li>
+<li class="chapter" data-level="4.4.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-projects"><i class="fa fa-check"></i><b>4.4.4</b> 4. R Projects</a></li>
+<li class="chapter" data-level="4.4.5" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-notebooks"><i class="fa fa-check"></i><b>4.4.5</b> 5. R Notebooks</a></li>
+<li class="chapter" data-level="4.4.6" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#updating-r"><i class="fa fa-check"></i><b>4.4.6</b> 6. Updating R</a></li>
+<li class="chapter" data-level="4.4.7" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#optimizing-r-project-options"><i class="fa fa-check"></i><b>4.4.7</b> 7. Optimizing R project options</a></li>
+<li class="chapter" data-level="4.4.8" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-started-with-r-notebooks"><i class="fa fa-check"></i><b>4.4.8</b> 8. Getting started with R Notebooks</a></li>
+<li class="chapter" data-level="4.4.9" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-markdown"><i class="fa fa-check"></i><b>4.4.9</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-and-rstudio-basics"><i class="fa fa-check"></i><b>4.5</b> R and RStudio Basics</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#rstudio-panes"><i class="fa fa-check"></i><b>4.5.1</b> RStudio: Panes</a></li>
+<li class="chapter" data-level="4.5.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#r-console-bottom-left-pane"><i class="fa fa-check"></i><b>4.5.2</b> R Console (bottom left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#running-commands-from-a-script"><i class="fa fa-check"></i><b>4.6</b> Running commands from a script</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#script-editor-top-left-pane"><i class="fa fa-check"></i><b>4.6.1</b> Script Editor (top left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-started-with-r"><i class="fa fa-check"></i><b>4.7</b> Getting started with R</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#setting-up-an-r-session"><i class="fa fa-check"></i><b>4.7.1</b> Setting up an R session</a></li>
+<li class="chapter" data-level="4.7.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#packages"><i class="fa fa-check"></i><b>4.7.2</b> Packages</a></li>
+<li class="chapter" data-level="4.7.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#getting-help"><i class="fa fa-check"></i><b>4.7.3</b> Getting help</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#working-with-tables"><i class="fa fa-check"></i><b>4.8</b> Working with tables</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#loading-data-from-the-web"><i class="fa fa-check"></i><b>4.8.1</b> Loading data from the web</a></li>
+<li class="chapter" data-level="4.8.2" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#functions-and-objects"><i class="fa fa-check"></i><b>4.8.2</b> Functions and Objects</a></li>
+<li class="chapter" data-level="4.8.3" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#inspecting-data"><i class="fa fa-check"></i><b>4.8.3</b> Inspecting data</a></li>
+<li class="chapter" data-level="4.8.4" data-path="getting-started-with-r-and-rstudio-1.html"><a href="getting-started-with-r-and-rstudio-1.html#accessing-individual-cells-in-a-table"><i class="fa fa-check"></i><b>4.8.4</b> Accessing individual cells in a table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html"><i class="fa fa-check"></i><b>5</b> Getting Started with R and RStudio 2</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#working-with-tables-1"><i class="fa fa-check"></i><b>5.1</b> Working with tables</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#tabulating-data"><i class="fa fa-check"></i><b>5.1.1</b> Tabulating data</a></li>
+<li class="chapter" data-level="5.1.2" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#saving-data-to-your-computer"><i class="fa fa-check"></i><b>5.1.2</b> Saving data to your computer</a></li>
+<li class="chapter" data-level="5.1.3" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-data-from-your-computer"><i class="fa fa-check"></i><b>5.1.3</b> Loading data from your computer</a></li>
+<li class="chapter" data-level="5.1.4" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-excel-data"><i class="fa fa-check"></i><b>5.1.4</b> Loading Excel data</a></li>
+<li class="chapter" data-level="5.1.5" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#loading-text-data"><i class="fa fa-check"></i><b>5.1.5</b> Loading text data</a></li>
+<li class="chapter" data-level="5.1.6" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#renaming-piping-and-filtering"><i class="fa fa-check"></i><b>5.1.6</b> Renaming, Piping, and Filtering</a></li>
+<li class="chapter" data-level="5.1.7" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#ordering-data"><i class="fa fa-check"></i><b>5.1.7</b> Ordering data</a></li>
+<li class="chapter" data-level="5.1.8" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#creating-and-changing-variables"><i class="fa fa-check"></i><b>5.1.8</b> Creating and changing variables</a></li>
+<li class="chapter" data-level="5.1.9" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#if-statements"><i class="fa fa-check"></i><b>5.1.9</b> If-statements</a></li>
+<li class="chapter" data-level="5.1.10" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#summarizing-data"><i class="fa fa-check"></i><b>5.1.10</b> Summarizing data</a></li>
+<li class="chapter" data-level="5.1.11" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#gathering-and-spreading-data"><i class="fa fa-check"></i><b>5.1.11</b> Gathering and spreading data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#ending-r-sessions"><i class="fa fa-check"></i><b>5.2</b> Ending R sessions</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#extracting-session-information"><i class="fa fa-check"></i><b>5.2.1</b> Extracting session information</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="getting-started-with-r-and-rstudio-2.html"><a href="getting-started-with-r-and-rstudio-2.html#going-further"><i class="fa fa-check"></i><b>5.3</b> Going further</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-centrality"><i class="fa fa-check"></i><b>6.1</b> Measures of Centrality</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#mean"><i class="fa fa-check"></i>Mean</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#median"><i class="fa fa-check"></i>Median</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#mode"><i class="fa fa-check"></i>Mode</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#geometric-mean"><i class="fa fa-check"></i>Geometric mean</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#harmonic-mean"><i class="fa fa-check"></i>Harmonic mean</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#notes-on-measures-of-centrality"><i class="fa fa-check"></i>Notes on Measures of Centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-variability"><i class="fa fa-check"></i><b>6.2</b> Measures of Variability</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#range"><i class="fa fa-check"></i>Range</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#interquartile-range-iqr"><i class="fa fa-check"></i>Interquartile range (IQR)</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#variance"><i class="fa fa-check"></i>Variance</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#standard-deviation"><i class="fa fa-check"></i>Standard deviation</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#standard-error"><i class="fa fa-check"></i>Standard Error</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals"><i class="fa fa-check"></i><b>6.3</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals-for-simple-vectors"><i class="fa fa-check"></i>Confidence Intervals for Simple Vectors</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals-for-grouped-data"><i class="fa fa-check"></i>Confidence Intervals for Grouped Data</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals-for-nominal-data"><i class="fa fa-check"></i>Confidence Intervals for Nominal Data</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals-for-multinomial-data"><i class="fa fa-check"></i>Confidence Intervals for Multinomial Data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>7</b> Data Visualization</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="data-visualization.html"><a href="data-visualization.html#getting-started"><i class="fa fa-check"></i><b>7.1</b> Getting started</a></li>
+<li class="chapter" data-level="7.2" data-path="data-visualization.html"><a href="data-visualization.html#dot-and-scatter-plots"><i class="fa fa-check"></i><b>7.2</b> Dot and Scatter Plots</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="data-visualization.html"><a href="data-visualization.html#scatter-plots-in-base"><i class="fa fa-check"></i><b>7.2.1</b> Scatter Plots in base</a></li>
+<li class="chapter" data-level="7.2.2" data-path="data-visualization.html"><a href="data-visualization.html#scatter-plots-in-ggplot2"><i class="fa fa-check"></i><b>7.2.2</b> Scatter Plots in ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="data-visualization.html"><a href="data-visualization.html#line-graphs"><i class="fa fa-check"></i><b>7.3</b> Line Graphs</a></li>
+<li class="chapter" data-level="7.4" data-path="data-visualization.html"><a href="data-visualization.html#histograms"><i class="fa fa-check"></i><b>7.4</b> Histograms</a></li>
+<li class="chapter" data-level="7.5" data-path="data-visualization.html"><a href="data-visualization.html#bar-plots"><i class="fa fa-check"></i><b>7.5</b> Bar plots</a></li>
+<li class="chapter" data-level="7.6" data-path="data-visualization.html"><a href="data-visualization.html#boxplots"><i class="fa fa-check"></i><b>7.6</b> Boxplots</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="basic-inferential-statistics-regression-analysis.html"><a href="basic-inferential-statistics-regression-analysis.html"><i class="fa fa-check"></i><b>8</b> Basic Inferential Statistics: Regression Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="basic-inferential-statistics-regression-analysis.html"><a href="basic-inferential-statistics-regression-analysis.html#the-basic-principle"><i class="fa fa-check"></i><b>8.1</b> The basic principle</a></li>
+<li class="chapter" data-level="8.2" data-path="basic-inferential-statistics-regression-analysis.html"><a href="basic-inferential-statistics-regression-analysis.html#simple-linear-regression"><i class="fa fa-check"></i><b>8.2</b> Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="basic-inferential-statistics-regression-analysis.html"><a href="basic-inferential-statistics-regression-analysis.html#example-1-preposition-use-across-real-time"><i class="fa fa-check"></i><b>8.2.1</b> Example 1: Preposition Use across Real-Time</a></li>
+<li class="chapter" data-level="8.2.2" data-path="basic-inferential-statistics-regression-analysis.html"><a href="basic-inferential-statistics-regression-analysis.html#example-2-teaching-styles"><i class="fa fa-check"></i><b>8.2.2</b> Example 2: Teaching Styles</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="multiple-and-logistic-regression.html"><a href="multiple-and-logistic-regression.html"><i class="fa fa-check"></i><b>9</b> Multiple and Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="multiple-and-logistic-regression.html"><a href="multiple-and-logistic-regression.html#multiple-linear-regression"><i class="fa fa-check"></i><b>9.1</b> Multiple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="multiple-and-logistic-regression.html"><a href="multiple-and-logistic-regression.html#example-gifts-and-availability"><i class="fa fa-check"></i><b>9.1.1</b> Example: Gifts and Availability</a></li>
+<li class="chapter" data-level="9.1.2" data-path="multiple-and-logistic-regression.html"><a href="multiple-and-logistic-regression.html#automatic-model-fitting-and-why-you-should-not-use-it"><i class="fa fa-check"></i><b>9.1.2</b> Automatic Model Fitting and Why You Should Not Use It</a></li>
+<li class="chapter" data-level="9.1.3" data-path="multiple-and-logistic-regression.html"><a href="multiple-and-logistic-regression.html#outlier-detection"><i class="fa fa-check"></i><b>9.1.3</b> Outlier Detection</a></li>
+<li class="chapter" data-level="9.1.4" data-path="multiple-and-logistic-regression.html"><a href="multiple-and-logistic-regression.html#rerun-regression"><i class="fa fa-check"></i><b>9.1.4</b> Rerun Regression</a></li>
+<li class="chapter" data-level="9.1.5" data-path="multiple-and-logistic-regression.html"><a href="multiple-and-logistic-regression.html#additional-model-diagnostics"><i class="fa fa-check"></i><b>9.1.5</b> Additional Model Diagnostics</a></li>
+<li class="chapter" data-level="9.1.6" data-path="multiple-and-logistic-regression.html"><a href="multiple-and-logistic-regression.html#evaluation-of-sample-size"><i class="fa fa-check"></i><b>9.1.6</b> Evaluation of Sample Size</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="logistic-regression-and-model-diagnostics.html"><a href="logistic-regression-and-model-diagnostics.html"><i class="fa fa-check"></i><b>10</b> Logistic Regression and Model Diagnostics</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="logistic-regression-and-model-diagnostics.html"><a href="logistic-regression-and-model-diagnostics.html#multiple-binomial-logistic-regression"><i class="fa fa-check"></i><b>10.1</b> Multiple Binomial Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="logistic-regression-and-model-diagnostics.html"><a href="logistic-regression-and-model-diagnostics.html#example-1-eh-in-kiwi-english"><i class="fa fa-check"></i><b>10.1.1</b> Example 1: EH in Kiwi English</a></li>
+<li class="chapter" data-level="10.1.2" data-path="logistic-regression-and-model-diagnostics.html"><a href="logistic-regression-and-model-diagnostics.html#model-building"><i class="fa fa-check"></i><b>10.1.2</b> Model Building</a></li>
+<li class="chapter" data-level="10.1.3" data-path="logistic-regression-and-model-diagnostics.html"><a href="logistic-regression-and-model-diagnostics.html#model-fitting"><i class="fa fa-check"></i><b>10.1.3</b> Model fitting</a></li>
+<li class="chapter" data-level="10.1.4" data-path="logistic-regression-and-model-diagnostics.html"><a href="logistic-regression-and-model-diagnostics.html#model-validation"><i class="fa fa-check"></i><b>10.1.4</b> Model Validation</a></li>
+<li class="chapter" data-level="10.1.5" data-path="logistic-regression-and-model-diagnostics.html"><a href="logistic-regression-and-model-diagnostics.html#effect-size"><i class="fa fa-check"></i><b>10.1.5</b> Effect Size</a></li>
+<li class="chapter" data-level="10.1.6" data-path="logistic-regression-and-model-diagnostics.html"><a href="logistic-regression-and-model-diagnostics.html#prediction-accuracy"><i class="fa fa-check"></i><b>10.1.6</b> Prediction Accuracy</a></li>
+<li class="chapter" data-level="10.1.7" data-path="logistic-regression-and-model-diagnostics.html"><a href="logistic-regression-and-model-diagnostics.html#model-diagnostics"><i class="fa fa-check"></i><b>10.1.7</b> Model Diagnostics</a></li>
+<li class="chapter" data-level="10.1.8" data-path="logistic-regression-and-model-diagnostics.html"><a href="logistic-regression-and-model-diagnostics.html#multicollinearity"><i class="fa fa-check"></i><b>10.1.8</b> Multicollinearity</a></li>
+<li class="chapter" data-level="10.1.9" data-path="logistic-regression-and-model-diagnostics.html"><a href="logistic-regression-and-model-diagnostics.html#outlier-detection-1"><i class="fa fa-check"></i><b>10.1.9</b> Outlier detection</a></li>
+<li class="chapter" data-level="10.1.10" data-path="logistic-regression-and-model-diagnostics.html"><a href="logistic-regression-and-model-diagnostics.html#sample-size"><i class="fa fa-check"></i><b>10.1.10</b> Sample Size</a></li>
+<li class="chapter" data-level="10.1.11" data-path="logistic-regression-and-model-diagnostics.html"><a href="logistic-regression-and-model-diagnostics.html#summarizing-results"><i class="fa fa-check"></i><b>10.1.11</b> Summarizing Results</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html"><i class="fa fa-check"></i><b>11</b> Mixed-Effects Regression</a>
+<ul>
+<li class="chapter" data-level="11.0.1" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#introduction-1"><i class="fa fa-check"></i><b>11.0.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.0.2" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#random-effects"><i class="fa fa-check"></i><b>11.0.2</b> Random Effects</a></li>
+<li class="chapter" data-level="11.0.3" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#example-preposition-use-across-time-by-genre"><i class="fa fa-check"></i><b>11.0.3</b> Example: Preposition Use across Time by Genre</a></li>
+<li class="chapter" data-level="11.0.4" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#testing-random-effects"><i class="fa fa-check"></i><b>11.0.4</b> Testing Random Effects</a></li>
+<li class="chapter" data-level="11.0.5" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#model-fitting-1"><i class="fa fa-check"></i><b>11.0.5</b> Model Fitting</a></li>
+<li class="chapter" data-level="11.0.6" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#model-diagnostics-1"><i class="fa fa-check"></i><b>11.0.6</b> Model Diagnostics</a></li>
+<li class="chapter" data-level="11.0.7" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#effect-sizes"><i class="fa fa-check"></i><b>11.0.7</b> Effect Sizes</a></li>
+<li class="chapter" data-level="11.0.8" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#model-diagnostics-2"><i class="fa fa-check"></i><b>11.0.8</b> Model Diagnostics</a></li>
+<li class="chapter" data-level="11.0.9" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#reporting-results"><i class="fa fa-check"></i><b>11.0.9</b> Reporting Results</a></li>
+<li class="chapter" data-level="11.0.10" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#remarks-on-prediction"><i class="fa fa-check"></i><b>11.0.10</b> Remarks on Prediction</a></li>
+<li class="chapter" data-level="11.1" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#mixed-effects-binomial-logistic-regression"><i class="fa fa-check"></i><b>11.1</b> Mixed-Effects Binomial Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#introduction-2"><i class="fa fa-check"></i><b>11.1.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.1.2" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#example-discourse-like-in-irish-english"><i class="fa fa-check"></i><b>11.1.2</b> Example: Discourse LIKE in Irish English</a></li>
+<li class="chapter" data-level="11.1.3" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#model-building-1"><i class="fa fa-check"></i><b>11.1.3</b> Model Building</a></li>
+<li class="chapter" data-level="11.1.4" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#testing-the-random-effect"><i class="fa fa-check"></i><b>11.1.4</b> Testing the Random Effect</a></li>
+<li class="chapter" data-level="11.1.5" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#model-fitting-2"><i class="fa fa-check"></i><b>11.1.5</b> Model Fitting</a></li>
+<li class="chapter" data-level="11.1.6" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#visualizing-effects"><i class="fa fa-check"></i><b>11.1.6</b> Visualizing Effects</a></li>
+<li class="chapter" data-level="11.1.7" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#extracting-model-fit-parameters"><i class="fa fa-check"></i><b>11.1.7</b> Extracting Model Fit Parameters</a></li>
+<li class="chapter" data-level="11.1.8" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#model-diagnostics-3"><i class="fa fa-check"></i><b>11.1.8</b> Model Diagnostics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="tree-based-models-in-r.html"><a href="tree-based-models-in-r.html"><i class="fa fa-check"></i><b>12</b> Tree-Based Models in R</a></li>
+<li class="chapter" data-level="13" data-path="tree-structure-model-basics.html"><a href="tree-structure-model-basics.html"><i class="fa fa-check"></i><b>13</b> Tree-Structure Model Basics</a></li>
+<li class="chapter" data-level="14" data-path="classification-and-regression-trees.html"><a href="classification-and-regression-trees.html"><i class="fa fa-check"></i><b>14</b> Classification And Regression Trees</a>
+<ul>
+<li class="chapter" data-level="" data-path="classification-and-regression-trees.html"><a href="classification-and-regression-trees.html#splitting-numeric-ordinal-and-true-categorical-variables"><i class="fa fa-check"></i>Splitting numeric, ordinal, and true categorical variables</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="conditional-inference-trees.html"><a href="conditional-inference-trees.html"><i class="fa fa-check"></i><b>15</b> Conditional Inference Trees</a>
+<ul>
+<li class="chapter" data-level="" data-path="conditional-inference-trees.html"><a href="conditional-inference-trees.html#prettifying-your-cit-tree"><i class="fa fa-check"></i>Prettifying your CIT tree</a></li>
+<li class="chapter" data-level="" data-path="conditional-inference-trees.html"><a href="conditional-inference-trees.html#problems-of-conditional-inference-trees"><i class="fa fa-check"></i>Problems of Conditional Inference Trees</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SLAT7855 Quantitative Research Methods in Applied Linguistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tree-structure-model-basics" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Week 13</span> Tree-Structure Model Basics<a href="tree-structure-model-basics.html#tree-structure-model-basics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This section deals with tree-structure models which fall into the machine-learning rather than the inference statistics category as they are commonly used for classification and prediction tasks rather than explanation of relationships between variables.</p>
+<p>The most basic type of tree-structure model is a decision tree or CART (classification and regression tree). A more optimized version of CARTs are conditional inference trees (CITs) - although CART and CITs are commonly treated as one and the same thing although CITs differ from CARTs in that they provide more accurate variable importance measures. Like random forests, inference trees are non-parametric and thus do not rely on distributional requirements (or at least on fewer). The tree structure represents recursive partitioning of the data to minimize residual deviance. Several advantages have been associated with using tree-based models:</p>
+<ol style="list-style-type: decimal">
+<li><p>Tree-structure models are very useful because they can deal with different types of variables and provide a very good understanding of the structure in the data.</p></li>
+<li><p>Tree-structure models have been deemed particularly interesting for linguists because they can handle moderate sample sizes and many high-order interactions better then regression models shows that there can be issues especially when dealing with small data samples, single trees (rather than forests), and data where the variance is predictable based on a single interaction (as shown by <span class="citation">Gries (<a href="#ref-gries2021statistics" role="doc-biblioref">2021</a>)</span>, chapter 7).</p></li>
+<li><p>Tree-structure models are (supposedly) better at detecting non-linear or non-monotonic relationships between predictors and dependent variables.</p></li>
+<li><p>Tree-structure models are easy to implement in R and do not require the model selection, validation, and diagnostics associated with regression models.</p></li>
+<li><p>Tree-structure models can be used as variable-selection procedure which informs about which variables have any sort of significant relationship with the dependent variable and can thereby inform model fitting.</p></li>
+</ol>
+<p>Despite these potential advantages, a word of warning is in order: <span class="citation">Gries (<a href="#ref-gries2021statistics" role="doc-biblioref">2021</a>)</span> admits that tree-based models can be very useful but there are some issues that but some serious short-comings of tree-structure models remain under-explored. For instance,</p>
+<ol style="list-style-type: decimal">
+<li><p>Tree-structure models only inform about the importance of a variable but not if the variable is important as a main effect or as part of interactions (or both)! The importance only shows that there is some important connection between the predictor and the dependent variable.</p></li>
+<li><p>Simple tree-structure models have been shown to fail in detecting the correct predictors if the variance is solely determined by a single interaction <span class="citation">(<a href="#ref-gries2021statistics" role="doc-biblioref">Gries 2021, chap. 7.3</a>)</span>. This failure is caused by the fact that the predictor used in the first split of a tree is selected as the one with the strongest main effect <span class="citation">(<a href="#ref-boulesteix2015interaction" role="doc-biblioref">Boulesteix et al. 2015, 344</a>)</span>. This issue can, however, be avoided by hard-coding the interactions as predictors plus using ensemble methods such as random forests rather than individual trees <span class="citation">(see <a href="#ref-gries2021statistics" role="doc-biblioref">Gries 2021, chap. 7.3</a>)</span>.</p></li>
+<li><p>Another shortcoming is that tree-structure models partition the data (rather than “fitting a line” through the data which can lead to more coarse-grained predictions compared to regression models when dealing with numeric dependent variables <span class="citation">(again, see <a href="#ref-gries2021statistics" role="doc-biblioref">Gries 2021, chap. 7.3</a>)</span>.</p></li>
+<li><p><span class="citation">Boulesteix et al. (<a href="#ref-boulesteix2015interaction" role="doc-biblioref">2015</a>)</span>, 341 state that high correlations between predictors can hinder the detection of interactions when using small data sets. However, regression do not fare better here as they are even more strongly affected by (multi-)collinearity (see @<span class="citation">Gries (<a href="#ref-gries2021statistics" role="doc-biblioref">2021</a>)</span>, chapter 7.3).</p></li>
+<li><p>Tree-structure models are bad a detecting interactions when the variables have strong main effects which is, unfortunately, common when dealing with linguistic data <span class="citation">(<a href="#ref-wrigt2016interac" role="doc-biblioref">Wright, Ziegler, and König 2016</a>)</span>.</p></li>
+</ol>
+<p>Before we implement a conditional inference tree in R, we will have a look at how decision trees work. We will do this in more detail here as random forests and Boruta analyses are extensions of inference trees and are therefore based on the same concepts.</p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-boulesteix2015interaction" class="csl-entry">
+Boulesteix, Anne-Laure, Silke Janitza, Alexander Hapfelmeier, Kristel Van Steen, and Carolin Strobl. 2015. <span>“Letter to the Editor: On the Term <span>‘Interaction’</span> and Related Phrases in the Literature on RandomForests.”</span> <em>Briefings in Bioinformatics</em> 16 (2): 338–45. <a href="https://academic.oup.com/bib/article/16/2/338/246566">https://academic.oup.com/bib/article/16/2/338/246566</a>.
+</div>
+<div id="ref-gries2021statistics" class="csl-entry">
+Gries, Stefan Th. 2021. <em>Statistics for Linguistics Using r: A Practical Introduction</em>. Berlin &amp; New York: Mouton de Gruyter.
+</div>
+<div id="ref-wrigt2016interac" class="csl-entry">
+Wright, Marvin N., Andreas Ziegler, and Inke R. König. 2016. <span>“Do Little Interactions Get Lost in Dark Random Forests?”</span> 17 (145). <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-016-0995-8">https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-016-0995-8</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tree-based-models-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="classification-and-regression-trees.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/edit/master/12-trees.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/blob/master/12-trees.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
