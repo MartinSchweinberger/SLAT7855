@@ -134,8 +134,8 @@ df %>%
 To calculate the mean, we need to divide the sum of the number of words per sentence (145) by the number of sentences (7) (see the equation below).
 
 \begin{equation}
-\frac{3+40+15+87}{4} = \frac{145}{4} = 36.25
-\label{eq:mittel2}
+  \frac{3+40+15+87}{4} = \frac{145}{4} = 36.25
+  \label{eq:mittel2}
 \end{equation}
 
 The mean sentences length in our example is 36.25 words

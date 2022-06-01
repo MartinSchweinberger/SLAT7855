@@ -45,23 +45,6 @@ If you want to know more, would like to get some more practice, or would like to
 
 You can find a more elaborate explanation of how to download and install R and RStudio [here](https://gitlab.com/stragu/DSH/blob/master/R/Installation.md) that was created by the UQ library.
 
-### How to use the workshop materials
-
-You can follow this workshop in different ways based on your preferences as well as prior experience and knowledge of R (the suggestions listed below are ordered from less engaged/easy/no knowledge required to more engaged/more complex/more knowledge is required)
-
-* You can simply **sit back and follow** the workshop
-
-* You can load the Rmd-file in RStudio and **execute the code snippets** in this Rmd-file as we go (we will talk about what Rmd-file are, how they work, and how to work in RStudio below)
-  
-  + If you decide on doing this, then I suggest, that you use a section of your screen for Zoom (to see what I do) and another section of your screen to work within your own R project (we will see what an R project is below)
-
-* You can load the Rmd-file in RStudio, **create a new Rmd-file** (or R Notebook) and then copy and paste the code snippets in this new Rmd-file and execute them as we go.
-
-  + This option requires some knowledge of R and RStudio
-  
-  + If you decide on doing this, then I suggest, that you use a section of your screen for Zoom (to see what I do) and another section of your screen to work within your own R project (as with the previous option)
-
-Future workshops will be interactive and allow you to write your own code into code boxes on the website - unfortunately, I was not able to integrate that for this workshop.
 
 ## Preparation
 
@@ -69,11 +52,11 @@ Before you actually open R or RStudio, there things to consider that make workin
 
 Imagine it like this: when you want to write a book, you could simply take pen and paper and start writing *or* you could think about what you want to write about, what different chapters your book would consist of, which chapters to write first, what these chapters will deal with, etc. The same is true for R: you could simply open R and start writing code *or* you can prepare you session and structure what you will be doing.
 
-### Folder Structure and R projects
+## Folder Structure and R projects
 
 Before actually starting with writing code, you should prepare the session by going through the following steps:
 
-### 1. Create a folder for your project
+### Create a folder for your project
 
 In that folder, create the following sub-folders (you can, of course, adapt this folder template to match your needs)
 
@@ -90,7 +73,7 @@ knitr::include_graphics("https://slcladal.github.io/images/RStudio_newfolder.png
 
 Once you have created your project folder, you can go ahead with RStudio.
 
-### 3. Open RStudio
+### Open RStudio
 
 This is what RStudio looks like when you first open it: 
 
@@ -106,7 +89,7 @@ knitr::include_graphics("https://slcladal.github.io/images/RStudio_file.png")
 
 You can use the drop-down menu to create a `R project`
 
-### 4. R Projects
+### R Projects
 
 In RStudio, click on `New Project`
   
@@ -124,7 +107,7 @@ knitr::include_graphics("https://slcladal.github.io/images/RStudio_existingdirec
   
 Once you click on `Open`, you have created a new `R project` 
   
-### 5. R Notebooks
+### R Notebooks
   
 In this project, click on `File`
   
@@ -142,7 +125,7 @@ This `R Notebook` will be the file in which you do all your work.
 
 
 
-### 6. Updating R
+### Updating R
 
 In case you encounter issues when opening the R Notebook (e.g., if you receive an error message saying that you need to update packages which then do not install properly), you may have to *update your R version*.
 
@@ -157,14 +140,14 @@ library(installr)
 updateR()
 ```
 
-### 7. Optimizing R project options
+### Optimizing R project options
 
 When you work with projects, it is recommendable to control the so-called *environment*. This means that you make your R Project self-contained by storing all packages that are used in project in a library *in the R Project* (instead of in the general R library on your computer). Having a library in your R Project means that you can share your project folder wit other people and they will automatically have the same package versions that you have sued which makes your code more robust and reproducible.
 
 So, how to create such an environment? You simply click on `Tools` (at the very top right of RStudio), then click on`Project Options` then click on `Environments` and then check `Use renv with this project`. Now, when you install packages, they will be installed in the package library (rather than the general R library on your computer).
 
 
-### 8. Getting started with R Notebooks
+### Getting started with R Notebooks
 
 You can now start writing in this R Notebook. For instance, you could start by changing the title of the R Notebook and describe what you are doing (what this Notebook contains).
 
@@ -204,7 +187,7 @@ Markdown is really quite simple to learn and these resources may help:
 
 RStudio is a so-called IDE - Integrated Development Environment. The interface provides easy access to R. The advantage of this application is that R programs and files as well as a project directory can be managed easily. The environment is capable of editing and running program code, viewing outputs and rendering graphics. Furthermore, it is possible to view variables and data objects of an R-script directly in the interface. 
 
-### RStudio: Panes
+## RStudio: Panes
 
 The GUI - Graphical User Interface - that RStudio provides divides the screen into four areas that are called **panes**:
 
@@ -264,7 +247,7 @@ Here, the plus sign is the **operator**.  Operators are symbols that represent s
 
 For now, think of *objects as nouns* and *functions as verbs*. 
 
-## Running commands from a script
+### Running commands from a script
 
 To run code from a script, insert your cursor on a line with a command, and press `CTRL/CMD+Enter`.
 
@@ -361,7 +344,7 @@ knitr::include_graphics("https://slcladal.github.io/images/RStudio_packages.png"
 
 When working with R, you will encounter issues and face challenges. A very good thing about R is that it provides various ways to get help or find information about the issues you face.
 
-#### Finding help within R
+### Finding help within R
 
 To get help regrading what functions a package contains, which arguments a function takes or to get information about how to use a function, you can use the `help` function or the `apropos`. function or you can simply type a `?` before the package or two `??` if this does not give you any answers. 
 
@@ -381,135 +364,11 @@ There are also other "official" help resources from R/RStudio.
 
 * Check out the keyboard shortcuts `Help` under `Tools` in RStudio for some good tips 
 
-#### Finding help online
+### Finding help online
 
 One great thing about R is that you can very often find an answer to your question online.
 
 * Google your error! See <http://r4ds.had.co.nz/introduction.html#getting-help-and-learning-more> for excellent suggestions on how to find help for a specific question online.
-
-## Working with tables
-
-We will now start working with data in R. As most of the data that we work with comes in tables, we will focus on this first before moving on to working with text data.
-
-
-
-### Loading data from the web
-
-To show, how data can be downloaded from the web, we will download a tab-separated txt-file. Translated to prose, the code below means *Create an object called *icebio *and in that object, store the result of the `read.delim` function*. 
-
-`read.delim` stands for *read delimited file* and it takes the URL from which to load the data (or the path to the data on your computer) as its first argument. The `sep` stand for separator and the `\t` stands for tab-separated and represents the second argument that the `read.delim` function takes. The third argument, `header`, can take either T(RUE) or F(ALSE) and it tells R if the data has column names (headers) or not. 
-
-### Functions and Objects
-
-In R, functions always have the following form: `function(argument1, argument2, ..., argumentN)`. Typically a function does something to an object (e.g. a table), so that the first argument typically specifies the data to which the function is applied. Other arguments then allow to add some information. Just as a side note, functions are also objects that do not contain data but instructions.
-
-To assign content to an object, we use `<-` or `=` so that the we provide a name for an object, and then assign some content to it. For example, `MyObject <- 1:3` means *Create an object called `MyObject`. this object should contain the numbers 1 to 3*.
-
-```{r, message=FALSE, warning=FALSE}
-# load data
-icebio <- read.delim("https://slcladal.github.io/data/BiodataIceIreland.txt", 
-                      sep = "\t", header = T)
-```
-
-### Inspecting data
-
-There are many ways to inspect data. We will briefly go over the most common ways to inspect data.
-
-The `head` function takes the data-object as its first argument and automatically shows the first 6 elements of an object (or rows if the data-object has a table format).
-
-```{r, message=FALSE, warning=FALSE}
-head(icebio)
-```
-
-We can also use the `head` function to inspect more or less elements and we can specify the number of elements (or rows) that we want to inspect as a second argument. In the example below, the `4` tells R that we only want to see the first 4 rows of the data.
-
-```{r, message=FALSE, warning=FALSE}
-head(icebio, 4)
-```
-
-***
-
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>EXERCISE TIME!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
-
-<div class="question">` 
-
-1. Download and inspect the first 7 rows of the data set that you can find under this URL: `https://slcladal.github.io/data/lmmdata.txt`. Can you guess what the data is about?
-
-<details>
-  <summary>Answer</summary>
-  ```{r loadtext}
-  ex1data <- read.delim("https://slcladal.github.io/data/lmmdata.txt", sep = "\t")
-  head(ex1data, 7)
-  ```
-  The data is about texts and the different columns provide information about the texts such as  when the texts were written (`Date`), the genre the texts represent (`Genre`), the name of the texts (`Text`), the relative frequencies of prepositions the texts contain (`Prepositions`), and the region where the author was from (`Region`).
-</details>
-
-</div>`
-
-***
-
-
-
-### Accessing individual cells in a table
-
-If you want to access specific cells in a table, you can do so by typing the name of the object and then specify the rows and columns in square brackets (i.e. **data[row, column]**). For example, `icebio[2, 4]` would show the value of the cell in the second row and fourth column of the object `icebio`. We can also use the colon to define a range (as shown below, where 1:5 means from 1 to 5 and 1:3 means from 1 to 3) The command `icebio[1:5, 1:3]` thus means:
-
-*Show me the first 5 rows and the first 3 columns of the data-object that is called icebio*. 
- 
-```{r, message=FALSE, warning=FALSE}
-icebio[1:5, 1:3]
-```
-
-
-***
-
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>EXERCISE TIME!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
-
-<div class="question">` 
-
-1. How would you inspect the content of the cells in 4^th^ column, rows 3 to 5 of the `icebio` data set?
-
-<details>
-  <summary>Answer</summary>
-  ```{r}
-  icebio[3:5, 4]
-  ```
-</details>
-
-</div>`
-
-***
-
-**Inspecting the structure of data**
-
-You can use the `str` function to inspect the structure of a data set. This means that this function will show the number of observations (rows) and variables (columns) and tell you what type of variables the data consists of 
-
-- **int** = integer
-- **chr** = character string
-- **num** = numeric
-- **fct** = factor
-
-```{r, message=FALSE, warning=FALSE}
-str(icebio)
-```
-
-The `summary` function summarizes the data.
-
-```{r, message=FALSE, warning=FALSE}
-summary(icebio)
-```
 
 
 

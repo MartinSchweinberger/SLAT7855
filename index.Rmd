@@ -21,18 +21,17 @@ Assumed Background: No background in statistics or mathematics is assumed.
 
 ### Course Introduction {-}
 
-This course will examine and apply basic statistical tools used in quantitative research in second language acquisition, applied linguistics and linguistics. The focus will be on quantitative methodology used in coursework dissertation and MPhil/PhD research in applied linguistics and related fields, but the course will be of interest to anyone who wants a better understanding of quantitative methods in language research.
- 
-The course has three aims. It will provide
- 
-1. grounding in the basic logic and scope of quantitative reasoning (= statistics) in language research  
-2. exposure to commonly used statistical techniques   
-3. in-depth experience in using R (RStudio)  
- 
- 
-Statistical methodology in language research is very broad and has different levels of sophistication. The course will endeavor to introduce the conceptual, analytical and technical tools you need to understand quantitative findings in the research literature and possibly use these techniques in your own research. However, the use of a given statistical technique is determined by the specific research question and study goals. Given the breadth and study-specific nature of quantitative methodology, an introductory course like this can only provide the basic conceptual framework for carrying out research and an introduction to the techniques used.  As a result, there will be a strong emphasis on discovery-based learning. You will be expected to locate, learn and use the resources necessary to carry out and report specific statistical analyses. You will also will present your findings to the other students, both individually and in groups. In other words, you will be expected to be both a learner and a teacher.
+This course will examine and apply basic statistical methods used in quantitative research in second language acquisition, applied linguistics and linguistics. The focus will be on quantitative methodology used in language research in applied linguistics and related fields, but the course will be of interest to anyone who wants a better understanding of quantitative methods in language research.
 
-Course Changes in Response to Previous Student Feedback
+The course has three main aims. It will provide
+
+1. grounding in the basic logic and scope of quantitative reasoning (= statistics) in language research
+2. exposure to the statistical techniques commonly used
+3. in-depth experience in using and reporting statistical results using R and RStudio.
+
+Statistical methodology in language research is very broad and has different levels of sophistication. The course will endeavor to introduce the conceptual underpinnings, analytical methods and technical tools you need to understand quantitative findings in the research literature and potentially use these techniques in your own research. 
+
+**Course Changes in Response to Previous Student Feedback**
 
 Previous student feedback has been incorporated in this profile.
 
@@ -62,22 +61,26 @@ Students will be advised of any changes in advance. Dates and times for make-up 
 ### Course Aims {-}
 
  
-The course will introduce the conceptual, analytical and technical tools students need to understand quantitative findings in the language research literature and to use quantitative methods in their own research. It will do this by meeting three aims. The course will provide:
- 
-1. grounding in the basic logic and scope of quantitative reasoning (= statistics) in language research  
-2. exposure to commonly used statistical techniques   
-3. in-depth experience in using R (RStudio)  
+This course will examine and apply basic statistical methods used in quantitative research in second language acquisition, applied linguistics and linguistics. The course has three main aims. It will provide
+
+1. a grounding in the basic logic and scope of quantitative reasoning (= statistics) in language research
+2. exposure to the statistical techniques commonly used
+3. in-depth experience in using and reporting statistical results using R and RStudio. 
  
 
 ### Learning Objectives {-}
 
 After successfully completing this course you should be able to:
 
-1. 	Understand and apply basic statistical tests in applied linguistics and second language acquisition.  
-2. 	Understand the role of quantitative evidence in describing and explaining language learning and use.  
-3. 	Read quantitative research in these areas in a more critical and productive manner.  
-4. 	Use statistical software to analyse and present data.  
-5. 	Write up results for a dissertation or publication.  
+1.  Understand and apply basic statistical tests in applied linguistics and second language acquisition.
+	
+2.  Understand the role of quantitative evidence in describing and explaining language learning and use.
+	
+3.  Read quantitative research in these areas in a more critical and productive manner.
+	
+4.  Use statistical software to analyse and present data.
+	
+5.  Write up results for a dissertation or publication. 
 
 ## Learning Resources {-}
 

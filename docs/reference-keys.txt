@@ -219,3 +219,8 @@ tree-based-models
 basic-concepts-2
 prettifying-your-cit-tree
 problems-of-conditional-inference-trees
+loading-data-from-the-web-1
+functions-and-objects-1
+inspecting-data-1
+accessing-individual-cells-in-a-table-1
+working-with-tables-in-r-and-rstudio

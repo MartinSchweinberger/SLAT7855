@@ -25,7 +25,7 @@ remotes::install_github("rlesur/klippy")
 library(knitr)
 library(flextable)
 library(tidyverse)
-library(magick )
+library(magick)
 library(cowplot)
 library(ggplot2)
 library(tufte)
@@ -35,15 +35,7 @@ klippy::klippy()
 ```
 
 
-This tutorial takes a philosophical or history-of-ideas approach and introduces the logical and cognitive underpinnings of the the scientific method. This tutorial is aimed at  beginners and does not require prior knowledge.
-
-```{r diff, echo=FALSE, out.width= "15%", out.extra='style="float:right; padding:10px"'}
-knitr::include_graphics("https://slcladal.github.io/images/g_chili.jpg")
-```
-
-
-
-The aim of this tutorial is to outline why humans are need science and it demonstrates with various examples, which are not restricted to linguistics, that humans are prone to cognitive biases, logical fallacies (e.g. argument ad personam, strawman arguments, post-hoc-ergo propter hoc, argument from popularity), and inappropriate ways of dealing with data (cherry-picking) which are likely to lead to inaccurate conclusions. For example, humans are good (maybe too good) at seeing patterns but not good at understanding randomness. This is the basis for seeing faces in random patterns like the famous face on Mars. The explanation for the human inability to see the world as it is based on evolutionary approaches to our cognitive apparatus. It will be shown using the example of Clever Hans (a horse that was thought to be able to count and perform mathematical operations) that these biases can only be avoided if one applies a methodological approach to acquiring knowledge.
+This tutorial takes a philosophical or history-of-ideas approach and introduces the logical and cognitive underpinnings of the the scientific method. It does not require prior knowledge and it aims to outline why we as humans are need science to understand the empirical word around us. It also demonstrates with various examples that humans are prone to cognitive biases, logical fallacies and inappropriate ways of dealing with data (cherry-picking) which are likely to lead to inaccurate conclusions. For example, humans are good (maybe too good) at seeing patterns but not good at understanding randomness. This is the basis for seeing faces in random patterns like the famous face on Mars. The explanation for the human inability to see the world as it is based on evolutionary approaches to our cognitive apparatus. It will be shown using the example of Clever Hans (a horse that was thought to be able to count and perform mathematical operations) that these biases can only be avoided if one applies a methodological approach to acquiring knowledge.
 
 ## Why do we need science?
 

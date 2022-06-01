@@ -1,4 +1,4 @@
-# Working with Tables in R and RStudio 2
+# Working with Tables in R and RStudio
 
 
 This week, we will continue to explore R and RStudio.
@@ -10,7 +10,131 @@ icebio <- read.delim(here::here("data", "icebio.txt"), sep = "\t", header = T)
 
 ## Working with tables
 
-### Tabulating data
+We will now start working with data in R. As most of the data that we work with comes in tables, we will focus on this first before moving on to working with text data.
+
+
+
+## Loading data from the web
+
+To show, how data can be downloaded from the web, we will download a tab-separated txt-file. Translated to prose, the code below means *Create an object called *icebio *and in that object, store the result of the `read.delim` function*. 
+
+`read.delim` stands for *read delimited file* and it takes the URL from which to load the data (or the path to the data on your computer) as its first argument. The `sep` stand for separator and the `\t` stands for tab-separated and represents the second argument that the `read.delim` function takes. The third argument, `header`, can take either T(RUE) or F(ALSE) and it tells R if the data has column names (headers) or not. 
+
+## Functions and Objects
+
+In R, functions always have the following form: `function(argument1, argument2, ..., argumentN)`. Typically a function does something to an object (e.g. a table), so that the first argument typically specifies the data to which the function is applied. Other arguments then allow to add some information. Just as a side note, functions are also objects that do not contain data but instructions.
+
+To assign content to an object, we use `<-` or `=` so that the we provide a name for an object, and then assign some content to it. For example, `MyObject <- 1:3` means *Create an object called `MyObject`. this object should contain the numbers 1 to 3*.
+
+```{r, message=FALSE, warning=FALSE}
+# load data
+icebio <- read.delim("https://slcladal.github.io/data/BiodataIceIreland.txt", 
+                      sep = "\t", header = T)
+```
+
+## Inspecting data
+
+There are many ways to inspect data. We will briefly go over the most common ways to inspect data.
+
+The `head` function takes the data-object as its first argument and automatically shows the first 6 elements of an object (or rows if the data-object has a table format).
+
+```{r, message=FALSE, warning=FALSE}
+head(icebio)
+```
+
+We can also use the `head` function to inspect more or less elements and we can specify the number of elements (or rows) that we want to inspect as a second argument. In the example below, the `4` tells R that we only want to see the first 4 rows of the data.
+
+```{r, message=FALSE, warning=FALSE}
+head(icebio, 4)
+```
+
+***
+
+<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>EXERCISE TIME!</b></p>
+<p style='margin-left:1em;'>
+</p></span>
+</div>
+
+<div class="question">` 
+
+1. Download and inspect the first 7 rows of the data set that you can find under this URL: `https://slcladal.github.io/data/lmmdata.txt`. Can you guess what the data is about?
+
+<details>
+  <summary>Answer</summary>
+  ```{r loadtext}
+  ex1data <- read.delim("https://slcladal.github.io/data/lmmdata.txt", sep = "\t")
+  head(ex1data, 7)
+  ```
+  The data is about texts and the different columns provide information about the texts such as  when the texts were written (`Date`), the genre the texts represent (`Genre`), the name of the texts (`Text`), the relative frequencies of prepositions the texts contain (`Prepositions`), and the region where the author was from (`Region`).
+</details>
+
+</div>`
+
+***
+
+
+
+## Accessing individual cells in a table
+
+If you want to access specific cells in a table, you can do so by typing the name of the object and then specify the rows and columns in square brackets (i.e. **data[row, column]**). For example, `icebio[2, 4]` would show the value of the cell in the second row and fourth column of the object `icebio`. We can also use the colon to define a range (as shown below, where 1:5 means from 1 to 5 and 1:3 means from 1 to 3) The command `icebio[1:5, 1:3]` thus means:
+
+*Show me the first 5 rows and the first 3 columns of the data-object that is called icebio*. 
+ 
+```{r, message=FALSE, warning=FALSE}
+icebio[1:5, 1:3]
+```
+
+
+***
+
+<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>EXERCISE TIME!</b></p>
+<p style='margin-left:1em;'>
+</p></span>
+</div>
+
+<div class="question">` 
+
+1. How would you inspect the content of the cells in 4^th^ column, rows 3 to 5 of the `icebio` data set?
+
+<details>
+  <summary>Answer</summary>
+  ```{r}
+  icebio[3:5, 4]
+  ```
+</details>
+
+</div>`
+
+***
+
+**Inspecting the structure of data**
+
+You can use the `str` function to inspect the structure of a data set. This means that this function will show the number of observations (rows) and variables (columns) and tell you what type of variables the data consists of 
+
+- **int** = integer
+- **chr** = character string
+- **num** = numeric
+- **fct** = factor
+
+```{r, message=FALSE, warning=FALSE}
+str(icebio)
+```
+
+The `summary` function summarizes the data.
+
+```{r, message=FALSE, warning=FALSE}
+summary(icebio)
+```
+
+
+
+## Tabulating data
 
 We can use the `table` function to create basic tables that extract raw frequency information. The following command tells us how many instances there are of each level of the variable `date` in the `icebio`. 
 
@@ -80,7 +204,7 @@ ftable(icebio$age, icebio$sex)
 ***
 
 
-### Saving data to your computer
+## Saving data to your computer
 
 To save tabular data on your computer, you can use the `write.table`  function. This function requires the data that you want to save as its first argument, the location where you want to save the data as the second argument and the type of delimiter as the third argument. 
 
@@ -98,7 +222,7 @@ In this case, we want to access the file `icebio` (which is a `txt` file and thu
 
 Another thing that is notable in the sequence `here::here("data", "icebio.txt")` is that I specified that the `here` function is part of the `here` package. This is what I meant by writing `here::here` which simply means use the `here` function from `here` package (`package::function`). This may appear to be somewhat redundant but it happens quite frequently, that different packages have functions that have the same names. In such cases, R will simply choose the function from the package that was loaded last. To prevent R from using the wrong function, it makes sense to specify the package AND the function (as I did in the sequence `here::here`). I only use functions without specify the package if the function is part of base R.
 
-### Loading data from your computer
+## Loading data from your computer
 
  To load tabular data from within your project folder (if it is in a tab-separated txt-file) you can also use the `read.delim` function. The only difference to loading from the web is that you use a path instead of a URL. If the txt-file is in the folder called *data* in your project folder, you would load the data as shown below. 
 
@@ -131,7 +255,7 @@ To if this has worked, we will use the `head` function to see first 6 rows of th
 head(icebio)
 ```
 
-### Loading Excel data
+## Loading Excel data
 
 To load Excel spreadsheets, you can use the `read_excel` function from the `readxl` package as shown below. However, it may be necessary to install and activate the `readxl` package first. 
 
@@ -145,40 +269,8 @@ We now briefly check column names to see if the loading of the data has worked.
 colnames(icebio)
 ```
 
-### Loading text data
 
-There are many functions that we can use to load text data into R. For example, we can use the `readLines` function as shown below.
-
-
-```{r, echo=T, eval=T, message=F, warning=F}
-text <- readLines(here::here("data", "text2.txt"))
-# inspect first text element
-text[1]
-```
-
-To load many texts, we can use a loop to read all texts in a folder as shown below. In a first step, we define the paths of the texts and then, we use the `sapply` function to loop over the paths and read them into R.
-
-
-```{r load_texts, eval=T, echo=T, message=F, warning=F}
-# define paths
-paths <- list.files(here::here("data/testcorpus"), full.names = T)
-# load texts
-texts <- sapply(paths, function(x){ readLines(x) })
-# inspect first text element
-texts[1]
-```
-
-A method achieving the same result which uses piping (more on what that is below) and tidyverse R code is shown below.
-
-```{r load_texts_tidy, eval=T, echo=T, message=F, warning=F}
-# define paths
-texts <- list.files(here::here("data/testcorpus"), full.names = T, pattern = ".*txt") %>%
-  purrr::map_chr(~ readr::read_file(.))
-# inspect first text element
-texts[1]
-```
-
-### Renaming, Piping, and Filtering 
+## Renaming, Piping, and Filtering 
 
 To rename existing columns in a table, you can use the `rename` command which takes the table as the first argument, the new name as the second argument, the an equal sign (=), and finally, the old name es the third argument. For example, renaming a column *OldName* as *NewName* in a table called *MyTable* would look like this: `rename(MyTable, NewName = OldName)`.  
 
@@ -232,7 +324,7 @@ icebio_selection2 <- icebio_edit2 %>%
 head(icebio_selection2)
 ```
 
-### Ordering data
+## Ordering data
 
 To order data, for instance, in ascending order according to a specific column you can use the `arrange` function.
 
@@ -284,7 +376,7 @@ The output shows that the female speaker in file S2A-005 with the speaker identi
 ***
 
 
-### Creating and changing variables
+## Creating and changing variables
 
 New columns are created, and existing columns can be changed, by using the `mutate` function. The `mutate` function takes two arguments (if the data does not have to be specified): the first argument is the (new) name of column that you want to create and the second is what you want to store in that column. The = tells R that the new column will contain the result of the second argument.
 
@@ -314,7 +406,7 @@ icebio_texttype <- icebio_selection2 %>%
 head(icebio_texttype)
 ```
 
-### If-statements
+## If-statements
 
 We should briefly talk about if-statements (or `case_when` in the present case). The `case_when` function is both very powerful and extremely helpful as it allows you to assign values based on a test. As such, `case_when`-statements can be read as:
 
@@ -361,7 +453,7 @@ The nice thing about `ifelse` or `case_when`-statements is that they can be used
 
 ***
 
-### Summarizing data
+## Summarizing data
 
 Summarizing is really helpful and can be done using the `summarise` function.
 
@@ -433,7 +525,7 @@ head(icebio_summary2)
 ***
 
 
-### Gathering and spreading data
+## Gathering and spreading data
 
 The `tidyr` package has two very useful functions for gathering and spreading data that can be sued to transform data to long and wide formats (you will see what this means below). The functions are called `gather` and `spread`.
 
@@ -466,7 +558,7 @@ icebio_summary_long
 
 At the end of each session, you can extract information about the session itself (e.g. which R version you used and which versions of packages). This can help others (or even your future self) to reproduce the analysis that you have done.
 
-### Extracting session information
+## Extracting session information
 
 You can extract the session information by running the `sessionInfo` function (without any arguments)
 
