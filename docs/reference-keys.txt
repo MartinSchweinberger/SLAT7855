@@ -224,3 +224,8 @@ functions-and-objects-1
 inspecting-data-1
 accessing-individual-cells-in-a-table-1
 working-with-tables-in-r-and-rstudio
+tab:ass
+the-basics-of-multiple-linear-regression-1
+example-gifts-and-availability-1
+automatic-model-fitting-1
+evaluation-of-sample-size-1

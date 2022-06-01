@@ -159,7 +159,7 @@ scriptchapter <- c(
   "Introduction to R and RStudio",
   "Descriptive Statistics",
   "Introduction to Data Visualization with R",
-  "Descriptive Statistics",
+  "Simple and Multiple Regression",
   "Simple and Multiple Regression",
   "Simple and Multiple Regression",
   "Logistic Regression",
@@ -177,4 +177,234 @@ data.frame(weeks, content, scriptchapter) %>%
   flextable::set_caption(caption = "Overview of the course activities by week.")  %>%
   flextable::border_outer()
 ```
+
+
+## Assessment {-}
+
+
+```{r ass, echo = F, eval = T, message=FALSE, warning=FALSE}
+library(dplyr)
+library(flextable)
+Assessment <- c("Weekly Online Study Tasks", "Annotated Bibliography", "Research Project")
+DueDate <- c("Weeks 2 to 11 (Aug. 1 - Oct. 10): must be submitted before Monday 9 am of each week", 
+             "End of week 9 (Sep. 23):  must be submitted before Friday 4 pm",
+             "Two weeks after week 13 (Nov. 11): must be submitted before Friday 4 pm")
+Weighting <- c("30%", "30%", "40%")
+data.frame(Assessment, DueDate, Weighting) %>%
+  as.data.frame() %>%
+  flextable::flextable() %>%
+  flextable::set_table_properties(width = .95, layout = "autofit") %>%
+  flextable::theme_zebra() %>%
+  flextable::fontsize(size = 11) %>%
+  flextable::fontsize(size = 11, part = "header") %>%
+  flextable::align_text_col(align = "left") %>%
+  flextable::set_caption(caption = "Overview of assessments.")  %>%
+  flextable::border_outer()
+```
+
+
+### Weekly Oline Study Tasks {-}
+
+**Task Description**
+
+Weight: 		30%
+
+Due date: 		Week 2 to week 11
+
+Submission: 	via Blackboard
+
+**Weekly Online Study Tasks**
+
+Every week - from week 2 to week 11 - there will be 10 questions that you need to answer. This amounts to 10 online study tasks. The questions will be about the content of the lecture and the required reading(s) for that week. 
+
+Each online study task is worth 3% of your final grade. You only have 60  minutes and a single attempt to finish each weekly online study task. 
+
+The link to the online study tasks for each week will be made available on Blackboard.
+
+
+### Annotated Bibliography {-}
+
+**Task Description**
+
+Weight: 		30%
+
+Due date: 		End of week 9
+
+Submission: 	via TurnItIn
+
+**Annotated Bibliography**
+
+The purpose of this assignment is to give you experience in reading, understanding, and critically evaluating reports of statistical analyses.  You should select 3 research articles in your area of interest that contain and report statistical analyses. Please choose the articles very carefully (i.e., from reputable peer-reviewed journals), as the credibility of your selected sources will be assessed. For each article, in a separate entry, answer the following questions:
+
+1. **What research question(s) and hypotheses did the article attempt to answer?**
+Identify the research question(s) and, where relevant, any hypotheses tested. 
+
+2. **What data was used to answer the research question(s) and hypotheses?** Describe the source, type, and size of the data and the variables it represented. The description of the data can be in prose or tabular format. Cite the source of the data if relevant and provide information about whether the data is accessible to other researchers (including yourself).
+
+3. **What methodology was used?** Identify the statistical methods used to address the research question(s): What tools/techniques/procedures were used? 
+
+4. **What were the findings?** Briefly state the results of the study. Were the research question(s) addressed? Were the hypotheses rejected or substantiated? 
+
+5. **What are potential issues of the analysis?** Evaluate the study's methodology: where all relevant factors considered? Were the data and the methodology described in sufficient detail?  Were any suggestions made on how to mitigate the limitations?  
+
+Each entry should be no longer than 300 words. Your summaries should be presented clearly, coherently, ad precise. Bibliographic details for each article should be presented at the beginning of each entry in APA 7 citation style. After completing the 3 entries write a short (400 words) comparison of your evaluation of the analyses in the 3 articles analysed. 
+
+Some style notes:
+
+1. Number your entries.  
+2. The article should be cited at the beginning of each entry using APA 7 format.  
+3. Use double spacing and a 12-point font. Follow APA format for formatting your document.  
+4. Use 2.5cm margin in both sides and top and bottom.  
+5. Always aim to paraphrase and use your own words – try not to cite verbatim but synthesize information.  
+6. Write the number of words at the end of your assignment.  
+
+Please refer to the rubic (available via the ECP) for details.
+
+If you are sick/absent, see Section 5.3 *Late submission*.
+
+
+
+### Research Project {-}
+
+**Task Description**
+
+Weight: 		40%
+
+Due date: 		Friday two weeks after the end of week 13 (Nov. 11, 2022, 4pm)
+
+Submission: 	via TurnItIn
+
+The Research Project assessment is worth 40% of your final grade. 
+
+Below you will find the weighting of each individual component of this assessment as well as some additional information about the marking criteria. The relevant rubrics are also attached for your reference.
+
+**Research Project**
+
+Your Research Project is marked out of 40 points following the marking criteria in the rubic available via the ECP.  Write an R Notebook (Rmd) containing a research project report of no longer than 3000 words (excluding references) which  
+
+* states a research question,  
+*	poses a hypothesis,  
+*	describes and visualizes the data that you use to answer the research question,   
+*	details the statistical analysis of the data, and  
+*	provides a critical evaluation of the analysis.  
+
+The R Notebook containing the research project report as well as a rendered docx or pdf of the R Notebook need to be submitted by the Friday two weeks after the end of week 13, 4pm (Nov. 11, 2022), via Turnitin.
+
+**Purpose** 
+
+To undertake in-depth research project of a specific topic in the language sciences (it may be connected to the literature review you have already undertaken for your Annotated Bibliography assessment) and to practically apply the conceptual knowledge and the methods which were presented in this course to a data set that you have to find yourself. 
+
+Your task is to write a research report consisting of the following sections:
+
+1.	**Introduction**: This section should briefly introduce the topic of your research project and clearly state the research question and hypothesis. 
+
+2.	**Data**: This section should provide information about the data collection or the data source and describe, tabulate, and visualize the data that you use to answer your research question. The description and tabulation of the data should provide the descriptive statistics to summarize the nature and parameters of the data. 
+
+3.	**Methodology**: This section should describe and justify the statistical method(s) that you use to answer your research question.
+
+4.	**Statistical Analysis**: This section shows how you implemented the statistical method.
+
+5.	**Conclusion**: This section should provide a summary of the finding of the analysis, show how or if the research question has been answered, state if the hypothesis was rejected or substantiated, and provide a critical evaluation of the analysis and its limitations.
+
+Please refer to the rubic (available via the ECP) for details.
+
+If you are sick/absent, see Section 5.3 *Late submission*.
+
+
+
+
+### Course Grading {-}
+	
+
+Example criteria for each of the grades can be found in PPL 3.10.02 Assessment Procedures - section 7 Appendix.
+
+* Grade X: No assessable work received.
+
+* *Grade 1, Low Fail*: Absence of evidence of achievement of course learning outcomes: Weighted composite score of between 0-24%. No submitted work or submitted work incomplete. The minimum percentage required for a grade of 1 is 0%.
+
+* *Grade 2, Fail*: Minimal evidence of achievement of course learning outcomes: Weighted composite score of between 25-44%. Student shows little understanding of the research process, manifested in consistent lack of application of research techniques to assessment items, inability to formulate a topic and central question, very limited degree of analysis and synthesis of findings from data, and lack of clear and logical presentation of findings in a manner consistent with accepted academic standards. Nil or very poor bibliographic and citation technique.
+
+* *Grade 3, Marginal Fail*: Demonstrated evidence of developing achievement of course learning outcomes: Weighted composite score of between 45-49%. Falls short of satisfying all basic requirements of a pass. Student shows a poor understanding of the research process, manifested in lack of application of research techniques to most assessment items, poor ability to formulate a topic and central question, a limited degree of analysis and synthesis of findings from data, and substantial lapses in clear and logical presentation of findings in a manner consistent with accepted academic standards. Poor bibliographic and citation technique.
+
+* *Grade 4, Pass*: Demonstrated evidence of functional achievement of course learning outcomes:
+
+Weighted composite score of between 50-64%. Student shows an adequate understanding of the research process, manifested in application of research techniques to most assessment items, adequate ability to formulate to a topic and central research question, and adequate degree of analysis and synthesis of findings from data, and at times clear and logical presentation of findings (albeit with many incoherencies) in a manner broadly consistent with accepted academic standards. Work contains a notable number of factual errors and grammatical infelicities. Many errors in bibliography and in citations. Sources not consistently or correctly acknowledged.
+
+* *Grade 5, Credit*: Demonstrated evidence of proficient achievement of course learning outcomes: Weighted composite score of between 65-74%. Students shows a good understanding of the research process, manifested in application of research techniques to most assessment items, good ability to formulate a topic and central research question, a good degree of analysis and synthesis of findings from data, and usually clear and logical presentation of findings (albeit with some major incoherencies) in a manner that is mostly consistent with accepted academic standards. Work contains some factual errors and grammatical infelicities. Some obvious errors in the bibliography. Sources not consistently correctly acknowledged.
+
+* *Grade 6, Distinction*: Demonstrated evidence of advanced achievement of course learning outcomes: Weighted composite score of between 75-84%. Students shows a good understanding of the research process, manifested in application of research techniques to most assessment items, good ability to formulate a topic and central research question, a very good degree of analysis and synthesis of findings from data, and almost always clear and logical presentation of findings (some minor incoherencies) in a manner consistent with accepted academic standards. Work may contain rare factual errors and minor grammatical infelicities. Comprehensive bibliography, although with some minor errors. Sources correctly acknowledged.
+
+* *Grade 7, High Distinction*: Demonstrated evidence of exceptional achievement of course learning outcomes: Weighted composite score of between 85-100%. Student shows an excellent understanding of the research process, manifested in consistent application of research techniques to all assessment items, excellent ability to formulate a topic and central research question, coherent analysis and synthesis of findings from data, and consistently clear and logical presentation of findings in a manner consistent with accepted academic standards. Work has no factual errors, few grammatical infelicities and a comprehensive bibliography, with sources consistently and correctly acknowledged.
+
+
+**Late Submission**
+	
+
+*Extensions*
+
+In exceptional circumstances beyond a student’s control, which prevent them from submitting an assessment item by the due date and time, students can apply for an extension.
+
+Extensions can be requested for assessment items such as:
+
+* oral assessment for individuals or groups  
+* essays  
+* assignments  
+* case studies  
+* laboratory reports  
+* take-home essays  
+* tutorial group assignments  
+
+Applications to request an extension of assessment due date must be submitted through my.UQ, on or before the assessment item’s due date and time. A request for an extension of the assessment due date must be accompanied by supporting documentation that is truthful, accurate, describes in detail why an extension is required, and demonstrates the impact of the circumstances on a student’s academic performance to justify the entire period they were affected.
+
+Requests for extensions received after the assessment item submission due date and time must include evidence of the reasons for the late request.
+
+In the case of a group assessment item, an extension approved for an individual does not apply to the whole group.
+
+The following penalties apply to late or non-submission of an assessment item:   
+* A penalty of 10% of the maximum possible mark allocated for the assessment item, or one grade per day if graded on the basis of 1-7, or equivalent penalty if a different grading approach is used, will be deducted for every day for up to 7 calendar days, at which point any submission will not receive any marks. Each 24 hour block is recorded from the time the submission is due; 
+
+or 
+
+* A penalty of 100% for a late assessment item may be set provided it is academically justified and communicated in the course profile.
+
+*Deferred Exams*
+
+Deferred examinations are available for the following assessment items, whether they are written, theory-based, practical, or online:
+
+* Mid-semester deferred exam request – applies to exams held at any time other than during the University's end-of-semester exam block periods.  
+* End-of-semester deferred exam request – applies only to exams held during the University's designated end-of-semester exam periods.
+
+Students can apply for a deferred exam:
+* if there are exceptional or unavoidable circumstances, or  
+* as a one-off discretionary request.  
+
+*Apply for a deferred exam*
+
+Submit a ‘deferred examinations request’ through mySI-net. You can save this application and come back to it at any time.
+
+For information on deferred exams and instructions on how to apply please see myUQ information on deferring an exam.
+
+*Late applications*
+
+Applications should be submitted no later than 5 calendar days after the date of the original exam. However, there may be circumstances that prevent you from submitting on time.
+
+If more than 5 calendar days have passed since the date of the original examination, a Late Notice link will appear on the deferred exam request form in mySI-net. The Late Notice provides instructions about what you can do next.
+
+*What to expect after you apply*
+
+Your deferred examination request(s) must have a status of "submitted" in mySI-net to be assessed.
+
+* All applications for deferred mid-semester examinations are assessed by the relevant school.  
+* Applications for deferred end-of-semester examinations are assessed by the Academic Services Division.  
+
+You’ll receive an email to your student email account when the status of your application is updated.
+
+*Approved deferred exam applications*
+
+* If your deferred mid-semester examination request is approved, the relevant school will notify you of the scheduled date and time of your deferred examination. Deferred mid-semester examinations are held during a period nominated by the relevant school.  
+* If your end-of-semester deferred examination request is approved you will receive a timetable the Friday prior to the deferred exam period. You must be available during this time to take your exam.  
+
+
+
+
 
