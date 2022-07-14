@@ -19,6 +19,8 @@ This course introduces basic statistical techniques used in quantitative researc
 
 Assumed Background: No background in statistics or mathematics is assumed.
 
+[**Link to Electronic Course Profile (ECP)**](https://course-profiles.uq.edu.au/student_section_loader/section_1/123204)
+
 ### Course Introduction {-}
 
 This course will examine and apply basic statistical methods used in quantitative research in second language acquisition, applied linguistics and linguistics. The focus will be on quantitative methodology used in language research in applied linguistics and related fields, but the course will be of interest to anyone who wants a better understanding of quantitative methods in language research.
@@ -41,9 +43,16 @@ Course Coordinator: Dr Martin Schweinberger
 
 Phone: 3365 6374 
 
-Email: m.schweinberger@uq.edu.au
+Email: m.schweinberger\@uq.edu.au
 
 Office: St Lucia campus, Gordon Greenwood Building, Room 32-514
+
+Lecturer(s)
+
+Ruihua Yin (ruihua.yin\@uq.edu.au)
+
+Martin Schweinberger (m.schweinberger\@uq.edu.au)
+
 
 
 
@@ -186,9 +195,9 @@ data.frame(weeks, content, scriptchapter) %>%
 library(dplyr)
 library(flextable)
 Assessment <- c("Weekly Online Study Tasks", "Annotated Bibliography", "Research Project")
-DueDate <- c("Weeks 2 to 11 (Aug. 1 - Oct. 10): must be submitted before Monday 9 am of each week", 
-             "End of week 9 (Sep. 23):  must be submitted before Friday 4 pm",
-             "Two weeks after week 13 (Nov. 11): must be submitted before Friday 4 pm")
+DueDate <- c("Weeks 3 to 12 (Aug. 8 - Oct. 17): must be submitted before Monday 9 am of each week", 
+             "Wednesday of week 10 (Oct. 5):  must be submitted before 4 pm",
+             "Mondayday two weeks after week 13 (Nov. 7): must be submitted before 4 pm")
 Weighting <- c("30%", "30%", "40%")
 data.frame(Assessment, DueDate, Weighting) %>%
   as.data.frame() %>%
@@ -209,13 +218,13 @@ data.frame(Assessment, DueDate, Weighting) %>%
 
 Weight: 		30%
 
-Due date: 		Week 2 to week 11
+Due date: 		Week 3 to week 12
 
 Submission: 	via Blackboard
 
 **Weekly Online Study Tasks**
 
-Every week - from week 2 to week 11 - there will be 10 questions that you need to answer. This amounts to 10 online study tasks. The questions will be about the content of the lecture and the required reading(s) for that week. 
+Every week - from week 3 to week 12 - there will be 10 questions that you need to answer. This amounts to 10 online study tasks. The questions will be about the content of the lecture and the required reading(s) for that week. 
 
 Each online study task is worth 3% of your final grade. You only have 60  minutes and a single attempt to finish each weekly online study task. 
 
@@ -228,7 +237,7 @@ The link to the online study tasks for each week will be made available on Black
 
 Weight: 		30%
 
-Due date: 		End of week 9
+Due date: 		Wednesday of week 10
 
 Submission: 	via TurnItIn
 
@@ -270,7 +279,7 @@ If you are sick/absent, see Section 5.3 *Late submission*.
 
 Weight: 		40%
 
-Due date: 		Friday two weeks after the end of week 13 (Nov. 11, 2022, 4pm)
+Due date: 		Monday two weeks after the end of week 13 (Nov. 7, 2022, 4pm)
 
 Submission: 	via TurnItIn
 
@@ -326,9 +335,7 @@ Example criteria for each of the grades can be found in PPL 3.10.02 Assessment P
 
 * *Grade 3, Marginal Fail*: Demonstrated evidence of developing achievement of course learning outcomes: Weighted composite score of between 45-49%. Falls short of satisfying all basic requirements of a pass. Student shows a poor understanding of the research process, manifested in lack of application of research techniques to most assessment items, poor ability to formulate a topic and central question, a limited degree of analysis and synthesis of findings from data, and substantial lapses in clear and logical presentation of findings in a manner consistent with accepted academic standards. Poor bibliographic and citation technique.
 
-* *Grade 4, Pass*: Demonstrated evidence of functional achievement of course learning outcomes:
-
-Weighted composite score of between 50-64%. Student shows an adequate understanding of the research process, manifested in application of research techniques to most assessment items, adequate ability to formulate to a topic and central research question, and adequate degree of analysis and synthesis of findings from data, and at times clear and logical presentation of findings (albeit with many incoherencies) in a manner broadly consistent with accepted academic standards. Work contains a notable number of factual errors and grammatical infelicities. Many errors in bibliography and in citations. Sources not consistently or correctly acknowledged.
+* *Grade 4, Pass*: Demonstrated evidence of functional achievement of course learning outcomes: Weighted composite score of between 50-64%. Student shows an adequate understanding of the research process, manifested in application of research techniques to most assessment items, adequate ability to formulate to a topic and central research question, and adequate degree of analysis and synthesis of findings from data, and at times clear and logical presentation of findings (albeit with many incoherencies) in a manner broadly consistent with accepted academic standards. Work contains a notable number of factual errors and grammatical infelicities. Many errors in bibliography and in citations. Sources not consistently or correctly acknowledged.
 
 * *Grade 5, Credit*: Demonstrated evidence of proficient achievement of course learning outcomes: Weighted composite score of between 65-74%. Students shows a good understanding of the research process, manifested in application of research techniques to most assessment items, good ability to formulate a topic and central research question, a good degree of analysis and synthesis of findings from data, and usually clear and logical presentation of findings (albeit with some major incoherencies) in a manner that is mostly consistent with accepted academic standards. Work contains some factual errors and grammatical infelicities. Some obvious errors in the bibliography. Sources not consistently correctly acknowledged.
 
