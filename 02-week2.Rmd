@@ -469,5 +469,7 @@ dat %>%
 
 [Back to top](#basic-concepts_in_quantitative_research_1)
 
+## Tutorial {-}
+
 
 
