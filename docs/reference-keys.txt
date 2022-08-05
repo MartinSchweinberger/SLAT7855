@@ -229,3 +229,8 @@ the-basics-of-multiple-linear-regression-1
 example-gifts-and-availability-1
 automatic-model-fitting-1
 evaluation-of-sample-size-1
+working-with-data
+loading-data
+a-first-plot
+changing-data
+saving-data

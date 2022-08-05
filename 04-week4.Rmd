@@ -371,6 +371,103 @@ One great thing about R is that you can very often find an answer to your questi
 * Google your error! See <http://r4ds.had.co.nz/introduction.html#getting-help-and-learning-more> for excellent suggestions on how to find help for a specific question online.
 
 
+## Working with Data
+
+We can now start actually working with R in RStudio. As this is an introduction, we will only do something very basic, namely loading a data set, inspecting it, and doing some very basic visualizations.
+
+### Loading data
+
+So let's start by loading a data set. 
+
+```{r loaddata}
+dat <- read.delim(here::here("data/week4data1.txt"), sep = "\t")
+# inspect data
+dat
+```
+
+
+
+
+
+### Inspecting data
+
+
+```{r}
+str(dat)
+```
+
+
+
+
+
+
+```{r}
+head(dat)
+```
+
+
+```{r viewdat, eval = F}
+View(dat)
+```
+
+
+```{r}
+summary(dat)
+```
+
+```{r}
+ftable(dat$Class, dat$TestScore)
+```
+
+### A first plot
+
+```{r}
+plot(dat$TestScore, 
+     col = factor(dat$Class))
+```
+
+
+
+### Changing data
+
+We will change the test scores of the students in the Korean class: to all scores in the Korean class, we will add 10 points. 
+
+```{r}
+dat %>%
+  dplyr::mutate(TestScores = ifelse(Class == "Korean", TestScores + 10, TestScores)) -> dat2
+```
+
+Visualize new data set
+
+```{r}
+plot(dat2$TestScores, 
+     col = factor(dat2$Class))
+```
+
+
+Now, we will add 20 points to the tests scores of the students in the Chinese class - but only if they have a test score lower than 30!
+
+```{r}
+dat2 %>%
+  dplyr::mutate(TestScores = ifelse(Class == "Chinese" & TestScores <= 30, 
+                                    TestScores + 20, 
+                                    TestScores)) -> dat3
+```
+
+Visualize new data set
+
+```{r}
+plot(dat3$TestScores, 
+     col = factor(dat3$Class))
+```
+
+
+### Saving data
+
+```{r}
+write.table(dat, here::here("data/dat3.txt"))
+```
+
 
 [Back to top](#getting_started_with_r_and_rstudio_1)
 
