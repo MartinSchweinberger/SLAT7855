@@ -234,3 +234,5 @@ loading-data
 a-first-plot
 changing-data
 saving-data
+goals-of-this-section
+why-r

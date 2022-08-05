@@ -7,9 +7,9 @@ This tutorial shows how to get started with R and it specifically focuses on R f
 
 If you already have experience with R, both @wickham2016r (see [here](https://r4ds.had.co.nz/)) and  @gillespie2016efficient (see [here](https://bookdown.org/csgillespie/efficientR/)) are highly recommendable and excellent resources for improving your coding abilities and workflows in R.
 
-## Goals of this tutorial
+## Goals of this section
 
-The goals of this tutorial are:
+The goals of this section are:
 
 - How to get started with R 
 - How to orient yourself to R and RStudio
@@ -19,11 +19,83 @@ The goals of this tutorial are:
 - Learn some best practices for using R scripts, using data, and projects 
 - Understand the basics of objects, functions, and indexing
 
-## Audience
+## Why R?
 
-The intended audience for this tutorial is beginner-level, with no previous experience using R. Thus, no prior knowledge of R is required.
 
-If you want to know more, would like to get some more practice, or would like to have another approach to R, please check out the workshops and resources on R provided by the [UQ library](https://web.library.uq.edu.au/library-services/training). In addition, there are various online resources available to learn R (you can check out a very recommendable introduction [here](https://uvastatlab.github.io/phdplus/intror.html)). 
+### Full flexibility{-}
+
+```{r rcran, echo=FALSE, out.width= "20%", out.extra='style="float:right; padding:15px"'}
+knitr::include_graphics("https://slcladal.github.io/images/rcran.jpg")
+```
+
+R represents a fully-fledged programming environment that is extremely versatile and allows to perform a huge variety of things - from handling and processing data, performing text analytics, statistical analyses, generating very beautiful and even interactive data visualization,generating websites and apps, and creating questionnaires and surveys for gathering data online to for creating behavioral experiments  (to name just a very few applications). As such, R is cool because it allows you to do really awesome, exciting, fancy things! 
+
+**So, rather than having to learn how to use many different tools that are all very specific and limited in their applicability, R can do it all! And you only need to learn it once!**
+
+Initially, it may seem like a better option to learn how to use specific tools for specific things but over time, having to learn more tools will turn out to be much more time consuming and much less efficient!
+
+
+
+### Great for learners!{-}
+
+```{r learn, echo=FALSE, out.width= "20%", out.extra='style="float:right; padding:15px"'}
+knitr::include_graphics("https://slcladal.github.io/images/hapcom.png")
+```
+
+
+R is actually not that hard to learn - R is actually quite very easy to learn (once you have covered the basics). Particularly the tidyverse style or dialect of R - is commonly deemed to be very easy to learn especially for anyone who is new to programming. 
+
+### Free and Open Source{-}
+
+R and RStudio are free and open source which means that everybody who has a computer, internet access, and is literate in a major world language can learn and work with R without any additional costs everywhere on this planet.  
+
+### RStudio and ease of use{-}
+
+```{r rs, echo=FALSE, out.width= "40%", out.extra='style="float:right; padding:15px"'}
+knitr::include_graphics("https://slcladal.github.io/images/rstudiologo.png")
+```
+
+With RStudio, the use of R has become even simpler and user-friendly with RStudio allowing to have easy and incredibly efficient work flows that tie in to great version control and documentation options. With RStudio, R is intuitive, and entire analyses can be performed in one single integrative development environment (IDE).
+
+### R is a community effort{-}
+
+```{r audience, echo=FALSE, out.width= "40%", out.extra='style="float:right; padding:15px"'}
+knitr::include_graphics("https://slcladal.github.io/images/audience.jpg")
+```
+
+The community is really fantastic and super helpful with tips and tricks being publicized on many different channels and platforms - from YouTube tutorials, over online courses, help sites like StackOverflow, to facebook groups and Reddit channels.
+
+
+### Reproducibilty and Transparency{-}
+
+```{r repro, echo=FALSE, out.width= "30%", out.extra='style="float:right; padding:15px"'}
+knitr::include_graphics("https://slcladal.github.io/images/repro.jpeg")
+```
+
+A really major advantage for using R when you are involved in research is that it is a fantastic - and maybe even the optimal - tool for sharing and documenting your analyses and making your research transparent, reproducible and replicable! When you generate a folder and create an Rproject with a project specific library using renv, use R notebooks to document what you have done, and enable version control with Git,  and then connect that project to GitHub, **your research is fully transparent and reproducible!** Due to the in-built options in RStudio, this is easily done with a few mouse clicks if you have a GitHub account and installed Git on your machine. 
+
+
+### Tools versus Scripts{-}
+
+```{r open, echo=FALSE, out.width= "30%", out.extra='style="float:right; padding:15px"'}
+knitr::include_graphics("https://slcladal.github.io/images/futnet.jpeg")
+```
+
+It is perfectly fine to use tools for the analyses exemplified on LADAL. Almost anyone I know - including myself -  started off with using fantastic tools like AntConc! However, the aim of LADAL is not primarily to show how to perform certain tasks or analyses but how to perform these tasks in a way that complies with practices that guarantee sustainable, transparent, reproducible research. As R code can be readily shared and optimally contains all the data extraction, processing, visualization, and analysis steps, using scripts is preferable over using (commercial) software. 
+
+
+### Widely used{-}
+
+R is a really widely used and it is becoming ever more popular - not only among data scientists. Ever more creative ways of working with data, discovering the use on ever more exciting topics, and filling niches are filled with applications of R- from sport analytics to improving communication with patients in hospitals to performing experiments and designing art!
+
+### Employability{-}
+
+```{r consult, echo=FALSE, out.width= "40%", out.extra='style="float:right; padding:15px"'}
+knitr::include_graphics("https://slcladal.github.io/images/consult.jpg")
+```
+
+R skills make you appealing and interesting for employers - not only because of its versatility but also because it allows you to do many different and complex things without having to buy expensive software packages (e.g. SPSS, Microsoft Excel, Stata, or MatLab) and you thus have an advantage over other candidates that may be able to do what you can do with R - but the employers would have to buy the software these candidates need in addition to paying a salary!
+ 
 
 ## Installing R and RStudio
 
@@ -217,31 +289,6 @@ The console pane allows you to quickly and immediately execute R code. You can e
 
 Type next to the `>` and press `Enter` to execute. 
 
-***
-
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>EXERCISE TIME!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
-
-<div class="question">` 
-
-1. You can use R like a calculator.  Try typing `2+8` into the **R console**.
-
-<details>
-  <summary>Answer</summary>
-  ```{r calculator}
-  2+8
-  ```
-  
-</details>
-
-</div>`
-
-***
 
 Here, the plus sign is the **operator**.  Operators are symbols that represent some sort of action.  However, R is, of course, much more than a simple calculator.  To use R more fully, we need to understand **objects**, **functions**, and **indexing** - which we will learn about as we go.
 

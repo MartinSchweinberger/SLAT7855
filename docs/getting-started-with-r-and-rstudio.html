@@ -23,7 +23,7 @@
 <meta name="author" content="Martin Schweinberger" />
 
 
-<meta name="date" content="2022-08-05" />
+<meta name="date" content="2022-08-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -252,8 +252,19 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html"><i class="fa fa-check"></i><b>4</b> Getting Started with R and RStudio</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#goals-of-this-tutorial"><i class="fa fa-check"></i><b>4.1</b> Goals of this tutorial</a></li>
-<li class="chapter" data-level="4.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#audience"><i class="fa fa-check"></i><b>4.2</b> Audience</a></li>
+<li class="chapter" data-level="4.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#goals-of-this-section"><i class="fa fa-check"></i><b>4.1</b> Goals of this section</a></li>
+<li class="chapter" data-level="4.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#why-r"><i class="fa fa-check"></i><b>4.2</b> Why R?</a>
+<ul>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#full-flexibility"><i class="fa fa-check"></i>Full flexibility</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#great-for-learners"><i class="fa fa-check"></i>Great for learners!</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#free-and-open-source"><i class="fa fa-check"></i>Free and Open Source</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#rstudio-and-ease-of-use"><i class="fa fa-check"></i>RStudio and ease of use</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-is-a-community-effort"><i class="fa fa-check"></i>R is a community effort</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#reproducibilty-and-transparency"><i class="fa fa-check"></i>Reproducibilty and Transparency</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#tools-versus-scripts"><i class="fa fa-check"></i>Tools versus Scripts</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#widely-used"><i class="fa fa-check"></i>Widely used</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#employability"><i class="fa fa-check"></i>Employability</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>4.3</b> Installing R and RStudio</a></li>
 <li class="chapter" data-level="4.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#preparation"><i class="fa fa-check"></i><b>4.4</b> Preparation</a></li>
 <li class="chapter" data-level="4.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#folder-structure-and-r-projects"><i class="fa fa-check"></i><b>4.5</b> Folder Structure and R projects</a>
@@ -314,9 +325,9 @@ div.csl-indent {
 <h1><span class="header-section-number">Week 4</span> Getting Started with R and RStudio<a href="getting-started-with-r-and-rstudio.html#getting-started-with-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This tutorial shows how to get started with R and it specifically focuses on R for analyzing language data but it offers valuable information for anyone who wants to get started with R. As such, this tutorial is aimed at fresh users or beginners with the aim of showcasing how to set up a R session in RStudio, how to set up R projects, and how to do basic operations using R. The aim is not to provide a fully-fledged from beginner-to-expert, all-you-need-to-know tutorial but rather to show how to properly and tidily set up a project before you start coding and exemplify common operations such as loading and manipulation tabular data and generating basic visualization using R.</p>
 <p>If you already have experience with R, both <span class="citation">Wickham and Grolemund (<a href="#ref-wickham2016r" role="doc-biblioref">2016</a>)</span> (see <a href="https://r4ds.had.co.nz/">here</a>) and <span class="citation">Gillespie and Lovelace (<a href="#ref-gillespie2016efficient" role="doc-biblioref">2016</a>)</span> (see <a href="https://bookdown.org/csgillespie/efficientR/">here</a>) are highly recommendable and excellent resources for improving your coding abilities and workflows in R.</p>
-<div id="goals-of-this-tutorial" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Goals of this tutorial<a href="getting-started-with-r-and-rstudio.html#goals-of-this-tutorial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The goals of this tutorial are:</p>
+<div id="goals-of-this-section" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Goals of this section<a href="getting-started-with-r-and-rstudio.html#goals-of-this-section" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The goals of this section are:</p>
 <ul>
 <li>How to get started with R</li>
 <li>How to orient yourself to R and RStudio</li>
@@ -327,10 +338,53 @@ div.csl-indent {
 <li>Understand the basics of objects, functions, and indexing</li>
 </ul>
 </div>
-<div id="audience" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Audience<a href="getting-started-with-r-and-rstudio.html#audience" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The intended audience for this tutorial is beginner-level, with no previous experience using R. Thus, no prior knowledge of R is required.</p>
-<p>If you want to know more, would like to get some more practice, or would like to have another approach to R, please check out the workshops and resources on R provided by the <a href="https://web.library.uq.edu.au/library-services/training">UQ library</a>. In addition, there are various online resources available to learn R (you can check out a very recommendable introduction <a href="https://uvastatlab.github.io/phdplus/intror.html">here</a>).</p>
+<div id="why-r" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Why R?<a href="getting-started-with-r-and-rstudio.html#why-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="full-flexibility" class="section level3 unnumbered hasAnchor">
+<h3>Full flexibility<a href="getting-started-with-r-and-rstudio.html#full-flexibility" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="https://slcladal.github.io/images/rcran.jpg" width="20%" style="float:right; padding:15px" /></p>
+<p>R represents a fully-fledged programming environment that is extremely versatile and allows to perform a huge variety of things - from handling and processing data, performing text analytics, statistical analyses, generating very beautiful and even interactive data visualization,generating websites and apps, and creating questionnaires and surveys for gathering data online to for creating behavioral experiments (to name just a very few applications). As such, R is cool because it allows you to do really awesome, exciting, fancy things!</p>
+<p><strong>So, rather than having to learn how to use many different tools that are all very specific and limited in their applicability, R can do it all! And you only need to learn it once!</strong></p>
+<p>Initially, it may seem like a better option to learn how to use specific tools for specific things but over time, having to learn more tools will turn out to be much more time consuming and much less efficient!</p>
+</div>
+<div id="great-for-learners" class="section level3 unnumbered hasAnchor">
+<h3>Great for learners!<a href="getting-started-with-r-and-rstudio.html#great-for-learners" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="https://slcladal.github.io/images/hapcom.png" width="20%" style="float:right; padding:15px" /></p>
+<p>R is actually not that hard to learn - R is actually quite very easy to learn (once you have covered the basics). Particularly the tidyverse style or dialect of R - is commonly deemed to be very easy to learn especially for anyone who is new to programming.</p>
+</div>
+<div id="free-and-open-source" class="section level3 unnumbered hasAnchor">
+<h3>Free and Open Source<a href="getting-started-with-r-and-rstudio.html#free-and-open-source" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R and RStudio are free and open source which means that everybody who has a computer, internet access, and is literate in a major world language can learn and work with R without any additional costs everywhere on this planet.</p>
+</div>
+<div id="rstudio-and-ease-of-use" class="section level3 unnumbered hasAnchor">
+<h3>RStudio and ease of use<a href="getting-started-with-r-and-rstudio.html#rstudio-and-ease-of-use" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="https://slcladal.github.io/images/rstudiologo.png" width="40%" style="float:right; padding:15px" /></p>
+<p>With RStudio, the use of R has become even simpler and user-friendly with RStudio allowing to have easy and incredibly efficient work flows that tie in to great version control and documentation options. With RStudio, R is intuitive, and entire analyses can be performed in one single integrative development environment (IDE).</p>
+</div>
+<div id="r-is-a-community-effort" class="section level3 unnumbered hasAnchor">
+<h3>R is a community effort<a href="getting-started-with-r-and-rstudio.html#r-is-a-community-effort" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="https://slcladal.github.io/images/audience.jpg" width="40%" style="float:right; padding:15px" /></p>
+<p>The community is really fantastic and super helpful with tips and tricks being publicized on many different channels and platforms - from YouTube tutorials, over online courses, help sites like StackOverflow, to facebook groups and Reddit channels.</p>
+</div>
+<div id="reproducibilty-and-transparency" class="section level3 unnumbered hasAnchor">
+<h3>Reproducibilty and Transparency<a href="getting-started-with-r-and-rstudio.html#reproducibilty-and-transparency" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="https://slcladal.github.io/images/repro.jpeg" width="30%" style="float:right; padding:15px" /></p>
+<p>A really major advantage for using R when you are involved in research is that it is a fantastic - and maybe even the optimal - tool for sharing and documenting your analyses and making your research transparent, reproducible and replicable! When you generate a folder and create an Rproject with a project specific library using renv, use R notebooks to document what you have done, and enable version control with Git, and then connect that project to GitHub, <strong>your research is fully transparent and reproducible!</strong> Due to the in-built options in RStudio, this is easily done with a few mouse clicks if you have a GitHub account and installed Git on your machine.</p>
+</div>
+<div id="tools-versus-scripts" class="section level3 unnumbered hasAnchor">
+<h3>Tools versus Scripts<a href="getting-started-with-r-and-rstudio.html#tools-versus-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="https://slcladal.github.io/images/futnet.jpeg" width="30%" style="float:right; padding:15px" /></p>
+<p>It is perfectly fine to use tools for the analyses exemplified on LADAL. Almost anyone I know - including myself - started off with using fantastic tools like AntConc! However, the aim of LADAL is not primarily to show how to perform certain tasks or analyses but how to perform these tasks in a way that complies with practices that guarantee sustainable, transparent, reproducible research. As R code can be readily shared and optimally contains all the data extraction, processing, visualization, and analysis steps, using scripts is preferable over using (commercial) software.</p>
+</div>
+<div id="widely-used" class="section level3 unnumbered hasAnchor">
+<h3>Widely used<a href="getting-started-with-r-and-rstudio.html#widely-used" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R is a really widely used and it is becoming ever more popular - not only among data scientists. Ever more creative ways of working with data, discovering the use on ever more exciting topics, and filling niches are filled with applications of R- from sport analytics to improving communication with patients in hospitals to performing experiments and designing art!</p>
+</div>
+<div id="employability" class="section level3 unnumbered hasAnchor">
+<h3>Employability<a href="getting-started-with-r-and-rstudio.html#employability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="https://slcladal.github.io/images/consult.jpg" width="40%" style="float:right; padding:15px" /></p>
+<p>R skills make you appealing and interesting for employers - not only because of its versatility but also because it allows you to do many different and complex things without having to buy expensive software packages (e.g. SPSS, Microsoft Excel, Stata, or MatLab) and you thus have an advantage over other candidates that may be able to do what you can do with R - but the employers would have to buy the software these candidates need in addition to paying a salary!</p>
+</div>
 </div>
 <div id="installing-r-and-rstudio" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Installing R and RStudio<a href="getting-started-with-r-and-rstudio.html#installing-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -467,31 +521,6 @@ The Environment variables and Management panes are on the right of the screen an
 <h3><span class="header-section-number">4.7.1</span> R Console (bottom left pane)<a href="getting-started-with-r-and-rstudio.html#r-console-bottom-left-pane" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The console pane allows you to quickly and immediately execute R code. You can experiment with functions here, or quickly print data for viewing.</p>
 <p>Type next to the <code>&gt;</code> and press <code>Enter</code> to execute.</p>
-<hr />
-<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
-<span>
-<p style="margin-top:1em; text-align:center">
-<b>EXERCISE TIME!</b>
-</p>
-<p style="margin-left:1em;">
-</p>
-<p></span></p>
-</div>
-<div class="question">
-<p>`</p>
-<ol style="list-style-type: decimal">
-<li>You can use R like a calculator. Try typing <code>2+8</code> into the <strong>R console</strong>.</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="getting-started-with-r-and-rstudio.html#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span><span class="sc">+</span><span class="dv">8</span></span></code></pre></div>
-<pre><code>  ## [1] 10</code></pre>
-</details>
-</div>
-<p>`</p>
-<hr />
 <p>Here, the plus sign is the <strong>operator</strong>. Operators are symbols that represent some sort of action. However, R is, of course, much more than a simple calculator. To use R more fully, we need to understand <strong>objects</strong>, <strong>functions</strong>, and <strong>indexing</strong> - which we will learn about as we go.</p>
 <p>For now, think of <em>objects as nouns</em> and <em>functions as verbs</em>.</p>
 </div>
@@ -519,10 +548,10 @@ Answer
 <li><p>want R to show maximally 100 results (otherwise, it can happen that R prints out pages-after-pages of some numbers).</p></li>
 </ul>
 <p>Again, the session preparation is not required or necessary but it can help avoid errors.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="getting-started-with-r-and-rstudio.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set options</span></span>
-<span id="cb4-2"><a href="getting-started-with-r-and-rstudio.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> F)                           </span>
-<span id="cb4-3"><a href="getting-started-with-r-and-rstudio.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">100</span>) </span>
-<span id="cb4-4"><a href="getting-started-with-r-and-rstudio.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">max.print=</span><span class="dv">100</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="getting-started-with-r-and-rstudio.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set options</span></span>
+<span id="cb2-2"><a href="getting-started-with-r-and-rstudio.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> F)                           </span>
+<span id="cb2-3"><a href="getting-started-with-r-and-rstudio.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">100</span>) </span>
+<span id="cb2-4"><a href="getting-started-with-r-and-rstudio.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">max.print=</span><span class="dv">100</span>) </span></code></pre></div>
 <p>In script editor pane of RStudio, this would look like this:</p>
 <p><img src="https://slcladal.github.io/images/RStudio_preparation.png" width="100%" /></p>
 </div>
@@ -532,28 +561,28 @@ Answer
 <p>R comes with about 30 packages (“base R”). There are over 10,000 user-contributed packages; you can discover these packages online. A prevalent collection of packages is the Tidyverse, which includes ggplot2, a package for making graphics.</p>
 <p>Before being able to use a package, we need to install the package (using the <code>install.packages</code> function) and load the package (using the <code>library</code> function). However, a package only needs to be installed once(!) and can then simply be loaded. When you install a package, this will likely install several other packages it depends on. You should have already installed tidyverse before the workshop.</p>
 <p>You must load the package in any new R session where you want to use that package. Below I show what you need to type when you want to install the <code>tidyverse</code>, the <code>tidytext</code>, the <code>quanteda</code>, the <code>readxl</code>, and the <code>tm</code> packages (which are the packages that we will need in this workshop).</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="getting-started-with-r-and-rstudio.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb5-2"><a href="getting-started-with-r-and-rstudio.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidytext&quot;</span>)</span>
-<span id="cb5-3"><a href="getting-started-with-r-and-rstudio.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;quanteda&quot;</span>)</span>
-<span id="cb5-4"><a href="getting-started-with-r-and-rstudio.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</span>
-<span id="cb5-5"><a href="getting-started-with-r-and-rstudio.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tm&quot;</span>)</span>
-<span id="cb5-6"><a href="getting-started-with-r-and-rstudio.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tokenizers&quot;</span>)</span>
-<span id="cb5-7"><a href="getting-started-with-r-and-rstudio.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;here&quot;</span>)</span>
-<span id="cb5-8"><a href="getting-started-with-r-and-rstudio.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;flextable&quot;</span>)</span>
-<span id="cb5-9"><a href="getting-started-with-r-and-rstudio.html#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># install klippy for copy-to-clipboard button in code chunks</span></span>
-<span id="cb5-10"><a href="getting-started-with-r-and-rstudio.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
-<span id="cb5-11"><a href="getting-started-with-r-and-rstudio.html#cb5-11" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;rlesur/klippy&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="getting-started-with-r-and-rstudio.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb3-2"><a href="getting-started-with-r-and-rstudio.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidytext&quot;</span>)</span>
+<span id="cb3-3"><a href="getting-started-with-r-and-rstudio.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;quanteda&quot;</span>)</span>
+<span id="cb3-4"><a href="getting-started-with-r-and-rstudio.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</span>
+<span id="cb3-5"><a href="getting-started-with-r-and-rstudio.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tm&quot;</span>)</span>
+<span id="cb3-6"><a href="getting-started-with-r-and-rstudio.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tokenizers&quot;</span>)</span>
+<span id="cb3-7"><a href="getting-started-with-r-and-rstudio.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;here&quot;</span>)</span>
+<span id="cb3-8"><a href="getting-started-with-r-and-rstudio.html#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;flextable&quot;</span>)</span>
+<span id="cb3-9"><a href="getting-started-with-r-and-rstudio.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># install klippy for copy-to-clipboard button in code chunks</span></span>
+<span id="cb3-10"><a href="getting-started-with-r-and-rstudio.html#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb3-11"><a href="getting-started-with-r-and-rstudio.html#cb3-11" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;rlesur/klippy&quot;</span>)</span></code></pre></div>
 <p>To load these packages, use the <code>library</code> function which takes the package name as its main argument.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="getting-started-with-r-and-rstudio.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb6-2"><a href="getting-started-with-r-and-rstudio.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb6-3"><a href="getting-started-with-r-and-rstudio.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
-<span id="cb6-4"><a href="getting-started-with-r-and-rstudio.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb6-5"><a href="getting-started-with-r-and-rstudio.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span>
-<span id="cb6-6"><a href="getting-started-with-r-and-rstudio.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tokenizers)</span>
-<span id="cb6-7"><a href="getting-started-with-r-and-rstudio.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb6-8"><a href="getting-started-with-r-and-rstudio.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
-<span id="cb6-9"><a href="getting-started-with-r-and-rstudio.html#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># activate klippy for copy-to-clipboard button</span></span>
-<span id="cb6-10"><a href="getting-started-with-r-and-rstudio.html#cb6-10" aria-hidden="true" tabindex="-1"></a>klippy<span class="sc">::</span><span class="fu">klippy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="getting-started-with-r-and-rstudio.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-2"><a href="getting-started-with-r-and-rstudio.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb4-3"><a href="getting-started-with-r-and-rstudio.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
+<span id="cb4-4"><a href="getting-started-with-r-and-rstudio.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb4-5"><a href="getting-started-with-r-and-rstudio.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span>
+<span id="cb4-6"><a href="getting-started-with-r-and-rstudio.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tokenizers)</span>
+<span id="cb4-7"><a href="getting-started-with-r-and-rstudio.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb4-8"><a href="getting-started-with-r-and-rstudio.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb4-9"><a href="getting-started-with-r-and-rstudio.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># activate klippy for copy-to-clipboard button</span></span>
+<span id="cb4-10"><a href="getting-started-with-r-and-rstudio.html#cb4-10" aria-hidden="true" tabindex="-1"></a>klippy<span class="sc">::</span><span class="fu">klippy</span>()</span></code></pre></div>
 <script>
   addClassKlippyTo("pre.r, pre.markdown");
   addKlippy('left', 'top', 'auto', '1', 'Copy code', 'Copied!');
@@ -569,9 +598,9 @@ Answer
 <div id="finding-help-within-r" class="section level3 hasAnchor" number="4.8.4">
 <h3><span class="header-section-number">4.8.4</span> Finding help within R<a href="getting-started-with-r-and-rstudio.html#finding-help-within-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To get help regrading what functions a package contains, which arguments a function takes or to get information about how to use a function, you can use the <code>help</code> function or the <code>apropos</code>. function or you can simply type a <code>?</code> before the package or two <code>??</code> if this does not give you any answers.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="getting-started-with-r-and-rstudio.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(tidyverse) </span>
-<span id="cb7-2"><a href="getting-started-with-r-and-rstudio.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apropos</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb7-3"><a href="getting-started-with-r-and-rstudio.html#cb7-3" aria-hidden="true" tabindex="-1"></a>?require</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="getting-started-with-r-and-rstudio.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(tidyverse) </span>
+<span id="cb5-2"><a href="getting-started-with-r-and-rstudio.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apropos</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb5-3"><a href="getting-started-with-r-and-rstudio.html#cb5-3" aria-hidden="true" tabindex="-1"></a>?require</span></code></pre></div>
 <p>There are also other “official” help resources from R/RStudio.</p>
 <ul>
 <li><p>Read official package documentation, see vignettes, e.g., Tidyverse <a href="https://cran.r-project.org/package=tidyverse" class="uri">https://cran.r-project.org/package=tidyverse</a></p></li>
@@ -594,9 +623,9 @@ Answer
 <div id="loading-data" class="section level3 hasAnchor" number="4.9.1">
 <h3><span class="header-section-number">4.9.1</span> Loading data<a href="getting-started-with-r-and-rstudio.html#loading-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>So let’s start by loading a data set.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="getting-started-with-r-and-rstudio.html#cb8-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data/week4data1.txt&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span>
-<span id="cb8-2"><a href="getting-started-with-r-and-rstudio.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
-<span id="cb8-3"><a href="getting-started-with-r-and-rstudio.html#cb8-3" aria-hidden="true" tabindex="-1"></a>dat</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="getting-started-with-r-and-rstudio.html#cb6-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data/week4data1.txt&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span>
+<span id="cb6-2"><a href="getting-started-with-r-and-rstudio.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb6-3"><a href="getting-started-with-r-and-rstudio.html#cb6-3" aria-hidden="true" tabindex="-1"></a>dat</span></code></pre></div>
 <pre><code>##    Subject   Class TestScores
 ## 1        1  German         13
 ## 2        2  German         14
@@ -635,12 +664,12 @@ Answer
 </div>
 <div id="inspecting-data" class="section level3 hasAnchor" number="4.9.2">
 <h3><span class="header-section-number">4.9.2</span> Inspecting data<a href="getting-started-with-r-and-rstudio.html#inspecting-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="getting-started-with-r-and-rstudio.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dat)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="getting-started-with-r-and-rstudio.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dat)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    49 obs. of  3 variables:
 ##  $ Subject   : int  1 2 3 4 5 6 7 8 9 10 ...
 ##  $ Class     : chr  &quot;German&quot; &quot;German&quot; &quot;German&quot; &quot;German&quot; ...
 ##  $ TestScores: int  13 14 12 13 9 13 18 16 7 12 ...</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="getting-started-with-r-and-rstudio.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="getting-started-with-r-and-rstudio.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
 <pre><code>##   Subject  Class TestScores
 ## 1       1 German         13
 ## 2       2 German         14
@@ -648,8 +677,8 @@ Answer
 ## 4       4 German         13
 ## 5       5 German          9
 ## 6       6 German         13</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="getting-started-with-r-and-rstudio.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(dat)</span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="getting-started-with-r-and-rstudio.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dat)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="getting-started-with-r-and-rstudio.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(dat)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="getting-started-with-r-and-rstudio.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dat)</span></code></pre></div>
 <pre><code>##     Subject         Class             TestScores   
 ##  Min.   : 1.00   Length:49          Min.   : 7.00  
 ##  1st Qu.:13.00   Class :character   1st Qu.:13.00  
@@ -657,7 +686,7 @@ Answer
 ##  Mean   :25.02                      Mean   :15.51  
 ##  3rd Qu.:37.00                      3rd Qu.:17.00  
 ##  Max.   :50.00                      Max.   :45.00</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="getting-started-with-r-and-rstudio.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(dat<span class="sc">$</span>Class, dat<span class="sc">$</span>TestScore)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="getting-started-with-r-and-rstudio.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(dat<span class="sc">$</span>Class, dat<span class="sc">$</span>TestScore)</span></code></pre></div>
 <pre><code>##          7 8 9 10 11 12 13 14 15 16 17 18 19 35 45
 ##                                                   
 ## Chinese  0 1 1  1  0  2  1  2  2  2  1  2  0  1  1
@@ -666,32 +695,32 @@ Answer
 </div>
 <div id="a-first-plot" class="section level3 hasAnchor" number="4.9.3">
 <h3><span class="header-section-number">4.9.3</span> A first plot<a href="getting-started-with-r-and-rstudio.html#a-first-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="getting-started-with-r-and-rstudio.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat<span class="sc">$</span>TestScore, </span>
-<span id="cb19-2"><a href="getting-started-with-r-and-rstudio.html#cb19-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">factor</span>(dat<span class="sc">$</span>Class))</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="getting-started-with-r-and-rstudio.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat<span class="sc">$</span>TestScore, </span>
+<span id="cb17-2"><a href="getting-started-with-r-and-rstudio.html#cb17-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">factor</span>(dat<span class="sc">$</span>Class))</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 <div id="changing-data" class="section level3 hasAnchor" number="4.9.4">
 <h3><span class="header-section-number">4.9.4</span> Changing data<a href="getting-started-with-r-and-rstudio.html#changing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We will change the test scores of the students in the Korean class: to all scores in the Korean class, we will add 10 points.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="getting-started-with-r-and-rstudio.html#cb20-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="getting-started-with-r-and-rstudio.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">TestScores =</span> <span class="fu">ifelse</span>(Class <span class="sc">==</span> <span class="st">&quot;Korean&quot;</span>, TestScores <span class="sc">+</span> <span class="dv">10</span>, TestScores)) <span class="ot">-&gt;</span> dat2</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="getting-started-with-r-and-rstudio.html#cb18-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="getting-started-with-r-and-rstudio.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">TestScores =</span> <span class="fu">ifelse</span>(Class <span class="sc">==</span> <span class="st">&quot;Korean&quot;</span>, TestScores <span class="sc">+</span> <span class="dv">10</span>, TestScores)) <span class="ot">-&gt;</span> dat2</span></code></pre></div>
 <p>Visualize new data set</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="getting-started-with-r-and-rstudio.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat2<span class="sc">$</span>TestScores, </span>
-<span id="cb21-2"><a href="getting-started-with-r-and-rstudio.html#cb21-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">factor</span>(dat2<span class="sc">$</span>Class))</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="getting-started-with-r-and-rstudio.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat2<span class="sc">$</span>TestScores, </span>
+<span id="cb19-2"><a href="getting-started-with-r-and-rstudio.html#cb19-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">factor</span>(dat2<span class="sc">$</span>Class))</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Now, we will add 20 points to the tests scores of the students in the Chinese class - but only if they have a test score lower than 30!</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="getting-started-with-r-and-rstudio.html#cb22-1" aria-hidden="true" tabindex="-1"></a>dat2 <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="getting-started-with-r-and-rstudio.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">TestScores =</span> <span class="fu">ifelse</span>(Class <span class="sc">==</span> <span class="st">&quot;Chinese&quot;</span> <span class="sc">&amp;</span> TestScores <span class="sc">&lt;=</span> <span class="dv">30</span>, </span>
-<span id="cb22-3"><a href="getting-started-with-r-and-rstudio.html#cb22-3" aria-hidden="true" tabindex="-1"></a>                                    TestScores <span class="sc">+</span> <span class="dv">20</span>, </span>
-<span id="cb22-4"><a href="getting-started-with-r-and-rstudio.html#cb22-4" aria-hidden="true" tabindex="-1"></a>                                    TestScores)) <span class="ot">-&gt;</span> dat3</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="getting-started-with-r-and-rstudio.html#cb20-1" aria-hidden="true" tabindex="-1"></a>dat2 <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="getting-started-with-r-and-rstudio.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">TestScores =</span> <span class="fu">ifelse</span>(Class <span class="sc">==</span> <span class="st">&quot;Chinese&quot;</span> <span class="sc">&amp;</span> TestScores <span class="sc">&lt;=</span> <span class="dv">30</span>, </span>
+<span id="cb20-3"><a href="getting-started-with-r-and-rstudio.html#cb20-3" aria-hidden="true" tabindex="-1"></a>                                    TestScores <span class="sc">+</span> <span class="dv">20</span>, </span>
+<span id="cb20-4"><a href="getting-started-with-r-and-rstudio.html#cb20-4" aria-hidden="true" tabindex="-1"></a>                                    TestScores)) <span class="ot">-&gt;</span> dat3</span></code></pre></div>
 <p>Visualize new data set</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="getting-started-with-r-and-rstudio.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat3<span class="sc">$</span>TestScores, </span>
-<span id="cb23-2"><a href="getting-started-with-r-and-rstudio.html#cb23-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">factor</span>(dat3<span class="sc">$</span>Class))</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="getting-started-with-r-and-rstudio.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat3<span class="sc">$</span>TestScores, </span>
+<span id="cb21-2"><a href="getting-started-with-r-and-rstudio.html#cb21-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">factor</span>(dat3<span class="sc">$</span>Class))</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 </div>
 <div id="saving-data" class="section level3 hasAnchor" number="4.9.5">
 <h3><span class="header-section-number">4.9.5</span> Saving data<a href="getting-started-with-r-and-rstudio.html#saving-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="getting-started-with-r-and-rstudio.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(dat, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data/dat3.txt&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="getting-started-with-r-and-rstudio.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(dat, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data/dat3.txt&quot;</span>))</span></code></pre></div>
 <p><a href="#getting_started_with_r_and_rstudio_1">Back to top</a></p>
 
 <div id="refs" class="references csl-bib-body hanging-indent">
