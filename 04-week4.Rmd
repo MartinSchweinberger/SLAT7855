@@ -258,7 +258,7 @@ Markdown is really quite simple to learn and these resources may help:
 Here is an overview of the basic syntax of RMarkdown and what the text looks like once it is rendered into a  notebook.
 
 ```{r , echo=F, fig.cap="", message=FALSE, warning=FALSE, out.width='100%'}
-knitr::include_graphics("https://github.com/MartinSchweinberger/SLAT7855/blob/master/images/RMarkdown.JPG?raw=true")
+knitr::include_graphics("https://github.com/MartinSchweinberger/SLAT7855/blob/master/images/rmarkdown.png?raw=true")
 ```  
 
 ## R and RStudio Basics
