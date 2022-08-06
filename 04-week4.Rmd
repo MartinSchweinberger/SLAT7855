@@ -424,67 +424,78 @@ We can now start actually working with R in RStudio. As this is an introduction,
 
 ### Loading data
 
-So let's start by loading a data set. 
+So let's start by loading a data set.For this, we use the `read.delim` function. The `read.delim` function takes the path to the data and the separator as arguments. The object that we load with the `read.delim` function is assigned a name (in this case `dat`). The path to the data is generated using the `here` function from the `here` package and we tell R that the data is in the *data* folder and that it is called *week4data1.txt*. The data is tab-separated as indicated by the sequence `"\t"` - it could also be comma-separated in which case we would specify `","`. 
+
+We can then inspect the data by calling the name of the object we loaded, which is `dat`. This prints the entire object.
 
 ```{r loaddata}
-dat <- read.delim(here::here("data/week4data1.txt"), sep = "\t")
+dat <- read.delim(here::here("data", "week4data1.txt"), sep = "\t")
 # inspect data
 dat
 ```
 
-
+As printing the entire object is not a really nice way to inspect the data, we will go over some alternative ways to inspect the data below.
 
 
 
 ### Inspecting data
 
+We can also inspect the structure of the data using the `str` function which takes the object that we want to inspect as its argument.
 
 ```{r}
 str(dat)
 ```
 
-
-
-
+The `head` function shows (by default) the first 6 elements of rows of an object.
 
 
 ```{r}
 head(dat)
 ```
 
+The `View` function will open another tab in RStudio and show the data in a spreadsheet.
 
 ```{r viewdat, eval = F}
 View(dat)
 ```
 
+The `summary` function which summaries each variable of the data (but the summary for character variables is not really informative). 
 
 ```{r}
 summary(dat)
 ```
 
+We can also use `ftable` to get a frequency table of one, two, or three variable
+
 ```{r}
 ftable(dat$Class, dat$TestScore)
 ```
 
+After inspecting the data, we typically want to do something with the data. For instance, we may want to visualize the data - this is what we will do below.
+
 ### A first plot
+
+The easiest way to visualize data is to use the `plot` function. Th`plot` function needs to know what it is supposed to show and so we need to specify the data and the variable that it is supposed to show. To tell R that we want it to show the *Class* variable from the *dat* data set, we need to write `dat$Class` where the `$` tells R that this is a variable of the *dat* dataset.
+
+We also specify the color and we use the `col` argument of the `plot` function to do this. In this case, we need to transform the *Class* variable into a factor and then need to tell R again, that it is to show the *Class* variable of the *dat* dataset. When factorizing a variable, this means that R will understand that the data set has different levels. If we did not factorize the Class varoable, R would think that each instance of class needs aa different color and it would throw an error.
 
 ```{r}
 plot(dat$TestScore, 
      col = factor(dat$Class))
 ```
 
-
+Often, when working with data, we need to change things in the data set. We will do this as shown below.
 
 ### Changing data
 
-We will change the test scores of the students in the Korean class: to all scores in the Korean class, we will add 10 points. 
+We will change the test scores of the students in the Korean class: to all scores in the Korean class, we will add 10 points. For this, we take the *dat* data set and the *mutate* the *TestScore* variable by adding 10 points to the score for all scores of the Korean class. The `>%>` symbol is called a *pipe* and it can be translated as *and then*. So we take the data, and then we mutate the *TestScores* column, and then we assign the resulting dataset a new name, *dat2*.
 
 ```{r}
 dat %>%
   dplyr::mutate(TestScores = ifelse(Class == "Korean", TestScores + 10, TestScores)) -> dat2
 ```
 
-Visualize new data set
+Next, we visualize new data set *dat2*.
 
 ```{r}
 plot(dat2$TestScores, 
@@ -492,7 +503,9 @@ plot(dat2$TestScores,
 ```
 
 
-Now, we will add 20 points to the tests scores of the students in the Chinese class - but only if they have a test score lower than 30!
+Now, we will add 20 points to the tests scores of the students in the Chinese class - but only if they have a test score lower than 30! We can combine conditions such as *only to score associated with the Chinese class* with another condition such as *if the score is equal or lower than 30* using the `&` symbol. 
+
+Again, we take the dataset (in this case the *dat2* dataset) and then (the pipe) we mutate a variable (in this case the TestScores associated with the Chinese class by adding 20 points to each score of the Chinese class.) 
 
 ```{r}
 dat2 %>%
@@ -501,20 +514,25 @@ dat2 %>%
                                     TestScores)) -> dat3
 ```
 
-Visualize new data set
+Again, we visualize new data set
 
 ```{r}
 plot(dat3$TestScores, 
      col = factor(dat3$Class))
 ```
 
+We can see that we have added 10 to the Korean class' test scores and 20 to the Chinese class' test scores.
 
 ### Saving data
 
+Now, we may want to save the data on our computer. We can do this using the `write.table` function which takes the object that we want to save and the location, where we want to save the data as its arguments.
+
 ```{r}
-write.table(dat, here::here("data/dat3.txt"))
+write.table(dat, here::here("data", "dat3.txt"))
 ```
 
+
+That is it for today.
 
 [Back to top](#getting_started_with_r_and_rstudio_1)
 

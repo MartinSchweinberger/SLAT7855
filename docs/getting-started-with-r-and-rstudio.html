@@ -23,7 +23,7 @@
 <meta name="author" content="Martin Schweinberger" />
 
 
-<meta name="date" content="2022-08-06" />
+<meta name="date" content="2022-08-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -622,8 +622,9 @@ The Environment variables and Management panes are on the right of the screen an
 <p>We can now start actually working with R in RStudio. As this is an introduction, we will only do something very basic, namely loading a data set, inspecting it, and doing some very basic visualizations.</p>
 <div id="loading-data" class="section level3 hasAnchor" number="4.9.1">
 <h3><span class="header-section-number">4.9.1</span> Loading data<a href="getting-started-with-r-and-rstudio.html#loading-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>So let’s start by loading a data set.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="getting-started-with-r-and-rstudio.html#cb6-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data/week4data1.txt&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span>
+<p>So let’s start by loading a data set.For this, we use the <code>read.delim</code> function. The <code>read.delim</code> function takes the path to the data and the separator as arguments. The object that we load with the <code>read.delim</code> function is assigned a name (in this case <code>dat</code>). The path to the data is generated using the <code>here</code> function from the <code>here</code> package and we tell R that the data is in the <em>data</em> folder and that it is called <em>week4data1.txt</em>. The data is tab-separated as indicated by the sequence <code>"\t"</code> - it could also be comma-separated in which case we would specify <code>","</code>.</p>
+<p>We can then inspect the data by calling the name of the object we loaded, which is <code>dat</code>. This prints the entire object.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="getting-started-with-r-and-rstudio.html#cb6-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week4data1.txt&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span>
 <span id="cb6-2"><a href="getting-started-with-r-and-rstudio.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
 <span id="cb6-3"><a href="getting-started-with-r-and-rstudio.html#cb6-3" aria-hidden="true" tabindex="-1"></a>dat</span></code></pre></div>
 <pre><code>##    Subject   Class TestScores
@@ -661,14 +662,17 @@ The Environment variables and Management panes are on the right of the screen an
 ## 32      32  Korean         17
 ## 33      33 Chinese          9
 ##  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 16 rows ]</code></pre>
+<p>As printing the entire object is not a really nice way to inspect the data, we will go over some alternative ways to inspect the data below.</p>
 </div>
 <div id="inspecting-data" class="section level3 hasAnchor" number="4.9.2">
 <h3><span class="header-section-number">4.9.2</span> Inspecting data<a href="getting-started-with-r-and-rstudio.html#inspecting-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can also inspect the structure of the data using the <code>str</code> function which takes the object that we want to inspect as its argument.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="getting-started-with-r-and-rstudio.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dat)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    49 obs. of  3 variables:
 ##  $ Subject   : int  1 2 3 4 5 6 7 8 9 10 ...
 ##  $ Class     : chr  &quot;German&quot; &quot;German&quot; &quot;German&quot; &quot;German&quot; ...
 ##  $ TestScores: int  13 14 12 13 9 13 18 16 7 12 ...</code></pre>
+<p>The <code>head</code> function shows (by default) the first 6 elements of rows of an object.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="getting-started-with-r-and-rstudio.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
 <pre><code>##   Subject  Class TestScores
 ## 1       1 German         13
@@ -677,7 +681,9 @@ The Environment variables and Management panes are on the right of the screen an
 ## 4       4 German         13
 ## 5       5 German          9
 ## 6       6 German         13</code></pre>
+<p>The <code>View</code> function will open another tab in RStudio and show the data in a spreadsheet.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="getting-started-with-r-and-rstudio.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(dat)</span></code></pre></div>
+<p>The <code>summary</code> function which summaries each variable of the data (but the summary for character variables is not really informative).</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="getting-started-with-r-and-rstudio.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dat)</span></code></pre></div>
 <pre><code>##     Subject         Class             TestScores   
 ##  Min.   : 1.00   Length:49          Min.   : 7.00  
@@ -686,41 +692,50 @@ The Environment variables and Management panes are on the right of the screen an
 ##  Mean   :25.02                      Mean   :15.51  
 ##  3rd Qu.:37.00                      3rd Qu.:17.00  
 ##  Max.   :50.00                      Max.   :45.00</code></pre>
+<p>We can also use <code>ftable</code> to get a frequency table of one, two, or three variable</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="getting-started-with-r-and-rstudio.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(dat<span class="sc">$</span>Class, dat<span class="sc">$</span>TestScore)</span></code></pre></div>
 <pre><code>##          7 8 9 10 11 12 13 14 15 16 17 18 19 35 45
 ##                                                   
 ## Chinese  0 1 1  1  0  2  1  2  2  2  1  2  0  1  1
 ## German   1 0 2  0  1  3  5  1  0  1  1  1  0  0  0
 ## Korean   0 0 0  0  0  0  0  0  4  4  1  3  4  0  0</code></pre>
+<p>After inspecting the data, we typically want to do something with the data. For instance, we may want to visualize the data - this is what we will do below.</p>
 </div>
 <div id="a-first-plot" class="section level3 hasAnchor" number="4.9.3">
 <h3><span class="header-section-number">4.9.3</span> A first plot<a href="getting-started-with-r-and-rstudio.html#a-first-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The easiest way to visualize data is to use the <code>plot</code> function. Th<code>plot</code> function needs to know what it is supposed to show and so we need to specify the data and the variable that it is supposed to show. To tell R that we want it to show the <em>Class</em> variable from the <em>dat</em> data set, we need to write <code>dat$Class</code> where the <code>$</code> tells R that this is a variable of the <em>dat</em> dataset.</p>
+<p>We also specify the color and we use the <code>col</code> argument of the <code>plot</code> function to do this. In this case, we need to transform the <em>Class</em> variable into a factor and then need to tell R again, that it is to show the <em>Class</em> variable of the <em>dat</em> dataset. When factorizing a variable, this means that R will understand that the data set has different levels. If we did not factorize the Class varoable, R would think that each instance of class needs aa different color and it would throw an error.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="getting-started-with-r-and-rstudio.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat<span class="sc">$</span>TestScore, </span>
 <span id="cb17-2"><a href="getting-started-with-r-and-rstudio.html#cb17-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">factor</span>(dat<span class="sc">$</span>Class))</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>Often, when working with data, we need to change things in the data set. We will do this as shown below.</p>
 </div>
 <div id="changing-data" class="section level3 hasAnchor" number="4.9.4">
 <h3><span class="header-section-number">4.9.4</span> Changing data<a href="getting-started-with-r-and-rstudio.html#changing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>We will change the test scores of the students in the Korean class: to all scores in the Korean class, we will add 10 points.</p>
+<p>We will change the test scores of the students in the Korean class: to all scores in the Korean class, we will add 10 points. For this, we take the <em>dat</em> data set and the <em>mutate</em> the <em>TestScore</em> variable by adding 10 points to the score for all scores of the Korean class. The <code>&gt;%&gt;</code> symbol is called a <em>pipe</em> and it can be translated as <em>and then</em>. So we take the data, and then we mutate the <em>TestScores</em> column, and then we assign the resulting dataset a new name, <em>dat2</em>.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="getting-started-with-r-and-rstudio.html#cb18-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
 <span id="cb18-2"><a href="getting-started-with-r-and-rstudio.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">TestScores =</span> <span class="fu">ifelse</span>(Class <span class="sc">==</span> <span class="st">&quot;Korean&quot;</span>, TestScores <span class="sc">+</span> <span class="dv">10</span>, TestScores)) <span class="ot">-&gt;</span> dat2</span></code></pre></div>
-<p>Visualize new data set</p>
+<p>Next, we visualize new data set <em>dat2</em>.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="getting-started-with-r-and-rstudio.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat2<span class="sc">$</span>TestScores, </span>
 <span id="cb19-2"><a href="getting-started-with-r-and-rstudio.html#cb19-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">factor</span>(dat2<span class="sc">$</span>Class))</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<p>Now, we will add 20 points to the tests scores of the students in the Chinese class - but only if they have a test score lower than 30!</p>
+<p>Now, we will add 20 points to the tests scores of the students in the Chinese class - but only if they have a test score lower than 30! We can combine conditions such as <em>only to score associated with the Chinese class</em> with another condition such as <em>if the score is equal or lower than 30</em> using the <code>&amp;</code> symbol.</p>
+<p>Again, we take the dataset (in this case the <em>dat2</em> dataset) and then (the pipe) we mutate a variable (in this case the TestScores associated with the Chinese class by adding 20 points to each score of the Chinese class.)</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="getting-started-with-r-and-rstudio.html#cb20-1" aria-hidden="true" tabindex="-1"></a>dat2 <span class="sc">%&gt;%</span></span>
 <span id="cb20-2"><a href="getting-started-with-r-and-rstudio.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">TestScores =</span> <span class="fu">ifelse</span>(Class <span class="sc">==</span> <span class="st">&quot;Chinese&quot;</span> <span class="sc">&amp;</span> TestScores <span class="sc">&lt;=</span> <span class="dv">30</span>, </span>
 <span id="cb20-3"><a href="getting-started-with-r-and-rstudio.html#cb20-3" aria-hidden="true" tabindex="-1"></a>                                    TestScores <span class="sc">+</span> <span class="dv">20</span>, </span>
 <span id="cb20-4"><a href="getting-started-with-r-and-rstudio.html#cb20-4" aria-hidden="true" tabindex="-1"></a>                                    TestScores)) <span class="ot">-&gt;</span> dat3</span></code></pre></div>
-<p>Visualize new data set</p>
+<p>Again, we visualize new data set</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="getting-started-with-r-and-rstudio.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat3<span class="sc">$</span>TestScores, </span>
 <span id="cb21-2"><a href="getting-started-with-r-and-rstudio.html#cb21-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">factor</span>(dat3<span class="sc">$</span>Class))</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>We can see that we have added 10 to the Korean class’ test scores and 20 to the Chinese class’ test scores.</p>
 </div>
 <div id="saving-data" class="section level3 hasAnchor" number="4.9.5">
 <h3><span class="header-section-number">4.9.5</span> Saving data<a href="getting-started-with-r-and-rstudio.html#saving-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="getting-started-with-r-and-rstudio.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(dat, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data/dat3.txt&quot;</span>))</span></code></pre></div>
+<p>Now, we may want to save the data on our computer. We can do this using the <code>write.table</code> function which takes the object that we want to save and the location, where we want to save the data as its arguments.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="getting-started-with-r-and-rstudio.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(dat, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;dat3.txt&quot;</span>))</span></code></pre></div>
+<p>That is it for today.</p>
 <p><a href="#getting_started_with_r_and_rstudio_1">Back to top</a></p>
 
 <div id="refs" class="references csl-bib-body hanging-indent">
