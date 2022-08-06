@@ -491,6 +491,8 @@ div.csl-indent {
 <li><p>John Gruber developed Markdown and his <a href="https://daringfireball.net/projects/markdown/syntax">introduction to the syntax</a> is worth browsing.</p></li>
 <li><p>This <a href="http://www.markdowntutorial.com/">interactive Markdown tutorial</a> will teach you the syntax in a few minutes.</p></li>
 </ul>
+<p>Here is an overview of the basic syntax of RMarkdown and what the text looks like once it is rendered into a notebook.</p>
+<p><img src="https://github.com/MartinSchweinberger/SLAT7855/blob/master/images/RMarkdown.JPG?raw=true" width="100%" /></p>
 </div>
 </div>
 <div id="r-and-rstudio-basics" class="section level2 hasAnchor" number="4.6">
@@ -707,7 +709,7 @@ The Environment variables and Management panes are on the right of the screen an
 <p>We also specify the color and we use the <code>col</code> argument of the <code>plot</code> function to do this. In this case, we need to transform the <em>Class</em> variable into a factor and then need to tell R again, that it is to show the <em>Class</em> variable of the <em>dat</em> dataset. When factorizing a variable, this means that R will understand that the data set has different levels. If we did not factorize the Class varoable, R would think that each instance of class needs aa different color and it would throw an error.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="getting-started-with-r-and-rstudio.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat<span class="sc">$</span>TestScore, </span>
 <span id="cb17-2"><a href="getting-started-with-r-and-rstudio.html#cb17-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">factor</span>(dat<span class="sc">$</span>Class))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>Often, when working with data, we need to change things in the data set. We will do this as shown below.</p>
 </div>
 <div id="changing-data" class="section level3 hasAnchor" number="4.9.4">
@@ -718,7 +720,7 @@ The Environment variables and Management panes are on the right of the screen an
 <p>Next, we visualize new data set <em>dat2</em>.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="getting-started-with-r-and-rstudio.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat2<span class="sc">$</span>TestScores, </span>
 <span id="cb19-2"><a href="getting-started-with-r-and-rstudio.html#cb19-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">factor</span>(dat2<span class="sc">$</span>Class))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Now, we will add 20 points to the tests scores of the students in the Chinese class - but only if they have a test score lower than 30! We can combine conditions such as <em>only to score associated with the Chinese class</em> with another condition such as <em>if the score is equal or lower than 30</em> using the <code>&amp;</code> symbol.</p>
 <p>Again, we take the dataset (in this case the <em>dat2</em> dataset) and then (the pipe) we mutate a variable (in this case the TestScores associated with the Chinese class by adding 20 points to each score of the Chinese class.)</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="getting-started-with-r-and-rstudio.html#cb20-1" aria-hidden="true" tabindex="-1"></a>dat2 <span class="sc">%&gt;%</span></span>
@@ -728,7 +730,7 @@ The Environment variables and Management panes are on the right of the screen an
 <p>Again, we visualize new data set</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="getting-started-with-r-and-rstudio.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat3<span class="sc">$</span>TestScores, </span>
 <span id="cb21-2"><a href="getting-started-with-r-and-rstudio.html#cb21-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">factor</span>(dat3<span class="sc">$</span>Class))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>We can see that we have added 10 to the Korean class’ test scores and 20 to the Chinese class’ test scores.</p>
 </div>
 <div id="saving-data" class="section level3 hasAnchor" number="4.9.5">

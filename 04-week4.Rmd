@@ -255,6 +255,12 @@ Markdown is really quite simple to learn and these resources may help:
 
 + This [interactive Markdown tutorial](http://www.markdowntutorial.com/) will teach you the syntax in a few minutes.
 
+Here is an overview of the basic syntax of RMarkdown and what the text looks like once it is rendered into a  notebook.
+
+```{r , echo=F, fig.cap="", message=FALSE, warning=FALSE, out.width='100%'}
+knitr::include_graphics("https://github.com/MartinSchweinberger/SLAT7855/blob/master/images/RMarkdown.JPG?raw=true")
+```  
+
 ## R and RStudio Basics
 
 RStudio is a so-called IDE - Integrated Development Environment. The interface provides easy access to R. The advantage of this application is that R programs and files as well as a project directory can be managed easily. The environment is capable of editing and running program code, viewing outputs and rendering graphics. Furthermore, it is possible to view variables and data objects of an R-script directly in the interface. 
