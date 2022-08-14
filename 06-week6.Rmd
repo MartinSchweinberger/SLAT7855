@@ -151,53 +151,7 @@ mean(frequencies)
 
 The mean is the most common way to summarize numeric variables and it is very easy and intuitive to understand. A disadvantage of the mean is that it is very strongly affected by outliers which is why the median is the preferable measure of centrality when dealing with data that is not normal or that contains outliers.
 
-***
 
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>EXERCISE TIME!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
-
-<div class="question">` 
-
-
-
-1. Calculate the arithmetic mean: 1, 2, 3, 4, 5, 6<br>
-
-<details>
-  <summary>Answer</summary>
-  ```{r ex1_1, class.source = NULL, eval = T}
-  (1 + 2 + 3 + 4 + 5 + 6)/6
-  ```
-</details>
-
-
-2. Calculate the arithmetic mean for the following values using the `mean` function: 4, 3, 6, 2, 1, 5, 6, 8<br>
-
-<details>
-  <summary>Answer</summary>
-  ```{r ex1_2, class.source = NULL, eval = T}
-  mean(c(4, 3, 6, 2, 1, 5, 6, 8))
-  ```
-</details>
-
-
-3. Create a vector out of the following values and calculate the arithmetic mean using the `mean` function: 1, 5, 5, 9<br>
-
-<details>
-  <summary>Answer</summary>
-  ```{r  ex1_3, class.source = NULL, eval = T}
-  vec <- c(1, 5, 5, 9)
-  mean(vec)
-  ```
-</details>
-
-</div>`
-
-***
 
 
 ### Median{-}
@@ -282,53 +236,6 @@ median(ranks)
 ```
 In our case, the median age is *19-25* because the 160^th^ speaker belongs to the 2^nd^ age group, i.e. the age group with speakers between 19 and 25 years old.  
 
-***
-
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>EXERCISE TIME!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
-
-<div class="question">` 
-
-
-
-1. Calculate the median: 1, 2, 3, 4, 5, 6<br>
-
-<details>
-  <summary>Answer</summary>
-  ```{r ex2_1, class.source = NULL, eval = T}
-  (3 + 4)/2
-  ```
-</details>
-
-
-2. Calculate the median for the following values using the `median` function: 4, 3, 6, 2, 1, 5, 6, 8<br>
-
-<details>
-  <summary>Answer</summary>
-  ```{r ex2_2, class.source = NULL, eval = T}
-  median(c(4, 3, 6, 2, 1, 5, 6, 8))
-  ```
-</details>
-
-
-3. Create a vector out of the following values and calculate the median using the `median` function: 1, 5, 5, 9<br>
-
-<details>
-  <summary>Answer</summary>
-  ```{r  ex12_3, class.source = NULL, eval = T}
-  vec <- c(1, 5, 5, 9)
-  median(vec)
-  ```
-</details>
-
-</div>`
-
-***
 
 ### Mode{-}
 
@@ -658,59 +565,6 @@ sd(Moscow)
 The standard deviation of temperature values of Moscow is 11.12.
 
 
-***
-
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>EXERCISE TIME!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
-
-<div class="question">` 
-
-
-
-1. Calculate the mean, median, and mode as well as the standard deviation for the following two vectors<br>A: 1, 3, 6, 2, 1, 1, 6, 8, 4, 2, 3, 5, 0, 0, 2, 1, 2, 1, 0<br>B: 3, 2, 5, 1, 1, 4, 0, 0, 2, 3, 0, 3, 0, 5, 4, 5, 3, 3, 4<br>
-
-<details>
-  <summary>Answer</summary>
-  ```{r ex1, class.source = NULL, eval = FALSE}
-  A <- c(1, 3, 6, 2, 1, 1, 6, 8, 4, 2, 3, 5, 0, 0, 2, 1, 2, 1, 0)
-  B <- c(3, 2, 5, 1, 1, 4, 0, 0, 2, 3, 0, 3, 0, 5, 4, 5, 3, 3, 4)
-  mean(A)
-  median(A)
-  max(A)
-  sd(A)
-  mean(B)
-  median(B)
-  max(B)
-  sd(B)
-  ```
-</details>
-
-
-2. Find a partner and discuss which measure of central tendency is appropriate when dealing with grades. Then, find another partner and see whether they have come to the same conclusion or discuss why if not. Finally, discuss the advantages and disadvantages of calculating the mean when dealing with grades.
-
-<details>
-  <summary>Answer</summary>
-  The problem is that - strictly speaking - grades are ordinal and not numeric (i.e., interval- or ratio-scaled). This means that calculating the arithmetic mean is somewhat controversial. To resolve this issue, it is recommendable to either calculate the median (rather than the mean) or to be transparent about this issue and inform readers that the mean was used despite dealing with an ordinal variable.
-</details>
-
-
-3. Where are mean, median, and mode when dealing with normal data (i.e., when the data approximate a normal distribution)?
-
-<details>
-  <summary>Answer</summary>
-  When dealing with normally distributed data, the arithmetic mean, median, and mode would ideally be identical (which is extremely rare when working with empirical data) or, at least, very similar.
-</details>
-
-4. Go and find a partner and discuss what it means - on a conceptual level rather than on a statistical/mathematical level - that two groups have different ranges for a certain feature (be careful, this is not as trivial as it may seem!).
-
-</div>`
-
-***
 
 ### Standard Error{-}
 
@@ -795,63 +649,11 @@ lower; m; upper
 
 There are several functions in R to extract confidence intervals. To show how you can do this for different types of elements, we will continue to work with the reaction times data.
 
-***
 
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>EXERCISE TIME!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
-
-<div class="question">` 
-
-1. Calculate the mean and confidence interval: 1, 2, 3, 4, 5, 6, 7, 8, 9<br>
-
-<details>
-  <summary>Answer</summary>
-  ```{r ex11_1, class.source = NULL, eval = T}
-  # calculate mean
-  m <- mean(c(1, 2, 3, 4, 5, 6, 7, 8, 9))
-  # calculate standard deviation
-  s <- sd(c(1, 2, 3, 4, 5, 6, 7, 8, 9))
-  # calculate n
-  n <- length(c(1, 2, 3, 4, 5, 6, 7, 8, 9))
-  # calculate lower and upper ci
-  lower <- m-1.96*(s/sqrt(n))
-  upper <- m+1.96*(s/sqrt(n))
-  # show lower ci, mean, and upper ci
-  lower; m; upper
-  ```
-</details>
-
-2. Calculate the mean and confidence interval: 3, 4, 5, 4, 3, 4, 5, 4, 3<br>
-
-<details>
-  <summary>Answer</summary>
-  ```{r ex11_2, class.source = NULL, eval = T}
-  # calculate mean
-  m <- mean(c(3, 4, 5, 4, 3, 4, 5, 4, 3))
-  # calculate standard deviation
-  s <- sd(c(3, 4, 5, 4, 3, 4, 5, 4, 3))
-  # calculate n
-  n <- length(c(3, 4, 5, 4, 3, 4, 5, 4, 3))
-  # calculate lower and upper ci
-  lower <- m-1.96*(s/sqrt(n))
-  upper <- m+1.96*(s/sqrt(n))
-  # show lower ci, mean, and upper ci
-  lower; m; upper
-  ```
-</details>
-
-</div>`
-
-***
 
 ### Confidence Intervals for Simple Vectors{-}
 
-Confidence intervals (CIs) give a range thatâ€™s likely to include a population value with a certain degree of confidence. As such, CIs tell us how likely it is to get a value within a certain range if we drew another sample from the same population. 
+Confidence intervals (CIs) give a range that's likely to include a population value with a certain degree of confidence. As such, CIs tell us how likely it is to get a value within a certain range if we drew another sample from the same population. 
 
 One easy method for extracting confidence intervals is to apply the `CI` function from the `Rmisc` package.
 
@@ -867,7 +669,7 @@ tt <- Rmisc::CI(rts$RT, ci=0.95)
 ```
 
 
-The Â´CIÂ´ function provides the mean reaction time (`r tt[2]`) and the 95 percent confidence band. With 95 percent confidence, the mean reaction time will have a mean between `r round(tt[3], 2)`  and `r round(tt[1], 2)` milliseconds (ms).
+The `CI` function provides the mean reaction time (`r tt[2]`) and the 95 percent confidence band. With 95 percent confidence, the mean reaction time will have a mean between `r round(tt[3], 2)`  and `r round(tt[1], 2)` milliseconds (ms).
 
 Another way to extract the mean and its confidence intervals is by using  `t.test` function.  
 
@@ -898,73 +700,6 @@ Because this is a data-driven approach, the results will vary, depending on the 
 # extract mean CIs
 DescTools::MeanCI(rts$RT, method="boot", type="norm", R=1000)
 ```
-
-Another method for extracting the mean and the confidence intervals from a range of values using bootstrapping is to use the `boot` function from the `boot` package.
-
-```{r ds42, message=FALSE, warning=FALSE}
-# function to extract values
-BootFunction = function(x, index) {                        
-                  return(c(mean(x[index]),
-                           var(x[index]) / length(index)))
-}
-# apply function to data
-Bootstrapped = boot(data=rts$RT,     
-                    statistic=BootFunction,
-                    R=1000)
-# extract values
-mean(Bootstrapped$t[,1])                                   
-# alternative to extract values
-boot.ci(Bootstrapped, conf=0.95)                           
-```  
-
-
-The advantage of using bootstrapping methods lies in the fact that the data is (frequently) not distributed normally which is not an issue for the bootstrapping and it will thus provide more reliable results as it does not rely on distributional assumptions about the data. 
-
-### Confidence Intervals for Grouped Data{-}
-
-To extract the confidence intervals for grouped data, we can sue the `summarySE` function from the `Rmisc` package.
-
-```{r ds41,  message=FALSE, warning=FALSE}
-# apply summarySE function to data
-Rmisc::summarySE(data=rts,   
-                 # define variable representing frequencies
-                 measurevar="RT", 
-                 # define grouping variable
-                 groupvars="Gender",
-                 # extract standard deviation, standard error, and confidence intervals
-                 conf.interval = 0.95)   
-```  
-
-
-### Confidence Intervals for Nominal Data{-}
-
-We now turn to confidence intervals for nominal data [see also @thomas1975confidence]. When dealing with nominal data, confidence intervals can be determined with the `binom.test` function in the in-built `stats` package. Alternative methods are available via the `BinomCI` and `MultinomCI` functions from the `DescTools` package.  More advanced techniques for confidence intervals on nominal data are available via the `PropCIs` package.
-
-```{r ds44, message=FALSE, warning=FALSE}
-stats::binom.test(2, 20, 0.5,              # binom.test(x, n, p = 0.5, ...)
-                  alternative="two.sided", # define sidedness
-                  conf.level=0.95)         # define confidence level
-```  
-
-Another way to use the `BinomCI` function is shown below.
- 
-```{r ds48,  message=FALSE, warning=FALSE}
-# extract CIs                  
-BinomCI(2, 20,                        # apply BinomCI function
-        conf.level = 0.95,            # define ci
-        method = "modified wilson")   # define method for ci extraction
-```  
-
-### Confidence Intervals for Multinomial Data{-}
-
-We use the `MultinomCI` function to extract the confidence intervals form multinominal data.
-
-```{r ds50, message=FALSE, warning=FALSE}
-observed = c(35,74,22,69)       # define multinominal vector
-MultinomCI(observed,            # apply MultinomCI function
-           conf.level=0.95,     # define ci
-           method="goodman")    # define method for ci extraction
-```  
 
 
 

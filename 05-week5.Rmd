@@ -3,16 +3,18 @@
 
 This week, we will continue to explore R and RStudio.
 
-```{r load, echo = F, message=FALSE, warning=FALSE}
-library(tidyverse)
-w5dat <- read.delim(here::here("data", "week5data1.txt"), sep = "\t", header = T)
-```
+
 
 ## Working with tables
 
 We will now start working with data in R. As most of the data that we work with comes in tables.
 
 We will download a tab-separated txt-file. Translated to prose, the code below means *Create an object called *w5dat *and in that object, store the result of the `read.delim` function*. 
+
+```{r load, message=FALSE, warning=FALSE}
+library(tidyverse)
+w5dat <- read.delim(here::here("data", "week5data1.txt"), sep = "\t", header = T)
+```
 
 `read.delim` stands for *read delimited file* and it takes the URL from which to load the data (or the path to the data on your computer) as its first argument. The `sep` stand for separator and the `\t` stands for tab-separated and represents the second argument that the `read.delim` function takes. The third argument, `header`, can take either T(RUE) or F(ALSE) and it tells R if the data has column names (headers) or not. 
 

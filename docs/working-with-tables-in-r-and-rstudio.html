@@ -23,7 +23,7 @@
 <meta name="author" content="Martin Schweinberger" />
 
 
-<meta name="date" content="2022-08-07" />
+<meta name="date" content="2022-08-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="getting-started-with-r-and-rstudio.html"/>
-
+<link rel="next" href="descriptive-statistics.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -296,6 +296,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.16" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#extracting-session-information"><i class="fa fa-check"></i><b>5.16</b> Extracting session information</a></li>
 <li class="chapter" data-level="5.17" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#going-further"><i class="fa fa-check"></i><b>5.17</b> Going further</a></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-centrality"><i class="fa fa-check"></i><b>6.1</b> Measures of Centrality</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#mean"><i class="fa fa-check"></i>Mean</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#median"><i class="fa fa-check"></i>Median</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#mode"><i class="fa fa-check"></i>Mode</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#geometric-mean"><i class="fa fa-check"></i>Geometric mean</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#harmonic-mean"><i class="fa fa-check"></i>Harmonic mean</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#notes-on-measures-of-centrality"><i class="fa fa-check"></i>Notes on Measures of Centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-variability"><i class="fa fa-check"></i><b>6.2</b> Measures of Variability</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#range"><i class="fa fa-check"></i>Range</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#interquartile-range-iqr"><i class="fa fa-check"></i>Interquartile range (IQR)</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#variance"><i class="fa fa-check"></i>Variance</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#standard-deviation"><i class="fa fa-check"></i>Standard deviation</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#standard-error"><i class="fa fa-check"></i>Standard Error</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals"><i class="fa fa-check"></i><b>6.3</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals-for-simple-vectors"><i class="fa fa-check"></i>Confidence Intervals for Simple Vectors</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -322,22 +346,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.1</span> Working with tables<a href="working-with-tables-in-r-and-rstudio.html#working-with-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We will now start working with data in R. As most of the data that we work with comes in tables.</p>
 <p>We will download a tab-separated txt-file. Translated to prose, the code below means <em>Create an object called </em>w5dat <em>and in that object, store the result of the <code>read.delim</code> function</em>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="working-with-tables-in-r-and-rstudio.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="working-with-tables-in-r-and-rstudio.html#cb1-2" aria-hidden="true" tabindex="-1"></a>w5dat <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week5data1.txt&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> T)</span></code></pre></div>
 <p><code>read.delim</code> stands for <em>read delimited file</em> and it takes the URL from which to load the data (or the path to the data on your computer) as its first argument. The <code>sep</code> stand for separator and the <code>\t</code> stands for tab-separated and represents the second argument that the <code>read.delim</code> function takes. The third argument, <code>header</code>, can take either T(RUE) or F(ALSE) and it tells R if the data has column names (headers) or not.</p>
 </div>
 <div id="functions-and-objects" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Functions and Objects<a href="working-with-tables-in-r-and-rstudio.html#functions-and-objects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In R, functions always have the following form: <code>function(argument1, argument2, ..., argumentN)</code>. Typically a function does something to an object (e.g. a table), so that the first argument typically specifies the data to which the function is applied. Other arguments then allow to add some information. Just as a side note, functions are also objects that do not contain data but instructions.</p>
 <p>To assign content to an object, we use <code>&lt;-</code> or <code>=</code> so that the we provide a name for an object, and then assign some content to it. For example, <code>MyObject &lt;- 1:3</code> means <em>Create an object called <code>MyObject</code>. this object should contain the numbers 1 to 3</em>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="working-with-tables-in-r-and-rstudio.html#cb1-1" aria-hidden="true" tabindex="-1"></a>MyObject <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb1-2"><a href="working-with-tables-in-r-and-rstudio.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect</span></span>
-<span id="cb1-3"><a href="working-with-tables-in-r-and-rstudio.html#cb1-3" aria-hidden="true" tabindex="-1"></a>MyObject</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="working-with-tables-in-r-and-rstudio.html#cb2-1" aria-hidden="true" tabindex="-1"></a>MyObject <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb2-2"><a href="working-with-tables-in-r-and-rstudio.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect</span></span>
+<span id="cb2-3"><a href="working-with-tables-in-r-and-rstudio.html#cb2-3" aria-hidden="true" tabindex="-1"></a>MyObject</span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
 </div>
 <div id="inspecting-data-1" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Inspecting data<a href="working-with-tables-in-r-and-rstudio.html#inspecting-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are many ways to inspect data. We will briefly go over the most common ways to inspect data.</p>
 <p>The <code>head</code> function takes the data-object as its first argument and automatically shows the first 6 elements of an object (or rows if the data-object has a table format).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="working-with-tables-in-r-and-rstudio.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="working-with-tables-in-r-and-rstudio.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat)</span></code></pre></div>
 <pre><code>##   id file.speaker.id text.id spk.ref             zone      date    sex   age
 ## 1  1     &lt;S1A-001$A&gt; S1A-001       A northern ireland 1990-1994   male 34-41
 ## 2  2     &lt;S1A-001$B&gt; S1A-001       B northern ireland 1990-1994 female 34-41
@@ -353,7 +379,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5         47
 ## 6        200</code></pre>
 <p>We can also use the <code>head</code> function to inspect more or less elements and we can specify the number of elements (or rows) that we want to inspect as a second argument. In the example below, the <code>4</code> tells R that we only want to see the first 4 rows of the data.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="working-with-tables-in-r-and-rstudio.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat, <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="working-with-tables-in-r-and-rstudio.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat, <span class="dv">4</span>)</span></code></pre></div>
 <pre><code>##   id file.speaker.id text.id spk.ref             zone      date    sex   age
 ## 1  1     &lt;S1A-001$A&gt; S1A-001       A northern ireland 1990-1994   male 34-41
 ## 2  2     &lt;S1A-001$B&gt; S1A-001       B northern ireland 1990-1994 female 34-41
@@ -369,7 +395,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.4</span> Accessing individual cells in a table<a href="working-with-tables-in-r-and-rstudio.html#accessing-individual-cells-in-a-table" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you want to access specific cells in a table, you can do so by typing the name of the object and then specify the rows and columns in square brackets (i.e. <strong>data[row, column]</strong>). For example, <code>w5dat[2, 4]</code> would show the value of the cell in the second row and fourth column of the object <code>w5dat</code>. We can also use the colon to define a range (as shown below, where 1:5 means from 1 to 5 and 1:3 means from 1 to 3) The command <code>w5dat[1:5, 1:3]</code> thus means:</p>
 <p><em>Show me the first 5 rows and the first 3 columns of the data-object that is called w5dat</em>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="working-with-tables-in-r-and-rstudio.html#cb7-1" aria-hidden="true" tabindex="-1"></a>w5dat[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="working-with-tables-in-r-and-rstudio.html#cb8-1" aria-hidden="true" tabindex="-1"></a>w5dat[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
 <pre><code>##   id file.speaker.id text.id
 ## 1  1     &lt;S1A-001$A&gt; S1A-001
 ## 2  2     &lt;S1A-001$B&gt; S1A-001
@@ -384,7 +410,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>num</strong> = numeric</li>
 <li><strong>fct</strong> = factor</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="working-with-tables-in-r-and-rstudio.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(w5dat)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="working-with-tables-in-r-and-rstudio.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(w5dat)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    1332 obs. of  9 variables:
 ##  $ id             : int  1 2 3 4 5 6 7 8 9 10 ...
 ##  $ file.speaker.id: chr  &quot;&lt;S1A-001$A&gt;&quot; &quot;&lt;S1A-001$B&gt;&quot; &quot;&lt;S1A-002$?&gt;&quot; &quot;&lt;S1A-002$A&gt;&quot; ...
@@ -396,7 +422,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ age            : chr  &quot;34-41&quot; &quot;34-41&quot; NA &quot;26-33&quot; ...
 ##  $ word.count     : int  765 1298 23 391 47 200 464 639 308 78 ...</code></pre>
 <p>The <code>summary</code> function summarizes the data.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="working-with-tables-in-r-and-rstudio.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(w5dat)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="working-with-tables-in-r-and-rstudio.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(w5dat)</span></code></pre></div>
 <pre><code>##        id         file.speaker.id      text.id            spk.ref         
 ##  Min.   :   1.0   Length:1332        Length:1332        Length:1332       
 ##  1st Qu.: 333.8   Class :character   Class :character   Class :character  
@@ -422,13 +448,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="tabulating-data" class="section level2 hasAnchor" number="5.5">
 <h2><span class="header-section-number">5.5</span> Tabulating data<a href="working-with-tables-in-r-and-rstudio.html#tabulating-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can use the <code>table</code> function to create basic tables that extract raw frequency information. The following command tells us how many instances there are of each level of the variable <code>date</code> in the <code>w5dat</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="working-with-tables-in-r-and-rstudio.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(w5dat<span class="sc">$</span>date) </span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="working-with-tables-in-r-and-rstudio.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(w5dat<span class="sc">$</span>date) </span></code></pre></div>
 <pre><code>## 
 ## 1990-1994 1995-2001 2002-2005 
 ##       905        67       270</code></pre>
 <p>Alternatively, you could, of course, index the column by using its position in the data set like this: <code>w5dat[, 6]</code> - the result of <code>table(w5dat[, 6])</code> and <code>table(w5dat$date)</code> are the same! Also note that here we leave out indexes for rows to tell R that we want all rows.</p>
 <p>When you want to cross-tabulate columns, it is often better to use the <code>ftable</code> function (<code>ftable</code> stands for <em>frequency table</em>).</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="working-with-tables-in-r-and-rstudio.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(w5dat<span class="sc">$</span>age, w5dat<span class="sc">$</span>sex)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="working-with-tables-in-r-and-rstudio.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(w5dat<span class="sc">$</span>age, w5dat<span class="sc">$</span>sex)</span></code></pre></div>
 <pre><code>##        female male
 ##                   
 ## 0-18        5    7
@@ -441,7 +467,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="saving-data-to-your-computer" class="section level2 hasAnchor" number="5.6">
 <h2><span class="header-section-number">5.6</span> Saving data to your computer<a href="working-with-tables-in-r-and-rstudio.html#saving-data-to-your-computer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To save tabular data on your computer, you can use the <code>write.table</code> function. This function requires the data that you want to save as its first argument, the location where you want to save the data as the second argument and the type of delimiter as the third argument.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="working-with-tables-in-r-and-rstudio.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(w5dat, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;w5dat.txt&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="working-with-tables-in-r-and-rstudio.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(w5dat, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;w5dat.txt&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>) </span></code></pre></div>
 <p><strong>A word about paths</strong></p>
 <p>In the code chunk above, the sequence <code>here::here("data", "w5dat.txt")</code> is a handy way to define a path. A path is simply the location where a file is stored on your computer or on the internet (which typically is a server - which is just a fancy term for a computer - somewhere on the globe). The <code>here</code> function from the<code>here</code> package allows to simply state in which folder a certain file is and what file you are talking about.</p>
 <p>In this case, we want to access the file <code>w5dat</code> (which is a <code>txt</code> file and thus has the appendix <code>.txt</code>) in the <code>data</code> folder. R will always start looking in the folder in which your project is stored. If you want to access a file that is stored somewhere else on your computer, you can also define the full path to the folder in which the file is. In my case, this would be <code>D:/Uni/UQ/SLC/LADAL/SLCLADAL.github.io/data</code>. However, as the <code>data</code> folder in in the folder where my Rproj file is, I only need to specify that the file is in the <code>data</code> folder within the folder in which my Rproj file is located.</p>
@@ -451,9 +477,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="loading-data-from-your-computer" class="section level2 hasAnchor" number="5.7">
 <h2><span class="header-section-number">5.7</span> Loading data from your computer<a href="working-with-tables-in-r-and-rstudio.html#loading-data-from-your-computer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To load tabular data from within your project folder (if it is in a tab-separated txt-file) you can also use the <code>read.delim</code> function. The only difference to loading from the web is that you use a path instead of a URL. If the txt-file is in the folder called <em>data</em> in your project folder, you would load the data as shown below.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="working-with-tables-in-r-and-rstudio.html#cb18-1" aria-hidden="true" tabindex="-1"></a>w5dat <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week5data1.txt&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="working-with-tables-in-r-and-rstudio.html#cb19-1" aria-hidden="true" tabindex="-1"></a>w5dat <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week5data1.txt&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> T)</span></code></pre></div>
 <p>To if this has worked, we will use the <code>head</code> function to see first 6 rows of the data</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="working-with-tables-in-r-and-rstudio.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="working-with-tables-in-r-and-rstudio.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat)</span></code></pre></div>
 <pre><code>##   id file.speaker.id text.id spk.ref             zone      date    sex   age
 ## 1  1     &lt;S1A-001$A&gt; S1A-001       A northern ireland 1990-1994   male 34-41
 ## 2  2     &lt;S1A-001$B&gt; S1A-001       B northern ireland 1990-1994 female 34-41
@@ -472,9 +498,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="loading-excel-data" class="section level2 hasAnchor" number="5.8">
 <h2><span class="header-section-number">5.8</span> Loading Excel data<a href="working-with-tables-in-r-and-rstudio.html#loading-excel-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To load Excel spreadsheets, you can use the <code>read_excel</code> function from the <code>readxl</code> package as shown below. However, it may be necessary to install and activate the <code>readxl</code> package first.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="working-with-tables-in-r-and-rstudio.html#cb21-1" aria-hidden="true" tabindex="-1"></a>w5dat <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week5data2.xlsx&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="working-with-tables-in-r-and-rstudio.html#cb22-1" aria-hidden="true" tabindex="-1"></a>w5dat <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;week5data2.xlsx&quot;</span>))</span></code></pre></div>
 <p>We now briefly check column names to see if the loading of the data has worked.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="working-with-tables-in-r-and-rstudio.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(w5dat)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="working-with-tables-in-r-and-rstudio.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(w5dat)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;              &quot;file.speaker.id&quot; &quot;text.id&quot;         &quot;spk.ref&quot;        
 ## [5] &quot;zone&quot;            &quot;date&quot;            &quot;sex&quot;             &quot;age&quot;            
 ## [9] &quot;word.count&quot;</code></pre>
@@ -483,13 +509,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.9</span> Renaming, Piping, and Filtering<a href="working-with-tables-in-r-and-rstudio.html#renaming-piping-and-filtering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To rename existing columns in a table, you can use the <code>rename</code> command which takes the table as the first argument, the new name as the second argument, the an equal sign (=), and finally, the old name es the third argument. For example, renaming a column <em>OldName</em> as <em>NewName</em> in a table called <em>MyTable</em> would look like this: <code>rename(MyTable, NewName = OldName)</code>.</p>
 <p>Piping is done using the <code>%&gt;%</code> sequence and it can be translated as <strong>and then</strong>. In the example below, we create a new object (w5dat_edit) from the existing object (w5dat) <em>and then</em> we rename the columns in the new object. When we use piping, we do not need to name the data we are using as this is provided by the previous step.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="working-with-tables-in-r-and-rstudio.html#cb24-1" aria-hidden="true" tabindex="-1"></a>w5dat_edit <span class="ot">&lt;-</span> w5dat <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a href="working-with-tables-in-r-and-rstudio.html#cb24-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">Id =</span> id,</span>
-<span id="cb24-3"><a href="working-with-tables-in-r-and-rstudio.html#cb24-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">FileSpeakerId =</span> file.speaker.id,</span>
-<span id="cb24-4"><a href="working-with-tables-in-r-and-rstudio.html#cb24-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">File =</span> <span class="fu">colnames</span>(w5dat)[<span class="dv">3</span>],</span>
-<span id="cb24-5"><a href="working-with-tables-in-r-and-rstudio.html#cb24-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">Speaker =</span> <span class="fu">colnames</span>(w5dat)[<span class="dv">4</span>])</span>
-<span id="cb24-6"><a href="working-with-tables-in-r-and-rstudio.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
-<span id="cb24-7"><a href="working-with-tables-in-r-and-rstudio.html#cb24-7" aria-hidden="true" tabindex="-1"></a>w5dat_edit[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="working-with-tables-in-r-and-rstudio.html#cb25-1" aria-hidden="true" tabindex="-1"></a>w5dat_edit <span class="ot">&lt;-</span> w5dat <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="working-with-tables-in-r-and-rstudio.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">Id =</span> id,</span>
+<span id="cb25-3"><a href="working-with-tables-in-r-and-rstudio.html#cb25-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">FileSpeakerId =</span> file.speaker.id,</span>
+<span id="cb25-4"><a href="working-with-tables-in-r-and-rstudio.html#cb25-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">File =</span> <span class="fu">colnames</span>(w5dat)[<span class="dv">3</span>],</span>
+<span id="cb25-5"><a href="working-with-tables-in-r-and-rstudio.html#cb25-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">Speaker =</span> <span class="fu">colnames</span>(w5dat)[<span class="dv">4</span>])</span>
+<span id="cb25-6"><a href="working-with-tables-in-r-and-rstudio.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb25-7"><a href="working-with-tables-in-r-and-rstudio.html#cb25-7" aria-hidden="true" tabindex="-1"></a>w5dat_edit[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 6
 ##      Id FileSpeakerId File    Speaker zone             date     
 ##   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;            &lt;chr&gt;    
@@ -499,9 +525,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4     4 &lt;S1A-002$A&gt;   S1A-002 A       northern ireland 2002-2005
 ## 5     5 &lt;S1A-002$B&gt;   S1A-002 B       northern ireland 2002-2005</code></pre>
 <p>A very handy way to rename many columns simultaneously, you can use the <code>str_to_title</code> function which capitalizes first letter of a word. In the example below, we capitalize all first letters of the column names of our current data.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="working-with-tables-in-r-and-rstudio.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(w5dat_edit) <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_to_title</span>(<span class="fu">colnames</span>(w5dat_edit))</span>
-<span id="cb26-2"><a href="working-with-tables-in-r-and-rstudio.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
-<span id="cb26-3"><a href="working-with-tables-in-r-and-rstudio.html#cb26-3" aria-hidden="true" tabindex="-1"></a>w5dat_edit[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="working-with-tables-in-r-and-rstudio.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(w5dat_edit) <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_to_title</span>(<span class="fu">colnames</span>(w5dat_edit))</span>
+<span id="cb27-2"><a href="working-with-tables-in-r-and-rstudio.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb27-3"><a href="working-with-tables-in-r-and-rstudio.html#cb27-3" aria-hidden="true" tabindex="-1"></a>w5dat_edit[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 6
 ##      Id Filespeakerid File    Speaker Zone             Date     
 ##   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;            &lt;chr&gt;    
@@ -511,13 +537,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4     4 &lt;S1A-002$A&gt;   S1A-002 A       northern ireland 2002-2005
 ## 5     5 &lt;S1A-002$B&gt;   S1A-002 B       northern ireland 2002-2005</code></pre>
 <p>To remove rows based on values in columns you can use the <code>filter</code> function.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="working-with-tables-in-r-and-rstudio.html#cb28-1" aria-hidden="true" tabindex="-1"></a>w5dat_edit2 <span class="ot">&lt;-</span> w5dat_edit <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a href="working-with-tables-in-r-and-rstudio.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Speaker <span class="sc">!=</span> <span class="st">&quot;?&quot;</span>,</span>
-<span id="cb28-3"><a href="working-with-tables-in-r-and-rstudio.html#cb28-3" aria-hidden="true" tabindex="-1"></a>         Zone <span class="sc">!=</span> <span class="fu">is.na</span>(Zone),</span>
-<span id="cb28-4"><a href="working-with-tables-in-r-and-rstudio.html#cb28-4" aria-hidden="true" tabindex="-1"></a>         Date <span class="sc">==</span> <span class="st">&quot;2002-2005&quot;</span>,</span>
-<span id="cb28-5"><a href="working-with-tables-in-r-and-rstudio.html#cb28-5" aria-hidden="true" tabindex="-1"></a>         Word.count <span class="sc">&gt;</span> <span class="dv">5</span>)</span>
-<span id="cb28-6"><a href="working-with-tables-in-r-and-rstudio.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
-<span id="cb28-7"><a href="working-with-tables-in-r-and-rstudio.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_edit2)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="working-with-tables-in-r-and-rstudio.html#cb29-1" aria-hidden="true" tabindex="-1"></a>w5dat_edit2 <span class="ot">&lt;-</span> w5dat_edit <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="working-with-tables-in-r-and-rstudio.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Speaker <span class="sc">!=</span> <span class="st">&quot;?&quot;</span>,</span>
+<span id="cb29-3"><a href="working-with-tables-in-r-and-rstudio.html#cb29-3" aria-hidden="true" tabindex="-1"></a>         Zone <span class="sc">!=</span> <span class="fu">is.na</span>(Zone),</span>
+<span id="cb29-4"><a href="working-with-tables-in-r-and-rstudio.html#cb29-4" aria-hidden="true" tabindex="-1"></a>         Date <span class="sc">==</span> <span class="st">&quot;2002-2005&quot;</span>,</span>
+<span id="cb29-5"><a href="working-with-tables-in-r-and-rstudio.html#cb29-5" aria-hidden="true" tabindex="-1"></a>         Word.count <span class="sc">&gt;</span> <span class="dv">5</span>)</span>
+<span id="cb29-6"><a href="working-with-tables-in-r-and-rstudio.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb29-7"><a href="working-with-tables-in-r-and-rstudio.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_edit2)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 9
 ##      Id Filespeakerid File    Speaker Zone          Date  Sex   Age   Word.count
 ##   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
@@ -528,10 +554,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5     8 &lt;S1A-002$E&gt;   S1A-002 E       mixed betwee… 2002… male  34-41        639
 ## 6     9 &lt;S1A-002$F&gt;   S1A-002 F       northern ire… 2002… fema… 26-33        308</code></pre>
 <p>To select specific columns you can use the <code>select</code> function.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="working-with-tables-in-r-and-rstudio.html#cb30-1" aria-hidden="true" tabindex="-1"></a>w5dat_selection <span class="ot">&lt;-</span> w5dat_edit2 <span class="sc">%&gt;%</span></span>
-<span id="cb30-2"><a href="working-with-tables-in-r-and-rstudio.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(File, Speaker, Word.count)</span>
-<span id="cb30-3"><a href="working-with-tables-in-r-and-rstudio.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
-<span id="cb30-4"><a href="working-with-tables-in-r-and-rstudio.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_selection)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="working-with-tables-in-r-and-rstudio.html#cb31-1" aria-hidden="true" tabindex="-1"></a>w5dat_selection <span class="ot">&lt;-</span> w5dat_edit2 <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="working-with-tables-in-r-and-rstudio.html#cb31-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(File, Speaker, Word.count)</span>
+<span id="cb31-3"><a href="working-with-tables-in-r-and-rstudio.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb31-4"><a href="working-with-tables-in-r-and-rstudio.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_selection)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ##   File    Speaker Word.count
 ##   &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;
@@ -542,10 +568,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 S1A-002 E              639
 ## 6 S1A-002 F              308</code></pre>
 <p>You can also use the <code>select</code> function to remove specific columns.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="working-with-tables-in-r-and-rstudio.html#cb32-1" aria-hidden="true" tabindex="-1"></a>w5dat_selection2 <span class="ot">&lt;-</span> w5dat_edit2 <span class="sc">%&gt;%</span></span>
-<span id="cb32-2"><a href="working-with-tables-in-r-and-rstudio.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Id, <span class="sc">-</span>File, <span class="sc">-</span>Speaker, <span class="sc">-</span>Date, <span class="sc">-</span>Zone, <span class="sc">-</span>Age)</span>
-<span id="cb32-3"><a href="working-with-tables-in-r-and-rstudio.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
-<span id="cb32-4"><a href="working-with-tables-in-r-and-rstudio.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_selection2)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="working-with-tables-in-r-and-rstudio.html#cb33-1" aria-hidden="true" tabindex="-1"></a>w5dat_selection2 <span class="ot">&lt;-</span> w5dat_edit2 <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="working-with-tables-in-r-and-rstudio.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Id, <span class="sc">-</span>File, <span class="sc">-</span>Speaker, <span class="sc">-</span>Date, <span class="sc">-</span>Zone, <span class="sc">-</span>Age)</span>
+<span id="cb33-3"><a href="working-with-tables-in-r-and-rstudio.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb33-4"><a href="working-with-tables-in-r-and-rstudio.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_selection2)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ##   Filespeakerid Sex    Word.count
 ##   &lt;chr&gt;         &lt;chr&gt;       &lt;dbl&gt;
@@ -559,10 +585,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ordering-data" class="section level2 hasAnchor" number="5.10">
 <h2><span class="header-section-number">5.10</span> Ordering data<a href="working-with-tables-in-r-and-rstudio.html#ordering-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To order data, for instance, in ascending order according to a specific column you can use the <code>arrange</code> function.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="working-with-tables-in-r-and-rstudio.html#cb34-1" aria-hidden="true" tabindex="-1"></a>w5dat_ordered_asc <span class="ot">&lt;-</span> w5dat_selection2 <span class="sc">%&gt;%</span></span>
-<span id="cb34-2"><a href="working-with-tables-in-r-and-rstudio.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(Word.count)</span>
-<span id="cb34-3"><a href="working-with-tables-in-r-and-rstudio.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
-<span id="cb34-4"><a href="working-with-tables-in-r-and-rstudio.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_ordered_asc)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="working-with-tables-in-r-and-rstudio.html#cb35-1" aria-hidden="true" tabindex="-1"></a>w5dat_ordered_asc <span class="ot">&lt;-</span> w5dat_selection2 <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="working-with-tables-in-r-and-rstudio.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(Word.count)</span>
+<span id="cb35-3"><a href="working-with-tables-in-r-and-rstudio.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb35-4"><a href="working-with-tables-in-r-and-rstudio.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_ordered_asc)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ##   Filespeakerid Sex    Word.count
 ##   &lt;chr&gt;         &lt;chr&gt;       &lt;dbl&gt;
@@ -573,10 +599,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 &lt;S1B-006$G&gt;   female          9
 ## 6 &lt;S2A-050$B&gt;   male            9</code></pre>
 <p>To order data in descending order you can also use the <code>arrange</code> function and simply add a - before the column according to which you want to order the data.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="working-with-tables-in-r-and-rstudio.html#cb36-1" aria-hidden="true" tabindex="-1"></a>w5dat_ordered_desc <span class="ot">&lt;-</span> w5dat_selection2 <span class="sc">%&gt;%</span></span>
-<span id="cb36-2"><a href="working-with-tables-in-r-and-rstudio.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="sc">-</span>Word.count)</span>
-<span id="cb36-3"><a href="working-with-tables-in-r-and-rstudio.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
-<span id="cb36-4"><a href="working-with-tables-in-r-and-rstudio.html#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_ordered_desc)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="working-with-tables-in-r-and-rstudio.html#cb37-1" aria-hidden="true" tabindex="-1"></a>w5dat_ordered_desc <span class="ot">&lt;-</span> w5dat_selection2 <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a href="working-with-tables-in-r-and-rstudio.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="sc">-</span>Word.count)</span>
+<span id="cb37-3"><a href="working-with-tables-in-r-and-rstudio.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb37-4"><a href="working-with-tables-in-r-and-rstudio.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_ordered_desc)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ##   Filespeakerid Sex    Word.count
 ##   &lt;chr&gt;         &lt;chr&gt;       &lt;dbl&gt;
@@ -600,15 +626,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>the value <em>ScriptedMonologue</em> if <em>Filespeakerid</em> contains the sequence <em>S2B</em>,</p></li>
 <li><p>the value of <em>Filespeakerid</em> if <em>Filespeakerid</em> neither contains <em>S1A</em>, <em>S1B</em>, <em>S2A</em>, nor <em>S2B</em>.</p></li>
 </ul>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="working-with-tables-in-r-and-rstudio.html#cb38-1" aria-hidden="true" tabindex="-1"></a>w5dat_texttype <span class="ot">&lt;-</span> w5dat_selection2 <span class="sc">%&gt;%</span></span>
-<span id="cb38-2"><a href="working-with-tables-in-r-and-rstudio.html#cb38-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Texttype =</span> </span>
-<span id="cb38-3"><a href="working-with-tables-in-r-and-rstudio.html#cb38-3" aria-hidden="true" tabindex="-1"></a>                  dplyr<span class="sc">::</span><span class="fu">case_when</span>(stringr<span class="sc">::</span><span class="fu">str_detect</span>(Filespeakerid ,<span class="st">&quot;S1A&quot;</span>) <span class="sc">~</span> <span class="st">&quot;PrivateDialoge&quot;</span>,</span>
-<span id="cb38-4"><a href="working-with-tables-in-r-and-rstudio.html#cb38-4" aria-hidden="true" tabindex="-1"></a>                                   stringr<span class="sc">::</span><span class="fu">str_detect</span>(Filespeakerid ,<span class="st">&quot;S1B&quot;</span>) <span class="sc">~</span> <span class="st">&quot;PublicDialogue&quot;</span>,</span>
-<span id="cb38-5"><a href="working-with-tables-in-r-and-rstudio.html#cb38-5" aria-hidden="true" tabindex="-1"></a>                                   stringr<span class="sc">::</span><span class="fu">str_detect</span>(Filespeakerid ,<span class="st">&quot;S2A&quot;</span>) <span class="sc">~</span> <span class="st">&quot;UnscriptedMonologue&quot;</span>,</span>
-<span id="cb38-6"><a href="working-with-tables-in-r-and-rstudio.html#cb38-6" aria-hidden="true" tabindex="-1"></a>                                   stringr<span class="sc">::</span><span class="fu">str_detect</span>(Filespeakerid ,<span class="st">&quot;S2B&quot;</span>) <span class="sc">~</span> <span class="st">&quot;ScriptedMonologue&quot;</span>,</span>
-<span id="cb38-7"><a href="working-with-tables-in-r-and-rstudio.html#cb38-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="cn">TRUE</span> <span class="sc">~</span> Filespeakerid))</span>
-<span id="cb38-8"><a href="working-with-tables-in-r-and-rstudio.html#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
-<span id="cb38-9"><a href="working-with-tables-in-r-and-rstudio.html#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_texttype)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="working-with-tables-in-r-and-rstudio.html#cb39-1" aria-hidden="true" tabindex="-1"></a>w5dat_texttype <span class="ot">&lt;-</span> w5dat_selection2 <span class="sc">%&gt;%</span></span>
+<span id="cb39-2"><a href="working-with-tables-in-r-and-rstudio.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Texttype =</span> </span>
+<span id="cb39-3"><a href="working-with-tables-in-r-and-rstudio.html#cb39-3" aria-hidden="true" tabindex="-1"></a>                  dplyr<span class="sc">::</span><span class="fu">case_when</span>(stringr<span class="sc">::</span><span class="fu">str_detect</span>(Filespeakerid ,<span class="st">&quot;S1A&quot;</span>) <span class="sc">~</span> <span class="st">&quot;PrivateDialoge&quot;</span>,</span>
+<span id="cb39-4"><a href="working-with-tables-in-r-and-rstudio.html#cb39-4" aria-hidden="true" tabindex="-1"></a>                                   stringr<span class="sc">::</span><span class="fu">str_detect</span>(Filespeakerid ,<span class="st">&quot;S1B&quot;</span>) <span class="sc">~</span> <span class="st">&quot;PublicDialogue&quot;</span>,</span>
+<span id="cb39-5"><a href="working-with-tables-in-r-and-rstudio.html#cb39-5" aria-hidden="true" tabindex="-1"></a>                                   stringr<span class="sc">::</span><span class="fu">str_detect</span>(Filespeakerid ,<span class="st">&quot;S2A&quot;</span>) <span class="sc">~</span> <span class="st">&quot;UnscriptedMonologue&quot;</span>,</span>
+<span id="cb39-6"><a href="working-with-tables-in-r-and-rstudio.html#cb39-6" aria-hidden="true" tabindex="-1"></a>                                   stringr<span class="sc">::</span><span class="fu">str_detect</span>(Filespeakerid ,<span class="st">&quot;S2B&quot;</span>) <span class="sc">~</span> <span class="st">&quot;ScriptedMonologue&quot;</span>,</span>
+<span id="cb39-7"><a href="working-with-tables-in-r-and-rstudio.html#cb39-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="cn">TRUE</span> <span class="sc">~</span> Filespeakerid))</span>
+<span id="cb39-8"><a href="working-with-tables-in-r-and-rstudio.html#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb39-9"><a href="working-with-tables-in-r-and-rstudio.html#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_texttype)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 4
 ##   Filespeakerid Sex    Word.count Texttype      
 ##   &lt;chr&gt;         &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;         
@@ -629,21 +655,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="summarizing-data" class="section level2 hasAnchor" number="5.13">
 <h2><span class="header-section-number">5.13</span> Summarizing data<a href="working-with-tables-in-r-and-rstudio.html#summarizing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Summarizing is really helpful and can be done using the <code>summarise</code> function.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="working-with-tables-in-r-and-rstudio.html#cb40-1" aria-hidden="true" tabindex="-1"></a>w5dat_summary1 <span class="ot">&lt;-</span> w5dat_texttype <span class="sc">%&gt;%</span></span>
-<span id="cb40-2"><a href="working-with-tables-in-r-and-rstudio.html#cb40-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">Words =</span> <span class="fu">sum</span>(Word.count))</span>
-<span id="cb40-3"><a href="working-with-tables-in-r-and-rstudio.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
-<span id="cb40-4"><a href="working-with-tables-in-r-and-rstudio.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_summary1)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="working-with-tables-in-r-and-rstudio.html#cb41-1" aria-hidden="true" tabindex="-1"></a>w5dat_summary1 <span class="ot">&lt;-</span> w5dat_texttype <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="working-with-tables-in-r-and-rstudio.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">Words =</span> <span class="fu">sum</span>(Word.count))</span>
+<span id="cb41-3"><a href="working-with-tables-in-r-and-rstudio.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb41-4"><a href="working-with-tables-in-r-and-rstudio.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_summary1)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 1
 ##    Words
 ##    &lt;dbl&gt;
 ## 1 141876</code></pre>
 <p>To get summaries of sub-groups or by variable level, we can use the <code>group_by</code> function and then use the <code>summarise</code> function.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="working-with-tables-in-r-and-rstudio.html#cb42-1" aria-hidden="true" tabindex="-1"></a>w5dat_summary2 <span class="ot">&lt;-</span> w5dat_texttype <span class="sc">%&gt;%</span></span>
-<span id="cb42-2"><a href="working-with-tables-in-r-and-rstudio.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Texttype, Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb42-3"><a href="working-with-tables-in-r-and-rstudio.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">Speakers =</span> <span class="fu">n</span>(),</span>
-<span id="cb42-4"><a href="working-with-tables-in-r-and-rstudio.html#cb42-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Words =</span> <span class="fu">sum</span>(Word.count))</span>
-<span id="cb42-5"><a href="working-with-tables-in-r-and-rstudio.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
-<span id="cb42-6"><a href="working-with-tables-in-r-and-rstudio.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_summary2)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="working-with-tables-in-r-and-rstudio.html#cb43-1" aria-hidden="true" tabindex="-1"></a>w5dat_summary2 <span class="ot">&lt;-</span> w5dat_texttype <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href="working-with-tables-in-r-and-rstudio.html#cb43-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Texttype, Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a href="working-with-tables-in-r-and-rstudio.html#cb43-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">Speakers =</span> <span class="fu">n</span>(),</span>
+<span id="cb43-4"><a href="working-with-tables-in-r-and-rstudio.html#cb43-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Words =</span> <span class="fu">sum</span>(Word.count))</span>
+<span id="cb43-5"><a href="working-with-tables-in-r-and-rstudio.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb43-6"><a href="working-with-tables-in-r-and-rstudio.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_summary2)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 4
 ## # Groups:   Texttype [3]
 ##   Texttype            Sex    Speakers Words
@@ -660,11 +686,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The <code>tidyr</code> package has two very useful functions for gathering and spreading data that can be sued to transform data to long and wide formats (you will see what this means below). The functions are called <code>gather</code> and <code>spread</code>.</p>
 <p>We will use the data set called <code>w5dat_summary2</code>, which we created above, to demonstrate how this works.</p>
 <p>We will first check out the <code>spread</code>-function to create different columns for women and men that show how many of them are represented in the different text types.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="working-with-tables-in-r-and-rstudio.html#cb44-1" aria-hidden="true" tabindex="-1"></a>w5dat_summary_wide <span class="ot">&lt;-</span> w5dat_summary2 <span class="sc">%&gt;%</span></span>
-<span id="cb44-2"><a href="working-with-tables-in-r-and-rstudio.html#cb44-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Words) <span class="sc">%&gt;%</span></span>
-<span id="cb44-3"><a href="working-with-tables-in-r-and-rstudio.html#cb44-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">spread</span>(Sex, Speakers)</span>
-<span id="cb44-4"><a href="working-with-tables-in-r-and-rstudio.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect</span></span>
-<span id="cb44-5"><a href="working-with-tables-in-r-and-rstudio.html#cb44-5" aria-hidden="true" tabindex="-1"></a>w5dat_summary_wide</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="working-with-tables-in-r-and-rstudio.html#cb45-1" aria-hidden="true" tabindex="-1"></a>w5dat_summary_wide <span class="ot">&lt;-</span> w5dat_summary2 <span class="sc">%&gt;%</span></span>
+<span id="cb45-2"><a href="working-with-tables-in-r-and-rstudio.html#cb45-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Words) <span class="sc">%&gt;%</span></span>
+<span id="cb45-3"><a href="working-with-tables-in-r-and-rstudio.html#cb45-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">spread</span>(Sex, Speakers)</span>
+<span id="cb45-4"><a href="working-with-tables-in-r-and-rstudio.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect</span></span>
+<span id="cb45-5"><a href="working-with-tables-in-r-and-rstudio.html#cb45-5" aria-hidden="true" tabindex="-1"></a>w5dat_summary_wide</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 3
 ## # Groups:   Texttype [3]
 ##   Texttype            female  male
@@ -674,10 +700,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 UnscriptedMonologue      3    16</code></pre>
 <p>The data is now in what is called a <code>wide</code>-format as values are distributed across columns.</p>
 <p>To reformat this back to a <code>long</code>-format where each column represents exactly one variable, we use the <code>gather</code>-function:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="working-with-tables-in-r-and-rstudio.html#cb46-1" aria-hidden="true" tabindex="-1"></a>w5dat_summary_long <span class="ot">&lt;-</span> w5dat_summary_wide <span class="sc">%&gt;%</span></span>
-<span id="cb46-2"><a href="working-with-tables-in-r-and-rstudio.html#cb46-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">gather</span>(Sex, Speakers, female<span class="sc">:</span>male)</span>
-<span id="cb46-3"><a href="working-with-tables-in-r-and-rstudio.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect</span></span>
-<span id="cb46-4"><a href="working-with-tables-in-r-and-rstudio.html#cb46-4" aria-hidden="true" tabindex="-1"></a>w5dat_summary_long</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="working-with-tables-in-r-and-rstudio.html#cb47-1" aria-hidden="true" tabindex="-1"></a>w5dat_summary_long <span class="ot">&lt;-</span> w5dat_summary_wide <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a href="working-with-tables-in-r-and-rstudio.html#cb47-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">gather</span>(Sex, Speakers, female<span class="sc">:</span>male)</span>
+<span id="cb47-3"><a href="working-with-tables-in-r-and-rstudio.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect</span></span>
+<span id="cb47-4"><a href="working-with-tables-in-r-and-rstudio.html#cb47-4" aria-hidden="true" tabindex="-1"></a>w5dat_summary_long</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ## # Groups:   Texttype [3]
 ##   Texttype            Sex    Speakers
@@ -696,7 +722,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="extracting-session-information" class="section level2 hasAnchor" number="5.16">
 <h2><span class="header-section-number">5.16</span> Extracting session information<a href="working-with-tables-in-r-and-rstudio.html#extracting-session-information" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can extract the session information by running the <code>sessionInfo</code> function (without any arguments)</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="working-with-tables-in-r-and-rstudio.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="working-with-tables-in-r-and-rstudio.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
 <pre><code>## R version 4.2.1 RC (2022-06-17 r82510 ucrt)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
 ## Running under: Windows 10 x64 (build 19043)
@@ -761,8 +787,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="getting-started-with-r-and-rstudio.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="getting-started-with-r-and-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="descriptive-statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
