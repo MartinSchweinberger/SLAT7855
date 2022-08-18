@@ -23,7 +23,7 @@
 <meta name="author" content="Martin Schweinberger" />
 
 
-<meta name="date" content="2022-08-14" />
+<meta name="date" content="2022-08-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -319,6 +319,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals-for-simple-vectors"><i class="fa fa-check"></i>Confidence Intervals for Simple Vectors</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html"><i class="fa fa-check"></i><b>7</b> Introduction to Data Visualization</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#the-ggplot-framework"><i class="fa fa-check"></i><b>7.1</b> The ggplot framework</a></li>
+<li class="chapter" data-level="7.2" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#basic-principles-of-data-vis"><i class="fa fa-check"></i><b>7.2</b> Basic principles of data vis</a></li>
+<li class="chapter" data-level="7.3" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#creating-a-simple-graph"><i class="fa fa-check"></i><b>7.3</b> Creating a simple graph</a></li>
+<li class="chapter" data-level="7.4" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#modifying-axes-and-titles"><i class="fa fa-check"></i><b>7.4</b> Modifying axes and titles</a></li>
+<li class="chapter" data-level="7.5" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#line-graphs"><i class="fa fa-check"></i><b>7.5</b> Line Graphs</a></li>
+<li class="chapter" data-level="7.6" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#histograms"><i class="fa fa-check"></i><b>7.6</b> Histograms</a></li>
+<li class="chapter" data-level="7.7" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#bar-plots"><i class="fa fa-check"></i><b>7.7</b> Bar plots</a></li>
+<li class="chapter" data-level="7.8" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#boxplots"><i class="fa fa-check"></i><b>7.8</b> Boxplots</a></li>
+<li class="chapter" data-level="7.9" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#modifying-symbols-and-adding-text"><i class="fa fa-check"></i><b>7.9</b> Modifying symbols and adding text</a></li>
+<li class="chapter" data-level="7.10" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#modifying-themes-and-legends"><i class="fa fa-check"></i><b>7.10</b> Modifying themes and legends</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -740,24 +753,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## other attached packages:
 ## [1] forcats_0.5.1   stringr_1.4.0   dplyr_1.0.9     purrr_0.3.4    
 ## [5] readr_2.1.2     tidyr_1.2.0     tibble_3.1.7    ggplot2_3.3.6  
-## [9] tidyverse_1.3.1
+## [9] tidyverse_1.3.2
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] tidyselect_1.1.2 xfun_0.30        bslib_0.3.1      haven_2.5.0     
-##  [5] colorspace_2.0-3 vctrs_0.4.1      generics_0.1.2   htmltools_0.5.2 
-##  [9] yaml_2.3.5       utf8_1.2.2       rlang_1.0.2      jquerylib_0.1.4 
-## [13] pillar_1.7.0     withr_2.5.0      glue_1.6.2       DBI_1.1.2       
-## [17] dbplyr_2.1.1     readxl_1.4.0     modelr_0.1.8     lifecycle_1.0.1 
-## [21] cellranger_1.1.0 munsell_0.5.0    gtable_0.3.0     rvest_1.0.2     
-## [25] evaluate_0.15    knitr_1.39       tzdb_0.3.0       fastmap_1.1.0   
-## [29] fansi_1.0.3      broom_0.8.0      backports_1.4.1  scales_1.2.0    
-## [33] jsonlite_1.8.0   fs_1.5.2         hms_1.1.1        digest_0.6.29   
-## [37] stringi_1.7.6    bookdown_0.26    rprojroot_2.0.3  grid_4.2.1      
-## [41] here_1.0.1       cli_3.3.0        tools_4.2.1      magrittr_2.0.3  
-## [45] sass_0.4.1       crayon_1.5.1     pkgconfig_2.0.3  ellipsis_0.3.2  
-## [49] xml2_1.3.3       reprex_2.0.1     lubridate_1.8.0  assertthat_0.2.1
-## [53] rmarkdown_2.14   httr_1.4.3       rstudioapi_0.13  R6_2.5.1        
-## [57] compiler_4.2.1</code></pre>
+##  [1] tidyselect_1.1.2    xfun_0.30           bslib_0.3.1        
+##  [4] haven_2.5.0         gargle_1.2.0        colorspace_2.0-3   
+##  [7] vctrs_0.4.1         generics_0.1.2      htmltools_0.5.2    
+## [10] yaml_2.3.5          utf8_1.2.2          rlang_1.0.2        
+## [13] jquerylib_0.1.4     pillar_1.7.0        withr_2.5.0        
+## [16] glue_1.6.2          DBI_1.1.2           dbplyr_2.1.1       
+## [19] readxl_1.4.0        modelr_0.1.8        lifecycle_1.0.1    
+## [22] munsell_0.5.0       gtable_0.3.0        cellranger_1.1.0   
+## [25] rvest_1.0.2         evaluate_0.15       knitr_1.39         
+## [28] tzdb_0.3.0          fastmap_1.1.0       fansi_1.0.3        
+## [31] broom_0.8.0         backports_1.4.1     scales_1.2.0       
+## [34] googlesheets4_1.0.0 jsonlite_1.8.0      fs_1.5.2           
+## [37] hms_1.1.1           digest_0.6.29       stringi_1.7.6      
+## [40] bookdown_0.26       rprojroot_2.0.3     grid_4.2.1         
+## [43] here_1.0.1          cli_3.3.0           tools_4.2.1        
+## [46] magrittr_2.0.3      sass_0.4.1          crayon_1.5.1       
+## [49] pkgconfig_2.0.3     ellipsis_0.3.2      xml2_1.3.3         
+## [52] reprex_2.0.1        lubridate_1.8.0     googledrive_2.0.0  
+## [55] httr_1.4.3          assertthat_0.2.1    rmarkdown_2.15     
+## [58] rstudioapi_0.13     R6_2.5.1            compiler_4.2.1</code></pre>
 </div>
 <div id="going-further" class="section level2 hasAnchor" number="5.17">
 <h2><span class="header-section-number">5.17</span> Going further<a href="working-with-tables-in-r-and-rstudio.html#going-further" class="anchor-section" aria-label="Anchor link to header"></a></h2>

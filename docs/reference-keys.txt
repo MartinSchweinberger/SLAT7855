@@ -236,3 +236,14 @@ changing-data
 saving-data
 goals-of-this-section
 why-r
+basic-principles-of-data-visualization
+the-ggplot-framework
+creating-a-simple-graph
+modifying-axes-and-titles
+modifying-lines-symbols
+adding-text
+combining-multiple-plots
+modifying-thmes-and-legends
+modifying-symbols-and-adding-text
+basic-principles-of-data-vis
+modifying-themes-and-legends

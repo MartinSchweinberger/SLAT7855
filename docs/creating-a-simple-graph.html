@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Creating a simple graph | SLAT7855 Quantitative Research Methods in Applied Linguistics</title>
+  <meta name="description" content="Creating a simple graph | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Creating a simple graph | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Creating a simple graph | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
+  
+  
+  
+
+<meta name="author" content="Martin Schweinberger" />
+
+
+<meta name="date" content="2022-08-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="getting-started.html"/>
+<link rel="next" href="modifying-axes-and-titles.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SLAT7855</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#basic-course-information"><i class="fa fa-check"></i>Basic Course Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i>Course Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-introduction"><i class="fa fa-check"></i>Course Introduction</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#timetable"><i class="fa fa-check"></i>Timetable</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#aims-objectives-graduate-attributes"><i class="fa fa-check"></i>Aims, Objectives &amp; Graduate Attributes</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aims"><i class="fa fa-check"></i>Course Aims</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-resources"><i class="fa fa-check"></i>Learning Resources</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#required-resources"><i class="fa fa-check"></i>Required Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-resources"><i class="fa fa-check"></i>Recommended Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#university-learning-resources"><i class="fa fa-check"></i>University Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#school-of-languages-and-cultures-learning-resources"><i class="fa fa-check"></i>School of Languages and Cultures Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-learning-resources-information"><i class="fa fa-check"></i>Other Learning Resources &amp; Information</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#teaching-learning-activities"><i class="fa fa-check"></i>Teaching &amp; Learning Activities</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-activities"><i class="fa fa-check"></i>Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-plan"><i class="fa fa-check"></i>Course plan</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#assessment"><i class="fa fa-check"></i>Assessment</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#weekly-oline-study-tasks"><i class="fa fa-check"></i>Weekly Oline Study Tasks</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#annotated-bibliography"><i class="fa fa-check"></i>Annotated Bibliography</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#research-project"><i class="fa fa-check"></i>Research Project</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-grading"><i class="fa fa-check"></i>Course Grading</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#why-do-we-need-science"><i class="fa fa-check"></i><b>1.1</b> Why do we need science?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#errare-humanum-est"><i class="fa fa-check"></i><b>1.2</b> Errare Humanum Est</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#the-monty-hall-problem"><i class="fa fa-check"></i><b>1.2.1</b> The Monty Hall Problem</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#the-birthday-conundrum"><i class="fa fa-check"></i><b>1.2.2</b> The Birthday Conundrum</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#fast-and-slow-thinking"><i class="fa fa-check"></i><b>1.2.3</b> Fast and Slow Thinking</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#randomness"><i class="fa fa-check"></i><b>1.2.4</b> Randomness</a></li>
+<li class="chapter" data-level="1.2.5" data-path="introduction.html"><a href="introduction.html#patterns-and-matters-of-habit"><i class="fa fa-check"></i><b>1.2.5</b> Patterns and Matters of Habit</a></li>
+<li class="chapter" data-level="1.2.6" data-path="introduction.html"><a href="introduction.html#locical-fallacies-and-biases"><i class="fa fa-check"></i><b>1.2.6</b> Locical Fallacies and Biases</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#what-is-science"><i class="fa fa-check"></i><b>1.3</b> What is science?</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#clever-hans"><i class="fa fa-check"></i><b>1.3.1</b> Clever Hans</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#popper-falsification-and-scientific-progress"><i class="fa fa-check"></i><b>1.3.2</b> Popper, falsification, and scientific progress</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#what-is-empirical-linguistics"><i class="fa fa-check"></i><b>1.3.3</b> What is (empirical) Linguistics?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#tutorial"><i class="fa fa-check"></i>Tutorial</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html"><i class="fa fa-check"></i><b>2</b> Hypotheses and Variables</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#hypotheses"><i class="fa fa-check"></i><b>2.1</b> Hypotheses</a>
+<ul>
+<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#types-of-hypotheses"><i class="fa fa-check"></i>Types of Hypotheses</a></li>
+<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#why-test-the-h0"><i class="fa fa-check"></i>Why test the H0?!</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#data-and-research-designs"><i class="fa fa-check"></i><b>2.2</b> Data and Research Designs</a>
+<ul>
+<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#research-designs"><i class="fa fa-check"></i>Research Designs</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#variables-and-validity"><i class="fa fa-check"></i><b>2.3</b> Variables and Validity</a>
+<ul>
+<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#variable-types-scaling"><i class="fa fa-check"></i>Variable Types (Scaling)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#relationships-between-variables"><i class="fa fa-check"></i><b>2.4</b> Relationships between variables</a></li>
+<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#tutorial-1"><i class="fa fa-check"></i>Tutorial</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html"><i class="fa fa-check"></i><b>3</b> Significance, Probability and the Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#significance-and-probability"><i class="fa fa-check"></i><b>3.1</b> Significance and Probability</a>
+<ul>
+<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#significance-levels"><i class="fa fa-check"></i>Significance Levels</a></li>
+<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#probability"><i class="fa fa-check"></i>Probability</a></li>
+<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#the-normal-distribution"><i class="fa fa-check"></i>The Normal Distribution</a></li>
+<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#non-normality-skewness-and-kurtosis"><i class="fa fa-check"></i>Non-normality: skewness and kurtosis</a></li>
+<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#the-binomial-distribution"><i class="fa fa-check"></i>The Binomial Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#z-scores"><i class="fa fa-check"></i><b>3.2</b> z-scores</a></li>
+<li class="chapter" data-level="3.3" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#alpha-and-beta-errors"><i class="fa fa-check"></i><b>3.3</b> Alpha and Beta Errors</a></li>
+<li class="chapter" data-level="3.4" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#independence"><i class="fa fa-check"></i><b>3.4</b> Independence</a></li>
+<li class="chapter" data-level="3.5" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#corrections"><i class="fa fa-check"></i><b>3.5</b> Corrections</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html"><i class="fa fa-check"></i><b>4</b> Getting Started with R and RStudio</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#goals-of-this-section"><i class="fa fa-check"></i><b>4.1</b> Goals of this section</a></li>
+<li class="chapter" data-level="4.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#why-r"><i class="fa fa-check"></i><b>4.2</b> Why R?</a>
+<ul>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#full-flexibility"><i class="fa fa-check"></i>Full flexibility</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#great-for-learners"><i class="fa fa-check"></i>Great for learners!</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#free-and-open-source"><i class="fa fa-check"></i>Free and Open Source</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#rstudio-and-ease-of-use"><i class="fa fa-check"></i>RStudio and ease of use</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-is-a-community-effort"><i class="fa fa-check"></i>R is a community effort</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#reproducibilty-and-transparency"><i class="fa fa-check"></i>Reproducibilty and Transparency</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#tools-versus-scripts"><i class="fa fa-check"></i>Tools versus Scripts</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#widely-used"><i class="fa fa-check"></i>Widely used</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#employability"><i class="fa fa-check"></i>Employability</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>4.3</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="4.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#preparation"><i class="fa fa-check"></i><b>4.4</b> Preparation</a></li>
+<li class="chapter" data-level="4.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#folder-structure-and-r-projects"><i class="fa fa-check"></i><b>4.5</b> Folder Structure and R projects</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#create-a-folder-for-your-project"><i class="fa fa-check"></i><b>4.5.1</b> Create a folder for your project</a></li>
+<li class="chapter" data-level="4.5.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#open-rstudio"><i class="fa fa-check"></i><b>4.5.2</b> Open RStudio</a></li>
+<li class="chapter" data-level="4.5.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-projects"><i class="fa fa-check"></i><b>4.5.3</b> R Projects</a></li>
+<li class="chapter" data-level="4.5.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-notebooks"><i class="fa fa-check"></i><b>4.5.4</b> R Notebooks</a></li>
+<li class="chapter" data-level="4.5.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#updating-r"><i class="fa fa-check"></i><b>4.5.5</b> Updating R</a></li>
+<li class="chapter" data-level="4.5.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#optimizing-r-project-options"><i class="fa fa-check"></i><b>4.5.6</b> Optimizing R project options</a></li>
+<li class="chapter" data-level="4.5.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-started-with-r-notebooks"><i class="fa fa-check"></i><b>4.5.7</b> Getting started with R Notebooks</a></li>
+<li class="chapter" data-level="4.5.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-markdown"><i class="fa fa-check"></i><b>4.5.8</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-and-rstudio-basics"><i class="fa fa-check"></i><b>4.6</b> R and RStudio Basics</a></li>
+<li class="chapter" data-level="4.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#rstudio-panes"><i class="fa fa-check"></i><b>4.7</b> RStudio: Panes</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-console-bottom-left-pane"><i class="fa fa-check"></i><b>4.7.1</b> R Console (bottom left pane)</a></li>
+<li class="chapter" data-level="4.7.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#running-commands-from-a-script"><i class="fa fa-check"></i><b>4.7.2</b> Running commands from a script</a></li>
+<li class="chapter" data-level="4.7.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#script-editor-top-left-pane"><i class="fa fa-check"></i><b>4.7.3</b> Script Editor (top left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-started-with-r"><i class="fa fa-check"></i><b>4.8</b> Getting started with R</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#setting-up-an-r-session"><i class="fa fa-check"></i><b>4.8.1</b> Setting up an R session</a></li>
+<li class="chapter" data-level="4.8.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#packages"><i class="fa fa-check"></i><b>4.8.2</b> Packages</a></li>
+<li class="chapter" data-level="4.8.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-help"><i class="fa fa-check"></i><b>4.8.3</b> Getting help</a></li>
+<li class="chapter" data-level="4.8.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#finding-help-within-r"><i class="fa fa-check"></i><b>4.8.4</b> Finding help within R</a></li>
+<li class="chapter" data-level="4.8.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#finding-help-online"><i class="fa fa-check"></i><b>4.8.5</b> Finding help online</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#working-with-data"><i class="fa fa-check"></i><b>4.9</b> Working with Data</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#loading-data"><i class="fa fa-check"></i><b>4.9.1</b> Loading data</a></li>
+<li class="chapter" data-level="4.9.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#inspecting-data"><i class="fa fa-check"></i><b>4.9.2</b> Inspecting data</a></li>
+<li class="chapter" data-level="4.9.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#a-first-plot"><i class="fa fa-check"></i><b>4.9.3</b> A first plot</a></li>
+<li class="chapter" data-level="4.9.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#changing-data"><i class="fa fa-check"></i><b>4.9.4</b> Changing data</a></li>
+<li class="chapter" data-level="4.9.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#saving-data"><i class="fa fa-check"></i><b>4.9.5</b> Saving data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html"><i class="fa fa-check"></i><b>5</b> Working with Tables in R and RStudio</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#working-with-tables"><i class="fa fa-check"></i><b>5.1</b> Working with tables</a></li>
+<li class="chapter" data-level="5.2" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#functions-and-objects"><i class="fa fa-check"></i><b>5.2</b> Functions and Objects</a></li>
+<li class="chapter" data-level="5.3" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#inspecting-data-1"><i class="fa fa-check"></i><b>5.3</b> Inspecting data</a></li>
+<li class="chapter" data-level="5.4" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#accessing-individual-cells-in-a-table"><i class="fa fa-check"></i><b>5.4</b> Accessing individual cells in a table</a></li>
+<li class="chapter" data-level="5.5" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#tabulating-data"><i class="fa fa-check"></i><b>5.5</b> Tabulating data</a></li>
+<li class="chapter" data-level="5.6" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#saving-data-to-your-computer"><i class="fa fa-check"></i><b>5.6</b> Saving data to your computer</a></li>
+<li class="chapter" data-level="5.7" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#loading-data-from-your-computer"><i class="fa fa-check"></i><b>5.7</b> Loading data from your computer</a></li>
+<li class="chapter" data-level="5.8" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#loading-excel-data"><i class="fa fa-check"></i><b>5.8</b> Loading Excel data</a></li>
+<li class="chapter" data-level="5.9" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#renaming-piping-and-filtering"><i class="fa fa-check"></i><b>5.9</b> Renaming, Piping, and Filtering</a></li>
+<li class="chapter" data-level="5.10" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#ordering-data"><i class="fa fa-check"></i><b>5.10</b> Ordering data</a></li>
+<li class="chapter" data-level="5.11" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#creating-and-changing-variables"><i class="fa fa-check"></i><b>5.11</b> Creating and changing variables</a></li>
+<li class="chapter" data-level="5.12" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#if-statements"><i class="fa fa-check"></i><b>5.12</b> If-statements</a></li>
+<li class="chapter" data-level="5.13" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#summarizing-data"><i class="fa fa-check"></i><b>5.13</b> Summarizing data</a></li>
+<li class="chapter" data-level="5.14" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#gathering-and-spreading-data"><i class="fa fa-check"></i><b>5.14</b> Gathering and spreading data</a></li>
+<li class="chapter" data-level="5.15" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#ending-r-sessions"><i class="fa fa-check"></i><b>5.15</b> Ending R sessions</a></li>
+<li class="chapter" data-level="5.16" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#extracting-session-information"><i class="fa fa-check"></i><b>5.16</b> Extracting session information</a></li>
+<li class="chapter" data-level="5.17" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#going-further"><i class="fa fa-check"></i><b>5.17</b> Going further</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-centrality"><i class="fa fa-check"></i><b>6.1</b> Measures of Centrality</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#mean"><i class="fa fa-check"></i>Mean</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#median"><i class="fa fa-check"></i>Median</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#mode"><i class="fa fa-check"></i>Mode</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#geometric-mean"><i class="fa fa-check"></i>Geometric mean</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#harmonic-mean"><i class="fa fa-check"></i>Harmonic mean</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#notes-on-measures-of-centrality"><i class="fa fa-check"></i>Notes on Measures of Centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-variability"><i class="fa fa-check"></i><b>6.2</b> Measures of Variability</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#range"><i class="fa fa-check"></i>Range</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#interquartile-range-iqr"><i class="fa fa-check"></i>Interquartile range (IQR)</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#variance"><i class="fa fa-check"></i>Variance</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#standard-deviation"><i class="fa fa-check"></i>Standard deviation</a></li>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#standard-error"><i class="fa fa-check"></i>Standard Error</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals"><i class="fa fa-check"></i><b>6.3</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals-for-simple-vectors"><i class="fa fa-check"></i>Confidence Intervals for Simple Vectors</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html"><i class="fa fa-check"></i><b>7</b> Introduction to Data Visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#the-ggplot-framework"><i class="fa fa-check"></i>The ggplot framework</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#preparation-and-session-set-up"><i class="fa fa-check"></i>Preparation and session set up</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i>Getting started</a></li>
+<li class="chapter" data-level="" data-path="creating-a-simple-graph.html"><a href="creating-a-simple-graph.html"><i class="fa fa-check"></i>Creating a simple graph</a></li>
+<li class="chapter" data-level="" data-path="modifying-axes-and-titles.html"><a href="modifying-axes-and-titles.html"><i class="fa fa-check"></i>Modifying axes and titles</a></li>
+<li class="chapter" data-level="" data-path="modifying-colors.html"><a href="modifying-colors.html"><i class="fa fa-check"></i>Modifying colors</a></li>
+<li class="chapter" data-level="" data-path="modifying-lines-symbols.html"><a href="modifying-lines-symbols.html"><i class="fa fa-check"></i>Modifying lines &amp; symbols</a></li>
+<li class="chapter" data-level="" data-path="adapting-sizes.html"><a href="adapting-sizes.html"><i class="fa fa-check"></i>Adapting sizes</a></li>
+<li class="chapter" data-level="" data-path="adding-text.html"><a href="adding-text.html"><i class="fa fa-check"></i>Adding text</a></li>
+<li class="chapter" data-level="" data-path="combining-multiple-plots.html"><a href="combining-multiple-plots.html"><i class="fa fa-check"></i>Combining multiple plots</a></li>
+<li class="chapter" data-level="" data-path="available-themes.html"><a href="available-themes.html"><i class="fa fa-check"></i>Available themes</a></li>
+<li class="chapter" data-level="" data-path="modifying-legends.html"><a href="modifying-legends.html"><i class="fa fa-check"></i>Modifying legends</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="modifying-legends.html"><a href="modifying-legends.html#dot-and-scatter-plots"><i class="fa fa-check"></i><b>7.1</b> Dot and Scatter Plots</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="modifying-legends.html"><a href="modifying-legends.html#scatter-plots-in-base"><i class="fa fa-check"></i><b>7.1.1</b> Scatter Plots in base</a></li>
+<li class="chapter" data-level="7.1.2" data-path="modifying-legends.html"><a href="modifying-legends.html#scatter-plots-in-ggplot2"><i class="fa fa-check"></i><b>7.1.2</b> Scatter Plots in ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="modifying-legends.html"><a href="modifying-legends.html#line-graphs"><i class="fa fa-check"></i><b>7.2</b> Line Graphs</a></li>
+<li class="chapter" data-level="7.3" data-path="modifying-legends.html"><a href="modifying-legends.html#histograms"><i class="fa fa-check"></i><b>7.3</b> Histograms</a></li>
+<li class="chapter" data-level="7.4" data-path="modifying-legends.html"><a href="modifying-legends.html#bar-plots"><i class="fa fa-check"></i><b>7.4</b> Bar plots</a></li>
+<li class="chapter" data-level="7.5" data-path="modifying-legends.html"><a href="modifying-legends.html#boxplots"><i class="fa fa-check"></i><b>7.5</b> Boxplots</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SLAT7855 Quantitative Research Methods in Applied Linguistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="creating-a-simple-graph" class="section level1 unnumbered hasAnchor">
+<h1>Creating a simple graph<a href="creating-a-simple-graph.html#creating-a-simple-graph" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>When creating a visualization with ggplot, we first use the function <code>ggplot</code> and define the data that the visualization will use, then, we define the aesthetics which define the layout, i.e. the x- and y-axes.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="creating-a-simple-graph.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pdat, <span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span> Prepositions))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/plot1-1.png" width="672" /></p>
+<p>In a next step, we add the geom-layer which defines the type of visualization that we want to display. In this case, we use <code>geom_point</code> as we want to show points that stand for the frequencies of prepositions in each text. Note that we add the geom-layer by adding a <code>+</code> at the end of the line!</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="creating-a-simple-graph.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pdat, <span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span> Prepositions)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="creating-a-simple-graph.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/plot2-1.png" width="672" /></p>
+<p>We can also add another layer, e.g. a layer which shows a smoothed loess line, and we can change the theme by specifying the theme we want to use. Here, we will use <code>theme_bw</code> which stands for the black-and-white theme (we will get into the different types of themes later).</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="creating-a-simple-graph.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pdat, <span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span> Prepositions)) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="creating-a-simple-graph.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-3"><a href="creating-a-simple-graph.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> F) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="creating-a-simple-graph.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/plot3-1.png" width="672" /></p>
+<p>We can also store our plot in an object and then add different layers to it or modify the plot. Here we store the basic graph in an object that we call <code>p</code> and then change the axes names.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="creating-a-simple-graph.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store plot in object p</span></span>
+<span id="cb9-2"><a href="creating-a-simple-graph.html#cb9-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pdat, <span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span> Prepositions)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="creating-a-simple-graph.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-4"><a href="creating-a-simple-graph.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb9-5"><a href="creating-a-simple-graph.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add layer with nicer axes titles to p</span></span>
+<span id="cb9-6"><a href="creating-a-simple-graph.html#cb9-6" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Year&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Frequency&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/plot4-1.png" width="672" /></p>
+<p>We can also integrate plots into data processing pipelines as shown below. When you integrate visualizations into pipelines, you should not specify the data as it is clear from the pipe which data the plot is using.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="creating-a-simple-graph.html#cb10-1" aria-hidden="true" tabindex="-1"></a>pdat <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="creating-a-simple-graph.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(DateRedux, GenreRedux, Prepositions) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="creating-a-simple-graph.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(DateRedux, GenreRedux) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="creating-a-simple-graph.html#cb10-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">Frequency =</span> <span class="fu">mean</span>(Prepositions)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a href="creating-a-simple-graph.html#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> DateRedux, <span class="at">y =</span> Frequency, <span class="at">group =</span> GenreRedux, <span class="at">color =</span> GenreRedux)) <span class="sc">+</span></span>
+<span id="cb10-6"><a href="creating-a-simple-graph.html#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/plot5-1.png" width="672" /></p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modifying-axes-and-titles.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/edit/master/07-week7.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/MartinSchweinberger/SLAT7855/blob/master/07-week7.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
