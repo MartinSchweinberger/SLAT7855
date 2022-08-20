@@ -161,7 +161,7 @@ Since the $\chi$^2^ value that we have calculated is much higher than the critic
 
 Before we summarize the results, we will calculate the effect size which is a measure for how strong the correlations are.
 
-##### Effect Sizes in Chi-Square
+### Effect Sizes in Chi-Square
 
 Effect sizes are important because they correlations may be highly significant but the effect between variables can be extremely weak. The effect size is therefore a measure how strong the correlation or the explanatory and predictive power between variables is.
 
@@ -179,7 +179,7 @@ In our case, this means:
 
 The $\phi$ coefficient varies between 0 (no effect) and 1 (perfect correlation). For the division into weak, moderate and strong effects one can follow the division for $\omega$ (small omega), so that with values beginning with .1 represent weak, values between 0.3 and .5 represent moderate and values above .5 represent strong effects [@buehner2009statistik, 266]. So, in this example we are dealing with a medium-sized effect/correlation.
 
-##### Chi-Square in R
+### Chi-Square in R
 
 Before we summarize the results, we will see how to perform a chi-square test in R. In addition to what we have done above, we will also visualize the data. To begin with, we will have a look at the data set (which is the same data we have used above).
 
@@ -229,11 +229,11 @@ sqrt(chisq.test(chidata, corr = F)$statistic / sum(chidata) * (min(dim(chidata))
 
 The $\phi$ coefficient of .45 shows that variety of English correlates moderately with the use of *sort of* and *kind of*. We will now summarize the results.
 
-##### Summarizing Chi-Square Results
+### Summarizing Chi-Square Results
 
 The results of our analysis can be summarized as follows: A $\chi$^2^-test confirms a highly significant correlation of moderate size between the variety of English and the use of the near-synonymous hedges *sort of* and *kind of* ($\chi$^2^ = 220.73, df = 1, p < .001***, $\phi$ = .452).
 
-##### Requirements of Chi-Square
+### Requirements of Chi-Square
 
 Chi-square tests depend on certain requirements that, if violated, negatively affect the reliability of the results of the test. To provide reliable results, 80 percent of cells in a table to which the chi-square test is applied have to have expected values of 5 or higher and at most 20 percent of expected values can be smaller than 5 [see @bortz109verteilungsfreie,  98]. In addition, none of the expected values can be smaller than 1 [see @bortz109verteilungsfreie, 136] because then, the estimation, which relies on the $\chi$^2^-distribution, becomes too imprecise to allow meaningful inferences [@cochran1954somemethods].  
 
@@ -255,7 +255,7 @@ The assumptions of the Student's t-test are that
 
 If the variances are not normal, then this indicates that another important variable is confounding the results. In such cases, you should go back to the data and check what other variable could cause the unequal variances. If you decide to proceed with the analysis, you can switch to a Welch t-test which does not assume equal variances within each group.
 
-## Paired t-test
+### Paired t-test
 
 Paired t-tests take into account that the scores (or values) come from the same individuals in two conditions (e.g. before and after a treatment).There are two equations for the paired t-test that are used.
 
