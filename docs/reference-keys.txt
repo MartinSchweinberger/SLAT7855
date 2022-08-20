@@ -268,3 +268,4 @@ simple-linear-regression-1
 r-markdown-1
 including-plots
 the-basic-principle-1
+tab:ds00b
