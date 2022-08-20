@@ -762,4 +762,60 @@ hcfa(configs,counts)
 According to the HCFA, only a single configuration (Variety : Age : Class) is significant (X2 = 12.21, p = .016). 
 
 
+# Regression
+
+
+**Preparation and session set up**
+
+This tutorial is based on R. If you have not installed R or are new to it, you will find an introduction to and more information how to use R [here](https://slcladal.github.io/intror.html). For this tutorials, we need to install certain *packages* from an R *library* so that the scripts shown below are executed without errors. Before turning to the code below, please install the packages by running the code below this paragraph. If you have already installed the packages mentioned below, then you can skip ahead and ignore this section. To install the necessary packages, simply run the following code - it may take some time (between 1 and 5 minutes to install all of the libraries so you do not need to worry if it takes some time).
+
+```{r prep0, echo=T, eval = F, warning=F, message=F}
+# install
+install.packages("car")
+install.packages("emmeans")
+install.packages("effects")
+install.packages("flextable")
+install.packages("ggplot2")
+install.packages("ggpubr")
+install.packages("Hmisc")
+install.packages("MASS")
+install.packages("MuMIn")
+install.packages("rms")
+install.packages("sjPlot")
+install.packages("stringr")
+install.packages("tibble")
+install.packages("dplyr")
+install.packages("vcd")
+install.packages("vip")
+```
+
+Now that we have installed the packages, we activate them as shown below.
+
+```{r prep1, echo=T, eval=T, warning=F, message=F}
+# set options
+options(stringsAsFactors = F)          # no automatic data transformation
+options("scipen" = 100, "digits" = 12) # suppress math annotation
+# load packages
+library(car)
+library(effects)
+library(emmeans)
+library(flextable)
+library(ggfortify)
+library(ggplot2)
+library(ggpubr)
+library(Hmisc)
+library(MASS)
+library(MuMIn)
+library(rms)
+library(robustbase)
+library(sjPlot)
+library(stringr)
+library(tibble)
+library(vcd)
+library(vip)
+```
+
+
+Once you have installed R and RStudio and initiated the session by executing the code shown above, you are good to go.
+
 

@@ -1,0 +1,630 @@
+# Simple and Multiple Linear Regression
+
+
+This tutorial introduces regression analysis (also called regression modeling). Regression models are among the most widely used quantitative methods in the language sciences to assess if and how predictors (variables or interactions between variables) correlate with a certain response. 
+
+Regression models are so popular because they can
+
+* incorporate many predictors in a single model (multivariate: allows to test the impact of one predictor while the impact of (all) other predictors is controlled for)
+
+* extremely flexible and and can be fitted to different types of predictors and dependent variables
+
+* provide output that can be easily interpreted
+
+* conceptually relative simple and not overly complex from a  mathematical perspective
+
+
+The major difference between these types of models is that they take different types of dependent variables: linear regressions take numeric, logistic regressions take nominal variables, ordinal regressions take ordinal variables, and Poisson regressions take dependent variables that reflect counts of (rare) events. 
+
+## Simple Linear Regression
+
+The idea behind regression analysis is expressed formally in the equation below where $f_{(x)}$ is the $y$-value we want to predict, $\alpha$ is the intercept (the point where the regression line crosses the $y$-axis), $\beta$ is the coefficient (the slope of the regression line). 
+
+\begin{equation}
+f_{(x)} = \alpha + \beta_{i}x + \epsilon
+\end{equation}
+
+To understand what this means, let us imagine that we have collected information about the how tall people are and what they weigh. Now we want to predict the weight of people of a certain height - let's say 180cm.
+
+```{r intro00a, echo=F, eval = F, message=FALSE, warning=FALSE}
+install.packages("dplyr")
+install.packages("flextable")
+install.packages("ggfortify")
+install.packages("car")
+```
+
+
+```{r intro00, echo=F, message=FALSE, warning=FALSE}
+library(dplyr)
+library(flextable)
+library(car)
+library(ggfortify)
+Height <- c(173, 169, 176, 166, 161, 164, 160, 158, 180, 187)
+Weight <- c(80, 68, 72, 75, 70, 65, 62, 60, 85, 92) 
+df <- data.frame(Height, Weight)
+# inspect data
+df %>%
+  flextable() %>%
+  flextable::set_table_properties(width = .75, layout = "autofit") %>%
+  flextable::theme_zebra() %>%
+  flextable::fontsize(size = 12) %>%
+  flextable::fontsize(size = 12, part = "header") %>%
+  flextable::align_text_col(align = "center") %>%
+  flextable::set_caption(caption = "Weigth and height of a random sample of people.")  %>%
+  flextable::border_outer()
+```
+
+We can run a simple linear regression on the data and we get the following output:
+
+```{r intro01b, message=FALSE, warning=FALSE}
+# model for upper panels
+summary(glm(Weight ~ Height, data = df))
+```
+
+To estimate how much some weights who is 180cm tall, we would multiply the coefficient (slope of the line) with 180 ($x$) and add the value of the intercept (point where line crosses the $y$-axis). If we plug in the numbers from the regression model below, we get
+
+\begin{equation}
+-93.77 + 0.98 ∗ 180 = 83.33 (kg)
+\end{equation}
+
+A person who is 180cm tall is predicted to weigh 83.33kg. Thus, the predictions of the weights are visualized as the red line in the figure below. Such lines are called *regression lines*. Regression lines are those lines where the sum of the red lines should be minimal. The slope of the regression line is called *coefficient* and the point where the regression line crosses the y-axis at x = 0 is called the *intercept*. Other important concepts in regression analysis are *variance* and *residuals*. *Residuals* are the distance between the line and the points (the red lines) and it is also called *variance*.
+
+```{r intro01, echo=F, message=FALSE, warning=FALSE}
+# generate data
+Height <- c(173, 169, 176, 166, 161, 164, 160, 158, 180, 187)
+Weight <- c(80, 68, 72, 75, 70, 65, 62, 60, 85, 92) 
+df <- data.frame(Height, Weight) %>%
+  dplyr::mutate(Pred = predict(lm(Weight ~ Height)))
+# generate plots
+p <- ggplot(df, aes(Height, Weight)) +
+  geom_point() +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+p1 <- p
+p2 <- p +
+  geom_hline(yintercept=mean(Weight), color = "blue") + 
+  geom_segment(aes(xend = Height, yend = mean(Weight)), color = "red") +
+  ggplot2::annotate(geom = "text", label = "Residual Deviance = 946.9", x = 170, y = 100, size = 3) 
+p3 <- p +
+    geom_smooth(color = "blue", se = F, method = "lm", size = .5)
+p4 <- p3 +
+  geom_segment(aes(xend = Height, yend = Pred), color = "red") +
+  ggplot2::annotate(geom = "text", label = "Residual Deviance = 164.3", x = 170, y = 100, size = 3)
+ggpubr::ggarrange(p1, p2, p3, p4, ncol = 2, nrow = 2)
+```
+
+Some words about the plots in the figure above: the upper left panel shows the raw observed data (black dots). The upper right panel shows the mean weight (blue line) and the residuals (in red). residuals are the distances from the expected or predicted values to the observed values (in this case the mean is the most most basic model which we use to predict values while the observed values simply represent the actual data points). The lower left panel shows observed values and the regression line, i.e, that line which, when drawn through the data points, will have the lowest sum of residuals. The lower right panel shows the regression line and the residuals, i.e. the distances between the expected or predicted values to the actual observed values (in red). Note that the sum of residuals in the lower right panel is much smaller than the sum of residuals in the upper right panel. This suggest that considering Height is a good idea as it explains a substantive amount of residual error and reduces the sum of residuals (or variance).
+
+Now that we are familiar with the basic principle of regression modeling - i.e. finding the line through data that has the smallest sum of residuals, we will apply this to a linguistic example.
+
+
+### Example 1: Preposition Use across Real-Time
+
+We will now turn to our first example. In this example, we will investigate whether the frequency of prepositions has changed from Middle English to Late Modern English. The reasoning behind this example is that Old English was highly synthetic compared with Present-Day English which comparatively analytic. In other words, while Old English speakers used case to indicate syntactic relations, speakers of Present-Day English use word order and prepositions to indicate syntactic relationships. This means that the loss of case had to be compensated by different strategies and maybe these strategies continued to develop and increase in frequency even after the change from synthetic to analytic had been mostly accomplished. And this prolonged change in compensatory strategies is what this example will focus on. 
+
+The analysis is based on data extracted from the *Penn Corpora of Historical English* (see http://www.ling.upenn.edu/hist-corpora/), that consists of 603 texts written between 1125 and 1900. In preparation of this example, all elements that were part-of-speech tagged as prepositions were extracted from the PennCorpora. 
+
+Then, the relative frequencies (per 1,000 words) of prepositions per text were calculated. This frequency of prepositions per 1,000 words represents our dependent variable. In a next step, the date when each letter had been written was extracted. The resulting two vectors were combined into a table which thus contained for each text, when it was written (independent variable) and its relative frequency of prepositions (dependent or outcome variable).
+
+A regression analysis will follow the steps described below: 
+
+1. Extraction and processing of the data
+
+2. Data visualization
+
+3. Applying the regression analysis to the data
+
+4. Diagnosing the regression model and checking whether or not basic model assumptions have been violated.
+
+In a first step, we load and inspect the data to get a first impression of its properties.
+
+```{r slr4, message=FALSE, warning=FALSE}
+# load data
+slrdata  <- base::readRDS(url("https://slcladal.github.io/data/sld.rda", "rb"))
+```
+
+```{r slr5, echo = F}
+# inspect data
+slrdata %>%
+  as.data.frame() %>%
+  head(15) %>%
+  flextable() %>%
+  flextable::set_table_properties(width = .75, layout = "autofit") %>%
+  flextable::theme_zebra() %>%
+  flextable::fontsize(size = 12) %>%
+  flextable::fontsize(size = 12, part = "header") %>%
+  flextable::align_text_col(align = "center") %>%
+  flextable::set_caption(caption = "First 15 rows of slrdata.")  %>%
+  flextable::border_outer()
+```
+
+
+Inspecting the data is very important because it can happen that a data set may not load completely or that variables which should be numeric have been converted to character variables. If unchecked, then such issues could go unnoticed and cause trouble.
+
+We will now plot the data to get a better understanding of what the data looks like.
+
+```{r slr6, message=FALSE, warning=FALSE}
+ggplot(slrdata, aes(Date, Prepositions)) +
+  geom_point() +
+  theme_bw() +
+  labs(x = "Year", y = "Prepositions per 1,000 words") +
+  geom_smooth(method = "lm")
+```
+
+Before beginning with the regression analysis, we will center the year. We center the values of year by subtracting each value from the mean of year. This can be useful when dealing with numeric variables because if we did not center year, we would get estimated values for year 0 (a year when English did not even exist yet). If a variable is centered, the regression provides estimates of the model refer to the mean of that numeric variable. In other words, centering can be very helpful, especially with respect to the interpretation of the results that regression models report.
+
+
+```{r slr7, eval = T, echo=T, message=FALSE, warning=FALSE}
+# center date
+slrdata$Date <- slrdata$Date - mean(slrdata$Date) 
+```
+
+We will now begin the regression analysis by generating a first regression model and inspect its results. 
+
+```{r slr8, eval = T, echo=T, message=FALSE, warning=FALSE}
+# create initial model
+m1.lm <- lm(Prepositions ~ Date, data = slrdata)
+# inspect results
+summary(m1.lm)
+```
+
+The summary output starts by repeating the regression equation. Then, the model provides the distribution of the residuals. The residuals should be distributed normally with the absolute values of the Min and Max as well as the 1Q (first quartile) and 3Q (third quartile) being similar or ideally identical. In our case, the values are very similar which suggests that the residuals are distributed evenly and follow a normal distribution. The next part of the report is the coefficients table. The estimate for the intercept is the value of y at x = 0. The estimate for Date represents the slope of the regression line and tells us that with each year, the predicted frequency of prepositions increase by .01732 prepositions. The t-value is the Estimate divided by the standard error (Std. Error). Based on the t-value, the p-value can be calculated manually as shown below.
+
+```{r slr9, eval = T, echo=T, message=FALSE, warning=FALSE}
+# use pt function (which uses t-values and the degrees of freedom)
+2*pt(-2.383, nrow(slrdata)-1)
+
+```
+
+The R^2^-values tell us how much variance is explained by our model. The baseline value represents a model that uses merely the mean. 0.0105 means that our model explains only 1.05 percent of the variance (0.010 x 100) - which is a tiny amount. The problem of the multiple R^2^ is that it will increase even if we add variables that explain almost no variance. Hence, multiple R^2^ encourages the inclusion of *junk* variables.
+
+\begin{equation}
+R^2 = R^2_{multiple} = 1 - \frac{\sum (y_i - \hat{y_i})^2}{\sum (y_i - \bar y)^2}
+\end{equation}
+
+The adjusted R^2^-value takes the number of predictors into account and, thus, the adjusted R^2^ will always be lower than the multiple R^2^. This is so because the adjusted R^2^ penalizes models for having predictors. The equation for the adjusted R^2^ below shows that the amount of variance that is explained by all the variables in the model (the top part of the fraction) must outweigh the inclusion of the number of variables (k) (lower part of the fraction). Thus, the  adjusted R^2^ will decrease when variables are added that explain little or even no variance while it will increase if variables are added that explain a lot of variance.
+
+\begin{equation}
+R^2_{adjusted} = 1 - (\frac{(1 - R^2)(n - 1)}{n - k - 1})
+\end{equation}
+
+If there is a big difference between the two R^2^-values, then the model contains (many) predictors that do not explain much variance which is not good. The F-statistic and the associated p-value tell us that the model, despite explaining almost no variance, is still significantly better than an intercept-only base-line model (or using the overall mean to predict the frequency of prepositions per text).
+
+We can test this and also see where the F-values comes from by comparing the 
+ 
+```{r slr10, message=FALSE, warning=FALSE}
+# create intercept-only base-line model
+m0.lm <- lm(Prepositions ~ 1, data = slrdata)
+# compare the base-line and the more saturated model
+anova(m1.lm, m0.lm, test = "F")
+```
+
+The F- and p-values are exactly those reported by the summary which shows where the F-values comes from and what it means; namely it denote the difference between the base-line and the more saturated model.
+
+
+The degrees of freedom associated with the residual standard error are the number of cases in the model minus the number of predictors (including the intercept). The residual standard error is square root of the sum of the squared residuals of the model divided by the degrees of freedom. Have a look at he following to clear this up:
+
+```{r slr11, message=FALSE, warning=FALSE}
+# DF = N - number of predictors (including intercept)
+DegreesOfFreedom <- nrow(slrdata)-length(coef(m1.lm))
+# sum of the squared residuals
+SumSquaredResiduals <- sum(resid(m1.lm)^2)
+# Residual Standard Error
+sqrt(SumSquaredResiduals/DegreesOfFreedom); DegreesOfFreedom
+```
+
+We will now check the model assumptions  using diagnostic plots.
+
+```{r slr13, message=FALSE, warning=FALSE}
+library(ggfortify)
+# generate plots
+autoplot(m1.lm) + 
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) 
+```
+
+
+The diagnostic plots are very positive and we will go through why this is so for each panel. The graph in the upper left panel is useful for finding outliers or for determining the correlation between residuals and predicted values: when a trend becomes visible in the line or points (e.g., a rising trend or a zigzag line), then this would indicate that the model would be problematic (in such cases, it can help to remove data points that are too influential (outliers)).
+
+The graphic in the upper right panel indicates whether the residuals are normally distributed (which is desirable) or whether the residuals do not follow a normal distribution. If the points lie on the line, the residuals follow a normal distribution. For example, if the points are not on the line at the top and bottom, it shows that the model does not predict small and large values well and that it therefore does not have a good fit.
+
+The graphic in the lower left panel provides information about *homoscedasticity*. Homoscedasticity means that the variance of the residuals remains constant and does not correlate with any independent variable. In unproblematic cases, the graphic shows a flat line. If there is a trend in the line, we are dealing with heteroscedasticity, that is, a correlation between independent variables and the residuals, which is very problematic for regressions.
+
+The graph in the lower right panel shows problematic influential data points that disproportionately affect the regression (this would be problematic). If such influential data points are present, they should be either weighted (one could generate a robust rather than a simple linear regression) or they must be removed. The graph displays Cook's distance, which shows how the regression changes when a model without this data point is calculated. The cook distance thus shows the influence a data point has on the regression as a whole. Data points that have a Cook's distance value greater than 1 are problematic [@field2012discovering 269].
+
+We end the current analysis by summarizing the results of the regression analysis using the `tab_model` function from the `sjPlot` package [@sjPlot] (as is shown below).
+
+```{r slr18, message=FALSE, warning=FALSE}
+# generate summary table
+sjPlot::tab_model(m1.lm) 
+```
+
+
+Typically, the results of regression analyses are presented in such tables as they include all important measures of model quality and significance, as well as the magnitude of the effects.
+
+In addition, the results of simple linear regressions should be summarized in writing. We can use the `reports` package [@report] to summarize the analysis.
+
+
+```{r m1.lm_report, message=F, warning = F}
+report::report(m1.lm)
+```
+
+We can use this output to write up a final report: 
+
+A simple linear regression has been fitted to the data. A visual assessment of the model diagnostic graphics did not indicate any problematic or disproportionately influential data points (outliers) and performed significantly better compared to an intercept-only base line model but only explained .87 percent of the variance (adjusted R^2^: .0087, F-statistic (1, 535): 5,68, p-value: 0.0175\*). The final minimal adequate linear regression model is based on 537 data points and confirms a significant and positive correlation between the year in which the text was written and the relative frequency of prepositions (coefficient estimate: .02 (standardized \beta: 0.10, 95% CI [0.02, 0.19]), SE: 0.01, t-value~535~: 2.38, p-value: .0175\*). Standardized parameters were obtained by fitting the model on a standardized version of the dataset. 95% Confidence Intervals (CIs) and p-values were computed using the Wald approximation.
+
+### Example 2: Teaching Styles
+
+In the previous example, we dealt with two numeric variables, while the following example deals with a categorical independent variable and a numeric dependent variable. The ability for regressions to handle very different types of variables makes regressions a widely used and robust method of analysis.
+
+In this example, we are dealing with two groups of students that have been randomly assigned to be exposed to different teaching methods. Both groups undergo a language learning test after the lesson with a maximum score of 20 points. 
+
+The question that we will try to answer is whether the students in group A have performed significantly better than those in group B which would indicate that the teaching method to which group A was exposed works better than the teaching method to which group B was exposed.
+
+Let's move on to implementing the regression in R. In a first step, we load the data set and inspect its structure.
+
+```{r slr20, message=FALSE, warning=FALSE}
+# load data
+slrdata2  <- base::readRDS(url("https://slcladal.github.io/data/sgd.rda", "rb"))
+```
+
+
+```{r slr21, echo=F, message=FALSE, warning=FALSE}
+# inspect data
+slrdata2 %>%
+  as.data.frame() %>%
+  head(15) %>%
+  flextable() %>%
+  flextable::set_table_properties(width = .75, layout = "autofit") %>%
+  flextable::theme_zebra() %>%
+  flextable::fontsize(size = 12) %>%
+  flextable::fontsize(size = 12, part = "header") %>%
+  flextable::align_text_col(align = "center") %>%
+  flextable::set_caption(caption = "First 15 rows of the slrdata2 data.")  %>%
+  flextable::border_outer()
+```
+
+Now, we graphically display the data. In this case, a boxplot represents a good way to visualize the data.
+
+```{r slr22, message=F, warning=F}
+# extract means
+slrdata2 %>%
+  dplyr::group_by(Group) %>%
+  dplyr::mutate(Mean = round(mean(Score), 1), SD = round(sd(Score), 1)) %>%
+  ggplot(aes(Group, Score)) + 
+  geom_boxplot(fill=c("orange", "darkgray")) +
+  geom_text(aes(label = paste("M = ", Mean, sep = ""), y = 1)) +
+  geom_text(aes(label = paste("SD = ", SD, sep = ""), y = 0)) +
+  theme_bw(base_size = 15) +
+  labs(x = "Group") +                      
+  labs(y = "Test score (Points)", cex = .75) +   
+  coord_cartesian(ylim = c(0, 20)) +  
+  guides(fill = FALSE)                
+```
+
+The data indicate that group A did significantly better than group B. We will test this impression by generating the regression model and creating the model and extracting the model summary. 
+
+```{r slr23, message=FALSE, warning=FALSE}
+# generate regression model
+m2.lm <- lm(Score ~ Group, data = slrdata2) 
+# inspect results
+summary(m2.lm)                             
+```
+
+The model summary reports that Group A performed significantly better compared with Group B. This is shown by the fact that the p-value (the value in the column with the header (Pr(>|t|)) is smaller than .001 as indicated by the three \* after the p-values). Also, the negative Estimate for Group B indicates that Group B has lower scores than Group A. We will now generate the diagnostic graphics.
+
+```{r slr25, message=FALSE, warning=FALSE}
+par(mfrow = c(2, 2)) # generate a plot window with 2x2 panels
+plot(m2.lm); par(mfrow = c(1, 1)) # restore normal plot window
+```
+
+These graphics also show no problems. In this case, the data can be summarized in the next step.
+
+```{r slr26, eval = T, message=FALSE, warning=FALSE}
+# generate summary table
+sjPlot::tab_model(m2.lm) 
+```
+
+
+We can use the `reports` package [@report] to summarize the analysis.
+
+
+```{r m2.lm_report, message=F, warning = F}
+report::report(m2.lm)
+```
+
+We can use this output to write up a final report: 
+ 
+
+A simple linear regression was fitted to the data. A visual assessment of the model diagnostics did not indicate any problematic or disproportionately influential data points (outliers). The final linear regression model is based on 60 data points, performed significantly better than an intercept-only base line model (F (1, 58): 17.55, p-value <. 001^$***$^), and reported that the model explained 21.9 percent of variance which confirmed a good model fit. According to this final model, group A scored significantly better on the language learning test than group B (coefficient: -3.17, 95% CI [-4.68, -1.65], Std. \beta: -0.96, 95% CI [-1.41, -0.50], SE: 0.48, t-value~58~: -4.19, p-value <. 001^$***$^). Standardized parameters were obtained by fitting the model on a standardized version of the dataset. 95% Confidence Intervals (CIs) and p-values were computed using the Wald approximation.
+
+
+
+## Multiple Linear Regression
+
+In contrast to simple linear regression, which estimates the effect of a single predictor, multiple linear regression estimates the effect of various predictors simultaneously (see the equation below).
+
+\begin{equation}
+
+f_{(x)} = \alpha + \beta_{1}x_{i} + \beta_{2}x_{i+1} + \dots + \beta_{n}x_{i+n} + \epsilon
+
+\end{equation}
+
+The model diagnostics we are dealing with here are partly identical to the diagnostic methods for simple linear regression. Because of this overlap, diagnostics will only be described in more detail if they have not been described in the section on simple linear regression.
+
+### Example: Gifts and Availability
+
+The example we will go through here is taken from @field2012discovering. In this example, the research question is if the money that men spend on presents for women depends on the women's attractiveness and their relationship status. To answer this research question, we will implement a multiple linear regression and start by loading the data and inspect its structure and properties.
+
+```{r mlr2}
+# load data
+mlrdata  <- base::readRDS(url("https://slcladal.github.io/data/mld.rda", "rb"))
+```
+
+```{r mlr2b, echo = F}
+# inspect data
+mlrdata %>%
+  as.data.frame() %>%
+  head(15) %>%
+  flextable() %>%
+  flextable::set_table_properties(width = .75, layout = "autofit") %>%
+  flextable::theme_zebra() %>%
+  flextable::fontsize(size = 12) %>%
+  flextable::fontsize(size = 12, part = "header") %>%
+  flextable::align_text_col(align = "center") %>%
+  flextable::set_caption(caption = "First 15 rows of the mlrdata.")  %>%
+  flextable::border_outer()
+```
+
+The data set consist of three variables stored in three columns. The first column contains the relationship status of the present giver (in this study this were men), the second whether the man is interested in the woman (the present receiver in this study), and the third column represents the money spend on the present. The data set represents 100 cases and the mean amount of money spend on a present is 88.38 dollars. In a next step, we visualize the data to get a more detailed impression of the relationships between variables.
+
+```{r mlr3, message=F, warning=F}
+# create plots
+p1 <- ggplot(mlrdata, aes(status, money)) +   
+  geom_boxplot() + 
+  theme_bw()
+# plot 2
+p2 <- ggplot(mlrdata, aes(attraction, money)) +
+  geom_boxplot() +
+  theme_bw()
+# plot 3
+p3 <- ggplot(mlrdata, aes(x = money)) +
+  geom_histogram(aes(y=..density..)) +           
+  theme_bw() +                               
+  geom_density()
+# plot 4
+p4 <- ggplot(mlrdata, aes(status, money)) +
+  geom_boxplot(aes(fill = factor(status))) + 
+  facet_wrap(~ attraction) +       
+  guides(fill = FALSE) +
+  theme_bw()
+# show plots
+vip::grid.arrange(grobs = list(p1, p2, p3, p4), widths = c(1, 1), layout_matrix = rbind(c(1, 2), c(3, 4)))
+```
+
+The upper left figure consists of a boxplot which shows how much money was spent by relationship status. The figure suggests that men spend more on women if they are not in a relationship. The next figure shows the relationship between the money spend on presents and whether or not the men were interested in the women.
+
+The boxplot in the upper right panel suggests that men spend substantially more on women if the men are interested in them. The next figure depicts the distribution of the amounts of money spend on the presents for the women. In addition, the figure indicates the existence of two outliers (dots in the boxplot)
+
+The histogram in the lower left panel shows that, although the mean amount of money spent on presents is 88.38 dollars, the distribution peaks around 50 dollars indicating that on average, men spend about 50 dollars on presents. Finally, we will plot the amount of money spend on presents against relationship status by attraction in order to check whether the money spent on presents is affected by an interaction between attraction and relationship status.
+
+The boxplot in the lower right panel confirms the existence of an interaction (a non-additive term) as men only spend more money on  women if the men single *and* they are interested in the women. If men are not interested in the women, then the relationship has no effect as they spend an equal amount of money on the women regardless of whether they are in a relationship or not.
+
+We will now start to implement the regression model. In a first step, we create a saturated model that contain all possible predictors (main effects and interactions). 
+
+```{r mlr4}
+m1.mlr = lm(                      # generate lm regression object
+  money ~ attraction*status,  # def. regression formula
+  data = mlrdata)                 # def. data
+```
+
+After generating the saturated models we can now start with the model fitting. Model fitting refers to a process that aims at find the model that explains a maximum of variance with a minimum of predictors [see @field2012discovering 318]. Model fitting is therefore based on the *principle of parsimony* which is related to Occam's razor according to which explanations that require fewer assumptions are more likely to be true.
+
+### Model Fitting
+
+Model fitting means that we check what of the predictors should be included in the model and what predictors do not have any impact on the outcome and thus should not be part of the model (because they merely add noise to the data.
+
+In this example, we use the `glmulti` function to find the model with the lowest AIC (*Akaike Information Criterion*) as the criterion to find the model with the best fit: the lower the AIC value, the better the balance between explained variance and the number of predictors. AIC values can and should only be compared for models that are fit on the same data set with the same (number of) cases (*LL* stands for *logged likelihood* or *LogLikelihood* and *k* represents the number of predictors in the model (including the intercept); the LL represents a measure of how good the model fits the data).
+
+\begin{equation}
+Akaike Information Criterion (AIC) = -2LL + 2k
+\end{equation}
+
+
+```{r message=F, warning=F}
+library(glmulti)
+mfit <- glmulti(money ~ attraction + status, data = mlrdata, crit = aic)
+summary(mfit)
+```
+
+
+The `glmulti` function reports `money ~ 1 + status:attraction` as the best model. However, if a variable is part of a significant interaction, we also need to include the main effect which means that our best model is `money ~ 1 + status + attraction + status:attraction`, or, simplified: `money ~ status * attraction` (which is the same as the previous formula). The saturated model is thus also the final minimal adequate model, i.e. the model with the best fit and the lowest number of predictors. We will now inspect the final minimal model and go over the model report.
+
+```{r mlr6}
+m2.mlr = lm(                       # generate lm regression object
+  money ~ (status + attraction)^2, # def. regression formula
+  data = mlrdata)                  # def. data
+# inspect final minimal model
+summary(m2.mlr)
+```
+
+The first element of the report is called *Call* and it reports the regression formula of the model. Then, the report provides the residual distribution (the range, median and quartiles of the residuals) which allows drawing inferences about the distribution of differences between observed and expected values. If the residuals are distributed non-normally, then this is a strong indicator that the model is unstable and unreliable because mathematical assumptions on which the model is based are violated.
+
+Next, the model summary reports the most important part: a table with model statistics of the fixed-effects structure of the model. The table contains the estimates (coefficients of the predictors), standard errors, t-values, and the p-values which show whether a predictor significantly correlates with the dependent variable that the model investigates.
+
+All main effects (status and attraction) as well as the interaction between status and attraction is reported as being significantly correlated with the dependent variable (money). An interaction occurs if a correlation between the dependent variable and a predictor is affected by another predictor.
+
+The top most term is called intercept and has a value of 99.15 which represents the base estimate to which all other estimates refer. To exemplify what this means, let us consider what the model would predict that a man would spend on a present if he interested in the woman but he is also in a relationship. The amount he would spend (based on the model would be 99.15 dollars (which is the intercept). This means that the intercept represents the predicted value if all predictors take the base or reference level. And since being in relationship but being interested are the case, and because the interaction does not apply, the predicted value in our example is exactly the intercept (see below). 
+
+```{r mlr7, eval = F}
+#intercept  Single  NotInterested  Single:NotInterested
+99.15     + 57.69  + 0           + 0     # 156.8 single + interested
+99.15     + 57.69  - 47.66       - 63.18 # 46.00 single + not interested
+99.15     - 0      + 0           - 0     # 99.15 relationship + interested
+99.15     - 0      - 47.66       - 0     # 51.49 relationship + not interested
+```
+
+Now, let us consider what a man would spend if he is in a relationship and he is not attracted to the women. In that case, the model predicts that the man would spend only  51.49 dollars on a present: the intercept (99.15) minus 47.66 because the man is not interested (and no additional subtraction because the interaction does not apply). 
+
+We can derive the same results easier using the `predict` function.
+
+```{r mlr8}
+# make prediction based on the model for original data
+prediction <- predict(m2.mlr, newdata = mlrdata)
+# inspect predictions
+table(round(prediction,2))
+```
+
+Below the table of coefficients, the regression summary reports model statistics that provide information about how well the model performs. The difference between the values and the values in the coefficients table is that the model statistics refer to the model as a whole rather than focusing on individual predictors.
+
+The multiple R^2^-value is a measure of how much variance the model explains. A multiple R^2^-value of 0 would inform us that the model does not explain any variance while a value of .852 mean that the model explains 85.2 percent of the variance. A value of 1 would inform us that the model explains 100 percent of the variance and that the predictions of the model match the observed values perfectly. Multiplying the multiple R^2^-value thus provides the percentage of explained variance. 
+
+The adjusted R^2^-value considers the amount of explained variance in light of the number of predictors in the model (it is thus somewhat similar to the AIC and BIC) and informs about how well the model would perform if it were applied to the population that the sample is drawn from. Ideally, the difference between multiple and adjusted R^2^-value should be very small as this means that the model is not overfitted. If, however, the difference between multiple and adjusted R^2^-value is substantial, then this would strongly suggest that the model is unstable and overfitted to the data while being inadequate for drawing inferences about the population. Differences between multiple and adjusted R^2^-values indicate that the data contains outliers that cause the distribution of the data on which the model is based to differ from the distributions that the model mathematically requires to provide reliable estimates. The difference between multiple and adjusted R^2^-value in our model is very small (85.2-84.7=.05) and should not cause concern.
+
+Now, we compare the final minimal adequate model to the base-line model to test whether then final model significantly outperforms the baseline model.
+
+```{r mlr10}
+# compare baseline- and minimal adequate model
+m0.mlr <- lm(money ~1, data = mlrdata)
+anova(m0.mlr, m2.mlr)
+```
+
+The comparison between the two model confirms that the minimal adequate model performs significantly better (makes significantly more accurate estimates of the outcome variable) compared with the baseline model.
+
+### Model Diagnostics 
+
+After implementing the multiple regression, we now need to look for outliers and perform the model diagnostics by testing whether removing data points disproportionately decreases model fit. To begin with, we generate diagnostic plots.
+
+```{r mlr11, message=F, warning=F}
+# generate plots
+autoplot(m2.mlr) + 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  theme_bw()
+```
+
+The plots do not show severe problems such as funnel shaped patterns or drastic deviations from the diagonal line in Normal Q-Q plot (have a look at the explanation of what to look for and how to interpret these diagnostic plots in the section on simple linear regression) but data points 52, 64, and 83 are repeatedly indicated as potentially problematic cases. 
+
+```{r mlr12, message=F, warning=F}
+library(car)
+qqPlot(m2.mlr, main="QQ Plot")
+plot(m2.mlr, which=4)
+```
+
+The graphs indicate that data points 52, 64, and 83 do not seem to overly affect the results as they are within the acceptable range (indicated by the blue area around the Q-Q plot) and their Cook's distance is elevated but not excessively high. and we can thus ignore this issue here. 
+
+
+When the diagnostic plots indicate potential outliers the following parameters should be considered:
+
+1) If more than 1 percent of data points have standardized residuals exceeding values > 2.58, then the error rate of the model is problematic [@field2012discovering 269].
+
+2) If more than 5 percent of data points have standardized residuals exceeding values   > 1.96, then the error rate of the model is problematic [@field2012discovering 269]
+
+3) In addition, data points with Cook's D-values > 1 are problematic [@field2012discovering 269]
+
+4) Also, data points with leverage values higher than $3(k + 1)/N$ or $2(k + 1)/N$ (k = Number of predictors, N = Number of cases in model) are problematic [@field2012discovering 270]
+
+5) There should not be (any) autocorrelation among predictors. This means that independent variables cannot be correlated with itself (for instance, because data points come from the same subject). If there is autocorrelation among predictors, then a Repeated Measures Design or a (hierarchical) mixed-effects model should be implemented instead.
+
+6) Predictors cannot substantially correlate with each other (multicollinearity) and a model contains predictors that have variance inflation factors (VIF) > 3 [see @zuur2010protocol].
+
+
+The following code chunk creates and evaluates these criteria.
+
+
+```{r}
+# add model diagnostics to the data
+mlrdata <- mlrdata %>%
+  dplyr::mutate(residuals = resid(m2.mlr),
+                standardized.residuals = rstandard(m2.mlr),
+                studentized.residuals = rstudent(m2.mlr),
+                cooks.distance = cooks.distance(m2.mlr),
+                dffit = dffits(m2.mlr),
+                leverage = hatvalues(m2.mlr),
+                covariance.ratios = covratio(m2.mlr),
+                fitted = m2.mlr$fitted.values)
+```
+
+And we can now statistically assess the model fit.
+
+```{r mlr23}
+# 1: optimal = 1
+# (listed data points should be removed)
+stdres_258 <- as.vector(sapply(mlrdata$standardized.residuals, function(x) {
+ifelse(sqrt((x^2)) > 2.58, 1, 0) } ))
+(sum(stdres_258) / length(stdres_258)) * 100
+
+# 2: optimal = 5
+# (listed data points should be removed)
+stdres_196 <- as.vector(sapply(mlrdata$standardized.residuals, function(x) {
+ifelse(sqrt((x^2)) > 1.96, 1, 0) } ))
+(sum(stdres_196) / length(stdres_196)) * 100
+
+# 3: optimal = 0
+# (listed data points should be removed)
+which(mlrdata$cooks.distance > 1)
+
+# 4: optimal = 0
+# (data points should be removed if cooks distance is close to 1)
+which(mlrdata$leverage >= (3*mean(mlrdata$leverage)))
+
+# 5: checking autocorrelation:
+# Durbin-Watson test (optimal: high p-value)
+dwt(m2.mlr)
+
+# 6: test multicollinearity (should  not be greater than 3)
+vif(m2.mlr)
+```
+
+All diagnostics are acceptable. We will now test whether the sample size is sufficient for our model. With respect to the minimal sample size and based on @green1991many, @field2012discovering[273-274] offer the following rules of thumb for an adequate sample size (k = number of predictors; categorical predictors with more than two levels should be recoded as dummy variables):
+
+* if you are interested in the overall model: 50 + 8k (k = number of predictors)
+
+* if you are interested in individual predictors: 104 + k
+
+* if you are interested in both: take the higher value!
+
+### A Word about Sample Size
+
+One common issue when doing null-hypothesis hypothesis testing is sample size (which is related to the probability of $\beta$-errors). Remember, $\beta$-errors (or beta errors) mean overlooking a significant effect typically because the sample size is too low.  The test statistics ranges between 0 and 1 where lower values are better.
+
+Despite there being no ultimate rule of thumb, @field2012discovering[273-275], based on @green1991many, provide data-driven suggestions for the minimal size of data required for regression models that aim to find medium sized effects (k = number of predictors; categorical variables with more than two levels should be transformed into dummy variables):
+
+*  If one is only interested in the effect of specific variables, then the sample size should be at least 104 + k (k = number of predictors in model).
+
+### Reporting Results of Multiple Regressions
+
+As a last step, we summarize the results of the regression analysis.
+
+```{r mlr25}
+# tabulate model results
+sjPlot::tab_model(m2.mlr)
+```
+
+
+Additionally, we can inspect the summary of the regression model as shown below to extract additional information. We can use the `reports` package [@report] to summarize the analysis.
+
+Although @field2012discovering suggest that the main effects of the predictors involved in the interaction should not be interpreted, they are interpreted here to illustrate how the results of a multiple linear regression can be reported. 
+
+```{r mlr_report, message=F, warning = F}
+report::report(m2.mlr)
+```
+
+
+Although @field2012discovering suggest that the main effects of the predictors involved in the interaction should not be interpreted, they are interpreted here to illustrate how the results of a multiple linear regression can be reported.
+
+We can use the output of the `report` function to write up a final report: 
+
+
+A multiple linear regression was fitted to the data using an automated, step-wise, AIC-based (Akaike's Information Criterion) procedure. The model fitting arrived at a final minimal model. During the model diagnostics, two outliers were detected and removed. Further diagnostics did not find other issues after the removal.
+
+The final minimal adequate regression model is based on 98 data points and performs highly significantly better than a minimal baseline model (multiple R^2^: .857, adjusted R^2^: .853, F-statistic (3, 94): 154.4, AIC: 850.4, BIC: 863.32, p<.001^$***$^). The final minimal adequate regression model reports *attraction* and *status* as significant main effects. The relationship status of men correlates highly significantly and positively with the amount of money spend on the women's presents (SE: 5.14, t-value: 10.87, p<.001^$***$^). This shows that men spend 156.8 dollars on presents if they are single while they spend 99,15 dollars if they are in a relationship. Whether men are attracted to women also correlates highly significantly and positively with the money they spend on women (SE: 5.09, t-values: -9.37, p<.001^$***$^). If men are not interested in women, they spend 47.66 dollar less on a present for women compared with women the men are interested in.
+
+Furthermore, the final minimal adequate regression model reports a highly significant interaction between relationship *status* and *attraction* (SE: 7.27, t-value: -8.18, p<.001^$***$^): If men are single but they are not interested in a women, a man would spend only 59.46 dollars on a present compared to all other constellations.
+
+
+
+
+[Back to top](#simple_and_multiple_linear_regression)
+
+
+

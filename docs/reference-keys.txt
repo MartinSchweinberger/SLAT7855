@@ -261,3 +261,6 @@ students-t-test
 paired-t-test
 independent-t-tests
 mann-whitney-u-test
+simple-and-multiple-linear-regression
+a-word-about-sample-size
+reporting-results-of-multiple-regressions
