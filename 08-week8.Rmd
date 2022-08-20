@@ -291,6 +291,15 @@ ptd %>%
   flextable::border_outer()
 ```
 
+Before performing the paired t-test, let us just briefly inspect the mans to see if the means of the pre- and post test differ:
+
+
+```{r pairedt_01d, message=F, warning=F}
+mean(ptd$Pretest)
+mean(ptd$Posttest)
+```
+
+The results show that the mean of the post-test is lower than the mean of the pre-test results.
 
 To perform a paired t-test in R, we use the `t.test` function and specify the argument `paired` as TRUE.
 
