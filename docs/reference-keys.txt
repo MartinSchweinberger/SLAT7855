@@ -264,3 +264,7 @@ mann-whitney-u-test
 simple-and-multiple-linear-regression
 a-word-about-sample-size
 reporting-results-of-multiple-regressions
+simple-linear-regression-1
+r-markdown-1
+including-plots
+the-basic-principle-1

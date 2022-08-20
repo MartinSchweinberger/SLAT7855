@@ -1,0 +1,317 @@
+# Multiple Linear Regression
+
+
+This tutorial introduces regression analysis (also called regression modeling). Regression models are among the most widely used quantitative methods in the language sciences to assess if and how predictors (variables or interactions between variables) correlate with a certain response. 
+
+Regression models are so popular because they can
+
+* incorporate many predictors in a single model (multivariate: allows to test the impact of one predictor while the impact of (all) other predictors is controlled for)
+
+* extremely flexible and and can be fitted to different types of predictors and dependent variables
+
+* provide output that can be easily interpreted
+
+* conceptually relative simple and not overly complex from a  mathematical perspective
+
+
+The major difference between these types of models is that they take different types of dependent variables: linear regressions take numeric, logistic regressions take nominal variables, ordinal regressions take ordinal variables, and Poisson regressions take dependent variables that reflect counts of (rare) events. 
+
+## The Basic Principle
+
+In contrast to simple linear regression, which estimates the effect of a single predictor, multiple linear regression estimates the effect of various predictors simultaneously (see the equation below).
+
+\begin{equation}
+
+f_{(x)} = \alpha + \beta_{1}x_{i} + \beta_{2}x_{i+1} + \dots + \beta_{n}x_{i+n} + \epsilon
+
+\end{equation}
+
+The model diagnostics we are dealing with here are partly identical to the diagnostic methods for simple linear regression. Because of this overlap, diagnostics will only be described in more detail if they have not been described in the section on simple linear regression.
+
+### Example: Gifts and Availability
+
+The example we will go through here is taken from @field2012discovering. In this example, the research question is if the money that men spend on presents for women depends on the women's attractiveness and their relationship status. To answer this research question, we will implement a multiple linear regression and start by loading the data and inspect its structure and properties.
+
+```{r mlr2}
+# load data
+mlrdata  <- base::readRDS(url("https://slcladal.github.io/data/mld.rda", "rb"))
+```
+
+
+```{r intro00a, echo=F, eval = F, message=FALSE, warning=FALSE}
+install.packages("dplyr")
+install.packages("flextable")
+install.packages("ggfortify")
+install.packages("car")
+```
+
+
+```{r intro00, echo=F, message=FALSE, warning=FALSE}
+library(dplyr)
+library(flextable)
+library(car)
+library(ggfortify)
+# inspect data
+mlrdata %>%
+  as.data.frame() %>%
+  head(15) %>%
+  flextable() %>%
+  flextable::set_table_properties(width = .75, layout = "autofit") %>%
+  flextable::theme_zebra() %>%
+  flextable::fontsize(size = 12) %>%
+  flextable::fontsize(size = 12, part = "header") %>%
+  flextable::align_text_col(align = "center") %>%
+  flextable::set_caption(caption = "First 15 rows of the mlrdata.")  %>%
+  flextable::border_outer()
+```
+
+The data set consist of three variables stored in three columns. The first column contains the relationship status of the present giver (in this study this were men), the second whether the man is interested in the woman (the present receiver in this study), and the third column represents the money spend on the present. The data set represents 100 cases and the mean amount of money spend on a present is 88.38 dollars. In a next step, we visualize the data to get a more detailed impression of the relationships between variables.
+
+```{r mlr3, message=F, warning=F}
+# create plots
+p1 <- ggplot(mlrdata, aes(status, money)) +   
+  geom_boxplot() + 
+  theme_bw()
+# plot 2
+p2 <- ggplot(mlrdata, aes(attraction, money)) +
+  geom_boxplot() +
+  theme_bw()
+# plot 3
+p3 <- ggplot(mlrdata, aes(x = money)) +
+  geom_histogram(aes(y=..density..)) +           
+  theme_bw() +                               
+  geom_density()
+# plot 4
+p4 <- ggplot(mlrdata, aes(status, money)) +
+  geom_boxplot(aes(fill = factor(status))) + 
+  facet_wrap(~ attraction) +       
+  guides(fill = FALSE) +
+  theme_bw()
+# show plots
+vip::grid.arrange(grobs = list(p1, p2, p3, p4), widths = c(1, 1), layout_matrix = rbind(c(1, 2), c(3, 4)))
+```
+
+The upper left figure consists of a boxplot which shows how much money was spent by relationship status. The figure suggests that men spend more on women if they are not in a relationship. The next figure shows the relationship between the money spend on presents and whether or not the men were interested in the women.
+
+The boxplot in the upper right panel suggests that men spend substantially more on women if the men are interested in them. The next figure depicts the distribution of the amounts of money spend on the presents for the women. In addition, the figure indicates the existence of two outliers (dots in the boxplot)
+
+The histogram in the lower left panel shows that, although the mean amount of money spent on presents is 88.38 dollars, the distribution peaks around 50 dollars indicating that on average, men spend about 50 dollars on presents. Finally, we will plot the amount of money spend on presents against relationship status by attraction in order to check whether the money spent on presents is affected by an interaction between attraction and relationship status.
+
+The boxplot in the lower right panel confirms the existence of an interaction (a non-additive term) as men only spend more money on  women if the men single *and* they are interested in the women. If men are not interested in the women, then the relationship has no effect as they spend an equal amount of money on the women regardless of whether they are in a relationship or not.
+
+We will now start to implement the regression model. In a first step, we create a saturated model that contain all possible predictors (main effects and interactions). 
+
+```{r mlr4}
+m1.mlr = lm(                      # generate lm regression object
+  money ~ attraction*status,  # def. regression formula
+  data = mlrdata)                 # def. data
+```
+
+After generating the saturated models we can now start with the model fitting. Model fitting refers to a process that aims at find the model that explains a maximum of variance with a minimum of predictors [see @field2012discovering 318]. Model fitting is therefore based on the *principle of parsimony* which is related to Occam's razor according to which explanations that require fewer assumptions are more likely to be true.
+
+### Model Fitting
+
+Model fitting means that we check what of the predictors should be included in the model and what predictors do not have any impact on the outcome and thus should not be part of the model (because they merely add noise to the data.
+
+In this example, we use the `glmulti` function to find the model with the lowest AIC (*Akaike Information Criterion*) as the criterion to find the model with the best fit: the lower the AIC value, the better the balance between explained variance and the number of predictors. AIC values can and should only be compared for models that are fit on the same data set with the same (number of) cases (*LL* stands for *logged likelihood* or *LogLikelihood* and *k* represents the number of predictors in the model (including the intercept); the LL represents a measure of how good the model fits the data).
+
+\begin{equation}
+Akaike Information Criterion (AIC) = -2LL + 2k
+\end{equation}
+
+
+```{r message=F, warning=F}
+library(glmulti)
+mfit <- glmulti(money ~ attraction + status, data = mlrdata, crit = aic)
+summary(mfit)
+```
+
+
+The `glmulti` function reports `money ~ 1 + status:attraction` as the best model. However, if a variable is part of a significant interaction, we also need to include the main effect which means that our best model is `money ~ 1 + status + attraction + status:attraction`, or, simplified: `money ~ status * attraction` (which is the same as the previous formula). The saturated model is thus also the final minimal adequate model, i.e. the model with the best fit and the lowest number of predictors. We will now inspect the final minimal model and go over the model report.
+
+```{r mlr6}
+m2.mlr = lm(                       # generate lm regression object
+  money ~ (status + attraction)^2, # def. regression formula
+  data = mlrdata)                  # def. data
+# inspect final minimal model
+summary(m2.mlr)
+```
+
+The first element of the report is called *Call* and it reports the regression formula of the model. Then, the report provides the residual distribution (the range, median and quartiles of the residuals) which allows drawing inferences about the distribution of differences between observed and expected values. If the residuals are distributed non-normally, then this is a strong indicator that the model is unstable and unreliable because mathematical assumptions on which the model is based are violated.
+
+Next, the model summary reports the most important part: a table with model statistics of the fixed-effects structure of the model. The table contains the estimates (coefficients of the predictors), standard errors, t-values, and the p-values which show whether a predictor significantly correlates with the dependent variable that the model investigates.
+
+All main effects (status and attraction) as well as the interaction between status and attraction is reported as being significantly correlated with the dependent variable (money). An interaction occurs if a correlation between the dependent variable and a predictor is affected by another predictor.
+
+The top most term is called intercept and has a value of 99.15 which represents the base estimate to which all other estimates refer. To exemplify what this means, let us consider what the model would predict that a man would spend on a present if he interested in the woman but he is also in a relationship. The amount he would spend (based on the model would be 99.15 dollars (which is the intercept). This means that the intercept represents the predicted value if all predictors take the base or reference level. And since being in relationship but being interested are the case, and because the interaction does not apply, the predicted value in our example is exactly the intercept (see below). 
+
+```{r mlr7, eval = F}
+#intercept  Single  NotInterested  Single:NotInterested
+99.15     + 57.69  + 0           + 0     # 156.8 single + interested
+99.15     + 57.69  - 47.66       - 63.18 # 46.00 single + not interested
+99.15     - 0      + 0           - 0     # 99.15 relationship + interested
+99.15     - 0      - 47.66       - 0     # 51.49 relationship + not interested
+```
+
+Now, let us consider what a man would spend if he is in a relationship and he is not attracted to the women. In that case, the model predicts that the man would spend only  51.49 dollars on a present: the intercept (99.15) minus 47.66 because the man is not interested (and no additional subtraction because the interaction does not apply). 
+
+We can derive the same results easier using the `predict` function.
+
+```{r mlr8}
+# make prediction based on the model for original data
+prediction <- predict(m2.mlr, newdata = mlrdata)
+# inspect predictions
+table(round(prediction,2))
+```
+
+Below the table of coefficients, the regression summary reports model statistics that provide information about how well the model performs. The difference between the values and the values in the coefficients table is that the model statistics refer to the model as a whole rather than focusing on individual predictors.
+
+The multiple R^2^-value is a measure of how much variance the model explains. A multiple R^2^-value of 0 would inform us that the model does not explain any variance while a value of .852 mean that the model explains 85.2 percent of the variance. A value of 1 would inform us that the model explains 100 percent of the variance and that the predictions of the model match the observed values perfectly. Multiplying the multiple R^2^-value thus provides the percentage of explained variance. 
+
+The adjusted R^2^-value considers the amount of explained variance in light of the number of predictors in the model (it is thus somewhat similar to the AIC and BIC) and informs about how well the model would perform if it were applied to the population that the sample is drawn from. Ideally, the difference between multiple and adjusted R^2^-value should be very small as this means that the model is not overfitted. If, however, the difference between multiple and adjusted R^2^-value is substantial, then this would strongly suggest that the model is unstable and overfitted to the data while being inadequate for drawing inferences about the population. Differences between multiple and adjusted R^2^-values indicate that the data contains outliers that cause the distribution of the data on which the model is based to differ from the distributions that the model mathematically requires to provide reliable estimates. The difference between multiple and adjusted R^2^-value in our model is very small (85.2-84.7=.05) and should not cause concern.
+
+Now, we compare the final minimal adequate model to the base-line model to test whether then final model significantly outperforms the baseline model.
+
+```{r mlr10}
+# compare baseline- and minimal adequate model
+m0.mlr <- lm(money ~1, data = mlrdata)
+anova(m0.mlr, m2.mlr)
+```
+
+The comparison between the two model confirms that the minimal adequate model performs significantly better (makes significantly more accurate estimates of the outcome variable) compared with the baseline model.
+
+### Model Diagnostics 
+
+After implementing the multiple regression, we now need to look for outliers and perform the model diagnostics by testing whether removing data points disproportionately decreases model fit. To begin with, we generate diagnostic plots.
+
+```{r mlr11, message=F, warning=F}
+# generate plots
+autoplot(m2.mlr) + 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  theme_bw()
+```
+
+The plots do not show severe problems such as funnel shaped patterns or drastic deviations from the diagonal line in Normal Q-Q plot (have a look at the explanation of what to look for and how to interpret these diagnostic plots in the section on simple linear regression) but data points 52, 64, and 83 are repeatedly indicated as potentially problematic cases. 
+
+```{r mlr12, message=F, warning=F}
+library(car)
+qqPlot(m2.mlr, main="QQ Plot")
+plot(m2.mlr, which=4)
+```
+
+The graphs indicate that data points 52, 64, and 83 do not seem to overly affect the results as they are within the acceptable range (indicated by the blue area around the Q-Q plot) and their Cook's distance is elevated but not excessively high. and we can thus ignore this issue here. 
+
+
+When the diagnostic plots indicate potential outliers the following parameters should be considered:
+
+1) If more than 1 percent of data points have standardized residuals exceeding values > 2.58, then the error rate of the model is problematic [@field2012discovering 269].
+
+2) If more than 5 percent of data points have standardized residuals exceeding values   > 1.96, then the error rate of the model is problematic [@field2012discovering 269]
+
+3) In addition, data points with Cook's D-values > 1 are problematic [@field2012discovering 269]
+
+4) Also, data points with leverage values higher than $3(k + 1)/N$ or $2(k + 1)/N$ (k = Number of predictors, N = Number of cases in model) are problematic [@field2012discovering 270]
+
+5) There should not be (any) autocorrelation among predictors. This means that independent variables cannot be correlated with itself (for instance, because data points come from the same subject). If there is autocorrelation among predictors, then a Repeated Measures Design or a (hierarchical) mixed-effects model should be implemented instead.
+
+6) Predictors cannot substantially correlate with each other (multicollinearity) and a model contains predictors that have variance inflation factors (VIF) > 3 [see @zuur2010protocol].
+
+
+The following code chunk creates and evaluates these criteria.
+
+
+```{r}
+# add model diagnostics to the data
+mlrdata <- mlrdata %>%
+  dplyr::mutate(residuals = resid(m2.mlr),
+                standardized.residuals = rstandard(m2.mlr),
+                studentized.residuals = rstudent(m2.mlr),
+                cooks.distance = cooks.distance(m2.mlr),
+                dffit = dffits(m2.mlr),
+                leverage = hatvalues(m2.mlr),
+                covariance.ratios = covratio(m2.mlr),
+                fitted = m2.mlr$fitted.values)
+```
+
+And we can now statistically assess the model fit.
+
+```{r mlr23}
+# 1: optimal = 1
+# (listed data points should be removed)
+stdres_258 <- as.vector(sapply(mlrdata$standardized.residuals, function(x) {
+ifelse(sqrt((x^2)) > 2.58, 1, 0) } ))
+(sum(stdres_258) / length(stdres_258)) * 100
+
+# 2: optimal = 5
+# (listed data points should be removed)
+stdres_196 <- as.vector(sapply(mlrdata$standardized.residuals, function(x) {
+ifelse(sqrt((x^2)) > 1.96, 1, 0) } ))
+(sum(stdres_196) / length(stdres_196)) * 100
+
+# 3: optimal = 0
+# (listed data points should be removed)
+which(mlrdata$cooks.distance > 1)
+
+# 4: optimal = 0
+# (data points should be removed if cooks distance is close to 1)
+which(mlrdata$leverage >= (3*mean(mlrdata$leverage)))
+
+# 5: checking autocorrelation:
+# Durbin-Watson test (optimal: high p-value)
+dwt(m2.mlr)
+
+# 6: test multicollinearity (should  not be greater than 3)
+vif(m2.mlr)
+```
+
+All diagnostics are acceptable. We will now test whether the sample size is sufficient for our model. With respect to the minimal sample size and based on @green1991many, @field2012discovering[273-274] offer the following rules of thumb for an adequate sample size (k = number of predictors; categorical predictors with more than two levels should be recoded as dummy variables):
+
+* if you are interested in the overall model: 50 + 8k (k = number of predictors)
+
+* if you are interested in individual predictors: 104 + k
+
+* if you are interested in both: take the higher value!
+
+### A Word about Sample Size
+
+One common issue when doing null-hypothesis hypothesis testing is sample size (which is related to the probability of $\beta$-errors). Remember, $\beta$-errors (or beta errors) mean overlooking a significant effect typically because the sample size is too low.  The test statistics ranges between 0 and 1 where lower values are better.
+
+Despite there being no ultimate rule of thumb, @field2012discovering[273-275], based on @green1991many, provide data-driven suggestions for the minimal size of data required for regression models that aim to find medium sized effects (k = number of predictors; categorical variables with more than two levels should be transformed into dummy variables):
+
+>  If one is only interested in the effect of specific variables, then the sample size should be at least 104 + k (k = number of predictors in model).
+
+### Reporting Results
+
+As a last step, we summarize the results of the regression analysis.
+
+```{r mlr25}
+# tabulate model results
+sjPlot::tab_model(m2.mlr)
+```
+
+
+Additionally, we can inspect the summary of the regression model as shown below to extract additional information. We can use the `reports` package [@report] to summarize the analysis.
+
+Although @field2012discovering suggest that the main effects of the predictors involved in the interaction should not be interpreted, they are interpreted here to illustrate how the results of a multiple linear regression can be reported. 
+
+```{r mlr_report, message=F, warning = F}
+report::report(m2.mlr)
+```
+
+
+Although @field2012discovering suggest that the main effects of the predictors involved in the interaction should not be interpreted, they are interpreted here to illustrate how the results of a multiple linear regression can be reported.
+
+We can use the output of the `report` function to write up a final report: 
+
+
+> A multiple linear regression was fitted to the data using an automated AIC-based (Akaike's Information Criterion) procedure. The model fitting arrived at a final minimal model. During the model diagnostics, two outliers were detected and removed. Further diagnostics did not find other issues after the removal.
+>
+> The final minimal adequate regression model is based on 98 data points and performs highly significantly better than a minimal baseline model (multiple R^2^: .857, adjusted R^2^: .853, F-statistic (3, 94): 154.4, AIC: 850.4, BIC: 863.32, p<.001^$***$^). The final minimal adequate regression model reports *attraction* and *status* as significant main effects. The relationship status of men correlates highly significantly and positively with the amount of money spend on the women's presents (SE: 5.14, t-value: 10.87, p<.001^$***$^). This shows that men spend 156.8 dollars on presents if they are single while they spend 99,15 dollars if they are in a relationship. Whether men are attracted to women also correlates highly significantly and positively with the money they spend on women (SE: 5.09, t-values: -9.37, p<.001^$***$^). If men are not interested in women, they spend 47.66 dollar less on a present for women compared with women the men are interested in.
+
+Furthermore, the final minimal adequate regression model reports a highly significant interaction between relationship *status* and *attraction* (SE: 7.27, t-value: -8.18, p<.001^$***$^): If men are single but they are not interested in a women, a man would spend only 59.46 dollars on a present compared to all other constellations.
+
+
+
+
+[Back to top](#multiple_linear_regression)
+
