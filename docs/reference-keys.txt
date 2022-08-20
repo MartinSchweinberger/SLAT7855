@@ -252,3 +252,12 @@ checking-assumptions
 selected-parametric-tests
 selected-non-parametric-tests
 tab:ds02b
+pearsonss-chi-square-test
+effect-sizes-in-chi-square
+chi-square-in-r
+summarizing-chi-square-results
+requirements-of-chi-square
+students-t-test
+paired-t-test
+independent-t-tests
+mann-whitney-u-test
