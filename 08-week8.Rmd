@@ -218,32 +218,6 @@ chisq.test(chidata, corr = F)
 
 The results reported by `R` are identical to the results we derived by hand and confirm that BrE and AmE differ significantly in their use of *sort of* and *kind of*. 
 
-<br>
-
-<div class="warning" style='padding:0.1em; background-color:#f2f2f2; color:#51247a'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>NOTE</b></p>When conducting a $\chi$^2^ test of independence and in order to interpret the Pearson's $\chi$^2^ statistic, by default, most of the statistical packages, including R, assume that the observed frequencies in a contingency table can be approximated by the continuous $\chi$^2^ distribution. <br>
-To avoid-reduce the error that the approximation introduces, the `chisq.test` function in base R includes the `correct` argument that, by default, is set to TRUE. This argument integrates the Frank Yate's adjustment that aims at compensating for deviations from the (smooth) theoretical chi-squared distribution and it is considered especially useful if the frequency in each cell is less than a small number. Some statisticians set this number to 5 and others to 10.<br> 
-Although this case scenario is relevant to linguistic data, this is not always the case. Moreover, there is a strong tendency in other fields to avoid the Yates' continuity correction altogether due to the overestimated amount of adjustment that it introduces. That is why, it is helpful to know how to avoid the Yates' continuity correction. To do that, you simply set the `correct` argument to `FALSE`, as follows (see also above):<br><br>
-
-```{r echo=T, eval = F, warning=F, message=F}
-# X2-test without Yate's correction
-chisq.test(chidata, correct=FALSE)
-```
-
-Also, in case you would like to deactivate the scientific notation used for displaying the p-value, as it is displayed in the output of the `chisq.test` function, you can do the following:
-
-```{r echo=T, eval = F, warning=F, message=F}
-format(chisq.test(chidata)$p.value, scientific=FALSE)
-```
-
-</p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
-
-<br>
 
 
 In a next step, we calculate the effect size.
