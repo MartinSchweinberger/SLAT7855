@@ -28,7 +28,7 @@ f_{(x)} = \alpha + \beta_{1}x_{i} + \beta_{2}x_{i+1} + \dots + \beta_{n}x_{i+n} 
 
 The model diagnostics we are dealing with here are partly identical to the diagnostic methods for simple linear regression. Because of this overlap, diagnostics will only be described in more detail if they have not been described in the section on simple linear regression.
 
-### Example: Gifts and Availability
+## Example: Gifts and Availability
 
 The example we will go through here is taken from @field2012discovering. In this example, the research question is if the money that men spend on presents for women depends on the women's attractiveness and their relationship status. To answer this research question, we will implement a multiple linear regression and start by loading the data and inspect its structure and properties.
 
@@ -109,7 +109,7 @@ m1.mlr = lm(                      # generate lm regression object
 
 After generating the saturated models we can now start with the model fitting. Model fitting refers to a process that aims at find the model that explains a maximum of variance with a minimum of predictors [see @field2012discovering 318]. Model fitting is therefore based on the *principle of parsimony* which is related to Occam's razor according to which explanations that require fewer assumptions are more likely to be true.
 
-### Model Fitting
+## Model Fitting
 
 Model fitting means that we check what of the predictors should be included in the model and what predictors do not have any impact on the outcome and thus should not be part of the model (because they merely add noise to the data.
 
@@ -180,7 +180,7 @@ anova(m0.mlr, m2.mlr)
 
 The comparison between the two model confirms that the minimal adequate model performs significantly better (makes significantly more accurate estimates of the outcome variable) compared with the baseline model.
 
-### Model Diagnostics 
+## Model Diagnostics 
 
 After implementing the multiple regression, we now need to look for outliers and perform the model diagnostics by testing whether removing data points disproportionately decreases model fit. To begin with, we generate diagnostic plots.
 
@@ -272,7 +272,7 @@ All diagnostics are acceptable. We will now test whether the sample size is suff
 
 * if you are interested in both: take the higher value!
 
-### A Word about Sample Size
+## A Word about Sample Size
 
 One common issue when doing null-hypothesis hypothesis testing is sample size (which is related to the probability of $\beta$-errors). Remember, $\beta$-errors (or beta errors) mean overlooking a significant effect typically because the sample size is too low.  The test statistics ranges between 0 and 1 where lower values are better.
 
@@ -280,7 +280,7 @@ Despite there being no ultimate rule of thumb, @field2012discovering[273-275], b
 
 >  If one is only interested in the effect of specific variables, then the sample size should be at least 104 + k (k = number of predictors in model).
 
-### Reporting Results
+## Reporting Results
 
 As a last step, we summarize the results of the regression analysis.
 
