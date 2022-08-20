@@ -265,7 +265,8 @@ Let's move on to implementing the regression in R. In a first step, we load the 
 
 ```{r slr20, message=FALSE, warning=FALSE}
 # load data
-slrdata2  <- base::readRDS(url("https://slcladal.github.io/data/sgd.rda", "rb"))
+slrdata2  <- base::readRDS(url("https://slcladal.github.io/data/sgd.rda", "rb")) %>%
+  dplyr::mutate(Group = factor(Group))
 ```
 
 
@@ -273,15 +274,22 @@ slrdata2  <- base::readRDS(url("https://slcladal.github.io/data/sgd.rda", "rb"))
 # inspect data
 slrdata2 %>%
   as.data.frame() %>%
-  head(15) %>%
+  head() %>%
   flextable() %>%
   flextable::set_table_properties(width = .75, layout = "autofit") %>%
   flextable::theme_zebra() %>%
   flextable::fontsize(size = 12) %>%
   flextable::fontsize(size = 12, part = "header") %>%
   flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "First 15 rows of the slrdata2 data.")  %>%
+  flextable::set_caption(caption = "First 6 rows of the slrdata2 data.")  %>%
   flextable::border_outer()
+```
+
+We also inspect the structure of the data.
+
+```{r slr21b, echo=F, message=FALSE, warning=FALSE}
+# inspect data
+str(slrdata2)
 ```
 
 Now, we graphically display the data. In this case, a boxplot represents a good way to visualize the data.
@@ -296,8 +304,7 @@ slrdata2 %>%
   geom_text(aes(label = paste("M = ", Mean, sep = ""), y = 1)) +
   geom_text(aes(label = paste("SD = ", SD, sep = ""), y = 0)) +
   theme_bw(base_size = 15) +
-  labs(x = "Group") +                      
-  labs(y = "Test score (Points)", cex = .75) +   
+  labs(x = "Group", y = "Test score (Points)") +   
   coord_cartesian(ylim = c(0, 20)) +  
   guides(fill = FALSE)                
 ```
