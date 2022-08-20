@@ -247,3 +247,8 @@ modifying-thmes-and-legends
 modifying-symbols-and-adding-text
 basic-principles-of-data-vis
 modifying-themes-and-legends
+basic-inferential-statistics
+checking-assumptions
+selected-parametric-tests
+selected-non-parametric-tests
+tab:ds02b
