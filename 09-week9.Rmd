@@ -58,7 +58,8 @@ We can run a simple linear regression on the data and we get the following outpu
 
 ```{r intro01b, message=FALSE, warning=FALSE}
 # model for upper panels
-summary(glm(Weight ~ Height, data = df))
+m <- lm(Weight ~ Height, data = df)
+summary(m)
 ```
 
 To estimate how much some weights who is 180cm tall, we would multiply the coefficient (slope of the line) with 180 ($x$) and add the value of the intercept (point where line crosses the $y$-axis). If we plug in the numbers from the regression model below, we get
@@ -89,7 +90,7 @@ p3 <- p +
     geom_smooth(color = "blue", se = F, method = "lm", size = .5)
 p4 <- p3 +
   geom_segment(aes(xend = Height, yend = Pred), color = "red") +
-  ggplot2::annotate(geom = "text", label = "Residual Deviance = 164.3", x = 170, y = 100, size = 3)
+  ggplot2::annotate(geom = "text", label = "Residual Deviance = 164.3 \nR2: 1 - (164.3/946.9)", x = 170, y = 100, size = 3)
 ggpubr::ggarrange(p1, p2, p3, p4, ncol = 2, nrow = 2)
 ```
 
