@@ -1,7 +1,295 @@
-# Multiple Binomial Logistic Regression
+--- 
+title: "SLAT7855 Quantitative Research Methods in Applied Linguistics"
+author: "Martin Schweinberger"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: ["book.bib", "packages.bib"]
+biblio-style: apalike
+link-citations: yes
+---
+
+# Preface {-}
+
+Placeholder
 
 
-This week, we continue with regression analyses and expand on last week by using a regression to analyse a nominal dependent variable. 
+## Basic Course Information {-}
+### Course Description {-}
+### Course Introduction {-}
+### Course Staff {-}
+### Timetable {-}
+## Aims, Objectives & Graduate Attributes {-}
+### Course Aims {-}
+### Learning Objectives {-}
+## Learning Resources {-}
+### Required Resources {-}
+### Recommended Resources {-}
+### University Learning Resources {-}
+### School of Languages and Cultures Learning Resources {-}
+### Other Learning Resources & Information {-}
+## Teaching & Learning Activities {-}
+### Learning Activities {-}
+### Course plan {-}
+## Assessment {-}
+### Weekly Oline Study Tasks {-}
+### Annotated Bibliography {-}
+### Research Project {-}
+### Course Grading {-}
+
+<!--chapter:end:index.Rmd-->
+
+
+# Introduction
+
+Placeholder
+
+
+## Why do we need science?
+## Errare Humanum Est
+### The Monty Hall Problem
+### The Birthday Conundrum
+### Fast and Slow Thinking
+### Randomness
+### Patterns and Matters of Habit
+### Locical Fallacies and Biases
+#### Confirmation Bias and Cherry Picking {-}
+#### Ad Hominem {-}
+#### Appeal to Authority {-}
+#### Straw Man {-}
+#### Argument from Ignorance {-}
+#### False Dichotomy {-}
+#### Slippery Slope {-}
+#### Circular Argument {-}
+#### Red Herring {-}
+#### Sunk Cost {-}
+## What is science?
+### Clever Hans 
+### Popper, falsification, and scientific progress
+### What is (empirical) Linguistics?
+## Tutorial{-}
+
+<!--chapter:end:01-week1.Rmd-->
+
+
+# Hypotheses and Variables
+
+Placeholder
+
+
+## Hypotheses
+### Types of Hypotheses{-}
+### Why test the H0?!{-}
+## Data and Research Designs
+### Research Designs{-}
+#### Experimental research{-}
+#### Quasi-experimental research{-}
+#### Observational designs{-}
+#### Archival research and reviews{-}
+#### Introspection{-}
+#### Questionnaire designs{-}
+## Variables and Validity
+### Variable Types (Scaling){-}
+#### Nominal and Categorical Variables{-}
+#### Ordinal Variables{-}
+#### (True) Numeric Variables{-}
+## Relationships between variables
+## Tutorial {-}
+
+<!--chapter:end:02-week2.Rmd-->
+
+
+# Significance, Probability and the Normal Distribution
+
+Placeholder
+
+
+## Significance and Probability
+### Significance Levels{-}
+### Probability{-}
+### The Normal Distribution{-}
+### Non-normality: skewness and kurtosis{-}
+#### Skewness{-}
+#### Kurtosis{-}
+### The Binomial Distribution{-}
+## z-scores
+## Alpha and Beta Errors
+## Independence
+## Corrections
+
+<!--chapter:end:03-week3.Rmd-->
+
+
+# Getting Started with R and RStudio
+
+Placeholder
+
+
+## Goals of this section
+## Why R?
+### Full flexibility{-}
+### Great for learners!{-}
+### Free and Open Source{-}
+### RStudio and ease of use{-}
+### R is a community effort{-}
+### Reproducibilty and Transparency{-}
+### Tools versus Scripts{-}
+### Widely used{-}
+### Employability{-}
+## Installing R and RStudio
+## Preparation
+## Folder Structure and R projects
+### Create a folder for your project
+### Open RStudio
+### R Projects
+### R Notebooks
+### Updating R
+### Optimizing R project options
+### Getting started with R Notebooks
+### R Markdown
+## R and RStudio Basics
+## RStudio: Panes
+### R Console (bottom left pane)
+### Running commands from a script
+### Script Editor (top left pane)
+## Getting started with R
+### Setting up an R session
+### Packages
+### Getting help
+### Finding help within R
+### Finding help online
+## Working with Data
+### Loading data
+### Inspecting data
+### A first plot
+### Changing data
+### Saving data
+
+<!--chapter:end:04-week4.Rmd-->
+
+
+# Working with Tables in R and RStudio
+
+Placeholder
+
+
+## Working with tables
+## Functions and Objects
+## Inspecting data
+## Accessing individual cells in a table
+## Tabulating data
+## Saving data to your computer
+## Loading data from your computer
+## Loading Excel data
+## Renaming, Piping, and Filtering 
+## Ordering data
+## Creating and changing variables
+## If-statements
+## Summarizing data
+## Gathering and spreading data
+## Ending R sessions
+## Extracting session information
+## Going further
+
+<!--chapter:end:05-week5.Rmd-->
+
+
+# Descriptive Statistics
+
+Placeholder
+
+
+## Measures of Centrality
+### Mean{-}
+### Median{-}
+### Mode{-}
+### Geometric mean{-}
+### Harmonic mean{-}
+### Notes on Measures of Centrality{-}
+## Measures of Variability
+### Range{-}
+### Interquartile range (IQR){-}
+### Variance{-}
+### Standard deviation{-}
+### Standard Error{-}
+## Confidence Intervals
+### Confidence Intervals for Simple Vectors{-}
+
+<!--chapter:end:06-week6.Rmd-->
+
+
+# Introduction to Data Visualization
+
+Placeholder
+
+
+## The ggplot framework
+## Basic principles of data vis
+## Creating a simple graph
+## Modifying axes and titles
+## Line Graphs
+## Histograms
+## Bar plots
+## Boxplots
+## Modifying symbols and adding text
+## Modifying themes and legends
+
+<!--chapter:end:07-week7.Rmd-->
+
+
+# Basic Inferential Statistics
+
+Placeholder
+
+
+## (Pearsons's) Chi-Square Test
+### Effect Sizes in Chi-Square
+### Chi-Square in R
+### Summarizing Chi-Square Results
+### Requirements of Chi-Square
+## Student's t-test
+### Theoretical underpinnings: power, effect size, and variability{-}
+#### Effect size{-}
+#### Sample size{-}
+#### Variability{-}
+### Paired t-test
+### Independent t-tests
+## Mann-Whitney U-Test 
+### Mann-Whitney U tests with continuity correction {-}
+
+<!--chapter:end:08-week8.Rmd-->
+
+
+# Simple Linear Regression
+
+Placeholder
+
+
+## The Basic Principle
+## Example 1: Preposition Use across Real-Time
+## Example 2: Teaching Styles
+
+<!--chapter:end:09-week9.Rmd-->
+
+
+# Multiple Linear Regression
+
+Placeholder
+
+
+## The Basic Principle
+## Example: Gifts and Availability
+## Model Fitting
+## Model Diagnostics 
+## A Word about Sample Size
+## Reporting Results
+
+<!--chapter:end:10-week10.Rmd-->
+
+# (Different) Types of Regression
+
+
+This week, we continue with regression analyses and expand on last week by using a regression to analyse a nominal dependent variable. Regression models that are fit to nominal dependent variables are called *(binomial) logistic regressions*.
 
 **Preparation and session set up**
 
@@ -433,4 +721,37 @@ Standardized parameters were obtained by fitting the model on a standardized ver
 [Back to top](#introduction)
 
 
+
+
+<!--chapter:end:11-week11.Rmd-->
+
+
+# Logistic Mixed-Effects Regression
+
+Placeholder
+
+
+## Introduction
+## Basic concepts 
+## Example: Discourse LIKE in Irish English
+## Model Building
+## Model Fitting
+## Visualizing Effects
+## Extracting Model Fit Parameters
+## Model Diagnostics
+
+<!--chapter:end:12-week12.Rmd-->
+
+
+# Tree-Based Models
+
+Placeholder
+
+
+## Basic Concepts
+## Classification And Regression Trees
+## Conditional Inference Trees
+## Problems of Conditional Inference Trees
+
+<!--chapter:end:13-week13.Rmd-->
 

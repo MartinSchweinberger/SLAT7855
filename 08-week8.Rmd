@@ -710,20 +710,20 @@ The Mann-Whitney U test can also be used with continuity correction. A continuit
 
 For this example, we generate data is deliberately non-normal.
 
+
 ```{r mwu5, echo=F, warning=F, message=F}
-library(fGarch)
-# generate non-normal skewed numeric data
-frequency <- 1:100
-frequency <- round(1/(frequency/20)*1000, 0)
-normal_reaction <- round(rsnorm(100, 2000, 400), 1)
-reaction_times <- order(normal_reaction)
-reaction_times <- reaction_times*1:100
-# combine into data frame
-wxdata <- data.frame(frequency, normal_reaction, reaction_times) %>%
-  dplyr::rename(Frequency = frequency,
-                NormalizedReaction = normal_reaction,
-                Reaction= reaction_times)
+library(faux)
+wxdata <- faux::rnorm_multi(n = 200,
+                            mu = c(50, 500),
+                            sd = c(10, 50),
+                            r = c(-0.8),
+                            varnames = c("Frequency", "Reaction"),
+                            seed = 1234) %>%
+  dplyr::mutate(Frequency = Frequency^5/100000) %>%
+  dplyr::arrange(-Frequency)
 ```
+
+
 
 
 ```{r mwu5b, echo=F, warning=F, message=F}
@@ -746,22 +746,29 @@ library(gridExtra)
 p1 <- ggplot(wxdata, aes(Frequency)) + # define data
   geom_density(fill = "orange", alpha = .5) + # define plot type (density)
   theme_bw() +                                # black + white background
-  labs(y="Density", x = "Frequency") +        # axes titles
-  coord_cartesian(ylim = c(0, .002),            # define y-axis coordinates
-                  xlim = c(-5, 10000))           # define x-axis coordinates
+  labs(y="Density", x = "Frequency")
 p2 <- ggplot(wxdata, aes(Reaction)) +
   geom_density(fill = "lightgray", alpha = .5) +
   theme_bw() +
-  labs(y="Density", x = "Reaction Time") +
-  coord_cartesian(ylim = c(0, 0.00025), xlim = c(0, 10000))
+  labs(y="Density", x = "Reaction Time")
 grid.arrange(p1, p2, nrow = 1)             # 2 plots in one window
 ```
 
-Both variables are negatively skewed (non-normally distributed) but we can use the `wilcox.test` function to perform the Mann-Whitney U test with continuity correction which takes the skewness into account. The null hypothesis is that there is no difference between the 2 groups. Although the output states that the test that was performed is a *Wilcoxon rank sum test with continuity correction*, we have actually performed a Mann-Whitney U test - this is because the nomenclature for the tests is not unanimous.
+Both variables are negatively skewed (non-normally distributed) but we can use the `wilcox.test` function to perform the Mann-Whitney U test with continuity correction which takes the skewness into account. 
+
+```{r mwu6a, echo=T, eval = T, warning=F, message=F}
+wxdata %>%
+  ggplot(aes(Frequency, Reaction)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+
+The null hypothesis is that there is no correlation between token frequency and reaction time. The output states that the test that was performed is a *Wilcoxon rank sum test with continuity correction* which is just a different name for the Mann-Whitney U test - this is because the nomenclature for the tests is not unanimous.
 
 ```{r mwu6, echo=T, eval = T, warning=F, message=F}
 # perform test
-wilcox.test(wxdata$Reaction, wxdata$Frequency) 
+wilcox.test(wxdata$Reaction - wxdata$Frequency) 
 ```
 
 
@@ -769,12 +776,12 @@ Again, we use the `reports` package [@report] to summarize the analysis.
 
 
 ```{r wilcox2_report,  message=F, warning = F}
-report::report(wilcox.test(wxdata$Reaction, wxdata$Frequency))
+report::report(wilcox.test(wxdata$Reaction - wxdata$Frequency))
 ```
 
 We can use this output to write up a final report: 
 
-The Wilcoxon rank sum exact test  suggests that there is a strong, positive, statistically  significant relationship between the reaction time for identifying a word as real and its token frequency (W = 7613.50, p < .001; r (rank biserial) = 0.52, 95% CI [0.40, 0.63]).
+The Wilcoxon signed rank test with continuity correction suggests that there is a strong, negative, statistically  significant relationship between the reaction time for identifying a word as real and its token frequency (W = 276.00, p < .001; r (rank biserial) = -0.97, 95% CI [-0.98, -0.96]).
 
 
 
