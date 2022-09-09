@@ -275,3 +275,5 @@ assumptions
 linear-mixed-effects-regression
 model-fitting-3
 mixed-effects-logistic-regression
+decision-trees
+tab:dt2

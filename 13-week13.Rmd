@@ -1,70 +1,6 @@
 # Tree-Based Models
 
-This week, we focus on tree-based models and their implementation in R. For the more advanced, a recommendable resource for tree-based modeling is @prasad2006newer or @gries2021statistics. Very good papers dealing with many critical issues related to tree-based models are @strobl2009tree and @breiman2001modeling. The aim of this week is  to show how to implement and perform basic tree-based modeling and classification using R. 
-
-
-**Preparation and session set up**
-
-For this week, we need to install certain *packages* from an R *library* so that the scripts shown below are executed without errors. Before turning to the code below, please install the packages by running the code below this paragraph - it may take some time (between 1 and 5 minutes to install all of the libraries so you do not need to worry if it takes some time).
-
-```{r prep1, eval = F, message=FALSE, warning=FALSE}
-# install packages
-install.packages("Boruta")
-install.packages("tree")
-install.packages("caret")
-install.packages("cowplot")
-install.packages("tidyverse")
-install.packages("ggparty")
-install.packages("Gmisc")
-install.packages("grid")
-install.packages("Hmisc")
-install.packages("party")
-install.packages("partykit")
-install.packages("randomForest")
-#install.packages("Rling")
-install.packages("pdp")
-install.packages("tidyr")
-install.packages("RCurl")
-install.packages("vip")
-install.packages("flextable")
-# install klippy for copy-to-clipboard button in code chunks
-install.packages("remotes")
-remotes::install_github("rlesur/klippy")
-```
-
-
-Now that we have installed the packages, we can activate them as shown below.
-
-
-```{r prep2, message=FALSE, warning=FALSE}
-# set options
-options(stringsAsFactors = F)
-options(scipen = 999)
-options(max.print=10000)
-# load packages
-library(Boruta)
-library(tree)
-library(caret)
-library(cowplot)
-library(tidyverse)
-library(ggparty)
-library(Gmisc)
-library(grid)
-library(Hmisc)
-library(party)
-library(partykit)
-library(randomForest)
-#library(Rling)
-library(pdp)
-library(RCurl)
-library(tidyr)
-library(vip)
-library(flextable)
-# activate klippy for copy-to-clipboard button
-klippy::klippy()
-```
-
-
+This week, we focus on tree-based models and their implementation in R. 
 
 ## Basic Concepts
 
@@ -86,58 +22,59 @@ Despite these potential advantages, a word of warning is in order: @gries2021sta
 
 1. Tree-structure models only inform about the importance of a variable but not if the variable is important as a main effect or as part of interactions (or both)! The importance only shows that there is some important connection between the predictor and the dependent variable.
 
-2. Simple tree-structure models have been shown to fail in detecting the correct predictors if the variance is solely determined by a single interaction [@gries2021statistics, chapter 7.3]. This failure is caused by the fact that the predictor used in the first split of a tree is selected as the one with the strongest main effect [@boulesteix2015interaction, 344]. This issue can, however, be avoided by hard-coding the interactions as predictors plus using ensemble methods such as random forests rather than individual trees [see @gries2021statistics, chapter 7.3]. 
+2. Simple tree-structure models have been shown to fail in detecting the correct predictors if the variance is solely determined by a single interaction [@gries2021statistics, chapter 7.3]. This failure is caused by the fact that the predictor used in the first split of a tree is selected as the one with the strongest main effect [@boulesteix2015interaction, 344]. This issue can, however, be avoided by hard-coding the interactions as predictors plus using ensemble methods such as random forests rather than individual trees. 
 
 3. Another shortcoming is that tree-structure models partition the data (rather than "fitting a line" through the data which can lead to more coarse-grained predictions compared to regression models when dealing with numeric dependent variables [again, see @gries2021statistics, chapter 7.3]. 
 
-4. @boulesteix2015interaction, 341 state that high correlations between predictors can hinder the detection of interactions when using small data sets. However, regression do not fare better here as they are even more strongly affected by (multi-)collinearity (see @@gries2021statistics, chapter 7.3).
+4. @boulesteix2015interaction, 341 state that high correlations between predictors can hinder the detection of interactions when using small data sets. However, regression do not fare better here as they are even more strongly affected by (multi-)collinearity.
 
-5. Tree-structure models are bad a detecting interactions when the variables have strong main effects which is, unfortunately, common when dealing with linguistic data [@wrigt2016interac].
+5. Tree-structure models are bad a detecting interactions when the variables have strong main effects which is, unfortunately, common when dealing with linguistic data.
 
 
 Before we implement a conditional inference tree in R, we will have a look at how decision trees work. We will do this in more detail here as random forests and Boruta analyses are extensions of inference trees and are therefore based on the same concepts.
 
-## Classification And Regression Trees
+## Decision Trees
 
-The most basic type of tree-structure model is a decision tree which is a type of classification and regression tree (CART). A more elaborate version of a CART is called a Conditional Inference Tree (CIT). The difference between a CART and a CIT is that CITs use significance tests, e.g. the p-values, to select and split variables rather than some information measures like the Gini coefficient [@gries2021statistics].
+The most basic type of tree-structure model is a decision tree which is a type of classification and regression tree (CART). A more elaborate version of a CART is called a Conditional Inference Tree (CIT). The difference between a CART and a CIT is that CITs use significance tests, e.g. the p-values, to select and split variables rather than some information measures like the Gini coefficient [@gries2021statistics]. Let us now see how we can generate a decision tree.
 
-Below is an example of a decision tree which shows what what response to expect - in this case whether a speaker uses discourse *like* or not. Decision trees, like all CARTs and CITs, answer a simple question, namely *How do we best classify elements based on the given predictors?*. The answer that decision trees provide is the classification of the elements based on the levels of the predictors. In simple decision trees, all predictors, even those that are not significant are included in the decision tree. The decision tree shows that the best (or most important) predictor for the use of discourse *like* is age as it is the highest node. Among young speakers, those with high status use *like* more compared with speakers of lower social status. Among old speakers, women use discourse *like* more than men.
+**Preparation and session set up**
 
+For this week, we need to install certain *packages* from an R *library* so that the scripts shown below are executed without errors. Before turning to the code below, please install the packages by running the code below this paragraph.
 
-```{r cit1a, echo = F, message=FALSE, warning=FALSE}
-# load data
-citdata <- read.delim("https://slcladal.github.io/data/treedata.txt", header = T, sep = "\t")
-# convert character strings to factors
-citdata <- citdata %>%
-  dplyr::mutate_if(is.character, factor)
-# set.seed
-set.seed(111)        
-dtree <- tree::tree(LikeUser ~ Age + Gender + Status, data = citdata, split = "gini")
-# display decision tree
-plot(dtree, gp = gpar(fontsize = 8))
-# add annotation
-text(dtree, pretty = 0, all = F)
+```{r prep1, eval = F, message=FALSE, warning=FALSE}
+# install packages
+install.packages("Boruta")
+install.packages("dplyr")
+install.packages("party")
+install.packages("partykit")
+install.packages("flextable")
 ```
 
 
-The *yes* and *no* at the bottom show if the speaker should be classified as a user of discourse *like* (*yes* or *no*). Each split can be read as *true* to the left and *false* to the right. So that, at the first split, if the person is between the ages of 15 and 40, we need to follow the branch to the left while we need to follow to the right if the person is not 15 to 40.
+Now that we have installed the packages, we can activate them as shown below.
 
-Before going through how this conditional decision tree is generated, let us first go over some basic concepts. The top of the decision tree is called *root* or *root node*, the categories at the end of branches are called *leaves* or *leaf nodes*. Nodes that are in-between the root and leaves are called *internal nodes* or just *nodes*. The root node has only arrows or lines pointing away from it, internal nodes have lines going to and from them, while leaf nodes only have lines pointing towards them.
 
-How to prune and evaluate the accuracy of decision trees is not shown here. If you are interested in this, please check out chapter 7 of @gries2021statistics which is a highly recommendable resource that provide a lot of additional information about decision trees and CARTs. 
+```{r prep2, message=FALSE, warning=FALSE}
+# set options
+options(scipen = 999)
+# load packages
+library(dplyr)
+library(party)
+library(partykit)
+library(flextable)
+```
 
-Let us now go over the process by which the decision tree above is generated. In our example, we want to predict whether a person makes use of discourse *like* given their age, gender, and social status. 
+We can now load and inspect the data.
 
-In a first step, we load and inspect the data that we will use in this tutorial. As tree-based models require either numeric or factorized data, we factorize the "character" variables in our data.
-
-```{r cit4c,  message=FALSE, warning=FALSE}
+```{r dt1,  message=FALSE, warning=FALSE}
 # load data
 citdata <- read.delim("https://slcladal.github.io/data/treedata.txt", header = T, sep = "\t")  %>%
-# factorize variables (cit require factors instead of character vectors)
+  # convert character strings to factors
   dplyr::mutate_if(is.character, factor)
 ```
 
-```{r  cit4g, echo = F, message=FALSE, warning=FALSE}
+
+```{r  dt2, echo = F, message=FALSE, warning=FALSE}
 # inspect data
 citdata %>%
   as.data.frame() %>%
@@ -152,15 +89,34 @@ citdata %>%
   flextable::border_outer()
 ```
 
+Next, we generate and plot the CIT.
 
-The data now consists of factors which two levels each. 
 
+```{r  dt3, echo = F, message=FALSE, warning=FALSE}
+# generate decision tree      
+dtree <- tree::tree(LikeUser ~ Age + Gender + Status, data = citdata, split = "gini")
+# display decision tree
+plot(dtree)
+# add annotation
+text(dtree, pretty = 0, all = F)
+```
+
+
+The example of the decision tree above shows what what response to expect - in this case whether a speaker uses discourse *like* or not. Decision trees, like all CARTs and CITs, answer a simple question, namely *How do we best classify elements based on the given predictors?*. The answer that decision trees provide is the classification of the elements based on the levels of the predictors. In simple decision trees, all predictors, even those that are not significant are included in the decision tree. The decision tree shows that the best (or most important) predictor for the use of discourse *like* is age as it is the highest node. Among young speakers, those with high status use *like* more compared with speakers of lower social status. Among old speakers, women use discourse *like* more than men.
+
+
+The *yes* and *no* at the bottom show if the speaker should be classified as a user of discourse *like* (*yes* or *no*). Each split can be read as *true* to the left and *false* to the right. So that, at the first split, if the person is between the ages of 15 and 40, we need to follow the branch to the left while we need to follow to the right if the person is not 15 to 40.
+
+Let us go over some basic concepts. The top of the decision tree is called *root* or *root node*, the categories at the end of branches are called *leaves* or *leaf nodes*. Nodes that are in-between the root and leaves are called *internal nodes* or just *nodes*. The root node has only arrows or lines pointing away from it, internal nodes have lines going to and from them, while leaf nodes only have lines pointing towards them.
 
 ## Conditional Inference Trees
 
+We now focus on Conditional Inference Trees (CITs). In contrast to decision trees, which indicate an outcome for all possible decisions, CITs only split the data if the split is statistically justified (this mean that splits are based on significant differences in the distributions resulting from the split).
+
+
 Conditional Inference Trees (CITs) are much better at determining the *true* effect of a predictor, i.e. the effect of a predictor if all other effects are simultaneously considered. In contrast to CARTs, CITs use p-values to determine splits in the data. Below is a conditional inference tree which shows how and what factors contribute to the use of discourse *like*. In conditional inference trees predictors are only included if the predictor is significant (i.e. if these predictors are necessary). 
 
-```{r cit1b, message=FALSE, warning=FALSE}
+```{r cit1, message=FALSE, warning=FALSE}
 set.seed(111)        # set.seed
 # apply bonferroni correction (1 minus alpha multiplied by n of predictors)
 control = ctree_control(mincriterion = 1-(.05*ncol(citdata)-1))
@@ -176,7 +132,7 @@ plot(citd.ctree, gp = gpar(fontsize = 8))
 
 Like other tree-based methods, CITs are very intuitive, multivariate, non-parametric, they do not require large data sets, and they are easy to implement. Despite these obvious advantages, they have at least one major short coming compared to other, more sophisticated tree-structure models (in addition to the general issues that tree-structure models exhibit as discussed in the section [Tree-Structure Model Basics](#tree-structuremodelbasics)): they are prone to overfitting which means that they fit the observed data very well but preform much worse when being applied to new data.
 
-An extension which remedies this problem is to use a so-called ensemble method which grows many varied trees. The most common ensemble method is called a *Random Forest Analysis* but we will not discuss this here and stop. 
+An extension which remedies this problem is to use a so-called ensemble method which grows many varied trees. The most common ensemble method is called a *Random Forest Analysis* and an even better ensemble method is called *Boruta* (but we will not discuss them in this section - a tutorial covering these methods can be found [here](https://ladal.edu.au/tree.html)). 
 
 
 [Back to top](#introduction)
