@@ -201,70 +201,7 @@ plot(m2.mlr, which=4)
 
 The graphs indicate that data points 52, 64, and 83 do not seem to overly affect the results as they are within the acceptable range (indicated by the blue area around the Q-Q plot) and their Cook's distance is elevated but not excessively high. and we can thus ignore this issue here. 
 
-
-When the diagnostic plots indicate potential outliers the following parameters should be considered:
-
-1) If more than 1 percent of data points have standardized residuals exceeding values > 2.58, then the error rate of the model is problematic [@field2012discovering 269].
-
-2) If more than 5 percent of data points have standardized residuals exceeding values   > 1.96, then the error rate of the model is problematic [@field2012discovering 269]
-
-3) In addition, data points with Cook's D-values > 1 are problematic [@field2012discovering 269]
-
-4) Also, data points with leverage values higher than $3(k + 1)/N$ or $2(k + 1)/N$ (k = Number of predictors, N = Number of cases in model) are problematic [@field2012discovering 270]
-
-5) There should not be (any) autocorrelation among predictors. This means that independent variables cannot be correlated with itself (for instance, because data points come from the same subject). If there is autocorrelation among predictors, then a Repeated Measures Design or a (hierarchical) mixed-effects model should be implemented instead.
-
-6) Predictors cannot substantially correlate with each other (multicollinearity) and a model contains predictors that have variance inflation factors (VIF) > 3 [see @zuur2010protocol].
-
-
-The following code chunk creates and evaluates these criteria.
-
-
-```{r}
-# add model diagnostics to the data
-mlrdata <- mlrdata %>%
-  dplyr::mutate(residuals = resid(m2.mlr),
-                standardized.residuals = rstandard(m2.mlr),
-                studentized.residuals = rstudent(m2.mlr),
-                cooks.distance = cooks.distance(m2.mlr),
-                dffit = dffits(m2.mlr),
-                leverage = hatvalues(m2.mlr),
-                covariance.ratios = covratio(m2.mlr),
-                fitted = m2.mlr$fitted.values)
-```
-
-And we can now statistically assess the model fit.
-
-```{r mlr23}
-# 1: optimal = 1
-# (listed data points should be removed)
-stdres_258 <- as.vector(sapply(mlrdata$standardized.residuals, function(x) {
-ifelse(sqrt((x^2)) > 2.58, 1, 0) } ))
-(sum(stdres_258) / length(stdres_258)) * 100
-
-# 2: optimal = 5
-# (listed data points should be removed)
-stdres_196 <- as.vector(sapply(mlrdata$standardized.residuals, function(x) {
-ifelse(sqrt((x^2)) > 1.96, 1, 0) } ))
-(sum(stdres_196) / length(stdres_196)) * 100
-
-# 3: optimal = 0
-# (listed data points should be removed)
-which(mlrdata$cooks.distance > 1)
-
-# 4: optimal = 0
-# (data points should be removed if cooks distance is close to 1)
-which(mlrdata$leverage >= (3*mean(mlrdata$leverage)))
-
-# 5: checking autocorrelation:
-# Durbin-Watson test (optimal: high p-value)
-dwt(m2.mlr)
-
-# 6: test multicollinearity (should  not be greater than 3)
-vif(m2.mlr)
-```
-
-All diagnostics are acceptable. We will now test whether the sample size is sufficient for our model. With respect to the minimal sample size and based on @green1991many, @field2012discovering[273-274] offer the following rules of thumb for an adequate sample size (k = number of predictors; categorical predictors with more than two levels should be recoded as dummy variables):
+With respect to the minimal sample size and based on @green1991many, @field2012discovering[273-274] offer the following rules of thumb for an adequate sample size (k = number of predictors; categorical predictors with more than two levels should be recoded as dummy variables):
 
 * if you are interested in the overall model: 50 + 8k (k = number of predictors)
 

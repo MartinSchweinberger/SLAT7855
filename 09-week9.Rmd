@@ -96,6 +96,23 @@ ggpubr::ggarrange(p1, p2, p3, p4, ncol = 2, nrow = 2)
 
 Some words about the plots in the figure above: the upper left panel shows the raw observed data (black dots). The upper right panel shows the mean weight (blue line) and the residuals (in red). residuals are the distances from the expected or predicted values to the observed values (in this case the mean is the most most basic model which we use to predict values while the observed values simply represent the actual data points). The lower left panel shows observed values and the regression line, i.e, that line which, when drawn through the data points, will have the lowest sum of residuals. The lower right panel shows the regression line and the residuals, i.e. the distances between the expected or predicted values to the actual observed values (in red). Note that the sum of residuals in the lower right panel is much smaller than the sum of residuals in the upper right panel. This suggest that considering Height is a good idea as it explains a substantive amount of residual error and reduces the sum of residuals (or variance).
 
+## Assumptions
+
+Linear regression makes several assumptions about the data. If these assumptions are not met, then this can mean that results of the model can be misleading, inaccurate, or plainly wrong. All these assumptions and potential problems can be checked by producing some diagnostic plots visualizing the residual errors (we will do this below). The assumptions of regression models are:
+
+* **Linearity**: The relationship between the predictor (x) and the outcome (y) is assumed to be linear.  
+* **Normality of residuals**: The residual errors are assumed to be normally distributed.  
+* **Homogeneity**: The residuals are assumed to have a constant variance (homoscedasticity)  
+* **Independence of residuals**: The residuals are assumed not to be correlated.
+
+You should check whether or not these assumptions hold true. Potential problems include:
+
+* **Non-linearity**: The predictor affects the dependent variable differently for different values.  
+* **Heteroscedasticity**: Non-constant variance of error terms (this means that at least one other important predictor is not included in the model).
+* **Presence of influential observations**:
+  * **Outliers**: extreme values in the dependent variable  
+  * **High-leverage points**: extreme values in the predictors  
+
 Now that we are familiar with the basic principle of regression modeling - i.e. finding the line through data that has the smallest sum of residuals, we will apply this to a linguistic example.
 
 
@@ -225,13 +242,18 @@ autoplot(m1.lm) +
 ```
 
 
-The diagnostic plots are very positive and we will go through why this is so for each panel. The graph in the upper left panel is useful for finding outliers or for determining the correlation between residuals and predicted values: when a trend becomes visible in the line or points (e.g., a rising trend or a zigzag line), then this would indicate that the model would be problematic (in such cases, it can help to remove data points that are too influential (outliers)).
+The diagnostic plots are very positive and we will go through why this is so for each panel. 
 
-The graphic in the upper right panel indicates whether the residuals are normally distributed (which is desirable) or whether the residuals do not follow a normal distribution. If the points lie on the line, the residuals follow a normal distribution. For example, if the points are not on the line at the top and bottom, it shows that the model does not predict small and large values well and that it therefore does not have a good fit.
+The diagnostic plots show residuals in four different ways:
 
-The graphic in the lower left panel provides information about *homoscedasticity*. Homoscedasticity means that the variance of the residuals remains constant and does not correlate with any independent variable. In unproblematic cases, the graphic shows a flat line. If there is a trend in the line, we are dealing with heteroscedasticity, that is, a correlation between independent variables and the residuals, which is very problematic for regressions.
+* **Residuals vs Fitted** (upper left): Used to check the linear relationship assumptions. A horizontal line, without distinct patterns is an indication for a linear relationship, what is good. When a trend becomes visible in the line or points (e.g., a rising trend or a zigzag line), then this would indicate that the model would be problematic (in such cases, it can help to remove data points that are too influential (outliers)).  
 
-The graph in the lower right panel shows problematic influential data points that disproportionately affect the regression (this would be problematic). If such influential data points are present, they should be either weighted (one could generate a robust rather than a simple linear regression) or they must be removed. The graph displays Cook's distance, which shows how the regression changes when a model without this data point is calculated. The cook distance thus shows the influence a data point has on the regression as a whole. Data points that have a Cook's distance value greater than 1 are problematic [@field2012discovering 269].
+* **Normal Q-Q** (upper right): Used to examine whether the residuals are normally distributed. It’s good if residuals points follow the straight dashed line. If the points lie on the line, the residuals follow a normal distribution. For example, if the points are not on the line at the top and bottom, it shows that the model does not predict small and large values well and that it therefore does not have a good fit.  
+
+* **Scale-Location (or Spread-Location)** (lower left): Used to check the homogeneity of variance of the residuals (homoscedasticity). Horizontal line with equally spread points is a good indication of homoscedasticity. This is not the case in our example, where we have a heteroscedasticity problem. Homoscedasticity means that the variance of the residuals remains constant and does not correlate with any independent variable. In unproblematic cases, the graphic shows a flat line. If there is a trend in the line, we are dealing with heteroscedasticity, that is, a correlation between independent variables and the residuals, which is very problematic for regressions.  
+
+
+* **Residuals vs Leverage** (lower right): Used to identify influential cases,  that disproportionately affect the regression (this would be problematic). If such influential data points are present, they should be either weighted (one could generate a robust rather than a simple linear regression) or they must be removed. The graph displays Cook's distance, which shows how the regression changes when a model without this data point is calculated. The cook distance thus shows the influence a data point has on the regression as a whole. Data points that have a Cook's distance value greater than 1 are problematic.  
 
 We end the current analysis by summarizing the results of the regression analysis using the `tab_model` function from the `sjPlot` package [@sjPlot] (as is shown below).
 

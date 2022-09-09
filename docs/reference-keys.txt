@@ -269,3 +269,9 @@ r-markdown-1
 including-plots
 the-basic-principle-1
 tab:ds00b
+different-types-of-regression
+effect-size-1
+assumptions
+linear-mixed-effects-regression
+model-fitting-3
+mixed-effects-logistic-regression
