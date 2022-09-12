@@ -103,7 +103,7 @@ We will now start to implement the regression model. In a first step, we create 
 
 ```{r mlr4}
 m1.mlr = lm(                      # generate lm regression object
-  money ~ attraction*status,  # def. regression formula
+  money ~ attraction*status,      # def. regression formula
   data = mlrdata)                 # def. data
 ```
 
@@ -130,9 +130,9 @@ summary(mfit)
 The `glmulti` function reports `money ~ 1 + status:attraction` as the best model. However, if a variable is part of a significant interaction, we also need to include the main effect which means that our best model is `money ~ 1 + status + attraction + status:attraction`, or, simplified: `money ~ status * attraction` (which is the same as the previous formula). The saturated model is thus also the final minimal adequate model, i.e. the model with the best fit and the lowest number of predictors. We will now inspect the final minimal model and go over the model report.
 
 ```{r mlr6}
-m2.mlr = lm(                       # generate lm regression object
-  money ~ (status + attraction)^2, # def. regression formula
-  data = mlrdata)                  # def. data
+m2.mlr = lm(                    # generate lm regression object
+  money ~ status * attraction,  # def. regression formula, x1 * x2 = x1 + x2 + x1:x2
+  data = mlrdata)               # def. data
 # inspect final minimal model
 summary(m2.mlr)
 ```
