@@ -65,7 +65,7 @@ mlrdata %>%
   flextable::border_outer()
 ```
 
-The data set consist of three variables stored in three columns. The first column contains the relationship status of the present giver (in this study this were men), the second whether the man is interested in the woman (the present receiver in this study), and the third column represents the money spend on the present. The data set represents 100 cases and the mean amount of money spend on a present is 88.38 dollars. In a next step, we visualize the data to get a more detailed impression of the relationships between variables.
+The data set consist of three variables stored in three columns. The first column contains the relationship status of the present receiver (in this study, this were women), the second whether the present givers (in this study this were men) are interested in the  present receiver, and the third column represents the money spend on the present. The data set represents 100 cases and the mean amount of money spend on a present is 88.38 dollars. In a next step, we visualize the data to get a more detailed impression of the relationships between variables.
 
 ```{r mlr3, message=F, warning=F}
 # create plots
@@ -143,7 +143,7 @@ Next, the model summary reports the most important part: a table with model stat
 
 All main effects (status and attraction) as well as the interaction between status and attraction is reported as being significantly correlated with the dependent variable (money). An interaction occurs if a correlation between the dependent variable and a predictor is affected by another predictor.
 
-The top most term is called intercept and has a value of 99.15 which represents the base estimate to which all other estimates refer. To exemplify what this means, let us consider what the model would predict that a man would spend on a present if he interested in the woman but he is also in a relationship. The amount he would spend (based on the model would be 99.15 dollars (which is the intercept). This means that the intercept represents the predicted value if all predictors take the base or reference level. And since being in relationship but being interested are the case, and because the interaction does not apply, the predicted value in our example is exactly the intercept (see below). 
+The top most term is called intercept and has a value of 99.15 which represents the base estimate to which all other estimates refer. To exemplify what this means, let us consider what the model would predict a man would spend on a present if he is interested in a woman but she is in a relationship. The amount he would spend (based on the model would be 99.15 dollars (which is the intercept). This means that the intercept represents the predicted value if all predictors take the base or reference level. And since being in relationship but being interested are the case, and because the interaction does not apply, the predicted value in our example is exactly the intercept (see below). 
 
 ```{r mlr7, eval = F}
 #intercept  Single  NotInterested  Single:NotInterested
@@ -153,7 +153,7 @@ The top most term is called intercept and has a value of 99.15 which represents 
 99.15     - 0      - 47.66       - 0     # 51.49 relationship + not interested
 ```
 
-Now, let us consider what a man would spend if he is in a relationship and he is not attracted to the women. In that case, the model predicts that the man would spend only  51.49 dollars on a present: the intercept (99.15) minus 47.66 because the man is not interested (and no additional subtraction because the interaction does not apply). 
+Now, let us consider what a man would spend if she is in a relationship and he is not attracted to the women. In that case, the model predicts that the man would spend only  51.49 dollars on a present: the intercept (99.15) minus 47.66 because the man is not interested (and no additional subtraction because the interaction does not apply). 
 
 We can derive the same results easier using the `predict` function.
 
@@ -174,7 +174,7 @@ Now, we compare the final minimal adequate model to the base-line model to test 
 
 ```{r mlr10}
 # compare baseline- and minimal adequate model
-m0.mlr <- lm(money ~1, data = mlrdata)
+m0.mlr <- lm(money ~ 1, data = mlrdata)
 anova(m0.mlr, m2.mlr)
 ```
 
@@ -243,9 +243,9 @@ We can use the output of the `report` function to write up a final report:
 
 > A multiple linear regression was fitted to the data using an automated AIC-based (Akaike's Information Criterion) procedure. The model fitting arrived at a final minimal model. During the model diagnostics, two outliers were detected and removed. Further diagnostics did not find other issues after the removal.
 >
-> The final minimal adequate regression model is based on 98 data points and performs highly significantly better than a minimal baseline model (multiple R^2^: .857, adjusted R^2^: .853, F-statistic (3, 94): 154.4, AIC: 850.4, BIC: 863.32, p<.001^$***$^). The final minimal adequate regression model reports *attraction* and *status* as significant main effects. The relationship status of men correlates highly significantly and positively with the amount of money spend on the women's presents (SE: 5.14, t-value: 10.87, p<.001^$***$^). This shows that men spend 156.8 dollars on presents if they are single while they spend 99,15 dollars if they are in a relationship. Whether men are attracted to women also correlates highly significantly and positively with the money they spend on women (SE: 5.09, t-values: -9.37, p<.001^$***$^). If men are not interested in women, they spend 47.66 dollar less on a present for women compared with women the men are interested in.
+> The final minimal adequate regression model is based on 98 data points and performs highly significantly better than a minimal baseline model (multiple R^2^: .857, adjusted R^2^: .853, F-statistic (3, 94): 154.4, AIC: 850.4, BIC: 863.32, p<.001^$***$^). The final minimal adequate regression model reports *attraction* and *status* as significant main effects. The relationship status of women correlates highly significantly and positively with the amount of money spent on  presents by men (SE: 5.14, t-value: 10.87, p<.001^$***$^). This shows that men spend 156.8 dollars on presents if the women are single while they spend 99,15 dollars if the women are in a relationship. Whether men are attracted to women also correlates highly significantly and positively with the money they spend on women (SE: 5.09, t-values: -9.37, p<.001^$***$^). If men are not interested in women, they spend 47.66 dollar less on a present for women compared with women the men are interested in.
 
-Furthermore, the final minimal adequate regression model reports a highly significant interaction between relationship *status* and *attraction* (SE: 7.27, t-value: -8.18, p<.001^$***$^): If men are single but they are not interested in a women, a man would spend only 59.46 dollars on a present compared to all other constellations.
+Furthermore, the final minimal adequate regression model reports a highly significant interaction between relationship *status* and *attraction* (SE: 7.27, t-value: -8.18, p<.001^$***$^): If women are single but they are not interested in a women, a man would spend only 59.46 dollars on a present compared to all other constellations.
 
 
 
