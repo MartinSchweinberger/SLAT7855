@@ -175,7 +175,7 @@ Thus, in contrast to a linear regression, which predicts actual values, such as 
 
 ## Example: EH in Kiwi English
 
-To exemplify how to implement a logistic regression in R [see @agresti1996introduction; @agresti2011categorical] for very good and thorough introductions to this topic], we will analyze the use of the discourse particle *eh* in New Zealand English and test which factors correlate with its occurrence. The data set represents speech units in a corpus that were coded for the speaker who uttered a given speech unit, the gender, ethnicity, and age of that speaker and whether or not the speech unit contained an *eh*. To begin with, we clean the current work space, set option, install and activate relevant packages, load customized functions, and load the example data set.
+To exemplify how to implement a logistic regression in R [see @agresti1996introduction; @agresti2011categorical for very good and thorough introductions to this topic], we will analyze the use of the discourse particle *eh* in New Zealand English and test which factors correlate with its occurrence. The data set represents speech units in a corpus that were coded for the speaker who uttered a given speech unit, the gender, ethnicity, and age of that speaker and whether or not the speech unit contained an *eh*. To begin with, we clean the current work space, set option, install and activate relevant packages, load customized functions, and load the example data set.
 
 ```{r blm3}
 # load data
@@ -236,9 +236,9 @@ As a first step, we need to define contrasts and use the `datadist` function to 
 ```{r blm7, message=F, warning=F}
 # set contrasts
 options(contrasts  =c("contr.treatment", "contr.poly"))
-# create distance matrix
+# extract distribution summaries for all potential variables
 blrdata.dist <- datadist(blrdata)
-# include distance matrix in options
+# store distribution summaries for all potential variables
 options(datadist = "blrdata.dist")
 ```
 
@@ -286,7 +286,7 @@ We continue by adding *Gender*. We add a second ANOVA test to see if including G
 ftable(blrdata$Gender, blrdata$EH)
 m2.glm <- update(m1.glm, . ~ . +Gender)
 vif(m2.glm)
-anova(m2.glm, m1.glm, test = "Chi")
+anova(m1.glm, m2.glm, test = "Chi")
 Anova(m2.glm, test = "LR")
 ```
 
@@ -298,7 +298,7 @@ Again, including *Gender* significantly improves model fit and the data does not
 ftable(blrdata$Ethnicity, blrdata$EH)
 m3.glm <- update(m2.glm, . ~ . +Ethnicity)
 vif(m3.glm)
-anova(m3.glm, m2.glm, test = "Chi")
+anova(m2.glm, m3.glm, test = "Chi")
 ```
 
 Since adding *Ethnicity* does not significantly improve the model fit, we do not need to test if its inclusion affects the significance of other predictors. We continue without *Ethnicity* and include the interaction between *Age* and *Gender*.
@@ -307,7 +307,7 @@ Since adding *Ethnicity* does not significantly improve the model fit, we do not
 ftable(blrdata$Age, blrdata$Gender, blrdata$EH)
 m4.glm <- update(m2.glm, . ~ . +Age*Gender)
 vif(m4.glm)
-anova(m4.glm, m2.glm, test = "Chi")
+anova(m2.glm, m4.glm, test = "Chi")
 ```
 
 The interaction between *Age* and *Gender* is not significant which means that men and women do not behave differently with respect to their use of `EH` as they age. Also, the data does not contain incomplete information and the model does not suffer from multicollinearity - the predictors are not collinear. We can now include if there is a significant interaction between *Age* and *Ethnicity*.
@@ -316,7 +316,7 @@ The interaction between *Age* and *Gender* is not significant which means that m
 ftable(blrdata$Age, blrdata$Ethnicity, blrdata$EH)
 m5.glm <- update(m2.glm, . ~ . +Age*Ethnicity)
 vif(m5.glm)
-anova(m5.glm, m2.glm, test = "Chi")
+anova(m2.glm, m5.glm, test = "Chi")
 ```
 
 Again, no incomplete information or multicollinearity and no significant interaction. Now, we test if there exists a significant interaction between *Gender* and *Ethnicity*.
@@ -325,7 +325,7 @@ Again, no incomplete information or multicollinearity and no significant interac
 ftable(blrdata$Gender, blrdata$Ethnicity, blrdata$EH)
 m6.glm <- update(m2.glm, . ~ . +Gender*Ethnicity)
 vif(m6.glm)
-anova(m6.glm, m2.glm, test = "Chi")
+anova(m2.glm, m6.glm, test = "Chi")
 ```
 
 
@@ -333,9 +333,9 @@ As the interaction between *Gender* and *Ethnicity* is not significant, we conti
 
 ```{r blm15}
 ftable(blrdata$Age, blrdata$Gender, blrdata$Ethnicity, blrdata$EH)
-m7.glm <- update(m2.glm, . ~ . +Gender*Ethnicity)
+m7.glm <- update(m2.glm, . ~ . +Age*Gender*Ethnicity)
 vif(m7.glm)
-anova(m7.glm, m2.glm, test = "Chi")
+anova(m2.glm, m7.glm, test = "Chi")
 ```
 
 We have found our final minimal adequate model because the 3-way interaction is also insignificant. As we have now arrived at the final minimal adequate model (m2.glm), we continue by checking the effect sizes of the predictors in our final model (Age and Gender).

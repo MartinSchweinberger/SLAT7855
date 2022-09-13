@@ -130,7 +130,7 @@ plot(citd.ctree, gp = gpar(fontsize = 8))
 
 ## Problems of Conditional Inference Trees
 
-Like other tree-based methods, CITs are very intuitive, multivariate, non-parametric, they do not require large data sets, and they are easy to implement. Despite these obvious advantages, they have at least one major short coming compared to other, more sophisticated tree-structure models (in addition to the general issues that tree-structure models exhibit as discussed in the section [Tree-Structure Model Basics](#tree-structuremodelbasics)): they are prone to overfitting which means that they fit the observed data very well but preform much worse when being applied to new data.
+Like other tree-based methods, CITs are very intuitive, multivariate, non-parametric, they do not require large data sets, and they are easy to implement. Despite these obvious advantages, they have at least one major short coming compared to other, more sophisticated tree-structure models (in addition to the general issues that tree-structure models exhibit as discussed above): they are prone to overfitting which means that they fit the observed data very well but preform much worse when being applied to new data.
 
 An extension which remedies this problem is to use a so-called ensemble method which grows many varied trees. The most common ensemble method is called a *Random Forest Analysis* and an even better ensemble method is called *Boruta* (but we will not discuss them in this section - a tutorial covering these methods can be found [here](https://ladal.edu.au/tree.html)). 
 
