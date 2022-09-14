@@ -255,9 +255,16 @@ The diagnostic plots show residuals in four different ways:
 
 * **Residuals vs Leverage** (lower right): Used to identify influential cases,  that disproportionately affect the regression (this would be problematic). If such influential data points are present, they should be either weighted (one could generate a robust rather than a simple linear regression) or they must be removed. The graph displays Cook's distance, which shows how the regression changes when a model without this data point is calculated. The cook distance thus shows the influence a data point has on the regression as a whole. Data points that have a Cook's distance value greater than 1 are problematic.  
 
+Now, we plot the effect reported by the model.
+
+```{r slr18a, message=FALSE, warning=FALSE}
+# generate summary table
+sjPlot::plot_model(m1.lm, type = "pred", terms = c("Date"))
+```
+
 We end the current analysis by summarizing the results of the regression analysis using the `tab_model` function from the `sjPlot` package [@sjPlot] (as is shown below).
 
-```{r slr18, message=FALSE, warning=FALSE}
+```{r slr18b, message=FALSE, warning=FALSE}
 # generate summary table
 sjPlot::tab_model(m1.lm) 
 ```
@@ -348,7 +355,15 @@ par(mfrow = c(2, 2)) # generate a plot window with 2x2 panels
 plot(m2.lm); par(mfrow = c(1, 1)) # restore normal plot window
 ```
 
-These graphics also show no problems. In this case, the data can be summarized in the next step.
+These graphics also show no problems and we continue by visualizing the results of the model.
+
+
+```{r slr26a, message=FALSE, warning=FALSE}
+# generate summary table
+sjPlot::plot_model(m2.lm, type = "pred", terms = c("Group"))
+```
+
+Now, we summarize the results of the model.
 
 ```{r slr26, eval = T, message=FALSE, warning=FALSE}
 # generate summary table
@@ -356,7 +371,7 @@ sjPlot::tab_model(m2.lm)
 ```
 
 
-We can use the `reports` package [@report] to summarize the analysis.
+We can use the `reports` package [@report] to prepare the write-up of the analysis.
 
 
 ```{r m2.lm_report, message=F, warning = F}
