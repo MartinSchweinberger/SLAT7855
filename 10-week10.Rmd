@@ -217,6 +217,16 @@ Despite there being no ultimate rule of thumb, @field2012discovering[273-275], b
 
 >  If one is only interested in the effect of specific variables, then the sample size should be at least 104 + k (k = number of predictors in model).
 
+
+## Visualizing effects
+
+Now, we visualize the effects of the predictors reported as being significant.
+
+```{r mlr25a}
+# tabulate model results
+sjPlot::plot_model(m2.mlr, type = "pred", terms = c("status", "attraction"))
+```
+
 ## Reporting Results
 
 As a last step, we summarize the results of the regression analysis.

@@ -1,6 +1,15 @@
 # Mixed-Effects Regression
 
-Mixed-effects models (or mixed models) assume a hierarchical data structure in which data points are grouped or nested in higher order categories (e.g. students within classes). Therefore, mixed models enable us to model within-speaker variability which is important if several observations are produced by the same individual speaker. A disadvantage of mixed models is that they are prone to producing high $\beta$-errors [see @johnson2009getting] and that they require rather large data sets.
+Mixed-effects models (or mixed models) have become extremely popular in the language sciences. In contrast to fixed-effects regressions, mixed models allow us to model dependency of data points and they are thus used when dealing with hierarchical data structure in which data points are grouped or nested in higher order categories (e.g. students within classes). Therefore, mixed models have a wide range of applications  and they have the following advantages:
+
+* Mixed-effects models are multivariate, i.e. they test the effect of several predictors simultaneously while controlling for the effect of all other predictors.
+
+* Mixed models allow to statistically incorporate within-speaker variability and are thus fit to model hierarchical or nested data structures. This applies if several observations are produced by an individual speaker, for instance.
+
+* Mixed-models provide a wealth of diagnostic statistics which enables us to control e.g. multicollinearity, i.e. correlations between predictors, and to test whether conditions or requirements are violated (e.g. homogeneity of variance, etc.).
+
+
+A disadvantage of mixed models is that they are prone to producing high $\beta$-errors [see @johnson2009getting] and that they require rather large data sets.
 
 In the following, we will go over  mixed-effects linear regression models and mixed-effects binomial logistic regression models. 
 
@@ -296,7 +305,7 @@ The plot shows the standardized residuals (or Pearson's residuals) versus fitted
 plot(m1.lmer, pch = 20, col = "black", lty = "dotted")
 ```
 
-What a wonderful unstructured cloud - the lack of structure tells us that the model is "healthy" and does not suffer from heteroscedasticity.  Now, we inspect the observed responses versus the within-group fitted values [@pinheiro2000mixedmodels 178].
+The lack of structure tells us that the model is "healthy" and does not suffer from heteroscedasticity.  Now, we inspect the observed responses versus the within-group fitted values [@pinheiro2000mixedmodels 178].
 
 ```{r lmm26, message=F, warning=F}
 # observed responses versus the within-group fitted values
@@ -335,17 +344,6 @@ While we have already shown that the effect of *Date* is significant, it is smal
 
 ### Reporting Results {-}
 
-Before we do the write-up, we have a look at the model summary as this will provide us with at least some of the parameters that we want to report. 
-
-```{r lmm27, message=F, warning=F}
-summary(m1.lmer)
-```
-
-```{r lmm28}
-sjPlot::tab_model(m1.lmer)
-```
-
-
 We can use the `reports` package [@report] to summarize the analysis.
 
 
@@ -360,18 +358,6 @@ We fitted a linear mixed model to predict the relative frequency of prepositions
 
 ## Mixed-Effects Logistic Regression
 
-
-We now turn to an extension of binomial logistic regression: mixed-effects binomial logistic regression. As is the case with linear mixed-effects models logistic mixed effects models have the following advantages over simpler statistical tests: 
-
-* Mixed-effects models are multivariate, i.e. they test the effect of several predictors simultaneously while controlling for the effect of all other predictors. 
-
-* Mixed models allow to statistically incorporate within-speaker variability and are thus fit to model hierarchical or nested data structures. This applies if several observations are produced by an individual speaker, for instance.
-
-* Mixed-models provide a wealth of diagnostic statistics which enables us to control e.g. multicollinearity, i.e. correlations between predictors, and to test whether conditions or requirements are violated (e.g. homogeneity of variance, etc.). 
-
-Major disadvantages of regression modeling are that they are prone to producing high $\beta$-errors [see @johnson2009getting] and that they require rather large data sets. 
-
-### Basic concepts 
 
 As is the case with linear mixed-effects models, binomial logistic mixed-effect models are multivariate analyses that treat data points as hierarchical or grouped in some way. In other words, they take into account that the data is nested in the sense that data points are produced by the same speaker or are grouped by some other characteristics. In mixed-models, hierarchical structures are modelled as *random effects*. If the random effect structure represents speakers then this means that a mixed-model would have a separate intercept and/or slope for each speaker. 
 
@@ -606,7 +592,7 @@ sigfit <- anova(mlr.glmer, m0.glmer, test = "Chi")
 As we will see the effects in the final summary, we visualize the effects here  using the `sjPlot` package [@sjPlot].
 
 ```{r blmm33b, message=F, warning=F}
-plot_model(mlr.glmer, type = "pred", terms = c("Gender", "Priming", "ConversationType"))
+sjPlot::plot_model(mlr.glmer, type = "pred", terms = c("Gender", "Priming", "ConversationType"))
 ```
 
 We can see that discourse like is more likely to surface in primed contexts and among males. In  conversations with both men and women, speakers use discourse like slightly less than in mixed conversations.

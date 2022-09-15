@@ -343,6 +343,26 @@ We have found our final minimal adequate model because the 3-way interaction is 
 
 ## Effect Size
 
+We summarize the final minimal adequate model in tabulated form.
+
+```{r blm33, message=F, warning=F}
+sjPlot::tab_model(m2.glm)
+```
+
+
+The effects are reported as Odds Ratios - but what are odds ratios and how can you interpret them? 
+
+Odds ratios are an  effect size measure (or an association strength measure) that ranges between 0 and infinity. If the odds rations are 
+
+* 1, then the presence of a factor level does not affect the probability of an outcome  
+* smaller than 1, then the presence of a factor level *decreases* the probability of an outcome
+* bigger than 1, then the presence of a factor level *increases* the probability of an outcome. 
+
+
+The odds of an event are related to its probability: if the probability that an *eh* is produced by a woman is 20 percent (this is equal to .2 or 1/5 or 1 out of 5), then the odds are .25 (this is equal to 1/4 or 1 against 4). 
+
+Odds ratios are the odds of an *eh* being produced by a woman (1/4) divided by the odds on *eh* not being produced by a woman (3/4). In this example, the odds ratio of an *eh* being produced by woman are thus (1/4) / (3/4) = .25 / .75 = .33. If the odds ratios are positive, then they tell use how many times more likely an outcome is: if *Gender[woman]* had a odds ratio of 2, then this would mean that the outcome is twice as likely if the speaker is a woman.   
+
 In a next step, we can use the `plot_model` function from the `sjPlot` package [@sjPlot] to visualize the effects.
 
 ```{r blm28, message=F, warning=F}
@@ -358,12 +378,6 @@ sjPlot::plot_model(m2.glm,
 
 
 ## Summarizing Results
-
-As a final step, we summarize our findings in tabulated form.
-
-```{r blm33, message=F, warning=F}
-sjPlot::tab_model(m2.glm)
-```
 
 
 
