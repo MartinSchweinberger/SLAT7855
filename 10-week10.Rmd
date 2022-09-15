@@ -249,14 +249,19 @@ Although @field2012discovering suggest that the main effects of the predictors i
 We can use the output of the `report` function to write up a final report: 
 
 
-> A multiple linear regression was fitted to the data using an automated AIC-based (Akaike's Information Criterion) procedure. The model fitting arrived at a final minimal model. During the model diagnostics, two outliers were detected and removed. Further diagnostics did not find other issues after the removal.
+> A multiple linear regression was fitted to the data using an automated AIC-based (Akaike's Information Criterion) procedure. The model fitting arrived at a final minimal model. 
 >
-> The final minimal adequate regression model is based on 98 data points and performs highly significantly better than a minimal baseline model (multiple R^2^: .857, adjusted R^2^: .853, F-statistic (3, 94): 154.4, AIC: 850.4, BIC: 863.32, p<.001^$***$^). The final minimal adequate regression model reports *attraction* and *status* as significant main effects. The relationship status of women correlates highly significantly and positively with the amount of money spent on  presents by men (SE: 5.14, t-value: 10.87, p<.001^$***$^). This shows that men spend 156.8 dollars on presents if the women are single while they spend 99,15 dollars if the women are in a relationship. Whether men are attracted to women also correlates highly significantly and positively with the money they spend on women (SE: 5.09, t-values: -9.37, p<.001^$***$^). If men are not interested in women, they spend 47.66 dollar less on a present for women compared with women the men are interested in.
-
-Furthermore, the final minimal adequate regression model reports a highly significant interaction between relationship *status* and *attraction* (SE: 7.27, t-value: -8.18, p<.001^$***$^): If women are single but they are not interested in a women, a man would spend only 59.46 dollars on a present compared to all other constellations.
-
-
-
+> The model explains a statistically significant and substantial proportion of variance (R2 = 0.85, F(3, 96) = 184.28, p < .001, adj. R^2^ = 0.85). The model's intercept, corresponding to status = Relationship, is at 99.15 ([91.62, 106.69], t(96) = 26.13, p < .001). 
+>
+> The effect of status [Single] is statistically significant and positive (beta = 57.69 [47.04, 68.34], t(96) = 10.75, p < .001; Std. beta = 1.19 [0.97, 1.41]) which means that men spend 57.69 AUD more on gifts for women, if the women are not in a relationship.
+> 
+> The effect of attraction [NotInterested] is statistically significant and negative (beta =
+-47.66 [-58.31, -37.01], t(96) = -8.88, p < .001; Std. beta = -0.98 [-1.20,
+-0.76]) which means that men spend 47.66 AUD less on gifts for women if the men are not intersted in the women.
+> 
+> The interaction effect of attraction [NotInterested] on status [Single] is statistically
+significant and negative (beta = -63.18 [-78.24, -48.11], t(96) = -8.32, p < .001;
+Std. beta = -1.30 [-1.61, -0.99]) which means that if men are not intersted in the women and the women are signle, men spend 63.18 AUD less on presents.
 
 [Back to top](#multiple_linear_regression)
 
