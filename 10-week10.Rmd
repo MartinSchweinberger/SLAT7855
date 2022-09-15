@@ -199,13 +199,6 @@ plot(m2.mlr, which=4)
 
 The graphs indicate that data points 52, 64, and 83 do not seem to overly affect the results as they are within the acceptable range (indicated by the blue area around the Q-Q plot) and their Cook's distance is elevated but not excessively high. and we can thus ignore this issue here. 
 
-With respect to the minimal sample size and based on @green1991many, @field2012discovering[273-274] offer the following rules of thumb for an adequate sample size (k = number of predictors; categorical predictors with more than two levels should be recoded as dummy variables):
-
-* if you are interested in the overall model: 50 + 8k (k = number of predictors)
-
-* if you are interested in individual predictors: 104 + k
-
-* if you are interested in both: take the higher value!
 
 ## A Word about Sample Size
 
