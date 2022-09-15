@@ -94,16 +94,15 @@ ggplot(blrdata, aes(x = bodyheight, y =  relationship)) +
   labs(title = "Predictions and regression line of lm.", x = "Height", y = "")
 ```
 
+The figure above shows that a linear model would predict values for the relationship status, which represents a factor (0 = Single and 1 = In a Relationship), that are nonsensical because values above 1 or below 0 do not make sense. 
 
-
-
-You can check this by logging the values from -5 to 5 using the `plogis` function as shown below.
+To avoid this issue, we can log the values so that they fall between 0 and 1. You can check this by logging the values from -5 to 5 using the `plogis` function as shown below.
 
 ```{r blm0, message=FALSE, warning=FALSE}
 round(plogis(-5:5), 5)
 ```
 
-If we visualize these logged values, we get values that are between 0 and 1 and follow an S-shaped curve which mirrors the underlying logistic function.
+While the original values range from -5 to 5, the logged values fall within a range from 0 to 1. If we visualize these logged values, we can confirm that the values are between 0 and 1 and see that they follow an S-shaped curve which mirrors the underlying logistic function.
 
 ```{r blm0b, echo = F, message=FALSE, warning=FALSE}
 plogis(-5:5) %>%
@@ -111,8 +110,8 @@ plogis(-5:5) %>%
   dplyr::mutate(id = 1:n()) %>%
   dplyr::rename(values = 1) %>%
   ggplot(aes(y = values, x = id)) +
-  geom_line(color = "gray50", size = 1) +
-  geom_point(color = "red", size = 2)+
+  geom_line(color = "red", size = 1) +
+  geom_point(color = "blue", size = 2)+
   labs(x = "", y = "") +
   theme_bw() +
   theme(panel.grid.major = element_blank(), 
@@ -120,8 +119,6 @@ plogis(-5:5) %>%
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
 ```
-
-
 
 
 Let us now fit a binomial logistic regression model to the data and see what happens if we plot the predictions of the models as well as the probabilities provided by the logistic model.
@@ -164,11 +161,13 @@ p3 <- ggplot(blrdata, aes(x = bodyheight, y =  relationship)) +
 ggpubr::ggarrange(p2, p3, nrow = 2)
 ```
 
-The left panel of the figure above shows that a linear model would predict values for the relationship status, which represents a factor (0 = Single and 1 = In a Relationship), that are nonsensical because values above 1 or below 0 do not make sense. 
 
-The center panel shows the predictions of a logistic regression and we see that a logistic regression also has an intercept and a (very steep) slope but that the regression line also predicts values that are above 1 and below 0. 
 
-However, when we log the predicted values we these predicted values are transformed into probabilities with values between 0 and 1. And the logged regression line has a S-shape which reflects the logistic function. Furthermore, we can then find the optimal line (the line with the lowest residual deviance) by comparing the sum of residuals - just as we did for a simple linear model and that way, we find the regression line for a logistic regression. 
+Surprisingly, the upper panel shows that the predictions of a logistic regression are similar to a linear model and that they also fall outside the range of 0 and 1. We can also plot the regression line of a logistic regression. We can do this because a logistic regression also has an intercept and a (very steep) slope. The regression line confirms that the predicted values that are above 1 and below 0. 
+
+However, when we log the predicted values we see that these logged predicted values are transformed into probabilities with values between 0 and 1. Also, the logged regression line has a S-shape which reflects the logistic function. 
+
+Note also, that we can use these logged predicted values to find the optimal line (the line with the lowest residual deviance) by comparing the sum of residuals - just as we did for a simple linear model and that way, we find the regression line for a logistic regression. 
 
 Thus, in contrast to a linear regression, which predicts actual values, such as the frequencies of prepositions in a certain text, a logistic regression predicts *probabilities* of events (for example, being in a relationship) rather than actual values. 
 
@@ -197,7 +196,7 @@ blrdata %>%
   flextable::border_outer()
 ```
 
-The summary of the data show that the data set contains 25,821 observations of five variables. The variable `ID` contains strings that represent a combination file and speaker of a speech unit. The second variable represents the gender, the third the age, and the fourth the ethnicity of speakers. The fifth variable represents whether or not a speech unit contained the discourse particle *eh*. 
+The summary of the data show that the data set contains 25,821 observations of five variables. The first variable (ID) contains strings that represent a combination file and speaker of a speech unit. The second variable represents the gender, the third the age, and the fourth the ethnicity of speakers. The fifth variable represents whether or not a speech unit contained the discourse particle *eh*. 
 
 Next, we factorize the variables in our data set. In other words, we specify that the strings represent variable levels and define new reference levels because as a default `R` will use the variable level which first occurs in alphabet ordering as the reference level for each variable, we redefine the variable levels for Age and Ethnicity.
 
@@ -225,9 +224,7 @@ blrdata %>%
   scale_color_manual(values = c("gray20", "gray70"))
 ```
 
-With respect to main effects, the Figure above indicates that men use *eh* more frequently than women, that young speakers use it more frequently compared with old speakers, and that speakers that are descendants of European settlers (Pakeha) use *eh* more frequently compared with Maori (the native inhabitants of New Zealand).
-
-The plots in the lower panels do not indicate significant interactions between use of *eh* and the Age, Gender, and Ethnicity of speakers. In a next step, we will start building the logistic regression model.
+With respect to main effects, the figure above indicates that men use *eh* more frequently than women, that young speakers use it more frequently compared with old speakers, and that speakers that are descendants of European settlers (Pakeha) use *eh* similarly compared with Maori (the native inhabitants of New Zealand). In a next step, we will start building the logistic regression model.
 
 ## Model Building
 
@@ -398,8 +395,9 @@ We fitted a logistic model (estimated using ML) to predict the use of the uttera
 
 Standardized parameters were obtained by fitting the model on a standardized version of the dataset. 95% Confidence Intervals (CIs) and p-values were computed using 
 
+## Outlook
 
-
+If you want to see how you can run a [multinomial regression](https://ladal.edu.au/regression.html#Multiple_Binomial_Logistic_Regression) (which takes a categorical dependent variable) or an [ordinal regression](https://ladal.edu.au/regression.html#Ordinal_Regression) (which takes an ordinal dependent variable), have a look at the [LADAL tutorial on regression analysis](https://ladal.edu.au/regression.html).
 
 [Back to top](#introduction)
 
