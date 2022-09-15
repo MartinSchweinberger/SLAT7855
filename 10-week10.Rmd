@@ -191,11 +191,9 @@ autoplot(m2.mlr) +
   theme_bw()
 ```
 
-The plots do not show severe problems such as funnel shaped patterns or drastic deviations from the diagonal line in Normal Q-Q plot (have a look at the explanation of what to look for and how to interpret these diagnostic plots in the section on simple linear regression) but data points 52, 64, and 83 are repeatedly indicated as potentially problematic cases. 
+The plots do not show severe problems such as funnel shaped patterns or drastic deviations from the diagonal line in Normal Q-Q plot (have a look at the explanation of what to look for and how to interpret these diagnostic plots in the section on simple linear regression) but data points 52, 64, and 83 are repeatedly indicated as potentially problematic cases. We thus plot the Cook's distance to see if there are points that over-proportionately impact model fit.
 
 ```{r mlr12, message=F, warning=F}
-library(car)
-qqPlot(m2.mlr, main="QQ Plot")
 plot(m2.mlr, which=4)
 ```
 

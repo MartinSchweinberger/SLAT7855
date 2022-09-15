@@ -242,18 +242,24 @@ autoplot(m1.lm) +
 ```
 
 
-The diagnostic plots are very positive and we will go through why this is so for each panel. 
+The diagnostic plots are very positive and we will go through why this is so for each panel:
 
-The diagnostic plots show residuals in four different ways:
+**Residuals vs Fitted** (upper left)
 
-* **Residuals vs Fitted** (upper left): Used to check the linear relationship assumptions. A horizontal line, without distinct patterns is an indication for a linear relationship, what is good. When a trend becomes visible in the line or points (e.g., a rising trend or a zigzag line), then this would indicate that the model would be problematic (in such cases, it can help to remove data points that are too influential (outliers)).  
+This plot is used to check the linear relationship assumptions: a horizontal line, without distinct patterns is an indication for a linear relationship, what is good. When a trend becomes visible in the line or points (e.g., a rising trend or a zigzag line), then this would indicate that the model would be problematic (in such cases, it can help to remove data points that are too influential (outliers)).  
 
-* **Normal Q-Q** (upper right): Used to examine whether the residuals are normally distributed. It’s good if residuals points follow the straight dashed line. If the points lie on the line, the residuals follow a normal distribution. For example, if the points are not on the line at the top and bottom, it shows that the model does not predict small and large values well and that it therefore does not have a good fit.  
+**Normal Q-Q** (upper right)
 
-* **Scale-Location (or Spread-Location)** (lower left): Used to check the homogeneity of variance of the residuals (homoscedasticity). Horizontal line with equally spread points is a good indication of homoscedasticity. This is not the case in our example, where we have a heteroscedasticity problem. Homoscedasticity means that the variance of the residuals remains constant and does not correlate with any independent variable. In unproblematic cases, the graphic shows a flat line. If there is a trend in the line, we are dealing with heteroscedasticity, that is, a correlation between independent variables and the residuals, which is very problematic for regressions.  
+This plot is used to examine whether the residuals are normally distributed: it’s good if residuals points follow the straight dashed line. If the points lie on the line, the residuals follow a normal distribution. For example, if the points are not on the line at the top and bottom, it shows that the model does not predict small and large values well and that it therefore does not have a good fit.  
+
+**Scale-Location (or Spread-Location)** (lower left)
+
+This plot is used to check the homogeneity of variance of the residuals (homoscedasticity): horizontal line with equally spread points is a good indication of homoscedasticity. This is not the case in our example, where we have a heteroscedasticity problem. Homoscedasticity means that the variance of the residuals remains constant and does not correlate with any independent variable. In unproblematic cases, the graphic shows a flat line. If there is a trend in the line, we are dealing with heteroscedasticity, that is, a correlation between independent variables and the residuals, which is very problematic for regressions.  
 
 
-* **Residuals vs Leverage** (lower right): Used to identify influential cases,  that disproportionately affect the regression (this would be problematic). If such influential data points are present, they should be either weighted (one could generate a robust rather than a simple linear regression) or they must be removed. The graph displays Cook's distance, which shows how the regression changes when a model without this data point is calculated. The cook distance thus shows the influence a data point has on the regression as a whole. Data points that have a Cook's distance value greater than 1 are problematic.  
+**Residuals vs Leverage** (lower right)
+
+This plot is used to identify influential cases,  that disproportionately affect the regression (this would be problematic): if such influential data points are present, they should be either weighted (one could generate a robust rather than a simple linear regression) or they must be removed. The graph displays Cook's distance, which shows how the regression changes when a model without this data point is calculated. The cook distance thus shows the influence a data point has on the regression as a whole. Data points that have a Cook's distance value greater than 1 are problematic.  
 
 Now, we plot the effect reported by the model.
 
