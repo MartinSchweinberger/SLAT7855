@@ -393,7 +393,6 @@ We fitted a logistic model (estimated using ML) to predict the use of the uttera
 
 * The effect of Gender [Women] is statistically significant and negative (beta = -0.42, 95% CI [-0.47, -0.37], p < .001; Std. beta = -0.42, 95% CI [-0.47, -0.37])
 
-Standardized parameters were obtained by fitting the model on a standardized version of the dataset. 95% Confidence Intervals (CIs) and p-values were computed using 
 
 ## Outlook
 
