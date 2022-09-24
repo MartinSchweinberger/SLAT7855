@@ -331,10 +331,12 @@ There are two basic types of numeric variables: *interval-scaled variables* and 
 
 With respect to *ratio-scaled variables*, both the differences and the relationship between the levels are significant. An example of this is the times in a 100-meter dash. For ratio-scaled variables, 10 is exactly twice as high as 5 and half as much as 20.
 
+A subtype of *ratio-scaled variables* are so-called *integers*. Integers are always positive and never negative and they are related to counts (which represent frequencies of occurrences). This is important to mention here as we need to use different models when dealing with counts compared to other ratio-scaled variables. Counts are analyzed by models which are based on the Poisson or negative binomial distribution whereas true ratio-scaled variables are modeled based on the Gaussian or normal distribution.
+
 It is very important to keep in mind that both *interval-scaled variables* and *ratio-scaled variables* are numeric variables. This will play a role later because many tests can either only or never be applied to numeric variables.
 
 ```{r variables, echo=F, message=FALSE, warning=FALSE}
-variabletb <- matrix(c("Nominal Scaled / Categorical Variables", "Gender, Nationality, Part of Speech", "Ordinal Scaled Variables", "Graduation, School Grades, Military Rank", "Interval Scaled Variables", "Temperature, Acceptability Judgments", "Ratio-scaled Variables", "Age, Duration, Number of Syllables"), nrow = 4, byrow = T)
+variabletb <- matrix(c("Nominal Scaled / Categorical Variables", "Gender, Nationality, Part of Speech", "Ordinal Scaled Variables", "Graduation, School Grades, Military Rank", "Interval Scaled Variables", "Temperature, Acceptability Judgments", "Ratio-scaled Variables", "Age, Duration, Number of Syllables", "Variables reflecting counts", "Errors in 1000 word essays"), nrow = 5, byrow = T)
 # add column and row names
 colnames(variabletb) <- c("Variable Type", "Variable Level")
 variabletb %>%
