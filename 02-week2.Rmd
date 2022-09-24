@@ -167,10 +167,16 @@ Before we turn to different designs that are used to test hypotheses, however, l
 
 ### Research Designs{-}
 
-Now that the terms sample and population are clear, we can continue to think about how we could test hypotheses. In the empirical sciences, we try to answer questions we have by analyzing data. However, before we can attempt to answer a question and test if we are right with the answer we have in mind (our hypothesis), we have to decide on how to tackle the question. Thus, we have to come up with a plan about how to test our hypothesis. This plan is called a **research design**. The research design informs how to collect, process, visualize, and analyze the data. As such, the research design focuses on all aspects of research that are related to the data.
+Now that the terms sample and population are clear, we can continue to think about how we could test hypotheses. In the empirical sciences, we try to answer questions we have by analyzing data. However, before we can attempt to answer a question and test if we are right with the answer we have in mind (our hypothesis), we have to decide on how to tackle the question. Thus, we have to come up with a plan about how to test our hypothesis. This plan is called a **research design**. The research design informs how to collect the data. 
+
+#### Research design vs data analysis{-}
+
+In contrast, **data analysis** focuses on how the data are analyzed, for instance if we want to take a qualitative or quantitative approach to analyzing the data. The analytic approach can, and often does, impact the choice and realization of the research design. As such, research design and data analysis are separate steps. This is why it does not make sense to speak of a qualitative or a quantitative research design. Rather, we can use any type of research design and then use a qualitative and/or a quantitative approach to analyze it. However, data collected using certain research designs, for example experimentation, are predominantly analyzed using quantitative rather than qualitative analyses - in contrast, data collected via interviews are more commonly (but certainly not exclusively, analyzed using a qualitative approach.
 
 
-Thus, after comping up with a research question and a hypothesis, the next step typically consists in  collecting the right type of data. There are different ways to collecting data and these different ways to collect data represent different research designs. We cannot go over all the different designs (and they can be combined, for instance, introspection is often a part of questionnaire designs), but we will focus and briefly discuss the most common ones.
+#### Types of research designs{-}
+
+After coming up with a research question and a hypothesis, the next step typically consists in  collecting the right type of data. There are different ways to collecting data and these different ways to collect data represent different **research designs**. We cannot go over all the different designs (and they can be combined, for instance, introspection is often a part of questionnaire designs), but we will focus and briefly discuss the most common ones.
 
 In general, we can distinguish between experimental and observational designs. In contrast to observational designs (which can only confirm correlations, i.e. that X and Y occur together), experimental designs are more powerful in that they can determine causality (i.e., if X causes Y). We the most common research designs in the language sciences are
 
