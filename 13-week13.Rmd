@@ -88,7 +88,7 @@ citdata %>%
   flextable::border_outer()
 ```
 
-Next, we generate and plot the CIT.
+Next, we generate and plot the decision tree.
 
 
 ```{r  dt3, echo = F, message=FALSE, warning=FALSE}
@@ -101,7 +101,9 @@ text(dtree, pretty = 0, all = F)
 ```
 
 
-The example of the decision tree above shows what what response to expect - in this case whether a speaker uses discourse *like* or not. Decision trees, like all CARTs and CITs, answer a simple question, namely *How do we best classify elements based on the given predictors?*. The answer that decision trees provide is the classification of the elements based on the levels of the predictors. In simple decision trees, all predictors, even those that are not significant are included in the decision tree. The decision tree shows that the best (or most important) predictor for the use of discourse *like* is age as it is the highest node. Among young speakers, those with high status use *like* more compared with speakers of lower social status. Among old speakers, women use discourse *like* more than men.
+The example of the decision tree above shows what what response to expect - in this case whether a speaker uses discourse *like* or not. Decision trees, like all CARTs and CITs, answer a simple question, namely *How do we best classify elements based on the given predictors?*. The answer that decision trees provide is the classification of the elements based on the levels of the predictors. 
+
+In simple decision trees, all predictors, even those that are not significant are included in the decision tree. The decision tree shows that the best (or most important) predictor for the use of discourse *like* is the age of speakers as it is the highest node. Among young speakers, those with high status use *like* more compared with speakers of lower social status. Among old speakers, women use discourse *like* more than men.
 
 
 The *yes* and *no* at the bottom show if the speaker should be classified as a user of discourse *like* (*yes* or *no*). Each split can be read as *true* to the left and *false* to the right. So that, at the first split, if the person is between the ages of 15 and 40, we need to follow the branch to the left while we need to follow to the right if the person is not 15 to 40.
@@ -113,12 +115,11 @@ Let us go over some basic concepts. The top of the decision tree is called *root
 We now focus on Conditional Inference Trees (CITs). In contrast to decision trees, which indicate an outcome for all possible decisions, CITs only split the data if the split is statistically justified (this mean that splits are based on significant differences in the distributions resulting from the split).
 
 
-Conditional Inference Trees (CITs) are much better at determining the *true* effect of a predictor, i.e. the effect of a predictor if all other effects are simultaneously considered. In contrast to CARTs, CITs use p-values to determine splits in the data. Below is a conditional inference tree which shows how and what factors contribute to the use of discourse *like*. In conditional inference trees predictors are only included if the predictor is significant (i.e. if these predictors are necessary). 
+Conditional Inference Trees (CITs) are much better at determining the *true* effect of a predictor, i.e. the effect of a predictor if all other effects are simultaneously considered. In contrast to CARTs, CITs typically use p-values to determine splits in the data. Below is a conditional inference tree which shows how and what factors contribute to the use of discourse *like*. In conditional inference trees predictors are only included if the predictor is significant (i.e. if these predictors are necessary). 
 
 ```{r cit1, message=FALSE, warning=FALSE}
 set.seed(111)        # set.seed
-# apply bonferroni correction (1 minus alpha multiplied by n of predictors)
-control = ctree_control(mincriterion = 1-(.05*ncol(citdata)-1))
+
 # create initial conditional inference tree model
 citd.ctree <- partykit::ctree(LikeUser ~ Age + Gender + Status,
                     data = citdata)
@@ -134,4 +135,4 @@ Like other tree-based methods, CITs are very intuitive, multivariate, non-parame
 An extension which remedies this problem is to use a so-called ensemble method which grows many varied trees. The most common ensemble method is called a *Random Forest Analysis* and an even better ensemble method is called *Boruta* (but we will not discuss them in this section - a tutorial covering these methods can be found [here](https://ladal.edu.au/tree.html)). 
 
 
-[Back to top](#introduction)
+[Back to top](#tree-based_models)
