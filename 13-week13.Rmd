@@ -18,7 +18,7 @@ The most basic type of tree-structure model is a decision tree or CART (classifi
 
 5. Tree-structure models can be used as variable-selection procedure which informs about which variables have any sort of significant relationship with the dependent variable and can thereby inform model fitting.
 
-Despite these potential advantages, a word of warning is in order: @gries2021statistics admits that tree-based models can be very useful but there are some issues that but some serious short-comings of tree-structure models remain under-explored. For instance, 
+Despite these potential advantages, a word of warning is in order: @gries2021statistics admits that tree-based models can be very useful but that they can suffer from  issues which can lead to some serious short-comings which remain under-explored. For instance, 
 
 1. Tree-structure models only inform about the importance of a variable but not if the variable is important as a main effect or as part of interactions (or both)! The importance only shows that there is some important connection between the predictor and the dependent variable.
 
