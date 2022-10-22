@@ -10,7 +10,7 @@ The most basic type of tree-structure model is a decision tree or CART (classifi
 
 1. Tree-structure models are very useful because they can deal with different types of variables and provide a very good understanding of the structure in the data. 
 
-2. Tree-structure models have been deemed particularly interesting for linguists because they can handle moderate sample sizes and many high-order interactions better then regression models shows that there can be issues especially when dealing with small data samples, single trees (rather than forests), and data where the variance is predictable based on a single interaction (as shown by @gries2021statistics, chapter 7). 
+2. Tree-structure models have been deemed particularly interesting for linguists because they can handle moderate sample sizes and many high-order interactions better then regression models. 
 
 3. Tree-structure models are (supposedly) better at detecting non-linear or non-monotonic relationships between predictors and dependent variables. 
 
@@ -29,7 +29,6 @@ Despite these potential advantages, a word of warning is in order: @gries2021sta
 4. @boulesteix2015interaction, 341 state that high correlations between predictors can hinder the detection of interactions when using small data sets. However, regression do not fare better here as they are even more strongly affected by (multi-)collinearity.
 
 5. Tree-structure models are bad a detecting interactions when the variables have strong main effects which is, unfortunately, common when dealing with linguistic data.
-
 
 Before we implement a conditional inference tree in R, we will have a look at how decision trees work. We will do this in more detail here as random forests and Boruta analyses are extensions of inference trees and are therefore based on the same concepts.
 
