@@ -4,9 +4,16 @@ This week, we focus on tree-based models and their implementation in R.
 
 ## The Basic Concept{-}
 
-This section deals with tree-structure models which fall into the machine-learning rather than the inference statistics category as they are commonly used for classification and prediction tasks rather than explanation of relationships between variables. 
+This section deals with tree-structure models which fall into the machine-learning rather than the inference statistics category as they are commonly used for classification and prediction tasks rather than explanation of relationships between variables. This means that tree-based models are typically used in classification tasks rather than in inferential analyses where we want to see how strongly factors of interactions between factors impact an outcome.
 
 The most basic type of tree-structure model is a decision tree or CART (classification and regression tree). A more optimized version of CARTs are conditional inference trees (CITs) - although CART and CITs are commonly treated as one and the same thing although CITs differ from CARTs in that they provide more accurate variable importance measures. Like random forests, inference trees are non-parametric and thus do not rely on distributional requirements (or at least on fewer). The tree structure represents recursive partitioning of the data to minimize residual deviance. 
+
+CARTs consist of three parts: a root, nodes, and leaves.
+
+* The root is the first split in a CART - if there is not split, then the root is also a leave (an endpoint)
+* Leaves form the endpoint of paths and represent the outcome of a classification (or decision)
+* Nodes represent the path and reflect the partitioning of the data. At each node the data is split and the node has two outgoing paths to the subsets of the data.
+
 
 **Advantages of tree-based models**
 
