@@ -2,11 +2,15 @@
 
 This week, we focus on tree-based models and their implementation in R. 
 
-## Basic Concepts
+## The Basic Concept{-}
 
 This section deals with tree-structure models which fall into the machine-learning rather than the inference statistics category as they are commonly used for classification and prediction tasks rather than explanation of relationships between variables. 
 
-The most basic type of tree-structure model is a decision tree or CART (classification and regression tree). A more optimized version of CARTs are conditional inference trees (CITs) - although CART and CITs are commonly treated as one and the same thing although CITs differ from CARTs in that they provide more accurate variable importance measures. Like random forests, inference trees are non-parametric and thus do not rely on distributional requirements (or at least on fewer). The tree structure represents recursive partitioning of the data to minimize residual deviance. Several advantages have been associated with using tree-based models:
+The most basic type of tree-structure model is a decision tree or CART (classification and regression tree). A more optimized version of CARTs are conditional inference trees (CITs) - although CART and CITs are commonly treated as one and the same thing although CITs differ from CARTs in that they provide more accurate variable importance measures. Like random forests, inference trees are non-parametric and thus do not rely on distributional requirements (or at least on fewer). The tree structure represents recursive partitioning of the data to minimize residual deviance. 
+
+**Advantages of tree-based models**
+
+Over the past 10 or so years, tree-based models have become really popular in applied linguistics and related fields. This is because such models have (or are assumed to have) the following advantages:
 
 1. Tree-structure models are very useful because they can deal with different types of variables and provide a very good understanding of the structure in the data. 
 
@@ -18,17 +22,21 @@ The most basic type of tree-structure model is a decision tree or CART (classifi
 
 5. Tree-structure models can be used as variable-selection procedure which informs about which variables have any sort of significant relationship with the dependent variable and can thereby inform model fitting.
 
+**Problems of tree-based models**
+
 Despite these potential advantages, a word of warning is in order: @gries2021statistics admits that tree-based models can be very useful but that they can suffer from  issues which can lead to some serious short-comings which remain under-explored. For instance, 
 
-1. Tree-structure models only inform about the importance of a variable but not if the variable is important as a main effect or as part of interactions (or both)! The importance only shows that there is some important connection between the predictor and the dependent variable.
+1. Tree-structure models do not reflect or model nested or hierarchical data structures (unlike mixed-effects models). This is a major disadvantage as most data in applied linguistics is nested in some form. 
 
-2. Simple tree-structure models have been shown to fail in detecting the correct predictors if the variance is solely determined by a single interaction [@gries2021statistics, chapter 7.3]. This failure is caused by the fact that the predictor used in the first split of a tree is selected as the one with the strongest main effect [@boulesteix2015interaction, 344]. This issue can, however, be avoided by hard-coding the interactions as predictors plus using ensemble methods such as random forests rather than individual trees. 
+2. Tree-structure models do not provide effect sizes for main effects and interactions but only inform about the overall importance of a variable or its importance within subsets of the data. Thus, tree-structure models do not show how important a variable is by itself. When dealing with Random Forest or Boruta, we also do not know is a variable is important as a main effect or as part of interactions (or both)! The importance only shows that there is some important connection between the predictor and the dependent variable.
 
-3. Another shortcoming is that tree-structure models partition the data (rather than "fitting a line" through the data which can lead to more coarse-grained predictions compared to regression models when dealing with numeric dependent variables [again, see @gries2021statistics, chapter 7.3]. 
+3. Simple tree-structure models have been shown to fail in detecting the correct predictors if the variance is solely determined by a single interaction [@gries2021statistics, chapter 7.3]. This failure is caused by the fact that the predictor used in the first split of a tree is selected as the one with the strongest main effect [@boulesteix2015interaction, 344]. This issue can, however, be avoided by hard-coding the interactions as predictors plus using ensemble methods such as random forests rather than individual trees. 
 
-4. @boulesteix2015interaction, 341 state that high correlations between predictors can hinder the detection of interactions when using small data sets. However, regression do not fare better here as they are even more strongly affected by (multi-)collinearity.
+4. Another shortcoming is that tree-structure models partition the data (rather than "fitting a line" through the data which can lead to more coarse-grained predictions compared to regression models when dealing with numeric dependent variables [again, see @gries2021statistics, chapter 7.3]. 
 
-5. Tree-structure models are bad a detecting interactions when the variables have strong main effects which is, unfortunately, common when dealing with linguistic data.
+5. @boulesteix2015interaction[341] state that high correlations between predictors can hinder the detection of interactions when using small data sets. However, regression do not fare better here as they are even more strongly affected by (multi-)collinearity.
+
+6. Tree-structure models are bad a detecting interactions when the variables have strong main effects which is, unfortunately, common when dealing with linguistic data.
 
 Before we implement a conditional inference tree in R, we will have a look at how decision trees work. We will do this in more detail here as random forests and Boruta analyses are extensions of inference trees and are therefore based on the same concepts.
 
@@ -42,7 +50,6 @@ For this week, we need to install certain *packages* from an R *library* so that
 
 ```{r prep1, eval = F, message=FALSE, warning=FALSE}
 # install packages
-install.packages("Boruta")
 install.packages("dplyr")
 install.packages("party")
 install.packages("partykit")
@@ -118,19 +125,21 @@ We now focus on Conditional Inference Trees (CITs). In contrast to decision tree
 Conditional Inference Trees (CITs) are much better at determining the *true* effect of a predictor, i.e. the effect of a predictor if all other effects are simultaneously considered. In contrast to CARTs, CITs typically use p-values to determine splits in the data. Below is a conditional inference tree which shows how and what factors contribute to the use of discourse *like*. In conditional inference trees predictors are only included if the predictor is significant (i.e. if these predictors are necessary). 
 
 ```{r cit1, message=FALSE, warning=FALSE}
-set.seed(111)        # set.seed
-
 # create initial conditional inference tree model
-citd.ctree <- partykit::ctree(LikeUser ~ Age + Gender + Status,
-                    data = citdata)
+citd.ctree <- partykit::ctree(LikeUser ~ Age + Gender + Status, data = citdata)
 # plot final ctree
 plot(citd.ctree, gp = gpar(fontsize = 8)) 
 ```
 
 
-## Problems of Conditional Inference Trees
 
-Like other tree-based methods, CITs are very intuitive, multivariate, non-parametric, they do not require large data sets, and they are easy to implement. Despite these obvious advantages, they have at least one major short coming compared to other, more sophisticated tree-structure models (in addition to the general issues that tree-structure models exhibit as discussed above): they are prone to overfitting which means that they fit the observed data very well but preform much worse when being applied to new data.
+**Problems of Conditional Inference Trees**
+
+Like other tree-based methods, CITs are very intuitive, multivariate, non-parametric, they do not require large data sets, and they are easy to implement. Despite these obvious advantages, they have at least one major short coming compared to other, more sophisticated tree-structure models (in addition to the general issues that tree-structure models exhibit as discussed above): 
+
+* they are prone to overfitting which means that they fit the observed data very well but preform much worse when being applied to new data. 
+
+* they have a strong bias towards variables with many levels, e.g., numeric variables (but also categorical variables with many levels), and they overestimate the importance of such variables.
 
 An extension which remedies this problem is to use a so-called ensemble method which grows many varied trees. The most common ensemble method is called a *Random Forest Analysis* and an even better ensemble method is called *Boruta* (but we will not discuss them in this section - a tutorial covering these methods can be found [here](https://ladal.edu.au/tree.html)). 
 
