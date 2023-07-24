@@ -231,41 +231,39 @@ Each online study task is worth 3% of your final grade. You only have 60  minute
 The link to the online study tasks for each week will be made available on Blackboard.
 
 
-### Annotated Bibliography {-}
+### Dataset summary presentation {-}
 
 **Task Description**
 
 Weight: 		30%
 
-Due date: 		Wednesday of week 10
+Due date: 		Wednesday of week 9
 
 Submission: 	via TurnItIn
 
-**Annotated Bibliography**
+The purpose of this assignment is to give you experience in finding, assessing, describing, and visualizing appropriate datasets for research projects. 
 
-The purpose of this assignment is to give you experience in reading, understanding, and critically evaluating reports of statistical analyses.  You should select 3 research articles in your area of interest that contain and report statistical analyses. Please choose the articles very carefully (i.e., from reputable peer-reviewed journals), as the credibility of your selected sources will be assessed. For each article, in a separate entry, answer the following questions:
+For this task, you need to find a dataset and record a 10-minute presentation in which you describe, summarise, and visualise the dataset. In addition, you need to motivate and formulate at least one research question that you could answer based on the dataset. The motivation for answering the research question should be based on a gap in the existing body of research.  Finally, we want you to elaborate on how you would proceed to answer, in detail, the research question (be specific!).
 
-1. **What research question(s) and hypotheses did the article attempt to answer?**
-Identify the research question(s) and, where relevant, any hypotheses tested. 
+Below, you will find some pointers on what questions should be answered in your presentation: 
 
-2. **What data was used to answer the research question(s) and hypotheses?** Describe the source, type, and size of the data and the variables it represented. The description of the data can be in prose or tabular format. Cite the source of the data if relevant and provide information about whether the data is accessible to other researchers (including yourself).
+1.	Source: where does the data come from or how was it compiled?
 
-3. **What methodology was used?** Identify the statistical methods used to address the research question(s): What tools/techniques/procedures were used? 
+2.	Overview: What variables does the data set consist of and what do the variables represent? How many observations does the dataset contain?
 
-4. **What were the findings?** Briefly state the results of the study. Were the research question(s) addressed? Were the hypotheses rejected or substantiated? 
+3.	Variables: What are the levels of categorical variables? What are mean, standard deviation, range, etc. of numeric variables?
 
-5. **What are potential issues of the analysis?** Evaluate the study's methodology: where all relevant factors considered? Were the data and the methodology described in sufficient detail?  Were any suggestions made on how to mitigate the limitations?  
+4.	Distributions: What are the distributions of the variables in the data set? (you can use tables and visualisations to address this)
 
-Each entry should be no longer than 300 words. Your summaries should be presented clearly, coherently, ad precise. Bibliographic details for each article should be presented at the beginning of each entry in APA 7 citation style. After completing the 3 entries write a short (400 words) comparison of your evaluation of the analyses in the 3 articles analysed. 
+5.	Research question: What is a research question, that extends existing research, could be answered based on this dataset?
 
-Some style notes:
+6.	Possible research: How would one have to proceed to answer the research question based on the dataset?
 
-1. Number your entries.  
-2. The article should be cited at the beginning of each entry using APA 7 format.  
-3. Use double spacing and a 12-point font. Follow APA format for formatting your document.  
-4. Use 2.5cm margin in both sides and top and bottom.  
-5. Always aim to paraphrase and use your own words – try not to cite verbatim but synthesize information.  
-6. Write the number of words at the end of your assignment.  
+Prepare slides for your presentation and record yourself and the slides (we suggest you use Zoom and share your screen). The entire presentation should be no longer than 10 minutes. Your answers should be presented as a coherent, clear, logical, and engaging manner. Any citations mentioned in your presentation need to be added in a reference list at the end of your presentation (which should also be formatted according to APA7). 
+Your slides and your presentation should be engaging and informative. Your slides should not be too text heavy, and the slides should contain the main aspects of what you say/present. Use appropriate language without errors both on the slides and in your presentation. You are welcome to use visualisations and tables created by yourself and/or from the articles. Your face needs to be visible during the presentation.
+
+
+This task has been designed to be challenging, authentic and complex. Whilst students may use Al technologies, successful completion of assessment in this course will require students to critically engage in specific contexts and tasks for which artificial intelligence will provide only limited support and guidance. A failure to reference Al use may constitute student misconduct under the Student Code of Conduct. To pass this assessment, students will be required to demonstrate detailed comprehension of their written submission independent of Al tools.
 
 Please refer to the rubic (available via the ECP) for details.
 
@@ -273,51 +271,43 @@ If you are sick/absent, see Section 5.3 *Late submission*.
 
 
 
-### Research Project {-}
+
+### Statistical Analysis Report  {-}
 
 **Task Description**
 
 Weight: 		40%
 
-Due date: 		Monday two weeks after the end of week 13 (Nov. 7, 2022, 4pm)
+Due date: 		Wednesday two weeks after the end of week 13 (Nov. 8, 2023, 4pm)
 
 Submission: 	via TurnItIn
 
-The Research Project assessment is worth 40% of your final grade. 
+The Statistical Analysis Report assessment is a significant component, accounting for 40% of your final grade. This assessment serves as a practical application of the knowledge and skills acquired throughout the course. It offers an opportunity to engage with real-world datasets, honing your abilities to describe, summarize, visualize, and quantitatively analyse data. By undertaking this assessment, you will gain insights into the approaches and practices employed by data analysts in the field.
 
-Below you will find the weighting of each individual component of this assessment as well as some additional information about the marking criteria. The relevant rubrics are also attached for your reference.
+For the Statistical Analysis Report, you are required to write a concise report, limited to 2000 words (excluding R code, R output, and references). It is crucial that you also include the R code you use in the analysis. The report should encompass the following key aspects:
 
-**Research Project**
+1.	Motivation and Research Question: Begin by providing a clear rationale for your research question, explaining its significance and relevance to the field of study.
 
-Your Research Project is marked out of 40 points following the marking criteria in the rubic available via the ECP.  Write an R Notebook (Rmd) containing a research project report of no longer than 3000 words (excluding references) which  
+2.	Hypothesis Formulation: Develop a hypothesis that corresponds to your research question, demonstrating a hypothesis-driven approach to your analysis.
 
-* states a research question,  
-*	poses a hypothesis,  
-*	describes and visualizes the data that you use to answer the research question,   
-*	details the statistical analysis of the data, and  
-*	provides a critical evaluation of the analysis.  
+3.	Data Description, Tabulation, and Visualization: Thoroughly describe the dataset utilized in your analysis, employing appropriate tables, figures, and visualizations to present the data in a comprehensive manner.
 
-The R Notebook containing the research project report as well as a rendered docx or pdf of the R Notebook need to be submitted by the Friday two weeks after the end of week 13, 4pm (Nov. 11, 2022), via Turnitin.
+4.	Statistical Analysis Description: Describe the statistical techniques and methods employed to analyse the data. Provide a detailed explanation of the chosen approaches, justifying their relevance to the research question.
 
-**Purpose** 
+5.	Results Reporting: Present the results of your analysis using a combination of prose, tables, and figures. Ensure that your findings are clear, concise, and effectively support your hypothesis.
 
-To undertake in-depth research project of a specific topic in the language sciences (it may be connected to the literature review you have already undertaken for your Annotated Bibliography assessment) and to practically apply the conceptual knowledge and the methods which were presented in this course to a data set that you have to find yourself. 
+6.	Critical Evaluation: Conduct a critical evaluation of your analysis, highlighting any potential issues or limitations that may impact the validity or generalizability of your results. Offer thoughtful insights into how these shortcomings could be addressed or mitigated.
 
-Your task is to write a research report consisting of the following sections:
+7.	References: Include a reference section following APA7 format, acknowledging any external sources used in your report.
 
-1.	**Introduction**: This section should briefly introduce the topic of your research project and clearly state the research question and hypothesis. 
-
-2.	**Data**: This section should provide information about the data collection or the data source and describe, tabulate, and visualize the data that you use to answer your research question. The description and tabulation of the data should provide the descriptive statistics to summarize the nature and parameters of the data. 
-
-3.	**Methodology**: This section should describe and justify the statistical method(s) that you use to answer your research question.
-
-4.	**Statistical Analysis**: This section shows how you implemented the statistical method.
-
-5.	**Conclusion**: This section should provide a summary of the finding of the analysis, show how or if the research question has been answered, state if the hypothesis was rejected or substantiated, and provide a critical evaluation of the analysis and its limitations.
+By completing the Statistical Analysis Report, you will demonstrate your proficiency in data analysis, hypothesis formulation, result interpretation, and critical evaluation. This assessment provides a valuable opportunity to apply your knowledge in a practical context and gain hands-on experience in the field of data analysis.
 
 Please refer to the rubic (available via the ECP) for details.
 
-If you are sick/absent, see Section 5.3 *Late submission*.
+This task has been designed to be challenging, authentic and complex. Whilst students may use Al technologies, successful completion of assessment in this course will require students to critically engage in specific contexts and tasks for which artificial intelligence will provide only limited support and guidance. A failure to reference Al use may constitute student misconduct under the Student Code of Conduct. To pass this assessment, students will be required to demonstrate detailed comprehension of their written submission independent of Al tools.
+
+If sick/absent, apply for an extension (see 5.3 Late Submission).
+
 
 
 
@@ -410,8 +400,3 @@ You’ll receive an email to your student email account when the status of your 
 
 * If your deferred mid-semester examination request is approved, the relevant school will notify you of the scheduled date and time of your deferred examination. Deferred mid-semester examinations are held during a period nominated by the relevant school.  
 * If your end-of-semester deferred examination request is approved you will receive a timetable the Friday prior to the deferred exam period. You must be available during this time to take your exam.  
-
-
-
-
-
