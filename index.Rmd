@@ -19,7 +19,7 @@ This course introduces basic statistical techniques used in quantitative researc
 
 Assumed Background: No background in statistics or mathematics is assumed.
 
-[**Link to Electronic Course Profile (ECP)**](https://course-profiles.uq.edu.au/student_section_loader/section_1/123204)
+[**Link to Electronic Course Profile (ECP)**](https://learn.uq.edu.au/ultra/courses/_172661_1/cl/outline)
 
 ### Course Introduction {-}
 
@@ -194,10 +194,10 @@ data.frame(weeks, content, scriptchapter) %>%
 ```{r ass, echo = F, eval = T, message=FALSE, warning=FALSE}
 library(dplyr)
 library(flextable)
-Assessment <- c("Weekly Online Study Tasks", "Annotated Bibliography", "Research Project")
-DueDate <- c("Weeks 3 to 12 (Aug. 8 - Oct. 17): must be submitted before Monday 9 am of each week", 
-             "Wednesday of week 10 (Oct. 5):  must be submitted before 4 pm",
-             "Mondayday two weeks after week 13 (Nov. 7): must be submitted before 4 pm")
+Assessment <- c("Weekly Online Study Tasks", "Dataset description presentation", "Statistical Analysis Report")
+DueDate <- c("Weeks 3 to 12 (Aug. 7 - Oct. 16): must be submitted before Monday 1pm of each week", 
+             "Wednesday of week 9 (Sep. 20):  must be submitted before 4 pm",
+             "Wednesday two weeks after week 13 (Nov. 8): must be submitted before 4 pm")
 Weighting <- c("30%", "30%", "40%")
 data.frame(Assessment, DueDate, Weighting) %>%
   as.data.frame() %>%
