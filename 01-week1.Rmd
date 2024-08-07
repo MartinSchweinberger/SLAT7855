@@ -196,7 +196,7 @@ Another interesting way to show that we are not good with numbers relates to the
   # Print the result
   prob_at_least_one_shared 
   ```
-  The probability of 2 students having the same birthday in a  class of 73 students is `r round(prob_at_least_one_shared, 1)` percent.
+  The probability of 2 students having the same birthday in a  class of 73 students is almost `r round(prob_at_least_one_shared, 1)` (or 100 percent).
 </details>
 
 
