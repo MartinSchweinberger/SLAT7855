@@ -150,7 +150,7 @@ Another interesting way to show that we are not good with numbers relates to the
   1 - \frac{1}{365} = \frac{364}{365} = .997260
   \end{equation}
 
-  But we need to multiply this probability with 253 - the number of possible pairs in our class.
+  But we need to raise this probability to the power of 253 - the number of possible pairs in our class. - the number of possible pairs in our class.
 
   \begin{equation}
   (\frac{364}{365})^{253} = .4995
@@ -180,9 +180,9 @@ Another interesting way to show that we are not good with numbers relates to the
 <details>
   <summary>Answer</summary>
   ```{r message=FALSE, warning=FALSE}
-  ((364/365)^23)*100 
+  ((364/365)^23)*73 
   ```
-  The probability of 2 students having the same birthday in a  class of 73 students is `r round(((364/365)^23)*100, 1)` percent.
+  The probability of 2 students having the same birthday in a  class of 73 students is `r round(((364/365)^23)*73, 1)` percent.
 </details>
 
 

@@ -47,14 +47,6 @@ Email: m.schweinberger\@uq.edu.au
 
 Office: St Lucia campus, Gordon Greenwood Building, Room 32-514
 
-Lecturer(s)
-
-Ruihua Yin (ruihua.yin\@uq.edu.au)
-
-Martin Schweinberger (m.schweinberger\@uq.edu.au)
-
-
-
 
 ### Timetable {-}
 
@@ -216,7 +208,7 @@ data.frame(Assessment, DueDate, Weighting) %>%
 
 **Task Description**
 
-Weight: 		30%
+Weight: 		20%
 
 Due date: 		Week 3 to week 12
 
@@ -226,7 +218,7 @@ Submission: 	via Blackboard
 
 Every week - from week 3 to week 12 - there will be 10 questions that you need to answer. This amounts to 10 online study tasks. The questions will be about the content of the lecture and the required reading(s) for that week. 
 
-Each online study task is worth 3% of your final grade. You only have 60  minutes and a single attempt to finish each weekly online study task. 
+Each online study task is worth 2% of your final grade. You only have 60  minutes and a single attempt to finish each weekly online study task. 
 
 The link to the online study tasks for each week will be made available on Blackboard.
 
@@ -237,7 +229,7 @@ The link to the online study tasks for each week will be made available on Black
 
 Weight: 		30%
 
-Due date: 		Wednesday of week 9
+Due date: 		Week 9
 
 Submission: 	via TurnItIn
 
@@ -278,7 +270,7 @@ If you are sick/absent, see Section 5.3 *Late submission*.
 
 Weight: 		40%
 
-Due date: 		Wednesday two weeks after the end of week 13 (Nov. 8, 2023, 4pm)
+Due date: 		Wednesday two weeks after the end of week 13
 
 Submission: 	via TurnItIn
 
