@@ -224,34 +224,75 @@ The next figure shows at which number of heads the cumulative probabilities dip 
 
 ```{r echo=F, eval = T, message=FALSE, warning=FALSE}
 df <- df %>%
-  dplyr::mutate(cump = cumsum(p100),
-                col = ifelse(cump <= 0.025 | cump >= 0.975, T, F))
+  mutate(
+    cump = cumsum(p100),
+    col = cump <= 0.025 | cump >= 0.975
+  )
+
+# Create a label dataset
+label_df <- data.frame(
+  w100 = 70,
+  p100 = 0.05,
+  label = "mu[1] != mu[2]"
+)
+
 ggplot(df, aes(x = w100, y = p100, fill = col)) +
-  geom_bar(stat="identity") +
-  labs(x = "Frequency Count (Head)", y = "Probability") +
-  theme_bw() +
-  theme(panel.grid.major = element_blank(), 
-        panel.grid.minor = element_blank(),
-        legend.position = "none") +
+  geom_col() +
   scale_fill_manual(values = c("gray", "red")) +
-  annotate(geom = "text", label = expression(paste(mu^1 !=  mu^2, sep = "")), x = 70, y = .05)
+  labs(
+    x = "Frequency Count (Head)",
+    y = "Probability"
+  ) +
+  theme_bw() +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = "none"
+  ) +
+  geom_text(
+    data = label_df,
+    aes(x = w100, y = p100, label = label),
+    parse = TRUE,          # interprets as math notation
+    inherit.aes = FALSE
+  )
 ```
 
 The Figure below shows at which point the probability of heads showing dips below 5 percent for one-tailed hypotheses. Thus, according to the figure below, if we toss a coin 100 times and head shows 59 or more often, then you are justified in claiming that I cheated.
 
 ```{r echo=F, eval = T, message=FALSE, warning=FALSE}
 df <- df %>%
-  dplyr::mutate(cump = cumsum(p100),
-                col = ifelse(cump >= 0.95, T, F))
-ggplot(df, aes(x = w100, y = p100, fill = col)) +
-  geom_bar(stat="identity") +
-  labs(x = "Frequency Count (Head)", y = "Probability") +
-  theme_bw() +
-  theme(panel.grid.major = element_blank(), 
-        panel.grid.minor = element_blank(),
-        legend.position = "none") +
+  mutate(
+    cump = cumsum(p100),          # cumulative probability
+    highlight = cump >= 0.95      # flag values beyond 95%
+  )
+
+# Store the label as a string, not an expression
+label_df <- data.frame(
+  w100 = 70,
+  p100 = 0.05,
+  label = "mu[1] >= mu[2]"
+)
+
+ggplot(df, aes(x = w100, y = p100, fill = highlight)) +
+  geom_col() +
   scale_fill_manual(values = c("gray", "red")) +
-  annotate(geom = "text", label = expression(paste(mu^1 >=  mu^2, sep = "")), x = 70, y = .05)
+  labs(
+    x = "Frequency Count (Head)", 
+    y = "Probability"
+  ) +
+  theme_bw() +
+  theme(
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    legend.position = "none"
+  ) +
+  geom_text(
+    data = label_df,
+    aes(x = w100, y = p100, label = label),
+    inherit.aes = FALSE,
+    parse = TRUE   # <-- this makes "mu[1] >= mu[2]" render as math
+  )
+
 ```
 
 
@@ -449,24 +490,41 @@ SampleValues <- sample(1:100, 50)
 summary(SampleValues)
 ```
 
-We apply the `skewness` function from the `e1071` package to the sample scores to calculated skewness. The `skewness` function  allows to calculate skewness in three different ways:
+In R, we use the `skewness()` function from the **e1071** package. This function can calculate skewness in three slightly different ways, depending on which formula is used.  
 
-Type 1 (This is the typical definition used in many older textbooks): 
-\begin{equation}
-g_1 = m_3 / m_2^{(3/2)}.
-\end{equation}
+Even though the formulas look a bit intimidating, they are all trying to capture the same idea:  
 
-Type 2 (Used in SAS and SPSS): 
-\begin{equation}
-G_1 = g_1 * sqrt(n(n-1)) / (n-2)
-\end{equation}
+- **Negative skewness** → the data are skewed to the left (the “tail” stretches towards smaller values).  
+- **Positive skewness** → the data are skewed to the right (the “tail” stretches towards larger values).  
+- **Skewness near 0** → the data are fairly symmetrical (like a bell curve).  
 
-Type 3 (Used in MINITAB and BMDP): 
-\begin{equation}
-b_1 = m_3 / s^3 = g_1 ((n-1)/n)^{(3/2)}
-\end{equation}
 
-All three formulas have in common that the more negative values are, the more strongly positively skewed are the data (distribution leans to the left) and the  more positive the values are, the more strongly negatively skewed are the data (distribution leans to the right). Here we use the second formula (by setting `type = 2`) that is also used in SPSS.
+**The Three Types of Skewness**
+
+1. **Type 1 (older textbooks)**  
+\[
+g_1 = \frac{m_3}{m_2^{3/2}}
+\]  
+Here \(m_2\) and \(m_3\) are the 2nd and 3rd *central moments* (ways of measuring spread and asymmetry).  
+
+2. **Type 2 (SPSS and SAS)**  
+\[
+G_1 = g_1 \cdot \sqrt{\frac{n(n-1)}{(n-2)}}
+\]  
+This adjusts the Type 1 formula to correct for bias when the sample size \(n\) is small.  
+
+3. **Type 3 (MINITAB and BMDP)**  
+\[
+b_1 = \frac{m_3}{s^3} = g_1 \left(\frac{n-1}{n}\right)^{3/2}
+\]  
+Here \(s\) is the **sample standard deviation**.  
+
+**Which One Do We Use?**
+
+In this course, we use **Type 2** (by setting `type = 2` in R).  
+This is also the version used in **SPSS**, one of the most widely used statistical programs.  
+
+*Takeaway:** While the formulas look different, they all measure the *same basic thing*: whether your data are more stretched out on the left or on the right. The differences between them mostly matter in smaller samples.  
 
 
 ```{r calskew2, warning=F, message=F}
