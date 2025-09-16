@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         fantome.appendChild(tabwid_link.cloneNode(true));
       }
   });
+<<<<<<< HEAD
 
   const shadowHosts = document.querySelectorAll('.flextable-shadow-host:not(:has(div > table.no-shadow-dom))');
   shadowHosts.forEach(host => {
@@ -29,3 +30,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   });
 
 });
+=======
+});
+
+>>>>>>> c3420f19b30c0d3ab653cfff1be5b528ebf634e0
