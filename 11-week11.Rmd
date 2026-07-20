@@ -11,8 +11,9 @@ In this tutorial, we will need the following packages; please install them by ru
 # install
 install.packages("car")
 install.packages("dplyr")
-install.packages("car")
 install.packages("flextable")
+install.packages("performance")
+install.packages("see")
 install.packages("gridExtra")
 install.packages("ggplot2")
 install.packages("rms")
@@ -32,6 +33,8 @@ library(gridExtra)
 library(ggplot2)
 library(rms)
 library(sjPlot)
+library(performance)
+library(see)
 ```
 
 
@@ -59,14 +62,14 @@ relationship=c(0,0,0,0,0,1,0,1,0,0,1,1,0,1,1,1,0,1,1,1)
 # saves data frame with two columns: body size, survival
 blrdata=as.data.frame(cbind(bodyheight,relationship)) 
 # inspect data
-blrdata %>%
-  as.data.frame() %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
+blrdata |>
+  as.data.frame() |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
   flextable::border_outer()
 ```
 
@@ -76,9 +79,9 @@ Let us now fit a linear regression model to the data and see what happens if we 
 # generate models
 lm1 <- lm(relationship ~ bodyheight, data = blrdata)
 blr1 <- glm(relationship ~ bodyheight, family = binomial, data = blrdata)
-blrdata <- blrdata %>%
+blrdata <- blrdata |>
   dplyr::mutate(Pred_lm = predict(lm1, blrdata),
-                Pred_blm = predict(blr1, blrdata)) %>%
+                Pred_blm = predict(blr1, blrdata)) |>
   dplyr::mutate(Prob_lm = plogis(predict(lm1, blrdata)),
                 Prob_blm = plogis(predict(blr1, blrdata)),
                 Pred_blm2 = ifelse(predict(blr1, blrdata, type = "response") >= .5, 1, 0))
@@ -105,10 +108,10 @@ round(plogis(-5:5), 5)
 While the original values range from -5 to 5, the logged values fall within a range from 0 to 1. If we visualize these logged values, we can confirm that the values are between 0 and 1 and see that they follow an S-shaped curve which mirrors the underlying logistic function.
 
 ```{r blm0b, echo = F, message=FALSE, warning=FALSE}
-plogis(-5:5) %>%
-  as.data.frame() %>%
-  dplyr::mutate(id = 1:n()) %>%
-  dplyr::rename(values = 1) %>%
+plogis(-5:5) |>
+  as.data.frame() |>
+  dplyr::mutate(id = 1:n()) |>
+  dplyr::rename(values = 1) |>
   ggplot(aes(y = values, x = id)) +
   geom_line(color = "red", size = 1) +
   geom_point(color = "blue", size = 2)+
@@ -127,9 +130,9 @@ Let us now fit a binomial logistic regression model to the data and see what hap
 # generate models
 lm1 <- lm(relationship ~ bodyheight, data = blrdata)
 blr1 <- glm(relationship ~ bodyheight, family = binomial, data = blrdata)
-blrdata <- blrdata %>%
+blrdata <- blrdata |>
   dplyr::mutate(Pred_lm = predict(lm1, blrdata),
-                Pred_blm = predict(blr1, blrdata)) %>%
+                Pred_blm = predict(blr1, blrdata)) |>
   dplyr::mutate(Prob_lm = plogis(predict(lm1, blrdata)),
                 Prob_blm = plogis(predict(blr1, blrdata)),
                 Pred_blm2 = ifelse(predict(blr1, blrdata, type = "response") >= .5, 1, 0))
@@ -158,7 +161,7 @@ p3 <- ggplot(blrdata, aes(x = bodyheight, y =  relationship)) +
   labs(title = "Logged Probabilities and logged regression line of blm.", x = "Height", y = "")
 
 # show plot
-ggpubr::ggarrange(p2, p3, nrow = 2)
+gridExtra::grid.arrange(p2, p3, nrow = 2)
 ```
 
 
@@ -183,16 +186,16 @@ blrdata  <- base::readRDS(url("https://slcladal.github.io/data/bld.rda", "rb"))
 
 ```{r blm4, echo = F}
 # inspect data
-blrdata %>%
-  as.data.frame() %>%
-  head(15) %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "First 15 rows of the blrdata.")  %>%
+blrdata |>
+  as.data.frame() |>
+  head(15) |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "First 15 rows of the blrdata.")  |>
   flextable::border_outer()
 ```
 
@@ -201,9 +204,9 @@ The summary of the data show that the data set contains 25,821 observations of f
 Next, we factorize the variables in our data set. In other words, we specify that the strings represent variable levels and define new reference levels because as a default `R` will use the variable level which first occurs in alphabet ordering as the reference level for each variable, we redefine the variable levels for Age and Ethnicity.
 
 ```{r blm5}
-blrdata <- blrdata %>%
+blrdata <- blrdata |>
   # factorize variables
-  dplyr::mutate_if(is.character, factor) %>%
+  dplyr::mutate_if(is.character, factor) |>
   # relevel Age (Reference = Young) and Ethnicity (Reference= Pakeha))
   dplyr::mutate(Age = relevel(Age, "Young"),
                 Ethnicity = relevel(Ethnicity, "Pakeha"))
@@ -212,8 +215,8 @@ blrdata <- blrdata %>%
 After preparing the data, we will now plot the data to get an overview of potential relationships between variables.
 
 ```{r blm6, message=FALSE, warning=FALSE}
-blrdata %>%
-  dplyr::mutate(EH = ifelse(EH == "0", 0, 1)) %>%
+blrdata |>
+  dplyr::mutate(EH = ifelse(EH == "0", 0, 1)) |>
   ggplot(aes(Age, EH, color = Gender)) +
   facet_wrap(~Ethnicity) +
   stat_summary(fun = mean, geom = "point") +
@@ -275,14 +278,14 @@ m1.glm = glm(EH ~ Age, family = binomial, data = blrdata)
 anova(m1.glm, m0.glm, test = "Chi")
 ```
 
-As the data does not contain incomplete information, the vif values are below 3, and adding *Age* has significantly improved the model fit (the p-value of the ANOVA is lower than .05). We therefore proceed with *Age* included.
+As the data does not contain incomplete information and adding *Age* has significantly improved the model fit (note that collinearity is not an issue in a model with only a single predictor) (the p-value of the ANOVA is lower than .05). We therefore proceed with *Age* included.
 
 We continue by adding *Gender*. We add a second ANOVA test to see if including Gender affects the significance of other predictors in the model. If this were the case - if adding Gender would cause Age to become insignificant - then we could change the ordering in which we include predictors into our model.
 
 ```{r blm10}
 ftable(blrdata$Gender, blrdata$EH)
 m2.glm <- update(m1.glm, . ~ . +Gender)
-vif(m2.glm)
+performance::check_collinearity(m2.glm)
 anova(m1.glm, m2.glm, test = "Chi")
 Anova(m2.glm, test = "LR")
 ```
@@ -294,7 +297,7 @@ Again, including *Gender* significantly improves model fit and the data does not
 ```{r blm11}
 ftable(blrdata$Ethnicity, blrdata$EH)
 m3.glm <- update(m2.glm, . ~ . +Ethnicity)
-vif(m3.glm)
+performance::check_collinearity(m3.glm)
 anova(m2.glm, m3.glm, test = "Chi")
 ```
 
@@ -303,16 +306,16 @@ Since adding *Ethnicity* does not significantly improve the model fit, we do not
 ```{r blm12}
 ftable(blrdata$Age, blrdata$Gender, blrdata$EH)
 m4.glm <- update(m2.glm, . ~ . +Age*Gender)
-vif(m4.glm)
+performance::check_collinearity(m4.glm)
 anova(m2.glm, m4.glm, test = "Chi")
 ```
 
-The interaction between *Age* and *Gender* is not significant which means that men and women do not behave differently with respect to their use of `EH` as they age. Also, the data does not contain incomplete information and the model does not suffer from multicollinearity - the predictors are not collinear. We can now include if there is a significant interaction between *Age* and *Ethnicity*.
+The interaction between *Age* and *Gender* is not significant which means that men and women do not behave differently with respect to their use of `EH` as they age. Also, the data does not contain incomplete information and the model does not suffer from multicollinearity - the VIFs reported by `check_collinearity` are low, i.e. the predictors are not collinear. We can now include if there is a significant interaction between *Age* and *Ethnicity*.
 
 ```{r blm13}
 ftable(blrdata$Age, blrdata$Ethnicity, blrdata$EH)
 m5.glm <- update(m2.glm, . ~ . +Age*Ethnicity)
-vif(m5.glm)
+performance::check_collinearity(m5.glm)
 anova(m2.glm, m5.glm, test = "Chi")
 ```
 
@@ -321,7 +324,7 @@ Again, no incomplete information or multicollinearity and no significant interac
 ```{r blm14}
 ftable(blrdata$Gender, blrdata$Ethnicity, blrdata$EH)
 m6.glm <- update(m2.glm, . ~ . +Gender*Ethnicity)
-vif(m6.glm)
+performance::check_collinearity(m6.glm)
 anova(m2.glm, m6.glm, test = "Chi")
 ```
 
@@ -331,11 +334,29 @@ As the interaction between *Gender* and *Ethnicity* is not significant, we conti
 ```{r blm15}
 ftable(blrdata$Age, blrdata$Gender, blrdata$Ethnicity, blrdata$EH)
 m7.glm <- update(m2.glm, . ~ . +Age*Gender*Ethnicity)
-vif(m7.glm)
+performance::check_collinearity(m7.glm)
 anova(m2.glm, m7.glm, test = "Chi")
 ```
 
-We have found our final minimal adequate model because the 3-way interaction is also insignificant. As we have now arrived at the final minimal adequate model (m2.glm), we continue by checking the effect sizes of the predictors in our final model (Age and Gender).
+We have found our final minimal adequate model because the 3-way interaction is also insignificant. As we have now arrived at the final minimal adequate model (m2.glm), we perform the model diagnostics on this final model before we turn to interpretation. As with linear regressions, we use the `check_model` function from the `performance` package [@performance] - note, however, that the panels differ from those for linear models because logistic regressions do not assume normally distributed residuals: for binomial models, the *binned residuals* panel replaces the normality- and homoscedasticity-related panels. In the binned residuals plot, the data are divided into bins based on their fitted values and the average residual per bin is displayed - ideally, (nearly) all points should fall within the error bounds.
+
+```{r blm16, message=F, warning=F, fig.height=8}
+# generate diagnostic plots
+performance::check_model(m2.glm)
+```
+
+We can also formally check for influential observations. As all predictors in our model are categorical, we extract the Cook's distances directly from the model (Cook's distance shows how much the model changes when it is re-fitted without a given data point; values greater than 1 are considered problematic).
+
+```{r blm17, message=F, warning=F}
+# extract Cook's distances
+cooksd <- cooks.distance(m2.glm)
+# inspect the maximum Cook's distance
+max(cooksd)
+# check if any data points have a Cook's distance value greater than 1
+which(cooksd > 1)
+```
+
+The diagnostics do not indicate any problems and we continue by checking the effect sizes of the predictors in our final model (Age and Gender).
 
 
 ## Effect Size
@@ -349,7 +370,7 @@ sjPlot::tab_model(m2.glm)
 
 The effects are reported as Odds Ratios - but what are odds ratios and how can you interpret them? 
 
-Odds ratios are an  effect size measure (or an association strength measure) that ranges between 0 and infinity. If the odds rations are 
+Odds ratios are an  effect size measure (or an association strength measure) that ranges between 0 and infinity. If the odds ratios are 
 
 * 1, then the presence of a factor level does not affect the probability of an outcome  
 * smaller than 1, then the presence of a factor level *decreases* the probability of an outcome
@@ -358,7 +379,7 @@ Odds ratios are an  effect size measure (or an association strength measure) tha
 
 The odds of an event are related to its probability: if the probability that an *eh* is produced by a woman is 20 percent (this is equal to .2 or 1/5 or 1 out of 5), then the odds are .25 (this is equal to 1/4 or 1 against 4). 
 
-Odds ratios are the odds of an *eh* being produced by a woman (1/4) divided by the odds on *eh* not being produced by a woman (3/4). In this example, the odds ratio of an *eh* being produced by woman are thus (1/4) / (3/4) = .25 / .75 = .33. If the odds ratios are positive, then they tell use how many times more likely an outcome is: if *Gender[woman]* had a odds ratio of 2, then this would mean that the outcome is twice as likely if the speaker is a woman.   
+Odds ratios are the odds of an *eh* being produced by a woman (1/4) divided by the odds of an *eh* not being produced by a woman (3/4). In this example, the odds ratio of an *eh* being produced by woman are thus (1/4) / (3/4) = .25 / .75 = .33. If the odds ratios are positive, then they tell us how many times more likely an outcome is: if *Gender[woman]* had an odds ratio of 2, then this would mean that the outcome is twice as likely if the speaker is a woman.   
 
 In a next step, we can use the `plot_model` function from the `sjPlot` package [@sjPlot] to visualize the effects.
 

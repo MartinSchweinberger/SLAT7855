@@ -21,10 +21,12 @@ To be able to generate `ggplot` plots, you need to install and load the  `ggplot
 #install.packages("ggplot2")
 #install.packages("vip")
 #install.packages("dplyr")
+#install.packages("gridExtra")
 # load packages
 library(ggplot2)
 library(vip)
 library(dplyr)
+library(gridExtra)
 ```
 
 
@@ -139,9 +141,9 @@ p + coord_cartesian(xlim = c(0, 55), ylim = c(0, 50))
 We can also integrate plots into data processing pipelines as shown below. When you integrate visualizations into pipelines, you should not specify the data as it is clear from the pipe which data the plot is using.
 
 ```{r plot5, message=F, warning=F}
-dat %>%
-  group_by(Class) %>%
-  dplyr::summarise(Score = mean(TestScores)) %>%
+dat |>
+  group_by(Class) |>
+  dplyr::summarise(Score = mean(TestScores)) |>
     ggplot(aes(x = Class, y = Score, 
                fill = Class)) +
     geom_bar(stat = "identity")
@@ -172,7 +174,7 @@ Line graphs are used when we have numeric values that are linked in one way or a
 In addition, we use the `facet_wrap` function with the `nrow` argument to show the plots in 3 rows (instead of next to each other). 
 
 ```{r line1, warning=F, message=F}
-dat %>%
+dat |>
   ggplot(aes(x = Subject, y = TestScores, color = Class)) +
   # add geom layer with lines
   geom_line() +
@@ -203,9 +205,9 @@ In the case of barplots, it is important that we only have 1 value per class so 
 
 ```{r bar4,  results='hide', message=FALSE, warning=FALSE}
 # bar plot
-dat %>%
-  dplyr::group_by(Class) %>%
-  dplyr::summarise(Score = mean(TestScores)) %>%
+dat |>
+  dplyr::group_by(Class) |>
+  dplyr::summarise(Score = mean(TestScores)) |>
   ggplot(aes(x = reorder(Class, Score), y = Score, fill = Class)) +
   geom_bar(stat="identity") +          
   theme_bw() +                        
@@ -246,7 +248,7 @@ ggplot(dat, aes(x = Subject, y = TestScores, shape = Class, color = Class)) +
 Text can be added by adding a text layer.
 
 ```{r text1}
-dat %>%
+dat |>
   ggplot(aes(x = Subject, y = TestScores, label = TestScores, color = Class)) +
   geom_text(size = 3) +
   theme_bw()
@@ -268,9 +270,9 @@ ggplot(dat, aes(x = Subject, y = TestScores)) +
 Text is also useful when generating bar plots to indicate the values for different columns.
 
 ```{r text6}
-dat %>%
-  dplyr::group_by(Class) %>%
-  dplyr::summarise(Score = round(mean(TestScores), 1)) %>%
+dat |>
+  dplyr::group_by(Class) |>
+  dplyr::summarise(Score = round(mean(TestScores), 1)) |>
   ggplot(aes(x = Class, y = Score, label = Score)) +
   geom_bar(stat="identity") +
   geom_text(vjust=-1.6, color = "black") +

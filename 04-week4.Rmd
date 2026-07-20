@@ -137,7 +137,7 @@ In that folder, create the following sub-folders (you can, of course, adapt this
   - tables
   - docs
 
-The folder for your project could look like the the one shown below.
+The folder for your project could look like the one shown below.
 
 ```{r rstudio01, echo=F, fig.cap="", message=FALSE, warning=FALSE, out.width='75%'}
 knitr::include_graphics("https://slcladal.github.io/images/RStudio_newfolder.png")
@@ -494,10 +494,10 @@ Often, when working with data, we need to change things in the data set. We will
 
 ### Changing data
 
-We will change the test scores of the students in the Korean class: to all scores in the Korean class, we will add 10 points. For this, we take the *dat* data set and the *mutate* the *TestScore* variable by adding 10 points to the score for all scores of the Korean class. The `>%>` symbol is called a *pipe* and it can be translated as *and then*. So we take the data, and then we mutate the *TestScores* column, and then we assign the resulting dataset a new name, *dat2*.
+We will change the test scores of the students in the Korean class: to all scores in the Korean class, we will add 10 points. For this, we take the *dat* data set and the *mutate* the *TestScore* variable by adding 10 points to the score for all scores of the Korean class. The `|>` symbol is called a *pipe* and it can be translated as *and then*. So we take the data, and then we mutate the *TestScores* column, and then we assign the resulting dataset a new name, *dat2*.
 
 ```{r}
-dat %>%
+dat |>
   dplyr::mutate(TestScores = ifelse(Class == "Korean", TestScores + 10, TestScores)) -> dat2
 ```
 
@@ -514,7 +514,7 @@ Now, we will add 20 points to the tests scores of the students in the Chinese cl
 Again, we take the dataset (in this case the *dat2* dataset) and then (the pipe) we mutate a variable (in this case the TestScores associated with the Chinese class by adding 20 points to each score of the Chinese class.) 
 
 ```{r}
-dat2 %>%
+dat2 |>
   dplyr::mutate(TestScores = ifelse(Class == "Chinese" & TestScores <= 30, 
                                     TestScores + 20, 
                                     TestScores)) -> dat3

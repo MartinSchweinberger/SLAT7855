@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Week 11 (Different) Types of Regression | SLAT7855 Quantitative Research Methods in Applied Linguistics</title>
   <meta name="description" content="Week 11 (Different) Types of Regression | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Week 11 (Different) Types of Regression | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Martin Schweinberger" />
 
 
-<meta name="date" content="2022-09-16" />
+<meta name="date" content="2026-07-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,11 +52,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -94,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -107,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -121,6 +122,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -162,38 +167,26 @@ div.csl-indent {
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#basic-course-information"><i class="fa fa-check"></i>Basic Course Information</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-the-course"><i class="fa fa-check"></i>About the Course</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i>Course Description</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-introduction"><i class="fa fa-check"></i>Course Introduction</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#timetable"><i class="fa fa-check"></i>Timetable</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#aims-objectives-graduate-attributes"><i class="fa fa-check"></i>Aims, Objectives &amp; Graduate Attributes</a>
-<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#rationale"><i class="fa fa-check"></i>Rationale</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aims"><i class="fa fa-check"></i>Course Aims</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-outcomes"><i class="fa fa-check"></i>Learning Outcomes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#what-you-will-get-out-of-this-course"><i class="fa fa-check"></i>What You Will Get Out of This Course</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#who-this-course-is-for"><i class="fa fa-check"></i>Who This Course Is For</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-this-book-is-organised"><i class="fa fa-check"></i>How This Book Is Organised</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-resources"><i class="fa fa-check"></i>Learning Resources</a>
 <ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#required-resources"><i class="fa fa-check"></i>Required Resources</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-resources"><i class="fa fa-check"></i>Recommended Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#this-script"><i class="fa fa-check"></i>This Script</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-reading"><i class="fa fa-check"></i>Recommended Reading</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#university-learning-resources"><i class="fa fa-check"></i>University Learning Resources</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#school-of-languages-and-cultures-learning-resources"><i class="fa fa-check"></i>School of Languages and Cultures Learning Resources</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-learning-resources-information"><i class="fa fa-check"></i>Other Learning Resources &amp; Information</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#teaching-learning-activities"><i class="fa fa-check"></i>Teaching &amp; Learning Activities</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-activities"><i class="fa fa-check"></i>Learning Activities</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-plan"><i class="fa fa-check"></i>Course plan</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#assessment"><i class="fa fa-check"></i>Assessment</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#weekly-oline-study-tasks"><i class="fa fa-check"></i>Weekly Oline Study Tasks</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#annotated-bibliography"><i class="fa fa-check"></i>Annotated Bibliography</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#research-project"><i class="fa fa-check"></i>Research Project</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-grading"><i class="fa fa-check"></i>Course Grading</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#a-note-on-generative-ai"><i class="fa fa-check"></i>A Note on Generative AI</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
@@ -213,7 +206,6 @@ div.csl-indent {
 <li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#popper-falsification-and-scientific-progress"><i class="fa fa-check"></i><b>1.3.2</b> Popper, falsification, and scientific progress</a></li>
 <li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#what-is-empirical-linguistics"><i class="fa fa-check"></i><b>1.3.3</b> What is (empirical) Linguistics?</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#tutorial"><i class="fa fa-check"></i>Tutorial</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html"><i class="fa fa-check"></i><b>2</b> Hypotheses and Variables</a>
 <ul>
@@ -231,7 +223,6 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#variable-types-scaling"><i class="fa fa-check"></i>Variable Types (Scaling)</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#relationships-between-variables"><i class="fa fa-check"></i><b>2.4</b> Relationships between variables</a></li>
-<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#tutorial-1"><i class="fa fa-check"></i>Tutorial</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html"><i class="fa fa-check"></i><b>3</b> Significance, Probability and the Normal Distribution</a>
 <ul>
@@ -424,12 +415,24 @@ div.csl-indent {
 <li class="chapter" data-level="12.2.5" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#extracting-model-fit-parameters"><i class="fa fa-check"></i><b>12.2.5</b> Extracting Model Fit Parameters</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="tree-based-models.html"><a href="tree-based-models.html"><i class="fa fa-check"></i><b>13</b> Tree-Based Models</a>
+<li class="chapter" data-level="13" data-path="week13.html"><a href="week13.html"><i class="fa fa-check"></i><b>13</b> Tree-Based Models, Machine Learning, and AI</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="tree-based-models.html"><a href="tree-based-models.html#basic-concepts-1"><i class="fa fa-check"></i><b>13.1</b> Basic Concepts</a></li>
-<li class="chapter" data-level="13.2" data-path="tree-based-models.html"><a href="tree-based-models.html#decision-trees"><i class="fa fa-check"></i><b>13.2</b> Decision Trees</a></li>
-<li class="chapter" data-level="13.3" data-path="tree-based-models.html"><a href="tree-based-models.html#conditional-inference-trees"><i class="fa fa-check"></i><b>13.3</b> Conditional Inference Trees</a></li>
-<li class="chapter" data-level="13.4" data-path="tree-based-models.html"><a href="tree-based-models.html#problems-of-conditional-inference-trees"><i class="fa fa-check"></i><b>13.4</b> Problems of Conditional Inference Trees</a></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#the-basic-concept"><i class="fa fa-check"></i>The Basic Concept</a></li>
+<li class="chapter" data-level="13.1" data-path="week13.html"><a href="week13.html#decision-trees"><i class="fa fa-check"></i><b>13.1</b> Decision Trees</a></li>
+<li class="chapter" data-level="13.2" data-path="week13.html"><a href="week13.html#conditional-inference-trees"><i class="fa fa-check"></i><b>13.2</b> Conditional Inference Trees</a></li>
+<li class="chapter" data-level="13.3" data-path="week13.html"><a href="week13.html#from-trees-to-forests-an-introduction-to-machine-learning"><i class="fa fa-check"></i><b>13.3</b> From Trees to Forests: An Introduction to Machine Learning</a>
+<ul>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#random-forests"><i class="fa fa-check"></i>Random Forests</a></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#machine-learning-as-an-outlook"><i class="fa fa-check"></i>Machine Learning as an Outlook</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="week13.html"><a href="week13.html#large-language-models-and-generative-ai"><i class="fa fa-check"></i><b>13.4</b> Large Language Models and Generative AI</a>
+<ul>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#language-models-are-next-word-prediction-machines"><i class="fa fa-check"></i>Language Models are Next-Word Prediction Machines</a></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#from-n-grams-to-neural-networks-and-transformers"><i class="fa fa-check"></i>From n-grams to Neural Networks and Transformers</a></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#how-this-relates-to-this-course"><i class="fa fa-check"></i>How this Relates to this Course</a></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#implications-for-research-in-applied-linguistics"><i class="fa fa-check"></i>Implications for Research in Applied Linguistics</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#outlook-and-further-resources"><i class="fa fa-check"></i>Outlook and Further Resources</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -455,98 +458,47 @@ div.csl-indent {
 <p>This week, we continue with regression analyses and expand on last week by using a regression to analyse a nominal dependent variable. Regression models that are fit to nominal dependent variables are called <em>(binomial) logistic regressions</em>.</p>
 <p><strong>Preparation and session set up</strong></p>
 <p>In this tutorial, we will need the following packages; please install them by running the code below if you have not installed them already.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="different-types-of-regression.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install</span></span>
-<span id="cb1-2"><a href="different-types-of-regression.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;car&quot;</span>)</span>
-<span id="cb1-3"><a href="different-types-of-regression.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb1-4"><a href="different-types-of-regression.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;car&quot;</span>)</span>
-<span id="cb1-5"><a href="different-types-of-regression.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;flextable&quot;</span>)</span>
-<span id="cb1-6"><a href="different-types-of-regression.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;gridExtra&quot;</span>)</span>
-<span id="cb1-7"><a href="different-types-of-regression.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
-<span id="cb1-8"><a href="different-types-of-regression.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rms&quot;</span>)</span>
-<span id="cb1-9"><a href="different-types-of-regression.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sjPlot&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="different-types-of-regression.html#cb1-1" tabindex="-1"></a><span class="co"># install</span></span>
+<span id="cb1-2"><a href="different-types-of-regression.html#cb1-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;car&quot;</span>)</span>
+<span id="cb1-3"><a href="different-types-of-regression.html#cb1-3" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb1-4"><a href="different-types-of-regression.html#cb1-4" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;flextable&quot;</span>)</span>
+<span id="cb1-5"><a href="different-types-of-regression.html#cb1-5" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;performance&quot;</span>)</span>
+<span id="cb1-6"><a href="different-types-of-regression.html#cb1-6" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;see&quot;</span>)</span>
+<span id="cb1-7"><a href="different-types-of-regression.html#cb1-7" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;gridExtra&quot;</span>)</span>
+<span id="cb1-8"><a href="different-types-of-regression.html#cb1-8" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb1-9"><a href="different-types-of-regression.html#cb1-9" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rms&quot;</span>)</span>
+<span id="cb1-10"><a href="different-types-of-regression.html#cb1-10" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sjPlot&quot;</span>)</span></code></pre></div>
 <p>Once you have installed the packages (either now or before), we activate them as shown below.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="different-types-of-regression.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set options</span></span>
-<span id="cb2-2"><a href="different-types-of-regression.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="st">&quot;scipen&quot;</span> <span class="ot">=</span> <span class="dv">100</span>, <span class="st">&quot;digits&quot;</span> <span class="ot">=</span> <span class="dv">12</span>) <span class="co"># suppress math annotation</span></span>
-<span id="cb2-3"><a href="different-types-of-regression.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
-<span id="cb2-4"><a href="different-types-of-regression.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-5"><a href="different-types-of-regression.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb2-6"><a href="different-types-of-regression.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
-<span id="cb2-7"><a href="different-types-of-regression.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb2-8"><a href="different-types-of-regression.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-9"><a href="different-types-of-regression.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rms)</span>
-<span id="cb2-10"><a href="different-types-of-regression.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="different-types-of-regression.html#cb2-1" tabindex="-1"></a><span class="co"># set options</span></span>
+<span id="cb2-2"><a href="different-types-of-regression.html#cb2-2" tabindex="-1"></a><span class="fu">options</span>(<span class="st">&quot;scipen&quot;</span> <span class="ot">=</span> <span class="dv">100</span>, <span class="st">&quot;digits&quot;</span> <span class="ot">=</span> <span class="dv">12</span>) <span class="co"># suppress math annotation</span></span>
+<span id="cb2-3"><a href="different-types-of-regression.html#cb2-3" tabindex="-1"></a><span class="co"># load packages</span></span>
+<span id="cb2-4"><a href="different-types-of-regression.html#cb2-4" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-5"><a href="different-types-of-regression.html#cb2-5" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb2-6"><a href="different-types-of-regression.html#cb2-6" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb2-7"><a href="different-types-of-regression.html#cb2-7" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb2-8"><a href="different-types-of-regression.html#cb2-8" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-9"><a href="different-types-of-regression.html#cb2-9" tabindex="-1"></a><span class="fu">library</span>(rms)</span>
+<span id="cb2-10"><a href="different-types-of-regression.html#cb2-10" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb2-11"><a href="different-types-of-regression.html#cb2-11" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
+<span id="cb2-12"><a href="different-types-of-regression.html#cb2-12" tabindex="-1"></a><span class="fu">library</span>(see)</span></code></pre></div>
 <p>Once you have initiated the session by executing the code shown above, you are good to go.</p>
 <div id="basic-concepts" class="section level2 hasAnchor" number="11.1">
 <h2><span class="header-section-number">11.1</span> Basic Concepts<a href="different-types-of-regression.html#basic-concepts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Logistic regression is a multivariate analysis technique that builds on linear regression but takes nominal dependent variables (rather than a numeric dependent variable) <span class="citation">(<a href="#ref-harrell2015regression" role="doc-biblioref">Harrell Jr 2015</a>)</span>. The difference requires that the linear regression must be modified in certain ways to avoid predicting outcomes that do not make sense. For example, a linear model that is applied to a nominal dependent variable (e.g., 0 = not pregnant, 1 = pregnant) would predict negative values or values greater than 1 when there are only 2 possible outcomes.</p>
+<p>Logistic regression is a multivariate analysis technique that builds on linear regression but takes nominal dependent variables (rather than a numeric dependent variable) <span class="citation">(<a href="#ref-harrell2015regression">Harrell Jr 2015</a>)</span>. The difference requires that the linear regression must be modified in certain ways to avoid predicting outcomes that do not make sense. For example, a linear model that is applied to a nominal dependent variable (e.g., 0 = not pregnant, 1 = pregnant) would predict negative values or values greater than 1 when there are only 2 possible outcomes.</p>
 <p>To avoid this, logistic regressions work on the probabilities of an outcome (the likelihood), rather than the outcome itself. In addition, the likelihoods on which the logistic regression works is logged (logarithmized) in order to avoid making nonsensical predictions.</p>
 <p>To understand what this mean, we will use a very simple example. In this example, we want to see whether the height of men affect their likelihood of being in a relationship. The data we use represents a data set consisting of two variables: height and relationship.</p>
-<template id="63ace497-67e2-49f5-95e0-773c23d057dd"><style>
-.tabwid table{
-  border-spacing:0px !important;
-  border-collapse:collapse;
-  line-height:1;
-  margin-left:auto;
-  margin-right:auto;
-  border-width: 0;
-  display: table;
-  margin-top: 1.275em;
-  margin-bottom: 1.275em;
-  border-color: transparent;
-}
-.tabwid_left table{
-  margin-left:0;
-}
-.tabwid_right table{
-  margin-right:0;
-}
-.tabwid td {
-    padding: 0;
-}
-.tabwid a {
-  text-decoration: none;
-}
-.tabwid thead {
-    background-color: transparent;
-}
-.tabwid tfoot {
-    background-color: transparent;
-}
-.tabwid table tr {
-background-color: transparent;
-}
-.katex-display {
-    margin: 0 0 !important;
-}
-</style><div class="tabwid"><style>.cl-97699be6{table-layout:auto;width:75%;}.cl-975e1384{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-975e1398{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-975e3ada{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-975e9782{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-975e978c{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-975e9796{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-975e9797{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-975e97a0{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-975e97a1{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-975e97aa{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-975e97ab{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-97699be6'>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-975e97aa"><p class="cl-975e3ada"><span class="cl-975e1384">bodyheight</span></p></td><td class="cl-975e97ab"><p class="cl-975e3ada"><span class="cl-975e1384">relationship</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-975e9782"><p class="cl-975e3ada"><span class="cl-975e1398">138.6</span></p></td><td class="cl-975e978c"><p class="cl-975e3ada"><span class="cl-975e1398">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9796"><p class="cl-975e3ada"><span class="cl-975e1398">156.6</span></p></td><td class="cl-975e9797"><p class="cl-975e3ada"><span class="cl-975e1398">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9782"><p class="cl-975e3ada"><span class="cl-975e1398">157.3</span></p></td><td class="cl-975e978c"><p class="cl-975e3ada"><span class="cl-975e1398">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9796"><p class="cl-975e3ada"><span class="cl-975e1398">160.0</span></p></td><td class="cl-975e9797"><p class="cl-975e3ada"><span class="cl-975e1398">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9782"><p class="cl-975e3ada"><span class="cl-975e1398">165.9</span></p></td><td class="cl-975e978c"><p class="cl-975e3ada"><span class="cl-975e1398">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9796"><p class="cl-975e3ada"><span class="cl-975e1398">168.4</span></p></td><td class="cl-975e9797"><p class="cl-975e3ada"><span class="cl-975e1398">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9782"><p class="cl-975e3ada"><span class="cl-975e1398">169.3</span></p></td><td class="cl-975e978c"><p class="cl-975e3ada"><span class="cl-975e1398">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9796"><p class="cl-975e3ada"><span class="cl-975e1398">169.5</span></p></td><td class="cl-975e9797"><p class="cl-975e3ada"><span class="cl-975e1398">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9782"><p class="cl-975e3ada"><span class="cl-975e1398">172.7</span></p></td><td class="cl-975e978c"><p class="cl-975e3ada"><span class="cl-975e1398">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9796"><p class="cl-975e3ada"><span class="cl-975e1398">172.8</span></p></td><td class="cl-975e9797"><p class="cl-975e3ada"><span class="cl-975e1398">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9782"><p class="cl-975e3ada"><span class="cl-975e1398">181.0</span></p></td><td class="cl-975e978c"><p class="cl-975e3ada"><span class="cl-975e1398">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9796"><p class="cl-975e3ada"><span class="cl-975e1398">182.4</span></p></td><td class="cl-975e9797"><p class="cl-975e3ada"><span class="cl-975e1398">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9782"><p class="cl-975e3ada"><span class="cl-975e1398">185.4</span></p></td><td class="cl-975e978c"><p class="cl-975e3ada"><span class="cl-975e1398">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9796"><p class="cl-975e3ada"><span class="cl-975e1398">186.7</span></p></td><td class="cl-975e9797"><p class="cl-975e3ada"><span class="cl-975e1398">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9782"><p class="cl-975e3ada"><span class="cl-975e1398">187.1</span></p></td><td class="cl-975e978c"><p class="cl-975e3ada"><span class="cl-975e1398">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9796"><p class="cl-975e3ada"><span class="cl-975e1398">187.6</span></p></td><td class="cl-975e9797"><p class="cl-975e3ada"><span class="cl-975e1398">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9782"><p class="cl-975e3ada"><span class="cl-975e1398">189.2</span></p></td><td class="cl-975e978c"><p class="cl-975e3ada"><span class="cl-975e1398">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9796"><p class="cl-975e3ada"><span class="cl-975e1398">191.3</span></p></td><td class="cl-975e9797"><p class="cl-975e3ada"><span class="cl-975e1398">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e9782"><p class="cl-975e3ada"><span class="cl-975e1398">197.4</span></p></td><td class="cl-975e978c"><p class="cl-975e3ada"><span class="cl-975e1398">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-975e97a1"><p class="cl-975e3ada"><span class="cl-975e1398">211.3</span></p></td><td class="cl-975e97a0"><p class="cl-975e3ada"><span class="cl-975e1398">1</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="0b143c8d-de39-43b8-b59a-8f792da8be10"></div>
-<script>
-var dest = document.getElementById("0b143c8d-de39-43b8-b59a-8f792da8be10");
-var template = document.getElementById("63ace497-67e2-49f5-95e0-773c23d057dd");
-var caption = template.content.querySelector("caption");
-if(caption) {
-  caption.style.cssText = "display:block;text-align:center;";
-  var newcapt = document.createElement("p");
-  newcapt.appendChild(caption)
-  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
-}
-var fantome = dest.attachShadow({mode: 'open'});
-var templateContent = template.content;
-fantome.appendChild(templateContent);
-</script>
-
+<div class="tabwid"><style>.cl-25c52a3e{table-layout:auto;width:75%;}.cl-25ba54e2{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-25ba54f6{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-25bea290{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-25bee3c2{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-25bee3c3{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-25bee3cc{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-25bee3d6{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-25bee3d7{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-25bee3e0{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-25bee3e1{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-25bee3ea{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-25c52a3e'><thead><tr style="overflow-wrap:break-word;"><th class="cl-25bee3c2"><p class="cl-25bea290"><span class="cl-25ba54e2">bodyheight</span></p></th><th class="cl-25bee3c3"><p class="cl-25bea290"><span class="cl-25ba54e2">relationship</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-25bee3cc"><p class="cl-25bea290"><span class="cl-25ba54f6">138.6</span></p></td><td class="cl-25bee3d6"><p class="cl-25bea290"><span class="cl-25ba54f6">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3d7"><p class="cl-25bea290"><span class="cl-25ba54f6">156.6</span></p></td><td class="cl-25bee3e0"><p class="cl-25bea290"><span class="cl-25ba54f6">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3cc"><p class="cl-25bea290"><span class="cl-25ba54f6">157.3</span></p></td><td class="cl-25bee3d6"><p class="cl-25bea290"><span class="cl-25ba54f6">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3d7"><p class="cl-25bea290"><span class="cl-25ba54f6">160.0</span></p></td><td class="cl-25bee3e0"><p class="cl-25bea290"><span class="cl-25ba54f6">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3cc"><p class="cl-25bea290"><span class="cl-25ba54f6">165.9</span></p></td><td class="cl-25bee3d6"><p class="cl-25bea290"><span class="cl-25ba54f6">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3d7"><p class="cl-25bea290"><span class="cl-25ba54f6">168.4</span></p></td><td class="cl-25bee3e0"><p class="cl-25bea290"><span class="cl-25ba54f6">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3cc"><p class="cl-25bea290"><span class="cl-25ba54f6">169.3</span></p></td><td class="cl-25bee3d6"><p class="cl-25bea290"><span class="cl-25ba54f6">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3d7"><p class="cl-25bea290"><span class="cl-25ba54f6">169.5</span></p></td><td class="cl-25bee3e0"><p class="cl-25bea290"><span class="cl-25ba54f6">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3cc"><p class="cl-25bea290"><span class="cl-25ba54f6">172.7</span></p></td><td class="cl-25bee3d6"><p class="cl-25bea290"><span class="cl-25ba54f6">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3d7"><p class="cl-25bea290"><span class="cl-25ba54f6">172.8</span></p></td><td class="cl-25bee3e0"><p class="cl-25bea290"><span class="cl-25ba54f6">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3cc"><p class="cl-25bea290"><span class="cl-25ba54f6">181.0</span></p></td><td class="cl-25bee3d6"><p class="cl-25bea290"><span class="cl-25ba54f6">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3d7"><p class="cl-25bea290"><span class="cl-25ba54f6">182.4</span></p></td><td class="cl-25bee3e0"><p class="cl-25bea290"><span class="cl-25ba54f6">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3cc"><p class="cl-25bea290"><span class="cl-25ba54f6">185.4</span></p></td><td class="cl-25bee3d6"><p class="cl-25bea290"><span class="cl-25ba54f6">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3d7"><p class="cl-25bea290"><span class="cl-25ba54f6">186.7</span></p></td><td class="cl-25bee3e0"><p class="cl-25bea290"><span class="cl-25ba54f6">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3cc"><p class="cl-25bea290"><span class="cl-25ba54f6">187.1</span></p></td><td class="cl-25bee3d6"><p class="cl-25bea290"><span class="cl-25ba54f6">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3d7"><p class="cl-25bea290"><span class="cl-25ba54f6">187.6</span></p></td><td class="cl-25bee3e0"><p class="cl-25bea290"><span class="cl-25ba54f6">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3cc"><p class="cl-25bea290"><span class="cl-25ba54f6">189.2</span></p></td><td class="cl-25bee3d6"><p class="cl-25bea290"><span class="cl-25ba54f6">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3d7"><p class="cl-25bea290"><span class="cl-25ba54f6">191.3</span></p></td><td class="cl-25bee3e0"><p class="cl-25bea290"><span class="cl-25ba54f6">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3cc"><p class="cl-25bea290"><span class="cl-25ba54f6">197.4</span></p></td><td class="cl-25bee3d6"><p class="cl-25bea290"><span class="cl-25ba54f6">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25bee3e1"><p class="cl-25bea290"><span class="cl-25ba54f6">211.3</span></p></td><td class="cl-25bee3ea"><p class="cl-25bea290"><span class="cl-25ba54f6">1</span></p></td></tr></tbody></table></div>
 <p>Let us now fit a linear regression model to the data and see what happens if we plot the predictions of the model.</p>
-<p><img src="bookdownproj_files/figure-html/blm1b-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/blm1b-1.png" alt="" width="672" /></p>
 <p>The figure above shows that a linear model would predict values for the relationship status, which represents a factor (0 = Single and 1 = In a Relationship), that are nonsensical because values above 1 or below 0 do not make sense.</p>
 <p>To avoid this issue, we can log the values so that they fall between 0 and 1. You can check this by logging the values from -5 to 5 using the <code>plogis</code> function as shown below.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="different-types-of-regression.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span>), <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="different-types-of-regression.html#cb3-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span>), <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>##  [1] 0.00669 0.01799 0.04743 0.11920 0.26894 0.50000 0.73106 0.88080 0.95257
 ## [10] 0.98201 0.99331</code></pre>
 <p>While the original values range from -5 to 5, the logged values fall within a range from 0 to 1. If we visualize these logged values, we can confirm that the values are between 0 and 1 and see that they follow an S-shaped curve which mirrors the underlying logistic function.</p>
-<p><img src="bookdownproj_files/figure-html/blm0b-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/blm0b-1.png" alt="" width="672" /></p>
 <p>Let us now fit a binomial logistic regression model to the data and see what happens if we plot the predictions of the models as well as the probabilities provided by the logistic model.</p>
-<p><img src="bookdownproj_files/figure-html/blm1f-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/blm1f-1.png" alt="" width="672" /></p>
 <p>Surprisingly, the upper panel shows that the predictions of a logistic regression are similar to a linear model and that they also fall outside the range of 0 and 1. We can also plot the regression line of a logistic regression. We can do this because a logistic regression also has an intercept and a (very steep) slope. The regression line confirms that the predicted values that are above 1 and below 0.</p>
 <p>However, when we log the predicted values we see that these logged predicted values are transformed into probabilities with values between 0 and 1. Also, the logged regression line has a S-shape which reflects the logistic function.</p>
 <p>Note also, that we can use these logged predicted values to find the optimal line (the line with the lowest residual deviance) by comparing the sum of residuals - just as we did for a simple linear model and that way, we find the regression line for a logistic regression.</p>
@@ -554,101 +506,46 @@ fantome.appendChild(templateContent);
 </div>
 <div id="example-eh-in-kiwi-english" class="section level2 hasAnchor" number="11.2">
 <h2><span class="header-section-number">11.2</span> Example: EH in Kiwi English<a href="different-types-of-regression.html#example-eh-in-kiwi-english" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To exemplify how to implement a logistic regression in R <span class="citation">(see <a href="#ref-agresti1996introduction" role="doc-biblioref">Agresti 1996</a>; <a href="#ref-agresti2011categorical" role="doc-biblioref">Agresti and Kateri 2011</a> for very good and thorough introductions to this topic)</span>, we will analyze the use of the discourse particle <em>eh</em> in New Zealand English and test which factors correlate with its occurrence. The data set represents speech units in a corpus that were coded for the speaker who uttered a given speech unit, the gender, ethnicity, and age of that speaker and whether or not the speech unit contained an <em>eh</em>. To begin with, we clean the current work space, set option, install and activate relevant packages, load customized functions, and load the example data set.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="different-types-of-regression.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
-<span id="cb5-2"><a href="different-types-of-regression.html#cb5-2" aria-hidden="true" tabindex="-1"></a>blrdata  <span class="ot">&lt;-</span> base<span class="sc">::</span><span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">&quot;https://slcladal.github.io/data/bld.rda&quot;</span>, <span class="st">&quot;rb&quot;</span>))</span></code></pre></div>
-<template id="ced87432-b791-46bd-94d7-f104774e651a"><style>
-.tabwid table{
-  border-spacing:0px !important;
-  border-collapse:collapse;
-  line-height:1;
-  margin-left:auto;
-  margin-right:auto;
-  border-width: 0;
-  display: table;
-  margin-top: 1.275em;
-  margin-bottom: 1.275em;
-  border-color: transparent;
-}
-.tabwid_left table{
-  margin-left:0;
-}
-.tabwid_right table{
-  margin-right:0;
-}
-.tabwid td {
-    padding: 0;
-}
-.tabwid a {
-  text-decoration: none;
-}
-.tabwid thead {
-    background-color: transparent;
-}
-.tabwid tfoot {
-    background-color: transparent;
-}
-.tabwid table tr {
-background-color: transparent;
-}
-.katex-display {
-    margin: 0 0 !important;
-}
-</style><div class="tabwid"><style>.cl-98f810be{table-layout:auto;width:75%;}.cl-98e9ae84{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-98e9ae8e{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-98e9c9f0{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-98e9c9fa{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-98ea3ad4{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98ea3ae8{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98ea3af2{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98ea3afc{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98ea3b06{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98ea3b10{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98ea3b11{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98ea3b1a{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98ea3b1b{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98ea3b24{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98ea3b25{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-98ea3b26{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-98f810be'>
-<caption class="Table Caption">
-<p><span id="tab:blm4">Table 11.1: </span>First 15 rows of the blrdata.</p>
-</caption>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-98ea3b24"><p class="cl-98e9c9f0"><span class="cl-98e9ae84">ID</span></p></td><td class="cl-98ea3b25"><p class="cl-98e9c9f0"><span class="cl-98e9ae84">Gender</span></p></td><td class="cl-98ea3b25"><p class="cl-98e9c9f0"><span class="cl-98e9ae84">Age</span></p></td><td class="cl-98ea3b25"><p class="cl-98e9c9f0"><span class="cl-98e9ae84">Ethnicity</span></p></td><td class="cl-98ea3b26"><p class="cl-98e9c9fa"><span class="cl-98e9ae84">EH</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-98ea3af2"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">&lt;S1A-001#M&gt;</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Men</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Young</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Pakeha</span></p></td><td class="cl-98ea3ad4"><p class="cl-98e9c9fa"><span class="cl-98e9ae8e">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98ea3b10"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">&lt;S1A-001#M&gt;</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Men</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Young</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Pakeha</span></p></td><td class="cl-98ea3b06"><p class="cl-98e9c9fa"><span class="cl-98e9ae8e">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98ea3af2"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">&lt;S1A-001#M&gt;</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Men</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Young</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Pakeha</span></p></td><td class="cl-98ea3ad4"><p class="cl-98e9c9fa"><span class="cl-98e9ae8e">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98ea3b10"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">&lt;S1A-001#M&gt;</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Men</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Young</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Pakeha</span></p></td><td class="cl-98ea3b06"><p class="cl-98e9c9fa"><span class="cl-98e9ae8e">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98ea3af2"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">&lt;S1A-001#M&gt;</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Men</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Young</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Pakeha</span></p></td><td class="cl-98ea3ad4"><p class="cl-98e9c9fa"><span class="cl-98e9ae8e">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98ea3b10"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">&lt;S1A-001#M&gt;</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Men</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Young</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Pakeha</span></p></td><td class="cl-98ea3b06"><p class="cl-98e9c9fa"><span class="cl-98e9ae8e">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98ea3af2"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">&lt;S1A-001#M&gt;</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Men</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Young</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Pakeha</span></p></td><td class="cl-98ea3ad4"><p class="cl-98e9c9fa"><span class="cl-98e9ae8e">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98ea3b10"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">&lt;S1A-001#M&gt;</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Men</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Young</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Pakeha</span></p></td><td class="cl-98ea3b06"><p class="cl-98e9c9fa"><span class="cl-98e9ae8e">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98ea3af2"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">&lt;S1A-001#M&gt;</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Men</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Young</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Pakeha</span></p></td><td class="cl-98ea3ad4"><p class="cl-98e9c9fa"><span class="cl-98e9ae8e">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98ea3b10"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">&lt;S1A-001#M&gt;</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Men</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Young</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Pakeha</span></p></td><td class="cl-98ea3b06"><p class="cl-98e9c9fa"><span class="cl-98e9ae8e">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98ea3af2"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">&lt;S1A-001#M&gt;</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Men</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Young</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Pakeha</span></p></td><td class="cl-98ea3ad4"><p class="cl-98e9c9fa"><span class="cl-98e9ae8e">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98ea3b10"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">&lt;S1A-001#M&gt;</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Men</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Young</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Pakeha</span></p></td><td class="cl-98ea3b06"><p class="cl-98e9c9fa"><span class="cl-98e9ae8e">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98ea3af2"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">&lt;S1A-001#M&gt;</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Men</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Young</span></p></td><td class="cl-98ea3ae8"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Pakeha</span></p></td><td class="cl-98ea3ad4"><p class="cl-98e9c9fa"><span class="cl-98e9ae8e">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98ea3b10"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">&lt;S1A-001#M&gt;</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Men</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Young</span></p></td><td class="cl-98ea3afc"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Pakeha</span></p></td><td class="cl-98ea3b06"><p class="cl-98e9c9fa"><span class="cl-98e9ae8e">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-98ea3b1a"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">&lt;S1A-001#M&gt;</span></p></td><td class="cl-98ea3b11"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Men</span></p></td><td class="cl-98ea3b11"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Young</span></p></td><td class="cl-98ea3b11"><p class="cl-98e9c9f0"><span class="cl-98e9ae8e">Pakeha</span></p></td><td class="cl-98ea3b1b"><p class="cl-98e9c9fa"><span class="cl-98e9ae8e">0</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="7233fb6f-976d-4656-909a-cb9dc68c5f1f"></div>
-<script>
-var dest = document.getElementById("7233fb6f-976d-4656-909a-cb9dc68c5f1f");
-var template = document.getElementById("ced87432-b791-46bd-94d7-f104774e651a");
-var caption = template.content.querySelector("caption");
-if(caption) {
-  caption.style.cssText = "display:block;text-align:center;";
-  var newcapt = document.createElement("p");
-  newcapt.appendChild(caption)
-  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
-}
-var fantome = dest.attachShadow({mode: 'open'});
-var templateContent = template.content;
-fantome.appendChild(templateContent);
-</script>
-
+<p>To exemplify how to implement a logistic regression in R <span class="citation">(see <a href="#ref-agresti1996introduction">Agresti 1996</a>; <a href="#ref-agresti2011categorical">Agresti and Kateri 2011</a> for very good and thorough introductions to this topic)</span>, we will analyze the use of the discourse particle <em>eh</em> in New Zealand English and test which factors correlate with its occurrence. The data set represents speech units in a corpus that were coded for the speaker who uttered a given speech unit, the gender, ethnicity, and age of that speaker and whether or not the speech unit contained an <em>eh</em>. To begin with, we clean the current work space, set option, install and activate relevant packages, load customized functions, and load the example data set.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="different-types-of-regression.html#cb5-1" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb5-2"><a href="different-types-of-regression.html#cb5-2" tabindex="-1"></a>blrdata  <span class="ot">&lt;-</span> base<span class="sc">::</span><span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">&quot;https://slcladal.github.io/data/bld.rda&quot;</span>, <span class="st">&quot;rb&quot;</span>))</span></code></pre></div>
+<div class="tabwid"><style>.cl-2709137e{table-layout:auto;width:75%;}.cl-26fed530{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-26fed544{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-27037c48{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-27037c52{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-27039d7c{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-27039d86{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-27039d90{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-27039d91{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-27039d9a{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-27039d9b{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-27039da4{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-27039da5{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-27039da6{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-27039dae{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-27039daf{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-27039db8{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-2709137e'>
+<caption style="display:table-caption;margin:0pt;text-align:center;border-bottom: 0.00pt solid transparent;border-top: 0.00pt solid transparent;border-left: 0.00pt solid transparent;border-right: 0.00pt solid transparent;padding-top:3pt;padding-bottom:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;"><span id="tab:blm4">Table 11.1: </span><span>First 15 rows of the blrdata.</span></caption>
+<thead><tr style="overflow-wrap:break-word;"><th class="cl-27039d7c"><p class="cl-27037c48"><span class="cl-26fed530">ID</span></p></th><th class="cl-27039d86"><p class="cl-27037c48"><span class="cl-26fed530">Gender</span></p></th><th class="cl-27039d86"><p class="cl-27037c48"><span class="cl-26fed530">Age</span></p></th><th class="cl-27039d86"><p class="cl-27037c48"><span class="cl-26fed530">Ethnicity</span></p></th><th class="cl-27039d90"><p class="cl-27037c52"><span class="cl-26fed530">EH</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-27039d91"><p class="cl-27037c48"><span class="cl-26fed544">&lt;S1A-001#M&gt;</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Men</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Young</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Pakeha</span></p></td><td class="cl-27039d9b"><p class="cl-27037c52"><span class="cl-26fed544">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-27039da4"><p class="cl-27037c48"><span class="cl-26fed544">&lt;S1A-001#M&gt;</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Men</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Young</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Pakeha</span></p></td><td class="cl-27039da6"><p class="cl-27037c52"><span class="cl-26fed544">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-27039d91"><p class="cl-27037c48"><span class="cl-26fed544">&lt;S1A-001#M&gt;</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Men</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Young</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Pakeha</span></p></td><td class="cl-27039d9b"><p class="cl-27037c52"><span class="cl-26fed544">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-27039da4"><p class="cl-27037c48"><span class="cl-26fed544">&lt;S1A-001#M&gt;</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Men</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Young</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Pakeha</span></p></td><td class="cl-27039da6"><p class="cl-27037c52"><span class="cl-26fed544">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-27039d91"><p class="cl-27037c48"><span class="cl-26fed544">&lt;S1A-001#M&gt;</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Men</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Young</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Pakeha</span></p></td><td class="cl-27039d9b"><p class="cl-27037c52"><span class="cl-26fed544">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-27039da4"><p class="cl-27037c48"><span class="cl-26fed544">&lt;S1A-001#M&gt;</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Men</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Young</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Pakeha</span></p></td><td class="cl-27039da6"><p class="cl-27037c52"><span class="cl-26fed544">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-27039d91"><p class="cl-27037c48"><span class="cl-26fed544">&lt;S1A-001#M&gt;</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Men</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Young</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Pakeha</span></p></td><td class="cl-27039d9b"><p class="cl-27037c52"><span class="cl-26fed544">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-27039da4"><p class="cl-27037c48"><span class="cl-26fed544">&lt;S1A-001#M&gt;</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Men</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Young</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Pakeha</span></p></td><td class="cl-27039da6"><p class="cl-27037c52"><span class="cl-26fed544">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-27039d91"><p class="cl-27037c48"><span class="cl-26fed544">&lt;S1A-001#M&gt;</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Men</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Young</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Pakeha</span></p></td><td class="cl-27039d9b"><p class="cl-27037c52"><span class="cl-26fed544">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-27039da4"><p class="cl-27037c48"><span class="cl-26fed544">&lt;S1A-001#M&gt;</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Men</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Young</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Pakeha</span></p></td><td class="cl-27039da6"><p class="cl-27037c52"><span class="cl-26fed544">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-27039d91"><p class="cl-27037c48"><span class="cl-26fed544">&lt;S1A-001#M&gt;</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Men</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Young</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Pakeha</span></p></td><td class="cl-27039d9b"><p class="cl-27037c52"><span class="cl-26fed544">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-27039da4"><p class="cl-27037c48"><span class="cl-26fed544">&lt;S1A-001#M&gt;</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Men</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Young</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Pakeha</span></p></td><td class="cl-27039da6"><p class="cl-27037c52"><span class="cl-26fed544">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-27039d91"><p class="cl-27037c48"><span class="cl-26fed544">&lt;S1A-001#M&gt;</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Men</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Young</span></p></td><td class="cl-27039d9a"><p class="cl-27037c48"><span class="cl-26fed544">Pakeha</span></p></td><td class="cl-27039d9b"><p class="cl-27037c52"><span class="cl-26fed544">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-27039da4"><p class="cl-27037c48"><span class="cl-26fed544">&lt;S1A-001#M&gt;</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Men</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Young</span></p></td><td class="cl-27039da5"><p class="cl-27037c48"><span class="cl-26fed544">Pakeha</span></p></td><td class="cl-27039da6"><p class="cl-27037c52"><span class="cl-26fed544">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-27039dae"><p class="cl-27037c48"><span class="cl-26fed544">&lt;S1A-001#M&gt;</span></p></td><td class="cl-27039daf"><p class="cl-27037c48"><span class="cl-26fed544">Men</span></p></td><td class="cl-27039daf"><p class="cl-27037c48"><span class="cl-26fed544">Young</span></p></td><td class="cl-27039daf"><p class="cl-27037c48"><span class="cl-26fed544">Pakeha</span></p></td><td class="cl-27039db8"><p class="cl-27037c52"><span class="cl-26fed544">0</span></p></td></tr></tbody></table></div>
 <p>The summary of the data show that the data set contains 25,821 observations of five variables. The first variable (ID) contains strings that represent a combination file and speaker of a speech unit. The second variable represents the gender, the third the age, and the fourth the ethnicity of speakers. The fifth variable represents whether or not a speech unit contained the discourse particle <em>eh</em>.</p>
 <p>Next, we factorize the variables in our data set. In other words, we specify that the strings represent variable levels and define new reference levels because as a default <code>R</code> will use the variable level which first occurs in alphabet ordering as the reference level for each variable, we redefine the variable levels for Age and Ethnicity.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="different-types-of-regression.html#cb6-1" aria-hidden="true" tabindex="-1"></a>blrdata <span class="ot">&lt;-</span> blrdata <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="different-types-of-regression.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># factorize variables</span></span>
-<span id="cb6-3"><a href="different-types-of-regression.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(is.character, factor) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="different-types-of-regression.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># relevel Age (Reference = Young) and Ethnicity (Reference= Pakeha))</span></span>
-<span id="cb6-5"><a href="different-types-of-regression.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Age =</span> <span class="fu">relevel</span>(Age, <span class="st">&quot;Young&quot;</span>),</span>
-<span id="cb6-6"><a href="different-types-of-regression.html#cb6-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">Ethnicity =</span> <span class="fu">relevel</span>(Ethnicity, <span class="st">&quot;Pakeha&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="different-types-of-regression.html#cb6-1" tabindex="-1"></a>blrdata <span class="ot">&lt;-</span> blrdata <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="different-types-of-regression.html#cb6-2" tabindex="-1"></a>  <span class="co"># factorize variables</span></span>
+<span id="cb6-3"><a href="different-types-of-regression.html#cb6-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(is.character, factor) <span class="sc">|&gt;</span></span>
+<span id="cb6-4"><a href="different-types-of-regression.html#cb6-4" tabindex="-1"></a>  <span class="co"># relevel Age (Reference = Young) and Ethnicity (Reference= Pakeha))</span></span>
+<span id="cb6-5"><a href="different-types-of-regression.html#cb6-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Age =</span> <span class="fu">relevel</span>(Age, <span class="st">&quot;Young&quot;</span>),</span>
+<span id="cb6-6"><a href="different-types-of-regression.html#cb6-6" tabindex="-1"></a>                <span class="at">Ethnicity =</span> <span class="fu">relevel</span>(Ethnicity, <span class="st">&quot;Pakeha&quot;</span>))</span></code></pre></div>
 <p>After preparing the data, we will now plot the data to get an overview of potential relationships between variables.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="different-types-of-regression.html#cb7-1" aria-hidden="true" tabindex="-1"></a>blrdata <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="different-types-of-regression.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">EH =</span> <span class="fu">ifelse</span>(EH <span class="sc">==</span> <span class="st">&quot;0&quot;</span>, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="different-types-of-regression.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Age, EH, <span class="at">color =</span> Gender)) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="different-types-of-regression.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Ethnicity) <span class="sc">+</span></span>
-<span id="cb7-5"><a href="different-types-of-regression.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="different-types-of-regression.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_cl_boot, <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="different-types-of-regression.html#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb7-8"><a href="different-types-of-regression.html#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>) <span class="sc">+</span></span>
-<span id="cb7-9"><a href="different-types-of-regression.html#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Observed Probabilty of eh&quot;</span>) <span class="sc">+</span></span>
-<span id="cb7-10"><a href="different-types-of-regression.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;gray20&quot;</span>, <span class="st">&quot;gray70&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/blm6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="different-types-of-regression.html#cb7-1" tabindex="-1"></a>blrdata <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="different-types-of-regression.html#cb7-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">EH =</span> <span class="fu">ifelse</span>(EH <span class="sc">==</span> <span class="st">&quot;0&quot;</span>, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="different-types-of-regression.html#cb7-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Age, EH, <span class="at">color =</span> Gender)) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="different-types-of-regression.html#cb7-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Ethnicity) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="different-types-of-regression.html#cb7-5" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="different-types-of-regression.html#cb7-6" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_cl_boot, <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="different-types-of-regression.html#cb7-7" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="different-types-of-regression.html#cb7-8" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="different-types-of-regression.html#cb7-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Observed Probabilty of eh&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-10"><a href="different-types-of-regression.html#cb7-10" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;gray20&quot;</span>, <span class="st">&quot;gray70&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/blm6-1.png" alt="" width="672" /></p>
 <p>With respect to main effects, the figure above indicates that men use <em>eh</em> more frequently than women, that young speakers use it more frequently compared with old speakers, and that speakers that are descendants of European settlers (Pakeha) use <em>eh</em> similarly compared with Maori (the native inhabitants of New Zealand). In a next step, we will start building the logistic regression model.</p>
 </div>
 <div id="model-building" class="section level2 hasAnchor" number="11.3">
 <h2><span class="header-section-number">11.3</span> Model Building<a href="different-types-of-regression.html#model-building" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>As a first step, we need to define contrasts and use the <code>datadist</code> function to store aspects of our variables that can be accessed later when plotting and summarizing the model. Contrasts define what and how variable levels should be compared and therefore influences how the results of the regression analysis are presented. In this case, we use treatment contrasts which are in-built. Treatment contrasts mean that we assess the significance of levels of a predictor against a baseline which is the reference level of a predictor. <span class="citation">Field, Miles, and Field (<a href="#ref-field2012discovering" role="doc-biblioref">2012, 414–27</a>)</span> and <span class="citation">Gries (<a href="#ref-gries2021statistics" role="doc-biblioref">2021</a>)</span> provide very good and accessible explanations of contrasts and how to manually define contrasts if you would like to know more.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="different-types-of-regression.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set contrasts</span></span>
-<span id="cb8-2"><a href="different-types-of-regression.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts  =</span><span class="fu">c</span>(<span class="st">&quot;contr.treatment&quot;</span>, <span class="st">&quot;contr.poly&quot;</span>))</span>
-<span id="cb8-3"><a href="different-types-of-regression.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># extract distribution summaries for all potential variables</span></span>
-<span id="cb8-4"><a href="different-types-of-regression.html#cb8-4" aria-hidden="true" tabindex="-1"></a>blrdata.dist <span class="ot">&lt;-</span> <span class="fu">datadist</span>(blrdata)</span>
-<span id="cb8-5"><a href="different-types-of-regression.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># store distribution summaries for all potential variables</span></span>
-<span id="cb8-6"><a href="different-types-of-regression.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">datadist =</span> <span class="st">&quot;blrdata.dist&quot;</span>)</span></code></pre></div>
+<p>As a first step, we need to define contrasts and use the <code>datadist</code> function to store aspects of our variables that can be accessed later when plotting and summarizing the model. Contrasts define what and how variable levels should be compared and therefore influences how the results of the regression analysis are presented. In this case, we use treatment contrasts which are in-built. Treatment contrasts mean that we assess the significance of levels of a predictor against a baseline which is the reference level of a predictor. <span class="citation">Field et al. (<a href="#ref-field2012discovering">2012, 414–27</a>)</span> and <span class="citation">Gries (<a href="#ref-gries2021statistics">2021</a>)</span> provide very good and accessible explanations of contrasts and how to manually define contrasts if you would like to know more.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="different-types-of-regression.html#cb8-1" tabindex="-1"></a><span class="co"># set contrasts</span></span>
+<span id="cb8-2"><a href="different-types-of-regression.html#cb8-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts  =</span><span class="fu">c</span>(<span class="st">&quot;contr.treatment&quot;</span>, <span class="st">&quot;contr.poly&quot;</span>))</span>
+<span id="cb8-3"><a href="different-types-of-regression.html#cb8-3" tabindex="-1"></a><span class="co"># extract distribution summaries for all potential variables</span></span>
+<span id="cb8-4"><a href="different-types-of-regression.html#cb8-4" tabindex="-1"></a>blrdata.dist <span class="ot">&lt;-</span> <span class="fu">datadist</span>(blrdata)</span>
+<span id="cb8-5"><a href="different-types-of-regression.html#cb8-5" tabindex="-1"></a><span class="co"># store distribution summaries for all potential variables</span></span>
+<span id="cb8-6"><a href="different-types-of-regression.html#cb8-6" tabindex="-1"></a><span class="fu">options</span>(<span class="at">datadist =</span> <span class="st">&quot;blrdata.dist&quot;</span>)</span></code></pre></div>
 <p>Next, we generate a minimal model that predicts the use of <em>eh</em> solely based on the intercept.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="different-types-of-regression.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># baseline glm model</span></span>
-<span id="cb9-2"><a href="different-types-of-regression.html#cb9-2" aria-hidden="true" tabindex="-1"></a>m0.glm <span class="ot">=</span> <span class="fu">glm</span>(EH <span class="sc">~</span> <span class="dv">1</span>, <span class="at">family =</span> binomial, <span class="at">data =</span> blrdata)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="different-types-of-regression.html#cb9-1" tabindex="-1"></a><span class="co"># baseline glm model</span></span>
+<span id="cb9-2"><a href="different-types-of-regression.html#cb9-2" tabindex="-1"></a>m0.glm <span class="ot">=</span> <span class="fu">glm</span>(EH <span class="sc">~</span> <span class="dv">1</span>, <span class="at">family =</span> binomial, <span class="at">data =</span> blrdata)</span></code></pre></div>
 </div>
 <div id="model-fitting-1" class="section level2 hasAnchor" number="11.4">
 <h2><span class="header-section-number">11.4</span> Model Fitting<a href="different-types-of-regression.html#model-fitting-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -661,16 +558,16 @@ fantome.appendChild(templateContent);
 <p><strong>Step-wise model fitting</strong></p>
 <p>Adding predictors one-by-one is called step-wise model fitting. It is called step-wise step up if we add predictors one-by-one and step-wise step-down if we remove predictors one-by-one.</p>
 <p>We will start by adding <em>Age</em> to the minimal adequate model.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="different-types-of-regression.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check incomplete information</span></span>
-<span id="cb10-2"><a href="different-types-of-regression.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(blrdata<span class="sc">$</span>Age, blrdata<span class="sc">$</span>EH)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="different-types-of-regression.html#cb10-1" tabindex="-1"></a><span class="co"># check incomplete information</span></span>
+<span id="cb10-2"><a href="different-types-of-regression.html#cb10-2" tabindex="-1"></a><span class="fu">ftable</span>(blrdata<span class="sc">$</span>Age, blrdata<span class="sc">$</span>EH)</span></code></pre></div>
 <pre><code>##            0     1
 ##                   
 ## Young  11879  7271
 ## Old     5235  1436</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="different-types-of-regression.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add age to the model</span></span>
-<span id="cb12-2"><a href="different-types-of-regression.html#cb12-2" aria-hidden="true" tabindex="-1"></a>m1.glm <span class="ot">=</span> <span class="fu">glm</span>(EH <span class="sc">~</span> Age, <span class="at">family =</span> binomial, <span class="at">data =</span> blrdata)</span>
-<span id="cb12-3"><a href="different-types-of-regression.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># check if adding Age significantly improves model fit</span></span>
-<span id="cb12-4"><a href="different-types-of-regression.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m1.glm, m0.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="different-types-of-regression.html#cb12-1" tabindex="-1"></a><span class="co"># add age to the model</span></span>
+<span id="cb12-2"><a href="different-types-of-regression.html#cb12-2" tabindex="-1"></a>m1.glm <span class="ot">=</span> <span class="fu">glm</span>(EH <span class="sc">~</span> Age, <span class="at">family =</span> binomial, <span class="at">data =</span> blrdata)</span>
+<span id="cb12-3"><a href="different-types-of-regression.html#cb12-3" tabindex="-1"></a><span class="co"># check if adding Age significantly improves model fit</span></span>
+<span id="cb12-4"><a href="different-types-of-regression.html#cb12-4" tabindex="-1"></a><span class="fu">anova</span>(m1.glm, m0.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
 <pre><code>## Analysis of Deviance Table
 ## 
 ## Model 1: EH ~ Age
@@ -680,18 +577,23 @@ fantome.appendChild(templateContent);
 ## 2     25820 33007.75469 -1 -630.8938871 &lt; 0.000000000000000222 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p>As the data does not contain incomplete information, the vif values are below 3, and adding <em>Age</em> has significantly improved the model fit (the p-value of the ANOVA is lower than .05). We therefore proceed with <em>Age</em> included.</p>
+<p>As the data does not contain incomplete information and adding <em>Age</em> has significantly improved the model fit (note that collinearity is not an issue in a model with only a single predictor) (the p-value of the ANOVA is lower than .05). We therefore proceed with <em>Age</em> included.</p>
 <p>We continue by adding <em>Gender</em>. We add a second ANOVA test to see if including Gender affects the significance of other predictors in the model. If this were the case - if adding Gender would cause Age to become insignificant - then we could change the ordering in which we include predictors into our model.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="different-types-of-regression.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(blrdata<span class="sc">$</span>Gender, blrdata<span class="sc">$</span>EH)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="different-types-of-regression.html#cb14-1" tabindex="-1"></a><span class="fu">ftable</span>(blrdata<span class="sc">$</span>Gender, blrdata<span class="sc">$</span>EH)</span></code></pre></div>
 <pre><code>##            0     1
 ##                   
 ## Men     6083  3886
 ## Women  11031  4821</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="different-types-of-regression.html#cb16-1" aria-hidden="true" tabindex="-1"></a>m2.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m1.glm, . <span class="sc">~</span> . <span class="sc">+</span>Gender)</span>
-<span id="cb16-2"><a href="different-types-of-regression.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(m2.glm)</span></code></pre></div>
-<pre><code>##        AgeOld   GenderWomen 
-## 1.00481494539 1.00481494539</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="different-types-of-regression.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m1.glm, m2.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="different-types-of-regression.html#cb16-1" tabindex="-1"></a>m2.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m1.glm, . <span class="sc">~</span> . <span class="sc">+</span>Gender)</span>
+<span id="cb16-2"><a href="different-types-of-regression.html#cb16-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_collinearity</span>(m2.glm)</span></code></pre></div>
+<pre><code>## # Check for Multicollinearity
+## 
+## Low Correlation
+## 
+##    Term  VIF   VIF 95% CI adj. VIF Tolerance Tolerance 95% CI
+##     Age 1.00 [1.00, 1.06]     1.00      1.00     [0.94, 1.00]
+##  Gender 1.00 [1.00, 1.06]     1.00      1.00     [0.94, 1.00]</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="different-types-of-regression.html#cb18-1" tabindex="-1"></a><span class="fu">anova</span>(m1.glm, m2.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
 <pre><code>## Analysis of Deviance Table
 ## 
 ## Model 1: EH ~ Age
@@ -701,7 +603,7 @@ fantome.appendChild(templateContent);
 ## 2     25818 32139.54089  1 237.319914 &lt; 0.000000000000000222 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="different-types-of-regression.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Anova</span>(m2.glm, <span class="at">test =</span> <span class="st">&quot;LR&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="different-types-of-regression.html#cb20-1" tabindex="-1"></a><span class="fu">Anova</span>(m2.glm, <span class="at">test =</span> <span class="st">&quot;LR&quot;</span>)</span></code></pre></div>
 <pre><code>## Analysis of Deviance Table (Type II tests)
 ## 
 ## Response: EH
@@ -711,16 +613,22 @@ fantome.appendChild(templateContent);
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Again, including <em>Gender</em> significantly improves model fit and the data does not contain incomplete information or complete separation. Also, including <em>Gender</em> does not affect the significance of <em>Age</em>. Now, we include <em>Ethnicity</em>.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="different-types-of-regression.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(blrdata<span class="sc">$</span>Ethnicity, blrdata<span class="sc">$</span>EH)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="different-types-of-regression.html#cb22-1" tabindex="-1"></a><span class="fu">ftable</span>(blrdata<span class="sc">$</span>Ethnicity, blrdata<span class="sc">$</span>EH)</span></code></pre></div>
 <pre><code>##             0     1
 ##                    
 ## Pakeha  13112  6912
 ## Maori    4002  1795</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="different-types-of-regression.html#cb24-1" aria-hidden="true" tabindex="-1"></a>m3.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m2.glm, . <span class="sc">~</span> . <span class="sc">+</span>Ethnicity)</span>
-<span id="cb24-2"><a href="different-types-of-regression.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(m3.glm)</span></code></pre></div>
-<pre><code>##         AgeOld    GenderWomen EthnicityMaori 
-##  1.07251952068  1.01032699845  1.07588207399</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="different-types-of-regression.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m2.glm, m3.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="different-types-of-regression.html#cb24-1" tabindex="-1"></a>m3.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m2.glm, . <span class="sc">~</span> . <span class="sc">+</span>Ethnicity)</span>
+<span id="cb24-2"><a href="different-types-of-regression.html#cb24-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_collinearity</span>(m3.glm)</span></code></pre></div>
+<pre><code>## # Check for Multicollinearity
+## 
+## Low Correlation
+## 
+##       Term  VIF   VIF 95% CI adj. VIF Tolerance Tolerance 95% CI
+##        Age 1.07 [1.06, 1.09]     1.04      0.93     [0.92, 0.94]
+##     Gender 1.01 [1.00, 1.03]     1.01      0.99     [0.97, 1.00]
+##  Ethnicity 1.08 [1.06, 1.09]     1.04      0.93     [0.92, 0.94]</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="different-types-of-regression.html#cb26-1" tabindex="-1"></a><span class="fu">anova</span>(m2.glm, m3.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
 <pre><code>## Analysis of Deviance Table
 ## 
 ## Model 1: EH ~ Age + Gender
@@ -729,18 +637,24 @@ fantome.appendChild(templateContent);
 ## 1     25818 32139.54089                         
 ## 2     25817 32139.27988  1 0.2610145387  0.60942</code></pre>
 <p>Since adding <em>Ethnicity</em> does not significantly improve the model fit, we do not need to test if its inclusion affects the significance of other predictors. We continue without <em>Ethnicity</em> and include the interaction between <em>Age</em> and <em>Gender</em>.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="different-types-of-regression.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(blrdata<span class="sc">$</span>Age, blrdata<span class="sc">$</span>Gender, blrdata<span class="sc">$</span>EH)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="different-types-of-regression.html#cb28-1" tabindex="-1"></a><span class="fu">ftable</span>(blrdata<span class="sc">$</span>Age, blrdata<span class="sc">$</span>Gender, blrdata<span class="sc">$</span>EH)</span></code></pre></div>
 <pre><code>##                 0    1
 ##                       
 ## Young Men    3996 3158
 ##       Women  7883 4113
 ## Old   Men    2087  728
 ##       Women  3148  708</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="different-types-of-regression.html#cb30-1" aria-hidden="true" tabindex="-1"></a>m4.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m2.glm, . <span class="sc">~</span> . <span class="sc">+</span>Age<span class="sc">*</span>Gender)</span>
-<span id="cb30-2"><a href="different-types-of-regression.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(m4.glm)</span></code></pre></div>
-<pre><code>##             AgeOld        GenderWomen AgeOld:GenderWomen 
-##      2.16324753499      1.26797426223      2.34205061169</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="different-types-of-regression.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m2.glm, m4.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="different-types-of-regression.html#cb30-1" tabindex="-1"></a>m4.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m2.glm, . <span class="sc">~</span> . <span class="sc">+</span>Age<span class="sc">*</span>Gender)</span>
+<span id="cb30-2"><a href="different-types-of-regression.html#cb30-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_collinearity</span>(m4.glm)</span></code></pre></div>
+<pre><code>## # Check for Multicollinearity
+## 
+## Low Correlation
+## 
+##        Term  VIF   VIF 95% CI adj. VIF Tolerance Tolerance 95% CI
+##         Age 2.16 [2.12, 2.20]     1.47      0.46     [0.45, 0.47]
+##      Gender 1.27 [1.25, 1.29]     1.13      0.79     [0.78, 0.80]
+##  Age:Gender 2.34 [2.30, 2.39]     1.53      0.43     [0.42, 0.44]</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="different-types-of-regression.html#cb32-1" tabindex="-1"></a><span class="fu">anova</span>(m2.glm, m4.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
 <pre><code>## Analysis of Deviance Table
 ## 
 ## Model 1: EH ~ Age + Gender
@@ -748,21 +662,26 @@ fantome.appendChild(templateContent);
 ##   Resid. Df  Resid. Dev Df    Deviance Pr(&gt;Chi)
 ## 1     25818 32139.54089                        
 ## 2     25817 32139.41665  1 0.124239923  0.72448</code></pre>
-<p>The interaction between <em>Age</em> and <em>Gender</em> is not significant which means that men and women do not behave differently with respect to their use of <code>EH</code> as they age. Also, the data does not contain incomplete information and the model does not suffer from multicollinearity - the predictors are not collinear. We can now include if there is a significant interaction between <em>Age</em> and <em>Ethnicity</em>.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="different-types-of-regression.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(blrdata<span class="sc">$</span>Age, blrdata<span class="sc">$</span>Ethnicity, blrdata<span class="sc">$</span>EH)</span></code></pre></div>
+<p>The interaction between <em>Age</em> and <em>Gender</em> is not significant which means that men and women do not behave differently with respect to their use of <code>EH</code> as they age. Also, the data does not contain incomplete information and the model does not suffer from multicollinearity - the VIFs reported by <code>check_collinearity</code> are low, i.e. the predictors are not collinear. We can now include if there is a significant interaction between <em>Age</em> and <em>Ethnicity</em>.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="different-types-of-regression.html#cb34-1" tabindex="-1"></a><span class="fu">ftable</span>(blrdata<span class="sc">$</span>Age, blrdata<span class="sc">$</span>Ethnicity, blrdata<span class="sc">$</span>EH)</span></code></pre></div>
 <pre><code>##                   0     1
 ##                          
 ## Young Pakeha  10057  6062
 ##       Maori    1822  1209
 ## Old   Pakeha   3055   850
 ##       Maori    2180   586</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="different-types-of-regression.html#cb36-1" aria-hidden="true" tabindex="-1"></a>m5.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m2.glm, . <span class="sc">~</span> . <span class="sc">+</span>Age<span class="sc">*</span>Ethnicity)</span>
-<span id="cb36-2"><a href="different-types-of-regression.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(m5.glm)</span></code></pre></div>
-<pre><code>##                AgeOld           GenderWomen        EthnicityMaori 
-##         1.59690392153         1.01022111707         1.54668484472 
-## AgeOld:EthnicityMaori 
-##         2.25303250355</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="different-types-of-regression.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m2.glm, m5.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="different-types-of-regression.html#cb36-1" tabindex="-1"></a>m5.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m2.glm, . <span class="sc">~</span> . <span class="sc">+</span>Age<span class="sc">*</span>Ethnicity)</span>
+<span id="cb36-2"><a href="different-types-of-regression.html#cb36-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_collinearity</span>(m5.glm)</span></code></pre></div>
+<pre><code>## # Check for Multicollinearity
+## 
+## Low Correlation
+## 
+##           Term  VIF   VIF 95% CI adj. VIF Tolerance Tolerance 95% CI
+##            Age 1.60 [1.57, 1.62]     1.26      0.63     [0.62, 0.64]
+##         Gender 1.01 [1.00, 1.03]     1.01      0.99     [0.97, 1.00]
+##      Ethnicity 1.55 [1.52, 1.57]     1.24      0.65     [0.64, 0.66]
+##  Age:Ethnicity 2.25 [2.21, 2.30]     1.50      0.44     [0.44, 0.45]</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="different-types-of-regression.html#cb38-1" tabindex="-1"></a><span class="fu">anova</span>(m2.glm, m5.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
 <pre><code>## Analysis of Deviance Table
 ## 
 ## Model 1: EH ~ Age + Gender
@@ -771,20 +690,25 @@ fantome.appendChild(templateContent);
 ## 1     25818 32139.54089                        
 ## 2     25816 32136.47224  2 3.068654514   0.2156</code></pre>
 <p>Again, no incomplete information or multicollinearity and no significant interaction. Now, we test if there exists a significant interaction between <em>Gender</em> and <em>Ethnicity</em>.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="different-types-of-regression.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(blrdata<span class="sc">$</span>Gender, blrdata<span class="sc">$</span>Ethnicity, blrdata<span class="sc">$</span>EH)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="different-types-of-regression.html#cb40-1" tabindex="-1"></a><span class="fu">ftable</span>(blrdata<span class="sc">$</span>Gender, blrdata<span class="sc">$</span>Ethnicity, blrdata<span class="sc">$</span>EH)</span></code></pre></div>
 <pre><code>##                  0    1
 ##                        
 ## Men   Pakeha  4362 2935
 ##       Maori   1721  951
 ## Women Pakeha  8750 3977
 ##       Maori   2281  844</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="different-types-of-regression.html#cb42-1" aria-hidden="true" tabindex="-1"></a>m6.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m2.glm, . <span class="sc">~</span> . <span class="sc">+</span>Gender<span class="sc">*</span>Ethnicity)</span>
-<span id="cb42-2"><a href="different-types-of-regression.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(m6.glm)</span></code></pre></div>
-<pre><code>##                     AgeOld                GenderWomen 
-##              1.07257270800              1.29582536607 
-##             EthnicityMaori GenderWomen:EthnicityMaori 
-##              2.20089042223              2.30670699362</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="different-types-of-regression.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m2.glm, m6.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="different-types-of-regression.html#cb42-1" tabindex="-1"></a>m6.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m2.glm, . <span class="sc">~</span> . <span class="sc">+</span>Gender<span class="sc">*</span>Ethnicity)</span>
+<span id="cb42-2"><a href="different-types-of-regression.html#cb42-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_collinearity</span>(m6.glm)</span></code></pre></div>
+<pre><code>## # Check for Multicollinearity
+## 
+## Low Correlation
+## 
+##              Term  VIF   VIF 95% CI adj. VIF Tolerance Tolerance 95% CI
+##               Age 1.07 [1.06, 1.09]     1.04      0.93     [0.92, 0.94]
+##            Gender 1.30 [1.28, 1.32]     1.14      0.77     [0.76, 0.78]
+##         Ethnicity 2.20 [2.16, 2.24]     1.48      0.45     [0.45, 0.46]
+##  Gender:Ethnicity 2.31 [2.26, 2.35]     1.52      0.43     [0.43, 0.44]</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="different-types-of-regression.html#cb44-1" tabindex="-1"></a><span class="fu">anova</span>(m2.glm, m6.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
 <pre><code>## Analysis of Deviance Table
 ## 
 ## Model 1: EH ~ Age + Gender
@@ -793,7 +717,7 @@ fantome.appendChild(templateContent);
 ## 1     25818 32139.54089                         
 ## 2     25816 32139.26864  2 0.2722521835  0.87273</code></pre>
 <p>As the interaction between <em>Gender</em> and <em>Ethnicity</em> is not significant, we continue without it. In a final step, we include the three-way interaction between <em>Age</em>, <em>Gender</em>, and <em>Ethnicity</em>.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="different-types-of-regression.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(blrdata<span class="sc">$</span>Age, blrdata<span class="sc">$</span>Gender, blrdata<span class="sc">$</span>Ethnicity, blrdata<span class="sc">$</span>EH)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="different-types-of-regression.html#cb46-1" tabindex="-1"></a><span class="fu">ftable</span>(blrdata<span class="sc">$</span>Age, blrdata<span class="sc">$</span>Gender, blrdata<span class="sc">$</span>Ethnicity, blrdata<span class="sc">$</span>EH)</span></code></pre></div>
 <pre><code>##                        0    1
 ##                              
 ## Young Men   Pakeha  3237 2535
@@ -804,17 +728,21 @@ fantome.appendChild(templateContent);
 ##             Maori    962  328
 ##       Women Pakeha  1930  450
 ##             Maori   1218  258</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="different-types-of-regression.html#cb48-1" aria-hidden="true" tabindex="-1"></a>m7.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m2.glm, . <span class="sc">~</span> . <span class="sc">+</span>Age<span class="sc">*</span>Gender<span class="sc">*</span>Ethnicity)</span>
-<span id="cb48-2"><a href="different-types-of-regression.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(m7.glm)</span></code></pre></div>
-<pre><code>##                            AgeOld                       GenderWomen 
-##                     3.65790927453                     1.53396970590 
-##                    EthnicityMaori                AgeOld:GenderWomen 
-##                     3.36912881556                     3.76231358740 
-##             AgeOld:EthnicityMaori        GenderWomen:EthnicityMaori 
-##                     4.66356696032                     3.54060526686 
-## AgeOld:GenderWomen:EthnicityMaori 
-##                     4.42702502073</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="different-types-of-regression.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m2.glm, m7.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="different-types-of-regression.html#cb48-1" tabindex="-1"></a>m7.glm <span class="ot">&lt;-</span> <span class="fu">update</span>(m2.glm, . <span class="sc">~</span> . <span class="sc">+</span>Age<span class="sc">*</span>Gender<span class="sc">*</span>Ethnicity)</span>
+<span id="cb48-2"><a href="different-types-of-regression.html#cb48-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_collinearity</span>(m7.glm)</span></code></pre></div>
+<pre><code>## # Check for Multicollinearity
+## 
+## Low Correlation
+## 
+##                  Term  VIF   VIF 95% CI adj. VIF Tolerance Tolerance 95% CI
+##                   Age 3.66 [3.58, 3.74]     1.91      0.27     [0.27, 0.28]
+##                Gender 1.53 [1.51, 1.56]     1.24      0.65     [0.64, 0.66]
+##             Ethnicity 3.37 [3.30, 3.44]     1.84      0.30     [0.29, 0.30]
+##            Age:Gender 3.76 [3.68, 3.84]     1.94      0.27     [0.26, 0.27]
+##         Age:Ethnicity 4.66 [4.56, 4.77]     2.16      0.21     [0.21, 0.22]
+##      Gender:Ethnicity 3.54 [3.47, 3.62]     1.88      0.28     [0.28, 0.29]
+##  Age:Gender:Ethnicity 4.43 [4.33, 4.52]     2.10      0.23     [0.22, 0.23]</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="different-types-of-regression.html#cb50-1" tabindex="-1"></a><span class="fu">anova</span>(m2.glm, m7.glm, <span class="at">test =</span> <span class="st">&quot;Chi&quot;</span>)</span></code></pre></div>
 <pre><code>## Analysis of Deviance Table
 ## 
 ## Model 1: EH ~ Age + Gender
@@ -823,12 +751,25 @@ fantome.appendChild(templateContent);
 ##   Resid. Df  Resid. Dev Df    Deviance Pr(&gt;Chi)
 ## 1     25818 32139.54089                        
 ## 2     25813 32136.00748  5 3.533413832  0.61834</code></pre>
-<p>We have found our final minimal adequate model because the 3-way interaction is also insignificant. As we have now arrived at the final minimal adequate model (m2.glm), we continue by checking the effect sizes of the predictors in our final model (Age and Gender).</p>
+<p>We have found our final minimal adequate model because the 3-way interaction is also insignificant. As we have now arrived at the final minimal adequate model (m2.glm), we perform the model diagnostics on this final model before we turn to interpretation. As with linear regressions, we use the <code>check_model</code> function from the <code>performance</code> package <span class="citation">(<a href="#ref-performance">Lüdecke et al. 2021</a>)</span> - note, however, that the panels differ from those for linear models because logistic regressions do not assume normally distributed residuals: for binomial models, the <em>binned residuals</em> panel replaces the normality- and homoscedasticity-related panels. In the binned residuals plot, the data are divided into bins based on their fitted values and the average residual per bin is displayed - ideally, (nearly) all points should fall within the error bounds.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="different-types-of-regression.html#cb52-1" tabindex="-1"></a><span class="co"># generate diagnostic plots</span></span>
+<span id="cb52-2"><a href="different-types-of-regression.html#cb52-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(m2.glm)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/blm16-1.png" alt="" width="672" /></p>
+<p>We can also formally check for influential observations. As all predictors in our model are categorical, we extract the Cook’s distances directly from the model (Cook’s distance shows how much the model changes when it is re-fitted without a given data point; values greater than 1 are considered problematic).</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="different-types-of-regression.html#cb53-1" tabindex="-1"></a><span class="co"># extract Cook&#39;s distances</span></span>
+<span id="cb53-2"><a href="different-types-of-regression.html#cb53-2" tabindex="-1"></a>cooksd <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(m2.glm)</span>
+<span id="cb53-3"><a href="different-types-of-regression.html#cb53-3" tabindex="-1"></a><span class="co"># inspect the maximum Cook&#39;s distance</span></span>
+<span id="cb53-4"><a href="different-types-of-regression.html#cb53-4" tabindex="-1"></a><span class="fu">max</span>(cooksd)</span></code></pre></div>
+<pre><code>## [1] 0.000235972173163</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="different-types-of-regression.html#cb55-1" tabindex="-1"></a><span class="co"># check if any data points have a Cook&#39;s distance value greater than 1</span></span>
+<span id="cb55-2"><a href="different-types-of-regression.html#cb55-2" tabindex="-1"></a><span class="fu">which</span>(cooksd <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## named integer(0)</code></pre>
+<p>The diagnostics do not indicate any problems and we continue by checking the effect sizes of the predictors in our final model (Age and Gender).</p>
 </div>
 <div id="effect-size-1" class="section level2 hasAnchor" number="11.5">
 <h2><span class="header-section-number">11.5</span> Effect Size<a href="different-types-of-regression.html#effect-size-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We summarize the final minimal adequate model in tabulated form.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="different-types-of-regression.html#cb52-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(m2.glm)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="different-types-of-regression.html#cb57-1" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(m2.glm)</span></code></pre></div>
 <table style="border-collapse:collapse; border:none;">
 <tr>
 <th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
@@ -912,7 +853,7 @@ R<sup>2</sup> Tjur
 </tr>
 </table>
 <p>The effects are reported as Odds Ratios - but what are odds ratios and how can you interpret them?</p>
-<p>Odds ratios are an effect size measure (or an association strength measure) that ranges between 0 and infinity. If the odds rations are</p>
+<p>Odds ratios are an effect size measure (or an association strength measure) that ranges between 0 and infinity. If the odds ratios are</p>
 <ul>
 <li>1, then the presence of a factor level does not affect the probability of an outcome<br />
 </li>
@@ -920,41 +861,26 @@ R<sup>2</sup> Tjur
 <li>bigger than 1, then the presence of a factor level <em>increases</em> the probability of an outcome.</li>
 </ul>
 <p>The odds of an event are related to its probability: if the probability that an <em>eh</em> is produced by a woman is 20 percent (this is equal to .2 or 1/5 or 1 out of 5), then the odds are .25 (this is equal to 1/4 or 1 against 4).</p>
-<p>Odds ratios are the odds of an <em>eh</em> being produced by a woman (1/4) divided by the odds on <em>eh</em> not being produced by a woman (3/4). In this example, the odds ratio of an <em>eh</em> being produced by woman are thus (1/4) / (3/4) = .25 / .75 = .33. If the odds ratios are positive, then they tell use how many times more likely an outcome is: if <em>Gender[woman]</em> had a odds ratio of 2, then this would mean that the outcome is twice as likely if the speaker is a woman.</p>
-<p>In a next step, we can use the <code>plot_model</code> function from the <code>sjPlot</code> package <span class="citation">(<a href="#ref-sjPlot" role="doc-biblioref">Lüdecke 2021</a>)</span> to visualize the effects.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="different-types-of-regression.html#cb53-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_model</span>(m2.glm, </span>
-<span id="cb53-2"><a href="different-types-of-regression.html#cb53-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">type =</span> <span class="st">&quot;pred&quot;</span>, </span>
-<span id="cb53-3"><a href="different-types-of-regression.html#cb53-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Gender&quot;</span>), </span>
-<span id="cb53-4"><a href="different-types-of-regression.html#cb53-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">axis.lim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb53-5"><a href="different-types-of-regression.html#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>) <span class="sc">+</span></span>
-<span id="cb53-6"><a href="different-types-of-regression.html#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Predicted Probabilty of eh&quot;</span>, <span class="at">title =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
-<span id="cb53-7"><a href="different-types-of-regression.html#cb53-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;gray20&quot;</span>, <span class="st">&quot;gray70&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb53-8"><a href="different-types-of-regression.html#cb53-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/blm28-1.png" width="672" /></p>
+<p>Odds ratios are the odds of an <em>eh</em> being produced by a woman (1/4) divided by the odds of an <em>eh</em> not being produced by a woman (3/4). In this example, the odds ratio of an <em>eh</em> being produced by woman are thus (1/4) / (3/4) = .25 / .75 = .33. If the odds ratios are positive, then they tell us how many times more likely an outcome is: if <em>Gender[woman]</em> had an odds ratio of 2, then this would mean that the outcome is twice as likely if the speaker is a woman.</p>
+<p>In a next step, we can use the <code>plot_model</code> function from the <code>sjPlot</code> package <span class="citation">(<a href="#ref-sjPlot">Lüdecke 2021</a>)</span> to visualize the effects.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="different-types-of-regression.html#cb58-1" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_model</span>(m2.glm, </span>
+<span id="cb58-2"><a href="different-types-of-regression.html#cb58-2" tabindex="-1"></a>                   <span class="at">type =</span> <span class="st">&quot;pred&quot;</span>, </span>
+<span id="cb58-3"><a href="different-types-of-regression.html#cb58-3" tabindex="-1"></a>                   <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Gender&quot;</span>), </span>
+<span id="cb58-4"><a href="different-types-of-regression.html#cb58-4" tabindex="-1"></a>                   <span class="at">axis.lim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb58-5"><a href="different-types-of-regression.html#cb58-5" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>) <span class="sc">+</span></span>
+<span id="cb58-6"><a href="different-types-of-regression.html#cb58-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Predicted Probabilty of eh&quot;</span>, <span class="at">title =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb58-7"><a href="different-types-of-regression.html#cb58-7" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;gray20&quot;</span>, <span class="st">&quot;gray70&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb58-8"><a href="different-types-of-regression.html#cb58-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/blm28-1.png" alt="" width="672" /></p>
 </div>
 <div id="summarizing-results" class="section level2 hasAnchor" number="11.6">
 <h2><span class="header-section-number">11.6</span> Summarizing Results<a href="different-types-of-regression.html#summarizing-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We can use the <code>reports</code> package <span class="citation">(<a href="#ref-report" role="doc-biblioref">Makowski et al. 2021</a>)</span> to summarize the analysis.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="different-types-of-regression.html#cb54-1" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(m2.glm)</span></code></pre></div>
-<pre><code>## We fitted a logistic model (estimated using ML) to predict EH with Age
-## (formula: EH ~ Age + Gender). The model&#39;s explanatory power is weak (Tjur&#39;s R2
-## = 0.03). The model&#39;s intercept, corresponding to Age = Young, is at -0.23 (95%
-## CI [-0.28, -0.19], p &lt; .001). Within this model:
-## 
-##   - The effect of Age [Old] is statistically significant and negative (beta =
-## -0.83, 95% CI [-0.90, -0.77], p &lt; .001; Std. beta = -0.83, 95% CI [-0.90,
-## -0.77])
-##   - The effect of Gender [Women] is statistically significant and negative (beta
-## = -0.42, 95% CI [-0.47, -0.37], p &lt; .001; Std. beta = -0.42, 95% CI [-0.47,
-## -0.37])
-## 
-## Standardized parameters were obtained by fitting the model on a standardized
-## version of the dataset. 95% Confidence Intervals (CIs) and p-values were
-## computed using a Wald z-distribution approximation. and We fitted a logistic
-## model (estimated using ML) to predict EH with Gender (formula: EH ~ Age +
-## Gender). The model&#39;s explanatory power is weak (Tjur&#39;s R2 = 0.03). The model&#39;s
-## intercept, corresponding to Gender = Men, is at -0.23 (95% CI [-0.28, -0.19], p
-## &lt; .001). Within this model:
+<p>We can use the <code>reports</code> package <span class="citation">(<a href="#ref-report">Makowski et al. 2021</a>)</span> to summarize the analysis.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="different-types-of-regression.html#cb59-1" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(m2.glm)</span></code></pre></div>
+<pre><code>## We fitted a logistic model (estimated using ML) to predict EH with Age and
+## Gender (formula: EH ~ Age + Gender). The model&#39;s explanatory power is weak
+## (Tjur&#39;s R2 = 0.03). The model&#39;s intercept, corresponding to Age = Young and
+## Gender = Men, is at -0.23 (95% CI [-0.28, -0.19], p &lt; .001). Within this model:
 ## 
 ##   - The effect of Age [Old] is statistically significant and negative (beta =
 ## -0.83, 95% CI [-0.90, -0.77], p &lt; .001; Std. beta = -0.83, 95% CI [-0.90,
@@ -983,7 +909,7 @@ R<sup>2</sup> Tjur
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-agresti1996introduction" class="csl-entry">
-Agresti, Alan. 1996. <em>An Introduction to Categorical Data Analysis</em>. Hoboken, NJ: JohnWiley &amp; Sons.
+Agresti, Alan. 1996. <em>An Introduction to Categorical Data Analysis</em>. JohnWiley &amp; Sons.
 </div>
 <div id="ref-agresti2011categorical" class="csl-entry">
 Agresti, Alan, and Maria Kateri. 2011. <em>Categorical Data Analysis</em>. Springer.
@@ -992,13 +918,16 @@ Agresti, Alan, and Maria Kateri. 2011. <em>Categorical Data Analysis</em>. Sprin
 Field, Andy, Jeremy Miles, and Zoe Field. 2012. <em>Discovering Statistics Using r</em>. Sage.
 </div>
 <div id="ref-gries2021statistics" class="csl-entry">
-Gries, Stefan Th. 2021. <em>Statistics for Linguistics Using r: A Practical Introduction</em>. Berlin &amp; New York: Mouton de Gruyter.
+Gries, Stefan Th. 2021. <em>Statistics for Linguistics Using r: A Practical Introduction</em>. Mouton de Gruyter.
 </div>
 <div id="ref-harrell2015regression" class="csl-entry">
 Harrell Jr, Frank E. 2015. <em>Regression Modeling Strategies: With Applications to Linear Models, Logistic and Ordinal Regression, and Survival Analysis</em>. Springer.
 </div>
 <div id="ref-sjPlot" class="csl-entry">
 Lüdecke, Daniel. 2021. <em>sjPlot: Data Visualization for Statistics in Social Science</em>. <a href="https://CRAN.R-project.org/package=sjPlot">https://CRAN.R-project.org/package=sjPlot</a>.
+</div>
+<div id="ref-performance" class="csl-entry">
+Lüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, Philip Waggoner, and Dominique Makowski. 2021. <span>“Performance: An <span>R</span> Package for Assessment, Comparison and Testing of Statistical Models.”</span> <em>Journal of Open Source Software</em> 6 (60): 3139. <a href="https://doi.org/10.21105/joss.03139">https://doi.org/10.21105/joss.03139</a>.
 </div>
 <div id="ref-report" class="csl-entry">
 Makowski, Dominique, Mattan S. Ben-Shachar, Indrajeet Patil, and Daniel Lüdecke. 2021. <span>“Automated Results Reporting as a Practical Tool to Improve Reproducibility and Methodological Best Practices Adoption.”</span> <em>CRAN</em>. <a href="https://github.com/easystats/report">https://github.com/easystats/report</a>.
@@ -1024,42 +953,42 @@ Makowski, Dominique, Mattan S. Ben-Shachar, Indrajeet Patil, and Daniel Lüdecke
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/MartinSchweinberger/SLAT7855/edit/master/11-week11.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": "https://github.com/MartinSchweinberger/SLAT7855/blob/master/11-week11.Rmd",
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/MartinSchweinberger/SLAT7855/edit/master/11-week11.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/MartinSchweinberger/SLAT7855/blob/master/11-week11.Rmd",
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

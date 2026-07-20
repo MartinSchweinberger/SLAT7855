@@ -30,15 +30,15 @@ chidata <- matrix(c(181, 655, 177, 67), nrow = 2, byrow = T)
 colnames(chidata) <- c("BrE", "AmE")
 rownames(chidata) <- c("kindof", "sortof")
 # inspect data
-chidata %>%
-  as.data.frame() %>%
-  tibble::rownames_to_column("Hedge") %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
+chidata |>
+  as.data.frame() |>
+  tibble::rownames_to_column("Hedge") |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
   flextable::border_outer()
 ```
 
@@ -51,15 +51,15 @@ chidata_extended <- matrix(c(181, 177, 358, 655, 67, 722, 836, 244, 1080), nrow 
 colnames(chidata_extended) <- c("BrE", "AmE", "Total")
 rownames(chidata_extended) <- c("kindof", "sortof", "Total")
 # inspect data
-chidata_extended %>%
-  as.data.frame() %>%
-  tibble::rownames_to_column("Hedge") %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
+chidata_extended |>
+  as.data.frame() |>
+  tibble::rownames_to_column("Hedge") |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
   flextable::border_outer()
 ```
 
@@ -83,15 +83,15 @@ chidata_expected <- matrix(c(277.1185, 80.88148, 358, 558.8815,163.11852, 722, 8
 colnames(chidata_expected) <- c("BrE", "AmE", "Total")
 rownames(chidata_expected) <- c("kindof", "sortof", "Total")
 # inspect data
-chidata_expected %>%
-  as.data.frame() %>%
-  tibble::rownames_to_column("Hedge") %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
+chidata_expected |>
+  as.data.frame() |>
+  tibble::rownames_to_column("Hedge") |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
   flextable::border_outer()
 ```
 
@@ -116,15 +116,15 @@ chidata_chi <- matrix(c(33.33869, 114.22602, 147.5647, 16.53082, 56.63839, 73.16
 colnames(chidata_chi) <- c("BrE", "AmE", "Total")
 rownames(chidata_chi) <- c("kindof", "sortof", "Total")
 # inspect data
-chidata_chi %>%
-  as.data.frame() %>%
-  tibble::rownames_to_column("Hedge") %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
+chidata_chi |>
+  as.data.frame() |>
+  tibble::rownames_to_column("Hedge") |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
   flextable::border_outer()
 ```
 
@@ -153,13 +153,13 @@ dfs <- c(rep("df1", length(vec)),
          rep("df5", length(vec)),
          rep("df10", length(vec)))
 id <- rep(vec, 4)
-df <- data.frame(id, dfs, probs) %>%
+df <- data.frame(id, dfs, probs) |>
   dplyr::mutate(dfs = factor(dfs, 
                              levels = c("df1", "df3", "df5", "df10"), 
                              label = c("1 degree of freedom", 
                                         "3 degrees of freedom", 
                                         "5 degrees of freedom", 
-                                        "10 degrees of freedom"))) %>%
+                                        "10 degrees of freedom"))) |>
   dplyr::rename(DegreesOfFreedom = dfs,
                 Density = probs)
 ggplot(df, aes(x = id, y = Density, color = DegreesOfFreedom)) +
@@ -184,18 +184,18 @@ qchisq(p=.05, df=1, lower.tail=FALSE)
 What does this critical value mean?
 
 ```{r echo = F, message=F, warning=F}
-df2 <- df %>%
-  dplyr::filter(DegreesOfFreedom == "1 degree of freedom") %>%
+df2 <- df |>
+  dplyr::filter(DegreesOfFreedom == "1 degree of freedom") |>
   dplyr::mutate(Density = ifelse(id == 0.0, 1.5, Density))
-sh <- df2 %>%
-  dplyr::filter(id > qchisq(p=.05, df=1, lower.tail=FALSE)) %>%
+sh <- df2 |>
+  dplyr::filter(id > qchisq(p=.05, df=1, lower.tail=FALSE)) |>
   dplyr::add_row(id = qchisq(p=.05, df=1, lower.tail=FALSE),
-                Density = dchisq(qchisq(p=.05, df=1, lower.tail=FALSE), df = 1))%>%
+                Density = dchisq(qchisq(p=.05, df=1, lower.tail=FALSE), df = 1))|>
   dplyr::add_row(id = qchisq(p=.05, df=1, lower.tail=FALSE),
-                Density = 0) %>%
+                Density = 0) |>
   dplyr::arrange(id, Density)
 
-df2 %>%
+df2 |>
   ggplot(aes(x = id, y = Density)) +
   geom_line(linetype = "dashed", color = "blue") +
   geom_polygon(data = sh, aes(id, Density), fill = "red", alpha = .5) +
@@ -234,14 +234,14 @@ critval <- matrix(c(1, 3.84, 6.64, 10.83, 2, 5.99, 9.21, 13.82, 3, 7.82, 11.35, 
 # add column names
 colnames(critval) <- c("DF", "p<.05", "p<.01", "p<.001")
 # inspect data
-critval %>%
-  as.data.frame() %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
+critval |>
+  as.data.frame() |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
   flextable::border_outer()
 ```
 
@@ -275,15 +275,15 @@ Before we summarize the results, we will see how to perform a chi-square test in
 
 ```{r chi_01_05, echo = F, message=FALSE, warning=FALSE}
 # inspect data
-chidata %>%
-  as.data.frame() %>%
-  tibble::rownames_to_column("Hedge") %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
+chidata |>
+  as.data.frame() |>
+  tibble::rownames_to_column("Hedge") |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
   flextable::border_outer()
 ```
 
@@ -366,19 +366,19 @@ distplot <- function(mean1, mean2, sd1, n, pop = "two different populations", d 
   require(tidyverse)
   require(DescTools)
   set.seed(seed)
-  data.frame(time = c(rnorm(n, mean1, sd1), rnorm(n, mean2, sd1))) %>%
-    dplyr::mutate(group = c(rep("Norwegian", n), rep("English", n))) %>%
-    dplyr::mutate(group = factor(group)) %>%
-    group_by(group) %>%
+  data.frame(time = c(rnorm(n, mean1, sd1), rnorm(n, mean2, sd1))) |>
+    dplyr::mutate(group = c(rep("Norwegian", n), rep("English", n))) |>
+    dplyr::mutate(group = factor(group)) |>
+    group_by(group) |>
     mutate(mean = mean(time),
            cil = DescTools::MeanCI(time, conf.level=0.95)[2],
-           ciu = DescTools::MeanCI(time, conf.level=0.95)[3]) %>%
-    ungroup() %>%
+           ciu = DescTools::MeanCI(time, conf.level=0.95)[3]) |>
+    ungroup() |>
     mutate(t = t.test(time ~ group, conf.level=0.95)[1],
            df = t.test(time ~ group, conf.level=0.95)[2],
-           p = t.test(time ~ group, conf.level=0.95)[3]) %>%
-    rowwise() %>%
-    mutate(ttest = paste0("t: ", round(t, 2), ", df: ", round(df, 1), ", p-value: ", round(p, 4))) %>%
+           p = t.test(time ~ group, conf.level=0.95)[3]) |>
+    rowwise() |>
+    mutate(ttest = paste0("t: ", round(t, 2), ", df: ", round(df, 1), ", p-value: ", round(p, 4))) |>
     select(-t, -df, -p)  -> pdat
   ggplot(pdat, aes(x = time, group = group, color = group, linetype = group)) +
     geom_density(aes(alpha = .9)) +
@@ -501,14 +501,14 @@ ptd <- data.frame(Pretest, Posttest)
 The data look like as shown in the table below.
 
 ```{r pairedt_01b, echo = F, message=F, warning=F}
-ptd %>%
-  as.data.frame() %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
+ptd |>
+  as.data.frame() |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
   flextable::border_outer()
 ```
 
@@ -547,13 +547,13 @@ EffectSize <- c("Very small", "Small", "Medium", "Large", "Very large", "Huge")
 d <- c(0.01, 0.20, 0.50, 0.80, 1.20, 2.0)  
 Reference <- c("Sawilowsky (2009)", "Cohen (1988)", "Cohen (1988)", "Cohen (1988)","Sawilowsky (2009)", "Sawilowsky (2009)")
 dtb <- data.frame(EffectSize, d, Reference)
-dtb %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
+dtb |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
   flextable::border_outer()
 ```
 
@@ -587,24 +587,24 @@ We now load some data that we can apply a t-test to. The data represents scores 
 
 ```{r t1, message=F, warning=F}
 # load data
-tdata <- base::readRDS(url("https://slcladal.github.io/data/d03.rda", "rb")) %>%
+tdata <- base::readRDS(url("https://slcladal.github.io/data/d03.rda", "rb")) |>
   dplyr::rename(NativeSpeakers = 1,
-                Learners = 2) %>%
-  tidyr::gather(Group, Score, NativeSpeakers:Learners) %>%
+                Learners = 2) |>
+  tidyr::gather(Group, Score, NativeSpeakers:Learners) |>
   dplyr::mutate(Group = factor(Group))
 ```
 
 ```{r t2, echo = F, message=F, warning=F}
 # inspect data
-tdata %>%
-  as.data.frame() %>%
-  #head(10) %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
+tdata |>
+  as.data.frame() |>
+  #head(10) |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
   flextable::border_outer()
 ```
 
@@ -616,7 +616,7 @@ t.test(Score ~ Group,
        data = tdata)
 ```
 
-As the p-value is higher than .05, we cannot reject the H~0~ and we thus have to conclude that our evidence does not suffice to say that learners and Native Speakers differ in their proficiency. However, we still extract the effect size, again using Cohen's $d$. In contract to the extraction of the effect size for paired t-tests, however, we will set the argument `paired` to `FALSE` (in fact, we could simply leave it out as the `paired = FALSE` is the default).
+As the p-value is higher than .05, we cannot reject the H~0~ and we thus have to conclude that our evidence does not suffice to say that learners and Native Speakers differ in their proficiency. However, we still extract the effect size, again using Cohen's $d$. In contrast to the extraction of the effect size for paired t-tests, however, we will set the argument `paired` to `FALSE` (in fact, we could simply leave it out as the `paired = FALSE` is the default).
 
 
 ```{r indep_ttest_effect, message=F, warning = F}
@@ -655,13 +655,13 @@ lftb <- data.frame(LanguageFamily, Rank)
 ```
 
 ```{r mwu1b, echo=F, warning=F, message=F}
-lftb %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
+lftb |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
   flextable::border_outer()
 ```
 
@@ -718,8 +718,8 @@ wxdata <- faux::rnorm_multi(n = 200,
                             sd = c(10, 50),
                             r = c(-0.8),
                             varnames = c("Frequency", "Reaction"),
-                            seed = 1234) %>%
-  dplyr::mutate(Frequency = Frequency^5/100000) %>%
+                            seed = 1234) |>
+  dplyr::mutate(Frequency = Frequency^5/100000) |>
   dplyr::arrange(-Frequency)
 ```
 
@@ -727,14 +727,14 @@ wxdata <- faux::rnorm_multi(n = 200,
 
 
 ```{r mwu5b, echo=F, warning=F, message=F}
- wxdata %>%
-  head(10) %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
+ wxdata |>
+  head(10) |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
   flextable::border_outer()
 ```
 
@@ -757,7 +757,7 @@ grid.arrange(p1, p2, nrow = 1)             # 2 plots in one window
 Both variables are negatively skewed (non-normally distributed) but we can use the `wilcox.test` function to perform the Mann-Whitney U test with continuity correction which takes the skewness into account. 
 
 ```{r mwu6a, echo=T, eval = T, warning=F, message=F}
-wxdata %>%
+wxdata |>
   ggplot(aes(Frequency, Reaction)) +
   geom_point() +
   geom_smooth(method = "lm")

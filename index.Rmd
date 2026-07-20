@@ -4,399 +4,118 @@ author: "Martin Schweinberger"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: ["book.bib", "packages.bib"]
+bibliography: "slat7855.bib"
 biblio-style: apalike
 link-citations: yes
 ---
 
 # Preface {-}
 
-## Basic Course Information {-}
+Welcome to the course book for **SLAT7855 Quantitative Research Methods in Applied Linguistics**, offered by the School of Languages and Cultures at The University of Queensland. This book serves as the script for the course: it contains the conceptual explanations, worked examples, and R code that we work through across the semester, and it remains freely available so that you can return to it at any time --- during the course and long after it has ended.
+
+## About the Course {-}
 
 ### Course Description {-}
 
-This course introduces basic statistical techniques used in quantitative research in applied linguistics. The rationale and assumptions for various techniques will be presented and practice given in applying them to data using statistical software packages.
+This course introduces the statistical techniques used in quantitative research in applied linguistics and the language sciences more broadly. It covers both the conceptual foundations of quantitative reasoning and the practical implementation of statistical analyses using R and RStudio. The rationale and assumptions underlying the various techniques are presented alongside hands-on practice in applying them to real language data.
 
-Assumed Background: No background in statistics or mathematics is assumed.
+**Assumed background:** None. The course is designed for students with no prior experience in statistics, mathematics beyond school level, or programming. We start from zero and build up step by step.
 
-[**Link to Electronic Course Profile (ECP)**](https://learn.uq.edu.au/ultra/courses/_172661_1/cl/outline)
+For all semester-specific information --- including assessment tasks, weightings, due dates, timetables, and course policies --- please consult the current [**Electronic Course Profile (ECP)**](https://course-profiles.uq.edu.au/course-profiles/SLAT7855) and the course Blackboard site. Assessment details change from semester to semester and are therefore deliberately not included in this book.
 
-### Course Introduction {-}
+### Rationale {-}
 
-This course will examine and apply basic statistical methods used in quantitative research in second language acquisition, applied linguistics and linguistics. The focus will be on quantitative methodology used in language research in applied linguistics and related fields, but the course will be of interest to anyone who wants a better understanding of quantitative methods in language research.
+Quantitative methods have become central to research in applied linguistics, second language acquisition, and linguistics. Whether a study investigates how learners acquire a second language, how linguistic features vary across speakers and contexts, or how effective a teaching intervention is, its claims typically rest on quantitative evidence. Being able to understand, evaluate, and produce such evidence is therefore no longer a specialist skill --- it is a core component of research literacy in the language sciences.
 
-The course has three main aims. It will provide
+At the same time, statistical methodology in language research is broad and operates at different levels of sophistication. This course does not attempt to cover everything. Instead, it follows a deliberate arc: it builds a solid conceptual foundation, introduces R as a versatile analytical tool, and then works systematically towards regression modeling --- including mixed-effects models --- because regression-based approaches are the workhorses of modern quantitative language research. The course closes with an outlook on tree-based methods and machine learning, connecting the material to current developments in the field.
 
-1. grounding in the basic logic and scope of quantitative reasoning (= statistics) in language research
-2. exposure to the statistical techniques commonly used
-3. in-depth experience in using and reporting statistical results using R and RStudio.
-
-Statistical methodology in language research is very broad and has different levels of sophistication. The course will endeavor to introduce the conceptual underpinnings, analytical methods and technical tools you need to understand quantitative findings in the research literature and potentially use these techniques in your own research. 
-
-**Course Changes in Response to Previous Student Feedback**
-
-Previous student feedback has been incorporated in this profile.
-
-### Course Staff {-}
-
-Course Coordinator: Dr Martin Schweinberger
-
-Phone: 3365 6374 
-
-Email: m.schweinberger\@uq.edu.au
-
-Office: St Lucia campus, Gordon Greenwood Building, Room 32-514
-
-
-### Timetable {-}
-
-Timetables are available on the UQ Public Timetable.
-
-Additional Timetable Information
-
-Students will be advised of any changes in advance. Dates and times for make-up classes are made available to students in advance via Blackboard.
-
-## Aims, Objectives & Graduate Attributes {-}
-
+Throughout, the emphasis is on *understanding* rather than recipe-following: the aim is that you know not only *how* to run an analysis, but *why* it is appropriate, *what* its assumptions are, and *how* to interpret and report its results responsibly.
 
 ### Course Aims {-}
 
- 
-This course will examine and apply basic statistical methods used in quantitative research in second language acquisition, applied linguistics and linguistics. The course has three main aims. It will provide
+The course has three main aims. It will provide
 
-1. a grounding in the basic logic and scope of quantitative reasoning (= statistics) in language research
-2. exposure to the statistical techniques commonly used
-3. in-depth experience in using and reporting statistical results using R and RStudio. 
- 
+1. a grounding in the basic logic and scope of quantitative reasoning (statistics) in language research,
+2. exposure to the statistical techniques commonly used in applied linguistics and related fields, and
+3. in-depth practical experience in performing, interpreting, and reporting statistical analyses using R and RStudio.
 
-### Learning Objectives {-}
+### Learning Outcomes {-}
 
-After successfully completing this course you should be able to:
+After successfully completing this course, you should be able to:
 
-1.  Understand and apply basic statistical tests in applied linguistics and second language acquisition.
-	
-2.  Understand the role of quantitative evidence in describing and explaining language learning and use.
-	
-3.  Read quantitative research in these areas in a more critical and productive manner.
-	
-4.  Use statistical software to analyse and present data.
-	
-5.  Write up results for a dissertation or publication. 
+1. understand and apply basic statistical tests used in applied linguistics and second language acquisition research,
+2. understand the role of quantitative evidence in describing and explaining language learning and use,
+3. read quantitative research in these areas in a more critical and productive manner,
+4. import, process, analyse, and visualise data using R and RStudio, and
+5. report statistical results for a dissertation or publication in accordance with the standards of the field.
+
+### What You Will Get Out of This Course {-}
+
+Beyond the formal learning outcomes, the course is designed to leave you with skills that remain useful well past the end of semester:
+
+* **Genuine programming ability.** You will learn to work with R and RStudio properly --- writing, understanding, and debugging code --- rather than relying on point-and-click software. Programming and data analysis skills are concrete, transferable, and in demand in academia, industry, and the public sector alike.
+* **The full analysis pipeline.** You will learn to take a raw, messy, real-world dataset and carry it through processing, summarisation, visualisation, modeling, and reporting --- the complete workflow of a quantitative study.
+* **Critical research literacy.** You will be able to engage with the results sections of published studies critically: to assess whether an analysis is appropriate, whether its assumptions are met, and whether its conclusions are warranted.
+* **Foundations for your own research.** For students planning a quantitative MA thesis or doctoral research, the course provides the methodological foundation that such projects require.
+* **Reproducible research practice.** Working with code means your analyses are transparent and reproducible --- an increasingly important standard across the research community.
+
+### Who This Course Is For {-}
+
+The course focuses on quantitative methodology used in language research in applied linguistics and related fields, but it will be of interest to anyone who wants a better understanding of quantitative methods in the language sciences --- including students preparing for thesis work, practising language teachers who want to engage with (or conduct) research, and anyone seeking to add solid data-analytic skills to their professional profile.
+
+## How This Book Is Organised {-}
+
+The book follows the arc of the course. It begins with the conceptual foundations of quantitative research (research designs, variables, hypotheses, probability, and the logic of statistical inference), then introduces R and RStudio from scratch. On that basis, it covers descriptive statistics and data visualisation before turning to inferential statistics. The second half of the book is devoted to regression modeling --- simple and multiple linear regression, model diagnostics, logistic and other types of regression, and mixed-effects models --- and concludes with tree-based methods and an outlook on machine learning.
+
+Each chapter combines conceptual explanation with fully worked examples in R. All code shown in the book can be copied, run, and adapted; the datasets used are drawn from linguistics and applied linguistics.
+
+The mapping of chapters onto teaching weeks varies slightly from semester to semester --- the current schedule is available via Blackboard and the ECP.
 
 ## Learning Resources {-}
 
+### This Script {-}
 
-### Required Resources {-}
-
-The script for the course is made available on 
+The script for the course is made available at
 
 [https://MartinSchweinberger.github.io/SLAT7855](https://MartinSchweinberger.github.io/SLAT7855)
 
-Lecture recordings and tutorial recordings are made available on Blackboard.
+Lecture recordings, tutorial materials, and all semester-specific information are made available on Blackboard.
 
-### Recommended Resources {-}
+### Recommended Reading {-}
 
-@field2012discovering
+The following textbooks complement the course and are recommended for students who wish to deepen their understanding:
 
-@gries2021statistics
-
-@winter2019statistics
-
+* @field2012discovering
+* @gries2021statistics
+* @winter2019statistics
 
 ### University Learning Resources {-}
 
-It is strongly recommended to attend the following UQ Library Trainings:
+It is strongly recommended to attend the following UQ Library trainings, which align closely with the skills taught in this course:
 
-1. R with RStudio: Getting started  
-2. R reproducible reports with R Markdown and knitr  
-3. R data manipulation with RStudio and dplyr: introduction  
-4. R data visualization with RStudio and ggplot2: introduction  
+1. R with RStudio: Getting started
+2. R reproducible reports with R Markdown and knitr
+3. R data manipulation with RStudio and dplyr: introduction
+4. R data visualization with RStudio and ggplot2: introduction
 
-
-Access to required and recommended resources, plus past central exam papers, is available at the UQ Library website (http://www.library.uq.edu.au/lr/SLAT7855).
-
-The University offers a range of resources and services to support student learning. Details are available on the myUQ website (https://my.uq.edu.au/).
+Access to required and recommended resources is available via the [UQ Library website](http://www.library.uq.edu.au/lr/SLAT7855). The University offers a range of resources and services to support student learning; details are available on the [myUQ website](https://my.uq.edu.au/).
 
 ### School of Languages and Cultures Learning Resources {-}
 
 [Student Support at the SLC](http://www.languages-cultures.uq.edu.au/student-support)
 
-### Other Learning Resources & Information {-}
+## Course Staff {-}
 
-See Blackboard for Learning Resources. 
+**Course Coordinator:** Dr Martin Schweinberger
 
-## Teaching & Learning Activities {-}
+Email: m.schweinberger\@uq.edu.au
 
-### Learning Activities {-}
+For current information on the full teaching team, consultation hours, and contact details, please see the ECP and Blackboard.
 
-Recording of Lectures: Please be aware that teaching at UQ may be recorded for the benefit of student learning. If you would prefer not to be captured either by voice or image, please advise your course coordinator before class so accommodations can be made. For further information see PPL 3.20.06 Recording of Teaching at UQ.
+## A Note on Generative AI {-}
 
-### Course plan {-}
+Generative AI tools can be useful aids when learning R and statistics --- for instance, for clarifying concepts or understanding error messages. However, the aim of this course is that *you* develop a genuine, independent understanding of quantitative methods: AI tools can support your learning, but they cannot replace it, and assessments in this course are designed accordingly. Any use of AI in assessed work must be acknowledged in line with UQ policy; details are provided in the ECP.
 
-```{r tt, echo = F, eval = T, message=FALSE, warning=FALSE}
-library(dplyr)
-library(flextable)
-weeks <- paste0("Week ", 1:13)
-content <- c(
-  "Introduction to the course",
-  "Basic concepts 1",
-  "Basic concepts 2",
-  "Getting started with R and Rstudio 1",
-  "Getting started with R and Rstudio 2",
-  "Descriptive Statistics",
-  "Introduction to Data Visualization",
-  "Introduction to Inferential Statistics",
-  "Regression Analysis 1: Model Fitting",
-  "Regression Analysis 2: Testing assumption",
-  "Regression Analysis 3: Types of Regressions",
-  "Regression Analysis 4: From fixed to mixed",
-  "Trees and round-up"
-)
-scriptchapter <- c(
-  "Preface and Introduction",
-  "Basic Concepts in Quantitative Research",
-  "Basic Concepts in Quantitative Research",
-  "Getting started with R and RStudio",
-  "Introduction to R and RStudio",
-  "Descriptive Statistics",
-  "Introduction to Data Visualization with R",
-  "Simple and Multiple Regression",
-  "Simple and Multiple Regression",
-  "Simple and Multiple Regression",
-  "Logistic Regression",
-  "Mixed-Effects Regression",
-  "Tree-based Models"
-)
-data.frame(weeks, content, scriptchapter) %>%
-  as.data.frame() %>%
-  flextable::flextable() %>%
-  flextable::set_table_properties(width = .95, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "left") %>%
-  flextable::set_caption(caption = "Overview of the course activities by week.")  %>%
-  flextable::border_outer()
-```
+## Acknowledgements {-}
 
-
-## Assessment {-}
-
-
-```{r ass, echo = F, eval = T, message=FALSE, warning=FALSE}
-library(dplyr)
-library(flextable)
-Assessment <- c("Weekly Online Study Tasks", "Dataset description presentation", "Statistical Analysis Report")
-DueDate <- c("Weeks 3 to 12 (Aug. 7 - Oct. 16): must be submitted before Monday 1pm of each week", 
-             "Wednesday of week 9 (Sep. 20):  must be submitted before 4 pm",
-             "Wednesday two weeks after week 13 (Nov. 8): must be submitted before 4 pm")
-Weighting <- c("30%", "30%", "40%")
-data.frame(Assessment, DueDate, Weighting) %>%
-  as.data.frame() %>%
-  flextable::flextable() %>%
-  flextable::set_table_properties(width = .95, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 11) %>%
-  flextable::fontsize(size = 11, part = "header") %>%
-  flextable::align_text_col(align = "left") %>%
-  flextable::set_caption(caption = "Overview of assessments.")  %>%
-  flextable::border_outer()
-```
-
-
-### Weekly Oline Study Tasks {-}
-
-**Task Description**
-
-Weight: 		20%
-
-Due date: 		Week 3 to week 12
-
-Submission: 	via Blackboard
-
-**Weekly Online Study Tasks**
-
-Every week - from week 3 to week 12 - there will be 10 questions that you need to answer. This amounts to 10 online study tasks. The questions will be about the content of the lecture and the required reading(s) for that week. 
-
-Each online study task is worth 2% of your final grade. You only have 60  minutes and a single attempt to finish each weekly online study task. 
-
-The link to the online study tasks for each week will be made available on Blackboard.
-
-
-### Dataset summary presentation {-}
-
-**Task Description**
-
-Weight: 		30%
-
-<<<<<<< HEAD
-Due date: 		Wednesday of week 9
-=======
-Due date: 		Week 9
->>>>>>> c3420f19b30c0d3ab653cfff1be5b528ebf634e0
-
-Submission: 	via TurnItIn
-
-The purpose of this assignment is to give you experience in finding, assessing, describing, and visualizing appropriate datasets for research projects. 
-
-For this task, you need to find a dataset and record a 10-minute presentation in which you describe, summarise, and visualise the dataset. In addition, you need to motivate and formulate at least one research question that you could answer based on the dataset. The motivation for answering the research question should be based on a gap in the existing body of research.  Finally, we want you to elaborate on how you would proceed to answer, in detail, the research question (be specific!).
-
-Below, you will find some pointers on what questions should be answered in your presentation: 
-
-1.	Source: where does the data come from or how was it compiled?
-
-2.	Overview: What variables does the data set consist of and what do the variables represent? How many observations does the dataset contain?
-
-3.	Variables: What are the levels of categorical variables? What are mean, standard deviation, range, etc. of numeric variables?
-
-4.	Distributions: What are the distributions of the variables in the data set? (you can use tables and visualisations to address this)
-
-5.	Research question: What is a research question, that extends existing research, could be answered based on this dataset?
-
-6.	Possible research: How would one have to proceed to answer the research question based on the dataset?
-
-Prepare slides for your presentation and record yourself and the slides (we suggest you use Zoom and share your screen). The entire presentation should be no longer than 10 minutes. Your answers should be presented as a coherent, clear, logical, and engaging manner. Any citations mentioned in your presentation need to be added in a reference list at the end of your presentation (which should also be formatted according to APA7). 
-Your slides and your presentation should be engaging and informative. Your slides should not be too text heavy, and the slides should contain the main aspects of what you say/present. Use appropriate language without errors both on the slides and in your presentation. You are welcome to use visualisations and tables created by yourself and/or from the articles. Your face needs to be visible during the presentation.
-
-
-This task has been designed to be challenging, authentic and complex. Whilst students may use Al technologies, successful completion of assessment in this course will require students to critically engage in specific contexts and tasks for which artificial intelligence will provide only limited support and guidance. A failure to reference Al use may constitute student misconduct under the Student Code of Conduct. To pass this assessment, students will be required to demonstrate detailed comprehension of their written submission independent of Al tools.
-
-Please refer to the rubic (available via the ECP) for details.
-
-If you are sick/absent, see Section 5.3 *Late submission*.
-
-
-
-
-### Statistical Analysis Report  {-}
-
-**Task Description**
-
-Weight: 		40%
-
-<<<<<<< HEAD
-Due date: 		Wednesday two weeks after the end of week 13 (Nov. 8, 2023, 4pm)
-=======
-Due date: 		Wednesday two weeks after the end of week 13
->>>>>>> c3420f19b30c0d3ab653cfff1be5b528ebf634e0
-
-Submission: 	via TurnItIn
-
-The Statistical Analysis Report assessment is a significant component, accounting for 40% of your final grade. This assessment serves as a practical application of the knowledge and skills acquired throughout the course. It offers an opportunity to engage with real-world datasets, honing your abilities to describe, summarize, visualize, and quantitatively analyse data. By undertaking this assessment, you will gain insights into the approaches and practices employed by data analysts in the field.
-
-For the Statistical Analysis Report, you are required to write a concise report, limited to 2000 words (excluding R code, R output, and references). It is crucial that you also include the R code you use in the analysis. The report should encompass the following key aspects:
-
-1.	Motivation and Research Question: Begin by providing a clear rationale for your research question, explaining its significance and relevance to the field of study.
-
-2.	Hypothesis Formulation: Develop a hypothesis that corresponds to your research question, demonstrating a hypothesis-driven approach to your analysis.
-
-3.	Data Description, Tabulation, and Visualization: Thoroughly describe the dataset utilized in your analysis, employing appropriate tables, figures, and visualizations to present the data in a comprehensive manner.
-
-4.	Statistical Analysis Description: Describe the statistical techniques and methods employed to analyse the data. Provide a detailed explanation of the chosen approaches, justifying their relevance to the research question.
-
-5.	Results Reporting: Present the results of your analysis using a combination of prose, tables, and figures. Ensure that your findings are clear, concise, and effectively support your hypothesis.
-
-6.	Critical Evaluation: Conduct a critical evaluation of your analysis, highlighting any potential issues or limitations that may impact the validity or generalizability of your results. Offer thoughtful insights into how these shortcomings could be addressed or mitigated.
-
-7.	References: Include a reference section following APA7 format, acknowledging any external sources used in your report.
-
-By completing the Statistical Analysis Report, you will demonstrate your proficiency in data analysis, hypothesis formulation, result interpretation, and critical evaluation. This assessment provides a valuable opportunity to apply your knowledge in a practical context and gain hands-on experience in the field of data analysis.
-
-Please refer to the rubic (available via the ECP) for details.
-
-This task has been designed to be challenging, authentic and complex. Whilst students may use Al technologies, successful completion of assessment in this course will require students to critically engage in specific contexts and tasks for which artificial intelligence will provide only limited support and guidance. A failure to reference Al use may constitute student misconduct under the Student Code of Conduct. To pass this assessment, students will be required to demonstrate detailed comprehension of their written submission independent of Al tools.
-
-If sick/absent, apply for an extension (see 5.3 Late Submission).
-
-
-
-
-
-### Course Grading {-}
-	
-
-Example criteria for each of the grades can be found in PPL 3.10.02 Assessment Procedures - section 7 Appendix.
-
-* Grade X: No assessable work received.
-
-* *Grade 1, Low Fail*: Absence of evidence of achievement of course learning outcomes: Weighted composite score of between 0-24%. No submitted work or submitted work incomplete. The minimum percentage required for a grade of 1 is 0%.
-
-* *Grade 2, Fail*: Minimal evidence of achievement of course learning outcomes: Weighted composite score of between 25-44%. Student shows little understanding of the research process, manifested in consistent lack of application of research techniques to assessment items, inability to formulate a topic and central question, very limited degree of analysis and synthesis of findings from data, and lack of clear and logical presentation of findings in a manner consistent with accepted academic standards. Nil or very poor bibliographic and citation technique.
-
-* *Grade 3, Marginal Fail*: Demonstrated evidence of developing achievement of course learning outcomes: Weighted composite score of between 45-49%. Falls short of satisfying all basic requirements of a pass. Student shows a poor understanding of the research process, manifested in lack of application of research techniques to most assessment items, poor ability to formulate a topic and central question, a limited degree of analysis and synthesis of findings from data, and substantial lapses in clear and logical presentation of findings in a manner consistent with accepted academic standards. Poor bibliographic and citation technique.
-
-* *Grade 4, Pass*: Demonstrated evidence of functional achievement of course learning outcomes: Weighted composite score of between 50-64%. Student shows an adequate understanding of the research process, manifested in application of research techniques to most assessment items, adequate ability to formulate to a topic and central research question, and adequate degree of analysis and synthesis of findings from data, and at times clear and logical presentation of findings (albeit with many incoherencies) in a manner broadly consistent with accepted academic standards. Work contains a notable number of factual errors and grammatical infelicities. Many errors in bibliography and in citations. Sources not consistently or correctly acknowledged.
-
-* *Grade 5, Credit*: Demonstrated evidence of proficient achievement of course learning outcomes: Weighted composite score of between 65-74%. Students shows a good understanding of the research process, manifested in application of research techniques to most assessment items, good ability to formulate a topic and central research question, a good degree of analysis and synthesis of findings from data, and usually clear and logical presentation of findings (albeit with some major incoherencies) in a manner that is mostly consistent with accepted academic standards. Work contains some factual errors and grammatical infelicities. Some obvious errors in the bibliography. Sources not consistently correctly acknowledged.
-
-* *Grade 6, Distinction*: Demonstrated evidence of advanced achievement of course learning outcomes: Weighted composite score of between 75-84%. Students shows a good understanding of the research process, manifested in application of research techniques to most assessment items, good ability to formulate a topic and central research question, a very good degree of analysis and synthesis of findings from data, and almost always clear and logical presentation of findings (some minor incoherencies) in a manner consistent with accepted academic standards. Work may contain rare factual errors and minor grammatical infelicities. Comprehensive bibliography, although with some minor errors. Sources correctly acknowledged.
-
-* *Grade 7, High Distinction*: Demonstrated evidence of exceptional achievement of course learning outcomes: Weighted composite score of between 85-100%. Student shows an excellent understanding of the research process, manifested in consistent application of research techniques to all assessment items, excellent ability to formulate a topic and central research question, coherent analysis and synthesis of findings from data, and consistently clear and logical presentation of findings in a manner consistent with accepted academic standards. Work has no factual errors, few grammatical infelicities and a comprehensive bibliography, with sources consistently and correctly acknowledged.
-
-
-**Late Submission**
-	
-
-*Extensions*
-
-In exceptional circumstances beyond a student’s control, which prevent them from submitting an assessment item by the due date and time, students can apply for an extension.
-
-Extensions can be requested for assessment items such as:
-
-* oral assessment for individuals or groups  
-* essays  
-* assignments  
-* case studies  
-* laboratory reports  
-* take-home essays  
-* tutorial group assignments  
-
-Applications to request an extension of assessment due date must be submitted through my.UQ, on or before the assessment item’s due date and time. A request for an extension of the assessment due date must be accompanied by supporting documentation that is truthful, accurate, describes in detail why an extension is required, and demonstrates the impact of the circumstances on a student’s academic performance to justify the entire period they were affected.
-
-Requests for extensions received after the assessment item submission due date and time must include evidence of the reasons for the late request.
-
-In the case of a group assessment item, an extension approved for an individual does not apply to the whole group.
-
-The following penalties apply to late or non-submission of an assessment item:   
-* A penalty of 10% of the maximum possible mark allocated for the assessment item, or one grade per day if graded on the basis of 1-7, or equivalent penalty if a different grading approach is used, will be deducted for every day for up to 7 calendar days, at which point any submission will not receive any marks. Each 24 hour block is recorded from the time the submission is due; 
-
-or 
-
-* A penalty of 100% for a late assessment item may be set provided it is academically justified and communicated in the course profile.
-
-*Deferred Exams*
-
-Deferred examinations are available for the following assessment items, whether they are written, theory-based, practical, or online:
-
-* Mid-semester deferred exam request – applies to exams held at any time other than during the University's end-of-semester exam block periods.  
-* End-of-semester deferred exam request – applies only to exams held during the University's designated end-of-semester exam periods.
-
-Students can apply for a deferred exam:
-* if there are exceptional or unavoidable circumstances, or  
-* as a one-off discretionary request.  
-
-*Apply for a deferred exam*
-
-Submit a ‘deferred examinations request’ through mySI-net. You can save this application and come back to it at any time.
-
-For information on deferred exams and instructions on how to apply please see myUQ information on deferring an exam.
-
-*Late applications*
-
-Applications should be submitted no later than 5 calendar days after the date of the original exam. However, there may be circumstances that prevent you from submitting on time.
-
-If more than 5 calendar days have passed since the date of the original examination, a Late Notice link will appear on the deferred exam request form in mySI-net. The Late Notice provides instructions about what you can do next.
-
-*What to expect after you apply*
-
-Your deferred examination request(s) must have a status of "submitted" in mySI-net to be assessed.
-
-* All applications for deferred mid-semester examinations are assessed by the relevant school.  
-* Applications for deferred end-of-semester examinations are assessed by the Academic Services Division.  
-
-You’ll receive an email to your student email account when the status of your application is updated.
-
-*Approved deferred exam applications*
-
-* If your deferred mid-semester examination request is approved, the relevant school will notify you of the scheduled date and time of your deferred examination. Deferred mid-semester examinations are held during a period nominated by the relevant school.  
-* If your end-of-semester deferred examination request is approved you will receive a timetable the Friday prior to the deferred exam period. You must be available during this time to take your exam.  
+This course book has developed over several iterations of SLAT7855, and it has benefited greatly from the questions, feedback, and curiosity of the students who have taken the course. Thank you!

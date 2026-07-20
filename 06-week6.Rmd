@@ -8,7 +8,6 @@ install.packages("ggplot2")
 install.packages("stringr")
 install.packages("boot")
 install.packages("DescTools")
-install.packages("ggpubr")
 install.packages("flextable")
 ```
 
@@ -19,21 +18,20 @@ library(dplyr)
 library(stringr)
 library(ggplot2)
 library(flextable)
-library(ggpubr)
 # inspect data
 Grade <- c("A", "B", "C", "D", "F")
 classA <- c("", "5", "10", "12", "2")
 classB <- c("2", "8", "", "10", "4")
 df <- data.frame(Grade, classA, classB)
-df %>%
-  as.data.frame() %>%
-  flextable::flextable() %>%
-  flextable::set_table_properties(width = .95, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Results of a test across two classes.")  %>%
+df |>
+  as.data.frame() |>
+  flextable::flextable() |>
+  flextable::set_table_properties(width = .95, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Results of a test across two classes.")  |>
   flextable::border_outer()
 ```
 
@@ -56,15 +54,15 @@ df <- data.frame(Means, Use)
 
 ```{r ds02b, echo=F, message=FALSE, warning=FALSE, class.source='klippy'}
 # inspect data
-df %>%
-  as.data.frame() %>%
-  flextable::flextable() %>%
-  flextable::set_table_properties(width = .95, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Measures of central tendency and their use.")  %>%
+df |>
+  as.data.frame() |>
+  flextable::flextable() |>
+  flextable::set_table_properties(width = .95, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Measures of central tendency and their use.")  |>
   flextable::border_outer()
 ```
 
@@ -84,9 +82,9 @@ To calculate the mean, sum up all values and divide by the number of values. See
 ```{r ds03, echo=F, message=FALSE, warning=FALSE, class.source='klippy'}
 df <- data.frame(id = rep(1:4, 2),
            g = c(rep("x1", 4), rep("x2", 4)),
-           freq = c(2, 8, 4, 6, 5, 5, 5, 5)) %>%
+           freq = c(2, 8, 4, 6, 5, 5, 5, 5)) |>
   dplyr::rename(id = 1, g = 2, freq = 3)
-df %>%
+df |>
   ggplot(aes(x = id, y = freq, label = freq, fill = g)) +
   geom_bar(stat = "identity") +
   facet_grid(~g) +
@@ -115,15 +113,15 @@ df <- data.frame(Sentences, Words)
 
 ```{r ds05, echo=F, message=FALSE, warning=FALSE}
 # inspect data
-df %>%
-  as.data.frame() %>%
-  flextable::flextable() %>%
-  flextable::set_table_properties(width = .95, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "left") %>%
-  flextable::set_caption(caption = "Sentences of the first paragraph of Herman Melville's *Moby Dick* and the number of words in each sentence.")  %>%
+df |>
+  as.data.frame() |>
+  flextable::flextable() |>
+  flextable::set_table_properties(width = .95, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "left") |>
+  flextable::set_caption(caption = "Sentences of the first paragraph of Herman Melville's *Moby Dick* and the number of words in each sentence.")  |>
   flextable::border_outer()
 ```
 
@@ -153,7 +151,7 @@ The mean is the most common way to summarize numeric variables and it is very ea
 
 ### Median{-}
 
-The median can be used for both numeric and ordinal variables. In contract to the mean, it is more robust and not as easily affected by outliers. While the mean is commonly associated with numeric data that is normally distributed, the median is typically used when dealing with non-normal numeric or ordinal variables, i.e. variables that are ordered but not truly numeric. The median is the central value in a de- or increasing ordering of values in a vector. In other words, 50 percent of values are above and 50 percent of values are below the median in a given vector.
+The median can be used for both numeric and ordinal variables. In contrast to the mean, it is more robust and not as easily affected by outliers. While the mean is commonly associated with numeric data that is normally distributed, the median is typically used when dealing with non-normal numeric or ordinal variables, i.e. variables that are ordered but not truly numeric. The median is the central value in a de- or increasing ordering of values in a vector. In other words, 50 percent of values are above and 50 percent of values are below the median in a given vector.
 
 If the vector contains an even number of elements, then the two central values are summed up and divided by 2. If the vector contains an uneven number of elements, the median represents the central value.
 
@@ -171,7 +169,7 @@ x_{\frac{n+1}{2}} & n\text{ uneven} \\
 data.frame(id = rep(1:9, 2),
            g = c(rep("x1", 9), rep("x2", 9)),
            freq = c(5, 2, 9, 7, 1, 3, 8, 4, 6, 1, 2, 3, 4, 5, 6, 7, 8, 9),
-           clr = c(rep("g", 13), "r", rep("g", 4)))  %>%
+           clr = c(rep("g", 13), "r", rep("g", 4)))  |>
   ggplot(aes(x = id, y = freq, label = freq, fill = clr)) +
   geom_bar(stat = "identity") +
   facet_grid(~g) +
@@ -194,15 +192,15 @@ Age <- c("0-18", "19-25", "26-33", "34-41", "42-49", "50+")
 Counts <- c(9, 160, 70, 15, 9, 57)
 df <- data.frame(Age, Counts)
 # inspect data
-df  %>%
-  as.data.frame() %>%
-  flextable::flextable() %>%
-  flextable::set_table_properties(width = .5, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Number of speakers across age groups in the private dialogue section of the Irish component of the  *International Corpus of English* (ICE).")  %>%
+df  |>
+  as.data.frame() |>
+  flextable::flextable() |>
+  flextable::set_table_properties(width = .5, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Number of speakers across age groups in the private dialogue section of the Irish component of the  *International Corpus of English* (ICE).")  |>
   flextable::border_outer()
 ```
 
@@ -210,7 +208,7 @@ df  %>%
 ```{r ds09, echo=F, message=FALSE, warning=FALSE}
 Age <- c("0-18", "19-25", "26-33", "34-41", "42-49", "50+")
 Counts <- c(9, 160, 70, 15, 9, 57)
-data.frame(Age, Counts) %>%
+data.frame(Age, Counts) |>
   ggplot(aes(Age, Counts, label = Counts)) +
   geom_bar(stat = "identity") +
   geom_text(vjust=-1.6, color = "black") +
@@ -243,7 +241,7 @@ The mode is typically used when dealing with categorical variables and it report
 data.frame(id = rep(1:9, 2),
            g = c(rep("x1", 9), rep("x2", 9)),
            freq = c(5, 2, 9, 7, 1, 3, 8, 4, 6, 1, 2, 3, 4, 5, 6, 7, 8, 9),
-           clr = c(rep("g", 17), "r"))  %>%
+           clr = c(rep("g", 17), "r"))  |>
   ggplot(aes(x = id, y = freq, label = freq, fill = clr)) +
   geom_bar(stat = "identity") +
   facet_grid(~g) +
@@ -263,21 +261,21 @@ Here is an example to illustrate the mode. Consider you are interested where mos
 CurrentResidence <- c("Belfast", "Down", "Dublin (city)", "Limerick", "Tipperary")
 Speakers <- c(98, 20, 110, 13, 19)
 df <- data.frame(CurrentResidence, Speakers) 
-df  %>%
-  as.data.frame() %>%
-  flextable::flextable() %>%
-  flextable::set_table_properties(width = .5, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Number of speakers across counties of current residency in the private dialogue section of the Irish component of the  *International Corpus of English* (ICE).")  %>%
+df  |>
+  as.data.frame() |>
+  flextable::flextable() |>
+  flextable::set_table_properties(width = .5, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Number of speakers across counties of current residency in the private dialogue section of the Irish component of the  *International Corpus of English* (ICE).")  |>
   flextable::border_outer()
 ```
 
 
 ```{r ds15, echo=F, message=FALSE, warning=FALSE}
-df %>%
+df |>
   ggplot(aes(CurrentResidence, Speakers, label = Speakers)) +
   geom_bar(stat = "identity") +
   geom_text(vjust=-1.6, color = "black") +
@@ -319,15 +317,15 @@ Year <- c("Year 1", "Year 2", "Year 3", "Year 4")
 Package1 <- c("+5%", "-5%", "+5%", "-5%")
 Package2 <- c("+20%", "-20%", "+20%", "-20%")
 df <- data.frame(Year, Package1, Package2)
-df %>%
-  as.data.frame() %>%
-  flextable::flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Performance of two stock packages.")  %>%
+df |>
+  as.data.frame() |>
+  flextable::flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Performance of two stock packages.")  |>
   flextable::border_outer()
 ```
 
@@ -369,7 +367,7 @@ So, the average is a single element that replaces each element. In our example, 
 
 ### Notes on Measures of Centrality{-}
 
-As suggested above, the mean is strongly affected by outliers (which is why in sch cases, the median is the more appropriate measure fo central tendency). To illustrate this, imagine you are interested whether the use of discourse particles differs across two corpora. The two corpora represent the speech of the same five speakers but in different situations and the speech thus represents different registers. In a first step, you calculate the relative frequency of discourse particle use and both corpora have a mean of 13.4 particles per 1,000 words. Given the mean, the two corpora do not seem to differ. However, when tabulating and plotting the use of particles by speaker and across these two corpora, it becomes immediately clear that the mean is not the appropriate measure of  central tendency as the distributions are very dissimilar.  
+As suggested above, the mean is strongly affected by outliers (which is why in such cases, the median is the more appropriate measure of central tendency). To illustrate this, imagine you are interested whether the use of discourse particles differs across two corpora. The two corpora represent the speech of the same five speakers but in different situations and the speech thus represents different registers. In a first step, you calculate the relative frequency of discourse particle use and both corpora have a mean of 13.4 particles per 1,000 words. Given the mean, the two corpora do not seem to differ. However, when tabulating and plotting the use of particles by speaker and across these two corpora, it becomes immediately clear that the mean is not the appropriate measure of  central tendency as the distributions are very dissimilar.  
 
 
 ```{r ds18, echo=F, message=FALSE, warning=FALSE}
@@ -380,25 +378,25 @@ Speaker <- rep(c("A", "B", "C", "D", "E"), 2)
 Frequency <- c(11.4, 5.2, 27.1, 9.6, 13.7, 0.2, 0.0, 1.1, 65.3, 0.4)  
 particletable <- data.frame(Corpus, Speaker, Frequency)
 # show data
-particletable %>%
-  as.data.frame() %>%
-  flextable::flextable() %>%
-  flextable::set_table_properties(width = .5, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Relative frequencies of discourse particles per speaker in two corpora.")  %>%
+particletable |>
+  as.data.frame() |>
+  flextable::flextable() |>
+  flextable::set_table_properties(width = .5, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Relative frequencies of discourse particles per speaker in two corpora.")  |>
   flextable::border_outer()
 ```
 
 
 ```{r ds20a, echo=F, message=FALSE, warning=FALSE}
-pdat1 <- particletable %>%
-  dplyr::group_by(Corpus) %>%
+pdat1 <- particletable |>
+  dplyr::group_by(Corpus) |>
   dplyr::mutate(Median = median(Frequency),
                 Mean = mean(Frequency))
-pdat1 %>%
+pdat1 |>
   ggplot(aes(x = Speaker, y = Frequency, label = Frequency, fill = Corpus)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   theme_bw() +
@@ -411,20 +409,20 @@ pdat1 %>%
 
 
 ```{r ds20b, echo=F, eval = F, message=FALSE, warning=FALSE}
-pdat1 %>%
+pdat1 |>
   ggplot(aes(x = Speaker, y = Frequency, label = Frequency, fill = Corpus)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   theme_bw() +
   geom_hline(aes(yintercept = Mean), col = "black", linetype = 2, size = 1) +
   geom_text(aes(.75, Mean, label = paste0("Mean = ", Mean), vjust = -1)) +
-  geom_hline(data = pdat1 %>% filter(Corpus == "C1"),
+  geom_hline(data = pdat1 |> filter(Corpus == "C1"),
              aes(yintercept = Median), col = "darkgray", linetype = 3, size = 1) +
-  geom_hline(data = pdat1 %>% filter(Corpus == "C2"),
+  geom_hline(data = pdat1 |> filter(Corpus == "C2"),
              aes(yintercept = Median), col = "red", linetype = 3, size = 1) +
   geom_text(aes(.75, Mean, label = paste0("Mean = ", Mean), vjust = -1)) +
-  geom_text(data = pdat1 %>% filter(Corpus == "C1"),
+  geom_text(data = pdat1 |> filter(Corpus == "C1"),
              aes(5, Median, label = paste0("Median C1 = ", Median)), vjust = 1) +
-  geom_text(data = pdat1 %>% filter(Corpus == "C2"),
+  geom_text(data = pdat1 |> filter(Corpus == "C2"),
              aes(5, Median, label = paste0("Median C2 = ", Median)), vjust = 0) +
   labs(title = "Use of discourse particles across two corpora.", y = "Relative Frequency") +
   scale_fill_manual(breaks = Corpus, values = c(C1 = "gray80", C2 = "red")) +
@@ -451,15 +449,15 @@ Moscow <- c(-5, -12, 5, 12, 15, 18, 22, 23, 20, 16, 8, 1, 10.25)
 Hamburg <- c(7, 7, 8, 9, 10, 13, 15, 15, 13, 11, 8, 7, 10.25)  
 temprature <- data.frame(Month, Moscow, Hamburg)
 # show data
-temprature %>%
-  as.data.frame() %>%
-  flextable::flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Average temperature in Hamburg and Moscow by month.")  %>%
+temprature |>
+  as.data.frame() |>
+  flextable::flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Average temperature in Hamburg and Moscow by month.")  |>
   flextable::border_outer()
 ```
 
@@ -469,11 +467,11 @@ Temperature <- c(-5, -12, 5, 12, 15, 18, 22, 23,  20, 16, 8, 1,
 Month <- rep(c("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"), 2)
 City = c(rep("Moscow", 12), rep("Hamburg", 12))
 # combine data in data frame
-lineplotdata <- data.frame(City, Month, Temperature) %>%
+lineplotdata <- data.frame(City, Month, Temperature) |>
   dplyr::mutate(Month = factor(Month, levels = c("January", "February", "March", 
                                                  "April", "May", "June", "July", "August", 
                                                  "September", "October", "November", "December")))
-lineplotdata %>%
+lineplotdata |>
   ggplot(aes(x = Month, y = Temperature, group = City, color = City,  linetype = City)) +
   geom_line(size = 1) +
   theme_bw() +
@@ -572,19 +570,19 @@ set.seed(12345)
 RT = c(rnorm(5, 400, 50), rnorm(5, 380, 50), rnorm(5, 450, 50), rnorm(5, 480, 50))
 State = c(rep("Sober", 10), rep("Drunk", 10))
 Gender = rep(c(rep("Male", 5), rep("Female", 5)), 2)
-rts <- data.frame(RT, State, Gender) %>%
+rts <- data.frame(RT, State, Gender) |>
   dplyr::mutate(RT = round(RT, 3))
 # show data
-rts %>%
-  as.data.frame() %>%
-  head(20) %>%
-  flextable::flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Reaction times while sober and drunk.")  %>%
+rts |>
+  as.data.frame() |>
+  head(20) |>
+  flextable::flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Reaction times while sober and drunk.")  |>
   flextable::border_outer()
 ```
 

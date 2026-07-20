@@ -13,7 +13,7 @@ To get a better understanding of how we *do science*, this tutorial introduces b
 
 ## Hypotheses
 
-Probably the most important task in empirical research is hypothesis testing. A proper scientific hypothesis is commonly - but not necessarily - a general assumption in the form of a statement. Hypotheses are tested by comparing systematic observation with the predictions of the hypothesis. More specifically, in order to test hypothesis one seeks for observations which contradict and are at odds with the hypothesis. If we find such a counter example and we have determined that it is an accurate observation, then the hypothesis is falsified, i.e. is is not correct. 
+Probably the most important task in empirical research is hypothesis testing. A proper scientific hypothesis is commonly - but not necessarily - a general assumption in the form of a statement. Hypotheses are tested by comparing systematic observation with the predictions of the hypothesis. More specifically, in order to test a hypothesis, one seeks observations which contradict and are at odds with the hypothesis. If we find such a counter example and we have determined that it is an accurate observation, then the hypothesis is falsified, i.e. is is not correct. 
 
 If we proposed the hypothesis *Apples always fall down.* and we find an example of an apple not falling down, then our hypothesis would be falsified. 
 
@@ -101,7 +101,7 @@ Universality cannot be considered a defining feature of hypotheses, because it i
 
 ### Types of Hypotheses{-}
 
-On a very fundamental level, we can differentiate between null-hypotheses (H$_{0}$), that claim non-existence of either a state of being or a difference, and alternative or test-hypothesis (H$_{1}$) that claim or postulate the existence of of either a state of being or a difference. Among test-hypotheses, we can furthermore distinguish between non-directed hypotheses which claim that one sample is different from another sample, and directed hypotheses which claim that a feature of one sample is bigger, smaller, more frequent, or less frequent, etc. Thus, a hypothesis that group A will perform better in an exam is a directed test-hypothesis while an non-directed hypothesis would merely claim that they differ in their test results. In contrast, the null-hypothesis would claim that there is no difference between the groups in terms of their performance in that exam. 
+On a very fundamental level, we can differentiate between null-hypotheses (H$_{0}$), that claim non-existence of either a state of being or a difference, and alternative or test-hypothesis (H$_{1}$) that claim or postulate the existence of either a state of being or a difference. Among test-hypotheses, we can furthermore distinguish between non-directed hypotheses which claim that one sample is different from another sample, and directed hypotheses which claim that a feature of one sample is bigger, smaller, more frequent, or less frequent, etc. Thus, a hypothesis that group A will perform better in an exam is a directed test-hypothesis while a non-directed hypothesis would merely claim that they differ in their test results. In contrast, the null-hypothesis would claim that there is no difference between the groups in terms of their performance in that exam. 
 
 An additional distinction among hypotheses is the difference between deterministic and probabilistic hypotheses. While we are dealing with a deterministic hypotheses in  (10) because it is a categorical claim, we are dealing with a probabilistic hypothesis in (11) because, here, the hypothesis simply claims that the likelihood of Y is higher if X is the case (but not necessarily categorically).
 
@@ -240,16 +240,16 @@ colnames(designs) <- c("Type", "Research design", "Example", "Directness of acce
 # generate flextable object
 library(flextable)
 
-designs %>%
-  as.data.frame() %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Overview of advantages and disadvantages of different research designs.")  %>%
-  flextable::merge_v(j = ~ Type) %>%
+designs |>
+  as.data.frame() |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Overview of advantages and disadvantages of different research designs.")  |>
+  flextable::merge_v(j = ~ Type) |>
   flextable::border_outer()
 ```
 
@@ -267,7 +267,7 @@ In addition to the ability to establish causality, experimental designs allow a 
 
 #### Quasi-experimental research{-}
 
-In contract to experimental designs, subjects (or participants) in quasi-experimental designs are *not randomly* assigned to groups. Because of this, quasi-experimental designs can be affected by confounding (i.e., that changes in the dependent variable are caused by a variable that is not controlled for). As such, quasi-experimental designs are **not** experimental designs but can be considered observational. Examples for quasi-experimental designs are corpus-based variationist studies of the occurrence of linguistics variants in a variable context.
+In contrast to experimental designs, subjects (or participants) in quasi-experimental designs are *not randomly* assigned to groups. Because of this, quasi-experimental designs can be affected by confounding (i.e., that changes in the dependent variable are caused by a variable that is not controlled for). As such, quasi-experimental designs are **not** experimental designs but can be considered observational. Examples for quasi-experimental designs are corpus-based variationist studies of the occurrence of linguistics variants in a variable context.
 
 Quasi-experimental designs encompass studies where subjects cannot be randomly assigned into test groups because either, this is not practically possible because the observation has already taken place or because the characteristic is inherent in the participants themselves. For instance, analyses of historical data can at best be quasi-experimental because the data have already been collected and the experimenter cannot assign participants to test groups. Also, some studies that analyze sex differences via the behavior of men and women cannot be experimental because participants cannot be randomly assigned to the *male* or *female* group.
 
@@ -275,7 +275,7 @@ Quasi-experimental designs encompass studies where subjects cannot be randomly a
 
 In the language sciences, observational designs encompass all forms of data acquisition and collection where the subjects are observed in their "natural habitat". Hence, observational or behavioral designs are the most natural and thus have *high external validity* which means that we can assume that the results are  transferable to the *real world*. The most common type of this design are corpus studies in which texts (which encompasses both written and transcribed spoken language) are searched for the occurrence of certain linguistic patterns and then correlated with some other feature, the use of a certain linguistic construction such as a specific suffix or a fixed expression like *in order that* in two different time periods or dialects.
 
-The cost and labor intensity of corpus studies depends heavily upon if the corpus that you want to use has already been compiled - if the corpus is already available, the the costs and labor intensity are minimal but they can be high if the corpus has to be compiled first. However, even compiling a corpus can be comparatively easy and cheap, for example, if you compile a corpus consisting of a collection of texts that are available online but the costs can be substantive if you, for example, first need to record and transcribe spoken language in the field).
+The cost and labor intensity of corpus studies depends heavily upon if the corpus that you want to use has already been compiled - if the corpus is already available, the costs and labor intensity are minimal but they can be high if the corpus has to be compiled first. However, even compiling a corpus can be comparatively easy and cheap, for example, if you compile a corpus consisting of a collection of texts that are available online but the costs can be substantive if you, for example, first need to record and transcribe spoken language in the field).
 
 The problem with observational designs are that the contexts in which the data were collected were not controlled with means that the results are more likely to be affected by contextual or confounding factors that the researchers have no control over or don't even know about.
 
@@ -283,7 +283,7 @@ The problem with observational designs are that the contexts in which the data w
 
 Archival research is more common in historical linguistics where researchers look for primary texts or records in archives. However, archival research also encompasses digital archives such as libraries which means that systematic literature reviews also fall under this research design.
 
-The advantages of archival research designs are that the data collections is typically comparatively easy and associated with minimal costs. Also, depending on the phenomenon, the access to the phenomenon can be quite indirect, for example, entirely filtered through the eyes of eye witnesses or experts. 
+The advantages of archival research designs are that data collection is typically comparatively easy and associated with minimal costs. Also, depending on the phenomenon, the access to the phenomenon can be quite indirect, for example, entirely filtered through the eyes of eye witnesses or experts. 
 
 #### Introspection{-}
 
@@ -305,11 +305,11 @@ To counter *fatigue effects* (respondents get tired or annoyed and do no longer 
 
 A statistical variable is a characteristic that can take on a specific form. A variable, in contrast to the constant, can take on at least two different stages or levels. The variables in your hypothesis must be operationalized, i.e., you need to determine what exactly needs to be investigated, what counts, what is measured. In other words, *operationalization* is the measurement of a variable. If possible, a variable should be operationalized so that its measurement is as good as possible reflects the underlying concept. 
 
-The correspondence between the concept and the variable that operationalizes the concept is referred to as *intrinsic validity*. An example of intrinsic validity would be, for example, an operationalization of linguistic complexity that reproduces them well measurable (for example, number of morphemes in a phrase, number of syntactic nodes, or similar).
+The correspondence between the concept and the variable that operationalizes the concept is referred to as *intrinsic validity*. An example of intrinsic validity would be, for example, an operationalization of linguistic complexity that captures the concept well and renders it measurable (for example, number of morphemes in a phrase, number of syntactic nodes, or similar).
 
 The counterpart, *external validity*, denotes the applicability of the insights gained, for example, from an experimental investigation to the real empirical world. For instance, one could experimentally investigate which methods lead to better recall of nonsense-syllables (syllables not occurring in the speakers' natural L1) but this would not necessarily allow us to generalize these finding to the "real" world. External validity in this context would mean that the findings can also be transferred to other real-world memory tasks, such as vocabulary learning.
 
-There are two types of variables, *dependent* and *independent*. The independent variable(s) represents the predictor(s). In research, we typically want to investigate how predictors (independent variables) affect and outcome or result (the dependent variable). In experiments, the independent variable(s) are manipulated to investigate its influence on the dependent variable. Let us take the example of a medical study to illustrate this: in a typical medical study, the influence of a particular drug (independent variable) on the presence of symptoms (dependent variable) is measured.
+There are two types of variables, *dependent* and *independent*. The independent variable(s) represents the predictor(s). In research, we typically want to investigate how predictors (independent variables) affect an outcome or result (the dependent variable). In experiments, the independent variable(s) are manipulated to investigate its influence on the dependent variable. Let us take the example of a medical study to illustrate this: in a typical medical study, the influence of a particular drug (independent variable) on the presence of symptoms (dependent variable) is measured.
 
 It is extremely important to know the type of variable, as this has a direct impact on what statistical analysis is possible for the data at hand. We will therefore discuss various types of variables and their properties below.
 
@@ -339,15 +339,15 @@ It is very important to keep in mind that both *interval-scaled variables* and *
 variabletb <- matrix(c("Nominal Scaled / Categorical Variables", "Gender, Nationality, Part of Speech", "Ordinal Scaled Variables", "Graduation, School Grades, Military Rank", "Interval Scaled Variables", "Temperature, Acceptability Judgments", "Ratio-scaled Variables", "Age, Duration, Number of Syllables", "Variables reflecting counts", "Errors in 1000 word essays"), nrow = 5, byrow = T)
 # add column and row names
 colnames(variabletb) <- c("Variable Type", "Variable Level")
-variabletb %>%
-  as.data.frame() %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Variable types/Variable scales with examples.")  %>%
+variabletb |>
+  as.data.frame() |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Variable types/Variable scales with examples.")  |>
   flextable::border_outer()
 ```
 
@@ -396,15 +396,15 @@ variableextb <- matrix(c("Carl Lewis", "Ben Johnson", "Steve Davis", "1", "2", "
 # add column and row names
 colnames(variableextb) <- c("Name", "Rank", "Time")
 # inspect data
-variableextb %>%
-  as.data.frame() %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Results of a 100 meter dash.")  %>%
+variableextb |>
+  as.data.frame() |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Results of a 100 meter dash.")  |>
   flextable::border_outer()
 ```
 
@@ -446,9 +446,9 @@ Weight <- c(51, 56, 59, 64, 69, 73, 81, 87, 92, 96,
             42, 66, 67, 77, 79, 65, 81, 72, 97, 81,
             65, 77, 66, 42, 81, 79,  81, 72, 67, 97)
 Correlation <- rep(c("Strong", "Medium", "Weak"), each = 10)
-dat <- data.frame(Correlation, Height, Weight) %>%
+dat <- data.frame(Correlation, Height, Weight) |>
   dplyr::mutate(Correlation = factor(Correlation, levels = c("Weak", "Medium", "Strong")))
-dat %>%
+dat |>
   ggplot(aes(Weight, Height, group = Correlation, color = Correlation)) +
   facet_wrap(~Correlation, scales = "free") +
   geom_point(size = 2) +
@@ -462,8 +462,8 @@ dat %>%
 In contrast to the positive linear correlations depicted above, where the variables have a *the higher the values of x, the higher the values of y* correspondence, negative correlations have a *the higher the values of x, the lower the values of y* correspondence. The strength of the correlations is, however, not affected by its direction.
 
 ```{r coor2, echo = F, message=F, warning=F}
-dat %>%
-  dplyr::mutate(Weight = -Weight) %>%
+dat |>
+  dplyr::mutate(Weight = -Weight) |>
   ggplot(aes(Weight, Height, group = Correlation, color = Correlation)) +
   facet_wrap(~Correlation, scales = "free") +
   geom_point(size = 2) +
@@ -476,8 +476,4 @@ dat %>%
 
 
 [Back to top](#basic-concepts_in_quantitative_research_1)
-
-## Tutorial {-}
-
-
 

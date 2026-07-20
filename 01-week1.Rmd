@@ -35,21 +35,21 @@ klippy::klippy()
 ```
 
 
-This tutorial takes a philosophical or history-of-ideas approach and introduces the logical and cognitive underpinnings of the the scientific method. It does not require prior knowledge and it aims to outline why we as humans are need science to understand the empirical word around us. It also demonstrates with various examples that humans are prone to cognitive biases, logical fallacies and inappropriate ways of dealing with data (cherry-picking) which are likely to lead to inaccurate conclusions. For example, humans are good (maybe too good) at seeing patterns but not good at understanding randomness. This is the basis for seeing faces in random patterns like the famous face on Mars. The explanation for the human inability to see the world as it is based on evolutionary approaches to our cognitive apparatus. It will be shown using the example of Clever Hans (a horse that was thought to be able to count and perform mathematical operations) that these biases can only be avoided if one applies a methodological approach to acquiring knowledge.
+This tutorial takes a philosophical or history-of-ideas approach and introduces the logical and cognitive underpinnings of the scientific method. It does not require prior knowledge and it aims to outline why we as humans need science to understand the empirical world around us. It also demonstrates with various examples that humans are prone to cognitive biases, logical fallacies and inappropriate ways of dealing with data (cherry-picking) which are likely to lead to inaccurate conclusions. For example, humans are good (maybe too good) at seeing patterns but not good at understanding randomness. This is the basis for seeing faces in random patterns like the famous face on Mars. The explanation for the human inability to see the world as it is draws on evolutionary approaches to our cognitive apparatus. It will be shown using the example of Clever Hans (a horse that was thought to be able to count and perform mathematical operations) that these biases can only be avoided if one applies a methodological approach to acquiring knowledge.
 
 ## Why do we need science?
 
 Before delving deeper into questions relating to defining features or characteristics of science, it is important to understand why we need science in the first place. Let us start out with a very simple and preliminary definition of science as *a methodological process used to acquire knowledge about the world based on empirical evidence*.
 
-One could argue that we do not need science as we can understand the workings of the world around us not by evidence but by meditating. This is not as trivial as it may sound as this is a valid way of acquiring knowledge in what is called *formal sciences* such as logic or mathematics. Formal sciences start out with axioms and enlarge knowledge by applying logical operations to statements. Using a logical operation called *inference*, we can prove that, given certain statements (premises) are true, a derived statement (conclusion) follows with necessity and thus must also be true. For instance, if the statement *Socrates is a human being* (premise 1) and the *All humans are mortal* (premise 2) are both true, then we can infer that the statement *Socrates is mortal* (conclusion) must also be true. Once a given statement (conclusion) is proven to be true, then this conclusion can itself be used as a premise to arrive at new true statements. Formal sciences are extremely powerful when it comes to determining the logically coherence. In other words, formal sciences can be used to construct logically coherent representations of the world around us.
+One could argue that we do not need science as we can understand the workings of the world around us not by evidence but by meditating. This is not as trivial as it may sound as this is a valid way of acquiring knowledge in what is called *formal sciences* such as logic or mathematics. Formal sciences start out with axioms and enlarge knowledge by applying logical operations to statements. Using a logical operation called *inference*, we can prove that, given certain statements (premises) are true, a derived statement (conclusion) follows with necessity and thus must also be true. For instance, if the statement *Socrates is a human being* (premise 1) and the statement *All humans are mortal* (premise 2) are both true, then we can infer that the statement *Socrates is mortal* (conclusion) must also be true. Once a given statement (conclusion) is proven to be true, then this conclusion can itself be used as a premise to arrive at new true statements. Formal sciences are extremely powerful when it comes to determining logical coherence. In other words, formal sciences can be used to construct logically coherent representations of the world around us.
 
 Unfortunately, this procedure to acquire knowledge does not tell us whether the statement *I will raise my left arm once I have counted to three* or the statement *I will raise my right arm once I have counted to three* is true. Both options are equally possible and a world in which I raise my left arm is just as logically coherent as a world in which I raised my right arm. As a consequence, we need empirical evidence to determine whether statement (as a side note: I only counted to two and raised neither of my arms). The problem here is that there is potentially an infinite number of possible numbers of logically coherent worlds and in order to determine which of these potential worlds is the world we live in (given that our world is logically coherent which I often doubt). In other words, we need empirical evidence to determine the workings of the world around us.
 
 ## Errare Humanum Est
 
-All of the above indicates that we need empirical evidence to determine the rules and laws governing empirical reality but it does not tell us why we need science. As we have established above, only empirical evidence can lead the way to determining what the characteristics of the world we live in are. Science comes in as we, as human beings, are not very good at seeing and understanding the world as it is (in fact, we are not able to do so!). To elaborate, when it comes things we are scared of, we rather rely on emotional narratives rather than things that really do us harm. For instance, we are more scared of what is sometimes referred to as *stranger danger*, i.e. that someone unknown will harm us or people dear to us than people we know while most murders and sexual exploits are committed by people, we know such as our family and friends. Another example would be represented by the movie *Jaws* while mosquitoes or even cows kill more people (mosquitoes are in fact among the most dangerous animals for humans due to the diseases they transmit). 
+All of the above indicates that we need empirical evidence to determine the rules and laws governing empirical reality but it does not tell us why we need science. As we have established above, only empirical evidence can lead the way to determining what the characteristics of the world we live in are. Science comes in as we, as human beings, are not very good at seeing and understanding the world as it is (in fact, we are not able to do so!). To elaborate, when it comes things we are scared of, we rather rely on emotional narratives rather than things that really do us harm. For instance, we are more scared of what is sometimes referred to as *stranger danger*, i.e. that someone unknown will harm us or people dear to us than people we know while most murders and assaults are committed by people we know, such as our family and friends. Another example would be represented by the movie *Jaws* while mosquitoes or even cows kill more people (mosquitoes are in fact among the most dangerous animals for humans due to the diseases they transmit). 
 
-Besides being more strongly influenced by emotional narratives there are other in-build biases such as our drive to stick to opinions rather than correcting them or switching sides once these are proven incorrect. In other words, we seek confirmation for our believes rather than challenging them. For example,
+Besides being more strongly influenced by emotional narratives there are other in-built biases such as our drive to stick to opinions rather than correcting them or switching sides once these are proven incorrect. In other words, we seek confirmation for our beliefs rather than challenging them. For example,
 
 ```{r monty, echo=FALSE, out.width= "40%", out.extra='style="float:right; padding:15px"'}
 knitr::include_graphics("https://slcladal.github.io/images/deal.jpg")
@@ -234,22 +234,22 @@ A similar cognitive bias underlies many ghost sightings. We are prone to see fac
 
 Bruce Hood, a psychologist at Cardiff University, offers a very interesting evolutionary explanation for this phenomenon. To elaborate, imagine a professor offered you 10 AUD to wear a jumper he brought along for only a minute or so. Most people would take the offer and earn the 10 AUD. However, the professor adds that the jumper belonged to a brutal psychopathic serial killer and asks again whether you would wear the jumper. While some students would still wear the jumper, some students would not wear it given this information and even students who would, state that they would feel less comfortable. The underlying mechanism is that we assume that the jumper is not merely a piece of cloth but that it has changed somehow and acquired something by having been worn by a brutal psychopathic serial killer. While this is completely natural, it is irrational as the jumper is, in fact, merely a piece of cloth. Hood explains that people often assign value to material things which goes to say that people treat objects not only as material consisting of atoms but as things that have something like an essence or a *soul*. The underlying mechanism, he hypothesizes, adds an evolutionary advantage as people who had this belief were less likely to get close to items or people suffering from diseases and were thus less likely to get infected. This goes to show that irrational thinking or responses can be grounded in rational behavior.
 
-In addition to being generally bad with numbers and assuming agents rather than natural causes, there is another bias, called confirmation bias, which is an inbuilt hindrance to accurate knowledge. Let's turn to another example to illustrate this. This example is called the *Wason Selection Task* after Peter Wason who came up with this test. Imaging you are presented with cards that have letters on one side and numbers on the other. Four of these cards are placed on a table before you. Card 1 is an *A*, card 2 is a *K*, card 3 is a *2*, and the fourth card is a *7*. You are told that whenever a vowel is on one side of the card, the other side is an even number. Which of these four cards do you have to turn over to determine whether this rule holds true?
+In addition to being generally bad with numbers and assuming agents rather than natural causes, there is another bias, called confirmation bias, which is an inbuilt hindrance to accurate knowledge. Let's turn to another example to illustrate this. This example is called the *Wason Selection Task* after Peter Wason who came up with this test. Imagine you are presented with cards that have letters on one side and numbers on the other. Four of these cards are placed on a table before you. Card 1 is an *A*, card 2 is a *K*, card 3 is a *2*, and the fourth card is a *7*. You are told that whenever a vowel is on one side of the card, the other side is an even number. Which of these four cards do you have to turn over to determine whether this rule holds true?
 
 
 
 ```{r cards, eval = T, echo = F, results = 'asis', message=FALSE, warning=FALSE}
 numbers <- matrix(c("A","K","2","7"), byrow = T, nrow = 1)
 colnames(numbers) <- c("Card 1", "Card 2", "Card 3", "Card 4")
-numbers %>%
-  as.data.frame() %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .5, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "")  %>%
+numbers |>
+  as.data.frame() |>
+  flextable() |>
+  flextable::set_table_properties(width = .5, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "")  |>
   flextable::border_outer()
 ```
 
@@ -257,22 +257,22 @@ numbers %>%
 
 What have you guessed? The most common answer is cards 1 and 2 while the correct answer is actually cards 1 and 4 because the rule does not say whether there are even or odd numbers behind consonants; thus, turning over cards 2 and 3 does not help you in determining whether the rule holds true or not - in fact, cards 2 and 3 are irrelevant for the problem.
 
-Let us now turn to another example to further illustrate cognitive bias: Imaging that I have a rule in my mind and write down 3 numbers which are generated in accordance with my rule. Your task is to find out what the rule is that I have in mind. To help you finding out about that, you are allowed to propose a fourth number and I have to answer whether the proposed number is aligned with my rule or not. After proposing a number, you may then propose what the rule is and I have to tell you whether the proposed rule is the rule I had in mind or not. The numbers I write down are 1, 2 and 4. What do you think is the rule I have in mind and which number would you propose?
+Let us now turn to another example to further illustrate cognitive bias: Imagine that I have a rule in my mind and write down 3 numbers which are generated in accordance with my rule. Your task is to find out what the rule is that I have in mind. To help you finding out about that, you are allowed to propose a fourth number and I have to answer whether the proposed number is aligned with my rule or not. After proposing a number, you may then propose what the rule is and I have to tell you whether the proposed rule is the rule I had in mind or not. The numbers I write down are 1, 2 and 4. What do you think is the rule I have in mind and which number would you propose?
 
 
 
 ```{r numbers, eval = T, echo = F, results = 'asis', message=FALSE, warning=FALSE}
 numbers <- matrix(c("1","2","4","?"), byrow = T, nrow = 1)
 colnames(numbers) <- c("Number 1","Number 2","Nuber 3","Number 4")
-numbers %>%
-  as.data.frame() %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .5, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "")  %>%
+numbers |>
+  as.data.frame() |>
+  flextable() |>
+  flextable::set_table_properties(width = .5, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "")  |>
   flextable::border_outer()
 ```
 
@@ -328,7 +328,7 @@ This goes to show that our perception and interpretation of the world around us 
 
 In this section, we will have a look at things we do or ways we argue that will prevent us from finding out what is really going on. These *logical fallacies* are very common and noone is exempt from them - we should however, be aware of them and aim to avoid them if we do not want to arrive at wrong conclusions or make erroneous judgments. 
 
-Logical fallacies can be defines as flawed, deceptive, or false arguments that can be proven wrong with reasoning and we will briefly inspect some of the the most common logical fallacies below.
+Logical fallacies can be defined as flawed, deceptive, or false arguments that can be proven wrong with reasoning and we will briefly inspect some of the most common logical fallacies below.
 
 #### Confirmation Bias and Cherry Picking {-}
 
@@ -379,11 +379,11 @@ When it comes to fallacies, a *red herring* is an argument that uses confusion o
 
 #### Sunk Cost {-}
 
-The so-called *sunk cost fallacy* occurs when someone continues doing something because of the effort they have already put in - regardless of whether the additional costs outweigh the potential benefits. *Sunk cost* is a term borrowed from economy where it refers to expenses that can no longer be recovered. An example would be if you continue watching a TV show only because you have already watched some episodes although you are actually not enjoying watching the show - you just to go through with it so the initial costs of watching the TV shows was not "in vein".
+The so-called *sunk cost fallacy* occurs when someone continues doing something because of the effort they have already put in - regardless of whether the additional costs outweigh the potential benefits. *Sunk cost* is a term borrowed from economics where it refers to expenses that can no longer be recovered. An example would be if you continue watching a TV show only because you have already watched some episodes although you are actually not enjoying watching the show - you just go through with it so that the initial investment of time was not "in vain".
 
 
 
-Falling pray to cognitive biases or logical fallacies means that we are constantly deceiving ourselves and therefore need to protect ourselves from our own wrong judgments. To protect ourselves from these natural (systematic) delusions that have been discussed so far, we have developed *skeptical or critical thinking skills*. Among these skills, the *hypothetic-deductive method of science* is known as the *scientific method *. However, these skills are not just there - they have to be learned and trained! Such skeptical skills form the basis of science because science, in its essence, is the search for answers about how the world really works. And in order to avoid being led astray, we have to safeguard us from our own biases by following a methodological and careful approach. The next section will focus on the relationship between science and why it must be methodological.
+Falling prey to cognitive biases or logical fallacies means that we are constantly deceiving ourselves and therefore need to protect ourselves from our own wrong judgments. To protect ourselves from these natural (systematic) delusions that have been discussed so far, we have developed *skeptical or critical thinking skills*. Among these skills, the *hypothetic-deductive method of science* is known as the *scientific method*. However, these skills are not just there - they have to be learned and trained! Such skeptical skills form the basis of science because science, in its essence, is the search for answers about how the world really works. And in order to avoid being led astray, we have to safeguard ourselves from our own biases by following a methodological and careful approach. The next section will focus on the relationship between science and why it must be methodological.
 
 ---
 nocite: | 
@@ -559,21 +559,6 @@ We will stop here with our introduction to quantitative reasoning. If you are in
 
 
 [Back to top](#introduction)
-
-
-## Tutorial{-}
-
-* Talk about course (structure, aims, assessments, materials)
-
-* Check out Blackboard
-
-* Check out ECP!
-
-* Review Lecture content (talk about cards)
-
-* Take prior knowledge quiz
-
-* Watch statistics videos (link available on Blackboard)
 
 
 

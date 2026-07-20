@@ -45,15 +45,15 @@ library(tidyverse)
 library(flextable)
 numbers <- matrix(c("Head" , "Head" , "Head" , "3" , "0" , "0.125", "Head" , "Head" , "Tails" , "2" , "1" , "0.125", "Head" , "Tails" , "Head" , "2" , "1" , "0.125", "Tails" , "Head" , "Head" , "2" , "1" , "0.125", "Head" , "Tails" , "Tails" , "1" , "2" , "0.125", "Tails" , "Head" , "Tails" , "1" , "2" , "0.125", "Tails" , "Tails" , "Head" , "1" , "2" , "0.125", "Tails" , "Tails" , "Tails" , "0" , "3" , "0.125"), byrow = T, nrow = 8)
 colnames(numbers) <- c("Toss 1","Toss 2","Toss 3","Heads", "Tails", "Probabilty")
-numbers %>%
-  as.data.frame() %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "All possible results of 3 coin tosses.")  %>%
+numbers |>
+  as.data.frame() |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "All possible results of 3 coin tosses.")  |>
   flextable::border_outer()
 ```
 
@@ -103,24 +103,24 @@ As you can see in the fourth column, there are three options that lead to heads 
 probdata1 <- matrix(c(0.125, 0.375, 0.375, 0.125), byrow = T, nrow = 1)
 colnames(probdata1) <- c("0 Heads", "1 Head", "2 Heads", "3 Heads")
 # inspect data
-probdata1 %>%
-  as.data.frame() %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Probability of successes in coin tosses.")  %>%
+probdata1 |>
+  as.data.frame() |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Probability of successes in coin tosses.")  |>
   flextable::border_outer()
 ```
 
 ```{r probcoin01, echo=F, eval = T, message=FALSE, warning=FALSE}
 Probability <- c(0.125, 0.375, 0.375, 0.125)
 Heads <- 0:3
-probs <- data.frame(Probability, Heads) %>%
+probs <- data.frame(Probability, Heads) |>
   dplyr::mutate(Heads = factor(Heads))
-probs %>%
+probs |>
   ggplot(aes(x = Heads, y = Probability)) +
   geom_bar(stat = "identity") +
   geom_text(label = Probability, nudge_y = +.05) +
@@ -134,9 +134,9 @@ We can do the same and check the probabilities of having heads in 10 coin tosses
 ```{r probcoin02, echo=F, eval = T, message=FALSE, warning=FALSE}
 Probability <- round(dbinom(0:10, 10, 0.5), 3)
 Heads <- 0:10
-probs <- data.frame(Probability, Heads) %>%
+probs <- data.frame(Probability, Heads) |>
   dplyr::mutate(Heads = factor(Heads))
-probs %>%
+probs |>
   ggplot(aes(x = Heads, y = Probability)) +
   geom_bar(stat = "identity") +
   geom_text(label = Probability, nudge_y = +.05) +
@@ -223,7 +223,7 @@ ggplot(df, aes(x = w100, y = p100)) +
 The next figure shows at which number of heads the cumulative probabilities dip below 5 percent for two-tailed hypotheses. According to the graph, if head shows up to 40 or more often than 60 times, the cumulative probability dips below 5 percent. Applied to our initial bet, you could thus claim that I cheated if head shows less than 41 times or more than 60 times (if out hypothesis were two-tailed - which it is not). 
 
 ```{r echo=F, eval = T, message=FALSE, warning=FALSE}
-df <- df %>%
+df <- df |>
   mutate(
     cump = cumsum(p100),
     col = cump <= 0.025 | cump >= 0.975
@@ -260,7 +260,7 @@ ggplot(df, aes(x = w100, y = p100, fill = col)) +
 The Figure below shows at which point the probability of heads showing dips below 5 percent for one-tailed hypotheses. Thus, according to the figure below, if we toss a coin 100 times and head shows 59 or more often, then you are justified in claiming that I cheated.
 
 ```{r echo=F, eval = T, message=FALSE, warning=FALSE}
-df <- df %>%
+df <- df |>
   mutate(
     cump = cumsum(p100),          # cumulative probability
     highlight = cump >= 0.95      # flag values beyond 95%
@@ -296,7 +296,7 @@ ggplot(df, aes(x = w100, y = p100, fill = highlight)) +
 ```
 
 
-When comparing the two figures above, it is notable that the number at which you can claim I cheated differs according to whether the H~1~ as one- or two-tailed. When formulating a one-tailed hypothesis, then the number is lower compared with the the number at which you can reject the H~0~ if your H~1~ is two-tailed. This is actually the reason for why it is  preferable to formulate more precise, one-tailed hypotheses (because then, it is easier for the data to be sufficient to reject the H~0~). 
+When comparing the two figures above, it is notable that the number at which you can claim I cheated differs according to whether the H~1~ as one- or two-tailed. When formulating a one-tailed hypothesis, then the number is lower compared with the number at which you can reject the H~0~ if your H~1~ is two-tailed. This is actually the reason for why it is  preferable to formulate more precise, one-tailed hypotheses (because then, it is easier for the data to be sufficient to reject the H~0~). 
 
 
 ### The Normal Distribution{-}
@@ -465,12 +465,12 @@ Positively skewed
 * Median is lower than the mean
 
 ```{r skewness, echo = F, warning=F, message=F}
-skew <- data.frame(rbeta(1000000,10,2)) %>%
+skew <- data.frame(rbeta(1000000,10,2)) |>
   mutate(pskew = rbeta(1000000,2,10),
-         nrm = rbeta(1000000,10,10)) %>%
-  dplyr::rename(nskew = colnames(.)[1],
-                pskew = colnames(.)[2],
-                nrm = colnames(.)[3])
+         nrm = rbeta(1000000,10,10)) |>
+  dplyr::rename(nskew = 1,
+                pskew = 2,
+                nrm = 3)
 # inspect
 ggplot(skew, aes(x = nskew, alpha = .5)) +
   geom_density(fill = "lightgreen", alpha = .5, color = "lightgreen") +
@@ -539,14 +539,14 @@ If the reported skewness value is negative, then  the distribution is positively
 Another way in which distributions can differ from the normal distribution  relates to the thickness of the tails and the spikiness of the distribution. If distributions are bell-shaped like the normal distribution, they are called *mesokurtic*. If distributions are symmetrical but they are more spiky than the normal distribution, they are called *leptokurtic*. If symmetrical distributions are flatter and have bigger tails than the normal distribution, the distributions are called *platykurtic*.  
 
 ```{r kurtosis, echo = F, warning=F, message=F}
-kur <- data.frame(x <- seq(-4, 4, length.out = 100)) %>%
+kur <- data.frame(x <- seq(-4, 4, length.out = 100)) |>
   mutate(lep = dt(x, 1)^2*5,
          nrm = dnorm(x),
-         thk = dt(x, 1)) %>%
-  dplyr::rename(x = colnames(.)[1],
-                lepto = colnames(.)[2],
-                normal = colnames(.)[3],
-                platy = colnames(.)[4])
+         thk = dt(x, 1)) |>
+  dplyr::rename(x = 1,
+                lepto = 2,
+                normal = 3,
+                platy = 4)
 ggplot(kur, aes(x, lepto)) + 
 #  geom_line(color = "orange", size = 1.5, linetype = 2, alpha = .5) +
   geom_ribbon(aes(x = x, ymax = lepto), ymin=0, alpha=0.5, fill = "orange") +
@@ -582,7 +582,7 @@ The kurtosis score can thus be interpreted as follows:
 
 A distribution which is very similar to the normal distribution is the "binomial distribution". The binomial distribution displays the probability of binary outcomes. So, in fact, the distribution of the coin flips above represents a binomial distribution. However, the binomial distribution cane be (as above in case of the coin flips) but does not have to be symmetric (like the normal distribution). 
 
-To illustrate this, let us consider the following example: we are interested in how many people use discourse *like* in Australian English. We have analyzed a corpus, for instance the Australian component of the [International Corpus of English](https://www.ice-corpora.uzh.ch/en.html) and found that 10 percent of all speakers have used discourse *like*. In this example, the corpus encompasses 100 speakers (actually the the spoken section of the Australian component of the ICE represents more than 100 speakers but it will make things easier for us in this example).
+To illustrate this, let us consider the following example: we are interested in how many people use discourse *like* in Australian English. We have analyzed a corpus, for instance the Australian component of the [International Corpus of English](https://www.ice-corpora.uzh.ch/en.html) and found that 10 percent of all speakers have used discourse *like*. In this example, the corpus encompasses 100 speakers (actually the spoken section of the Australian component of the ICE represents more than 100 speakers but it will make things easier for us in this example).
 
 Now, given the result of our corpus analysis, we would like to know what percentage of speakers of Australian English use discourse *like* with a confidence of 95 percent. Given the corpus study results, we can plot the expected binomial distribution of discourse *like* users in Australian English.
 
@@ -664,18 +664,18 @@ Let's use an example to better understand this. We will continue with the exampl
 library(tidyverse)
 library(flextable)
 zdf <- data.frame(c(71, 78, 67, 41, 68, 52, 47, 46, 63, 78, 45, 66, 60, 50, 40, 71, 69, 74, 54, 50))
-zdf <- zdf %>%
-  dplyr::rename(Score_c1 = colnames(.)[1]) %>%
+zdf <- zdf |>
+  dplyr::rename(Score_c1 = 1) |>
   dplyr::mutate(Score_c2 = c(78, 45, 89, 88, 47, 98, 52, 62, 44, 52, 53, 40, 80, 73, 40, 88, 92, 44, 58, 70))
 # display table
-zdf %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .4, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Results of two tests at university (class1 had a maximum score of 80, class2 had a maximum score of 100.")  %>%
+zdf |>
+  flextable() |>
+  flextable::set_table_properties(width = .4, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Results of two tests at university (class1 had a maximum score of 80, class2 had a maximum score of 100.")  |>
   flextable::border_outer()
 ```
 
@@ -699,41 +699,41 @@ Both students perform below average in their class (this is confirmed by the neg
 We can also easily calculate the z-scores of both classes by calculating the mean of each class, then calculating the standard deviation of each class and then subtracting each score from the mean and dividing the result by the standard deviation as shown below:
 
 ```{r z02a, echo=T, eval = T, message=FALSE, warning=FALSE}
-zdf <- zdf %>%
+zdf <- zdf |>
   dplyr::mutate(Mean_c1 = mean(Score_c1),
                 SD_c1 = round(sd(Score_c1), 2),
                 z_c1 = round((Score_c1-Mean_c1)/SD_c1, 2),
                 Mean_c2 = mean(Score_c2),
                 SD_c2 = round(sd(Score_c2), 2),
-                z_c2 = round((Score_c2-Mean_c2)/SD_c2, 2)) %>%
+                z_c2 = round((Score_c2-Mean_c2)/SD_c2, 2)) |>
   dplyr::relocate(Score_c1, Mean_c1, SD_c1, z_c1, Score_c2, Mean_c2, SD_c2, z_c2)
 ```
 
 ```{r z02b, echo=F, eval = T, message=FALSE, warning=FALSE}
-zdf %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Scores, means, standrad deviations, and z-scores of two tests at university.")  %>%
+zdf |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Scores, means, standrad deviations, and z-scores of two tests at university.")  |>
   flextable::border_outer()
 ```
 
 The table now shows us for each score if the score is below or above the class average (indicated by positive and negative score) and we can compare each score from both classes to see which score is relatively better or worse across the two classes.
 
 ```{r z03, echo=F, eval = F, message=FALSE, warning=FALSE}
-zdf %>%
+zdf |>
   dplyr::rename(Score_c1 = class1,
-                Score_c2 = class2) %>%
+                Score_c2 = class2) |>
   dplyr::mutate(Mean_c1 = mean(Score_c1),
                 SD_c1 = round(sd(Score_c1), 2),
                 z_c1 = round((Score_c1-Mean_c1)/SD_c1, 2),
                 Mean_c2 = mean(Score_c2),
                 SD_c2 = round(sd(Score_c2), 2),
-                z_c2 = round((Score_c2-Mean_c2)/SD_c2, 2)) %>%
-  dplyr::relocate(Score_c1, Mean_c1, SD_c1, z_c1, Score_c2, Mean_c2, SD_c2, z_c2) %>%
+                z_c2 = round((Score_c2-Mean_c2)/SD_c2, 2)) |>
+  dplyr::relocate(Score_c1, Mean_c1, SD_c1, z_c1, Score_c2, Mean_c2, SD_c2, z_c2) |>
   ggplot(aes(x = Score_c1)) +
   geom_histogram(binwidth = 5)
 ```
@@ -771,22 +771,22 @@ h2 <- c("", "", "Correlation", "NoCorrelation")
 c1 <- c("Reality", "Correlation", "correct", "beta-error")
 c2 <- c("Reality", "NoCorrelation", "alpha-error", "correct")
 dat <- data.frame(h1, h2, c1, c2)
-dat %>%
-  flextable() %>%
-  flextable::merge_at(i = 1, j = 3:4, part = "body") %>%
-  flextable::merge_at(i = 3:4, j = 1, part = "body") %>%
-  flextable::delete_part(part = "header") %>%
-  flextable::theme_zebra() %>%
-  flextable::theme_box() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Alpha- and beta-errors.")  %>%
-  flextable::border_outer() %>%
-  flextable::bold(i = 1:2, j = 3:4, bold = TRUE, part = "body") %>%
-  flextable::bold(i = 3:4, j = 1:2, bold = TRUE, part = "body") %>%
-  flextable::color(color = "red", i = 3, j = 4) %>%
-  flextable::color(color = "red", i = 4, j = 3) %>%
+dat |>
+  flextable() |>
+  flextable::merge_at(i = 1, j = 3:4, part = "body") |>
+  flextable::merge_at(i = 3:4, j = 1, part = "body") |>
+  flextable::delete_part(part = "header") |>
+  flextable::theme_zebra() |>
+  flextable::theme_box() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Alpha- and beta-errors.")  |>
+  flextable::border_outer() |>
+  flextable::bold(i = 1:2, j = 3:4, bold = TRUE, part = "body") |>
+  flextable::bold(i = 3:4, j = 1:2, bold = TRUE, part = "body") |>
+  flextable::color(color = "red", i = 3, j = 4) |>
+  flextable::color(color = "red", i = 4, j = 3) |>
   flextable::merge_at(i = 1:2, j = 1:2, part = "body") 
 ```
 
@@ -803,14 +803,14 @@ If errors would always add up, then statistics would not be possible, since ever
 Subjects <- paste0("Subject ", 1:10)
 Scores <- sample(20:50, 10)
 df <- data.frame(Subjects, Scores)
-df %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .35, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Independent data - each score comes from a different subject.")  %>%
+df |>
+  flextable() |>
+  flextable::set_table_properties(width = .35, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Independent data - each score comes from a different subject.")  |>
   flextable::border_outer()
 ```
 
@@ -825,14 +825,14 @@ We encounter a related phenomenon when dealing with extensions of $\chi$^2^ test
 Subjects <- rep(paste0("Subject ", 1:2), each = 5)
 Scores <- sample(20:50, 10)
 df <- data.frame(Subjects, Scores)
-df %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .35, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Dependent data - several scores come from the same subject.")  %>%
+df |>
+  flextable() |>
+  flextable::set_table_properties(width = .35, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Dependent data - several scores come from the same subject.")  |>
   flextable::border_outer()
 ```
 

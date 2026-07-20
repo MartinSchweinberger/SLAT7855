@@ -41,27 +41,31 @@ mlrdata  <- base::readRDS(url("https://slcladal.github.io/data/mld.rda", "rb"))
 ```{r intro00a, echo=F, eval = F, message=FALSE, warning=FALSE}
 install.packages("dplyr")
 install.packages("flextable")
-install.packages("ggfortify")
-install.packages("car")
+install.packages("performance")
+install.packages("see")
+install.packages("ggplot2")
+install.packages("gridExtra")
 ```
 
 
 ```{r intro00, echo=F, message=FALSE, warning=FALSE}
 library(dplyr)
 library(flextable)
-library(car)
-library(ggfortify)
+library(performance)
+library(see)
+library(ggplot2)
+library(gridExtra)
 # inspect data
-mlrdata %>%
-  as.data.frame() %>%
-  head(15) %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "First 15 rows of the mlrdata.")  %>%
+mlrdata |>
+  as.data.frame() |>
+  head(15) |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "First 15 rows of the mlrdata.")  |>
   flextable::border_outer()
 ```
 
@@ -88,7 +92,7 @@ p4 <- ggplot(mlrdata, aes(status, money)) +
   guides(fill = FALSE) +
   theme_bw()
 # show plots
-vip::grid.arrange(grobs = list(p1, p2, p3, p4), widths = c(1, 1), layout_matrix = rbind(c(1, 2), c(3, 4)))
+gridExtra::grid.arrange(grobs = list(p1, p2, p3, p4), widths = c(1, 1), layout_matrix = rbind(c(1, 2), c(3, 4)))
 ```
 
 The upper left figure consists of a boxplot which shows how much money was spent by relationship status. The figure suggests that men spend more on women if they are not in a relationship. The next figure shows the relationship between the money spend on presents and whether or not the men were interested in the women.
@@ -178,31 +182,39 @@ m0.mlr <- lm(money ~ 1, data = mlrdata)
 anova(m0.mlr, m2.mlr)
 ```
 
-The comparison between the two model confirms that the minimal adequate model performs significantly better (makes significantly more accurate estimates of the outcome variable) compared with the baseline model.
+The comparison between the two models confirms that the minimal adequate model performs significantly better (makes significantly more accurate estimates of the outcome variable) compared with the baseline model.
 
 ## Model Diagnostics 
 
-After implementing the multiple regression, we now need to look for outliers and perform the model diagnostics by testing whether removing data points disproportionately decreases model fit. To begin with, we generate diagnostic plots.
+After implementing the multiple regression, we now need to check the model assumptions and look for influential observations, i.e. data points whose removal would disproportionately change the model fit. As in the section on simple linear regression, we use the `check_model` function from the `performance` package [@performance] to generate the diagnostic plots (have a look at the explanations of what to look for and how to interpret these diagnostic plots in the section on simple linear regression).
 
-```{r mlr11, message=F, warning=F}
-# generate plots
-autoplot(m2.mlr) + 
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  theme_bw()
+```{r mlr11, message=F, warning=F, fig.height=10}
+# generate diagnostic plots
+performance::check_model(m2.mlr)
 ```
 
-The plots do not show severe problems such as funnel shaped patterns or drastic deviations from the diagonal line in Normal Q-Q plot (have a look at the explanation of what to look for and how to interpret these diagnostic plots in the section on simple linear regression) but data points 52, 64, and 83 are repeatedly indicated as potentially problematic cases. We thus plot the Cook's distance to see if there are points that over-proportionately impact model fit.
+Because we are now dealing with more than one predictor, the panel includes an additional plot: the *Collinearity* panel. This panel shows the variance inflation factor (VIF) for each model term, which quantifies how strongly a predictor can be predicted from the other predictors in the model. High collinearity (VIFs above 10; some scholars use the more conservative threshold of 5) is problematic because it renders the coefficient estimates unstable and their interpretation unreliable. We can also extract the VIFs directly, as shown below.
+
+```{r mlr11b, message=F, warning=F}
+# check collinearity
+performance::check_collinearity(m2.mlr)
+```
+
+*A note on VIFs in models with interactions:* elevated VIFs of terms involved in an interaction are expected (a predictor and an interaction containing that predictor are necessarily correlated) and are not by themselves a cause for concern.
+
+The plots do not show severe problems such as funnel-shaped patterns in the homogeneity-of-variance panel or drastic deviations from the reference line in the normality panel. To make sure that no data points over-proportionately impact the model fit, we formally check for influential observations based on Cook's distance.
 
 ```{r mlr12, message=F, warning=F}
-plot(m2.mlr, which=4)
+# check for influential observations
+performance::check_outliers(m2.mlr)
 ```
 
-The graphs indicate that data points 52, 64, and 83 do not seem to overly affect the results as they are within the acceptable range (indicated by the blue area around the Q-Q plot) and their Cook's distance is elevated but not excessively high. and we can thus ignore this issue here. 
+The diagnostics indicate that no data points overly affect the results (no observation exceeds the Cook's distance threshold) and we can thus proceed with the interpretation of the model.
 
 
 ## A Word about Sample Size
 
-One common issue when doing null-hypothesis hypothesis testing is sample size (which is related to the probability of $\beta$-errors). Remember, $\beta$-errors (or beta errors) mean overlooking a significant effect typically because the sample size is too low.  The test statistics ranges between 0 and 1 where lower values are better.
+One common issue when doing null-hypothesis significance testing is sample size (which is related to the probability of $\beta$-errors). Remember, $\beta$-errors (or beta errors) mean overlooking a significant effect typically because the sample size is too low.  The probability of a $\beta$-error ranges between 0 and 1, where lower values are better.
 
 Despite there being no ultimate rule of thumb, @field2012discovering[273-275], based on @green1991many, provide data-driven suggestions for the minimal size of data required for regression models that aim to find medium sized effects (k = number of predictors; categorical variables with more than two levels should be transformed into dummy variables):
 
@@ -237,8 +249,6 @@ report::report(m2.mlr)
 ```
 
 
-Although @field2012discovering suggest that the main effects of the predictors involved in the interaction should not be interpreted, they are interpreted here to illustrate how the results of a multiple linear regression can be reported.
-
 We can use the output of the `report` function to write up a final report: 
 
 
@@ -250,11 +260,11 @@ We can use the output of the `report` function to write up a final report:
 > 
 > The effect of attraction [NotInterested] is statistically significant and negative (beta =
 -47.66 [-58.31, -37.01], t(96) = -8.88, p < .001; Std. beta = -0.98 [-1.20,
--0.76]) which means that men spend 47.66 AUD less on gifts for women if the men are not intersted in the women.
+-0.76]) which means that men spend 47.66 AUD less on gifts for women if the men are not interested in the women.
 > 
 > The interaction effect of attraction [NotInterested] on status [Single] is statistically
 significant and negative (beta = -63.18 [-78.24, -48.11], t(96) = -8.32, p < .001;
-Std. beta = -1.30 [-1.61, -0.99]) which means that if men are not intersted in the women and the women are signle, men spend 63.18 AUD less on presents.
+Std. beta = -1.30 [-1.61, -0.99]) which means that if men are not interested in the women and the women are single, men spend 63.18 AUD less on presents.
 
 [Back to top](#multiple_linear_regression)
 

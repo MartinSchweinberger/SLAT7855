@@ -30,7 +30,7 @@ Group <- c("a", "a", "a", "a", "a", "b", "b", "b", "b", "b", "c", "c", "c", "c",
 tb <- data.frame(Height,Weight, Group)
 m1 <- lm(Weight ~ Height + Group, data = tb)
 m2 <- lmer(Weight ~ Height + (1|Group), data = tb)
-tb <- tb %>%
+tb <- tb |>
   dplyr::mutate(PWeight = predict(m1, tb),
                 PWeight_lme = predict(m2, tb))
 # plot
@@ -58,7 +58,7 @@ p4 <- ggplot(tb, aes(Height, Weight)) +
   theme(legend.position = "none") +
   ggtitle("Mixed-effects model \n(with random intercepts + \nrandom slops)")
 # show plot
-ggpubr::ggarrange(p2, p3, p4, ncol = 3)
+gridExtra::grid.arrange(p2, p3, p4, ncol = 3)
 ```
 
 
@@ -84,11 +84,11 @@ In this last model, each level of a random variable has a different intercept an
 
 What features do distinguish random and fixed effects? 
 
-1) Random effects represent a higher level variable under which data points are grouped. This implies that random effects must be categorical (or nominal but *they a´cannot be continuous*!) [see @winter2019statistics, p. 236].
+1) Random effects represent a higher level variable under which data points are grouped. This implies that random effects must be categorical (or nominal but *they cannot be continuous*!) [see @winter2019statistics, p. 236].
 
-2) Random effects represent a sample of an infinite number of possible levels. For instance, speakers, trials, items, subjects, or words represent a potentially infinite pool of elements from which many different samples can be drawn. Thus, random effects represent a random sample sample. Fixed effects, on the other hand, typically do not represent a random sample but a fixed set of variable levels (e.g. Age groups, or parts-of-speech).
+2) Random effects represent a sample of an infinite number of possible levels. For instance, speakers, trials, items, subjects, or words represent a potentially infinite pool of elements from which many different samples can be drawn. Thus, random effects represent a random sample. Fixed effects, on the other hand, typically do not represent a random sample but a fixed set of variable levels (e.g. Age groups, or parts-of-speech).
 
-3) Random effects typically represent many different levels while fixed effects typically have only a few. @zuur2013beginner propose that a variable may be used as a fixed effect if it has less than 5 levels while it should be treated as a random effect if it has more than 10 levels. Variables with 5 to 10 levels can be used as both. However, this is a rule of thumb and ignores the theoretical reasons (random sample and nestedness) for considering something as a random effect and it also is at odds with the way that repeated measures are models (namely as mixed effects) although they typically only have very few levels.  
+3) Random effects typically represent many different levels while fixed effects typically have only a few. @zuur2013beginner propose that a variable may be used as a fixed effect if it has less than 5 levels while it should be treated as a random effect if it has more than 10 levels. Variables with 5 to 10 levels can be used as both. However, this is a rule of thumb and ignores the theoretical reasons (random sample and nestedness) for considering something as a random effect and it also is at odds with the way that repeated measures are modeled (namely as mixed effects) although they typically only have very few levels.  
 
 4) Fixed effects represent an effect that if we draw many samples, the effect would be consistent across samples [@winter2019statistics] while random effects should vary for each new sample that is drawn.
 
@@ -108,6 +108,8 @@ install.packages("glmulti")
 install.packages("lme4")
 install.packages("rms")
 install.packages("sjPlot")
+install.packages("performance")
+install.packages("see")
 ```
 
 Now that we have installed the packages, we activate them as shown below.
@@ -123,6 +125,8 @@ library(glmulti)
 library(lme4)
 library(rms)
 library(sjPlot)
+library(performance)
+library(see)
 ```
 
 ### Example: Preposition Use across Time by Genre{-}
@@ -131,23 +135,23 @@ To explore how to implement a mixed-effects model in R we revisit the prepositio
 
 ```{r lmm3}
 # load data
-lmmdata  <- base::readRDS(url("https://slcladal.github.io/data/lmd.rda", "rb")) %>%
+lmmdata  <- base::readRDS(url("https://slcladal.github.io/data/lmd.rda", "rb")) |>
   # convert date into a numeric variable
   dplyr::mutate(Date = as.numeric(Date))
 ```
 
 ```{r lmm3b, echo = F}
 # inspect data
-lmmdata %>%
-  as.data.frame() %>%
-  head(15) %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "First 15 rows of the lmmdata.")  %>%
+lmmdata |>
+  as.data.frame() |>
+  head(15) |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "First 15 rows of the lmmdata.")  |>
   flextable::border_outer()
 ```
 
@@ -193,7 +197,7 @@ ggplot(lmmdata, aes(Date, Prepositions)) +
 Centering numeric variables is useful for later interpretation of regression models: if the date variable were not centered, the regression would show the effects of variables at year 0(!). If numeric variables are centered, other variables are variables are considered relative not to 0 but to the mean of that variable (in this case the mean of years in our data). Centering simply means that the mean of the numeric variable is subtracted from each value.
 
 ```{r lmm7}
-lmmdata <- lmmdata %>%
+lmmdata <- lmmdata |>
   dplyr::mutate(DateUnscaled = Date,
                 Date = scale(Date, scale = F))
 ```
@@ -201,16 +205,16 @@ lmmdata <- lmmdata %>%
 
 ```{r lmm7b, echo = F}
 # inspect data
-lmmdata %>%
-  as.data.frame() %>%
-  head(15) %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "First 15 rows of the lmmdata.")  %>%
+lmmdata |>
+  as.data.frame() |>
+  head(15) |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "First 15 rows of the lmmdata.")  |>
   flextable::border_outer()
 ```
 
@@ -221,7 +225,16 @@ We now set up a mixed-effects model using the `lmer` function from the `lme4` pa
 m0.lmer = lmer(Prepositions ~ 1 + (1|Genre), REML = T, data = lmmdata)
 ```
 
-Now, that we have created the base-line model, we can contiue to fit the model to the data.
+Before we start adding fixed effects, we check whether including the random effect structure is justified. To do this, we use two functions from the `performance` package [@performance]: the `icc` function, which reports the *intra-class correlation coefficient* (ICC), i.e. the proportion of the total variance that is accounted for by the grouping structure (here: Genre) - substantial ICC values indicate that observations within the same group are more similar to each other than to observations from other groups, which warrants the inclusion of the random effect - and the `check_singularity` function, which tests whether the random effect structure is too complex to be supported by the data (a singular fit means that the variance of (parts of) the random effect structure is estimated to be (close to) zero, which indicates that the random effect structure should be simplified).
+
+```{r lmm8b, message=FALSE, warning=FALSE}
+# intra-class correlation coefficient
+performance::icc(m0.lmer)
+# check for singular fit
+performance::check_singularity(m0.lmer)
+```
+
+The ICC shows that a substantive proportion of the variance is accounted for by Genre and the model does not suffer from a singular fit. Including the random effect structure is thus justified and we can continue to fit the model to the data.
 
 
 
@@ -248,8 +261,8 @@ We now test whether *Region* should also be part of the final minimal adequate m
 ```{r lmm11, message=F, warning=F}
 # generate model
 m2.lmer <- update(m1.lmer, .~.+ Region)
-# test vifs
-car::vif(m2.lmer)
+# check collinearity
+performance::check_collinearity(m2.lmer)
 # compare models                
 anova(m2.lmer, m1.lmer, test = "Chi")
 ```
@@ -267,13 +280,13 @@ This means, that we will continue fitting the model without having *Region* incl
 ```{r lmm12, message=F, warning=F}
 # generate model
 m3.lmer <- update(m1.lmer, .~.+ Region*Date)
-# extract vifs
-car::vif(m3.lmer)
+# check collinearity
+performance::check_collinearity(m3.lmer)
 # compare models                
 anova(m3.lmer, m1.lmer, test = "Chi")
 ```
 
-Again, the high p-value and the increase in AIC and BIC show that we have found our minimal adequate model with only contains *Date* as a main effect. In a next step, we can inspect the final minimal adequate model, i.e. the most parsimonious (the model that explains a maximum of variance with a minimum of predictors).
+Again, the high p-value and the increase in AIC and BIC show that we have found our minimal adequate model which only contains *Date* as a main effect. In a next step, we can inspect the final minimal adequate model, i.e. the most parsimonious (the model that explains a maximum of variance with a minimum of predictors).
 
 ```{r lmm13, message=F, warning=F}
 # inspect results
@@ -282,38 +295,25 @@ summary(m1.lmer)
 
 ### Model Diagnostics{-}
 
-We now create diagnostic plots. What we wish to see in the diagnostic plots is a cloud of dots in the middle of the window without any structure. What we do not want to see is a funnel-shaped cloud because this indicates an increase of the errors/residuals with an increase of the predictor(s) (because this would indicate heteroscedasticity) [@pinheiro2000mixedmodels 182].
+We now perform the model diagnostics. What we wish to see in the residual-based diagnostic plots is a cloud of dots without any structure. What we do not want to see is a funnel-shaped cloud because this indicates an increase of the errors/residuals with an increase of the predictor(s) (because this would indicate heteroscedasticity) [@pinheiro2000mixedmodels 182]. As with fixed-effects regression models, we use the `check_model` function from the `performance` package [@performance] to evaluate the goodness of fit of the model and to check if mathematical requirements and assumptions have been violated.
 
-We begin by evaluating the goodness of fit of the model and check if mathematical requirements and assumptions have been violated. In a first step, we generate diagnostic plots that focus on the random effect structure.
-
-```{r lmm14, message=F, warning=F}
-plot(m1.lmer, Genre ~ resid(.), abline = 0 ) # generate diagnostic plots
+```{r lmm14, message=F, warning=F, fig.height=10}
+# generate diagnostic plots
+performance::check_model(m1.lmer)
 ```
 
-The plot shows that there are some outliers (points outside the boxes) and that the variability within letters is greater than in other genres we therefore examine the genres in isolation standardized residuals versus fitted values [@pinheiro2000mixedmodels 175].
+The panels for linearity, homogeneity of variance, influential observations, and normality of residuals are interpreted exactly as in the previous weeks. In addition to these familiar panels, `check_model` produces a panel that is specific to mixed-effects models: the *Normality of Random Effects* panel. This panel shows whether the estimated random intercepts (here: the intercept adjustments for the individual genres) follow a normal distribution, which is an assumption of mixed-effects models - the dots should follow the reference line.
+
+We complement the visual inspection with formal checks for influential observations and singularity.
 
 ```{r lmm15, message=F, warning=F}
-plot(m1.lmer, resid(., type = "pearson") ~ fitted(.) | Genre, id = 0.05, 
-     adj = -0.3, pch = 20, col = "gray40")
+# check for influential observations
+performance::check_outliers(m1.lmer)
+# check for singular fit
+performance::check_singularity(m1.lmer)
 ```
 
-The plot shows the standardized residuals (or Pearson's residuals) versus fitted values and suggests that there are outliers in the data (the names elements in the plots).To check this, we generate additional diagnostic plots that show the residuals against fitted values. What we would like to see is an unstrutured cloud that does not show trends (such as upward or downward trends) or a funnel-like pattern.
-
-
-```{r lmm22, message=F, warning=F}
-# start plotting
-plot(m1.lmer, pch = 20, col = "black", lty = "dotted")
-```
-
-The lack of structure tells us that the model is "healthy" and does not suffer from heteroscedasticity.  Now, we inspect the observed responses versus the within-group fitted values [@pinheiro2000mixedmodels 178].
-
-```{r lmm26, message=F, warning=F}
-# observed responses versus the within-group fitted values
-plot(m1.lmer, Prepositions ~ fitted(.), id = 0.05, adj = -0.3, 
-     xlim = c(80, 220), cex = .8, pch = 20, col = "blue")
-```
-
-Although some data points are named, the plot does not show any structure, like a funnel, which would have been problematic. 
+The diagnostics do not show any severe violations of the model assumptions (some minor deviations in the tails of the distribution of the residuals are common when dealing with real-life data and no reason for concern here) which tells us that the model is "healthy" and that we can proceed with the interpretation of the model.
 
 
 ### Summarizing the results{-}
@@ -390,7 +390,7 @@ yn <- c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 logd <- data.frame(x1, x2, x3, x4, x5, x6, x7, y, yn)
 colnames(logd) <- c("x1", "x2", "x3", "x4", "x5", "x6", "x7", "y", "yn")
 
-p1 <- logd %>%
+p1 <- logd |>
   ggplot(aes(y = yn, x = x1)) +
   geom_smooth(method = "glm", method.args = list(family = "binomial"), 
               se = FALSE, color = "red", size = .5) +
@@ -403,7 +403,7 @@ p1 <- logd %>%
         axis.ticks.x=element_blank(),
         plot.title = element_text(size=9))
 
-p2 <- logd %>%
+p2 <- logd |>
   ggplot(aes(y = yn, x = x1)) +
   geom_smooth(method = "glm", method.args = list(family = "binomial"), se = FALSE, color = "red", size = .5) +
   geom_smooth(aes(x = x2), method = "glm", method.args = list(family = "binomial"), se = FALSE, color = "gray", size = .5, alpha = .2) +
@@ -421,7 +421,7 @@ p2 <- logd %>%
         axis.ticks.x=element_blank(),
         plot.title = element_text(size=9))
 
-p3 <- logd %>%
+p3 <- logd |>
   ggplot(aes(y = yn, x = x1)) +
   geom_smooth(method = "glm", method.args = list(family = "binomial"), se = FALSE, color = "gray", size = .5, alpha = .2) +
   geom_smooth(aes(x = x21), method = "glm", method.args = list(family = "binomial"), se = FALSE, color = "gray", size = .5, alpha = .2) +
@@ -441,7 +441,7 @@ p3 <- logd %>%
         axis.ticks.x=element_blank(),
         plot.title = element_text(size=9))
 
-p4 <- logd %>%
+p4 <- logd |>
   ggplot(aes(y = yn, x = x1)) +
   geom_smooth(method = "glm", method.args = list(family = "binomial"), se = FALSE, color = "red", size = .5) +
   geom_smooth(aes(x = x11), method = "glm", method.args = list(family = "binomial"), se = FALSE, color = "gray", size = .5, alpha = .2) +
@@ -457,11 +457,11 @@ p4 <- logd %>%
         axis.ticks.x=element_blank(),
         plot.title = element_text(size=9))
 
-ggpubr::ggarrange(p1, p2, p3, p4, ncol = 2, nrow = 2)
+gridExtra::grid.arrange(p1, p2, p3, p4, ncol = 2, nrow = 2)
 ```
 
 
-The upper left panel merely shows the logistic curve representing the predictions of a fixed-effects logistic regression with a single intercept and slope. The upper right panel shows the logistic curves representing the predictions of a of a mixed-effects logistic regression with random intercepts for each level of a grouping variable. The lower left panel shows the logistic curves representing the predictions of a mixed-effects logistic regression with one intercept but random slopes for each level of a grouping variable. The lower right panel shows the logistic curves representing the predictions of a mixed-effects logistic regression with random intercepts and random slopes for each level of a grouping variable.
+The upper left panel merely shows the logistic curve representing the predictions of a fixed-effects logistic regression with a single intercept and slope. The upper right panel shows the logistic curves representing the predictions of a mixed-effects logistic regression with random intercepts for each level of a grouping variable. The lower left panel shows the logistic curves representing the predictions of a mixed-effects logistic regression with one intercept but random slopes for each level of a grouping variable. The lower right panel shows the logistic curves representing the predictions of a mixed-effects logistic regression with random intercepts and random slopes for each level of a grouping variable.
 
 After adding random intercepts, predictors (or fixed effects) are added to the model (just like with multiple regression). So mixed-effects are called mixed-effects because they contain both random and fixed effects.
 
@@ -469,7 +469,7 @@ In terms of general procedure, random effects are added first, and only after we
 
 ### Example: Discourse LIKE in Irish English
 
-In this example we will investigate which factors correlate with the use of *final discourse like* (e.g. "*The weather is shite, like!*") in Irish English. The data set represents speech units in a corpus that were coded for the speaker who uttered a given speech unit, the gender (Gender: Men versus Women) and age of that speaker (Age: Old versus Young), whether the interlocutors were of the same or a different gender (ConversationType: SameGender  versus MixedGender), and whether another *final discourse like* had been used up to three speech units before (Priming: NoPrime versus Prime), whether or not the speech unit contained an *final discourse like* (SUFLike: 1 = yes, 0 = no. To begin with, we load the data and inspect the structure of the data set,
+In this example we will investigate which factors correlate with the use of *final discourse like* (e.g. "*The weather is shite, like!*") in Irish English. The data set represents speech units in a corpus that were coded for the speaker who uttered a given speech unit, the gender (Gender: Men versus Women) and age of that speaker (Age: Old versus Young), whether the interlocutors were of the same or a different gender (ConversationType: SameGender  versus MixedGender), and whether another *final discourse like* had been used up to three speech units before (Priming: NoPrime versus Prime), whether or not the speech unit contained a *final discourse like* (SUFlike: 1 = yes, 0 = no). To begin with, we load the data and inspect the structure of the data set,
 
 
 ```{r blmm3, message=F, warning=F}
@@ -479,16 +479,16 @@ mblrdata  <- base::readRDS(url("https://slcladal.github.io/data/mbd.rda", "rb"))
 
 ```{r blmm3b, echo = F, message=F, warning=F}
 # inspect data
-mblrdata %>%
-  as.data.frame() %>%
-  head(15) %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "First 15 rows of the mblrdata.")  %>%
+mblrdata |>
+  as.data.frame() |>
+  head(15) |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "First 15 rows of the mblrdata.")  |>
   flextable::border_outer()
 ```
 
@@ -497,9 +497,9 @@ factorize the independent variables.
 
 ```{r blmm4, message=F, warning=F}
 # def. variables to be factorized
-mblrdata <- mblrdata %>%
-  dplyr::mutate_if(is.character, factor) %>%
-  dplyr::mutate(Age = relevel(Age, "Young")) %>%
+mblrdata <- mblrdata |>
+  dplyr::mutate_if(is.character, factor) |>
+  dplyr::mutate(Age = relevel(Age, "Young")) |>
   dplyr::arrange(ID)
 ```
 
@@ -516,7 +516,7 @@ ggplot(mblrdata, aes(Priming, SUFlike, color = Gender)) +
   labs(x = "", y = "Observed Probabilty of discourse like")
 ```
 
-The upper left panel in the Figure above indicates that men use discourse *like* more frequently than women. The center right panel suggests that priming significantly increases the likelihood of discourse like being used. The center left panel suggests that speakers use discourse like more frequently in mixed-gender conversations.  However, the lower right panel indicates an interaction between gender and conversation type as women appear to use discourse like less frequently in same gender conversations while the conversation type does not seem to have an effect on men. After visualizing the data, we will now turn to the model building process.
+The figure above indicates that men use discourse *like* more frequently than women and that priming increases the likelihood of discourse *like* being used. Speakers also appear to use discourse *like* more frequently in mixed-gender conversations. In addition, the figure suggests an interaction between gender and conversation type, as women appear to use discourse *like* less frequently in same-gender conversations while the conversation type does not seem to have an effect on men. After visualizing the data, we will now turn to the model building process.
 
 ### Model Building
 
@@ -595,7 +595,7 @@ As we will see the effects in the final summary, we visualize the effects here  
 sjPlot::plot_model(mlr.glmer, type = "pred", terms = c("Gender", "Priming", "ConversationType"))
 ```
 
-We can see that discourse like is more likely to surface in primed contexts and among males. In  conversations with both men and women, speakers use discourse like slightly less than in mixed conversations.
+We can see that discourse *like* is more likely to surface in primed contexts and among men. In same-gender conversations, speakers use discourse *like* less than in mixed-gender conversations.
  
 
 ### Extracting Model Fit Parameters
@@ -610,7 +610,24 @@ somers2(probs, as.numeric(mblrdata$SUFlike))
 
 The two lines that start with `probs` are simply two different ways to do the same thing (you only need one of these).
 
-The model fit parameters indicate a suboptimal fit. Both the C-value (the concordance statistic) and Somers' $\delta$ (Somers'delta) show an acceptable fit between predicted and observed occurrences of discourse *like*.  If the C-value is 0.5, the predictions are random, while the predictions are perfect if the C-value is 1. C-values above 0.8 indicate real predictive capacity [@baayen2008analyzing 204]. Somers’ D~xy~ is a value that represents a rank correlation between predicted probabilities and observed responses. Somers’ D~xy~ values range between 0, which indicates complete randomness, and 1, which indicates perfect prediction [@baayen2008analyzing 204]. The C-value of `r round(as.vector(somers2(probs, as.numeric(mblrdata$SUFlike)))[1], 2)` suggests that the model has some predictive and explanatory power, but not at an optimal level. We will now perform the model diagnostics.
+The model fit parameters indicate a suboptimal fit. Both the C-value (the concordance statistic) and Somers' $\delta$ (Somers'delta) show an acceptable fit between predicted and observed occurrences of discourse *like*.  If the C-value is 0.5, the predictions are random, while the predictions are perfect if the C-value is 1. C-values above 0.8 indicate real predictive capacity [@baayen2008analyzing 204]. Somers’ D~xy~ is a value that represents a rank correlation between predicted probabilities and observed responses. Somers’ D~xy~ values range between 0, which indicates complete randomness, and 1, which indicates perfect prediction [@baayen2008analyzing 204]. The C-value of `r round(as.vector(somers2(probs, as.numeric(mblrdata$SUFlike)))[1], 2)` suggests that the model has some predictive and explanatory power, but not at an optimal level. We will now perform the model diagnostics: as with the fixed-effects binomial logistic regression, we check the binned residuals, collinearity, and influential observations, and, as with the linear mixed-effects model, we additionally check the normality of the random effects and whether the model suffers from a singular fit.
+
+```{r blmm36, message=F, warning=F, fig.height=8}
+# generate diagnostic plots
+performance::check_model(mlr.glmer)
+```
+
+```{r blmm37, message=F, warning=F}
+# check collinearity
+performance::check_collinearity(mlr.glmer)
+# check for influential observations (Cook's distances; values > 1 are problematic)
+max(cooks.distance(mlr.glmer))
+which(cooks.distance(mlr.glmer) > 1)
+# check for singular fit
+performance::check_singularity(mlr.glmer)
+```
+
+The diagnostics do not indicate any severe problems.
 
 In a final step, we summarize our findings in tabulated form.
 
@@ -636,7 +653,7 @@ Regarding fixed effects, the model reported that
 * women use discourse *like* statistically less compared to men (beta =
 -0.64 [-0.99, -0.30], p < .001; Std. beta = -0.64 [-0.99,
 -0.30])  
-* speakers in conversations with other speakers of the same gender use discourse *like* significantly less compared to thier use in  mixed-gender conversations (beta = -0.54 [-0.83, -0.24], p < .001; Std. beta = -0.54 [-0.83, -0.24])  
+* speakers in conversations with other speakers of the same gender use discourse *like* significantly less compared to their use in mixed-gender conversations (beta = -0.54 [-0.83, -0.24], p < .001; Std. beta = -0.54 [-0.83, -0.24])  
 * Priming is  significantly positively correlated with the use of discourse *like* (beta = 1.87 [1.55, 2.19], p < .001; Std. beta = 1.87 [1.55, 2.19])
 
 

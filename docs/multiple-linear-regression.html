@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Week 10 Multiple Linear Regression | SLAT7855 Quantitative Research Methods in Applied Linguistics</title>
   <meta name="description" content="Week 10 Multiple Linear Regression | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Week 10 Multiple Linear Regression | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Martin Schweinberger" />
 
 
-<meta name="date" content="2022-09-15" />
+<meta name="date" content="2026-07-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,11 +52,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -94,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -107,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -121,6 +122,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -162,38 +167,26 @@ div.csl-indent {
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#basic-course-information"><i class="fa fa-check"></i>Basic Course Information</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-the-course"><i class="fa fa-check"></i>About the Course</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i>Course Description</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-introduction"><i class="fa fa-check"></i>Course Introduction</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#timetable"><i class="fa fa-check"></i>Timetable</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#aims-objectives-graduate-attributes"><i class="fa fa-check"></i>Aims, Objectives &amp; Graduate Attributes</a>
-<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#rationale"><i class="fa fa-check"></i>Rationale</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aims"><i class="fa fa-check"></i>Course Aims</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-outcomes"><i class="fa fa-check"></i>Learning Outcomes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#what-you-will-get-out-of-this-course"><i class="fa fa-check"></i>What You Will Get Out of This Course</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#who-this-course-is-for"><i class="fa fa-check"></i>Who This Course Is For</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-this-book-is-organised"><i class="fa fa-check"></i>How This Book Is Organised</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-resources"><i class="fa fa-check"></i>Learning Resources</a>
 <ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#required-resources"><i class="fa fa-check"></i>Required Resources</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-resources"><i class="fa fa-check"></i>Recommended Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#this-script"><i class="fa fa-check"></i>This Script</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-reading"><i class="fa fa-check"></i>Recommended Reading</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#university-learning-resources"><i class="fa fa-check"></i>University Learning Resources</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#school-of-languages-and-cultures-learning-resources"><i class="fa fa-check"></i>School of Languages and Cultures Learning Resources</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-learning-resources-information"><i class="fa fa-check"></i>Other Learning Resources &amp; Information</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#teaching-learning-activities"><i class="fa fa-check"></i>Teaching &amp; Learning Activities</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-activities"><i class="fa fa-check"></i>Learning Activities</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-plan"><i class="fa fa-check"></i>Course plan</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#assessment"><i class="fa fa-check"></i>Assessment</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#weekly-oline-study-tasks"><i class="fa fa-check"></i>Weekly Oline Study Tasks</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#annotated-bibliography"><i class="fa fa-check"></i>Annotated Bibliography</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#research-project"><i class="fa fa-check"></i>Research Project</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-grading"><i class="fa fa-check"></i>Course Grading</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#a-note-on-generative-ai"><i class="fa fa-check"></i>A Note on Generative AI</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
@@ -213,7 +206,6 @@ div.csl-indent {
 <li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#popper-falsification-and-scientific-progress"><i class="fa fa-check"></i><b>1.3.2</b> Popper, falsification, and scientific progress</a></li>
 <li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#what-is-empirical-linguistics"><i class="fa fa-check"></i><b>1.3.3</b> What is (empirical) Linguistics?</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#tutorial"><i class="fa fa-check"></i>Tutorial</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html"><i class="fa fa-check"></i><b>2</b> Hypotheses and Variables</a>
 <ul>
@@ -231,7 +223,6 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#variable-types-scaling"><i class="fa fa-check"></i>Variable Types (Scaling)</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#relationships-between-variables"><i class="fa fa-check"></i><b>2.4</b> Relationships between variables</a></li>
-<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#tutorial-1"><i class="fa fa-check"></i>Tutorial</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html"><i class="fa fa-check"></i><b>3</b> Significance, Probability and the Normal Distribution</a>
 <ul>
@@ -402,6 +393,7 @@ div.csl-indent {
 <li class="chapter" data-level="11.4" data-path="different-types-of-regression.html"><a href="different-types-of-regression.html#model-fitting-1"><i class="fa fa-check"></i><b>11.4</b> Model Fitting</a></li>
 <li class="chapter" data-level="11.5" data-path="different-types-of-regression.html"><a href="different-types-of-regression.html#effect-size-1"><i class="fa fa-check"></i><b>11.5</b> Effect Size</a></li>
 <li class="chapter" data-level="11.6" data-path="different-types-of-regression.html"><a href="different-types-of-regression.html#summarizing-results"><i class="fa fa-check"></i><b>11.6</b> Summarizing Results</a></li>
+<li class="chapter" data-level="11.7" data-path="different-types-of-regression.html"><a href="different-types-of-regression.html#outlook"><i class="fa fa-check"></i><b>11.7</b> Outlook</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html"><i class="fa fa-check"></i><b>12</b> Mixed-Effects Regression</a>
 <ul>
@@ -423,12 +415,24 @@ div.csl-indent {
 <li class="chapter" data-level="12.2.5" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#extracting-model-fit-parameters"><i class="fa fa-check"></i><b>12.2.5</b> Extracting Model Fit Parameters</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="tree-based-models.html"><a href="tree-based-models.html"><i class="fa fa-check"></i><b>13</b> Tree-Based Models</a>
+<li class="chapter" data-level="13" data-path="week13.html"><a href="week13.html"><i class="fa fa-check"></i><b>13</b> Tree-Based Models, Machine Learning, and AI</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="tree-based-models.html"><a href="tree-based-models.html#basic-concepts-1"><i class="fa fa-check"></i><b>13.1</b> Basic Concepts</a></li>
-<li class="chapter" data-level="13.2" data-path="tree-based-models.html"><a href="tree-based-models.html#decision-trees"><i class="fa fa-check"></i><b>13.2</b> Decision Trees</a></li>
-<li class="chapter" data-level="13.3" data-path="tree-based-models.html"><a href="tree-based-models.html#conditional-inference-trees"><i class="fa fa-check"></i><b>13.3</b> Conditional Inference Trees</a></li>
-<li class="chapter" data-level="13.4" data-path="tree-based-models.html"><a href="tree-based-models.html#problems-of-conditional-inference-trees"><i class="fa fa-check"></i><b>13.4</b> Problems of Conditional Inference Trees</a></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#the-basic-concept"><i class="fa fa-check"></i>The Basic Concept</a></li>
+<li class="chapter" data-level="13.1" data-path="week13.html"><a href="week13.html#decision-trees"><i class="fa fa-check"></i><b>13.1</b> Decision Trees</a></li>
+<li class="chapter" data-level="13.2" data-path="week13.html"><a href="week13.html#conditional-inference-trees"><i class="fa fa-check"></i><b>13.2</b> Conditional Inference Trees</a></li>
+<li class="chapter" data-level="13.3" data-path="week13.html"><a href="week13.html#from-trees-to-forests-an-introduction-to-machine-learning"><i class="fa fa-check"></i><b>13.3</b> From Trees to Forests: An Introduction to Machine Learning</a>
+<ul>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#random-forests"><i class="fa fa-check"></i>Random Forests</a></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#machine-learning-as-an-outlook"><i class="fa fa-check"></i>Machine Learning as an Outlook</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="week13.html"><a href="week13.html#large-language-models-and-generative-ai"><i class="fa fa-check"></i><b>13.4</b> Large Language Models and Generative AI</a>
+<ul>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#language-models-are-next-word-prediction-machines"><i class="fa fa-check"></i>Language Models are Next-Word Prediction Machines</a></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#from-n-grams-to-neural-networks-and-transformers"><i class="fa fa-check"></i>From n-grams to Neural Networks and Transformers</a></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#how-this-relates-to-this-course"><i class="fa fa-check"></i>How this Relates to this Course</a></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#implications-for-research-in-applied-linguistics"><i class="fa fa-check"></i>Implications for Research in Applied Linguistics</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#outlook-and-further-resources"><i class="fa fa-check"></i>Outlook and Further Resources</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -472,99 +476,44 @@ f_{(x)} = \alpha + \beta_{1}x_{i} + \beta_{2}x_{i+1} + \dots + \beta_{n}x_{i+n} 
 </div>
 <div id="example-gifts-and-availability" class="section level2 hasAnchor" number="10.2">
 <h2><span class="header-section-number">10.2</span> Example: Gifts and Availability<a href="multiple-linear-regression.html#example-gifts-and-availability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The example we will go through here is taken from <span class="citation">Field, Miles, and Field (<a href="#ref-field2012discovering" role="doc-biblioref">2012</a>)</span>. In this example, the research question is if the money that men spend on presents for women depends on the women’s attractiveness and their relationship status. To answer this research question, we will implement a multiple linear regression and start by loading the data and inspect its structure and properties.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="multiple-linear-regression.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
-<span id="cb1-2"><a href="multiple-linear-regression.html#cb1-2" aria-hidden="true" tabindex="-1"></a>mlrdata  <span class="ot">&lt;-</span> base<span class="sc">::</span><span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">&quot;https://slcladal.github.io/data/mld.rda&quot;</span>, <span class="st">&quot;rb&quot;</span>))</span></code></pre></div>
-<template id="eda5ffca-1dd6-4725-b753-24207d5f5f88"><style>
-.tabwid table{
-  border-spacing:0px !important;
-  border-collapse:collapse;
-  line-height:1;
-  margin-left:auto;
-  margin-right:auto;
-  border-width: 0;
-  display: table;
-  margin-top: 1.275em;
-  margin-bottom: 1.275em;
-  border-color: transparent;
-}
-.tabwid_left table{
-  margin-left:0;
-}
-.tabwid_right table{
-  margin-right:0;
-}
-.tabwid td {
-    padding: 0;
-}
-.tabwid a {
-  text-decoration: none;
-}
-.tabwid thead {
-    background-color: transparent;
-}
-.tabwid tfoot {
-    background-color: transparent;
-}
-.tabwid table tr {
-background-color: transparent;
-}
-.katex-display {
-    margin: 0 0 !important;
-}
-</style><div class="tabwid"><style>.cl-8d4b48d8{table-layout:auto;width:75%;}.cl-8d3c2d44{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8d3c2d58{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8d3c5274{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8d3c527e{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8d3cb17e{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8d3cb188{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8d3cb192{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8d3cb19c{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8d3cb19d{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8d3cb19e{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8d3cb1a6{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8d3cb1a7{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8d3cb1a8{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8d3cb1b0{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8d3cb1b1{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8d3cb1b2{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-8d4b48d8'>
-<caption class="Table Caption">
-<p><span id="tab:intro00">Table 10.1: </span>First 15 rows of the mlrdata.</p>
-</caption>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-8d3cb1b1"><p class="cl-8d3c5274"><span class="cl-8d3c2d44">status</span></p></td><td class="cl-8d3cb1b0"><p class="cl-8d3c5274"><span class="cl-8d3c2d44">attraction</span></p></td><td class="cl-8d3cb1b2"><p class="cl-8d3c527e"><span class="cl-8d3c2d44">money</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-8d3cb192"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">Relationship</span></p></td><td class="cl-8d3cb17e"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">NotInterested</span></p></td><td class="cl-8d3cb188"><p class="cl-8d3c527e"><span class="cl-8d3c2d58">86.33</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8d3cb19e"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">Relationship</span></p></td><td class="cl-8d3cb19c"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">NotInterested</span></p></td><td class="cl-8d3cb19d"><p class="cl-8d3c527e"><span class="cl-8d3c2d58">45.58</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8d3cb192"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">Relationship</span></p></td><td class="cl-8d3cb17e"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">NotInterested</span></p></td><td class="cl-8d3cb188"><p class="cl-8d3c527e"><span class="cl-8d3c2d58">68.43</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8d3cb19e"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">Relationship</span></p></td><td class="cl-8d3cb19c"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">NotInterested</span></p></td><td class="cl-8d3cb19d"><p class="cl-8d3c527e"><span class="cl-8d3c2d58">52.93</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8d3cb192"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">Relationship</span></p></td><td class="cl-8d3cb17e"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">NotInterested</span></p></td><td class="cl-8d3cb188"><p class="cl-8d3c527e"><span class="cl-8d3c2d58">61.86</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8d3cb19e"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">Relationship</span></p></td><td class="cl-8d3cb19c"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">NotInterested</span></p></td><td class="cl-8d3cb19d"><p class="cl-8d3c527e"><span class="cl-8d3c2d58">48.47</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8d3cb192"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">Relationship</span></p></td><td class="cl-8d3cb17e"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">NotInterested</span></p></td><td class="cl-8d3cb188"><p class="cl-8d3c527e"><span class="cl-8d3c2d58">32.79</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8d3cb19e"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">Relationship</span></p></td><td class="cl-8d3cb19c"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">NotInterested</span></p></td><td class="cl-8d3cb19d"><p class="cl-8d3c527e"><span class="cl-8d3c2d58">35.91</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8d3cb192"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">Relationship</span></p></td><td class="cl-8d3cb17e"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">NotInterested</span></p></td><td class="cl-8d3cb188"><p class="cl-8d3c527e"><span class="cl-8d3c2d58">30.98</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8d3cb19e"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">Relationship</span></p></td><td class="cl-8d3cb19c"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">NotInterested</span></p></td><td class="cl-8d3cb19d"><p class="cl-8d3c527e"><span class="cl-8d3c2d58">44.82</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8d3cb192"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">Relationship</span></p></td><td class="cl-8d3cb17e"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">NotInterested</span></p></td><td class="cl-8d3cb188"><p class="cl-8d3c527e"><span class="cl-8d3c2d58">35.05</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8d3cb19e"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">Relationship</span></p></td><td class="cl-8d3cb19c"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">NotInterested</span></p></td><td class="cl-8d3cb19d"><p class="cl-8d3c527e"><span class="cl-8d3c2d58">64.49</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8d3cb192"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">Relationship</span></p></td><td class="cl-8d3cb17e"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">NotInterested</span></p></td><td class="cl-8d3cb188"><p class="cl-8d3c527e"><span class="cl-8d3c2d58">54.50</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8d3cb19e"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">Relationship</span></p></td><td class="cl-8d3cb19c"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">NotInterested</span></p></td><td class="cl-8d3cb19d"><p class="cl-8d3c527e"><span class="cl-8d3c2d58">61.48</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8d3cb1a8"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">Relationship</span></p></td><td class="cl-8d3cb1a7"><p class="cl-8d3c5274"><span class="cl-8d3c2d58">NotInterested</span></p></td><td class="cl-8d3cb1a6"><p class="cl-8d3c527e"><span class="cl-8d3c2d58">55.51</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="61941f6a-89fc-4e80-bdc7-3c7acd1469a2"></div>
-<script>
-var dest = document.getElementById("61941f6a-89fc-4e80-bdc7-3c7acd1469a2");
-var template = document.getElementById("eda5ffca-1dd6-4725-b753-24207d5f5f88");
-var caption = template.content.querySelector("caption");
-if(caption) {
-  caption.style.cssText = "display:block;text-align:center;";
-  var newcapt = document.createElement("p");
-  newcapt.appendChild(caption)
-  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
-}
-var fantome = dest.attachShadow({mode: 'open'});
-var templateContent = template.content;
-fantome.appendChild(templateContent);
-</script>
-
+<p>The example we will go through here is taken from <span class="citation">Field et al. (<a href="#ref-field2012discovering">2012</a>)</span>. In this example, the research question is if the money that men spend on presents for women depends on the women’s attractiveness and their relationship status. To answer this research question, we will implement a multiple linear regression and start by loading the data and inspect its structure and properties.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="multiple-linear-regression.html#cb1-1" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb1-2"><a href="multiple-linear-regression.html#cb1-2" tabindex="-1"></a>mlrdata  <span class="ot">&lt;-</span> base<span class="sc">::</span><span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">&quot;https://slcladal.github.io/data/mld.rda&quot;</span>, <span class="st">&quot;rb&quot;</span>))</span></code></pre></div>
+<div class="tabwid"><style>.cl-f88c0fb6{table-layout:auto;width:75%;}.cl-f8831e56{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-f8831e6a{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-f886bcbe{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-f886bcc8{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-f886dad2{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f886dadc{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f886dadd{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f886dae6{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f886dae7{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f886daf0{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f886daf1{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f886daf2{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f886daf3{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f886dafa{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f886dafb{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f886db04{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-f88c0fb6'>
+<caption style="display:table-caption;margin:0pt;text-align:center;border-bottom: 0.00pt solid transparent;border-top: 0.00pt solid transparent;border-left: 0.00pt solid transparent;border-right: 0.00pt solid transparent;padding-top:3pt;padding-bottom:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;"><span id="tab:intro00">Table 10.1: </span><span>First 15 rows of the mlrdata.</span></caption>
+<thead><tr style="overflow-wrap:break-word;"><th class="cl-f886dad2"><p class="cl-f886bcbe"><span class="cl-f8831e56">status</span></p></th><th class="cl-f886dadc"><p class="cl-f886bcbe"><span class="cl-f8831e56">attraction</span></p></th><th class="cl-f886dadd"><p class="cl-f886bcc8"><span class="cl-f8831e56">money</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-f886dae6"><p class="cl-f886bcbe"><span class="cl-f8831e6a">Relationship</span></p></td><td class="cl-f886dae7"><p class="cl-f886bcbe"><span class="cl-f8831e6a">NotInterested</span></p></td><td class="cl-f886daf0"><p class="cl-f886bcc8"><span class="cl-f8831e6a">86.33</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f886daf1"><p class="cl-f886bcbe"><span class="cl-f8831e6a">Relationship</span></p></td><td class="cl-f886daf2"><p class="cl-f886bcbe"><span class="cl-f8831e6a">NotInterested</span></p></td><td class="cl-f886daf3"><p class="cl-f886bcc8"><span class="cl-f8831e6a">45.58</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f886dae6"><p class="cl-f886bcbe"><span class="cl-f8831e6a">Relationship</span></p></td><td class="cl-f886dae7"><p class="cl-f886bcbe"><span class="cl-f8831e6a">NotInterested</span></p></td><td class="cl-f886daf0"><p class="cl-f886bcc8"><span class="cl-f8831e6a">68.43</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f886daf1"><p class="cl-f886bcbe"><span class="cl-f8831e6a">Relationship</span></p></td><td class="cl-f886daf2"><p class="cl-f886bcbe"><span class="cl-f8831e6a">NotInterested</span></p></td><td class="cl-f886daf3"><p class="cl-f886bcc8"><span class="cl-f8831e6a">52.93</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f886dae6"><p class="cl-f886bcbe"><span class="cl-f8831e6a">Relationship</span></p></td><td class="cl-f886dae7"><p class="cl-f886bcbe"><span class="cl-f8831e6a">NotInterested</span></p></td><td class="cl-f886daf0"><p class="cl-f886bcc8"><span class="cl-f8831e6a">61.86</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f886daf1"><p class="cl-f886bcbe"><span class="cl-f8831e6a">Relationship</span></p></td><td class="cl-f886daf2"><p class="cl-f886bcbe"><span class="cl-f8831e6a">NotInterested</span></p></td><td class="cl-f886daf3"><p class="cl-f886bcc8"><span class="cl-f8831e6a">48.47</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f886dae6"><p class="cl-f886bcbe"><span class="cl-f8831e6a">Relationship</span></p></td><td class="cl-f886dae7"><p class="cl-f886bcbe"><span class="cl-f8831e6a">NotInterested</span></p></td><td class="cl-f886daf0"><p class="cl-f886bcc8"><span class="cl-f8831e6a">32.79</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f886daf1"><p class="cl-f886bcbe"><span class="cl-f8831e6a">Relationship</span></p></td><td class="cl-f886daf2"><p class="cl-f886bcbe"><span class="cl-f8831e6a">NotInterested</span></p></td><td class="cl-f886daf3"><p class="cl-f886bcc8"><span class="cl-f8831e6a">35.91</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f886dae6"><p class="cl-f886bcbe"><span class="cl-f8831e6a">Relationship</span></p></td><td class="cl-f886dae7"><p class="cl-f886bcbe"><span class="cl-f8831e6a">NotInterested</span></p></td><td class="cl-f886daf0"><p class="cl-f886bcc8"><span class="cl-f8831e6a">30.98</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f886daf1"><p class="cl-f886bcbe"><span class="cl-f8831e6a">Relationship</span></p></td><td class="cl-f886daf2"><p class="cl-f886bcbe"><span class="cl-f8831e6a">NotInterested</span></p></td><td class="cl-f886daf3"><p class="cl-f886bcc8"><span class="cl-f8831e6a">44.82</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f886dae6"><p class="cl-f886bcbe"><span class="cl-f8831e6a">Relationship</span></p></td><td class="cl-f886dae7"><p class="cl-f886bcbe"><span class="cl-f8831e6a">NotInterested</span></p></td><td class="cl-f886daf0"><p class="cl-f886bcc8"><span class="cl-f8831e6a">35.05</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f886daf1"><p class="cl-f886bcbe"><span class="cl-f8831e6a">Relationship</span></p></td><td class="cl-f886daf2"><p class="cl-f886bcbe"><span class="cl-f8831e6a">NotInterested</span></p></td><td class="cl-f886daf3"><p class="cl-f886bcc8"><span class="cl-f8831e6a">64.49</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f886dae6"><p class="cl-f886bcbe"><span class="cl-f8831e6a">Relationship</span></p></td><td class="cl-f886dae7"><p class="cl-f886bcbe"><span class="cl-f8831e6a">NotInterested</span></p></td><td class="cl-f886daf0"><p class="cl-f886bcc8"><span class="cl-f8831e6a">54.50</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f886daf1"><p class="cl-f886bcbe"><span class="cl-f8831e6a">Relationship</span></p></td><td class="cl-f886daf2"><p class="cl-f886bcbe"><span class="cl-f8831e6a">NotInterested</span></p></td><td class="cl-f886daf3"><p class="cl-f886bcc8"><span class="cl-f8831e6a">61.48</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f886dafa"><p class="cl-f886bcbe"><span class="cl-f8831e6a">Relationship</span></p></td><td class="cl-f886dafb"><p class="cl-f886bcbe"><span class="cl-f8831e6a">NotInterested</span></p></td><td class="cl-f886db04"><p class="cl-f886bcc8"><span class="cl-f8831e6a">55.51</span></p></td></tr></tbody></table></div>
 <p>The data set consist of three variables stored in three columns. The first column contains the relationship status of the present receiver (in this study, this were women), the second whether the present givers (in this study this were men) are interested in the present receiver, and the third column represents the money spend on the present. The data set represents 100 cases and the mean amount of money spend on a present is 88.38 dollars. In a next step, we visualize the data to get a more detailed impression of the relationships between variables.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="multiple-linear-regression.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create plots</span></span>
-<span id="cb2-2"><a href="multiple-linear-regression.html#cb2-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mlrdata, <span class="fu">aes</span>(status, money)) <span class="sc">+</span>   </span>
-<span id="cb2-3"><a href="multiple-linear-regression.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
-<span id="cb2-4"><a href="multiple-linear-regression.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb2-5"><a href="multiple-linear-regression.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot 2</span></span>
-<span id="cb2-6"><a href="multiple-linear-regression.html#cb2-6" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mlrdata, <span class="fu">aes</span>(attraction, money)) <span class="sc">+</span></span>
-<span id="cb2-7"><a href="multiple-linear-regression.html#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb2-8"><a href="multiple-linear-regression.html#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb2-9"><a href="multiple-linear-regression.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># plot 3</span></span>
-<span id="cb2-10"><a href="multiple-linear-regression.html#cb2-10" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mlrdata, <span class="fu">aes</span>(<span class="at">x =</span> money)) <span class="sc">+</span></span>
-<span id="cb2-11"><a href="multiple-linear-regression.html#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y=</span>..density..)) <span class="sc">+</span>           </span>
-<span id="cb2-12"><a href="multiple-linear-regression.html#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span>                               </span>
-<span id="cb2-13"><a href="multiple-linear-regression.html#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span>
-<span id="cb2-14"><a href="multiple-linear-regression.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># plot 4</span></span>
-<span id="cb2-15"><a href="multiple-linear-regression.html#cb2-15" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mlrdata, <span class="fu">aes</span>(status, money)) <span class="sc">+</span></span>
-<span id="cb2-16"><a href="multiple-linear-regression.html#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">factor</span>(status))) <span class="sc">+</span> </span>
-<span id="cb2-17"><a href="multiple-linear-regression.html#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> attraction) <span class="sc">+</span>       </span>
-<span id="cb2-18"><a href="multiple-linear-regression.html#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb2-19"><a href="multiple-linear-regression.html#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb2-20"><a href="multiple-linear-regression.html#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># show plots</span></span>
-<span id="cb2-21"><a href="multiple-linear-regression.html#cb2-21" aria-hidden="true" tabindex="-1"></a>vip<span class="sc">::</span><span class="fu">grid.arrange</span>(<span class="at">grobs =</span> <span class="fu">list</span>(p1, p2, p3, p4), <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>)))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/mlr3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="multiple-linear-regression.html#cb2-1" tabindex="-1"></a><span class="co"># create plots</span></span>
+<span id="cb2-2"><a href="multiple-linear-regression.html#cb2-2" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mlrdata, <span class="fu">aes</span>(status, money)) <span class="sc">+</span>   </span>
+<span id="cb2-3"><a href="multiple-linear-regression.html#cb2-3" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb2-4"><a href="multiple-linear-regression.html#cb2-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb2-5"><a href="multiple-linear-regression.html#cb2-5" tabindex="-1"></a><span class="co"># plot 2</span></span>
+<span id="cb2-6"><a href="multiple-linear-regression.html#cb2-6" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mlrdata, <span class="fu">aes</span>(attraction, money)) <span class="sc">+</span></span>
+<span id="cb2-7"><a href="multiple-linear-regression.html#cb2-7" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb2-8"><a href="multiple-linear-regression.html#cb2-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb2-9"><a href="multiple-linear-regression.html#cb2-9" tabindex="-1"></a><span class="co"># plot 3</span></span>
+<span id="cb2-10"><a href="multiple-linear-regression.html#cb2-10" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mlrdata, <span class="fu">aes</span>(<span class="at">x =</span> money)) <span class="sc">+</span></span>
+<span id="cb2-11"><a href="multiple-linear-regression.html#cb2-11" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y=</span>..density..)) <span class="sc">+</span>           </span>
+<span id="cb2-12"><a href="multiple-linear-regression.html#cb2-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span>                               </span>
+<span id="cb2-13"><a href="multiple-linear-regression.html#cb2-13" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span>
+<span id="cb2-14"><a href="multiple-linear-regression.html#cb2-14" tabindex="-1"></a><span class="co"># plot 4</span></span>
+<span id="cb2-15"><a href="multiple-linear-regression.html#cb2-15" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mlrdata, <span class="fu">aes</span>(status, money)) <span class="sc">+</span></span>
+<span id="cb2-16"><a href="multiple-linear-regression.html#cb2-16" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">factor</span>(status))) <span class="sc">+</span> </span>
+<span id="cb2-17"><a href="multiple-linear-regression.html#cb2-17" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> attraction) <span class="sc">+</span>       </span>
+<span id="cb2-18"><a href="multiple-linear-regression.html#cb2-18" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb2-19"><a href="multiple-linear-regression.html#cb2-19" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb2-20"><a href="multiple-linear-regression.html#cb2-20" tabindex="-1"></a><span class="co"># show plots</span></span>
+<span id="cb2-21"><a href="multiple-linear-regression.html#cb2-21" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(<span class="at">grobs =</span> <span class="fu">list</span>(p1, p2, p3, p4), <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>)))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/mlr3-1.png" alt="" width="672" /></p>
 <p>The upper left figure consists of a boxplot which shows how much money was spent by relationship status. The figure suggests that men spend more on women if they are not in a relationship. The next figure shows the relationship between the money spend on presents and whether or not the men were interested in the women.</p>
 <p>The boxplot in the upper right panel suggests that men spend substantially more on women if the men are interested in them. The next figure depicts the distribution of the amounts of money spend on the presents for the women. In addition, the figure indicates the existence of two outliers (dots in the boxplot)</p>
 <p>The histogram in the lower left panel shows that, although the mean amount of money spent on presents is 88.38 dollars, the distribution peaks around 50 dollars indicating that on average, men spend about 50 dollars on presents. Finally, we will plot the amount of money spend on presents against relationship status by attraction in order to check whether the money spent on presents is affected by an interaction between attraction and relationship status.</p>
 <p>The boxplot in the lower right panel confirms the existence of an interaction (a non-additive term) as men only spend more money on women if the men single <em>and</em> they are interested in the women. If men are not interested in the women, then the relationship has no effect as they spend an equal amount of money on the women regardless of whether they are in a relationship or not.</p>
 <p>We will now start to implement the regression model. In a first step, we create a saturated model that contain all possible predictors (main effects and interactions).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="multiple-linear-regression.html#cb3-1" aria-hidden="true" tabindex="-1"></a>m1.mlr <span class="ot">=</span> <span class="fu">lm</span>(                      <span class="co"># generate lm regression object</span></span>
-<span id="cb3-2"><a href="multiple-linear-regression.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  money <span class="sc">~</span> attraction<span class="sc">*</span>status,      <span class="co"># def. regression formula</span></span>
-<span id="cb3-3"><a href="multiple-linear-regression.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> mlrdata)                 <span class="co"># def. data</span></span></code></pre></div>
-<p>After generating the saturated models we can now start with the model fitting. Model fitting refers to a process that aims at find the model that explains a maximum of variance with a minimum of predictors <span class="citation">(see <a href="#ref-field2012discovering" role="doc-biblioref">Field, Miles, and Field 2012, 318</a>)</span>. Model fitting is therefore based on the <em>principle of parsimony</em> which is related to Occam’s razor according to which explanations that require fewer assumptions are more likely to be true.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="multiple-linear-regression.html#cb3-1" tabindex="-1"></a>m1.mlr <span class="ot">=</span> <span class="fu">lm</span>(                      <span class="co"># generate lm regression object</span></span>
+<span id="cb3-2"><a href="multiple-linear-regression.html#cb3-2" tabindex="-1"></a>  money <span class="sc">~</span> attraction<span class="sc">*</span>status,      <span class="co"># def. regression formula</span></span>
+<span id="cb3-3"><a href="multiple-linear-regression.html#cb3-3" tabindex="-1"></a>  <span class="at">data =</span> mlrdata)                 <span class="co"># def. data</span></span></code></pre></div>
+<p>After generating the saturated models we can now start with the model fitting. Model fitting refers to a process that aims at find the model that explains a maximum of variance with a minimum of predictors <span class="citation">(see <a href="#ref-field2012discovering">Field et al. 2012, 318</a>)</span>. Model fitting is therefore based on the <em>principle of parsimony</em> which is related to Occam’s razor according to which explanations that require fewer assumptions are more likely to be true.</p>
 </div>
 <div id="model-fitting" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> Model Fitting<a href="multiple-linear-regression.html#model-fitting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -573,13 +522,13 @@ fantome.appendChild(templateContent);
 <p><span class="math display">\[\begin{equation}
 Akaike Information Criterion (AIC) = -2LL + 2k
 \end{equation}\]</span></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="multiple-linear-regression.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmulti)</span>
-<span id="cb4-2"><a href="multiple-linear-regression.html#cb4-2" aria-hidden="true" tabindex="-1"></a>mfit <span class="ot">&lt;-</span> <span class="fu">glmulti</span>(money <span class="sc">~</span> attraction <span class="sc">+</span> status, <span class="at">data =</span> mlrdata, <span class="at">crit =</span> aic)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="multiple-linear-regression.html#cb4-1" tabindex="-1"></a><span class="fu">library</span>(glmulti)</span>
+<span id="cb4-2"><a href="multiple-linear-regression.html#cb4-2" tabindex="-1"></a>mfit <span class="ot">&lt;-</span> <span class="fu">glmulti</span>(money <span class="sc">~</span> attraction <span class="sc">+</span> status, <span class="at">data =</span> mlrdata, <span class="at">crit =</span> aic)</span></code></pre></div>
 <pre><code>## Initialization...
 ## TASK: Exhaustive screening of candidate set.
 ## Fitting...
 ## Completed.</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="multiple-linear-regression.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mfit)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="multiple-linear-regression.html#cb6-1" tabindex="-1"></a><span class="fu">summary</span>(mfit)</span></code></pre></div>
 <pre><code>## $name
 ## [1] &quot;glmulti.analysis&quot;
 ## 
@@ -618,11 +567,11 @@ Akaike Information Criterion (AIC) = -2LL + 2k
 ## $includeobjects
 ## [1] TRUE</code></pre>
 <p>The <code>glmulti</code> function reports <code>money ~ 1 + status:attraction</code> as the best model. However, if a variable is part of a significant interaction, we also need to include the main effect which means that our best model is <code>money ~ 1 + status + attraction + status:attraction</code>, or, simplified: <code>money ~ status * attraction</code> (which is the same as the previous formula). The saturated model is thus also the final minimal adequate model, i.e. the model with the best fit and the lowest number of predictors. We will now inspect the final minimal model and go over the model report.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="multiple-linear-regression.html#cb8-1" aria-hidden="true" tabindex="-1"></a>m2.mlr <span class="ot">=</span> <span class="fu">lm</span>(                    <span class="co"># generate lm regression object</span></span>
-<span id="cb8-2"><a href="multiple-linear-regression.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  money <span class="sc">~</span> status <span class="sc">*</span> attraction,  <span class="co"># def. regression formula, x1 * x2 = x1 + x2 + x1:x2</span></span>
-<span id="cb8-3"><a href="multiple-linear-regression.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> mlrdata)               <span class="co"># def. data</span></span>
-<span id="cb8-4"><a href="multiple-linear-regression.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect final minimal model</span></span>
-<span id="cb8-5"><a href="multiple-linear-regression.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2.mlr)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="multiple-linear-regression.html#cb8-1" tabindex="-1"></a>m2.mlr <span class="ot">=</span> <span class="fu">lm</span>(                    <span class="co"># generate lm regression object</span></span>
+<span id="cb8-2"><a href="multiple-linear-regression.html#cb8-2" tabindex="-1"></a>  money <span class="sc">~</span> status <span class="sc">*</span> attraction,  <span class="co"># def. regression formula, x1 * x2 = x1 + x2 + x1:x2</span></span>
+<span id="cb8-3"><a href="multiple-linear-regression.html#cb8-3" tabindex="-1"></a>  <span class="at">data =</span> mlrdata)               <span class="co"># def. data</span></span>
+<span id="cb8-4"><a href="multiple-linear-regression.html#cb8-4" tabindex="-1"></a><span class="co"># inspect final minimal model</span></span>
+<span id="cb8-5"><a href="multiple-linear-regression.html#cb8-5" tabindex="-1"></a><span class="fu">summary</span>(m2.mlr)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = money ~ status * attraction, data = mlrdata)
@@ -647,17 +596,17 @@ Akaike Information Criterion (AIC) = -2LL + 2k
 <p>Next, the model summary reports the most important part: a table with model statistics of the fixed-effects structure of the model. The table contains the estimates (coefficients of the predictors), standard errors, t-values, and the p-values which show whether a predictor significantly correlates with the dependent variable that the model investigates.</p>
 <p>All main effects (status and attraction) as well as the interaction between status and attraction is reported as being significantly correlated with the dependent variable (money). An interaction occurs if a correlation between the dependent variable and a predictor is affected by another predictor.</p>
 <p>The top most term is called intercept and has a value of 99.15 which represents the base estimate to which all other estimates refer. To exemplify what this means, let us consider what the model would predict a man would spend on a present if he is interested in a woman but she is in a relationship. The amount he would spend (based on the model would be 99.15 dollars (which is the intercept). This means that the intercept represents the predicted value if all predictors take the base or reference level. And since being in relationship but being interested are the case, and because the interaction does not apply, the predicted value in our example is exactly the intercept (see below).</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="multiple-linear-regression.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#intercept  Single  NotInterested  Single:NotInterested</span></span>
-<span id="cb10-2"><a href="multiple-linear-regression.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fl">99.15</span>     <span class="sc">+</span> <span class="fl">57.69</span>  <span class="sc">+</span> <span class="dv">0</span>           <span class="sc">+</span> <span class="dv">0</span>     <span class="co"># 156.8 single + interested</span></span>
-<span id="cb10-3"><a href="multiple-linear-regression.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fl">99.15</span>     <span class="sc">+</span> <span class="fl">57.69</span>  <span class="sc">-</span> <span class="fl">47.66</span>       <span class="sc">-</span> <span class="fl">63.18</span> <span class="co"># 46.00 single + not interested</span></span>
-<span id="cb10-4"><a href="multiple-linear-regression.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fl">99.15</span>     <span class="sc">-</span> <span class="dv">0</span>      <span class="sc">+</span> <span class="dv">0</span>           <span class="sc">-</span> <span class="dv">0</span>     <span class="co"># 99.15 relationship + interested</span></span>
-<span id="cb10-5"><a href="multiple-linear-regression.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fl">99.15</span>     <span class="sc">-</span> <span class="dv">0</span>      <span class="sc">-</span> <span class="fl">47.66</span>       <span class="sc">-</span> <span class="dv">0</span>     <span class="co"># 51.49 relationship + not interested</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="multiple-linear-regression.html#cb10-1" tabindex="-1"></a><span class="co">#intercept  Single  NotInterested  Single:NotInterested</span></span>
+<span id="cb10-2"><a href="multiple-linear-regression.html#cb10-2" tabindex="-1"></a><span class="fl">99.15</span>     <span class="sc">+</span> <span class="fl">57.69</span>  <span class="sc">+</span> <span class="dv">0</span>           <span class="sc">+</span> <span class="dv">0</span>     <span class="co"># 156.8 single + interested</span></span>
+<span id="cb10-3"><a href="multiple-linear-regression.html#cb10-3" tabindex="-1"></a><span class="fl">99.15</span>     <span class="sc">+</span> <span class="fl">57.69</span>  <span class="sc">-</span> <span class="fl">47.66</span>       <span class="sc">-</span> <span class="fl">63.18</span> <span class="co"># 46.00 single + not interested</span></span>
+<span id="cb10-4"><a href="multiple-linear-regression.html#cb10-4" tabindex="-1"></a><span class="fl">99.15</span>     <span class="sc">-</span> <span class="dv">0</span>      <span class="sc">+</span> <span class="dv">0</span>           <span class="sc">-</span> <span class="dv">0</span>     <span class="co"># 99.15 relationship + interested</span></span>
+<span id="cb10-5"><a href="multiple-linear-regression.html#cb10-5" tabindex="-1"></a><span class="fl">99.15</span>     <span class="sc">-</span> <span class="dv">0</span>      <span class="sc">-</span> <span class="fl">47.66</span>       <span class="sc">-</span> <span class="dv">0</span>     <span class="co"># 51.49 relationship + not interested</span></span></code></pre></div>
 <p>Now, let us consider what a man would spend if she is in a relationship and he is not attracted to the women. In that case, the model predicts that the man would spend only 51.49 dollars on a present: the intercept (99.15) minus 47.66 because the man is not interested (and no additional subtraction because the interaction does not apply).</p>
 <p>We can derive the same results easier using the <code>predict</code> function.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="multiple-linear-regression.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make prediction based on the model for original data</span></span>
-<span id="cb11-2"><a href="multiple-linear-regression.html#cb11-2" aria-hidden="true" tabindex="-1"></a>prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(m2.mlr, <span class="at">newdata =</span> mlrdata)</span>
-<span id="cb11-3"><a href="multiple-linear-regression.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect predictions</span></span>
-<span id="cb11-4"><a href="multiple-linear-regression.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">round</span>(prediction,<span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="multiple-linear-regression.html#cb11-1" tabindex="-1"></a><span class="co"># make prediction based on the model for original data</span></span>
+<span id="cb11-2"><a href="multiple-linear-regression.html#cb11-2" tabindex="-1"></a>prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(m2.mlr, <span class="at">newdata =</span> mlrdata)</span>
+<span id="cb11-3"><a href="multiple-linear-regression.html#cb11-3" tabindex="-1"></a><span class="co"># inspect predictions</span></span>
+<span id="cb11-4"><a href="multiple-linear-regression.html#cb11-4" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">round</span>(prediction,<span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## 
 ##  46.01  51.49  99.15 156.85 
 ##     25     25     25     25</code></pre>
@@ -665,9 +614,9 @@ Akaike Information Criterion (AIC) = -2LL + 2k
 <p>The multiple R<sup>2</sup>-value is a measure of how much variance the model explains. A multiple R<sup>2</sup>-value of 0 would inform us that the model does not explain any variance while a value of .852 mean that the model explains 85.2 percent of the variance. A value of 1 would inform us that the model explains 100 percent of the variance and that the predictions of the model match the observed values perfectly. Multiplying the multiple R<sup>2</sup>-value thus provides the percentage of explained variance.</p>
 <p>The adjusted R<sup>2</sup>-value considers the amount of explained variance in light of the number of predictors in the model (it is thus somewhat similar to the AIC and BIC) and informs about how well the model would perform if it were applied to the population that the sample is drawn from. Ideally, the difference between multiple and adjusted R<sup>2</sup>-value should be very small as this means that the model is not overfitted. If, however, the difference between multiple and adjusted R<sup>2</sup>-value is substantial, then this would strongly suggest that the model is unstable and overfitted to the data while being inadequate for drawing inferences about the population. Differences between multiple and adjusted R<sup>2</sup>-values indicate that the data contains outliers that cause the distribution of the data on which the model is based to differ from the distributions that the model mathematically requires to provide reliable estimates. The difference between multiple and adjusted R<sup>2</sup>-value in our model is very small (85.2-84.7=.05) and should not cause concern.</p>
 <p>Now, we compare the final minimal adequate model to the base-line model to test whether then final model significantly outperforms the baseline model.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="multiple-linear-regression.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare baseline- and minimal adequate model</span></span>
-<span id="cb13-2"><a href="multiple-linear-regression.html#cb13-2" aria-hidden="true" tabindex="-1"></a>m0.mlr <span class="ot">&lt;-</span> <span class="fu">lm</span>(money <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> mlrdata)</span>
-<span id="cb13-3"><a href="multiple-linear-regression.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m0.mlr, m2.mlr)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="multiple-linear-regression.html#cb13-1" tabindex="-1"></a><span class="co"># compare baseline- and minimal adequate model</span></span>
+<span id="cb13-2"><a href="multiple-linear-regression.html#cb13-2" tabindex="-1"></a>m0.mlr <span class="ot">&lt;-</span> <span class="fu">lm</span>(money <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> mlrdata)</span>
+<span id="cb13-3"><a href="multiple-linear-regression.html#cb13-3" tabindex="-1"></a><span class="fu">anova</span>(m0.mlr, m2.mlr)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: money ~ 1
@@ -677,25 +626,38 @@ Akaike Information Criterion (AIC) = -2LL + 2k
 ## 2     96  34558  3    199005 184.28 &lt; 2.2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p>The comparison between the two model confirms that the minimal adequate model performs significantly better (makes significantly more accurate estimates of the outcome variable) compared with the baseline model.</p>
+<p>The comparison between the two models confirms that the minimal adequate model performs significantly better (makes significantly more accurate estimates of the outcome variable) compared with the baseline model.</p>
 </div>
 <div id="model-diagnostics" class="section level2 hasAnchor" number="10.4">
 <h2><span class="header-section-number">10.4</span> Model Diagnostics<a href="multiple-linear-regression.html#model-diagnostics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>After implementing the multiple regression, we now need to look for outliers and perform the model diagnostics by testing whether removing data points disproportionately decreases model fit. To begin with, we generate diagnostic plots.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="multiple-linear-regression.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate plots</span></span>
-<span id="cb15-2"><a href="multiple-linear-regression.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(m2.mlr) <span class="sc">+</span> </span>
-<span id="cb15-3"><a href="multiple-linear-regression.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(), <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
-<span id="cb15-4"><a href="multiple-linear-regression.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/mlr11-1.png" width="672" /></p>
-<p>The plots do not show severe problems such as funnel shaped patterns or drastic deviations from the diagonal line in Normal Q-Q plot (have a look at the explanation of what to look for and how to interpret these diagnostic plots in the section on simple linear regression) but data points 52, 64, and 83 are repeatedly indicated as potentially problematic cases. We thus plot the Cook’s distance to see if there are points that over-proportionately impact model fit.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="multiple-linear-regression.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m2.mlr, <span class="at">which=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/mlr12-1.png" width="672" /></p>
-<p>The graphs indicate that data points 52, 64, and 83 do not seem to overly affect the results as they are within the acceptable range (indicated by the blue area around the Q-Q plot) and their Cook’s distance is elevated but not excessively high. and we can thus ignore this issue here.</p>
+<p>After implementing the multiple regression, we now need to check the model assumptions and look for influential observations, i.e. data points whose removal would disproportionately change the model fit. As in the section on simple linear regression, we use the <code>check_model</code> function from the <code>performance</code> package <span class="citation">(<a href="#ref-performance">Lüdecke et al. 2021</a>)</span> to generate the diagnostic plots (have a look at the explanations of what to look for and how to interpret these diagnostic plots in the section on simple linear regression).</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="multiple-linear-regression.html#cb15-1" tabindex="-1"></a><span class="co"># generate diagnostic plots</span></span>
+<span id="cb15-2"><a href="multiple-linear-regression.html#cb15-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(m2.mlr)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/mlr11-1.png" alt="" width="672" /></p>
+<p>Because we are now dealing with more than one predictor, the panel includes an additional plot: the <em>Collinearity</em> panel. This panel shows the variance inflation factor (VIF) for each model term, which quantifies how strongly a predictor can be predicted from the other predictors in the model. High collinearity (VIFs above 10; some scholars use the more conservative threshold of 5) is problematic because it renders the coefficient estimates unstable and their interpretation unreliable. We can also extract the VIFs directly, as shown below.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="multiple-linear-regression.html#cb16-1" tabindex="-1"></a><span class="co"># check collinearity</span></span>
+<span id="cb16-2"><a href="multiple-linear-regression.html#cb16-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_collinearity</span>(m2.mlr)</span></code></pre></div>
+<pre><code>## # Check for Multicollinearity
+## 
+## Low Correlation
+## 
+##               Term  VIF   VIF 95% CI adj. VIF Tolerance Tolerance 95% CI
+##             status 2.00 [1.58, 2.73]     1.41      0.50     [0.37, 0.63]
+##         attraction 2.00 [1.58, 2.73]     1.41      0.50     [0.37, 0.63]
+##  status:attraction 3.00 [2.26, 4.16]     1.73      0.33     [0.24, 0.44]</code></pre>
+<p><em>A note on VIFs in models with interactions:</em> elevated VIFs of terms involved in an interaction are expected (a predictor and an interaction containing that predictor are necessarily correlated) and are not by themselves a cause for concern.</p>
+<p>The plots do not show severe problems such as funnel-shaped patterns in the homogeneity-of-variance panel or drastic deviations from the reference line in the normality panel. To make sure that no data points over-proportionately impact the model fit, we formally check for influential observations based on Cook’s distance.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="multiple-linear-regression.html#cb18-1" tabindex="-1"></a><span class="co"># check for influential observations</span></span>
+<span id="cb18-2"><a href="multiple-linear-regression.html#cb18-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_outliers</span>(m2.mlr)</span></code></pre></div>
+<pre><code>## OK: No outliers detected.
+## - Based on the following method and threshold: cook (0.5).
+## - For variable: (Whole model)</code></pre>
+<p>The diagnostics indicate that no data points overly affect the results (no observation exceeds the Cook’s distance threshold) and we can thus proceed with the interpretation of the model.</p>
 </div>
 <div id="a-word-about-sample-size" class="section level2 hasAnchor" number="10.5">
 <h2><span class="header-section-number">10.5</span> A Word about Sample Size<a href="multiple-linear-regression.html#a-word-about-sample-size" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>One common issue when doing null-hypothesis hypothesis testing is sample size (which is related to the probability of <span class="math inline">\(\beta\)</span>-errors). Remember, <span class="math inline">\(\beta\)</span>-errors (or beta errors) mean overlooking a significant effect typically because the sample size is too low. The test statistics ranges between 0 and 1 where lower values are better.</p>
-<p>Despite there being no ultimate rule of thumb, <span class="citation">Field, Miles, and Field (<a href="#ref-field2012discovering" role="doc-biblioref">2012, 273–75</a>)</span>, based on <span class="citation">Green (<a href="#ref-green1991many" role="doc-biblioref">1991</a>)</span>, provide data-driven suggestions for the minimal size of data required for regression models that aim to find medium sized effects (k = number of predictors; categorical variables with more than two levels should be transformed into dummy variables):</p>
+<p>One common issue when doing null-hypothesis significance testing is sample size (which is related to the probability of <span class="math inline">\(\beta\)</span>-errors). Remember, <span class="math inline">\(\beta\)</span>-errors (or beta errors) mean overlooking a significant effect typically because the sample size is too low. The probability of a <span class="math inline">\(\beta\)</span>-error ranges between 0 and 1, where lower values are better.</p>
+<p>Despite there being no ultimate rule of thumb, <span class="citation">Field et al. (<a href="#ref-field2012discovering">2012, 273–75</a>)</span>, based on <span class="citation">Green (<a href="#ref-green1991many">1991</a>)</span>, provide data-driven suggestions for the minimal size of data required for regression models that aim to find medium sized effects (k = number of predictors; categorical variables with more than two levels should be transformed into dummy variables):</p>
 <blockquote>
 <p>If one is only interested in the effect of specific variables, then the sample size should be at least 104 + k (k = number of predictors in model).</p>
 </blockquote>
@@ -703,15 +665,22 @@ Akaike Information Criterion (AIC) = -2LL + 2k
 <div id="visualizing-effects" class="section level2 hasAnchor" number="10.6">
 <h2><span class="header-section-number">10.6</span> Visualizing effects<a href="multiple-linear-regression.html#visualizing-effects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Now, we visualize the effects of the predictors reported as being significant.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="multiple-linear-regression.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulate model results</span></span>
-<span id="cb17-2"><a href="multiple-linear-regression.html#cb17-2" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_model</span>(m2.mlr, <span class="at">type =</span> <span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">&quot;status&quot;</span>, <span class="st">&quot;attraction&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/mlr25a-1.png" width="672" /></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="multiple-linear-regression.html#cb20-1" tabindex="-1"></a><span class="co"># tabulate model results</span></span>
+<span id="cb20-2"><a href="multiple-linear-regression.html#cb20-2" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_model</span>(m2.mlr, <span class="at">type =</span> <span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">&quot;status&quot;</span>, <span class="st">&quot;attraction&quot;</span>))</span></code></pre></div>
+<pre><code>## Some of the focal terms are of type `character`. This may lead to
+##   unexpected results. It is recommended to convert these variables to
+##   factors before fitting the model.
+##   The following variables are of type character: `status`, `attraction`</code></pre>
+<pre><code>## Ignoring unknown labels:
+## • linetype : &quot;attraction&quot;
+## • shape : &quot;attraction&quot;</code></pre>
+<p><img src="bookdownproj_files/figure-html/mlr25a-1.png" alt="" width="672" /></p>
 </div>
 <div id="reporting-results" class="section level2 hasAnchor" number="10.7">
 <h2><span class="header-section-number">10.7</span> Reporting Results<a href="multiple-linear-regression.html#reporting-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As a last step, we summarize the results of the regression analysis.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="multiple-linear-regression.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulate model results</span></span>
-<span id="cb18-2"><a href="multiple-linear-regression.html#cb18-2" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(m2.mlr)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="multiple-linear-regression.html#cb23-1" tabindex="-1"></a><span class="co"># tabulate model results</span></span>
+<span id="cb23-2"><a href="multiple-linear-regression.html#cb23-2" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(m2.mlr)</span></code></pre></div>
 <table style="border-collapse:collapse; border:none;">
 <tr>
 <th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
@@ -779,7 +748,7 @@ attraction<br>[NotInterested]
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-status [Single] *<br>attraction<br>[NotInterested]
+status [Single] ×<br>attraction<br>[NotInterested]
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 -63.18
@@ -808,15 +777,15 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 </td>
 </tr>
 </table>
-<p>Additionally, we can inspect the summary of the regression model as shown below to extract additional information. We can use the <code>reports</code> package <span class="citation">(<a href="#ref-report" role="doc-biblioref">Makowski et al. 2021</a>)</span> to summarize the analysis.</p>
-<p>Although <span class="citation">Field, Miles, and Field (<a href="#ref-field2012discovering" role="doc-biblioref">2012</a>)</span> suggest that the main effects of the predictors involved in the interaction should not be interpreted, they are interpreted here to illustrate how the results of a multiple linear regression can be reported.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="multiple-linear-regression.html#cb19-1" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(m2.mlr)</span></code></pre></div>
-<pre><code>## We fitted a linear model (estimated using OLS) to predict money with status
-## (formula: money ~ status * attraction). The model explains a statistically
-## significant and substantial proportion of variance (R2 = 0.85, F(3, 96) =
-## 184.28, p &lt; .001, adj. R2 = 0.85). The model&#39;s intercept, corresponding to
-## status = Relationship, is at 99.15 (95% CI [91.62, 106.69], t(96) = 26.13, p &lt;
-## .001). Within this model:
+<p>Additionally, we can inspect the summary of the regression model as shown below to extract additional information. We can use the <code>reports</code> package <span class="citation">(<a href="#ref-report">Makowski et al. 2021</a>)</span> to summarize the analysis.</p>
+<p>Although <span class="citation">Field et al. (<a href="#ref-field2012discovering">2012</a>)</span> suggest that the main effects of the predictors involved in the interaction should not be interpreted, they are interpreted here to illustrate how the results of a multiple linear regression can be reported.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="multiple-linear-regression.html#cb24-1" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(m2.mlr)</span></code></pre></div>
+<pre><code>## We fitted a linear model (estimated using OLS) to predict money with status and
+## attraction (formula: money ~ status * attraction). The model explains a
+## statistically significant and substantial proportion of variance (R2 = 0.85,
+## F(3, 96) = 184.28, p &lt; .001, adj. R2 = 0.85). The model&#39;s intercept,
+## corresponding to status = Relationship and attraction = Interested, is at 99.15
+## (95% CI [91.62, 106.69], t(96) = 26.13, p &lt; .001). Within this model:
 ## 
 ##   - The effect of status [Single] is statistically significant and positive (beta
 ## = 57.69, 95% CI [47.04, 68.34], t(96) = 10.75, p &lt; .001; Std. beta = 1.19, 95%
@@ -824,34 +793,13 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 ##   - The effect of attraction [NotInterested] is statistically significant and
 ## negative (beta = -47.66, 95% CI [-58.31, -37.01], t(96) = -8.88, p &lt; .001; Std.
 ## beta = -0.98, 95% CI [-1.20, -0.76])
-##   - The interaction effect of attraction [NotInterested] on status [Single] is
-## statistically significant and negative (beta = -63.18, 95% CI [-78.24, -48.11],
-## t(96) = -8.32, p &lt; .001; Std. beta = -1.30, 95% CI [-1.61, -0.99])
-## 
-## Standardized parameters were obtained by fitting the model on a standardized
-## version of the dataset. 95% Confidence Intervals (CIs) and p-values were
-## computed using a Wald t-distribution approximation. and We fitted a linear
-## model (estimated using OLS) to predict money with attraction (formula: money ~
-## status * attraction). The model explains a statistically significant and
-## substantial proportion of variance (R2 = 0.85, F(3, 96) = 184.28, p &lt; .001,
-## adj. R2 = 0.85). The model&#39;s intercept, corresponding to attraction =
-## Interested, is at 99.15 (95% CI [91.62, 106.69], t(96) = 26.13, p &lt; .001).
-## Within this model:
-## 
-##   - The effect of status [Single] is statistically significant and positive (beta
-## = 57.69, 95% CI [47.04, 68.34], t(96) = 10.75, p &lt; .001; Std. beta = 1.19, 95%
-## CI [0.97, 1.41])
-##   - The effect of attraction [NotInterested] is statistically significant and
-## negative (beta = -47.66, 95% CI [-58.31, -37.01], t(96) = -8.88, p &lt; .001; Std.
-## beta = -0.98, 95% CI [-1.20, -0.76])
-##   - The interaction effect of attraction [NotInterested] on status [Single] is
-## statistically significant and negative (beta = -63.18, 95% CI [-78.24, -48.11],
-## t(96) = -8.32, p &lt; .001; Std. beta = -1.30, 95% CI [-1.61, -0.99])
+##   - The effect of status [Single] × attraction [NotInterested] is statistically
+## significant and negative (beta = -63.18, 95% CI [-78.24, -48.11], t(96) =
+## -8.32, p &lt; .001; Std. beta = -1.30, 95% CI [-1.61, -0.99])
 ## 
 ## Standardized parameters were obtained by fitting the model on a standardized
 ## version of the dataset. 95% Confidence Intervals (CIs) and p-values were
 ## computed using a Wald t-distribution approximation.</code></pre>
-<p>Although <span class="citation">Field, Miles, and Field (<a href="#ref-field2012discovering" role="doc-biblioref">2012</a>)</span> suggest that the main effects of the predictors involved in the interaction should not be interpreted, they are interpreted here to illustrate how the results of a multiple linear regression can be reported.</p>
 <p>We can use the output of the <code>report</code> function to write up a final report:</p>
 <blockquote>
 <p>A multiple linear regression was fitted to the data using an automated AIC-based (Akaike’s Information Criterion) procedure. The model fitting arrived at a final minimal model.</p>
@@ -859,10 +807,10 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 <p>The effect of status [Single] is statistically significant and positive (beta = 57.69 [47.04, 68.34], t(96) = 10.75, p &lt; .001; Std. beta = 1.19 [0.97, 1.41]) which means that men spend 57.69 AUD more on gifts for women, if the women are not in a relationship.</p>
 <p>The effect of attraction [NotInterested] is statistically significant and negative (beta =
 -47.66 [-58.31, -37.01], t(96) = -8.88, p &lt; .001; Std. beta = -0.98 [-1.20,
--0.76]) which means that men spend 47.66 AUD less on gifts for women if the men are not intersted in the women.</p>
+-0.76]) which means that men spend 47.66 AUD less on gifts for women if the men are not interested in the women.</p>
 <p>The interaction effect of attraction [NotInterested] on status [Single] is statistically
 significant and negative (beta = -63.18 [-78.24, -48.11], t(96) = -8.32, p &lt; .001;
-Std. beta = -1.30 [-1.61, -0.99]) which means that if men are not intersted in the women and the women are signle, men spend 63.18 AUD less on presents.</p>
+Std. beta = -1.30 [-1.61, -0.99]) which means that if men are not interested in the women and the women are single, men spend 63.18 AUD less on presents.</p>
 </blockquote>
 <p><a href="#multiple_linear_regression">Back to top</a></p>
 
@@ -875,6 +823,9 @@ Field, Andy, Jeremy Miles, and Zoe Field. 2012. <em>Discovering Statistics Using
 </div>
 <div id="ref-green1991many" class="csl-entry">
 Green, Samuel B. 1991. <span>“How Many Subjects Does It Take to Do a Regression Analysis.”</span> <em>Multivariate Behavioral Research</em> 26 (3): 499–510.
+</div>
+<div id="ref-performance" class="csl-entry">
+Lüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, Philip Waggoner, and Dominique Makowski. 2021. <span>“Performance: An <span>R</span> Package for Assessment, Comparison and Testing of Statistical Models.”</span> <em>Journal of Open Source Software</em> 6 (60): 3139. <a href="https://doi.org/10.21105/joss.03139">https://doi.org/10.21105/joss.03139</a>.
 </div>
 <div id="ref-report" class="csl-entry">
 Makowski, Dominique, Mattan S. Ben-Shachar, Indrajeet Patil, and Daniel Lüdecke. 2021. <span>“Automated Results Reporting as a Practical Tool to Improve Reproducibility and Methodological Best Practices Adoption.”</span> <em>CRAN</em>. <a href="https://github.com/easystats/report">https://github.com/easystats/report</a>.
@@ -900,42 +851,42 @@ Makowski, Dominique, Mattan S. Ben-Shachar, Indrajeet Patil, and Daniel Lüdecke
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/MartinSchweinberger/SLAT7855/edit/master/10-week10.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": "https://github.com/MartinSchweinberger/SLAT7855/blob/master/10-week10.Rmd",
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/MartinSchweinberger/SLAT7855/edit/master/10-week10.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/MartinSchweinberger/SLAT7855/blob/master/10-week10.Rmd",
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

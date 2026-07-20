@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Week 9 Simple Linear Regression | SLAT7855 Quantitative Research Methods in Applied Linguistics</title>
   <meta name="description" content="Week 9 Simple Linear Regression | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Week 9 Simple Linear Regression | SLAT7855 Quantitative Research Methods in Applied Linguistics" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Martin Schweinberger" />
 
 
-<meta name="date" content="2022-09-15" />
+<meta name="date" content="2026-07-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,11 +52,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -94,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -107,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -121,6 +122,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -162,38 +167,26 @@ div.csl-indent {
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#basic-course-information"><i class="fa fa-check"></i>Basic Course Information</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-the-course"><i class="fa fa-check"></i>About the Course</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i>Course Description</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-introduction"><i class="fa fa-check"></i>Course Introduction</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#timetable"><i class="fa fa-check"></i>Timetable</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#aims-objectives-graduate-attributes"><i class="fa fa-check"></i>Aims, Objectives &amp; Graduate Attributes</a>
-<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#rationale"><i class="fa fa-check"></i>Rationale</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aims"><i class="fa fa-check"></i>Course Aims</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-outcomes"><i class="fa fa-check"></i>Learning Outcomes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#what-you-will-get-out-of-this-course"><i class="fa fa-check"></i>What You Will Get Out of This Course</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#who-this-course-is-for"><i class="fa fa-check"></i>Who This Course Is For</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-this-book-is-organised"><i class="fa fa-check"></i>How This Book Is Organised</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-resources"><i class="fa fa-check"></i>Learning Resources</a>
 <ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#required-resources"><i class="fa fa-check"></i>Required Resources</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-resources"><i class="fa fa-check"></i>Recommended Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#this-script"><i class="fa fa-check"></i>This Script</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-reading"><i class="fa fa-check"></i>Recommended Reading</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#university-learning-resources"><i class="fa fa-check"></i>University Learning Resources</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#school-of-languages-and-cultures-learning-resources"><i class="fa fa-check"></i>School of Languages and Cultures Learning Resources</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-learning-resources-information"><i class="fa fa-check"></i>Other Learning Resources &amp; Information</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#teaching-learning-activities"><i class="fa fa-check"></i>Teaching &amp; Learning Activities</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-activities"><i class="fa fa-check"></i>Learning Activities</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-plan"><i class="fa fa-check"></i>Course plan</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#assessment"><i class="fa fa-check"></i>Assessment</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#weekly-oline-study-tasks"><i class="fa fa-check"></i>Weekly Oline Study Tasks</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#annotated-bibliography"><i class="fa fa-check"></i>Annotated Bibliography</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#research-project"><i class="fa fa-check"></i>Research Project</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-grading"><i class="fa fa-check"></i>Course Grading</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#a-note-on-generative-ai"><i class="fa fa-check"></i>A Note on Generative AI</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
@@ -213,7 +206,6 @@ div.csl-indent {
 <li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#popper-falsification-and-scientific-progress"><i class="fa fa-check"></i><b>1.3.2</b> Popper, falsification, and scientific progress</a></li>
 <li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#what-is-empirical-linguistics"><i class="fa fa-check"></i><b>1.3.3</b> What is (empirical) Linguistics?</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#tutorial"><i class="fa fa-check"></i>Tutorial</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html"><i class="fa fa-check"></i><b>2</b> Hypotheses and Variables</a>
 <ul>
@@ -231,7 +223,6 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#variable-types-scaling"><i class="fa fa-check"></i>Variable Types (Scaling)</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#relationships-between-variables"><i class="fa fa-check"></i><b>2.4</b> Relationships between variables</a></li>
-<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#tutorial-1"><i class="fa fa-check"></i>Tutorial</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html"><i class="fa fa-check"></i><b>3</b> Significance, Probability and the Normal Distribution</a>
 <ul>
@@ -402,6 +393,7 @@ div.csl-indent {
 <li class="chapter" data-level="11.4" data-path="different-types-of-regression.html"><a href="different-types-of-regression.html#model-fitting-1"><i class="fa fa-check"></i><b>11.4</b> Model Fitting</a></li>
 <li class="chapter" data-level="11.5" data-path="different-types-of-regression.html"><a href="different-types-of-regression.html#effect-size-1"><i class="fa fa-check"></i><b>11.5</b> Effect Size</a></li>
 <li class="chapter" data-level="11.6" data-path="different-types-of-regression.html"><a href="different-types-of-regression.html#summarizing-results"><i class="fa fa-check"></i><b>11.6</b> Summarizing Results</a></li>
+<li class="chapter" data-level="11.7" data-path="different-types-of-regression.html"><a href="different-types-of-regression.html#outlook"><i class="fa fa-check"></i><b>11.7</b> Outlook</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html"><i class="fa fa-check"></i><b>12</b> Mixed-Effects Regression</a>
 <ul>
@@ -423,12 +415,24 @@ div.csl-indent {
 <li class="chapter" data-level="12.2.5" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#extracting-model-fit-parameters"><i class="fa fa-check"></i><b>12.2.5</b> Extracting Model Fit Parameters</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="tree-based-models.html"><a href="tree-based-models.html"><i class="fa fa-check"></i><b>13</b> Tree-Based Models</a>
+<li class="chapter" data-level="13" data-path="week13.html"><a href="week13.html"><i class="fa fa-check"></i><b>13</b> Tree-Based Models, Machine Learning, and AI</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="tree-based-models.html"><a href="tree-based-models.html#basic-concepts-1"><i class="fa fa-check"></i><b>13.1</b> Basic Concepts</a></li>
-<li class="chapter" data-level="13.2" data-path="tree-based-models.html"><a href="tree-based-models.html#decision-trees"><i class="fa fa-check"></i><b>13.2</b> Decision Trees</a></li>
-<li class="chapter" data-level="13.3" data-path="tree-based-models.html"><a href="tree-based-models.html#conditional-inference-trees"><i class="fa fa-check"></i><b>13.3</b> Conditional Inference Trees</a></li>
-<li class="chapter" data-level="13.4" data-path="tree-based-models.html"><a href="tree-based-models.html#problems-of-conditional-inference-trees"><i class="fa fa-check"></i><b>13.4</b> Problems of Conditional Inference Trees</a></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#the-basic-concept"><i class="fa fa-check"></i>The Basic Concept</a></li>
+<li class="chapter" data-level="13.1" data-path="week13.html"><a href="week13.html#decision-trees"><i class="fa fa-check"></i><b>13.1</b> Decision Trees</a></li>
+<li class="chapter" data-level="13.2" data-path="week13.html"><a href="week13.html#conditional-inference-trees"><i class="fa fa-check"></i><b>13.2</b> Conditional Inference Trees</a></li>
+<li class="chapter" data-level="13.3" data-path="week13.html"><a href="week13.html#from-trees-to-forests-an-introduction-to-machine-learning"><i class="fa fa-check"></i><b>13.3</b> From Trees to Forests: An Introduction to Machine Learning</a>
+<ul>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#random-forests"><i class="fa fa-check"></i>Random Forests</a></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#machine-learning-as-an-outlook"><i class="fa fa-check"></i>Machine Learning as an Outlook</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="week13.html"><a href="week13.html#large-language-models-and-generative-ai"><i class="fa fa-check"></i><b>13.4</b> Large Language Models and Generative AI</a>
+<ul>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#language-models-are-next-word-prediction-machines"><i class="fa fa-check"></i>Language Models are Next-Word Prediction Machines</a></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#from-n-grams-to-neural-networks-and-transformers"><i class="fa fa-check"></i>From n-grams to Neural Networks and Transformers</a></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#how-this-relates-to-this-course"><i class="fa fa-check"></i>How this Relates to this Course</a></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#implications-for-research-in-applied-linguistics"><i class="fa fa-check"></i>Implications for Research in Applied Linguistics</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#outlook-and-further-resources"><i class="fa fa-check"></i>Outlook and Further Resources</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -467,68 +471,13 @@ div.csl-indent {
 f_{(x)} = \alpha + \beta_{i}x + \epsilon
 \end{equation}\]</span></p>
 <p>To understand what this means, let us imagine that we have collected information about the how tall people are and what they weigh. Now we want to predict the weight of people of a certain height - let’s say 180cm.</p>
-<template id="805cc62f-eedc-4a03-9118-6b90235c738e"><style>
-.tabwid table{
-  border-spacing:0px !important;
-  border-collapse:collapse;
-  line-height:1;
-  margin-left:auto;
-  margin-right:auto;
-  border-width: 0;
-  display: table;
-  margin-top: 1.275em;
-  margin-bottom: 1.275em;
-  border-color: transparent;
-}
-.tabwid_left table{
-  margin-left:0;
-}
-.tabwid_right table{
-  margin-right:0;
-}
-.tabwid td {
-    padding: 0;
-}
-.tabwid a {
-  text-decoration: none;
-}
-.tabwid thead {
-    background-color: transparent;
-}
-.tabwid tfoot {
-    background-color: transparent;
-}
-.tabwid table tr {
-background-color: transparent;
-}
-.katex-display {
-    margin: 0 0 !important;
-}
-</style><div class="tabwid"><style>.cl-4151049e{table-layout:auto;width:75%;}.cl-4146469e{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-414646a8{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-41466afc{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-4146b07a{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4146b084{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4146b085{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4146b08e{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4146b08f{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4146b090{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4146b091{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4146b098{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-4151049e'>
-<caption class="Table Caption">
-<p><span id="tab:intro00">Table 9.1: </span>Weigth and height of a random sample of people.</p>
-</caption>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-4146b091"><p class="cl-41466afc"><span class="cl-4146469e">Height</span></p></td><td class="cl-4146b098"><p class="cl-41466afc"><span class="cl-4146469e">Weight</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-4146b07a"><p class="cl-41466afc"><span class="cl-414646a8">173</span></p></td><td class="cl-4146b084"><p class="cl-41466afc"><span class="cl-414646a8">80</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4146b08f"><p class="cl-41466afc"><span class="cl-414646a8">169</span></p></td><td class="cl-4146b090"><p class="cl-41466afc"><span class="cl-414646a8">68</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4146b07a"><p class="cl-41466afc"><span class="cl-414646a8">176</span></p></td><td class="cl-4146b084"><p class="cl-41466afc"><span class="cl-414646a8">72</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4146b08f"><p class="cl-41466afc"><span class="cl-414646a8">166</span></p></td><td class="cl-4146b090"><p class="cl-41466afc"><span class="cl-414646a8">75</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4146b07a"><p class="cl-41466afc"><span class="cl-414646a8">161</span></p></td><td class="cl-4146b084"><p class="cl-41466afc"><span class="cl-414646a8">70</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4146b08f"><p class="cl-41466afc"><span class="cl-414646a8">164</span></p></td><td class="cl-4146b090"><p class="cl-41466afc"><span class="cl-414646a8">65</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4146b07a"><p class="cl-41466afc"><span class="cl-414646a8">160</span></p></td><td class="cl-4146b084"><p class="cl-41466afc"><span class="cl-414646a8">62</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4146b08f"><p class="cl-41466afc"><span class="cl-414646a8">158</span></p></td><td class="cl-4146b090"><p class="cl-41466afc"><span class="cl-414646a8">60</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4146b07a"><p class="cl-41466afc"><span class="cl-414646a8">180</span></p></td><td class="cl-4146b084"><p class="cl-41466afc"><span class="cl-414646a8">85</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4146b085"><p class="cl-41466afc"><span class="cl-414646a8">187</span></p></td><td class="cl-4146b08e"><p class="cl-41466afc"><span class="cl-414646a8">92</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="fdaee382-73ec-4f27-8760-d0e695f1d714"></div>
-<script>
-var dest = document.getElementById("fdaee382-73ec-4f27-8760-d0e695f1d714");
-var template = document.getElementById("805cc62f-eedc-4a03-9118-6b90235c738e");
-var caption = template.content.querySelector("caption");
-if(caption) {
-  caption.style.cssText = "display:block;text-align:center;";
-  var newcapt = document.createElement("p");
-  newcapt.appendChild(caption)
-  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
-}
-var fantome = dest.attachShadow({mode: 'open'});
-var templateContent = template.content;
-fantome.appendChild(templateContent);
-</script>
-
+<div class="tabwid"><style>.cl-9dd92252{table-layout:auto;width:75%;}.cl-9dd0afd2{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-9dd0afdc{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-9dd435a8{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-9dd4633e{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9dd46348{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9dd46352{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9dd46353{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9dd46354{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9dd4635c{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9dd46366{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9dd46367{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-9dd92252'>
+<caption style="display:table-caption;margin:0pt;text-align:center;border-bottom: 0.00pt solid transparent;border-top: 0.00pt solid transparent;border-left: 0.00pt solid transparent;border-right: 0.00pt solid transparent;padding-top:3pt;padding-bottom:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;"><span id="tab:intro00">Table 9.1: </span><span>Weigth and height of a random sample of people.</span></caption>
+<thead><tr style="overflow-wrap:break-word;"><th class="cl-9dd4633e"><p class="cl-9dd435a8"><span class="cl-9dd0afd2">Height</span></p></th><th class="cl-9dd46348"><p class="cl-9dd435a8"><span class="cl-9dd0afd2">Weight</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-9dd46352"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">173</span></p></td><td class="cl-9dd46353"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">80</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9dd46354"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">169</span></p></td><td class="cl-9dd4635c"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">68</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9dd46352"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">176</span></p></td><td class="cl-9dd46353"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">72</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9dd46354"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">166</span></p></td><td class="cl-9dd4635c"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">75</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9dd46352"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">161</span></p></td><td class="cl-9dd46353"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">70</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9dd46354"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">164</span></p></td><td class="cl-9dd4635c"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">65</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9dd46352"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">160</span></p></td><td class="cl-9dd46353"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">62</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9dd46354"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">158</span></p></td><td class="cl-9dd4635c"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">60</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9dd46352"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">180</span></p></td><td class="cl-9dd46353"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">85</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9dd46366"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">187</span></p></td><td class="cl-9dd46367"><p class="cl-9dd435a8"><span class="cl-9dd0afdc">92</span></p></td></tr></tbody></table></div>
 <p>We can run a simple linear regression on the data and we get the following output:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="simple-linear-regression.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model for upper panels</span></span>
-<span id="cb1-2"><a href="simple-linear-regression.html#cb1-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Weight <span class="sc">~</span> Height, <span class="at">data =</span> df)</span>
-<span id="cb1-3"><a href="simple-linear-regression.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="simple-linear-regression.html#cb1-1" tabindex="-1"></a><span class="co"># model for upper panels</span></span>
+<span id="cb1-2"><a href="simple-linear-regression.html#cb1-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Weight <span class="sc">~</span> Height, <span class="at">data =</span> df)</span>
+<span id="cb1-3"><a href="simple-linear-regression.html#cb1-3" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Weight ~ Height, data = df)
@@ -552,7 +501,7 @@ fantome.appendChild(templateContent);
 -93.77 + 0.98 ∗ 180 = 83.33 (kg)
 \end{equation}\]</span></p>
 <p>A person who is 180cm tall is predicted to weigh 83.33kg. Thus, the predictions of the weights are visualized as the red line in the figure below. Such lines are called <em>regression lines</em>. Regression lines are those lines where the sum of the red lines should be minimal. The slope of the regression line is called <em>coefficient</em> and the point where the regression line crosses the y-axis at x = 0 is called the <em>intercept</em>. Other important concepts in regression analysis are <em>variance</em> and <em>residuals</em>. <em>Residuals</em> are the distance between the line and the points (the red lines) and it is also called <em>variance</em>.</p>
-<p><img src="bookdownproj_files/figure-html/intro01-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/intro01-1.png" alt="" width="672" /></p>
 <p>Some words about the plots in the figure above: the upper left panel shows the raw observed data (black dots). The upper right panel shows the mean weight (blue line) and the residuals (in red). residuals are the distances from the expected or predicted values to the observed values (in this case the mean is the most most basic model which we use to predict values while the observed values simply represent the actual data points). The lower left panel shows observed values and the regression line, i.e, that line which, when drawn through the data points, will have the lowest sum of residuals. The lower right panel shows the regression line and the residuals, i.e. the distances between the expected or predicted values to the actual observed values (in red). Note that the sum of residuals in the lower right panel is much smaller than the sum of residuals in the upper right panel. This suggest that considering Height is a good idea as it explains a substantive amount of residual error and reduces the sum of residuals (or variance).</p>
 </div>
 <div id="assumptions" class="section level2 hasAnchor" number="9.2">
@@ -594,82 +543,27 @@ fantome.appendChild(templateContent);
 <li><p>Diagnosing the regression model and checking whether or not basic model assumptions have been violated.</p></li>
 </ol>
 <p>In a first step, we load and inspect the data to get a first impression of its properties.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="simple-linear-regression.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
-<span id="cb3-2"><a href="simple-linear-regression.html#cb3-2" aria-hidden="true" tabindex="-1"></a>slrdata  <span class="ot">&lt;-</span> base<span class="sc">::</span><span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">&quot;https://slcladal.github.io/data/sld.rda&quot;</span>, <span class="st">&quot;rb&quot;</span>))</span></code></pre></div>
-<template id="241333fb-566f-4f0e-afe9-2d5daa9d6a90"><style>
-.tabwid table{
-  border-spacing:0px !important;
-  border-collapse:collapse;
-  line-height:1;
-  margin-left:auto;
-  margin-right:auto;
-  border-width: 0;
-  display: table;
-  margin-top: 1.275em;
-  margin-bottom: 1.275em;
-  border-color: transparent;
-}
-.tabwid_left table{
-  margin-left:0;
-}
-.tabwid_right table{
-  margin-right:0;
-}
-.tabwid td {
-    padding: 0;
-}
-.tabwid a {
-  text-decoration: none;
-}
-.tabwid thead {
-    background-color: transparent;
-}
-.tabwid tfoot {
-    background-color: transparent;
-}
-.tabwid table tr {
-background-color: transparent;
-}
-.katex-display {
-    margin: 0 0 !important;
-}
-</style><div class="tabwid"><style>.cl-42ad4a3c{table-layout:auto;width:75%;}.cl-42a2e696{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-42a2e6a0{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-42a3018a{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-42a3019e{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-42a34ec4{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42a34ece{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42a34ecf{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42a34ed0{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42a34ed8{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42a34ed9{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42a34eda{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42a34ee2{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42a34ee3{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42a34ee4{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42a34eec{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42a34eed{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42a34eee{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42a34ef6{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42a34ef7{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42a34ef8{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-42ad4a3c'>
-<caption class="Table Caption">
-<p><span id="tab:slr5">Table 9.2: </span>First 15 rows of slrdata.</p>
-</caption>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-42a34eee"><p class="cl-42a3018a"><span class="cl-42a2e696">Date</span></p></td><td class="cl-42a34ef6"><p class="cl-42a3019e"><span class="cl-42a2e696">Genre</span></p></td><td class="cl-42a34ef6"><p class="cl-42a3019e"><span class="cl-42a2e696">Text</span></p></td><td class="cl-42a34ef7"><p class="cl-42a3018a"><span class="cl-42a2e696">Prepositions</span></p></td><td class="cl-42a34ef8"><p class="cl-42a3019e"><span class="cl-42a2e696">Region</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-42a34ed0"><p class="cl-42a3018a"><span class="cl-42a2e6a0">1,736</span></p></td><td class="cl-42a34ec4"><p class="cl-42a3019e"><span class="cl-42a2e6a0">Science</span></p></td><td class="cl-42a34ec4"><p class="cl-42a3019e"><span class="cl-42a2e6a0">albin</span></p></td><td class="cl-42a34ece"><p class="cl-42a3018a"><span class="cl-42a2e6a0">166.01</span></p></td><td class="cl-42a34ecf"><p class="cl-42a3019e"><span class="cl-42a2e6a0">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42a34eda"><p class="cl-42a3018a"><span class="cl-42a2e6a0">1,711</span></p></td><td class="cl-42a34ed8"><p class="cl-42a3019e"><span class="cl-42a2e6a0">Education</span></p></td><td class="cl-42a34ed8"><p class="cl-42a3019e"><span class="cl-42a2e6a0">anon</span></p></td><td class="cl-42a34ee2"><p class="cl-42a3018a"><span class="cl-42a2e6a0">139.86</span></p></td><td class="cl-42a34ed9"><p class="cl-42a3019e"><span class="cl-42a2e6a0">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42a34ed0"><p class="cl-42a3018a"><span class="cl-42a2e6a0">1,808</span></p></td><td class="cl-42a34ec4"><p class="cl-42a3019e"><span class="cl-42a2e6a0">PrivateLetter</span></p></td><td class="cl-42a34ec4"><p class="cl-42a3019e"><span class="cl-42a2e6a0">austen</span></p></td><td class="cl-42a34ece"><p class="cl-42a3018a"><span class="cl-42a2e6a0">130.78</span></p></td><td class="cl-42a34ecf"><p class="cl-42a3019e"><span class="cl-42a2e6a0">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42a34eda"><p class="cl-42a3018a"><span class="cl-42a2e6a0">1,878</span></p></td><td class="cl-42a34ed8"><p class="cl-42a3019e"><span class="cl-42a2e6a0">Education</span></p></td><td class="cl-42a34ed8"><p class="cl-42a3019e"><span class="cl-42a2e6a0">bain</span></p></td><td class="cl-42a34ee2"><p class="cl-42a3018a"><span class="cl-42a2e6a0">151.29</span></p></td><td class="cl-42a34ed9"><p class="cl-42a3019e"><span class="cl-42a2e6a0">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42a34ed0"><p class="cl-42a3018a"><span class="cl-42a2e6a0">1,743</span></p></td><td class="cl-42a34ec4"><p class="cl-42a3019e"><span class="cl-42a2e6a0">Education</span></p></td><td class="cl-42a34ec4"><p class="cl-42a3019e"><span class="cl-42a2e6a0">barclay</span></p></td><td class="cl-42a34ece"><p class="cl-42a3018a"><span class="cl-42a2e6a0">145.72</span></p></td><td class="cl-42a34ecf"><p class="cl-42a3019e"><span class="cl-42a2e6a0">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42a34eda"><p class="cl-42a3018a"><span class="cl-42a2e6a0">1,908</span></p></td><td class="cl-42a34ed8"><p class="cl-42a3019e"><span class="cl-42a2e6a0">Education</span></p></td><td class="cl-42a34ed8"><p class="cl-42a3019e"><span class="cl-42a2e6a0">benson</span></p></td><td class="cl-42a34ee2"><p class="cl-42a3018a"><span class="cl-42a2e6a0">120.77</span></p></td><td class="cl-42a34ed9"><p class="cl-42a3019e"><span class="cl-42a2e6a0">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42a34ed0"><p class="cl-42a3018a"><span class="cl-42a2e6a0">1,906</span></p></td><td class="cl-42a34ec4"><p class="cl-42a3019e"><span class="cl-42a2e6a0">Diary</span></p></td><td class="cl-42a34ec4"><p class="cl-42a3019e"><span class="cl-42a2e6a0">benson</span></p></td><td class="cl-42a34ece"><p class="cl-42a3018a"><span class="cl-42a2e6a0">119.17</span></p></td><td class="cl-42a34ecf"><p class="cl-42a3019e"><span class="cl-42a2e6a0">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42a34eda"><p class="cl-42a3018a"><span class="cl-42a2e6a0">1,897</span></p></td><td class="cl-42a34ed8"><p class="cl-42a3019e"><span class="cl-42a2e6a0">Philosophy</span></p></td><td class="cl-42a34ed8"><p class="cl-42a3019e"><span class="cl-42a2e6a0">boethja</span></p></td><td class="cl-42a34ee2"><p class="cl-42a3018a"><span class="cl-42a2e6a0">132.96</span></p></td><td class="cl-42a34ed9"><p class="cl-42a3019e"><span class="cl-42a2e6a0">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42a34ed0"><p class="cl-42a3018a"><span class="cl-42a2e6a0">1,785</span></p></td><td class="cl-42a34ec4"><p class="cl-42a3019e"><span class="cl-42a2e6a0">Philosophy</span></p></td><td class="cl-42a34ec4"><p class="cl-42a3019e"><span class="cl-42a2e6a0">boethri</span></p></td><td class="cl-42a34ece"><p class="cl-42a3018a"><span class="cl-42a2e6a0">130.49</span></p></td><td class="cl-42a34ecf"><p class="cl-42a3019e"><span class="cl-42a2e6a0">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42a34eda"><p class="cl-42a3018a"><span class="cl-42a2e6a0">1,776</span></p></td><td class="cl-42a34ed8"><p class="cl-42a3019e"><span class="cl-42a2e6a0">Diary</span></p></td><td class="cl-42a34ed8"><p class="cl-42a3019e"><span class="cl-42a2e6a0">boswell</span></p></td><td class="cl-42a34ee2"><p class="cl-42a3018a"><span class="cl-42a2e6a0">135.94</span></p></td><td class="cl-42a34ed9"><p class="cl-42a3019e"><span class="cl-42a2e6a0">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42a34ed0"><p class="cl-42a3018a"><span class="cl-42a2e6a0">1,905</span></p></td><td class="cl-42a34ec4"><p class="cl-42a3019e"><span class="cl-42a2e6a0">Travel</span></p></td><td class="cl-42a34ec4"><p class="cl-42a3019e"><span class="cl-42a2e6a0">bradley</span></p></td><td class="cl-42a34ece"><p class="cl-42a3018a"><span class="cl-42a2e6a0">154.20</span></p></td><td class="cl-42a34ecf"><p class="cl-42a3019e"><span class="cl-42a2e6a0">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42a34eda"><p class="cl-42a3018a"><span class="cl-42a2e6a0">1,711</span></p></td><td class="cl-42a34ed8"><p class="cl-42a3019e"><span class="cl-42a2e6a0">Education</span></p></td><td class="cl-42a34ed8"><p class="cl-42a3019e"><span class="cl-42a2e6a0">brightland</span></p></td><td class="cl-42a34ee2"><p class="cl-42a3018a"><span class="cl-42a2e6a0">149.14</span></p></td><td class="cl-42a34ed9"><p class="cl-42a3019e"><span class="cl-42a2e6a0">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42a34ed0"><p class="cl-42a3018a"><span class="cl-42a2e6a0">1,762</span></p></td><td class="cl-42a34ec4"><p class="cl-42a3019e"><span class="cl-42a2e6a0">Sermon</span></p></td><td class="cl-42a34ec4"><p class="cl-42a3019e"><span class="cl-42a2e6a0">burton</span></p></td><td class="cl-42a34ece"><p class="cl-42a3018a"><span class="cl-42a2e6a0">159.71</span></p></td><td class="cl-42a34ecf"><p class="cl-42a3019e"><span class="cl-42a2e6a0">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42a34eda"><p class="cl-42a3018a"><span class="cl-42a2e6a0">1,726</span></p></td><td class="cl-42a34ed8"><p class="cl-42a3019e"><span class="cl-42a2e6a0">Sermon</span></p></td><td class="cl-42a34ed8"><p class="cl-42a3019e"><span class="cl-42a2e6a0">butler</span></p></td><td class="cl-42a34ee2"><p class="cl-42a3018a"><span class="cl-42a2e6a0">157.49</span></p></td><td class="cl-42a34ed9"><p class="cl-42a3019e"><span class="cl-42a2e6a0">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42a34ee3"><p class="cl-42a3018a"><span class="cl-42a2e6a0">1,835</span></p></td><td class="cl-42a34ee4"><p class="cl-42a3019e"><span class="cl-42a2e6a0">PrivateLetter</span></p></td><td class="cl-42a34ee4"><p class="cl-42a3019e"><span class="cl-42a2e6a0">carlyle</span></p></td><td class="cl-42a34eec"><p class="cl-42a3018a"><span class="cl-42a2e6a0">124.16</span></p></td><td class="cl-42a34eed"><p class="cl-42a3019e"><span class="cl-42a2e6a0">North</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="3f169958-7f4b-43ea-8633-49e83b59589d"></div>
-<script>
-var dest = document.getElementById("3f169958-7f4b-43ea-8633-49e83b59589d");
-var template = document.getElementById("241333fb-566f-4f0e-afe9-2d5daa9d6a90");
-var caption = template.content.querySelector("caption");
-if(caption) {
-  caption.style.cssText = "display:block;text-align:center;";
-  var newcapt = document.createElement("p");
-  newcapt.appendChild(caption)
-  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
-}
-var fantome = dest.attachShadow({mode: 'open'});
-var templateContent = template.content;
-fantome.appendChild(templateContent);
-</script>
-
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="simple-linear-regression.html#cb3-1" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb3-2"><a href="simple-linear-regression.html#cb3-2" tabindex="-1"></a>slrdata  <span class="ot">&lt;-</span> base<span class="sc">::</span><span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">&quot;https://slcladal.github.io/data/sld.rda&quot;</span>, <span class="st">&quot;rb&quot;</span>))</span></code></pre></div>
+<div class="tabwid"><style>.cl-a087e63c{table-layout:auto;width:75%;}.cl-a07dc972{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a07dc97c{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a0819eda{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a0819ee4{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a081d4c2{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a081d4cc{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a081d4d6{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a081d4e0{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a081d4e1{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a081d4ea{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a081d4eb{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a081d4f4{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a081d4f5{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a081d4fe{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a081d4ff{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a081d500{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a081d508{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a081d512{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a081d513{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a081d514{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-a087e63c'>
+<caption style="display:table-caption;margin:0pt;text-align:center;border-bottom: 0.00pt solid transparent;border-top: 0.00pt solid transparent;border-left: 0.00pt solid transparent;border-right: 0.00pt solid transparent;padding-top:3pt;padding-bottom:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;"><span id="tab:slr5">Table 9.2: </span><span>First 15 rows of slrdata.</span></caption>
+<thead><tr style="overflow-wrap:break-word;"><th class="cl-a081d4c2"><p class="cl-a0819eda"><span class="cl-a07dc972">Date</span></p></th><th class="cl-a081d4cc"><p class="cl-a0819ee4"><span class="cl-a07dc972">Genre</span></p></th><th class="cl-a081d4cc"><p class="cl-a0819ee4"><span class="cl-a07dc972">Text</span></p></th><th class="cl-a081d4d6"><p class="cl-a0819eda"><span class="cl-a07dc972">Prepositions</span></p></th><th class="cl-a081d4e0"><p class="cl-a0819ee4"><span class="cl-a07dc972">Region</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-a081d4e1"><p class="cl-a0819eda"><span class="cl-a07dc97c">1,736</span></p></td><td class="cl-a081d4ea"><p class="cl-a0819ee4"><span class="cl-a07dc97c">Science</span></p></td><td class="cl-a081d4ea"><p class="cl-a0819ee4"><span class="cl-a07dc97c">albin</span></p></td><td class="cl-a081d4eb"><p class="cl-a0819eda"><span class="cl-a07dc97c">166.01</span></p></td><td class="cl-a081d4f4"><p class="cl-a0819ee4"><span class="cl-a07dc97c">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a081d4f5"><p class="cl-a0819eda"><span class="cl-a07dc97c">1,711</span></p></td><td class="cl-a081d4fe"><p class="cl-a0819ee4"><span class="cl-a07dc97c">Education</span></p></td><td class="cl-a081d4fe"><p class="cl-a0819ee4"><span class="cl-a07dc97c">anon</span></p></td><td class="cl-a081d4ff"><p class="cl-a0819eda"><span class="cl-a07dc97c">139.86</span></p></td><td class="cl-a081d500"><p class="cl-a0819ee4"><span class="cl-a07dc97c">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a081d4e1"><p class="cl-a0819eda"><span class="cl-a07dc97c">1,808</span></p></td><td class="cl-a081d4ea"><p class="cl-a0819ee4"><span class="cl-a07dc97c">PrivateLetter</span></p></td><td class="cl-a081d4ea"><p class="cl-a0819ee4"><span class="cl-a07dc97c">austen</span></p></td><td class="cl-a081d4eb"><p class="cl-a0819eda"><span class="cl-a07dc97c">130.78</span></p></td><td class="cl-a081d4f4"><p class="cl-a0819ee4"><span class="cl-a07dc97c">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a081d4f5"><p class="cl-a0819eda"><span class="cl-a07dc97c">1,878</span></p></td><td class="cl-a081d4fe"><p class="cl-a0819ee4"><span class="cl-a07dc97c">Education</span></p></td><td class="cl-a081d4fe"><p class="cl-a0819ee4"><span class="cl-a07dc97c">bain</span></p></td><td class="cl-a081d4ff"><p class="cl-a0819eda"><span class="cl-a07dc97c">151.29</span></p></td><td class="cl-a081d500"><p class="cl-a0819ee4"><span class="cl-a07dc97c">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a081d4e1"><p class="cl-a0819eda"><span class="cl-a07dc97c">1,743</span></p></td><td class="cl-a081d4ea"><p class="cl-a0819ee4"><span class="cl-a07dc97c">Education</span></p></td><td class="cl-a081d4ea"><p class="cl-a0819ee4"><span class="cl-a07dc97c">barclay</span></p></td><td class="cl-a081d4eb"><p class="cl-a0819eda"><span class="cl-a07dc97c">145.72</span></p></td><td class="cl-a081d4f4"><p class="cl-a0819ee4"><span class="cl-a07dc97c">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a081d4f5"><p class="cl-a0819eda"><span class="cl-a07dc97c">1,908</span></p></td><td class="cl-a081d4fe"><p class="cl-a0819ee4"><span class="cl-a07dc97c">Education</span></p></td><td class="cl-a081d4fe"><p class="cl-a0819ee4"><span class="cl-a07dc97c">benson</span></p></td><td class="cl-a081d4ff"><p class="cl-a0819eda"><span class="cl-a07dc97c">120.77</span></p></td><td class="cl-a081d500"><p class="cl-a0819ee4"><span class="cl-a07dc97c">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a081d4e1"><p class="cl-a0819eda"><span class="cl-a07dc97c">1,906</span></p></td><td class="cl-a081d4ea"><p class="cl-a0819ee4"><span class="cl-a07dc97c">Diary</span></p></td><td class="cl-a081d4ea"><p class="cl-a0819ee4"><span class="cl-a07dc97c">benson</span></p></td><td class="cl-a081d4eb"><p class="cl-a0819eda"><span class="cl-a07dc97c">119.17</span></p></td><td class="cl-a081d4f4"><p class="cl-a0819ee4"><span class="cl-a07dc97c">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a081d4f5"><p class="cl-a0819eda"><span class="cl-a07dc97c">1,897</span></p></td><td class="cl-a081d4fe"><p class="cl-a0819ee4"><span class="cl-a07dc97c">Philosophy</span></p></td><td class="cl-a081d4fe"><p class="cl-a0819ee4"><span class="cl-a07dc97c">boethja</span></p></td><td class="cl-a081d4ff"><p class="cl-a0819eda"><span class="cl-a07dc97c">132.96</span></p></td><td class="cl-a081d500"><p class="cl-a0819ee4"><span class="cl-a07dc97c">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a081d4e1"><p class="cl-a0819eda"><span class="cl-a07dc97c">1,785</span></p></td><td class="cl-a081d4ea"><p class="cl-a0819ee4"><span class="cl-a07dc97c">Philosophy</span></p></td><td class="cl-a081d4ea"><p class="cl-a0819ee4"><span class="cl-a07dc97c">boethri</span></p></td><td class="cl-a081d4eb"><p class="cl-a0819eda"><span class="cl-a07dc97c">130.49</span></p></td><td class="cl-a081d4f4"><p class="cl-a0819ee4"><span class="cl-a07dc97c">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a081d4f5"><p class="cl-a0819eda"><span class="cl-a07dc97c">1,776</span></p></td><td class="cl-a081d4fe"><p class="cl-a0819ee4"><span class="cl-a07dc97c">Diary</span></p></td><td class="cl-a081d4fe"><p class="cl-a0819ee4"><span class="cl-a07dc97c">boswell</span></p></td><td class="cl-a081d4ff"><p class="cl-a0819eda"><span class="cl-a07dc97c">135.94</span></p></td><td class="cl-a081d500"><p class="cl-a0819ee4"><span class="cl-a07dc97c">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a081d4e1"><p class="cl-a0819eda"><span class="cl-a07dc97c">1,905</span></p></td><td class="cl-a081d4ea"><p class="cl-a0819ee4"><span class="cl-a07dc97c">Travel</span></p></td><td class="cl-a081d4ea"><p class="cl-a0819ee4"><span class="cl-a07dc97c">bradley</span></p></td><td class="cl-a081d4eb"><p class="cl-a0819eda"><span class="cl-a07dc97c">154.20</span></p></td><td class="cl-a081d4f4"><p class="cl-a0819ee4"><span class="cl-a07dc97c">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a081d4f5"><p class="cl-a0819eda"><span class="cl-a07dc97c">1,711</span></p></td><td class="cl-a081d4fe"><p class="cl-a0819ee4"><span class="cl-a07dc97c">Education</span></p></td><td class="cl-a081d4fe"><p class="cl-a0819ee4"><span class="cl-a07dc97c">brightland</span></p></td><td class="cl-a081d4ff"><p class="cl-a0819eda"><span class="cl-a07dc97c">149.14</span></p></td><td class="cl-a081d500"><p class="cl-a0819ee4"><span class="cl-a07dc97c">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a081d4e1"><p class="cl-a0819eda"><span class="cl-a07dc97c">1,762</span></p></td><td class="cl-a081d4ea"><p class="cl-a0819ee4"><span class="cl-a07dc97c">Sermon</span></p></td><td class="cl-a081d4ea"><p class="cl-a0819ee4"><span class="cl-a07dc97c">burton</span></p></td><td class="cl-a081d4eb"><p class="cl-a0819eda"><span class="cl-a07dc97c">159.71</span></p></td><td class="cl-a081d4f4"><p class="cl-a0819ee4"><span class="cl-a07dc97c">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a081d4f5"><p class="cl-a0819eda"><span class="cl-a07dc97c">1,726</span></p></td><td class="cl-a081d4fe"><p class="cl-a0819ee4"><span class="cl-a07dc97c">Sermon</span></p></td><td class="cl-a081d4fe"><p class="cl-a0819ee4"><span class="cl-a07dc97c">butler</span></p></td><td class="cl-a081d4ff"><p class="cl-a0819eda"><span class="cl-a07dc97c">157.49</span></p></td><td class="cl-a081d500"><p class="cl-a0819ee4"><span class="cl-a07dc97c">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a081d508"><p class="cl-a0819eda"><span class="cl-a07dc97c">1,835</span></p></td><td class="cl-a081d512"><p class="cl-a0819ee4"><span class="cl-a07dc97c">PrivateLetter</span></p></td><td class="cl-a081d512"><p class="cl-a0819ee4"><span class="cl-a07dc97c">carlyle</span></p></td><td class="cl-a081d513"><p class="cl-a0819eda"><span class="cl-a07dc97c">124.16</span></p></td><td class="cl-a081d514"><p class="cl-a0819ee4"><span class="cl-a07dc97c">North</span></p></td></tr></tbody></table></div>
 <p>Inspecting the data is very important because it can happen that a data set may not load completely or that variables which should be numeric have been converted to character variables. If unchecked, then such issues could go unnoticed and cause trouble.</p>
 <p>We will now plot the data to get a better understanding of what the data looks like.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="simple-linear-regression.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(slrdata, <span class="fu">aes</span>(Date, Prepositions)) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="simple-linear-regression.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-3"><a href="simple-linear-regression.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb4-4"><a href="simple-linear-regression.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Year&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Prepositions per 1,000 words&quot;</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a href="simple-linear-regression.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/slr6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="simple-linear-regression.html#cb4-1" tabindex="-1"></a><span class="fu">ggplot</span>(slrdata, <span class="fu">aes</span>(Date, Prepositions)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="simple-linear-regression.html#cb4-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-3"><a href="simple-linear-regression.html#cb4-3" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb4-4"><a href="simple-linear-regression.html#cb4-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Year&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Prepositions per 1,000 words&quot;</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="simple-linear-regression.html#cb4-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/slr6-1.png" alt="" width="672" /></p>
 <p>Before beginning with the regression analysis, we will center the year. We center the values of year by subtracting each value from the mean of year. This can be useful when dealing with numeric variables because if we did not center year, we would get estimated values for year 0 (a year when English did not even exist yet). If a variable is centered, the regression provides estimates of the model refer to the mean of that numeric variable. In other words, centering can be very helpful, especially with respect to the interpretation of the results that regression models report.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="simple-linear-regression.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># center date</span></span>
-<span id="cb5-2"><a href="simple-linear-regression.html#cb5-2" aria-hidden="true" tabindex="-1"></a>slrdata<span class="sc">$</span>Date <span class="ot">&lt;-</span> slrdata<span class="sc">$</span>Date <span class="sc">-</span> <span class="fu">mean</span>(slrdata<span class="sc">$</span>Date) </span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="simple-linear-regression.html#cb5-1" tabindex="-1"></a><span class="co"># center date</span></span>
+<span id="cb5-2"><a href="simple-linear-regression.html#cb5-2" tabindex="-1"></a>slrdata<span class="sc">$</span>Date <span class="ot">&lt;-</span> slrdata<span class="sc">$</span>Date <span class="sc">-</span> <span class="fu">mean</span>(slrdata<span class="sc">$</span>Date) </span></code></pre></div>
 <p>We will now begin the regression analysis by generating a first regression model and inspect its results.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="simple-linear-regression.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create initial model</span></span>
-<span id="cb6-2"><a href="simple-linear-regression.html#cb6-2" aria-hidden="true" tabindex="-1"></a>m1.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Prepositions <span class="sc">~</span> Date, <span class="at">data =</span> slrdata)</span>
-<span id="cb6-3"><a href="simple-linear-regression.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect results</span></span>
-<span id="cb6-4"><a href="simple-linear-regression.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1.lm)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="simple-linear-regression.html#cb6-1" tabindex="-1"></a><span class="co"># create initial model</span></span>
+<span id="cb6-2"><a href="simple-linear-regression.html#cb6-2" tabindex="-1"></a>m1.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Prepositions <span class="sc">~</span> Date, <span class="at">data =</span> slrdata)</span>
+<span id="cb6-3"><a href="simple-linear-regression.html#cb6-3" tabindex="-1"></a><span class="co"># inspect results</span></span>
+<span id="cb6-4"><a href="simple-linear-regression.html#cb6-4" tabindex="-1"></a><span class="fu">summary</span>(m1.lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Prepositions ~ Date, data = slrdata)
@@ -689,8 +583,8 @@ fantome.appendChild(templateContent);
 ## Multiple R-squared:  0.01051,    Adjusted R-squared:  0.008657 
 ## F-statistic: 5.681 on 1 and 535 DF,  p-value: 0.0175</code></pre>
 <p>The summary output starts by repeating the regression equation. Then, the model provides the distribution of the residuals. The residuals should be distributed normally with the absolute values of the Min and Max as well as the 1Q (first quartile) and 3Q (third quartile) being similar or ideally identical. In our case, the values are very similar which suggests that the residuals are distributed evenly and follow a normal distribution. The next part of the report is the coefficients table. The estimate for the intercept is the value of y at x = 0. The estimate for Date represents the slope of the regression line and tells us that with each year, the predicted frequency of prepositions increase by .01732 prepositions. The t-value is the Estimate divided by the standard error (Std. Error). Based on the t-value, the p-value can be calculated manually as shown below.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="simple-linear-regression.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use pt function (which uses t-values and the degrees of freedom)</span></span>
-<span id="cb8-2"><a href="simple-linear-regression.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(<span class="sc">-</span><span class="fl">2.383</span>, <span class="fu">nrow</span>(slrdata)<span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="simple-linear-regression.html#cb8-1" tabindex="-1"></a><span class="co"># use pt function (which uses t-values and the degrees of freedom)</span></span>
+<span id="cb8-2"><a href="simple-linear-regression.html#cb8-2" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(<span class="sc">-</span><span class="fl">2.383</span>, <span class="fu">nrow</span>(slrdata)<span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 0.01751964</code></pre>
 <p>The R<sup>2</sup>-values tell us how much variance is explained by our model. The baseline value represents a model that uses merely the mean. 0.0105 means that our model explains only 1.05 percent of the variance (0.010 x 100) - which is a tiny amount. The problem of the multiple R<sup>2</sup> is that it will increase even if we add variables that explain almost no variance. Hence, multiple R<sup>2</sup> encourages the inclusion of <em>junk</em> variables.</p>
 <p><span class="math display">\[\begin{equation}
@@ -702,10 +596,10 @@ R^2_{adjusted} = 1 - (\frac{(1 - R^2)(n - 1)}{n - k - 1})
 \end{equation}\]</span></p>
 <p>If there is a big difference between the two R<sup>2</sup>-values, then the model contains (many) predictors that do not explain much variance which is not good. The F-statistic and the associated p-value tell us that the model, despite explaining almost no variance, is still significantly better than an intercept-only base-line model (or using the overall mean to predict the frequency of prepositions per text).</p>
 <p>We can test this and also see where the F-values comes from by comparing the</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="simple-linear-regression.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create intercept-only base-line model</span></span>
-<span id="cb10-2"><a href="simple-linear-regression.html#cb10-2" aria-hidden="true" tabindex="-1"></a>m0.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Prepositions <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> slrdata)</span>
-<span id="cb10-3"><a href="simple-linear-regression.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the base-line and the more saturated model</span></span>
-<span id="cb10-4"><a href="simple-linear-regression.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m1.lm, m0.lm, <span class="at">test =</span> <span class="st">&quot;F&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="simple-linear-regression.html#cb10-1" tabindex="-1"></a><span class="co"># create intercept-only base-line model</span></span>
+<span id="cb10-2"><a href="simple-linear-regression.html#cb10-2" tabindex="-1"></a>m0.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Prepositions <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> slrdata)</span>
+<span id="cb10-3"><a href="simple-linear-regression.html#cb10-3" tabindex="-1"></a><span class="co"># compare the base-line and the more saturated model</span></span>
+<span id="cb10-4"><a href="simple-linear-regression.html#cb10-4" tabindex="-1"></a><span class="fu">anova</span>(m1.lm, m0.lm, <span class="at">test =</span> <span class="st">&quot;F&quot;</span>)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: Prepositions ~ Date
@@ -717,37 +611,48 @@ R^2_{adjusted} = 1 - (\frac{(1 - R^2)(n - 1)}{n - k - 1})
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>The F- and p-values are exactly those reported by the summary which shows where the F-values comes from and what it means; namely it denote the difference between the base-line and the more saturated model.</p>
 <p>The degrees of freedom associated with the residual standard error are the number of cases in the model minus the number of predictors (including the intercept). The residual standard error is square root of the sum of the squared residuals of the model divided by the degrees of freedom. Have a look at he following to clear this up:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="simple-linear-regression.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DF = N - number of predictors (including intercept)</span></span>
-<span id="cb12-2"><a href="simple-linear-regression.html#cb12-2" aria-hidden="true" tabindex="-1"></a>DegreesOfFreedom <span class="ot">&lt;-</span> <span class="fu">nrow</span>(slrdata)<span class="sc">-</span><span class="fu">length</span>(<span class="fu">coef</span>(m1.lm))</span>
-<span id="cb12-3"><a href="simple-linear-regression.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># sum of the squared residuals</span></span>
-<span id="cb12-4"><a href="simple-linear-regression.html#cb12-4" aria-hidden="true" tabindex="-1"></a>SumSquaredResiduals <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">resid</span>(m1.lm)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb12-5"><a href="simple-linear-regression.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Residual Standard Error</span></span>
-<span id="cb12-6"><a href="simple-linear-regression.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(SumSquaredResiduals<span class="sc">/</span>DegreesOfFreedom); DegreesOfFreedom</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="simple-linear-regression.html#cb12-1" tabindex="-1"></a><span class="co"># DF = N - number of predictors (including intercept)</span></span>
+<span id="cb12-2"><a href="simple-linear-regression.html#cb12-2" tabindex="-1"></a>DegreesOfFreedom <span class="ot">&lt;-</span> <span class="fu">nrow</span>(slrdata)<span class="sc">-</span><span class="fu">length</span>(<span class="fu">coef</span>(m1.lm))</span>
+<span id="cb12-3"><a href="simple-linear-regression.html#cb12-3" tabindex="-1"></a><span class="co"># sum of the squared residuals</span></span>
+<span id="cb12-4"><a href="simple-linear-regression.html#cb12-4" tabindex="-1"></a>SumSquaredResiduals <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">resid</span>(m1.lm)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb12-5"><a href="simple-linear-regression.html#cb12-5" tabindex="-1"></a><span class="co"># Residual Standard Error</span></span>
+<span id="cb12-6"><a href="simple-linear-regression.html#cb12-6" tabindex="-1"></a><span class="fu">sqrt</span>(SumSquaredResiduals<span class="sc">/</span>DegreesOfFreedom); DegreesOfFreedom</span></code></pre></div>
 <pre><code>## [1] 19.43396</code></pre>
 <pre><code>## [1] 535</code></pre>
-<p>We will now check the model assumptions using diagnostic plots.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="simple-linear-regression.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggfortify)</span>
-<span id="cb15-2"><a href="simple-linear-regression.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># generate plots</span></span>
-<span id="cb15-3"><a href="simple-linear-regression.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(m1.lm) <span class="sc">+</span> </span>
-<span id="cb15-4"><a href="simple-linear-regression.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb15-5"><a href="simple-linear-regression.html#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(), <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()) </span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/slr13-1.png" width="672" /></p>
-<p>The diagnostic plots are very positive and we will go through why this is so for each panel:</p>
-<p><strong>Residuals vs Fitted</strong> (upper left)</p>
-<p>This plot is used to check the linear relationship assumptions: a horizontal line, without distinct patterns is an indication for a linear relationship, what is good. When a trend becomes visible in the line or points (e.g., a rising trend or a zigzag line), then this would indicate that the model would be problematic (in such cases, it can help to remove data points that are too influential (outliers)).</p>
-<p><strong>Normal Q-Q</strong> (upper right)</p>
-<p>This plot is used to examine whether the residuals are normally distributed: it’s good if residuals points follow the straight dashed line. If the points lie on the line, the residuals follow a normal distribution. For example, if the points are not on the line at the top and bottom, it shows that the model does not predict small and large values well and that it therefore does not have a good fit.</p>
-<p><strong>Scale-Location (or Spread-Location)</strong> (lower left)</p>
-<p>This plot is used to check the homogeneity of variance of the residuals (homoscedasticity): horizontal line with equally spread points is a good indication of homoscedasticity. This is not the case in our example, where we have a heteroscedasticity problem. Homoscedasticity means that the variance of the residuals remains constant and does not correlate with any independent variable. In unproblematic cases, the graphic shows a flat line. If there is a trend in the line, we are dealing with heteroscedasticity, that is, a correlation between independent variables and the residuals, which is very problematic for regressions.</p>
-<p><strong>Residuals vs Leverage</strong> (lower right)</p>
-<p>This plot is used to identify influential cases, that disproportionately affect the regression (this would be problematic): if such influential data points are present, they should be either weighted (one could generate a robust rather than a simple linear regression) or they must be removed. The graph displays Cook’s distance, which shows how the regression changes when a model without this data point is calculated. The cook distance thus shows the influence a data point has on the regression as a whole. Data points that have a Cook’s distance value greater than 1 are problematic.</p>
+<p>We will now check the model assumptions using diagnostic plots. To do this, we use the <code>check_model</code> function from the <code>performance</code> package <span class="citation">(<a href="#ref-performance">Lüdecke et al. 2021</a>)</span> which generates a panel of diagnostic plots and - very conveniently - tells us in the subtitle of each panel what we should be looking for.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="simple-linear-regression.html#cb15-1" tabindex="-1"></a><span class="co"># generate diagnostic plots</span></span>
+<span id="cb15-2"><a href="simple-linear-regression.html#cb15-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(m1.lm)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/slr13-1.png" alt="" width="672" /></p>
+<p>We will go through the panels one by one:</p>
+<p><strong>Posterior Predictive Check</strong></p>
+<p>This plot compares the distribution of the observed data (green line) with distributions of data simulated from the fitted model (blue lines). If the model captures the data well, the simulated distributions should closely resemble the observed distribution. Strong discrepancies indicate that the model fails to reproduce important characteristics of the data (e.g., skewness or multimodality).</p>
+<p><strong>Linearity</strong></p>
+<p>This plot is used to check the linearity assumption: the reference line should be flat and horizontal. If a trend becomes visible in the line (e.g., a curve or a zigzag pattern), the relationship between predictor(s) and outcome is not adequately captured by a straight line and the model is problematic (in such cases, transforming variables or adding non-linear terms can help).</p>
+<p><strong>Homogeneity of Variance</strong></p>
+<p>This plot is used to check the homogeneity of variance of the residuals (homoscedasticity): a flat, horizontal reference line with equally spread points indicates homoscedasticity. Homoscedasticity means that the variance of the residuals remains constant and does not correlate with any independent variable. If there is a trend in the line, we are dealing with heteroscedasticity, that is, a correlation between the fitted values and the spread of the residuals, which is very problematic for regressions.</p>
+<p><strong>Influential Observations</strong></p>
+<p>This plot is used to identify influential cases that disproportionately affect the regression (this would be problematic): points should lie within the dashed contour lines. The contours are based on Cook’s distance, which shows how much the regression changes when the model is re-fitted without that data point. If influential data points are present, they should be inspected and either down-weighted (e.g., by fitting a robust regression) or, if they represent errors, removed. In addition to the visual check, we can formally test for influential observations using the <code>check_outliers</code> function.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="simple-linear-regression.html#cb16-1" tabindex="-1"></a><span class="co"># check for influential observations</span></span>
+<span id="cb16-2"><a href="simple-linear-regression.html#cb16-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_outliers</span>(m1.lm)</span></code></pre></div>
+<pre><code>## OK: No outliers detected.
+## - Based on the following method and threshold: cook (0.7).
+## - For variable: (Whole model)</code></pre>
+<p><strong>Normality of Residuals</strong></p>
+<p>This plot is used to examine whether the residuals are normally distributed: it is good if the points follow the straight reference line. If the points fall on the line, the residuals follow a normal distribution. If the points deviate from the line at the top and bottom, this shows that the model does not predict small and large values well and that it therefore does not have a good fit. We can complement the visual checks with formal tests of normality and heteroscedasticity as shown below.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="simple-linear-regression.html#cb18-1" tabindex="-1"></a><span class="co"># formal test of normality of residuals</span></span>
+<span id="cb18-2"><a href="simple-linear-regression.html#cb18-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_normality</span>(m1.lm)</span></code></pre></div>
+<pre><code>## OK: residuals appear as normally distributed (p = 0.873).</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="simple-linear-regression.html#cb20-1" tabindex="-1"></a><span class="co"># formal test of heteroscedasticity</span></span>
+<span id="cb20-2"><a href="simple-linear-regression.html#cb20-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_heteroscedasticity</span>(m1.lm)</span></code></pre></div>
+<pre><code>## OK: Error variance appears to be homoscedastic (p = 0.272).</code></pre>
+<p>In our case, the diagnostics do not indicate any severe violations of the model assumptions and we can proceed with the interpretation of the model.</p>
 <p>Now, we plot the effect reported by the model.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="simple-linear-regression.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate summary table</span></span>
-<span id="cb16-2"><a href="simple-linear-regression.html#cb16-2" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_model</span>(m1.lm, <span class="at">type =</span> <span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">&quot;Date&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/slr18a-1.png" width="672" /></p>
-<p>We end the current analysis by summarizing the results of the regression analysis using the <code>tab_model</code> function from the <code>sjPlot</code> package <span class="citation">(<a href="#ref-sjPlot" role="doc-biblioref">Lüdecke 2021</a>)</span> (as is shown below).</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="simple-linear-regression.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate summary table</span></span>
-<span id="cb17-2"><a href="simple-linear-regression.html#cb17-2" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(m1.lm) </span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="simple-linear-regression.html#cb22-1" tabindex="-1"></a><span class="co"># generate summary table</span></span>
+<span id="cb22-2"><a href="simple-linear-regression.html#cb22-2" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_model</span>(m1.lm, <span class="at">type =</span> <span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">&quot;Date&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/slr18a-1.png" alt="" width="672" /></p>
+<p>We end the current analysis by summarizing the results of the regression analysis using the <code>tab_model</code> function from the <code>sjPlot</code> package <span class="citation">(<a href="#ref-sjPlot">Lüdecke 2021</a>)</span> (as is shown below).</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="simple-linear-regression.html#cb23-1" tabindex="-1"></a><span class="co"># generate summary table</span></span>
+<span id="cb23-2"><a href="simple-linear-regression.html#cb23-2" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(m1.lm) </span></code></pre></div>
 <table style="border-collapse:collapse; border:none;">
 <tr>
 <th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
@@ -817,8 +722,8 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 </tr>
 </table>
 <p>Typically, the results of regression analyses are presented in such tables as they include all important measures of model quality and significance, as well as the magnitude of the effects.</p>
-<p>In addition, the results of simple linear regressions should be summarized in writing. We can use the <code>reports</code> package <span class="citation">(<a href="#ref-report" role="doc-biblioref">Makowski et al. 2021</a>)</span> to summarize the analysis.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="simple-linear-regression.html#cb18-1" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(m1.lm)</span></code></pre></div>
+<p>In addition, the results of simple linear regressions should be summarized in writing. We can use the <code>reports</code> package <span class="citation">(<a href="#ref-report">Makowski et al. 2021</a>)</span> to summarize the analysis.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="simple-linear-regression.html#cb24-1" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(m1.lm)</span></code></pre></div>
 <pre><code>## We fitted a linear model (estimated using OLS) to predict Prepositions with
 ## Date (formula: Prepositions ~ Date). The model explains a statistically
 ## significant and very weak proportion of variance (R2 = 0.01, F(1, 535) = 5.68,
@@ -844,90 +749,35 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 <p>In this example, we are dealing with two groups of students that have been randomly assigned to be exposed to different teaching methods. Both groups undergo a language learning test after the lesson with a maximum score of 20 points.</p>
 <p>The question that we will try to answer is whether the students in group A have performed significantly better than those in group B which would indicate that the teaching method to which group A was exposed works better than the teaching method to which group B was exposed.</p>
 <p>Let’s move on to implementing the regression in R. In a first step, we load the data set and inspect its structure.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="simple-linear-regression.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
-<span id="cb20-2"><a href="simple-linear-regression.html#cb20-2" aria-hidden="true" tabindex="-1"></a>slrdata2  <span class="ot">&lt;-</span> base<span class="sc">::</span><span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">&quot;https://slcladal.github.io/data/sgd.rda&quot;</span>, <span class="st">&quot;rb&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb20-3"><a href="simple-linear-regression.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Group =</span> <span class="fu">factor</span>(Group))</span></code></pre></div>
-<template id="3fa52257-32df-451e-96f7-184763e76742"><style>
-.tabwid table{
-  border-spacing:0px !important;
-  border-collapse:collapse;
-  line-height:1;
-  margin-left:auto;
-  margin-right:auto;
-  border-width: 0;
-  display: table;
-  margin-top: 1.275em;
-  margin-bottom: 1.275em;
-  border-color: transparent;
-}
-.tabwid_left table{
-  margin-left:0;
-}
-.tabwid_right table{
-  margin-right:0;
-}
-.tabwid td {
-    padding: 0;
-}
-.tabwid a {
-  text-decoration: none;
-}
-.tabwid thead {
-    background-color: transparent;
-}
-.tabwid tfoot {
-    background-color: transparent;
-}
-.tabwid table tr {
-background-color: transparent;
-}
-.katex-display {
-    margin: 0 0 !important;
-}
-</style><div class="tabwid"><style>.cl-44cf38c0{table-layout:auto;width:75%;}.cl-44c5d186{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-44c5d190{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-44c5e7ca{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-44c5e7d4{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-44c618a8{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44c618b2{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44c618b3{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44c618bc{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44c618bd{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44c618be{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44c618c6{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44c618c7{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-44cf38c0'>
-<caption class="Table Caption">
-<p><span id="tab:slr21">Table 9.3: </span>First 6 rows of the slrdata2 data.</p>
-</caption>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-44c618c6"><p class="cl-44c5e7ca"><span class="cl-44c5d186">Group</span></p></td><td class="cl-44c618c7"><p class="cl-44c5e7d4"><span class="cl-44c5d186">Score</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-44c618a8"><p class="cl-44c5e7ca"><span class="cl-44c5d190">A</span></p></td><td class="cl-44c618b2"><p class="cl-44c5e7d4"><span class="cl-44c5d190">15</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-44c618b3"><p class="cl-44c5e7ca"><span class="cl-44c5d190">A</span></p></td><td class="cl-44c618bc"><p class="cl-44c5e7d4"><span class="cl-44c5d190">12</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-44c618a8"><p class="cl-44c5e7ca"><span class="cl-44c5d190">A</span></p></td><td class="cl-44c618b2"><p class="cl-44c5e7d4"><span class="cl-44c5d190">11</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-44c618b3"><p class="cl-44c5e7ca"><span class="cl-44c5d190">A</span></p></td><td class="cl-44c618bc"><p class="cl-44c5e7d4"><span class="cl-44c5d190">18</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-44c618a8"><p class="cl-44c5e7ca"><span class="cl-44c5d190">A</span></p></td><td class="cl-44c618b2"><p class="cl-44c5e7d4"><span class="cl-44c5d190">15</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-44c618bd"><p class="cl-44c5e7ca"><span class="cl-44c5d190">A</span></p></td><td class="cl-44c618be"><p class="cl-44c5e7d4"><span class="cl-44c5d190">15</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="ccd9669e-e28f-4331-b9ba-1aca71fba015"></div>
-<script>
-var dest = document.getElementById("ccd9669e-e28f-4331-b9ba-1aca71fba015");
-var template = document.getElementById("3fa52257-32df-451e-96f7-184763e76742");
-var caption = template.content.querySelector("caption");
-if(caption) {
-  caption.style.cssText = "display:block;text-align:center;";
-  var newcapt = document.createElement("p");
-  newcapt.appendChild(caption)
-  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
-}
-var fantome = dest.attachShadow({mode: 'open'});
-var templateContent = template.content;
-fantome.appendChild(templateContent);
-</script>
-
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="simple-linear-regression.html#cb26-1" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb26-2"><a href="simple-linear-regression.html#cb26-2" tabindex="-1"></a>slrdata2  <span class="ot">&lt;-</span> base<span class="sc">::</span><span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">&quot;https://slcladal.github.io/data/sgd.rda&quot;</span>, <span class="st">&quot;rb&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb26-3"><a href="simple-linear-regression.html#cb26-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Group =</span> <span class="fu">factor</span>(Group))</span></code></pre></div>
+<div class="tabwid"><style>.cl-a387ff34{table-layout:auto;width:75%;}.cl-a37edee0{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a37edef4{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a382a930{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a382a944{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a382cc08{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a382cc12{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a382cc1c{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a382cc1d{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a382cc26{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a382cc27{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a382cc30{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a382cc31{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-a387ff34'>
+<caption style="display:table-caption;margin:0pt;text-align:center;border-bottom: 0.00pt solid transparent;border-top: 0.00pt solid transparent;border-left: 0.00pt solid transparent;border-right: 0.00pt solid transparent;padding-top:3pt;padding-bottom:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;"><span id="tab:slr21">Table 9.3: </span><span>First 6 rows of the slrdata2 data.</span></caption>
+<thead><tr style="overflow-wrap:break-word;"><th class="cl-a382cc08"><p class="cl-a382a930"><span class="cl-a37edee0">Group</span></p></th><th class="cl-a382cc12"><p class="cl-a382a944"><span class="cl-a37edee0">Score</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-a382cc1c"><p class="cl-a382a930"><span class="cl-a37edef4">A</span></p></td><td class="cl-a382cc1d"><p class="cl-a382a944"><span class="cl-a37edef4">15</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a382cc26"><p class="cl-a382a930"><span class="cl-a37edef4">A</span></p></td><td class="cl-a382cc27"><p class="cl-a382a944"><span class="cl-a37edef4">12</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a382cc1c"><p class="cl-a382a930"><span class="cl-a37edef4">A</span></p></td><td class="cl-a382cc1d"><p class="cl-a382a944"><span class="cl-a37edef4">11</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a382cc26"><p class="cl-a382a930"><span class="cl-a37edef4">A</span></p></td><td class="cl-a382cc27"><p class="cl-a382a944"><span class="cl-a37edef4">18</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a382cc1c"><p class="cl-a382a930"><span class="cl-a37edef4">A</span></p></td><td class="cl-a382cc1d"><p class="cl-a382a944"><span class="cl-a37edef4">15</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a382cc30"><p class="cl-a382a930"><span class="cl-a37edef4">A</span></p></td><td class="cl-a382cc31"><p class="cl-a382a944"><span class="cl-a37edef4">15</span></p></td></tr></tbody></table></div>
 <p>We also inspect the structure of the data.</p>
 <pre><code>## &#39;data.frame&#39;:    60 obs. of  2 variables:
 ##  $ Group: Factor w/ 2 levels &quot;A&quot;,&quot;B&quot;: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ Score: int  15 12 11 18 15 15 9 19 14 13 ...</code></pre>
 <p>Now, we graphically display the data. In this case, a boxplot represents a good way to visualize the data.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="simple-linear-regression.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract means</span></span>
-<span id="cb22-2"><a href="simple-linear-regression.html#cb22-2" aria-hidden="true" tabindex="-1"></a>slrdata2 <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a href="simple-linear-regression.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Group) <span class="sc">%&gt;%</span></span>
-<span id="cb22-4"><a href="simple-linear-regression.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Mean =</span> <span class="fu">round</span>(<span class="fu">mean</span>(Score), <span class="dv">1</span>), <span class="at">SD =</span> <span class="fu">round</span>(<span class="fu">sd</span>(Score), <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb22-5"><a href="simple-linear-regression.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Group, Score)) <span class="sc">+</span> </span>
-<span id="cb22-6"><a href="simple-linear-regression.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;darkgray&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb22-7"><a href="simple-linear-regression.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="st">&quot;M = &quot;</span>, Mean, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>), <span class="at">y =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb22-8"><a href="simple-linear-regression.html#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="st">&quot;SD = &quot;</span>, SD, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>), <span class="at">y =</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb22-9"><a href="simple-linear-regression.html#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
-<span id="cb22-10"><a href="simple-linear-regression.html#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Test score (Points)&quot;</span>) <span class="sc">+</span>   </span>
-<span id="cb22-11"><a href="simple-linear-regression.html#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">20</span>)) <span class="sc">+</span>  </span>
-<span id="cb22-12"><a href="simple-linear-regression.html#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="cn">FALSE</span>)                </span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/slr22-1.png" width="672" /></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="simple-linear-regression.html#cb28-1" tabindex="-1"></a><span class="co"># extract means</span></span>
+<span id="cb28-2"><a href="simple-linear-regression.html#cb28-2" tabindex="-1"></a>slrdata2 <span class="sc">|&gt;</span></span>
+<span id="cb28-3"><a href="simple-linear-regression.html#cb28-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Group) <span class="sc">|&gt;</span></span>
+<span id="cb28-4"><a href="simple-linear-regression.html#cb28-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Mean =</span> <span class="fu">round</span>(<span class="fu">mean</span>(Score), <span class="dv">1</span>), <span class="at">SD =</span> <span class="fu">round</span>(<span class="fu">sd</span>(Score), <span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb28-5"><a href="simple-linear-regression.html#cb28-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Group, Score)) <span class="sc">+</span> </span>
+<span id="cb28-6"><a href="simple-linear-regression.html#cb28-6" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;darkgray&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb28-7"><a href="simple-linear-regression.html#cb28-7" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="st">&quot;M = &quot;</span>, Mean, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>), <span class="at">y =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb28-8"><a href="simple-linear-regression.html#cb28-8" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="st">&quot;SD = &quot;</span>, SD, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>), <span class="at">y =</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb28-9"><a href="simple-linear-regression.html#cb28-9" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb28-10"><a href="simple-linear-regression.html#cb28-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Test score (Points)&quot;</span>) <span class="sc">+</span>   </span>
+<span id="cb28-11"><a href="simple-linear-regression.html#cb28-11" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">20</span>)) <span class="sc">+</span>  </span>
+<span id="cb28-12"><a href="simple-linear-regression.html#cb28-12" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="cn">FALSE</span>)                </span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/slr22-1.png" alt="" width="672" /></p>
 <p>The data indicate that group A did significantly better than group B. We will test this impression by generating the regression model and creating the model and extracting the model summary.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="simple-linear-regression.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate regression model</span></span>
-<span id="cb23-2"><a href="simple-linear-regression.html#cb23-2" aria-hidden="true" tabindex="-1"></a>m2.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Score <span class="sc">~</span> Group, <span class="at">data =</span> slrdata2) </span>
-<span id="cb23-3"><a href="simple-linear-regression.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect results</span></span>
-<span id="cb23-4"><a href="simple-linear-regression.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2.lm)                             </span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="simple-linear-regression.html#cb29-1" tabindex="-1"></a><span class="co"># generate regression model</span></span>
+<span id="cb29-2"><a href="simple-linear-regression.html#cb29-2" tabindex="-1"></a>m2.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Score <span class="sc">~</span> Group, <span class="at">data =</span> slrdata2) </span>
+<span id="cb29-3"><a href="simple-linear-regression.html#cb29-3" tabindex="-1"></a><span class="co"># inspect results</span></span>
+<span id="cb29-4"><a href="simple-linear-regression.html#cb29-4" tabindex="-1"></a><span class="fu">summary</span>(m2.lm)                             </span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Score ~ Group, data = slrdata2)
@@ -947,16 +797,16 @@ fantome.appendChild(templateContent);
 ## Multiple R-squared:  0.2322, Adjusted R-squared:  0.219 
 ## F-statistic: 17.55 on 1 and 58 DF,  p-value: 9.669e-05</code></pre>
 <p>The model summary reports that Group A performed significantly better compared with Group B. This is shown by the fact that the p-value (the value in the column with the header (Pr(&gt;|t|)) is smaller than .001 as indicated by the three * after the p-values). Also, the negative Estimate for Group B indicates that Group B has lower scores than Group A. We will now generate the diagnostic graphics.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="simple-linear-regression.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="co"># generate a plot window with 2x2 panels</span></span>
-<span id="cb25-2"><a href="simple-linear-regression.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m2.lm); <span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)) <span class="co"># restore normal plot window</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/slr25-1.png" width="672" /></p>
-<p>These graphics also show no problems and we continue by visualizing the results of the model.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="simple-linear-regression.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate summary table</span></span>
-<span id="cb26-2"><a href="simple-linear-regression.html#cb26-2" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_model</span>(m2.lm, <span class="at">type =</span> <span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">&quot;Group&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/slr26a-1.png" width="672" /></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="simple-linear-regression.html#cb31-1" tabindex="-1"></a><span class="co"># generate diagnostic plots</span></span>
+<span id="cb31-2"><a href="simple-linear-regression.html#cb31-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(m2.lm)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/slr25-1.png" alt="" width="672" /></p>
+<p>These diagnostics also show no problems (note that with a categorical predictor, the fitted values fall into just two groups, which is why the points line up in two vertical bands). We continue by visualizing the results of the model.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="simple-linear-regression.html#cb32-1" tabindex="-1"></a><span class="co"># generate summary table</span></span>
+<span id="cb32-2"><a href="simple-linear-regression.html#cb32-2" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_model</span>(m2.lm, <span class="at">type =</span> <span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">&quot;Group&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/slr26a-1.png" alt="" width="672" /></p>
 <p>Now, we summarize the results of the model.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="simple-linear-regression.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate summary table</span></span>
-<span id="cb27-2"><a href="simple-linear-regression.html#cb27-2" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(m2.lm) </span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="simple-linear-regression.html#cb33-1" tabindex="-1"></a><span class="co"># generate summary table</span></span>
+<span id="cb33-2"><a href="simple-linear-regression.html#cb33-2" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(m2.lm) </span></code></pre></div>
 <table style="border-collapse:collapse; border:none;">
 <tr>
 <th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
@@ -1025,8 +875,8 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 </td>
 </tr>
 </table>
-<p>We can use the <code>reports</code> package <span class="citation">(<a href="#ref-report" role="doc-biblioref">Makowski et al. 2021</a>)</span> to prepare the write-up of the analysis.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="simple-linear-regression.html#cb28-1" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(m2.lm)</span></code></pre></div>
+<p>We can use the <code>reports</code> package <span class="citation">(<a href="#ref-report">Makowski et al. 2021</a>)</span> to prepare the write-up of the analysis.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="simple-linear-regression.html#cb34-1" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(m2.lm)</span></code></pre></div>
 <pre><code>## We fitted a linear model (estimated using OLS) to predict Score with Group
 ## (formula: Score ~ Group). The model explains a statistically significant and
 ## moderate proportion of variance (R2 = 0.23, F(1, 58) = 17.55, p &lt; .001, adj. R2
@@ -1053,6 +903,9 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 <div id="ref-sjPlot" class="csl-entry">
 Lüdecke, Daniel. 2021. <em>sjPlot: Data Visualization for Statistics in Social Science</em>. <a href="https://CRAN.R-project.org/package=sjPlot">https://CRAN.R-project.org/package=sjPlot</a>.
 </div>
+<div id="ref-performance" class="csl-entry">
+Lüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, Philip Waggoner, and Dominique Makowski. 2021. <span>“Performance: An <span>R</span> Package for Assessment, Comparison and Testing of Statistical Models.”</span> <em>Journal of Open Source Software</em> 6 (60): 3139. <a href="https://doi.org/10.21105/joss.03139">https://doi.org/10.21105/joss.03139</a>.
+</div>
 <div id="ref-report" class="csl-entry">
 Makowski, Dominique, Mattan S. Ben-Shachar, Indrajeet Patil, and Daniel Lüdecke. 2021. <span>“Automated Results Reporting as a Practical Tool to Improve Reproducibility and Methodological Best Practices Adoption.”</span> <em>CRAN</em>. <a href="https://github.com/easystats/report">https://github.com/easystats/report</a>.
 </div>
@@ -1077,42 +930,42 @@ Makowski, Dominique, Mattan S. Ben-Shachar, Indrajeet Patil, and Daniel Lüdecke
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/MartinSchweinberger/SLAT7855/edit/master/09-week9.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": "https://github.com/MartinSchweinberger/SLAT7855/blob/master/09-week9.Rmd",
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/MartinSchweinberger/SLAT7855/edit/master/09-week9.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/MartinSchweinberger/SLAT7855/blob/master/09-week9.Rmd",
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

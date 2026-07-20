@@ -153,10 +153,10 @@ colnames(w5dat)
 
 To rename existing columns in a table, you can use the `rename` command which takes the table as the first argument, the new name as the second argument, the an equal sign (=), and finally, the old name es the third argument. For example, renaming a column *OldName* as *NewName* in a table called *MyTable* would look like this: `rename(MyTable, NewName = OldName)`.  
 
-Piping is done using the `%>%` sequence and it can be translated as **and then**. In the example below, we create a new object (w5dat_edit) from the existing object (w5dat) *and then* we rename the columns in the new object. When we use piping, we do not need to name the data we are using as this is provided by the previous step.
+Piping is done using the `|>` sequence and it can be translated as **and then**. In the example below, we create a new object (w5dat_edit) from the existing object (w5dat) *and then* we rename the columns in the new object. When we use piping, we do not need to name the data we are using as this is provided by the previous step.
 
 ```{r, message=FALSE, warning=FALSE}
-w5dat_edit <- w5dat %>%
+w5dat_edit <- w5dat |>
   dplyr::rename(Id = id,
          FileSpeakerId = file.speaker.id,
          File = colnames(w5dat)[3],
@@ -176,7 +176,7 @@ w5dat_edit[1:5, 1:6]
 To remove rows based on values in columns you can use the `filter` function.
 
 ```{r, message=FALSE, warning=FALSE}
-w5dat_edit2 <- w5dat_edit %>%
+w5dat_edit2 <- w5dat_edit |>
   dplyr::filter(Speaker != "?",
          Zone != is.na(Zone),
          Date == "2002-2005",
@@ -188,7 +188,7 @@ head(w5dat_edit2)
 To select specific columns you can use the `select` function.
 
 ```{r, message=FALSE, warning=FALSE}
-w5dat_selection <- w5dat_edit2 %>%
+w5dat_selection <- w5dat_edit2 |>
   dplyr::select(File, Speaker, Word.count)
 # inspect data
 head(w5dat_selection)
@@ -197,7 +197,7 @@ head(w5dat_selection)
 You can also use the `select` function to remove specific columns.
 
 ```{r, message=FALSE, warning=FALSE}
-w5dat_selection2 <- w5dat_edit2 %>%
+w5dat_selection2 <- w5dat_edit2 |>
   dplyr::select(-Id, -File, -Speaker, -Date, -Zone, -Age)
 # inspect data
 head(w5dat_selection2)
@@ -208,7 +208,7 @@ head(w5dat_selection2)
 To order data, for instance, in ascending order according to a specific column you can use the `arrange` function.
 
 ```{r, message=FALSE, warning=FALSE}
-w5dat_ordered_asc <- w5dat_selection2 %>%
+w5dat_ordered_asc <- w5dat_selection2 |>
   dplyr::arrange(Word.count)
 # inspect data
 head(w5dat_ordered_asc)
@@ -217,7 +217,7 @@ head(w5dat_ordered_asc)
 To order data in descending order you can also use the `arrange` function and simply add a - before the column according to which you want to order the data.
 
 ```{r, message=FALSE, warning=FALSE}
-w5dat_ordered_desc <- w5dat_selection2 %>%
+w5dat_ordered_desc <- w5dat_selection2 |>
   dplyr::arrange(-Word.count)
 # inspect data
 head(w5dat_ordered_desc)
@@ -245,7 +245,7 @@ This new column should contain
   + the value of *Filespeakerid* if *Filespeakerid* neither contains *S1A*, *S1B*, *S2A*, nor *S2B*.
 
 ```{r, message=FALSE, warning=FALSE}
-w5dat_texttype <- w5dat_selection2 %>%
+w5dat_texttype <- w5dat_selection2 |>
   dplyr::mutate(Texttype = 
                   dplyr::case_when(stringr::str_detect(Filespeakerid ,"S1A") ~ "PrivateDialoge",
                                    stringr::str_detect(Filespeakerid ,"S1B") ~ "PublicDialogue",
@@ -272,7 +272,7 @@ The nice thing about `ifelse` or `case_when`-statements is that they can be used
 Summarizing is really helpful and can be done using the `summarise` function.
 
 ```{r, message=FALSE, warning=FALSE}
-w5dat_summary1 <- w5dat_texttype %>%
+w5dat_summary1 <- w5dat_texttype |>
   dplyr::summarise(Words = sum(Word.count))
 # inspect data
 head(w5dat_summary1)
@@ -281,8 +281,8 @@ head(w5dat_summary1)
 To get summaries of sub-groups or by variable level, we can use the `group_by` function and then use the `summarise` function.
 
 ```{r, warning=F, message=F}
-w5dat_summary2 <- w5dat_texttype %>%
-  dplyr::group_by(Texttype, Sex) %>%
+w5dat_summary2 <- w5dat_texttype |>
+  dplyr::group_by(Texttype, Sex) |>
   dplyr::summarise(Speakers = n(),
             Words = sum(Word.count))
 # inspect data
@@ -300,8 +300,8 @@ We will use the data set called `w5dat_summary2`, which we created above, to dem
 We will first check out the `spread`-function to create different columns for women and men that show how many of them are represented in the different text types. 
 
 ```{r, message=FALSE, warning=FALSE}
-w5dat_summary_wide <- w5dat_summary2 %>%
-  dplyr::select(-Words) %>%
+w5dat_summary_wide <- w5dat_summary2 |>
+  dplyr::select(-Words) |>
   tidyr::spread(Sex, Speakers)
 # inspect
 w5dat_summary_wide
@@ -312,7 +312,7 @@ The data is now in what is called a `wide`-format as values are distributed acro
 To reformat this back to a `long`-format where each column represents exactly one variable, we use the `gather`-function:
 
 ```{r, message=FALSE, warning=FALSE}
-w5dat_summary_long <- w5dat_summary_wide %>%
+w5dat_summary_long <- w5dat_summary_wide |>
   tidyr::gather(Sex, Speakers, female:male)
 # inspect
 w5dat_summary_long

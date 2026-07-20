@@ -29,28 +29,32 @@ To understand what this means, let us imagine that we have collected information
 ```{r intro00a, echo=F, eval = F, message=FALSE, warning=FALSE}
 install.packages("dplyr")
 install.packages("flextable")
-install.packages("ggfortify")
-install.packages("car")
+install.packages("gridExtra")
+install.packages("performance")
+install.packages("see")
+install.packages("ggplot2")
 ```
 
 
 ```{r intro00, echo=F, message=FALSE, warning=FALSE}
 library(dplyr)
 library(flextable)
-library(car)
-library(ggfortify)
+library(gridExtra)
+library(performance)
+library(see)
+library(ggplot2)
 Height <- c(173, 169, 176, 166, 161, 164, 160, 158, 180, 187)
 Weight <- c(80, 68, 72, 75, 70, 65, 62, 60, 85, 92) 
 df <- data.frame(Height, Weight)
 # inspect data
-df %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "Weigth and height of a random sample of people.")  %>%
+df |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Weigth and height of a random sample of people.")  |>
   flextable::border_outer()
 ```
 
@@ -74,7 +78,7 @@ A person who is 180cm tall is predicted to weigh 83.33kg. Thus, the predictions 
 # generate data
 Height <- c(173, 169, 176, 166, 161, 164, 160, 158, 180, 187)
 Weight <- c(80, 68, 72, 75, 70, 65, 62, 60, 85, 92) 
-df <- data.frame(Height, Weight) %>%
+df <- data.frame(Height, Weight) |>
   dplyr::mutate(Pred = predict(lm(Weight ~ Height)))
 # generate plots
 p <- ggplot(df, aes(Height, Weight)) +
@@ -91,7 +95,7 @@ p3 <- p +
 p4 <- p3 +
   geom_segment(aes(xend = Height, yend = Pred), color = "red") +
   ggplot2::annotate(geom = "text", label = "Residual Deviance = 164.3 \nR2: 1 - (164.3/946.9)", x = 170, y = 100, size = 3)
-ggpubr::ggarrange(p1, p2, p3, p4, ncol = 2, nrow = 2)
+gridExtra::grid.arrange(p1, p2, p3, p4, ncol = 2, nrow = 2)
 ```
 
 Some words about the plots in the figure above: the upper left panel shows the raw observed data (black dots). The upper right panel shows the mean weight (blue line) and the residuals (in red). residuals are the distances from the expected or predicted values to the observed values (in this case the mean is the most most basic model which we use to predict values while the observed values simply represent the actual data points). The lower left panel shows observed values and the regression line, i.e, that line which, when drawn through the data points, will have the lowest sum of residuals. The lower right panel shows the regression line and the residuals, i.e. the distances between the expected or predicted values to the actual observed values (in red). Note that the sum of residuals in the lower right panel is much smaller than the sum of residuals in the upper right panel. This suggest that considering Height is a good idea as it explains a substantive amount of residual error and reduces the sum of residuals (or variance).
@@ -143,16 +147,16 @@ slrdata  <- base::readRDS(url("https://slcladal.github.io/data/sld.rda", "rb"))
 
 ```{r slr5, echo = F}
 # inspect data
-slrdata %>%
-  as.data.frame() %>%
-  head(15) %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "First 15 rows of slrdata.")  %>%
+slrdata |>
+  as.data.frame() |>
+  head(15) |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "First 15 rows of slrdata.")  |>
   flextable::border_outer()
 ```
 
@@ -231,35 +235,48 @@ SumSquaredResiduals <- sum(resid(m1.lm)^2)
 sqrt(SumSquaredResiduals/DegreesOfFreedom); DegreesOfFreedom
 ```
 
-We will now check the model assumptions  using diagnostic plots.
+We will now check the model assumptions using diagnostic plots. To do this, we use the `check_model` function from the `performance` package [@performance] which generates a panel of diagnostic plots and - very conveniently - tells us in the subtitle of each panel what we should be looking for.
 
-```{r slr13, message=FALSE, warning=FALSE}
-library(ggfortify)
-# generate plots
-autoplot(m1.lm) + 
-  theme_bw() +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) 
+```{r slr13, message=FALSE, warning=FALSE, fig.height=8}
+# generate diagnostic plots
+performance::check_model(m1.lm)
 ```
 
+We will go through the panels one by one:
 
-The diagnostic plots are very positive and we will go through why this is so for each panel:
+**Posterior Predictive Check**
 
-**Residuals vs Fitted** (upper left)
+This plot compares the distribution of the observed data (green line) with distributions of data simulated from the fitted model (blue lines). If the model captures the data well, the simulated distributions should closely resemble the observed distribution. Strong discrepancies indicate that the model fails to reproduce important characteristics of the data (e.g., skewness or multimodality).
 
-This plot is used to check the linear relationship assumptions: a horizontal line, without distinct patterns is an indication for a linear relationship, what is good. When a trend becomes visible in the line or points (e.g., a rising trend or a zigzag line), then this would indicate that the model would be problematic (in such cases, it can help to remove data points that are too influential (outliers)).  
+**Linearity**
 
-**Normal Q-Q** (upper right)
+This plot is used to check the linearity assumption: the reference line should be flat and horizontal. If a trend becomes visible in the line (e.g., a curve or a zigzag pattern), the relationship between predictor(s) and outcome is not adequately captured by a straight line and the model is problematic (in such cases, transforming variables or adding non-linear terms can help).
 
-This plot is used to examine whether the residuals are normally distributed: it’s good if residuals points follow the straight dashed line. If the points lie on the line, the residuals follow a normal distribution. For example, if the points are not on the line at the top and bottom, it shows that the model does not predict small and large values well and that it therefore does not have a good fit.  
+**Homogeneity of Variance**
 
-**Scale-Location (or Spread-Location)** (lower left)
+This plot is used to check the homogeneity of variance of the residuals (homoscedasticity): a flat, horizontal reference line with equally spread points indicates homoscedasticity. Homoscedasticity means that the variance of the residuals remains constant and does not correlate with any independent variable. If there is a trend in the line, we are dealing with heteroscedasticity, that is, a correlation between the fitted values and the spread of the residuals, which is very problematic for regressions.
 
-This plot is used to check the homogeneity of variance of the residuals (homoscedasticity): horizontal line with equally spread points is a good indication of homoscedasticity. This is not the case in our example, where we have a heteroscedasticity problem. Homoscedasticity means that the variance of the residuals remains constant and does not correlate with any independent variable. In unproblematic cases, the graphic shows a flat line. If there is a trend in the line, we are dealing with heteroscedasticity, that is, a correlation between independent variables and the residuals, which is very problematic for regressions.  
+**Influential Observations**
 
+This plot is used to identify influential cases that disproportionately affect the regression (this would be problematic): points should lie within the dashed contour lines. The contours are based on Cook's distance, which shows how much the regression changes when the model is re-fitted without that data point. If influential data points are present, they should be inspected and either down-weighted (e.g., by fitting a robust regression) or, if they represent errors, removed. In addition to the visual check, we can formally test for influential observations using the `check_outliers` function.
 
-**Residuals vs Leverage** (lower right)
+```{r slr13b, message=FALSE, warning=FALSE}
+# check for influential observations
+performance::check_outliers(m1.lm)
+```
 
-This plot is used to identify influential cases,  that disproportionately affect the regression (this would be problematic): if such influential data points are present, they should be either weighted (one could generate a robust rather than a simple linear regression) or they must be removed. The graph displays Cook's distance, which shows how the regression changes when a model without this data point is calculated. The cook distance thus shows the influence a data point has on the regression as a whole. Data points that have a Cook's distance value greater than 1 are problematic.  
+**Normality of Residuals**
+
+This plot is used to examine whether the residuals are normally distributed: it is good if the points follow the straight reference line. If the points fall on the line, the residuals follow a normal distribution. If the points deviate from the line at the top and bottom, this shows that the model does not predict small and large values well and that it therefore does not have a good fit. We can complement the visual checks with formal tests of normality and heteroscedasticity as shown below.
+
+```{r slr13c, message=FALSE, warning=FALSE}
+# formal test of normality of residuals
+performance::check_normality(m1.lm)
+# formal test of heteroscedasticity
+performance::check_heteroscedasticity(m1.lm)
+```
+
+In our case, the diagnostics do not indicate any severe violations of the model assumptions and we can proceed with the interpretation of the model.
 
 Now, we plot the effect reported by the model.
 
@@ -301,23 +318,23 @@ Let's move on to implementing the regression in R. In a first step, we load the 
 
 ```{r slr20, message=FALSE, warning=FALSE}
 # load data
-slrdata2  <- base::readRDS(url("https://slcladal.github.io/data/sgd.rda", "rb")) %>%
+slrdata2  <- base::readRDS(url("https://slcladal.github.io/data/sgd.rda", "rb")) |>
   dplyr::mutate(Group = factor(Group))
 ```
 
 
 ```{r slr21, echo=F, message=FALSE, warning=FALSE}
 # inspect data
-slrdata2 %>%
-  as.data.frame() %>%
-  head() %>%
-  flextable() %>%
-  flextable::set_table_properties(width = .75, layout = "autofit") %>%
-  flextable::theme_zebra() %>%
-  flextable::fontsize(size = 12) %>%
-  flextable::fontsize(size = 12, part = "header") %>%
-  flextable::align_text_col(align = "center") %>%
-  flextable::set_caption(caption = "First 6 rows of the slrdata2 data.")  %>%
+slrdata2 |>
+  as.data.frame() |>
+  head() |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "First 6 rows of the slrdata2 data.")  |>
   flextable::border_outer()
 ```
 
@@ -332,9 +349,9 @@ Now, we graphically display the data. In this case, a boxplot represents a good 
 
 ```{r slr22, message=F, warning=F}
 # extract means
-slrdata2 %>%
-  dplyr::group_by(Group) %>%
-  dplyr::mutate(Mean = round(mean(Score), 1), SD = round(sd(Score), 1)) %>%
+slrdata2 |>
+  dplyr::group_by(Group) |>
+  dplyr::mutate(Mean = round(mean(Score), 1), SD = round(sd(Score), 1)) |>
   ggplot(aes(Group, Score)) + 
   geom_boxplot(fill=c("orange", "darkgray")) +
   geom_text(aes(label = paste("M = ", Mean, sep = ""), y = 1)) +
@@ -356,12 +373,12 @@ summary(m2.lm)
 
 The model summary reports that Group A performed significantly better compared with Group B. This is shown by the fact that the p-value (the value in the column with the header (Pr(>|t|)) is smaller than .001 as indicated by the three \* after the p-values). Also, the negative Estimate for Group B indicates that Group B has lower scores than Group A. We will now generate the diagnostic graphics.
 
-```{r slr25, message=FALSE, warning=FALSE}
-par(mfrow = c(2, 2)) # generate a plot window with 2x2 panels
-plot(m2.lm); par(mfrow = c(1, 1)) # restore normal plot window
+```{r slr25, message=FALSE, warning=FALSE, fig.height=8}
+# generate diagnostic plots
+performance::check_model(m2.lm)
 ```
 
-These graphics also show no problems and we continue by visualizing the results of the model.
+These diagnostics also show no problems (note that with a categorical predictor, the fitted values fall into just two groups, which is why the points line up in two vertical bands). We continue by visualizing the results of the model.
 
 
 ```{r slr26a, message=FALSE, warning=FALSE}
