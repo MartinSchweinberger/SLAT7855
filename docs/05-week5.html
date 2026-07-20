@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.41">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; Working with Tables in R and RStudio – SLAT7855 – Statistics for Linguists</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./06-week6.html" rel="next">
+<link href="./04-week4.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-48ffa3e5b9d089919c6712c39e5b00f2.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-baf7457b58093534c7052efdef5f4d86.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-week5.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Tables in R and RStudio</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">SLAT7855 – Statistics for Linguists</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-week1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-week2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Hypotheses and Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-week3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Significance, Probability and the Normal Distribution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-week4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting Started with R and RStudio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-week5.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Tables in R and RStudio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-week6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-week7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Data Visualization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-week8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic Inferential Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-week9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-week10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-week11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">(Different) Types of Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-week12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mixed-Effects Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-week13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Tree-Based Models, Machine Learning, and AI</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#working-with-tables" id="toc-working-with-tables" class="nav-link active" data-scroll-target="#working-with-tables"><span class="header-section-number">5.1</span> Working with tables</a></li>
+  <li><a href="#functions-and-objects" id="toc-functions-and-objects" class="nav-link" data-scroll-target="#functions-and-objects"><span class="header-section-number">5.2</span> Functions and Objects</a></li>
+  <li><a href="#inspecting-data" id="toc-inspecting-data" class="nav-link" data-scroll-target="#inspecting-data"><span class="header-section-number">5.3</span> Inspecting data</a></li>
+  <li><a href="#accessing-individual-cells-in-a-table" id="toc-accessing-individual-cells-in-a-table" class="nav-link" data-scroll-target="#accessing-individual-cells-in-a-table"><span class="header-section-number">5.4</span> Accessing individual cells in a table</a></li>
+  <li><a href="#tabulating-data" id="toc-tabulating-data" class="nav-link" data-scroll-target="#tabulating-data"><span class="header-section-number">5.5</span> Tabulating data</a></li>
+  <li><a href="#saving-data-to-your-computer" id="toc-saving-data-to-your-computer" class="nav-link" data-scroll-target="#saving-data-to-your-computer"><span class="header-section-number">5.6</span> Saving data to your computer</a></li>
+  <li><a href="#loading-data-from-your-computer" id="toc-loading-data-from-your-computer" class="nav-link" data-scroll-target="#loading-data-from-your-computer"><span class="header-section-number">5.7</span> Loading data from your computer</a></li>
+  <li><a href="#loading-excel-data" id="toc-loading-excel-data" class="nav-link" data-scroll-target="#loading-excel-data"><span class="header-section-number">5.8</span> Loading Excel data</a></li>
+  <li><a href="#renaming-piping-and-filtering" id="toc-renaming-piping-and-filtering" class="nav-link" data-scroll-target="#renaming-piping-and-filtering"><span class="header-section-number">5.9</span> Renaming, Piping, and Filtering</a></li>
+  <li><a href="#ordering-data" id="toc-ordering-data" class="nav-link" data-scroll-target="#ordering-data"><span class="header-section-number">5.10</span> Ordering data</a></li>
+  <li><a href="#creating-and-changing-variables" id="toc-creating-and-changing-variables" class="nav-link" data-scroll-target="#creating-and-changing-variables"><span class="header-section-number">5.11</span> Creating and changing variables</a></li>
+  <li><a href="#if-statements" id="toc-if-statements" class="nav-link" data-scroll-target="#if-statements"><span class="header-section-number">5.12</span> If-statements</a></li>
+  <li><a href="#summarizing-data" id="toc-summarizing-data" class="nav-link" data-scroll-target="#summarizing-data"><span class="header-section-number">5.13</span> Summarizing data</a></li>
+  <li><a href="#gathering-and-spreading-data" id="toc-gathering-and-spreading-data" class="nav-link" data-scroll-target="#gathering-and-spreading-data"><span class="header-section-number">5.14</span> Gathering and spreading data</a></li>
+  <li><a href="#ending-r-sessions" id="toc-ending-r-sessions" class="nav-link" data-scroll-target="#ending-r-sessions"><span class="header-section-number">5.15</span> Ending R sessions</a></li>
+  <li><a href="#extracting-session-information" id="toc-extracting-session-information" class="nav-link" data-scroll-target="#extracting-session-information"><span class="header-section-number">5.16</span> Extracting session information</a></li>
+  <li><a href="#going-further" id="toc-going-further" class="nav-link" data-scroll-target="#going-further"><span class="header-section-number">5.17</span> Going further</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="week5" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Tables in R and RStudio</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What This Session Covers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This session teaches you to work with tabular data in R - the bread and butter of quantitative analysis.</p>
+<ol type="1">
+<li><strong>Functions, objects, and data inspection</strong> - <code>head()</code>, <code>str()</code>, <code>summary()</code></li>
+<li><strong>Accessing data</strong> - rows, columns, and individual cells; tabulating with <code>table()</code></li>
+<li><strong>Saving and loading data</strong> - text files and Excel spreadsheets</li>
+<li><strong>The tidyverse workflow</strong> - renaming, piping (<code>|&gt;</code>), filtering, and ordering data</li>
+<li><strong>Creating and changing variables</strong> - <code>mutate()</code> and if-statements</li>
+<li><strong>Summarizing</strong> - <code>group_by()</code> and <code>summarise()</code></li>
+<li><strong>Reshaping data</strong> - long vs.&nbsp;wide formats (gathering and spreading)</li>
+</ol>
+</div>
+</div>
+<p>This week, we will continue to explore R and RStudio.</p>
+<section id="working-with-tables" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="working-with-tables"><span class="header-section-number">5.1</span> Working with tables</h2>
+<p>We will now start working with data in R. As most of the data that we work with comes in tables.</p>
+<p>We will download a tab-separated txt-file. Translated to prose, the code below means <em>Create an object called </em>w5dat <em>and in that object, store the result of the <code>read.delim</code> function</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>w5dat <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"week5data1.txt"</span>), <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">header =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>read.delim</code> stands for <em>read delimited file</em> and it takes the URL from which to load the data (or the path to the data on your computer) as its first argument. The <code>sep</code> stand for separator and the <code>\t</code> stands for tab-separated and represents the second argument that the <code>read.delim</code> function takes. The third argument, <code>header</code>, can take either T(RUE) or F(ALSE) and it tells R if the data has column names (headers) or not.</p>
+</section>
+<section id="functions-and-objects" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="functions-and-objects"><span class="header-section-number">5.2</span> Functions and Objects</h2>
+<p>In R, functions always have the following form: <code>function(argument1, argument2, ..., argumentN)</code>. Typically a function does something to an object (e.g.&nbsp;a table), so that the first argument typically specifies the data to which the function is applied. Other arguments then allow to add some information. Just as a side note, functions are also objects that do not contain data but instructions.</p>
+<p>To assign content to an object, we use <code>&lt;-</code> or <code>=</code> so that the we provide a name for an object, and then assign some content to it. For example, <code>MyObject &lt;- 1:3</code> means <em>Create an object called <code>MyObject</code>. this object should contain the numbers 1 to 3</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>MyObject <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>MyObject</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3</code></pre>
+</div>
+</div>
+</section>
+<section id="inspecting-data" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="inspecting-data"><span class="header-section-number">5.3</span> Inspecting data</h2>
+<p>There are many ways to inspect data. We will briefly go over the most common ways to inspect data.</p>
+<p>The <code>head</code> function takes the data-object as its first argument and automatically shows the first 6 elements of an object (or rows if the data-object has a table format).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id file.speaker.id text.id spk.ref             zone      date    sex   age
+1  1     &lt;S1A-001$A&gt; S1A-001       A northern ireland 1990-1994   male 34-41
+2  2     &lt;S1A-001$B&gt; S1A-001       B northern ireland 1990-1994 female 34-41
+3  3     &lt;S1A-002$?&gt; S1A-002       ?             &lt;NA&gt;      &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;
+4  4     &lt;S1A-002$A&gt; S1A-002       A northern ireland 2002-2005 female 26-33
+5  5     &lt;S1A-002$B&gt; S1A-002       B northern ireland 2002-2005 female 19-25
+6  6     &lt;S1A-002$C&gt; S1A-002       C northern ireland 2002-2005   male   50+
+  word.count
+1        765
+2       1298
+3         23
+4        391
+5         47
+6        200</code></pre>
+</div>
+</div>
+<p>We can also use the <code>head</code> function to inspect more or less elements and we can specify the number of elements (or rows) that we want to inspect as a second argument. In the example below, the <code>4</code> tells R that we only want to see the first 4 rows of the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id file.speaker.id text.id spk.ref             zone      date    sex   age
+1  1     &lt;S1A-001$A&gt; S1A-001       A northern ireland 1990-1994   male 34-41
+2  2     &lt;S1A-001$B&gt; S1A-001       B northern ireland 1990-1994 female 34-41
+3  3     &lt;S1A-002$?&gt; S1A-002       ?             &lt;NA&gt;      &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;
+4  4     &lt;S1A-002$A&gt; S1A-002       A northern ireland 2002-2005 female 26-33
+  word.count
+1        765
+2       1298
+3         23
+4        391</code></pre>
+</div>
+</div>
+</section>
+<section id="accessing-individual-cells-in-a-table" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="accessing-individual-cells-in-a-table"><span class="header-section-number">5.4</span> Accessing individual cells in a table</h2>
+<p>If you want to access specific cells in a table, you can do so by typing the name of the object and then specify the rows and columns in square brackets (i.e.&nbsp;<strong>data[row, column]</strong>). For example, <code>w5dat[2, 4]</code> would show the value of the cell in the second row and fourth column of the object <code>w5dat</code>. We can also use the colon to define a range (as shown below, where 1:5 means from 1 to 5 and 1:3 means from 1 to 3) The command <code>w5dat[1:5, 1:3]</code> thus means:</p>
+<p><em>Show me the first 5 rows and the first 3 columns of the data-object that is called w5dat</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>w5dat[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id file.speaker.id text.id
+1  1     &lt;S1A-001$A&gt; S1A-001
+2  2     &lt;S1A-001$B&gt; S1A-001
+3  3     &lt;S1A-002$?&gt; S1A-002
+4  4     &lt;S1A-002$A&gt; S1A-002
+5  5     &lt;S1A-002$B&gt; S1A-002</code></pre>
+</div>
+</div>
+<p><strong>Inspecting the structure of data</strong></p>
+<p>You can use the <code>str</code> function to inspect the structure of a data set. This means that this function will show the number of observations (rows) and variables (columns) and tell you what type of variables the data consists of</p>
+<ul>
+<li><strong>int</strong> = integer</li>
+<li><strong>chr</strong> = character string</li>
+<li><strong>num</strong> = numeric</li>
+<li><strong>fct</strong> = factor</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(w5dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1332 obs. of  9 variables:
+ $ id             : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ file.speaker.id: chr  "&lt;S1A-001$A&gt;" "&lt;S1A-001$B&gt;" "&lt;S1A-002$?&gt;" "&lt;S1A-002$A&gt;" ...
+ $ text.id        : chr  "S1A-001" "S1A-001" "S1A-002" "S1A-002" ...
+ $ spk.ref        : chr  "A" "B" "?" "A" ...
+ $ zone           : chr  "northern ireland" "northern ireland" NA "northern ireland" ...
+ $ date           : chr  "1990-1994" "1990-1994" NA "2002-2005" ...
+ $ sex            : chr  "male" "female" NA "female" ...
+ $ age            : chr  "34-41" "34-41" NA "26-33" ...
+ $ word.count     : int  765 1298 23 391 47 200 464 639 308 78 ...</code></pre>
+</div>
+</div>
+<p>The <code>summary</code> function summarizes the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(w5dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       id         file.speaker.id      text.id            spk.ref         
+ Min.   :   1.0   Length:1332        Length:1332        Length:1332       
+ 1st Qu.: 333.8   Class :character   Class :character   Class :character  
+ Median : 666.5   Mode  :character   Mode  :character   Mode  :character  
+ Mean   : 666.5                                                           
+ 3rd Qu.: 999.2                                                           
+ Max.   :1332.0                                                           
+     zone               date               sex                age           
+ Length:1332        Length:1332        Length:1332        Length:1332       
+ Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+                                                                            
+                                                                            
+                                                                            
+   word.count    
+ Min.   :   0.0  
+ 1st Qu.:  66.0  
+ Median : 240.5  
+ Mean   : 449.9  
+ 3rd Qu.: 638.2  
+ Max.   :2565.0  </code></pre>
+</div>
+</div>
+</section>
+<section id="tabulating-data" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="tabulating-data"><span class="header-section-number">5.5</span> Tabulating data</h2>
+<p>We can use the <code>table</code> function to create basic tables that extract raw frequency information. The following command tells us how many instances there are of each level of the variable <code>date</code> in the <code>w5dat</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(w5dat<span class="sc">$</span>date) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+1990-1994 1995-2001 2002-2005 
+      905        67       270 </code></pre>
+</div>
+</div>
+<p>Alternatively, you could, of course, index the column by using its position in the data set like this: <code>w5dat[, 6]</code> - the result of <code>table(w5dat[, 6])</code> and <code>table(w5dat$date)</code> are the same! Also note that here we leave out indexes for rows to tell R that we want all rows.</p>
+<p>When you want to cross-tabulate columns, it is often better to use the <code>ftable</code> function (<code>ftable</code> stands for <em>frequency table</em>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(w5dat<span class="sc">$</span>age, w5dat<span class="sc">$</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       female male
+                  
+0-18        5    7
+19-25     163   65
+26-33      83   36
+34-41      35   58
+42-49      35   97
+50+        63  138</code></pre>
+</div>
+</div>
+</section>
+<section id="saving-data-to-your-computer" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="saving-data-to-your-computer"><span class="header-section-number">5.6</span> Saving data to your computer</h2>
+<p>To save tabular data on your computer, you can use the <code>write.table</code> function. This function requires the data that you want to save as its first argument, the location where you want to save the data as the second argument and the type of delimiter as the third argument.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(w5dat, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"w5dat.txt"</span>), <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>A word about paths</strong></p>
+<p>In the code chunk above, the sequence <code>here::here("data", "w5dat.txt")</code> is a handy way to define a path. A path is simply the location where a file is stored on your computer or on the internet (which typically is a server - which is just a fancy term for a computer - somewhere on the globe). The <code>here</code> function from the<code>here</code> package allows to simply state in which folder a certain file is and what file you are talking about.</p>
+<p>In this case, we want to access the file <code>w5dat</code> (which is a <code>txt</code> file and thus has the appendix <code>.txt</code>) in the <code>data</code> folder. R will always start looking in the folder in which your project is stored. If you want to access a file that is stored somewhere else on your computer, you can also define the full path to the folder in which the file is. In my case, this would be <code>D:/Uni/UQ/SLC/LADAL/SLCLADAL.github.io/data</code>. However, as the <code>data</code> folder in in the folder where my Rproj file is, I only need to specify that the file is in the <code>data</code> folder within the folder in which my Rproj file is located.</p>
+<p><strong>A word about package naming</strong></p>
+<p>Another thing that is notable in the sequence <code>here::here("data", "w5dat.txt")</code> is that I specified that the <code>here</code> function is part of the <code>here</code> package. This is what I meant by writing <code>here::here</code> which simply means use the <code>here</code> function from <code>here</code> package (<code>package::function</code>). This may appear to be somewhat redundant but it happens quite frequently, that different packages have functions that have the same names. In such cases, R will simply choose the function from the package that was loaded last. To prevent R from using the wrong function, it makes sense to specify the package AND the function (as I did in the sequence <code>here::here</code>). I only use functions without specify the package if the function is part of base R.</p>
+</section>
+<section id="loading-data-from-your-computer" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="loading-data-from-your-computer"><span class="header-section-number">5.7</span> Loading data from your computer</h2>
+<p>To load tabular data from within your project folder (if it is in a tab-separated txt-file) you can also use the <code>read.delim</code> function. The only difference to loading from the web is that you use a path instead of a URL. If the txt-file is in the folder called <em>data</em> in your project folder, you would load the data as shown below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>w5dat <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"week5data1.txt"</span>), <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">header =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To if this has worked, we will use the <code>head</code> function to see first 6 rows of the data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id file.speaker.id text.id spk.ref             zone      date    sex   age
+1  1     &lt;S1A-001$A&gt; S1A-001       A northern ireland 1990-1994   male 34-41
+2  2     &lt;S1A-001$B&gt; S1A-001       B northern ireland 1990-1994 female 34-41
+3  3     &lt;S1A-002$?&gt; S1A-002       ?             &lt;NA&gt;      &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;
+4  4     &lt;S1A-002$A&gt; S1A-002       A northern ireland 2002-2005 female 26-33
+5  5     &lt;S1A-002$B&gt; S1A-002       B northern ireland 2002-2005 female 19-25
+6  6     &lt;S1A-002$C&gt; S1A-002       C northern ireland 2002-2005   male   50+
+  word.count
+1        765
+2       1298
+3         23
+4        391
+5         47
+6        200</code></pre>
+</div>
+</div>
+</section>
+<section id="loading-excel-data" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="loading-excel-data"><span class="header-section-number">5.8</span> Loading Excel data</h2>
+<p>To load Excel spreadsheets, you can use the <code>read_excel</code> function from the <code>readxl</code> package as shown below. However, it may be necessary to install and activate the <code>readxl</code> package first.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>w5dat <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"week5data2.xlsx"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We now briefly check column names to see if the loading of the data has worked.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(w5dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "id"              "file.speaker.id" "text.id"         "spk.ref"        
+[5] "zone"            "date"            "sex"             "age"            
+[9] "word.count"     </code></pre>
+</div>
+</div>
+</section>
+<section id="renaming-piping-and-filtering" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="renaming-piping-and-filtering"><span class="header-section-number">5.9</span> Renaming, Piping, and Filtering</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key concept: The pipe
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The pipe <code>|&gt;</code> passes the result of one function into the next and can be read as <em>and then</em>: <code>data |&gt; filter(Age == \"old\") |&gt; summarise(mean(Score))</code> means <em>take the data, and then keep only old speakers, and then compute the mean score</em>. Pipes let you write analyses as readable left-to-right sequences instead of nesting functions inside one another - compare the unpiped equivalent <code>summarise(filter(data, Age == \"old\"), mean(Score))</code>, which must be read inside-out.</p>
+</div>
+</div>
+<p>To rename existing columns in a table, you can use the <code>rename</code> command which takes the table as the first argument, the new name as the second argument, the an equal sign (=), and finally, the old name es the third argument. For example, renaming a column <em>OldName</em> as <em>NewName</em> in a table called <em>MyTable</em> would look like this: <code>rename(MyTable, NewName = OldName)</code>.</p>
+<p>Piping is done using the <code>|&gt;</code> sequence and it can be translated as <strong>and then</strong>. In the example below, we create a new object (w5dat_edit) from the existing object (w5dat) <em>and then</em> we rename the columns in the new object. When we use piping, we do not need to name the data we are using as this is provided by the previous step.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>w5dat_edit <span class="ot">&lt;-</span> w5dat <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">Id =</span> id,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">FileSpeakerId =</span> file.speaker.id,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">File =</span> <span class="fu">colnames</span>(w5dat)[<span class="dv">3</span>],</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">Speaker =</span> <span class="fu">colnames</span>(w5dat)[<span class="dv">4</span>])</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>w5dat_edit[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 6
+     Id FileSpeakerId File    Speaker zone             date     
+  &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;            &lt;chr&gt;    
+1     1 &lt;S1A-001$A&gt;   S1A-001 A       northern ireland 1990-1994
+2     2 &lt;S1A-001$B&gt;   S1A-001 B       northern ireland 1990-1994
+3     3 &lt;S1A-002$?&gt;   S1A-002 ?       NA               NA       
+4     4 &lt;S1A-002$A&gt;   S1A-002 A       northern ireland 2002-2005
+5     5 &lt;S1A-002$B&gt;   S1A-002 B       northern ireland 2002-2005</code></pre>
+</div>
+</div>
+<p>A very handy way to rename many columns simultaneously, you can use the <code>str_to_title</code> function which capitalizes first letter of a word. In the example below, we capitalize all first letters of the column names of our current data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(w5dat_edit) <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_to_title</span>(<span class="fu">colnames</span>(w5dat_edit))</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>w5dat_edit[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 6
+     Id Filespeakerid File    Speaker Zone             Date     
+  &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;            &lt;chr&gt;    
+1     1 &lt;S1A-001$A&gt;   S1A-001 A       northern ireland 1990-1994
+2     2 &lt;S1A-001$B&gt;   S1A-001 B       northern ireland 1990-1994
+3     3 &lt;S1A-002$?&gt;   S1A-002 ?       NA               NA       
+4     4 &lt;S1A-002$A&gt;   S1A-002 A       northern ireland 2002-2005
+5     5 &lt;S1A-002$B&gt;   S1A-002 B       northern ireland 2002-2005</code></pre>
+</div>
+</div>
+<p>To remove rows based on values in columns you can use the <code>filter</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>w5dat_edit2 <span class="ot">&lt;-</span> w5dat_edit <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Speaker <span class="sc">!=</span> <span class="st">"?"</span>,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>         Zone <span class="sc">!=</span> <span class="fu">is.na</span>(Zone),</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>         Date <span class="sc">==</span> <span class="st">"2002-2005"</span>,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>         Word.count <span class="sc">&gt;</span> <span class="dv">5</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_edit2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 9
+     Id Filespeakerid File    Speaker Zone          Date  Sex   Age   Word.count
+  &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
+1     4 &lt;S1A-002$A&gt;   S1A-002 A       northern ire… 2002… fema… 26-33        391
+2     5 &lt;S1A-002$B&gt;   S1A-002 B       northern ire… 2002… fema… 19-25         47
+3     6 &lt;S1A-002$C&gt;   S1A-002 C       northern ire… 2002… male  50+          200
+4     7 &lt;S1A-002$D&gt;   S1A-002 D       northern ire… 2002… fema… 50+          464
+5     8 &lt;S1A-002$E&gt;   S1A-002 E       mixed betwee… 2002… male  34-41        639
+6     9 &lt;S1A-002$F&gt;   S1A-002 F       northern ire… 2002… fema… 26-33        308</code></pre>
+</div>
+</div>
+<p>To select specific columns you can use the <code>select</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>w5dat_selection <span class="ot">&lt;-</span> w5dat_edit2 <span class="sc">|&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(File, Speaker, Word.count)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_selection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  File    Speaker Word.count
+  &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;
+1 S1A-002 A              391
+2 S1A-002 B               47
+3 S1A-002 C              200
+4 S1A-002 D              464
+5 S1A-002 E              639
+6 S1A-002 F              308</code></pre>
+</div>
+</div>
+<p>You can also use the <code>select</code> function to remove specific columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>w5dat_selection2 <span class="ot">&lt;-</span> w5dat_edit2 <span class="sc">|&gt;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Id, <span class="sc">-</span>File, <span class="sc">-</span>Speaker, <span class="sc">-</span>Date, <span class="sc">-</span>Zone, <span class="sc">-</span>Age)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_selection2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  Filespeakerid Sex    Word.count
+  &lt;chr&gt;         &lt;chr&gt;       &lt;dbl&gt;
+1 &lt;S1A-002$A&gt;   female        391
+2 &lt;S1A-002$B&gt;   female         47
+3 &lt;S1A-002$C&gt;   male          200
+4 &lt;S1A-002$D&gt;   female        464
+5 &lt;S1A-002$E&gt;   male          639
+6 &lt;S1A-002$F&gt;   female        308</code></pre>
+</div>
+</div>
+</section>
+<section id="ordering-data" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="ordering-data"><span class="header-section-number">5.10</span> Ordering data</h2>
+<p>To order data, for instance, in ascending order according to a specific column you can use the <code>arrange</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>w5dat_ordered_asc <span class="ot">&lt;-</span> w5dat_selection2 <span class="sc">|&gt;</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(Word.count)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_ordered_asc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  Filespeakerid Sex    Word.count
+  &lt;chr&gt;         &lt;chr&gt;       &lt;dbl&gt;
+1 &lt;S1B-009$D&gt;   female          6
+2 &lt;S1B-005$C&gt;   female          7
+3 &lt;S1B-009$C&gt;   male            7
+4 &lt;S1B-020$F&gt;   male            7
+5 &lt;S1B-006$G&gt;   female          9
+6 &lt;S2A-050$B&gt;   male            9</code></pre>
+</div>
+</div>
+<p>To order data in descending order you can also use the <code>arrange</code> function and simply add a - before the column according to which you want to order the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>w5dat_ordered_desc <span class="ot">&lt;-</span> w5dat_selection2 <span class="sc">|&gt;</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="sc">-</span>Word.count)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_ordered_desc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  Filespeakerid Sex    Word.count
+  &lt;chr&gt;         &lt;chr&gt;       &lt;dbl&gt;
+1 &lt;S2A-055$A&gt;   female       2355
+2 &lt;S2A-047$A&gt;   male         2340
+3 &lt;S2A-035$A&gt;   female       2244
+4 &lt;S2A-048$A&gt;   male         2200
+5 &lt;S2A-015$A&gt;   male         2172
+6 &lt;S2A-054$A&gt;   female       2113</code></pre>
+</div>
+</div>
+<p>The output shows that the female speaker in file S2A-005 with the speaker identity A has the highest word count with 2,355 words.</p>
+</section>
+<section id="creating-and-changing-variables" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="creating-and-changing-variables"><span class="header-section-number">5.11</span> Creating and changing variables</h2>
+<p>New columns are created, and existing columns can be changed, by using the <code>mutate</code> function. The <code>mutate</code> function takes two arguments (if the data does not have to be specified): the first argument is the (new) name of column that you want to create and the second is what you want to store in that column. The = tells R that the new column will contain the result of the second argument.</p>
+<p>In the example below, we create a new column called <em>Texttype</em>.</p>
+<p>This new column should contain</p>
+<ul>
+<li><p>the value <em>PrivateDialoge</em> if <em>Filespeakerid</em> contains the sequence <em>S1A</em>,</p></li>
+<li><p>the value <em>PublicDialogue</em> if <em>Filespeakerid</em> contains the sequence <em>S1B</em>,</p></li>
+<li><p>the value <em>UnscriptedMonologue</em> if <em>Filespeakerid</em> contains the sequence <em>S2A</em>,</p></li>
+<li><p>the value <em>ScriptedMonologue</em> if <em>Filespeakerid</em> contains the sequence <em>S2B</em>,</p></li>
+<li><p>the value of <em>Filespeakerid</em> if <em>Filespeakerid</em> neither contains <em>S1A</em>, <em>S1B</em>, <em>S2A</em>, nor <em>S2B</em>.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>w5dat_texttype <span class="ot">&lt;-</span> w5dat_selection2 <span class="sc">|&gt;</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Texttype =</span> </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                  dplyr<span class="sc">::</span><span class="fu">case_when</span>(stringr<span class="sc">::</span><span class="fu">str_detect</span>(Filespeakerid ,<span class="st">"S1A"</span>) <span class="sc">~</span> <span class="st">"PrivateDialoge"</span>,</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                                   stringr<span class="sc">::</span><span class="fu">str_detect</span>(Filespeakerid ,<span class="st">"S1B"</span>) <span class="sc">~</span> <span class="st">"PublicDialogue"</span>,</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>                                   stringr<span class="sc">::</span><span class="fu">str_detect</span>(Filespeakerid ,<span class="st">"S2A"</span>) <span class="sc">~</span> <span class="st">"UnscriptedMonologue"</span>,</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>                                   stringr<span class="sc">::</span><span class="fu">str_detect</span>(Filespeakerid ,<span class="st">"S2B"</span>) <span class="sc">~</span> <span class="st">"ScriptedMonologue"</span>,</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="cn">TRUE</span> <span class="sc">~</span> Filespeakerid))</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_texttype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  Filespeakerid Sex    Word.count Texttype      
+  &lt;chr&gt;         &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;         
+1 &lt;S1A-002$A&gt;   female        391 PrivateDialoge
+2 &lt;S1A-002$B&gt;   female         47 PrivateDialoge
+3 &lt;S1A-002$C&gt;   male          200 PrivateDialoge
+4 &lt;S1A-002$D&gt;   female        464 PrivateDialoge
+5 &lt;S1A-002$E&gt;   male          639 PrivateDialoge
+6 &lt;S1A-002$F&gt;   female        308 PrivateDialoge</code></pre>
+</div>
+</div>
+</section>
+<section id="if-statements" class="level2" data-number="5.12">
+<h2 data-number="5.12" class="anchored" data-anchor-id="if-statements"><span class="header-section-number">5.12</span> If-statements</h2>
+<p>We should briefly talk about if-statements (or <code>case_when</code> in the present case). The <code>case_when</code> function is both very powerful and extremely helpful as it allows you to assign values based on a test. As such, <code>case_when</code>-statements can be read as:</p>
+<p><em>When/If X is the case, then do A and if X is not the case do B!</em> (When/If -&gt; Then -&gt; Else)</p>
+<p>The nice thing about <code>ifelse</code> or <code>case_when</code>-statements is that they can be used in succession as we have done above. This can then be read as:</p>
+<p><em>If X is the case, then do A, if Y is the case, then do B, else do Z</em></p>
+</section>
+<section id="summarizing-data" class="level2" data-number="5.13">
+<h2 data-number="5.13" class="anchored" data-anchor-id="summarizing-data"><span class="header-section-number">5.13</span> Summarizing data</h2>
+<p>Summarizing is really helpful and can be done using the <code>summarise</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>w5dat_summary1 <span class="ot">&lt;-</span> w5dat_texttype <span class="sc">|&gt;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">Words =</span> <span class="fu">sum</span>(Word.count))</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_summary1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+   Words
+   &lt;dbl&gt;
+1 141876</code></pre>
+</div>
+</div>
+<p>To get summaries of sub-groups or by variable level, we can use the <code>group_by</code> function and then use the <code>summarise</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>w5dat_summary2 <span class="ot">&lt;-</span> w5dat_texttype <span class="sc">|&gt;</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Texttype, Sex) <span class="sc">|&gt;</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">Speakers =</span> <span class="fu">n</span>(),</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Words =</span> <span class="fu">sum</span>(Word.count))</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(w5dat_summary2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+# Groups:   Texttype [3]
+  Texttype            Sex    Speakers Words
+  &lt;chr&gt;               &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt;
+1 PrivateDialoge      female      105 60024
+2 PrivateDialoge      male         18  9628
+3 PublicDialogue      female       63 24647
+4 PublicDialogue      male         41 16783
+5 UnscriptedMonologue female        3  6712
+6 UnscriptedMonologue male         16 24082</code></pre>
+</div>
+</div>
+</section>
+<section id="gathering-and-spreading-data" class="level2" data-number="5.14">
+<h2 data-number="5.14" class="anchored" data-anchor-id="gathering-and-spreading-data"><span class="header-section-number">5.14</span> Gathering and spreading data</h2>
+<p>The <code>tidyr</code> package has two very useful functions for gathering and spreading data that can be sued to transform data to long and wide formats (you will see what this means below). The functions are called <code>gather</code> and <code>spread</code>.</p>
+<p>We will use the data set called <code>w5dat_summary2</code>, which we created above, to demonstrate how this works.</p>
+<p>We will first check out the <code>spread</code>-function to create different columns for women and men that show how many of them are represented in the different text types.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>w5dat_summary_wide <span class="ot">&lt;-</span> w5dat_summary2 <span class="sc">|&gt;</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Words) <span class="sc">|&gt;</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">spread</span>(Sex, Speakers)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>w5dat_summary_wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+# Groups:   Texttype [3]
+  Texttype            female  male
+  &lt;chr&gt;                &lt;int&gt; &lt;int&gt;
+1 PrivateDialoge         105    18
+2 PublicDialogue          63    41
+3 UnscriptedMonologue      3    16</code></pre>
+</div>
+</div>
+<p>The data is now in what is called a <code>wide</code>-format as values are distributed across columns.</p>
+<p>To reformat this back to a <code>long</code>-format where each column represents exactly one variable, we use the <code>gather</code>-function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>w5dat_summary_long <span class="ot">&lt;-</span> w5dat_summary_wide <span class="sc">|&gt;</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">gather</span>(Sex, Speakers, female<span class="sc">:</span>male)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>w5dat_summary_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+# Groups:   Texttype [3]
+  Texttype            Sex    Speakers
+  &lt;chr&gt;               &lt;chr&gt;     &lt;int&gt;
+1 PrivateDialoge      female      105
+2 PublicDialogue      female       63
+3 UnscriptedMonologue female        3
+4 PrivateDialoge      male         18
+5 PublicDialogue      male         41
+6 UnscriptedMonologue male         16</code></pre>
+</div>
+</div>
+</section>
+<section id="ending-r-sessions" class="level2" data-number="5.15">
+<h2 data-number="5.15" class="anchored" data-anchor-id="ending-r-sessions"><span class="header-section-number">5.15</span> Ending R sessions</h2>
+<p>At the end of each session, you can extract information about the session itself (e.g.&nbsp;which R version you used and which versions of packages). This can help others (or even your future self) to reproduce the analysis that you have done.</p>
+</section>
+<section id="extracting-session-information" class="level2" data-number="5.16">
+<h2 data-number="5.16" class="anchored" data-anchor-id="extracting-session-information"><span class="header-section-number">5.16</span> Extracting session information</h2>
+<p>You can extract the session information by running the <code>sessionInfo</code> function (without any arguments)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R version 4.4.2 (2024-10-31 ucrt)
+Platform: x86_64-w64-mingw32/x64
+Running under: Windows 11 x64 (build 26200)
+
+Matrix products: default
+
+
+locale:
+[1] LC_COLLATE=English_United States.utf8 
+[2] LC_CTYPE=English_United States.utf8   
+[3] LC_MONETARY=English_United States.utf8
+[4] LC_NUMERIC=C                          
+[5] LC_TIME=English_United States.utf8    
+
+time zone: Australia/Brisbane
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices datasets  utils     methods   base     
+
+other attached packages:
+ [1] lubridate_1.9.4 forcats_1.0.0   stringr_1.5.2   dplyr_1.2.1    
+ [5] purrr_1.1.0     readr_2.1.5     tidyr_1.3.2     tibble_3.3.0   
+ [9] ggplot2_4.0.3   tidyverse_2.0.0
+
+loaded via a namespace (and not attached):
+ [1] gtable_0.3.6       jsonlite_2.0.0     compiler_4.4.2     renv_0.15.5       
+ [5] tidyselect_1.2.1   scales_1.4.0       readxl_1.4.5       yaml_2.3.10       
+ [9] fastmap_1.2.0      here_1.0.2         R6_2.6.1           generics_0.1.4    
+[13] knitr_1.51         htmlwidgets_1.6.4  rprojroot_2.1.1    pillar_1.11.0     
+[17] RColorBrewer_1.1-3 tzdb_0.5.0         rlang_1.3.0        utf8_1.2.6        
+[21] stringi_1.8.7      xfun_0.53          S7_0.2.0           timechange_0.3.0  
+[25] cli_3.6.5          withr_3.0.2        magrittr_2.0.4     digest_0.6.39     
+[29] grid_4.4.2         rstudioapi_0.17.1  hms_1.1.3          lifecycle_1.0.5   
+[33] vctrs_0.7.3        evaluate_1.0.5     glue_1.8.0         cellranger_1.1.0  
+[37] farver_2.1.2       rmarkdown_2.31     tools_4.4.2        pkgconfig_2.0.3   
+[41] htmltools_0.5.9   </code></pre>
+</div>
+</div>
+</section>
+<section id="going-further" class="level2" data-number="5.17">
+<h2 data-number="5.17" class="anchored" data-anchor-id="going-further"><span class="header-section-number">5.17</span> Going further</h2>
+<p>If you want to know more, would like to get some more practice, or would like to have another approach to R, please check out the workshops and resources on R provided by the <a href="https://web.library.uq.edu.au/library-services/training">UQ library</a>. In addition, there are various online resources available to learn R (you can check out a very recommendable introduction <a href="https://uvastatlab.github.io/phdplus/intror.html">here</a>).</p>
+<p>Here are also some additional resources that you may find helpful:</p>
+<ul>
+<li>Grolemund. G., and Wickham, H., <a href="http://r4ds.had.co.nz/"><em>R 4 Data Science</em></a>, 2017.
+<ul>
+<li>Highly recommended! (especially chapters 1, 2, 4, 6, and 8)</li>
+</ul></li>
+<li>Stat545 - Data wrangling, exploration, and analysis with R. University of British Columbia. <a href="http://stat545.com/" class="uri">http://stat545.com/</a></li>
+<li>Swirlstats, a package that teaches you R and statistics within R: <a href="https://swirlstats.com/" class="uri">https://swirlstats.com/</a></li>
+<li>DataCamp’s (free) <em>Intro to R</em> interactive tutorial: <a href="https://www.datacamp.com/courses/free-introduction-to-r" class="uri">https://www.datacamp.com/courses/free-introduction-to-r</a>
+<ul>
+<li>DataCamp’s advanced R tutorials require a subscription. *Twitter:</li>
+<li>Explore RStudio Tips https://twitter.com/rstudiotips</li>
+<li>Explore #rstats, #rstudioconf</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercises: Working with Tables
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p><strong>Q1. What does the pipe symbol |&gt; do?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<form name="form_W5_Q1" onsubmit="return validate_form_W5_Q1()" method="post">
+<label>
+<input type="radio" name="answer_W5_Q1" id="answer_W5_Q1_1" value="It compares two values for equality">
+It compares two values for equality
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W5_Q1" id="answer_W5_Q1_2" value="It passes the result of the expression on its left as input to the function on its right">
+It passes the result of the expression on its left as input to the function on its right
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W5_Q1" id="answer_W5_Q1_3" value="It creates a new column in a table">
+It creates a new column in a table
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W5_Q1" id="answer_W5_Q1_4" value="It deletes rows from a table">
+It deletes rows from a table
+</label>
+<br>
+<input type="submit" value="Check answer">
+<div id="result_W5_Q1"></div>
+</form>
+<script>function validate_form_W5_Q1() {var x, text; var x = document.forms['form_W5_Q1']['answer_W5_Q1'].value;if (x == 'It passes the result of the expression on its left as input to the function on its right'){text = 'Correct! The pipe can be read as ‘and then’: it hands the output of one step to the next step, letting you chain operations into readable sequences.';} else {text = 'Read the pipe as ‘and then’ - what does it hand over from one step to the next?';} document.getElementById('result_W5_Q1').innerHTML = text; evaluate_final_score(); return false;}function evaluate_final_score(){
+         element = document.getElementById('checkdown_final_score');
+         if(element === null){return false;} else {var element, text, res1;res1 = document.getElementById('result_W5_Q1').innerText == 'Correct! The pipe can be read as ‘and then’: it hands the output of one step to the next step, letting you chain operations into readable sequences.';text = res1;element.innerHTML = text;
+         return false;
+         }}</script>
+</div>
+</div>
+<hr>
+<p><strong>Q2. Which function keeps only the rows of a table that meet a condition?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<form name="form_W5_Q2" onsubmit="return validate_form_W5_Q2()" method="post">
+<label>
+<input type="radio" name="answer_W5_Q2" id="answer_W5_Q2_1" value="mutate()">
+mutate()
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W5_Q2" id="answer_W5_Q2_2" value="filter()">
+filter()
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W5_Q2" id="answer_W5_Q2_3" value="arrange()">
+arrange()
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W5_Q2" id="answer_W5_Q2_4" value="select()">
+select()
+</label>
+<br>
+<input type="submit" value="Check answer">
+<div id="result_W5_Q2"></div>
+</form>
+<script>function validate_form_W5_Q2() {var x, text; var x = document.forms['form_W5_Q2']['answer_W5_Q2'].value;if (x == 'filter()'){text = 'Correct! filter() subsets rows by condition (e.g. filter(Age == “old”)). select() chooses columns, mutate() creates or changes columns, and arrange() orders rows.';} else {text = 'One function works on rows by condition; select() works on columns; mutate() creates columns; arrange() sorts.';} document.getElementById('result_W5_Q2').innerHTML = text; evaluate_final_score(); return false;}function evaluate_final_score(){
+         element = document.getElementById('checkdown_final_score');
+         if(element === null){return false;} else {var element, text, res1, res2;res1 = document.getElementById('result_W5_Q1').innerText == 'Correct! The pipe can be read as ‘and then’: it hands the output of one step to the next step, letting you chain operations into readable sequences.'; res2 = document.getElementById('result_W5_Q2').innerText == 'Correct! filter() subsets rows by condition (e.g. filter(Age == “old”)). select() chooses columns, mutate() creates or changes columns, and arrange() orders rows.';text = res1 + res2;element.innerHTML = text;
+         return false;
+         }}</script>
+</div>
+</div>
+<hr>
+<p><strong>Q3. You want a first quick look at a freshly loaded data set: its column names, data types, and a few values. Which function is most informative?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<form name="form_W5_Q3" onsubmit="return validate_form_W5_Q3()" method="post">
+<label>
+<input type="radio" name="answer_W5_Q3" id="answer_W5_Q3_1" value="library()">
+library()
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W5_Q3" id="answer_W5_Q3_2" value="print()">
+print()
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W5_Q3" id="answer_W5_Q3_3" value="c()">
+c()
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W5_Q3" id="answer_W5_Q3_4" value="str()">
+str()
+</label>
+<br>
+<input type="submit" value="Check answer">
+<div id="result_W5_Q3"></div>
+</form>
+<script>function validate_form_W5_Q3() {var x, text; var x = document.forms['form_W5_Q3']['answer_W5_Q3'].value;if (x == 'str()'){text = 'Correct! str() displays the structure of an object: dimensions, column names, data types, and example values - the fastest way to check whether data loaded as expected. head() and summary() are useful complements.';} else {text = 'You need a function that shows the <em>structure</em> of the object.';} document.getElementById('result_W5_Q3').innerHTML = text; evaluate_final_score(); return false;}function evaluate_final_score(){
+         element = document.getElementById('checkdown_final_score');
+         if(element === null){return false;} else {var element, text, res1, res2, res3;res1 = document.getElementById('result_W5_Q1').innerText == 'Correct! The pipe can be read as ‘and then’: it hands the output of one step to the next step, letting you chain operations into readable sequences.'; res2 = document.getElementById('result_W5_Q2').innerText == 'Correct! filter() subsets rows by condition (e.g. filter(Age == “old”)). select() chooses columns, mutate() creates or changes columns, and arrange() orders rows.'; res3 = document.getElementById('result_W5_Q3').innerText == 'Correct! str() displays the structure of an object: dimensions, column names, data types, and example values - the fastest way to check whether data loaded as expected. head() and summary() are useful complements.';text = res1 + res2 + res3;element.innerHTML = text;
+         return false;
+         }}</script>
+</div>
+</div>
+<p><a href="#week5">Back to top</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./04-week4.html" class="pagination-link" aria-label="Getting Started with R and RStudio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting Started with R and RStudio</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./06-week6.html" class="pagination-link" aria-label="Descriptive Statistics">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

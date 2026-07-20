@@ -1,0 +1,40 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "SLAT7855 – Statistics for Linguists"
+  author: "Martin Schweinberger"
+  date: today
+  chapters:
+    - index.qmd
+    - 01-week1.qmd
+    - 02-week2.qmd
+    - 03-week3.qmd
+    - 04-week4.qmd
+    - 05-week5.qmd
+    - 06-week6.qmd
+    - 07-week7.qmd
+    - 08-week8.qmd
+    - 09-week9.qmd
+    - 10-week10.qmd
+    - 11-week11.qmd
+    - 12-week12.qmd
+    - 13-week13.qmd
+
+bibliography: bib.bib
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+    number-sections: true
+    link-external-newwindow: true
+
+execute:
+  freeze: auto
+  message: false
+  warning: false

@@ -1,0 +1,500 @@
+# Working with Tables in R and RStudio {#week5}
+
+::: {.callout-tip}
+## What This Session Covers
+
+This session teaches you to work with tabular data in R - the bread and butter of quantitative analysis.
+
+1. **Functions, objects, and data inspection** - `head()`, `str()`, `summary()`
+2. **Accessing data** - rows, columns, and individual cells; tabulating with `table()`
+3. **Saving and loading data** - text files and Excel spreadsheets
+4. **The tidyverse workflow** - renaming, piping (`|>`), filtering, and ordering data
+5. **Creating and changing variables** - `mutate()` and if-statements
+6. **Summarizing** - `group_by()` and `summarise()`
+7. **Reshaping data** - long vs. wide formats (gathering and spreading)
+:::
+
+This week, we will continue to explore R and RStudio.
+
+
+
+## Working with tables
+
+We will now start working with data in R. As most of the data that we work with comes in tables.
+
+We will download a tab-separated txt-file. Translated to prose, the code below means *Create an object called *w5dat *and in that object, store the result of the `read.delim` function*. 
+
+```{r}
+#| label: w5load
+#| message: false
+#| warning: false
+library(tidyverse)
+w5dat <- read.delim(here::here("data", "week5data1.txt"), sep = "\t", header = T)
+```
+
+`read.delim` stands for *read delimited file* and it takes the URL from which to load the data (or the path to the data on your computer) as its first argument. The `sep` stand for separator and the `\t` stands for tab-separated and represents the second argument that the `read.delim` function takes. The third argument, `header`, can take either T(RUE) or F(ALSE) and it tells R if the data has column names (headers) or not. 
+
+## Functions and Objects
+
+In R, functions always have the following form: `function(argument1, argument2, ..., argumentN)`. Typically a function does something to an object (e.g. a table), so that the first argument typically specifies the data to which the function is applied. Other arguments then allow to add some information. Just as a side note, functions are also objects that do not contain data but instructions.
+
+To assign content to an object, we use `<-` or `=` so that the we provide a name for an object, and then assign some content to it. For example, `MyObject <- 1:3` means *Create an object called `MyObject`. this object should contain the numbers 1 to 3*.
+
+```{r}
+#| message: false
+#| warning: false
+MyObject <- 1:3
+# inspect
+MyObject
+```
+
+## Inspecting data
+
+There are many ways to inspect data. We will briefly go over the most common ways to inspect data.
+
+The `head` function takes the data-object as its first argument and automatically shows the first 6 elements of an object (or rows if the data-object has a table format).
+
+```{r}
+#| message: false
+#| warning: false
+head(w5dat)
+```
+
+We can also use the `head` function to inspect more or less elements and we can specify the number of elements (or rows) that we want to inspect as a second argument. In the example below, the `4` tells R that we only want to see the first 4 rows of the data.
+
+```{r}
+#| message: false
+#| warning: false
+head(w5dat, 4)
+```
+
+
+
+## Accessing individual cells in a table
+
+If you want to access specific cells in a table, you can do so by typing the name of the object and then specify the rows and columns in square brackets (i.e. **data[row, column]**). For example, `w5dat[2, 4]` would show the value of the cell in the second row and fourth column of the object `w5dat`. We can also use the colon to define a range (as shown below, where 1:5 means from 1 to 5 and 1:3 means from 1 to 3) The command `w5dat[1:5, 1:3]` thus means:
+
+*Show me the first 5 rows and the first 3 columns of the data-object that is called w5dat*. 
+ 
+```{r}
+#| message: false
+#| warning: false
+w5dat[1:5, 1:3]
+```
+
+
+
+**Inspecting the structure of data**
+
+You can use the `str` function to inspect the structure of a data set. This means that this function will show the number of observations (rows) and variables (columns) and tell you what type of variables the data consists of 
+
+- **int** = integer
+- **chr** = character string
+- **num** = numeric
+- **fct** = factor
+
+```{r}
+#| message: false
+#| warning: false
+str(w5dat)
+```
+
+The `summary` function summarizes the data.
+
+```{r}
+#| message: false
+#| warning: false
+summary(w5dat)
+```
+
+
+
+## Tabulating data
+
+We can use the `table` function to create basic tables that extract raw frequency information. The following command tells us how many instances there are of each level of the variable `date` in the `w5dat`. 
+
+
+
+
+```{r}
+#| message: false
+#| warning: false
+table(w5dat$date) 
+```
+
+Alternatively, you could, of course, index the column by using its position in the data set like this: `w5dat[, 6]` - the result of `table(w5dat[, 6])` and `table(w5dat$date)` are the same! Also note that here we leave out indexes for rows to tell R that we want all rows.
+
+When you want to cross-tabulate columns, it is often better to use the `ftable` function (`ftable` stands for *frequency table*). 
+
+```{r}
+#| message: false
+#| warning: false
+ftable(w5dat$age, w5dat$sex)
+```
+
+
+
+## Saving data to your computer
+
+To save tabular data on your computer, you can use the `write.table`  function. This function requires the data that you want to save as its first argument, the location where you want to save the data as the second argument and the type of delimiter as the third argument. 
+
+```{r}
+#| label: savedisc
+#| eval: false
+#| message: false
+#| warning: false
+write.table(w5dat, here::here("data", "w5dat.txt"), sep = "\t") 
+```
+
+**A word about paths**
+
+In the code chunk above, the sequence `here::here("data", "w5dat.txt")` is a handy way to define a path. A path is simply the location where a file is stored on your computer or on the internet (which typically is a server - which is just a fancy term for a computer - somewhere on the globe). The `here` function from the`here` package allows to simply state in which folder a certain file is and what file you are talking about. 
+
+In this case, we want to access the file `w5dat` (which is a `txt` file and thus has the appendix `.txt`) in the `data` folder. R will always start looking in the folder in which your project is stored. If you want to access a file that is stored somewhere else on your computer, you can also define the full path to the folder in which the file is. In my case, this would be `D:/Uni/UQ/SLC/LADAL/SLCLADAL.github.io/data`. However, as the `data` folder in in the folder where my Rproj file is, I only need to specify that the file is in the `data` folder within the folder in which my Rproj file is located.
+
+**A word about package naming**
+
+Another thing that is notable in the sequence `here::here("data", "w5dat.txt")` is that I specified that the `here` function is part of the `here` package. This is what I meant by writing `here::here` which simply means use the `here` function from `here` package (`package::function`). This may appear to be somewhat redundant but it happens quite frequently, that different packages have functions that have the same names. In such cases, R will simply choose the function from the package that was loaded last. To prevent R from using the wrong function, it makes sense to specify the package AND the function (as I did in the sequence `here::here`). I only use functions without specify the package if the function is part of base R.
+
+## Loading data from your computer
+
+ To load tabular data from within your project folder (if it is in a tab-separated txt-file) you can also use the `read.delim` function. The only difference to loading from the web is that you use a path instead of a URL. If the txt-file is in the folder called *data* in your project folder, you would load the data as shown below. 
+
+```{r}
+#| eval: true
+#| message: false
+#| warning: false
+w5dat <- read.delim(here::here("data", "week5data1.txt"), sep = "\t", header = T)
+```
+
+To if this has worked, we will use the `head` function to see first 6 rows of the data
+
+```{r}
+#| message: false
+#| warning: false
+head(w5dat)
+```
+
+## Loading Excel data
+
+To load Excel spreadsheets, you can use the `read_excel` function from the `readxl` package as shown below. However, it may be necessary to install and activate the `readxl` package first. 
+
+```{r}
+#| echo: true
+#| eval: true
+#| message: false
+#| warning: false
+w5dat <- readxl::read_excel(here::here("data", "week5data2.xlsx"))
+```
+
+We now briefly check column names to see if the loading of the data has worked.
+
+```{r}
+#| message: false
+#| warning: false
+colnames(w5dat)
+```
+
+
+## Renaming, Piping, and Filtering 
+
+::: {.callout-note}
+## Key concept: The pipe
+
+The pipe `|>` passes the result of one function into the next and can be read as *and then*: `data |> filter(Age == \"old\") |> summarise(mean(Score))` means *take the data, and then keep only old speakers, and then compute the mean score*. Pipes let you write analyses as readable left-to-right sequences instead of nesting functions inside one another - compare the unpiped equivalent `summarise(filter(data, Age == \"old\"), mean(Score))`, which must be read inside-out.
+:::
+
+
+To rename existing columns in a table, you can use the `rename` command which takes the table as the first argument, the new name as the second argument, the an equal sign (=), and finally, the old name es the third argument. For example, renaming a column *OldName* as *NewName* in a table called *MyTable* would look like this: `rename(MyTable, NewName = OldName)`.  
+
+Piping is done using the `|>` sequence and it can be translated as **and then**. In the example below, we create a new object (w5dat_edit) from the existing object (w5dat) *and then* we rename the columns in the new object. When we use piping, we do not need to name the data we are using as this is provided by the previous step.
+
+```{r}
+#| message: false
+#| warning: false
+w5dat_edit <- w5dat |>
+  dplyr::rename(Id = id,
+         FileSpeakerId = file.speaker.id,
+         File = colnames(w5dat)[3],
+         Speaker = colnames(w5dat)[4])
+# inspect data
+w5dat_edit[1:5, 1:6]
+```
+
+A very handy way to rename many columns simultaneously, you can use the `str_to_title` function which capitalizes first letter of a word. In the example below, we capitalize all first letters of the column names of our current data.
+
+```{r}
+#| message: false
+#| warning: false
+colnames(w5dat_edit) <- stringr::str_to_title(colnames(w5dat_edit))
+# inspect data
+w5dat_edit[1:5, 1:6]
+```
+
+To remove rows based on values in columns you can use the `filter` function.
+
+```{r}
+#| message: false
+#| warning: false
+w5dat_edit2 <- w5dat_edit |>
+  dplyr::filter(Speaker != "?",
+         Zone != is.na(Zone),
+         Date == "2002-2005",
+         Word.count > 5)
+# inspect data
+head(w5dat_edit2)
+```
+
+To select specific columns you can use the `select` function.
+
+```{r}
+#| message: false
+#| warning: false
+w5dat_selection <- w5dat_edit2 |>
+  dplyr::select(File, Speaker, Word.count)
+# inspect data
+head(w5dat_selection)
+```
+
+You can also use the `select` function to remove specific columns.
+
+```{r}
+#| message: false
+#| warning: false
+w5dat_selection2 <- w5dat_edit2 |>
+  dplyr::select(-Id, -File, -Speaker, -Date, -Zone, -Age)
+# inspect data
+head(w5dat_selection2)
+```
+
+## Ordering data
+
+To order data, for instance, in ascending order according to a specific column you can use the `arrange` function.
+
+```{r}
+#| message: false
+#| warning: false
+w5dat_ordered_asc <- w5dat_selection2 |>
+  dplyr::arrange(Word.count)
+# inspect data
+head(w5dat_ordered_asc)
+```
+
+To order data in descending order you can also use the `arrange` function and simply add a - before the column according to which you want to order the data.
+
+```{r}
+#| message: false
+#| warning: false
+w5dat_ordered_desc <- w5dat_selection2 |>
+  dplyr::arrange(-Word.count)
+# inspect data
+head(w5dat_ordered_desc)
+```
+
+The output shows that the female speaker in file S2A-005 with the speaker identity A has the highest word count with 2,355 words. 
+
+
+## Creating and changing variables
+
+New columns are created, and existing columns can be changed, by using the `mutate` function. The `mutate` function takes two arguments (if the data does not have to be specified): the first argument is the (new) name of column that you want to create and the second is what you want to store in that column. The = tells R that the new column will contain the result of the second argument.
+
+In the example below, we create a new column called *Texttype*. 
+
+This new column should contain 
+
+  + the value *PrivateDialoge* if *Filespeakerid* contains the sequence *S1A*, 
+  
+  + the value *PublicDialogue* if *Filespeakerid* contains the sequence *S1B*, 
+  
+  + the value *UnscriptedMonologue* if *Filespeakerid* contains the sequence *S2A*, 
+  
+  + the value *ScriptedMonologue* if *Filespeakerid* contains the sequence *S2B*, 
+  
+  + the value of *Filespeakerid* if *Filespeakerid* neither contains *S1A*, *S1B*, *S2A*, nor *S2B*.
+
+```{r}
+#| message: false
+#| warning: false
+w5dat_texttype <- w5dat_selection2 |>
+  dplyr::mutate(Texttype = 
+                  dplyr::case_when(stringr::str_detect(Filespeakerid ,"S1A") ~ "PrivateDialoge",
+                                   stringr::str_detect(Filespeakerid ,"S1B") ~ "PublicDialogue",
+                                   stringr::str_detect(Filespeakerid ,"S2A") ~ "UnscriptedMonologue",
+                                   stringr::str_detect(Filespeakerid ,"S2B") ~ "ScriptedMonologue",
+                                   TRUE ~ Filespeakerid))
+# inspect data
+head(w5dat_texttype)
+```
+
+## If-statements
+
+We should briefly talk about if-statements (or `case_when` in the present case). The `case_when` function is both very powerful and extremely helpful as it allows you to assign values based on a test. As such, `case_when`-statements can be read as:
+
+*When/If X is the case, then do A and if X is not the case do B!* (When/If -> Then -> Else)
+
+The nice thing about `ifelse` or `case_when`-statements is that they can be used in succession as we have done above. This can then be read as:
+
+*If X is the case, then do A, if Y is the case, then do B, else do Z* 
+
+
+## Summarizing data
+
+Summarizing is really helpful and can be done using the `summarise` function.
+
+```{r}
+#| message: false
+#| warning: false
+w5dat_summary1 <- w5dat_texttype |>
+  dplyr::summarise(Words = sum(Word.count))
+# inspect data
+head(w5dat_summary1)
+```
+
+To get summaries of sub-groups or by variable level, we can use the `group_by` function and then use the `summarise` function.
+
+```{r}
+#| warning: false
+#| message: false
+w5dat_summary2 <- w5dat_texttype |>
+  dplyr::group_by(Texttype, Sex) |>
+  dplyr::summarise(Speakers = n(),
+            Words = sum(Word.count))
+# inspect data
+head(w5dat_summary2)
+```
+
+
+
+## Gathering and spreading data
+
+The `tidyr` package has two very useful functions for gathering and spreading data that can be sued to transform data to long and wide formats (you will see what this means below). The functions are called `gather` and `spread`.
+
+We will use the data set called `w5dat_summary2`, which we created above, to demonstrate how this works.
+
+We will first check out the `spread`-function to create different columns for women and men that show how many of them are represented in the different text types. 
+
+```{r}
+#| message: false
+#| warning: false
+w5dat_summary_wide <- w5dat_summary2 |>
+  dplyr::select(-Words) |>
+  tidyr::spread(Sex, Speakers)
+# inspect
+w5dat_summary_wide
+```
+
+The data is now in what is called a `wide`-format as values are distributed across columns.
+
+To reformat this back to a `long`-format where each column represents exactly one variable, we use the `gather`-function:
+
+```{r}
+#| message: false
+#| warning: false
+w5dat_summary_long <- w5dat_summary_wide |>
+  tidyr::gather(Sex, Speakers, female:male)
+# inspect
+w5dat_summary_long
+```
+
+
+
+## Ending R sessions
+
+At the end of each session, you can extract information about the session itself (e.g. which R version you used and which versions of packages). This can help others (or even your future self) to reproduce the analysis that you have done.
+
+## Extracting session information
+
+You can extract the session information by running the `sessionInfo` function (without any arguments)
+
+```{r}
+sessionInfo()
+```
+
+## Going further
+
+If you want to know more, would like to get some more practice, or would like to have another approach to R, please check out the workshops and resources on R provided by the [UQ library](https://web.library.uq.edu.au/library-services/training). In addition, there are various online resources available to learn R (you can check out a very recommendable introduction [here](https://uvastatlab.github.io/phdplus/intror.html)). 
+
+Here are also some additional resources that you may find helpful:
+
+* Grolemund. G., and Wickham, H., [*R 4 Data Science*](http://r4ds.had.co.nz/), 2017.
+    + Highly recommended! (especially chapters 1, 2, 4, 6, and 8)
+* Stat545 - Data wrangling, exploration, and analysis with R. University of British Columbia.  <http://stat545.com/>
+* Swirlstats, a package that teaches you R and statistics within R: <https://swirlstats.com/>
+* DataCamp's (free) *Intro to R* interactive tutorial: <https://www.datacamp.com/courses/free-introduction-to-r>
+    + DataCamp's advanced R tutorials require a subscription.
+*Twitter: 
+    + Explore RStudio Tips https://twitter.com/rstudiotips 
+    + Explore #rstats, #rstudioconf
+
+
+
+
+::: {.callout-tip}
+## Exercises: Working with Tables
+:::
+
+**Q1. What does the pipe symbol |> do?**
+
+```{r}
+#| echo: false
+#| label: "W5_Q1"
+checkdown::check_question("It passes the result of the expression on its left as input to the function on its right",
+               options = c("It passes the result of the expression on its left as input to the function on its right",
+                 "It compares two values for equality",
+                 "It creates a new column in a table",
+                 "It deletes rows from a table"),
+               type = "radio",
+               q_id = "W5_Q1",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! The pipe can be read as 'and then': it hands the output of one step to the next step, letting you chain operations into readable sequences.",
+               wrong = "Read the pipe as 'and then' - what does it hand over from one step to the next?")
+```
+
+---
+
+**Q2. Which function keeps only the rows of a table that meet a condition?**
+
+```{r}
+#| echo: false
+#| label: "W5_Q2"
+checkdown::check_question("filter()",
+               options = c("filter()",
+                 "select()",
+                 "mutate()",
+                 "arrange()"),
+               type = "radio",
+               q_id = "W5_Q2",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! filter() subsets rows by condition (e.g. filter(Age == \"old\")). select() chooses columns, mutate() creates or changes columns, and arrange() orders rows.",
+               wrong = "One function works on rows by condition; select() works on columns; mutate() creates columns; arrange() sorts.")
+```
+
+---
+
+**Q3. You want a first quick look at a freshly loaded data set: its column names, data types, and a few values. Which function is most informative?**
+
+```{r}
+#| echo: false
+#| label: "W5_Q3"
+checkdown::check_question("str()",
+               options = c("str()",
+                 "print()",
+                 "c()",
+                 "library()"),
+               type = "radio",
+               q_id = "W5_Q3",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! str() displays the structure of an object: dimensions, column names, data types, and example values - the fastest way to check whether data loaded as expected. head() and summary() are useful complements.",
+               wrong = "You need a function that shows the *structure* of the object.")
+```
+
+
+
+[Back to top](#week5)
+
+
+
+

@@ -1,0 +1,600 @@
+# Simple Linear Regression {#week9}
+
+::: {.callout-tip}
+## What This Session Covers
+
+This session introduces the workhorse of statistical modeling: linear regression with a single predictor.
+
+1. **The basic principle** - fitting a line that minimizes squared residuals
+2. **Assumptions** - linearity, normality of residuals, homoscedasticity, independence
+3. **Example 1** - preposition use across real time (numeric predictor)
+4. **Model diagnostics** - `performance::check_model()` and formal checks
+5. **Example 2** - teaching styles (categorical predictor)
+6. **Interpreting and reporting** - coefficients, R², model comparison, and summary tables
+:::
+
+This tutorial introduces regression analysis (also called regression modeling). Regression models are among the most widely used quantitative methods in the language sciences to assess if and how predictors (variables or interactions between variables) correlate with a certain response. 
+
+Regression models are so popular because they can
+
+* incorporate many predictors in a single model (multivariate: allows to test the impact of one predictor while the impact of (all) other predictors is controlled for)
+
+* extremely flexible and and can be fitted to different types of predictors and dependent variables
+
+* provide output that can be easily interpreted
+
+* conceptually relative simple and not overly complex from a  mathematical perspective
+
+
+The major difference between these types of models is that they take different types of dependent variables: linear regressions take numeric, logistic regressions take nominal variables, ordinal regressions take ordinal variables, and Poisson regressions take dependent variables that reflect counts of (rare) events. 
+
+## The Basic Principle
+
+::: {.callout-note}
+## Key concept: Residuals
+
+A *residual* is the difference between an observed value and the value the model predicts for that observation - the vertical distance between a data point and the regression line. Residuals are the raw material of regression: the line is chosen to minimize the sum of *squared* residuals, the model assumptions are checked *on the residuals* (normality, constant variance), and the size of the residuals determines how well the model fits (R² measures the proportion of variance that is *not* left in the residuals).
+:::
+
+
+The idea behind regression analysis is expressed formally in the equation below where $f_{(x)}$ is the $y$-value we want to predict, $\alpha$ is the intercept (the point where the regression line crosses the $y$-axis), $\beta$ is the coefficient (the slope of the regression line). 
+
+\begin{equation}
+f_{(x)} = \alpha + \beta_{i}x + \epsilon
+\end{equation}
+
+To understand what this means, let us imagine that we have collected information about the how tall people are and what they weigh. Now we want to predict the weight of people of a certain height - let's say 180cm.
+
+```{r}
+#| label: slr_intro00a
+#| echo: false
+#| eval: false
+#| message: false
+#| warning: false
+install.packages("dplyr")
+install.packages("flextable")
+install.packages("gridExtra")
+install.packages("performance")
+install.packages("see")
+install.packages("ggplot2")
+```
+
+
+```{r}
+#| label: slr_intro00
+#| echo: false
+#| message: false
+#| warning: false
+library(dplyr)
+library(flextable)
+library(gridExtra)
+library(performance)
+library(see)
+library(ggplot2)
+Height <- c(173, 169, 176, 166, 161, 164, 160, 158, 180, 187)
+Weight <- c(80, 68, 72, 75, 70, 65, 62, 60, 85, 92) 
+df <- data.frame(Height, Weight)
+# inspect data
+df |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "Weigth and height of a random sample of people.")  |>
+  flextable::border_outer()
+```
+
+We can run a simple linear regression on the data and we get the following output:
+
+```{r}
+#| label: intro01b
+#| message: false
+#| warning: false
+# model for upper panels
+m <- lm(Weight ~ Height, data = df)
+summary(m)
+```
+
+To estimate how much some weights who is 180cm tall, we would multiply the coefficient (slope of the line) with 180 ($x$) and add the value of the intercept (point where line crosses the $y$-axis). If we plug in the numbers from the regression model below, we get
+
+\begin{equation}
+-93.77 + 0.98 ∗ 180 = 83.33 (kg)
+\end{equation}
+
+A person who is 180cm tall is predicted to weigh 83.33kg. Thus, the predictions of the weights are visualized as the red line in the figure below. Such lines are called *regression lines*. Regression lines are those lines where the sum of the red lines should be minimal. The slope of the regression line is called *coefficient* and the point where the regression line crosses the y-axis at x = 0 is called the *intercept*. Other important concepts in regression analysis are *variance* and *residuals*. *Residuals* are the distance between the line and the points (the red lines) and it is also called *variance*.
+
+```{r}
+#| label: intro01
+#| echo: false
+#| message: false
+#| warning: false
+# generate data
+Height <- c(173, 169, 176, 166, 161, 164, 160, 158, 180, 187)
+Weight <- c(80, 68, 72, 75, 70, 65, 62, 60, 85, 92) 
+df <- data.frame(Height, Weight) |>
+  dplyr::mutate(Pred = predict(lm(Weight ~ Height)))
+# generate plots
+p <- ggplot(df, aes(Height, Weight)) +
+  geom_point() +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+p1 <- p
+p2 <- p +
+  geom_hline(yintercept=mean(Weight), color = "blue") + 
+  geom_segment(aes(xend = Height, yend = mean(Weight)), color = "red") +
+  ggplot2::annotate(geom = "text", label = "Residual Deviance = 946.9", x = 170, y = 100, size = 3) 
+p3 <- p +
+    geom_smooth(color = "blue", se = F, method = "lm", size = .5)
+p4 <- p3 +
+  geom_segment(aes(xend = Height, yend = Pred), color = "red") +
+  ggplot2::annotate(geom = "text", label = "Residual Deviance = 164.3 \nR2: 1 - (164.3/946.9)", x = 170, y = 100, size = 3)
+gridExtra::grid.arrange(p1, p2, p3, p4, ncol = 2, nrow = 2)
+```
+
+Some words about the plots in the figure above: the upper left panel shows the raw observed data (black dots). The upper right panel shows the mean weight (blue line) and the residuals (in red). residuals are the distances from the expected or predicted values to the observed values (in this case the mean is the most most basic model which we use to predict values while the observed values simply represent the actual data points). The lower left panel shows observed values and the regression line, i.e, that line which, when drawn through the data points, will have the lowest sum of residuals. The lower right panel shows the regression line and the residuals, i.e. the distances between the expected or predicted values to the actual observed values (in red). Note that the sum of residuals in the lower right panel is much smaller than the sum of residuals in the upper right panel. This suggest that considering Height is a good idea as it explains a substantive amount of residual error and reduces the sum of residuals (or variance).
+
+## Assumptions
+
+::: {.callout-note}
+## Key concept: R² (R-squared)
+
+R² is the proportion of the variance in the outcome that the model accounts for, ranging from 0 (the model explains nothing beyond the mean) to 1 (perfect fit). An R² of .30 means the predictor accounts for 30% of the variability in the outcome. In multiple regression, report the *adjusted* R², which corrects for the number of predictors - plain R² can only ever increase when predictors are added, even useless ones.
+:::
+
+
+Linear regression makes several assumptions about the data. If these assumptions are not met, then this can mean that results of the model can be misleading, inaccurate, or plainly wrong. All these assumptions and potential problems can be checked by producing some diagnostic plots visualizing the residual errors (we will do this below). The assumptions of regression models are:
+
+* **Linearity**: The relationship between the predictor (x) and the outcome (y) is assumed to be linear.  
+* **Normality of residuals**: The residual errors are assumed to be normally distributed.  
+* **Homogeneity**: The residuals are assumed to have a constant variance (homoscedasticity)  
+* **Independence of residuals**: The residuals are assumed not to be correlated.
+
+You should check whether or not these assumptions hold true. Potential problems include:
+
+* **Non-linearity**: The predictor affects the dependent variable differently for different values.  
+* **Heteroscedasticity**: Non-constant variance of error terms (this means that at least one other important predictor is not included in the model).
+* **Presence of influential observations**:
+  * **Outliers**: extreme values in the dependent variable  
+  * **High-leverage points**: extreme values in the predictors  
+
+Now that we are familiar with the basic principle of regression modeling - i.e. finding the line through data that has the smallest sum of residuals, we will apply this to a linguistic example.
+
+
+## Example 1: Preposition Use across Real-Time
+
+We will now turn to our first example. In this example, we will investigate whether the frequency of prepositions has changed from Middle English to Late Modern English. The reasoning behind this example is that Old English was highly synthetic compared with Present-Day English which comparatively analytic. In other words, while Old English speakers used case to indicate syntactic relations, speakers of Present-Day English use word order and prepositions to indicate syntactic relationships. This means that the loss of case had to be compensated by different strategies and maybe these strategies continued to develop and increase in frequency even after the change from synthetic to analytic had been mostly accomplished. And this prolonged change in compensatory strategies is what this example will focus on. 
+
+The analysis is based on data extracted from the *Penn Corpora of Historical English* (see http://www.ling.upenn.edu/hist-corpora/), that consists of 603 texts written between 1125 and 1900. In preparation of this example, all elements that were part-of-speech tagged as prepositions were extracted from the PennCorpora. 
+
+Then, the relative frequencies (per 1,000 words) of prepositions per text were calculated. This frequency of prepositions per 1,000 words represents our dependent variable. In a next step, the date when each letter had been written was extracted. The resulting two vectors were combined into a table which thus contained for each text, when it was written (independent variable) and its relative frequency of prepositions (dependent or outcome variable).
+
+A regression analysis will follow the steps described below: 
+
+1. Extraction and processing of the data
+
+2. Data visualization
+
+3. Applying the regression analysis to the data
+
+4. Diagnosing the regression model and checking whether or not basic model assumptions have been violated.
+
+In a first step, we load and inspect the data to get a first impression of its properties.
+
+```{r}
+#| label: slr4
+#| message: false
+#| warning: false
+# load data
+slrdata  <- base::readRDS(url("https://slcladal.github.io/data/sld.rda", "rb"))
+```
+
+```{r}
+#| label: slr5
+#| echo: false
+# inspect data
+slrdata |>
+  as.data.frame() |>
+  head(15) |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "First 15 rows of slrdata.")  |>
+  flextable::border_outer()
+```
+
+
+Inspecting the data is very important because it can happen that a data set may not load completely or that variables which should be numeric have been converted to character variables. If unchecked, then such issues could go unnoticed and cause trouble.
+
+We will now plot the data to get a better understanding of what the data looks like.
+
+```{r}
+#| label: slr6
+#| message: false
+#| warning: false
+ggplot(slrdata, aes(Date, Prepositions)) +
+  geom_point() +
+  theme_bw() +
+  labs(x = "Year", y = "Prepositions per 1,000 words") +
+  geom_smooth(method = "lm")
+```
+
+Before beginning with the regression analysis, we will center the year. We center the values of year by subtracting each value from the mean of year. This can be useful when dealing with numeric variables because if we did not center year, we would get estimated values for year 0 (a year when English did not even exist yet). If a variable is centered, the regression provides estimates of the model refer to the mean of that numeric variable. In other words, centering can be very helpful, especially with respect to the interpretation of the results that regression models report.
+
+
+```{r}
+#| label: slr7
+#| eval: true
+#| echo: true
+#| message: false
+#| warning: false
+# center date
+slrdata$Date <- slrdata$Date - mean(slrdata$Date) 
+```
+
+We will now begin the regression analysis by generating a first regression model and inspect its results. 
+
+```{r}
+#| label: slr8
+#| eval: true
+#| echo: true
+#| message: false
+#| warning: false
+# create initial model
+m1.lm <- lm(Prepositions ~ Date, data = slrdata)
+# inspect results
+summary(m1.lm)
+```
+
+The summary output starts by repeating the regression equation. Then, the model provides the distribution of the residuals. The residuals should be distributed normally with the absolute values of the Min and Max as well as the 1Q (first quartile) and 3Q (third quartile) being similar or ideally identical. In our case, the values are very similar which suggests that the residuals are distributed evenly and follow a normal distribution. The next part of the report is the coefficients table. The estimate for the intercept is the value of y at x = 0. The estimate for Date represents the slope of the regression line and tells us that with each year, the predicted frequency of prepositions increase by .01732 prepositions. The t-value is the Estimate divided by the standard error (Std. Error). Based on the t-value, the p-value can be calculated manually as shown below.
+
+```{r}
+#| label: slr9
+#| eval: true
+#| echo: true
+#| message: false
+#| warning: false
+# use pt function (which uses t-values and the degrees of freedom)
+2*pt(-2.383, nrow(slrdata)-1)
+
+```
+
+The R^2^-values tell us how much variance is explained by our model. The baseline value represents a model that uses merely the mean. 0.0105 means that our model explains only 1.05 percent of the variance (0.010 x 100) - which is a tiny amount. The problem of the multiple R^2^ is that it will increase even if we add variables that explain almost no variance. Hence, multiple R^2^ encourages the inclusion of *junk* variables.
+
+\begin{equation}
+R^2 = R^2_{multiple} = 1 - \frac{\sum (y_i - \hat{y_i})^2}{\sum (y_i - \bar y)^2}
+\end{equation}
+
+The adjusted R^2^-value takes the number of predictors into account and, thus, the adjusted R^2^ will always be lower than the multiple R^2^. This is so because the adjusted R^2^ penalizes models for having predictors. The equation for the adjusted R^2^ below shows that the amount of variance that is explained by all the variables in the model (the top part of the fraction) must outweigh the inclusion of the number of variables (k) (lower part of the fraction). Thus, the  adjusted R^2^ will decrease when variables are added that explain little or even no variance while it will increase if variables are added that explain a lot of variance.
+
+\begin{equation}
+R^2_{adjusted} = 1 - (\frac{(1 - R^2)(n - 1)}{n - k - 1})
+\end{equation}
+
+If there is a big difference between the two R^2^-values, then the model contains (many) predictors that do not explain much variance which is not good. The F-statistic and the associated p-value tell us that the model, despite explaining almost no variance, is still significantly better than an intercept-only base-line model (or using the overall mean to predict the frequency of prepositions per text).
+
+We can test this and also see where the F-values comes from by comparing the 
+ 
+```{r}
+#| label: slr10
+#| message: false
+#| warning: false
+# create intercept-only base-line model
+m0.lm <- lm(Prepositions ~ 1, data = slrdata)
+# compare the base-line and the more saturated model
+anova(m1.lm, m0.lm, test = "F")
+```
+
+The F- and p-values are exactly those reported by the summary which shows where the F-values comes from and what it means; namely it denote the difference between the base-line and the more saturated model.
+
+
+The degrees of freedom associated with the residual standard error are the number of cases in the model minus the number of predictors (including the intercept). The residual standard error is square root of the sum of the squared residuals of the model divided by the degrees of freedom. Have a look at he following to clear this up:
+
+```{r}
+#| label: slr11
+#| message: false
+#| warning: false
+# DF = N - number of predictors (including intercept)
+DegreesOfFreedom <- nrow(slrdata)-length(coef(m1.lm))
+# sum of the squared residuals
+SumSquaredResiduals <- sum(resid(m1.lm)^2)
+# Residual Standard Error
+sqrt(SumSquaredResiduals/DegreesOfFreedom); DegreesOfFreedom
+```
+
+We will now check the model assumptions using diagnostic plots. To do this, we use the `check_model` function from the `performance` package [@performance] which generates a panel of diagnostic plots and - very conveniently - tells us in the subtitle of each panel what we should be looking for.
+
+```{r}
+#| label: slr13
+#| message: false
+#| warning: false
+#| fig-height: 8
+# generate diagnostic plots
+performance::check_model(m1.lm)
+```
+
+We will go through the panels one by one:
+
+**Posterior Predictive Check**
+
+This plot compares the distribution of the observed data (green line) with distributions of data simulated from the fitted model (blue lines). If the model captures the data well, the simulated distributions should closely resemble the observed distribution. Strong discrepancies indicate that the model fails to reproduce important characteristics of the data (e.g., skewness or multimodality).
+
+**Linearity**
+
+This plot is used to check the linearity assumption: the reference line should be flat and horizontal. If a trend becomes visible in the line (e.g., a curve or a zigzag pattern), the relationship between predictor(s) and outcome is not adequately captured by a straight line and the model is problematic (in such cases, transforming variables or adding non-linear terms can help).
+
+**Homogeneity of Variance**
+
+This plot is used to check the homogeneity of variance of the residuals (homoscedasticity): a flat, horizontal reference line with equally spread points indicates homoscedasticity. Homoscedasticity means that the variance of the residuals remains constant and does not correlate with any independent variable. If there is a trend in the line, we are dealing with heteroscedasticity, that is, a correlation between the fitted values and the spread of the residuals, which is very problematic for regressions.
+
+**Influential Observations**
+
+This plot is used to identify influential cases that disproportionately affect the regression (this would be problematic): points should lie within the dashed contour lines. The contours are based on Cook's distance, which shows how much the regression changes when the model is re-fitted without that data point. If influential data points are present, they should be inspected and either down-weighted (e.g., by fitting a robust regression) or, if they represent errors, removed. In addition to the visual check, we can formally test for influential observations using the `check_outliers` function.
+
+```{r}
+#| label: slr13b
+#| message: false
+#| warning: false
+# check for influential observations
+performance::check_outliers(m1.lm)
+```
+
+**Normality of Residuals**
+
+This plot is used to examine whether the residuals are normally distributed: it is good if the points follow the straight reference line. If the points fall on the line, the residuals follow a normal distribution. If the points deviate from the line at the top and bottom, this shows that the model does not predict small and large values well and that it therefore does not have a good fit. We can complement the visual checks with formal tests of normality and heteroscedasticity as shown below.
+
+```{r}
+#| label: slr13c
+#| message: false
+#| warning: false
+# formal test of normality of residuals
+performance::check_normality(m1.lm)
+# formal test of heteroscedasticity
+performance::check_heteroscedasticity(m1.lm)
+```
+
+In our case, the diagnostics do not indicate any severe violations of the model assumptions and we can proceed with the interpretation of the model.
+
+Now, we plot the effect reported by the model.
+
+```{r}
+#| label: slr18a
+#| message: false
+#| warning: false
+# generate summary table
+sjPlot::plot_model(m1.lm, type = "pred", terms = c("Date"))
+```
+
+We end the current analysis by summarizing the results of the regression analysis using the `tab_model` function from the `sjPlot` package [@sjPlot] (as is shown below).
+
+```{r}
+#| label: slr18b
+#| message: false
+#| warning: false
+# generate summary table
+sjPlot::tab_model(m1.lm) 
+```
+
+
+Typically, the results of regression analyses are presented in such tables as they include all important measures of model quality and significance, as well as the magnitude of the effects.
+
+In addition, the results of simple linear regressions should be summarized in writing. We can use the `reports` package [@report] to summarize the analysis.
+
+
+```{r}
+#| label: m1.lm_report
+#| message: false
+#| warning: false
+report::report(m1.lm)
+```
+
+We can use this output to write up a final report: 
+
+> A simple linear regression has been fitted to the data. A visual assessment of the model diagnostic graphics did not indicate any problematic or disproportionately influential data points (outliers) and performed significantly better compared to an intercept-only base line model but only explained .87 percent of the variance (adjusted R^2^: .0087, F-statistic (1, 535): 5,68, p-value: 0.0175\*). The final minimal adequate linear regression model is based on 537 data points and confirms a significant and positive correlation between the year in which the text was written and the relative frequency of prepositions (coefficient estimate: .02 (standardized \beta: 0.10, 95% CI [0.02, 0.19]), SE: 0.01, t-value~535~: 2.38, p-value: .0175\*). Standardized parameters were obtained by fitting the model on a standardized version of the dataset. 95% Confidence Intervals (CIs) and p-values were computed using the Wald approximation.
+
+## Example 2: Teaching Styles
+
+In the previous example, we dealt with two numeric variables, while the following example deals with a categorical independent variable and a numeric dependent variable. The ability for regressions to handle very different types of variables makes regressions a widely used and robust method of analysis.
+
+In this example, we are dealing with two groups of students that have been randomly assigned to be exposed to different teaching methods. Both groups undergo a language learning test after the lesson with a maximum score of 20 points. 
+
+The question that we will try to answer is whether the students in group A have performed significantly better than those in group B which would indicate that the teaching method to which group A was exposed works better than the teaching method to which group B was exposed.
+
+Let's move on to implementing the regression in R. In a first step, we load the data set and inspect its structure.
+
+```{r}
+#| label: slr20
+#| message: false
+#| warning: false
+# load data
+slrdata2  <- base::readRDS(url("https://slcladal.github.io/data/sgd.rda", "rb")) |>
+  dplyr::mutate(Group = factor(Group))
+```
+
+
+```{r}
+#| label: slr21
+#| echo: false
+#| message: false
+#| warning: false
+# inspect data
+slrdata2 |>
+  as.data.frame() |>
+  head() |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "First 6 rows of the slrdata2 data.")  |>
+  flextable::border_outer()
+```
+
+We also inspect the structure of the data.
+
+```{r}
+#| label: slr21b
+#| echo: false
+#| message: false
+#| warning: false
+# inspect data
+str(slrdata2)
+```
+
+Now, we graphically display the data. In this case, a boxplot represents a good way to visualize the data.
+
+```{r}
+#| label: slr22
+#| message: false
+#| warning: false
+# extract means
+slrdata2 |>
+  dplyr::group_by(Group) |>
+  dplyr::mutate(Mean = round(mean(Score), 1), SD = round(sd(Score), 1)) |>
+  ggplot(aes(Group, Score)) + 
+  geom_boxplot(fill=c("orange", "darkgray")) +
+  geom_text(aes(label = paste("M = ", Mean, sep = ""), y = 1)) +
+  geom_text(aes(label = paste("SD = ", SD, sep = ""), y = 0)) +
+  theme_bw(base_size = 15) +
+  labs(x = "Group", y = "Test score (Points)") +   
+  coord_cartesian(ylim = c(0, 20)) +  
+  guides(fill = FALSE)                
+```
+
+The data indicate that group A did significantly better than group B. We will test this impression by generating the regression model and creating the model and extracting the model summary. 
+
+```{r}
+#| label: slr23
+#| message: false
+#| warning: false
+# generate regression model
+m2.lm <- lm(Score ~ Group, data = slrdata2) 
+# inspect results
+summary(m2.lm)                             
+```
+
+The model summary reports that Group A performed significantly better compared with Group B. This is shown by the fact that the p-value (the value in the column with the header (Pr(>|t|)) is smaller than .001 as indicated by the three \* after the p-values). Also, the negative Estimate for Group B indicates that Group B has lower scores than Group A. We will now generate the diagnostic graphics.
+
+```{r}
+#| label: slr25
+#| message: false
+#| warning: false
+#| fig-height: 8
+# generate diagnostic plots
+performance::check_model(m2.lm)
+```
+
+These diagnostics also show no problems (note that with a categorical predictor, the fitted values fall into just two groups, which is why the points line up in two vertical bands). We continue by visualizing the results of the model.
+
+
+```{r}
+#| label: slr26a
+#| message: false
+#| warning: false
+# generate summary table
+sjPlot::plot_model(m2.lm, type = "pred", terms = c("Group"))
+```
+
+Now, we summarize the results of the model.
+
+```{r}
+#| label: slr26
+#| eval: true
+#| message: false
+#| warning: false
+# generate summary table
+sjPlot::tab_model(m2.lm) 
+```
+
+
+We can use the `reports` package [@report] to prepare the write-up of the analysis.
+
+
+```{r}
+#| label: m2.lm_report
+#| message: false
+#| warning: false
+report::report(m2.lm)
+```
+
+We can use this output to write up a final report: 
+ 
+
+> A simple linear regression was fitted to the data. A visual assessment of the model diagnostics did not indicate any problematic or disproportionately influential data points (outliers). The final linear regression model is based on 60 data points, performed significantly better than an intercept-only base line model (F (1, 58): 17.55, p-value <. 001^$***$^), and reported that the model explained 21.9 percent of variance which confirmed a good model fit. According to this final model, group A scored significantly better on the language learning test than group B (coefficient: -3.17, 95% CI [-4.68, -1.65], Std. \beta: -0.96, 95% CI [-1.41, -0.50], SE: 0.48, t-value~58~: -4.19, p-value <. 001^$***$^). Standardized parameters were obtained by fitting the model on a standardized version of the dataset. 95% Confidence Intervals (CIs) and p-values were computed using the Wald approximation.
+
+
+
+
+::: {.callout-tip}
+## Exercises: Simple Linear Regression
+:::
+
+**Q1. In a regression predicting reaction time (in ms) from word frequency, the slope coefficient is -25. What does this mean?**
+
+```{r}
+#| echo: false
+#| label: "W9_Q1"
+checkdown::check_question("For each one-unit increase in word frequency, predicted reaction time decreases by 25 ms",
+               options = c("For each one-unit increase in word frequency, predicted reaction time decreases by 25 ms",
+                 "Reaction times are 25% faster for frequent words",
+                 "The model explains 25% of the variance",
+                 "25 observations were excluded from the model"),
+               type = "radio",
+               q_id = "W9_Q1",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! The slope is the predicted change in the outcome per one-unit change in the predictor. The negative sign means higher frequency predicts faster (lower) reaction times.",
+               wrong = "The slope tells you how much the *outcome* changes when the *predictor* increases by one unit.")
+```
+
+---
+
+**Q2. What is a residual?**
+
+```{r}
+#| echo: false
+#| label: "W9_Q2"
+checkdown::check_question("The difference between an observed value and the value predicted by the model",
+               options = c("The difference between an observed value and the value predicted by the model",
+                 "The slope of the regression line",
+                 "The proportion of explained variance",
+                 "The number of data points in the model"),
+               type = "radio",
+               q_id = "W9_Q2",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! Residuals are the model's errors for the individual observations - and both model fitting (least squares) and assumption checking operate on them.",
+               wrong = "Think of the vertical distance between a data point and the regression line.")
+```
+
+---
+
+**Q3. The diagnostic plots show residuals that fan out - small for low fitted values and increasingly spread out for high fitted values. Which assumption is violated?**
+
+```{r}
+#| echo: false
+#| label: "W9_Q3"
+checkdown::check_question("Homoscedasticity (constant variance of residuals)",
+               options = c("Homoscedasticity (constant variance of residuals)",
+                 "Normality of the predictor",
+                 "Independence of the predictor and the intercept",
+                 "The assumption that R² is above .5"),
+               type = "radio",
+               q_id = "W9_Q3",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! A funnel shape means the residual variance grows with the fitted values - heteroscedasticity. Standard errors and p-values become unreliable; transformations or robust standard errors can help.",
+               wrong = "A funnel-shaped residual plot indicates that the residual *variance* is not constant.")
+```
+
+
+
+[Back to top](#week9)
+
+
+

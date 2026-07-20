@@ -1,0 +1,571 @@
+# (Different) Types of Regression {#week11}
+
+::: {.callout-tip}
+## What This Session Covers
+
+This session generalizes regression beyond numeric outcomes, focusing on (binomial) logistic regression for binary outcomes.
+
+1. **Basic concepts** - why linear regression fails for binary outcomes; probabilities, odds, and log-odds
+2. **Example** - modeling the use of *eh* in New Zealand English
+3. **Model building and fitting** - stepwise comparison towards a minimal adequate model
+4. **Model diagnostics** - binned residuals, collinearity, influential observations
+5. **Effect sizes and odds ratios** - interpreting and reporting logistic models
+6. **Outlook** - other regression types (multinomial, ordinal, Poisson)
+:::
+
+This week, we continue with regression analyses and expand on last week by using a regression to analyse a nominal dependent variable. Regression models that are fit to nominal dependent variables are called *(binomial) logistic regressions*.
+
+**Preparation and session set up**
+
+In this tutorial, we will need the following packages; please install them by running the code below if you have not installed them already. 
+
+```{r}
+#| label: blr_prep0
+#| eval: false
+#| warning: false
+#| message: false
+# install
+install.packages("car")
+install.packages("dplyr")
+install.packages("flextable")
+install.packages("performance")
+install.packages("see")
+install.packages("gridExtra")
+install.packages("ggplot2")
+install.packages("rms")
+install.packages("sjPlot")
+```
+
+Once you have installed the packages (either now or before), we activate them as shown below.
+
+```{r}
+#| label: blr_prep1
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+# set options
+options("scipen" = 100, "digits" = 12) # suppress math annotation
+# load packages
+library(dplyr)
+library(car)
+library(flextable)
+library(gridExtra)
+library(ggplot2)
+library(rms)
+library(sjPlot)
+library(performance)
+library(see)
+```
+
+
+Once you have initiated the session by executing the code shown above, you are good to go.
+
+
+## Basic Concepts
+
+::: {.callout-note}
+## Key concept: Probabilities, odds, and log-odds
+
+Logistic regression models a binary outcome on the *log-odds* scale. The three scales are related but distinct: a *probability* ranges from 0 to 1 (e.g. .75); the *odds* are the ratio of the probability of an event to the probability of its absence (.75/.25 = 3, i.e. 3 to 1); and the *log-odds (logit)* are the natural logarithm of the odds (log(3) ≈ 1.1), ranging from −∞ to +∞ - which is what makes linear modeling possible. Coefficients in the model output are on the log-odds scale; exponentiating them (`exp()`) yields *odds ratios*, which are easier to interpret: an odds ratio of 2 means the odds double.
+:::
+
+
+Logistic regression is a multivariate analysis technique that builds on linear regression but takes nominal dependent variables (rather than a numeric dependent variable) [@harrell2015regression]. The difference requires that the linear regression must be modified in certain ways to avoid predicting  outcomes that do not make sense. For example, a linear model that is applied to a nominal dependent variable (e.g., 0 = not pregnant, 1 = pregnant) would predict negative values or values greater than 1 when there are only 2 possible outcomes. 
+
+To avoid this, logistic regressions work on the probabilities of an outcome (the likelihood), rather than the outcome itself. In addition, the likelihoods on which the logistic regression works is logged (logarithmized) in order to avoid making nonsensical predictions. 
+
+To understand what this mean, we will use a very simple example. In this example, we want to see whether the height of men affect their likelihood of being in a relationship. The data we use represents a data set consisting of two variables: height and relationship.
+
+```{r}
+#| label: blm1
+#| echo: false
+#| message: false
+#| warning: false
+# set seed
+set.seed(12345)
+# generates 20 values, with mean of 30 & s.d.=2
+bodyheight=rnorm(20,175,20) 
+# sorts these values in ascending order
+bodyheight=sort(round(bodyheight, 1)) 
+# assign 'survival' to these 20 individuals non-randomly
+# most mortality occurs at smaller body size
+relationship=c(0,0,0,0,0,1,0,1,0,0,1,1,0,1,1,1,0,1,1,1) 
+# saves data frame with two columns: body size, survival
+blrdata=as.data.frame(cbind(bodyheight,relationship)) 
+# inspect data
+blrdata |>
+  as.data.frame() |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::border_outer()
+```
+
+Let us now fit a linear regression model to the data and see what happens if we plot the predictions of the model.
+
+```{r}
+#| label: blm1b
+#| echo: false
+#| message: false
+#| warning: false
+# generate models
+lm1 <- lm(relationship ~ bodyheight, data = blrdata)
+blr1 <- glm(relationship ~ bodyheight, family = binomial, data = blrdata)
+blrdata <- blrdata |>
+  dplyr::mutate(Pred_lm = predict(lm1, blrdata),
+                Pred_blm = predict(blr1, blrdata)) |>
+  dplyr::mutate(Prob_lm = plogis(predict(lm1, blrdata)),
+                Prob_blm = plogis(predict(blr1, blrdata)),
+                Pred_blm2 = ifelse(predict(blr1, blrdata, type = "response") >= .5, 1, 0))
+# plot 
+ggplot(blrdata, aes(x = bodyheight, y =  relationship)) +
+  geom_point() +
+  geom_abline(intercept = coef(lm1)[1], slope = coef(lm1)[2], color = "red") +
+  geom_point(aes(x = bodyheight, y = Pred_lm), color = "blue") +
+  theme_bw(base_size = 10)+
+  coord_cartesian(ylim = c(-0.2, 1.2), xlim = c(125, 225)) +
+  scale_y_continuous(breaks=seq(0, 1, 1), labels = c("Single", "Relationship")) +
+  guides(fill = FALSE) +
+  labs(title = "Predictions and regression line of lm.", x = "Height", y = "")
+```
+
+The figure above shows that a linear model would predict values for the relationship status, which represents a factor (0 = Single and 1 = In a Relationship), that are nonsensical because values above 1 or below 0 do not make sense. 
+
+To avoid this issue, we can log the values so that they fall between 0 and 1. You can check this by logging the values from -5 to 5 using the `plogis` function as shown below.
+
+```{r}
+#| label: blm0
+#| message: false
+#| warning: false
+round(plogis(-5:5), 5)
+```
+
+While the original values range from -5 to 5, the logged values fall within a range from 0 to 1. If we visualize these logged values, we can confirm that the values are between 0 and 1 and see that they follow an S-shaped curve which mirrors the underlying logistic function.
+
+```{r}
+#| label: blm0b
+#| echo: false
+#| message: false
+#| warning: false
+plogis(-5:5) |>
+  as.data.frame() |>
+  dplyr::mutate(id = 1:n()) |>
+  dplyr::rename(values = 1) |>
+  ggplot(aes(y = values, x = id)) +
+  geom_line(color = "red", size = 1) +
+  geom_point(color = "blue", size = 2)+
+  labs(x = "", y = "") +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+```
+
+
+Let us now fit a binomial logistic regression model to the data and see what happens if we plot the predictions of the models as well as the probabilities provided by the logistic model.
+
+```{r}
+#| label: blm1f
+#| echo: false
+#| message: false
+#| warning: false
+# generate models
+lm1 <- lm(relationship ~ bodyheight, data = blrdata)
+blr1 <- glm(relationship ~ bodyheight, family = binomial, data = blrdata)
+blrdata <- blrdata |>
+  dplyr::mutate(Pred_lm = predict(lm1, blrdata),
+                Pred_blm = predict(blr1, blrdata)) |>
+  dplyr::mutate(Prob_lm = plogis(predict(lm1, blrdata)),
+                Prob_blm = plogis(predict(blr1, blrdata)),
+                Pred_blm2 = ifelse(predict(blr1, blrdata, type = "response") >= .5, 1, 0))
+# plot 
+p2 <- ggplot(blrdata, aes(x = bodyheight, y =  relationship)) +
+  geom_point() +
+  geom_abline(intercept = coef(blr1)[1], slope = coef(blr1)[2], color = "red", size = .5) +
+  geom_point(aes(x = bodyheight, y = Pred_blm), color = "blue") +
+  theme_bw(base_size = 10)+
+  coord_cartesian(ylim = c(-0.2, 1.2), xlim = c(125, 225)) +
+  scale_y_continuous(breaks=seq(0, 1, 1), labels = c("Single", "Relationship")) +
+  guides(fill = FALSE) +
+  labs(title = "Predictions and regression line of blm.", x = "Height", y = "")
+
+
+p3 <- ggplot(blrdata, aes(x = bodyheight, y =  relationship)) +
+  geom_point() +
+  geom_point(aes(x = bodyheight, y = Prob_blm), color = "blue") +
+  geom_smooth(method = "glm", method.args = list(family = "binomial"), 
+              se = FALSE, color = "red", size = .5) +
+  geom_segment(aes(xend = bodyheight, yend = Prob_blm), color = "red", alpha = .2) +
+  theme_bw(base_size = 10) +
+  coord_cartesian(ylim = c(-0.2, 1.2), xlim = c(125, 225)) +
+  scale_y_continuous(breaks=seq(0, 1, 1), labels = c("Single", "Relationship")) +
+  guides(fill = FALSE) +
+  labs(title = "Logged Probabilities and logged regression line of blm.", x = "Height", y = "")
+
+# show plot
+gridExtra::grid.arrange(p2, p3, nrow = 2)
+```
+
+
+
+Surprisingly, the upper panel shows that the predictions of a logistic regression are similar to a linear model and that they also fall outside the range of 0 and 1. We can also plot the regression line of a logistic regression. We can do this because a logistic regression also has an intercept and a (very steep) slope. The regression line confirms that the predicted values that are above 1 and below 0. 
+
+However, when we log the predicted values we see that these logged predicted values are transformed into probabilities with values between 0 and 1. Also, the logged regression line has a S-shape which reflects the logistic function. 
+
+Note also, that we can use these logged predicted values to find the optimal line (the line with the lowest residual deviance) by comparing the sum of residuals - just as we did for a simple linear model and that way, we find the regression line for a logistic regression. 
+
+Thus, in contrast to a linear regression, which predicts actual values, such as the frequencies of prepositions in a certain text, a logistic regression predicts *probabilities* of events (for example, being in a relationship) rather than actual values. 
+
+
+## Example: EH in Kiwi English
+
+To exemplify how to implement a logistic regression in R [see @agresti1996introduction; @agresti2011categorical for very good and thorough introductions to this topic], we will analyze the use of the discourse particle *eh* in New Zealand English and test which factors correlate with its occurrence. The data set represents speech units in a corpus that were coded for the speaker who uttered a given speech unit, the gender, ethnicity, and age of that speaker and whether or not the speech unit contained an *eh*. To begin with, we clean the current work space, set option, install and activate relevant packages, load customized functions, and load the example data set.
+
+```{r}
+#| label: blm3
+# load data
+blrdata  <- base::readRDS(url("https://slcladal.github.io/data/bld.rda", "rb"))
+```
+
+```{r}
+#| label: blm4
+#| echo: false
+# inspect data
+blrdata |>
+  as.data.frame() |>
+  head(15) |>
+  flextable() |>
+  flextable::set_table_properties(width = .75, layout = "autofit") |>
+  flextable::theme_zebra() |>
+  flextable::fontsize(size = 12) |>
+  flextable::fontsize(size = 12, part = "header") |>
+  flextable::align_text_col(align = "center") |>
+  flextable::set_caption(caption = "First 15 rows of the blrdata.")  |>
+  flextable::border_outer()
+```
+
+The summary of the data show that the data set contains 25,821 observations of five variables. The first variable (ID) contains strings that represent a combination file and speaker of a speech unit. The second variable represents the gender, the third the age, and the fourth the ethnicity of speakers. The fifth variable represents whether or not a speech unit contained the discourse particle *eh*. 
+
+Next, we factorize the variables in our data set. In other words, we specify that the strings represent variable levels and define new reference levels because as a default `R` will use the variable level which first occurs in alphabet ordering as the reference level for each variable, we redefine the variable levels for Age and Ethnicity.
+
+```{r}
+#| label: blm5
+blrdata <- blrdata |>
+  # factorize variables
+  dplyr::mutate_if(is.character, factor) |>
+  # relevel Age (Reference = Young) and Ethnicity (Reference= Pakeha))
+  dplyr::mutate(Age = relevel(Age, "Young"),
+                Ethnicity = relevel(Ethnicity, "Pakeha"))
+```
+
+After preparing the data, we will now plot the data to get an overview of potential relationships between variables.
+
+```{r}
+#| label: blm6
+#| message: false
+#| warning: false
+blrdata |>
+  dplyr::mutate(EH = ifelse(EH == "0", 0, 1)) |>
+  ggplot(aes(Age, EH, color = Gender)) +
+  facet_wrap(~Ethnicity) +
+  stat_summary(fun = mean, geom = "point") +
+  stat_summary(fun.data = mean_cl_boot, geom = "errorbar", width = 0.2) +
+  theme_bw(base_size = 10) +
+  theme(legend.position = "top") +
+  labs(x = "", y = "Observed Probabilty of eh") +
+  scale_color_manual(values = c("gray20", "gray70"))
+```
+
+With respect to main effects, the figure above indicates that men use *eh* more frequently than women, that young speakers use it more frequently compared with old speakers, and that speakers that are descendants of European settlers (Pakeha) use *eh* similarly compared with Maori (the native inhabitants of New Zealand). In a next step, we will start building the logistic regression model.
+
+## Model Building
+
+As a first step, we need to define contrasts and use the `datadist` function to store aspects of our variables that can be accessed later when plotting and summarizing the model. Contrasts define what and how variable levels should be compared and therefore influences how the results of the regression analysis are presented. In this case, we use treatment contrasts which are in-built. Treatment contrasts mean that we assess the significance of levels of a predictor against a baseline which is the reference level of a predictor. @field2012discovering [414-427] and @gries2021statistics provide very good and accessible explanations of contrasts and how to manually define contrasts if you would like to know more. 
+
+```{r}
+#| label: blm7
+#| message: false
+#| warning: false
+# set contrasts
+options(contrasts  =c("contr.treatment", "contr.poly"))
+# extract distribution summaries for all potential variables
+blrdata.dist <- datadist(blrdata)
+# store distribution summaries for all potential variables
+options(datadist = "blrdata.dist")
+```
+
+Next, we generate a minimal model that predicts the use of *eh* solely based on the intercept.
+
+```{r}
+#| label: blm8
+# baseline glm model
+m0.glm = glm(EH ~ 1, family = binomial, data = blrdata)
+```
+
+## Model Fitting
+
+We will now start with the model fitting procedure. In the present case, we will use a manual step-wise step-up procedure during which predictors are added to the model if they significantly improve the model fit. In addition, we will perform diagnostics as we fit the model at each step of the model fitting process rather than after the fitting.
+
+We will test two things in particular: whether the data has incomplete information or complete separation, if the model suffers from (multi-)collinearity, and if the predictor is significant. 
+
+**Incomplete information**  means that the data does not contain all combinations of the predictor or the dependent variable. 
+
+**Complete separation** is important because if the data does not contain cases of all combinations, the model will assume that it has found a perfect predictor. In such cases the model overestimates the effect of that that predictor and the results of that model are no longer reliable. For example, if *eh* was only used by young speakers in the data, the model would jump on that fact and say *Ha! If there is an old speaker, that means that that speaker will never ever and under no circumstances say *eh* - I can therefore ignore all other factors!* 
+
+**Multicollinearity** means that predictors correlate and have shared variance. This means that whichever predictor is included first will take all the variance that it can explain and the remaining part of the variable that is shared will not be attributed to the other predictor. This may lead to reporting that a factor is not significant because all of the variance it can explain is already accounted for. However, if the other predictor were included first, then the original predictor would be returned as insignificant. This means that- depending on the order in which predictors are added - the results of the regression can differ dramatically and the model is therefore not reliable. Multicollinearity is actually a very common problem and there are various ways to deal with it but it cannot be ignored (at least in regression analyses).
+
+**Significance**: if a model with a predictor is not better (has no better fit) compared to a model without that predictor, then we do not include the predictor in the model. In other words, we continue fitting the model without that predictor. However, If a variable is insignificant but it is part of a significant interaction, we also need to include the insignificant variable. 
+
+**Step-wise model fitting**
+
+Adding predictors one-by-one is called step-wise model fitting. It is called step-wise step up if we add predictors one-by-one and step-wise step-down if we remove predictors one-by-one.
+
+We will start by adding *Age* to the minimal adequate model. 
+
+```{r}
+#| label: blm9
+# check incomplete information
+ftable(blrdata$Age, blrdata$EH)
+# add age to the model
+m1.glm = glm(EH ~ Age, family = binomial, data = blrdata)
+# check if adding Age significantly improves model fit
+anova(m1.glm, m0.glm, test = "Chi")
+```
+
+As the data does not contain incomplete information and adding *Age* has significantly improved the model fit (note that collinearity is not an issue in a model with only a single predictor) (the p-value of the ANOVA is lower than .05). We therefore proceed with *Age* included.
+
+We continue by adding *Gender*. We add a second ANOVA test to see if including Gender affects the significance of other predictors in the model. If this were the case - if adding Gender would cause Age to become insignificant - then we could change the ordering in which we include predictors into our model.
+
+```{r}
+#| label: blm10
+ftable(blrdata$Gender, blrdata$EH)
+m2.glm <- update(m1.glm, . ~ . +Gender)
+performance::check_collinearity(m2.glm)
+anova(m1.glm, m2.glm, test = "Chi")
+Anova(m2.glm, test = "LR")
+```
+
+
+Again, including *Gender* significantly improves model fit and the data does not contain incomplete information or complete separation. Also, including *Gender* does not affect the significance of *Age*. Now, we include *Ethnicity*.
+
+
+```{r}
+#| label: blm11
+ftable(blrdata$Ethnicity, blrdata$EH)
+m3.glm <- update(m2.glm, . ~ . +Ethnicity)
+performance::check_collinearity(m3.glm)
+anova(m2.glm, m3.glm, test = "Chi")
+```
+
+Since adding *Ethnicity* does not significantly improve the model fit, we do not need to test if its inclusion affects the significance of other predictors. We continue without *Ethnicity* and include the interaction between *Age* and *Gender*.
+
+```{r}
+#| label: blm12
+ftable(blrdata$Age, blrdata$Gender, blrdata$EH)
+m4.glm <- update(m2.glm, . ~ . +Age*Gender)
+performance::check_collinearity(m4.glm)
+anova(m2.glm, m4.glm, test = "Chi")
+```
+
+The interaction between *Age* and *Gender* is not significant which means that men and women do not behave differently with respect to their use of `EH` as they age. Also, the data does not contain incomplete information and the model does not suffer from multicollinearity - the VIFs reported by `check_collinearity` are low, i.e. the predictors are not collinear. We can now include if there is a significant interaction between *Age* and *Ethnicity*.
+
+```{r}
+#| label: blm13
+ftable(blrdata$Age, blrdata$Ethnicity, blrdata$EH)
+m5.glm <- update(m2.glm, . ~ . +Age*Ethnicity)
+performance::check_collinearity(m5.glm)
+anova(m2.glm, m5.glm, test = "Chi")
+```
+
+Again, no incomplete information or multicollinearity and no significant interaction. Now, we test if there exists a significant interaction between *Gender* and *Ethnicity*.
+
+```{r}
+#| label: blm14
+ftable(blrdata$Gender, blrdata$Ethnicity, blrdata$EH)
+m6.glm <- update(m2.glm, . ~ . +Gender*Ethnicity)
+performance::check_collinearity(m6.glm)
+anova(m2.glm, m6.glm, test = "Chi")
+```
+
+
+As the interaction between *Gender* and *Ethnicity* is not significant, we continue without it. In a final step, we include the three-way interaction between *Age*, *Gender*, and *Ethnicity*.
+
+```{r}
+#| label: blm15
+ftable(blrdata$Age, blrdata$Gender, blrdata$Ethnicity, blrdata$EH)
+m7.glm <- update(m2.glm, . ~ . +Age*Gender*Ethnicity)
+performance::check_collinearity(m7.glm)
+anova(m2.glm, m7.glm, test = "Chi")
+```
+
+We have found our final minimal adequate model because the 3-way interaction is also insignificant. As we have now arrived at the final minimal adequate model (m2.glm), we perform the model diagnostics on this final model before we turn to interpretation. As with linear regressions, we use the `check_model` function from the `performance` package [@performance] - note, however, that the panels differ from those for linear models because logistic regressions do not assume normally distributed residuals: for binomial models, the *binned residuals* panel replaces the normality- and homoscedasticity-related panels. In the binned residuals plot, the data are divided into bins based on their fitted values and the average residual per bin is displayed - ideally, (nearly) all points should fall within the error bounds.
+
+```{r}
+#| label: blm16
+#| message: false
+#| warning: false
+#| fig-height: 8
+# generate diagnostic plots
+performance::check_model(m2.glm)
+```
+
+We can also formally check for influential observations. As all predictors in our model are categorical, we extract the Cook's distances directly from the model (Cook's distance shows how much the model changes when it is re-fitted without a given data point; values greater than 1 are considered problematic).
+
+```{r}
+#| label: blm17
+#| message: false
+#| warning: false
+# extract Cook's distances
+cooksd <- cooks.distance(m2.glm)
+# inspect the maximum Cook's distance
+max(cooksd)
+# check if any data points have a Cook's distance value greater than 1
+which(cooksd > 1)
+```
+
+The diagnostics do not indicate any problems and we continue by checking the effect sizes of the predictors in our final model (Age and Gender).
+
+
+## Effect Size
+
+We summarize the final minimal adequate model in tabulated form.
+
+```{r}
+#| label: blm33
+#| message: false
+#| warning: false
+sjPlot::tab_model(m2.glm)
+```
+
+
+The effects are reported as Odds Ratios - but what are odds ratios and how can you interpret them? 
+
+Odds ratios are an  effect size measure (or an association strength measure) that ranges between 0 and infinity. If the odds ratios are 
+
+* 1, then the presence of a factor level does not affect the probability of an outcome  
+* smaller than 1, then the presence of a factor level *decreases* the probability of an outcome
+* bigger than 1, then the presence of a factor level *increases* the probability of an outcome. 
+
+
+The odds of an event are related to its probability: if the probability that an *eh* is produced by a woman is 20 percent (this is equal to .2 or 1/5 or 1 out of 5), then the odds are .25 (this is equal to 1/4 or 1 against 4). 
+
+Odds ratios are the odds of an *eh* being produced by a woman (1/4) divided by the odds of an *eh* not being produced by a woman (3/4). In this example, the odds ratio of an *eh* being produced by woman are thus (1/4) / (3/4) = .25 / .75 = .33. If the odds ratios are positive, then they tell us how many times more likely an outcome is: if *Gender[woman]* had an odds ratio of 2, then this would mean that the outcome is twice as likely if the speaker is a woman.   
+
+In a next step, we can use the `plot_model` function from the `sjPlot` package [@sjPlot] to visualize the effects.
+
+```{r}
+#| label: blm28
+#| message: false
+#| warning: false
+sjPlot::plot_model(m2.glm, 
+                   type = "pred", 
+                   terms = c("Age", "Gender"), 
+                   axis.lim = c(0, 1)) +
+  theme(legend.position = "top") +
+  labs(x = "", y = "Predicted Probabilty of eh", title = "") +
+  scale_color_manual(values = c("gray20", "gray70")) +
+  theme_bw()
+```
+
+
+## Summarizing Results
+
+
+
+We can use the `reports` package [@report] to summarize the analysis.
+
+
+```{r}
+#| label: blr_report
+#| message: false
+#| warning: false
+report::report(m2.glm)
+```
+
+We can use this output to write up a final report: 
+
+We fitted a logistic model (estimated using ML) to predict the use of the utterance-final discourse particle *eh* with Age and Gender (formula: EH ~ Age + Gender). The model's explanatory power is weak (Tjur's R^2^ = 0.03). The model's intercept, corresponding to Age = Young and Gender = Men, is at -0.23 (95% CI [-0.28, -0.19], p < .001). Within this model:
+
+* The effect of Age [Old] is statistically significant and negative (beta = -0.83, 95% CI [-0.90, -0.77], p < .001; Std. beta = -0.83, 95% CI [-0.90, -0.77])
+
+* The effect of Gender [Women] is statistically significant and negative (beta = -0.42, 95% CI [-0.47, -0.37], p < .001; Std. beta = -0.42, 95% CI [-0.47, -0.37])
+
+
+## Outlook
+
+If you want to see how you can run a [multinomial regression](https://ladal.edu.au/regression.html#Multiple_Binomial_Logistic_Regression) (which takes a categorical dependent variable) or an [ordinal regression](https://ladal.edu.au/regression.html#Ordinal_Regression) (which takes an ordinal dependent variable), have a look at the [LADAL tutorial on regression analysis](https://ladal.edu.au/regression.html).
+
+
+::: {.callout-tip}
+## Exercises: Logistic Regression
+:::
+
+**Q1. Why can't we use ordinary linear regression to model a binary outcome (e.g. whether a speaker uses *eh*)?**
+
+```{r}
+#| echo: false
+#| label: "W11_Q1"
+checkdown::check_question("A linear model can predict impossible values (probabilities below 0 or above 1) and violates the model assumptions",
+               options = c("A linear model can predict impossible values (probabilities below 0 or above 1) and violates the model assumptions",
+                 "Binary outcomes contain too little information for any model",
+                 "Linear regression only works with more than five predictors",
+                 "R cannot process variables with only two values"),
+               type = "radio",
+               q_id = "W11_Q1",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! A straight line is unbounded, so it inevitably predicts 'probabilities' outside [0, 1], and the residuals of a binary outcome cannot be normally distributed with constant variance. The logistic function solves this by mapping predictions onto the 0-1 range.",
+               wrong = "Think about what a straight line predicts for extreme predictor values - can a probability be -0.3 or 1.4?")
+```
+
+---
+
+**Q2. A logistic regression yields an odds ratio of 2.5 for young (vs. old) speakers using *eh*. How do you interpret this?**
+
+```{r}
+#| echo: false
+#| label: "W11_Q2"
+checkdown::check_question("The odds of using *eh* are 2.5 times higher for young speakers than for old speakers",
+               options = c("The odds of using *eh* are 2.5 times higher for young speakers than for old speakers",
+                 "Young speakers use *eh* in exactly 2.5% of utterances",
+                 "The probability of using *eh* is 2.5 for young speakers",
+                 "Old speakers use *eh* 2.5 times more often"),
+               type = "radio",
+               q_id = "W11_Q2",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! Odds ratios compare the odds between groups: young speakers' odds of using *eh* are 2.5 times those of old speakers. Note that this is a statement about odds, not directly about probabilities.",
+               wrong = "An odds ratio compares the *odds* of the outcome between the two groups - which group is in the numerator?")
+```
+
+---
+
+**Q3. What does the C-statistic (concordance index) of a logistic regression measure?**
+
+```{r}
+#| echo: false
+#| label: "W11_Q3"
+checkdown::check_question("How well the model discriminates between cases with and without the outcome (values from .5 = chance to 1 = perfect)",
+               options = c("How well the model discriminates between cases with and without the outcome (values from .5 = chance to 1 = perfect)",
+                 "The number of predictors in the model",
+                 "The correlation between the predictors",
+                 "The percentage of missing data"),
+               type = "radio",
+               q_id = "W11_Q3",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! The C-statistic is the probability that the model assigns a higher predicted probability to a randomly chosen case *with* the outcome than to one *without* it. C = .5 means chance-level discrimination; values above .8 indicate good discriminative power.",
+               wrong = "The C-statistic is about *discrimination*: can the model tell cases with the outcome apart from cases without it?")
+```
+
+
+
+[Back to top](#week11)
+
+
+

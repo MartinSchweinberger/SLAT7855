@@ -1,576 +1,704 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>SLAT7855 Quantitative Research Methods in Applied Linguistics</title>
-  <meta name="description" content="SLAT7855 Quantitative Research Methods in Applied Linguistics" />
-  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.41">
 
-  <meta property="og:title" content="SLAT7855 Quantitative Research Methods in Applied Linguistics" />
-  <meta property="og:type" content="book" />
-  
-  
-  
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="SLAT7855 Quantitative Research Methods in Applied Linguistics" />
-  
-  
-  
+<meta name="author" content="Martin Schweinberger">
+<meta name="dcterms.date" content="2026-07-20">
 
-<meta name="author" content="Martin Schweinberger" />
-
-
-<meta name="date" content="2026-07-20" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-
-<link rel="next" href="introduction.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
-
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
+<title>SLAT7855 – Statistics for Linguists</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
 }
 </style>
 
-<link rel="stylesheet" href="style.css" type="text/css" />
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./01-week1.html" rel="next">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-48ffa3e5b9d089919c6712c39e5b00f2.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-baf7457b58093534c7052efdef5f4d86.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
 </head>
 
-<body>
+<body class="nav-sidebar floating">
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">SLAT7855</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-the-course"><i class="fa fa-check"></i>About the Course</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i>Course Description</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#rationale"><i class="fa fa-check"></i>Rationale</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aims"><i class="fa fa-check"></i>Course Aims</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-outcomes"><i class="fa fa-check"></i>Learning Outcomes</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#what-you-will-get-out-of-this-course"><i class="fa fa-check"></i>What You Will Get Out of This Course</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#who-this-course-is-for"><i class="fa fa-check"></i>Who This Course Is For</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-this-book-is-organised"><i class="fa fa-check"></i>How This Book Is Organised</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-resources"><i class="fa fa-check"></i>Learning Resources</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#this-script"><i class="fa fa-check"></i>This Script</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-reading"><i class="fa fa-check"></i>Recommended Reading</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#university-learning-resources"><i class="fa fa-check"></i>University Learning Resources</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#school-of-languages-and-cultures-learning-resources"><i class="fa fa-check"></i>School of Languages and Cultures Learning Resources</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#a-note-on-generative-ai"><i class="fa fa-check"></i>A Note on Generative AI</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
-</ul></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#why-do-we-need-science"><i class="fa fa-check"></i><b>1.1</b> Why do we need science?</a></li>
-<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#errare-humanum-est"><i class="fa fa-check"></i><b>1.2</b> Errare Humanum Est</a>
-<ul>
-<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#the-monty-hall-problem"><i class="fa fa-check"></i><b>1.2.1</b> The Monty Hall Problem</a></li>
-<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#the-birthday-conundrum"><i class="fa fa-check"></i><b>1.2.2</b> The Birthday Conundrum</a></li>
-<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#fast-and-slow-thinking"><i class="fa fa-check"></i><b>1.2.3</b> Fast and Slow Thinking</a></li>
-<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#randomness"><i class="fa fa-check"></i><b>1.2.4</b> Randomness</a></li>
-<li class="chapter" data-level="1.2.5" data-path="introduction.html"><a href="introduction.html#patterns-and-matters-of-habit"><i class="fa fa-check"></i><b>1.2.5</b> Patterns and Matters of Habit</a></li>
-<li class="chapter" data-level="1.2.6" data-path="introduction.html"><a href="introduction.html#locical-fallacies-and-biases"><i class="fa fa-check"></i><b>1.2.6</b> Locical Fallacies and Biases</a></li>
-</ul></li>
-<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#what-is-science"><i class="fa fa-check"></i><b>1.3</b> What is science?</a>
-<ul>
-<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#clever-hans"><i class="fa fa-check"></i><b>1.3.1</b> Clever Hans</a></li>
-<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#popper-falsification-and-scientific-progress"><i class="fa fa-check"></i><b>1.3.2</b> Popper, falsification, and scientific progress</a></li>
-<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#what-is-empirical-linguistics"><i class="fa fa-check"></i><b>1.3.3</b> What is (empirical) Linguistics?</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html"><i class="fa fa-check"></i><b>2</b> Hypotheses and Variables</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#hypotheses"><i class="fa fa-check"></i><b>2.1</b> Hypotheses</a>
-<ul>
-<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#types-of-hypotheses"><i class="fa fa-check"></i>Types of Hypotheses</a></li>
-<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#why-test-the-h0"><i class="fa fa-check"></i>Why test the H0?!</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#data-and-research-designs"><i class="fa fa-check"></i><b>2.2</b> Data and Research Designs</a>
-<ul>
-<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#research-designs"><i class="fa fa-check"></i>Research Designs</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#variables-and-validity"><i class="fa fa-check"></i><b>2.3</b> Variables and Validity</a>
-<ul>
-<li class="chapter" data-level="" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#variable-types-scaling"><i class="fa fa-check"></i>Variable Types (Scaling)</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="hypotheses-and-variables.html"><a href="hypotheses-and-variables.html#relationships-between-variables"><i class="fa fa-check"></i><b>2.4</b> Relationships between variables</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html"><i class="fa fa-check"></i><b>3</b> Significance, Probability and the Normal Distribution</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#significance-and-probability"><i class="fa fa-check"></i><b>3.1</b> Significance and Probability</a>
-<ul>
-<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#significance-levels"><i class="fa fa-check"></i>Significance Levels</a></li>
-<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#probability"><i class="fa fa-check"></i>Probability</a></li>
-<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#the-normal-distribution"><i class="fa fa-check"></i>The Normal Distribution</a></li>
-<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#non-normality-skewness-and-kurtosis"><i class="fa fa-check"></i>Non-normality: skewness and kurtosis</a></li>
-<li class="chapter" data-level="" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#the-binomial-distribution"><i class="fa fa-check"></i>The Binomial Distribution</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#z-scores"><i class="fa fa-check"></i><b>3.2</b> z-scores</a></li>
-<li class="chapter" data-level="3.3" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#alpha-and-beta-errors"><i class="fa fa-check"></i><b>3.3</b> Alpha and Beta Errors</a></li>
-<li class="chapter" data-level="3.4" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#independence"><i class="fa fa-check"></i><b>3.4</b> Independence</a></li>
-<li class="chapter" data-level="3.5" data-path="significance-probability-and-the-normal-distribution.html"><a href="significance-probability-and-the-normal-distribution.html#corrections"><i class="fa fa-check"></i><b>3.5</b> Corrections</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html"><i class="fa fa-check"></i><b>4</b> Getting Started with R and RStudio</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#goals-of-this-section"><i class="fa fa-check"></i><b>4.1</b> Goals of this section</a></li>
-<li class="chapter" data-level="4.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#why-r"><i class="fa fa-check"></i><b>4.2</b> Why R?</a>
-<ul>
-<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#full-flexibility"><i class="fa fa-check"></i>Full flexibility</a></li>
-<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#great-for-learners"><i class="fa fa-check"></i>Great for learners!</a></li>
-<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#free-and-open-source"><i class="fa fa-check"></i>Free and Open Source</a></li>
-<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#rstudio-and-ease-of-use"><i class="fa fa-check"></i>RStudio and ease of use</a></li>
-<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-is-a-community-effort"><i class="fa fa-check"></i>R is a community effort</a></li>
-<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#reproducibilty-and-transparency"><i class="fa fa-check"></i>Reproducibilty and Transparency</a></li>
-<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#tools-versus-scripts"><i class="fa fa-check"></i>Tools versus Scripts</a></li>
-<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#widely-used"><i class="fa fa-check"></i>Widely used</a></li>
-<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#employability"><i class="fa fa-check"></i>Employability</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>4.3</b> Installing R and RStudio</a></li>
-<li class="chapter" data-level="4.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#preparation"><i class="fa fa-check"></i><b>4.4</b> Preparation</a></li>
-<li class="chapter" data-level="4.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#folder-structure-and-r-projects"><i class="fa fa-check"></i><b>4.5</b> Folder Structure and R projects</a>
-<ul>
-<li class="chapter" data-level="4.5.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#create-a-folder-for-your-project"><i class="fa fa-check"></i><b>4.5.1</b> Create a folder for your project</a></li>
-<li class="chapter" data-level="4.5.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#open-rstudio"><i class="fa fa-check"></i><b>4.5.2</b> Open RStudio</a></li>
-<li class="chapter" data-level="4.5.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-projects"><i class="fa fa-check"></i><b>4.5.3</b> R Projects</a></li>
-<li class="chapter" data-level="4.5.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-notebooks"><i class="fa fa-check"></i><b>4.5.4</b> R Notebooks</a></li>
-<li class="chapter" data-level="4.5.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#updating-r"><i class="fa fa-check"></i><b>4.5.5</b> Updating R</a></li>
-<li class="chapter" data-level="4.5.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#optimizing-r-project-options"><i class="fa fa-check"></i><b>4.5.6</b> Optimizing R project options</a></li>
-<li class="chapter" data-level="4.5.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-started-with-r-notebooks"><i class="fa fa-check"></i><b>4.5.7</b> Getting started with R Notebooks</a></li>
-<li class="chapter" data-level="4.5.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-markdown"><i class="fa fa-check"></i><b>4.5.8</b> R Markdown</a></li>
-</ul></li>
-<li class="chapter" data-level="4.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-and-rstudio-basics"><i class="fa fa-check"></i><b>4.6</b> R and RStudio Basics</a></li>
-<li class="chapter" data-level="4.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#rstudio-panes"><i class="fa fa-check"></i><b>4.7</b> RStudio: Panes</a>
-<ul>
-<li class="chapter" data-level="4.7.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-console-bottom-left-pane"><i class="fa fa-check"></i><b>4.7.1</b> R Console (bottom left pane)</a></li>
-<li class="chapter" data-level="4.7.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#running-commands-from-a-script"><i class="fa fa-check"></i><b>4.7.2</b> Running commands from a script</a></li>
-<li class="chapter" data-level="4.7.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#script-editor-top-left-pane"><i class="fa fa-check"></i><b>4.7.3</b> Script Editor (top left pane)</a></li>
-</ul></li>
-<li class="chapter" data-level="4.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-started-with-r"><i class="fa fa-check"></i><b>4.8</b> Getting started with R</a>
-<ul>
-<li class="chapter" data-level="4.8.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#setting-up-an-r-session"><i class="fa fa-check"></i><b>4.8.1</b> Setting up an R session</a></li>
-<li class="chapter" data-level="4.8.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#packages"><i class="fa fa-check"></i><b>4.8.2</b> Packages</a></li>
-<li class="chapter" data-level="4.8.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-help"><i class="fa fa-check"></i><b>4.8.3</b> Getting help</a></li>
-<li class="chapter" data-level="4.8.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#finding-help-within-r"><i class="fa fa-check"></i><b>4.8.4</b> Finding help within R</a></li>
-<li class="chapter" data-level="4.8.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#finding-help-online"><i class="fa fa-check"></i><b>4.8.5</b> Finding help online</a></li>
-</ul></li>
-<li class="chapter" data-level="4.9" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#working-with-data"><i class="fa fa-check"></i><b>4.9</b> Working with Data</a>
-<ul>
-<li class="chapter" data-level="4.9.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#loading-data"><i class="fa fa-check"></i><b>4.9.1</b> Loading data</a></li>
-<li class="chapter" data-level="4.9.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#inspecting-data"><i class="fa fa-check"></i><b>4.9.2</b> Inspecting data</a></li>
-<li class="chapter" data-level="4.9.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#a-first-plot"><i class="fa fa-check"></i><b>4.9.3</b> A first plot</a></li>
-<li class="chapter" data-level="4.9.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#changing-data"><i class="fa fa-check"></i><b>4.9.4</b> Changing data</a></li>
-<li class="chapter" data-level="4.9.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#saving-data"><i class="fa fa-check"></i><b>4.9.5</b> Saving data</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html"><i class="fa fa-check"></i><b>5</b> Working with Tables in R and RStudio</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#working-with-tables"><i class="fa fa-check"></i><b>5.1</b> Working with tables</a></li>
-<li class="chapter" data-level="5.2" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#functions-and-objects"><i class="fa fa-check"></i><b>5.2</b> Functions and Objects</a></li>
-<li class="chapter" data-level="5.3" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#inspecting-data-1"><i class="fa fa-check"></i><b>5.3</b> Inspecting data</a></li>
-<li class="chapter" data-level="5.4" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#accessing-individual-cells-in-a-table"><i class="fa fa-check"></i><b>5.4</b> Accessing individual cells in a table</a></li>
-<li class="chapter" data-level="5.5" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#tabulating-data"><i class="fa fa-check"></i><b>5.5</b> Tabulating data</a></li>
-<li class="chapter" data-level="5.6" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#saving-data-to-your-computer"><i class="fa fa-check"></i><b>5.6</b> Saving data to your computer</a></li>
-<li class="chapter" data-level="5.7" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#loading-data-from-your-computer"><i class="fa fa-check"></i><b>5.7</b> Loading data from your computer</a></li>
-<li class="chapter" data-level="5.8" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#loading-excel-data"><i class="fa fa-check"></i><b>5.8</b> Loading Excel data</a></li>
-<li class="chapter" data-level="5.9" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#renaming-piping-and-filtering"><i class="fa fa-check"></i><b>5.9</b> Renaming, Piping, and Filtering</a></li>
-<li class="chapter" data-level="5.10" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#ordering-data"><i class="fa fa-check"></i><b>5.10</b> Ordering data</a></li>
-<li class="chapter" data-level="5.11" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#creating-and-changing-variables"><i class="fa fa-check"></i><b>5.11</b> Creating and changing variables</a></li>
-<li class="chapter" data-level="5.12" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#if-statements"><i class="fa fa-check"></i><b>5.12</b> If-statements</a></li>
-<li class="chapter" data-level="5.13" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#summarizing-data"><i class="fa fa-check"></i><b>5.13</b> Summarizing data</a></li>
-<li class="chapter" data-level="5.14" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#gathering-and-spreading-data"><i class="fa fa-check"></i><b>5.14</b> Gathering and spreading data</a></li>
-<li class="chapter" data-level="5.15" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#ending-r-sessions"><i class="fa fa-check"></i><b>5.15</b> Ending R sessions</a></li>
-<li class="chapter" data-level="5.16" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#extracting-session-information"><i class="fa fa-check"></i><b>5.16</b> Extracting session information</a></li>
-<li class="chapter" data-level="5.17" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#going-further"><i class="fa fa-check"></i><b>5.17</b> Going further</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-centrality"><i class="fa fa-check"></i><b>6.1</b> Measures of Centrality</a>
-<ul>
-<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#mean"><i class="fa fa-check"></i>Mean</a></li>
-<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#median"><i class="fa fa-check"></i>Median</a></li>
-<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#mode"><i class="fa fa-check"></i>Mode</a></li>
-<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#geometric-mean"><i class="fa fa-check"></i>Geometric mean</a></li>
-<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#harmonic-mean"><i class="fa fa-check"></i>Harmonic mean</a></li>
-<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#notes-on-measures-of-centrality"><i class="fa fa-check"></i>Notes on Measures of Centrality</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#measures-of-variability"><i class="fa fa-check"></i><b>6.2</b> Measures of Variability</a>
-<ul>
-<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#range"><i class="fa fa-check"></i>Range</a></li>
-<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#interquartile-range-iqr"><i class="fa fa-check"></i>Interquartile range (IQR)</a></li>
-<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#variance"><i class="fa fa-check"></i>Variance</a></li>
-<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#standard-deviation"><i class="fa fa-check"></i>Standard deviation</a></li>
-<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#standard-error"><i class="fa fa-check"></i>Standard Error</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals"><i class="fa fa-check"></i><b>6.3</b> Confidence Intervals</a>
-<ul>
-<li class="chapter" data-level="" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#confidence-intervals-for-simple-vectors"><i class="fa fa-check"></i>Confidence Intervals for Simple Vectors</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html"><i class="fa fa-check"></i><b>7</b> Introduction to Data Visualization</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#the-ggplot-framework"><i class="fa fa-check"></i><b>7.1</b> The ggplot framework</a></li>
-<li class="chapter" data-level="7.2" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#basic-principles-of-data-vis"><i class="fa fa-check"></i><b>7.2</b> Basic principles of data vis</a></li>
-<li class="chapter" data-level="7.3" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#creating-a-simple-graph"><i class="fa fa-check"></i><b>7.3</b> Creating a simple graph</a></li>
-<li class="chapter" data-level="7.4" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#modifying-axes-and-titles"><i class="fa fa-check"></i><b>7.4</b> Modifying axes and titles</a></li>
-<li class="chapter" data-level="7.5" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#line-graphs"><i class="fa fa-check"></i><b>7.5</b> Line Graphs</a></li>
-<li class="chapter" data-level="7.6" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#histograms"><i class="fa fa-check"></i><b>7.6</b> Histograms</a></li>
-<li class="chapter" data-level="7.7" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#bar-plots"><i class="fa fa-check"></i><b>7.7</b> Bar plots</a></li>
-<li class="chapter" data-level="7.8" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#boxplots"><i class="fa fa-check"></i><b>7.8</b> Boxplots</a></li>
-<li class="chapter" data-level="7.9" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#modifying-symbols-and-adding-text"><i class="fa fa-check"></i><b>7.9</b> Modifying symbols and adding text</a></li>
-<li class="chapter" data-level="7.10" data-path="introduction-to-data-visualization.html"><a href="introduction-to-data-visualization.html#modifying-themes-and-legends"><i class="fa fa-check"></i><b>7.10</b> Modifying themes and legends</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="basic-inferential-statistics.html"><a href="basic-inferential-statistics.html"><i class="fa fa-check"></i><b>8</b> Basic Inferential Statistics</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="basic-inferential-statistics.html"><a href="basic-inferential-statistics.html#pearsonss-chi-square-test"><i class="fa fa-check"></i><b>8.1</b> (Pearsons’s) Chi-Square Test</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="basic-inferential-statistics.html"><a href="basic-inferential-statistics.html#effect-sizes-in-chi-square"><i class="fa fa-check"></i><b>8.1.1</b> Effect Sizes in Chi-Square</a></li>
-<li class="chapter" data-level="8.1.2" data-path="basic-inferential-statistics.html"><a href="basic-inferential-statistics.html#chi-square-in-r"><i class="fa fa-check"></i><b>8.1.2</b> Chi-Square in R</a></li>
-<li class="chapter" data-level="8.1.3" data-path="basic-inferential-statistics.html"><a href="basic-inferential-statistics.html#summarizing-chi-square-results"><i class="fa fa-check"></i><b>8.1.3</b> Summarizing Chi-Square Results</a></li>
-<li class="chapter" data-level="8.1.4" data-path="basic-inferential-statistics.html"><a href="basic-inferential-statistics.html#requirements-of-chi-square"><i class="fa fa-check"></i><b>8.1.4</b> Requirements of Chi-Square</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="basic-inferential-statistics.html"><a href="basic-inferential-statistics.html#students-t-test"><i class="fa fa-check"></i><b>8.2</b> Student’s t-test</a>
-<ul>
-<li class="chapter" data-level="" data-path="basic-inferential-statistics.html"><a href="basic-inferential-statistics.html#theoretical-underpinnings-power-effect-size-and-variability"><i class="fa fa-check"></i>Theoretical underpinnings: power, effect size, and variability</a></li>
-<li class="chapter" data-level="8.2.1" data-path="basic-inferential-statistics.html"><a href="basic-inferential-statistics.html#paired-t-test"><i class="fa fa-check"></i><b>8.2.1</b> Paired t-test</a></li>
-<li class="chapter" data-level="8.2.2" data-path="basic-inferential-statistics.html"><a href="basic-inferential-statistics.html#independent-t-tests"><i class="fa fa-check"></i><b>8.2.2</b> Independent t-tests</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="basic-inferential-statistics.html"><a href="basic-inferential-statistics.html#mann-whitney-u-test"><i class="fa fa-check"></i><b>8.3</b> Mann-Whitney U-Test</a>
-<ul>
-<li class="chapter" data-level="" data-path="basic-inferential-statistics.html"><a href="basic-inferential-statistics.html#mann-whitney-u-tests-with-continuity-correction"><i class="fa fa-check"></i>Mann-Whitney U tests with continuity correction</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html"><i class="fa fa-check"></i><b>9</b> Simple Linear Regression</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#the-basic-principle"><i class="fa fa-check"></i><b>9.1</b> The Basic Principle</a></li>
-<li class="chapter" data-level="9.2" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#assumptions"><i class="fa fa-check"></i><b>9.2</b> Assumptions</a></li>
-<li class="chapter" data-level="9.3" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#example-1-preposition-use-across-real-time"><i class="fa fa-check"></i><b>9.3</b> Example 1: Preposition Use across Real-Time</a></li>
-<li class="chapter" data-level="9.4" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#example-2-teaching-styles"><i class="fa fa-check"></i><b>9.4</b> Example 2: Teaching Styles</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>10</b> Multiple Linear Regression</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#the-basic-principle-1"><i class="fa fa-check"></i><b>10.1</b> The Basic Principle</a></li>
-<li class="chapter" data-level="10.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#example-gifts-and-availability"><i class="fa fa-check"></i><b>10.2</b> Example: Gifts and Availability</a></li>
-<li class="chapter" data-level="10.3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#model-fitting"><i class="fa fa-check"></i><b>10.3</b> Model Fitting</a></li>
-<li class="chapter" data-level="10.4" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#model-diagnostics"><i class="fa fa-check"></i><b>10.4</b> Model Diagnostics</a></li>
-<li class="chapter" data-level="10.5" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#a-word-about-sample-size"><i class="fa fa-check"></i><b>10.5</b> A Word about Sample Size</a></li>
-<li class="chapter" data-level="10.6" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#visualizing-effects"><i class="fa fa-check"></i><b>10.6</b> Visualizing effects</a></li>
-<li class="chapter" data-level="10.7" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#reporting-results"><i class="fa fa-check"></i><b>10.7</b> Reporting Results</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="different-types-of-regression.html"><a href="different-types-of-regression.html"><i class="fa fa-check"></i><b>11</b> (Different) Types of Regression</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="different-types-of-regression.html"><a href="different-types-of-regression.html#basic-concepts"><i class="fa fa-check"></i><b>11.1</b> Basic Concepts</a></li>
-<li class="chapter" data-level="11.2" data-path="different-types-of-regression.html"><a href="different-types-of-regression.html#example-eh-in-kiwi-english"><i class="fa fa-check"></i><b>11.2</b> Example: EH in Kiwi English</a></li>
-<li class="chapter" data-level="11.3" data-path="different-types-of-regression.html"><a href="different-types-of-regression.html#model-building"><i class="fa fa-check"></i><b>11.3</b> Model Building</a></li>
-<li class="chapter" data-level="11.4" data-path="different-types-of-regression.html"><a href="different-types-of-regression.html#model-fitting-1"><i class="fa fa-check"></i><b>11.4</b> Model Fitting</a></li>
-<li class="chapter" data-level="11.5" data-path="different-types-of-regression.html"><a href="different-types-of-regression.html#effect-size-1"><i class="fa fa-check"></i><b>11.5</b> Effect Size</a></li>
-<li class="chapter" data-level="11.6" data-path="different-types-of-regression.html"><a href="different-types-of-regression.html#summarizing-results"><i class="fa fa-check"></i><b>11.6</b> Summarizing Results</a></li>
-<li class="chapter" data-level="11.7" data-path="different-types-of-regression.html"><a href="different-types-of-regression.html#outlook"><i class="fa fa-check"></i><b>11.7</b> Outlook</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html"><i class="fa fa-check"></i><b>12</b> Mixed-Effects Regression</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#linear-mixed-effects-regression"><i class="fa fa-check"></i><b>12.1</b> Linear Mixed-Effects Regression</a>
-<ul>
-<li class="chapter" data-level="" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#random-effects"><i class="fa fa-check"></i>Random Effects</a></li>
-<li class="chapter" data-level="" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#example-preposition-use-across-time-by-genre"><i class="fa fa-check"></i>Example: Preposition Use across Time by Genre</a></li>
-<li class="chapter" data-level="" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#model-fitting-2"><i class="fa fa-check"></i>Model Fitting</a></li>
-<li class="chapter" data-level="" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#model-diagnostics-1"><i class="fa fa-check"></i>Model Diagnostics</a></li>
-<li class="chapter" data-level="" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#summarizing-the-results"><i class="fa fa-check"></i>Summarizing the results</a></li>
-<li class="chapter" data-level="" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#reporting-results-1"><i class="fa fa-check"></i>Reporting Results</a></li>
-</ul></li>
-<li class="chapter" data-level="12.2" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#mixed-effects-logistic-regression"><i class="fa fa-check"></i><b>12.2</b> Mixed-Effects Logistic Regression</a>
-<ul>
-<li class="chapter" data-level="12.2.1" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#example-discourse-like-in-irish-english"><i class="fa fa-check"></i><b>12.2.1</b> Example: Discourse LIKE in Irish English</a></li>
-<li class="chapter" data-level="12.2.2" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#model-building-1"><i class="fa fa-check"></i><b>12.2.2</b> Model Building</a></li>
-<li class="chapter" data-level="12.2.3" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#model-fitting-3"><i class="fa fa-check"></i><b>12.2.3</b> Model Fitting</a></li>
-<li class="chapter" data-level="12.2.4" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#visualizing-effects-1"><i class="fa fa-check"></i><b>12.2.4</b> Visualizing Effects</a></li>
-<li class="chapter" data-level="12.2.5" data-path="mixed-effects-regression.html"><a href="mixed-effects-regression.html#extracting-model-fit-parameters"><i class="fa fa-check"></i><b>12.2.5</b> Extracting Model Fit Parameters</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="week13.html"><a href="week13.html"><i class="fa fa-check"></i><b>13</b> Tree-Based Models, Machine Learning, and AI</a>
-<ul>
-<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#the-basic-concept"><i class="fa fa-check"></i>The Basic Concept</a></li>
-<li class="chapter" data-level="13.1" data-path="week13.html"><a href="week13.html#decision-trees"><i class="fa fa-check"></i><b>13.1</b> Decision Trees</a></li>
-<li class="chapter" data-level="13.2" data-path="week13.html"><a href="week13.html#conditional-inference-trees"><i class="fa fa-check"></i><b>13.2</b> Conditional Inference Trees</a></li>
-<li class="chapter" data-level="13.3" data-path="week13.html"><a href="week13.html#from-trees-to-forests-an-introduction-to-machine-learning"><i class="fa fa-check"></i><b>13.3</b> From Trees to Forests: An Introduction to Machine Learning</a>
-<ul>
-<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#random-forests"><i class="fa fa-check"></i>Random Forests</a></li>
-<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#machine-learning-as-an-outlook"><i class="fa fa-check"></i>Machine Learning as an Outlook</a></li>
-</ul></li>
-<li class="chapter" data-level="13.4" data-path="week13.html"><a href="week13.html#large-language-models-and-generative-ai"><i class="fa fa-check"></i><b>13.4</b> Large Language Models and Generative AI</a>
-<ul>
-<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#language-models-are-next-word-prediction-machines"><i class="fa fa-check"></i>Language Models are Next-Word Prediction Machines</a></li>
-<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#from-n-grams-to-neural-networks-and-transformers"><i class="fa fa-check"></i>From n-grams to Neural Networks and Transformers</a></li>
-<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#how-this-relates-to-this-course"><i class="fa fa-check"></i>How this Relates to this Course</a></li>
-<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#implications-for-research-in-applied-linguistics"><i class="fa fa-check"></i>Implications for Research in Applied Linguistics</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="week13.html"><a href="week13.html#outlook-and-further-resources"><i class="fa fa-check"></i>Outlook and Further Resources</a></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-</ul>
-
-      </nav>
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
     </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SLAT7855 Quantitative Research Methods in Applied Linguistics</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">SLAT7855 Quantitative Research Methods in Applied Linguistics</h1>
-<p class="author"><em>Martin Schweinberger</em></p>
-<p class="date"><em>2026-07-20</em></p>
-</div>
-<div id="preface" class="section level1 unnumbered hasAnchor">
-<h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Welcome to the course book for <strong>SLAT7855 Quantitative Research Methods in Applied Linguistics</strong>, offered by the School of Languages and Cultures at The University of Queensland. This book serves as the script for the course: it contains the conceptual explanations, worked examples, and R code that we work through across the semester, and it remains freely available so that you can return to it at any time — during the course and long after it has ended.</p>
-<div id="about-the-course" class="section level2 unnumbered hasAnchor">
-<h2>About the Course<a href="index.html#about-the-course" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="course-description" class="section level3 unnumbered hasAnchor">
-<h3>Course Description<a href="index.html#course-description" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>This course introduces the statistical techniques used in quantitative research in applied linguistics and the language sciences more broadly. It covers both the conceptual foundations of quantitative reasoning and the practical implementation of statistical analyses using R and RStudio. The rationale and assumptions underlying the various techniques are presented alongside hands-on practice in applying them to real language data.</p>
-<p><strong>Assumed background:</strong> None. The course is designed for students with no prior experience in statistics, mathematics beyond school level, or programming. We start from zero and build up step by step.</p>
-<p>For all semester-specific information — including assessment tasks, weightings, due dates, timetables, and course policies — please consult the current <a href="https://course-profiles.uq.edu.au/course-profiles/SLAT7855"><strong>Electronic Course Profile (ECP)</strong></a> and the course Blackboard site. Assessment details change from semester to semester and are therefore deliberately not included in this book.</p>
-</div>
-<div id="rationale" class="section level3 unnumbered hasAnchor">
-<h3>Rationale<a href="index.html#rationale" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Quantitative methods have become central to research in applied linguistics, second language acquisition, and linguistics. Whether a study investigates how learners acquire a second language, how linguistic features vary across speakers and contexts, or how effective a teaching intervention is, its claims typically rest on quantitative evidence. Being able to understand, evaluate, and produce such evidence is therefore no longer a specialist skill — it is a core component of research literacy in the language sciences.</p>
-<p>At the same time, statistical methodology in language research is broad and operates at different levels of sophistication. This course does not attempt to cover everything. Instead, it follows a deliberate arc: it builds a solid conceptual foundation, introduces R as a versatile analytical tool, and then works systematically towards regression modeling — including mixed-effects models — because regression-based approaches are the workhorses of modern quantitative language research. The course closes with an outlook on tree-based methods and machine learning, connecting the material to current developments in the field.</p>
-<p>Throughout, the emphasis is on <em>understanding</em> rather than recipe-following: the aim is that you know not only <em>how</em> to run an analysis, but <em>why</em> it is appropriate, <em>what</em> its assumptions are, and <em>how</em> to interpret and report its results responsibly.</p>
-</div>
-<div id="course-aims" class="section level3 unnumbered hasAnchor">
-<h3>Course Aims<a href="index.html#course-aims" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The course has three main aims. It will provide</p>
-<ol style="list-style-type: decimal">
-<li>a grounding in the basic logic and scope of quantitative reasoning (statistics) in language research,</li>
-<li>exposure to the statistical techniques commonly used in applied linguistics and related fields, and</li>
-<li>in-depth practical experience in performing, interpreting, and reporting statistical analyses using R and RStudio.</li>
-</ol>
-</div>
-<div id="learning-outcomes" class="section level3 unnumbered hasAnchor">
-<h3>Learning Outcomes<a href="index.html#learning-outcomes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>After successfully completing this course, you should be able to:</p>
-<ol style="list-style-type: decimal">
-<li>understand and apply basic statistical tests used in applied linguistics and second language acquisition research,</li>
-<li>understand the role of quantitative evidence in describing and explaining language learning and use,</li>
-<li>read quantitative research in these areas in a more critical and productive manner,</li>
-<li>import, process, analyse, and visualise data using R and RStudio, and</li>
-<li>report statistical results for a dissertation or publication in accordance with the standards of the field.</li>
-</ol>
-</div>
-<div id="what-you-will-get-out-of-this-course" class="section level3 unnumbered hasAnchor">
-<h3>What You Will Get Out of This Course<a href="index.html#what-you-will-get-out-of-this-course" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Beyond the formal learning outcomes, the course is designed to leave you with skills that remain useful well past the end of semester:</p>
-<ul>
-<li><strong>Genuine programming ability.</strong> You will learn to work with R and RStudio properly — writing, understanding, and debugging code — rather than relying on point-and-click software. Programming and data analysis skills are concrete, transferable, and in demand in academia, industry, and the public sector alike.</li>
-<li><strong>The full analysis pipeline.</strong> You will learn to take a raw, messy, real-world dataset and carry it through processing, summarisation, visualisation, modeling, and reporting — the complete workflow of a quantitative study.</li>
-<li><strong>Critical research literacy.</strong> You will be able to engage with the results sections of published studies critically: to assess whether an analysis is appropriate, whether its assumptions are met, and whether its conclusions are warranted.</li>
-<li><strong>Foundations for your own research.</strong> For students planning a quantitative MA thesis or doctoral research, the course provides the methodological foundation that such projects require.</li>
-<li><strong>Reproducible research practice.</strong> Working with code means your analyses are transparent and reproducible — an increasingly important standard across the research community.</li>
-</ul>
-</div>
-<div id="who-this-course-is-for" class="section level3 unnumbered hasAnchor">
-<h3>Who This Course Is For<a href="index.html#who-this-course-is-for" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The course focuses on quantitative methodology used in language research in applied linguistics and related fields, but it will be of interest to anyone who wants a better understanding of quantitative methods in the language sciences — including students preparing for thesis work, practising language teachers who want to engage with (or conduct) research, and anyone seeking to add solid data-analytic skills to their professional profile.</p>
-</div>
-</div>
-<div id="how-this-book-is-organised" class="section level2 unnumbered hasAnchor">
-<h2>How This Book Is Organised<a href="index.html#how-this-book-is-organised" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The book follows the arc of the course. It begins with the conceptual foundations of quantitative research (research designs, variables, hypotheses, probability, and the logic of statistical inference), then introduces R and RStudio from scratch. On that basis, it covers descriptive statistics and data visualisation before turning to inferential statistics. The second half of the book is devoted to regression modeling — simple and multiple linear regression, model diagnostics, logistic and other types of regression, and mixed-effects models — and concludes with tree-based methods and an outlook on machine learning.</p>
-<p>Each chapter combines conceptual explanation with fully worked examples in R. All code shown in the book can be copied, run, and adapted; the datasets used are drawn from linguistics and applied linguistics.</p>
-<p>The mapping of chapters onto teaching weeks varies slightly from semester to semester — the current schedule is available via Blackboard and the ECP.</p>
-</div>
-<div id="learning-resources" class="section level2 unnumbered hasAnchor">
-<h2>Learning Resources<a href="index.html#learning-resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="this-script" class="section level3 unnumbered hasAnchor">
-<h3>This Script<a href="index.html#this-script" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The script for the course is made available at</p>
-<p><a href="https://MartinSchweinberger.github.io/SLAT7855">https://MartinSchweinberger.github.io/SLAT7855</a></p>
-<p>Lecture recordings, tutorial materials, and all semester-specific information are made available on Blackboard.</p>
-</div>
-<div id="recommended-reading" class="section level3 unnumbered hasAnchor">
-<h3>Recommended Reading<a href="index.html#recommended-reading" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The following textbooks complement the course and are recommended for students who wish to deepen their understanding:</p>
-<ul>
-<li><span class="citation">Field et al. (<a href="#ref-field2012discovering">2012</a>)</span></li>
-<li><span class="citation">Gries (<a href="#ref-gries2021statistics">2021</a>)</span></li>
-<li><span class="citation">Winter (<a href="#ref-winter2019statistics">2019</a>)</span></li>
-</ul>
-</div>
-<div id="university-learning-resources" class="section level3 unnumbered hasAnchor">
-<h3>University Learning Resources<a href="index.html#university-learning-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>It is strongly recommended to attend the following UQ Library trainings, which align closely with the skills taught in this course:</p>
-<ol style="list-style-type: decimal">
-<li>R with RStudio: Getting started</li>
-<li>R reproducible reports with R Markdown and knitr</li>
-<li>R data manipulation with RStudio and dplyr: introduction</li>
-<li>R data visualization with RStudio and ggplot2: introduction</li>
-</ol>
-<p>Access to required and recommended resources is available via the <a href="http://www.library.uq.edu.au/lr/SLAT7855">UQ Library website</a>. The University offers a range of resources and services to support student learning; details are available on the <a href="https://my.uq.edu.au/">myUQ website</a>.</p>
-</div>
-<div id="school-of-languages-and-cultures-learning-resources" class="section level3 unnumbered hasAnchor">
-<h3>School of Languages and Cultures Learning Resources<a href="index.html#school-of-languages-and-cultures-learning-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="http://www.languages-cultures.uq.edu.au/student-support">Student Support at the SLC</a></p>
-</div>
-</div>
-<div id="course-staff" class="section level2 unnumbered hasAnchor">
-<h2>Course Staff<a href="index.html#course-staff" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>Course Coordinator:</strong> Dr Martin Schweinberger</p>
-<p>Email: m.schweinberger@uq.edu.au</p>
-<p>For current information on the full teaching team, consultation hours, and contact details, please see the ECP and Blackboard.</p>
-</div>
-<div id="a-note-on-generative-ai" class="section level2 unnumbered hasAnchor">
-<h2>A Note on Generative AI<a href="index.html#a-note-on-generative-ai" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Generative AI tools can be useful aids when learning R and statistics — for instance, for clarifying concepts or understanding error messages. However, the aim of this course is that <em>you</em> develop a genuine, independent understanding of quantitative methods: AI tools can support your learning, but they cannot replace it, and assessments in this course are designed accordingly. Any use of AI in assessed work must be acknowledged in line with UQ policy; details are provided in the ECP.</p>
-</div>
-<div id="acknowledgements" class="section level2 unnumbered hasAnchor">
-<h2>Acknowledgements<a href="index.html#acknowledgements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This course book has developed over several iterations of SLAT7855, and it has benefited greatly from the questions, feedback, and curiosity of the students who have taken the course. Thank you!</p>
-
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-field2012discovering" class="csl-entry">
-Field, Andy, Jeremy Miles, and Zoe Field. 2012. <em>Discovering Statistics Using r</em>. Sage.
-</div>
-<div id="ref-gries2021statistics" class="csl-entry">
-Gries, Stefan Th. 2021. <em>Statistics for Linguistics Using r: A Practical Introduction</em>. Mouton de Gruyter.
-</div>
-<div id="ref-winter2019statistics" class="csl-entry">
-Winter, Bodo. 2019. <em>Statistics for Linguists: An Introduction Using r</em>. Routledge.
-</div>
-</div>
-            </section>
-
-          </div>
-        </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">SLAT7855 – Statistics for Linguists</a> 
+    </div>
       </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-week1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-week2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Hypotheses and Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-week3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Significance, Probability and the Normal Distribution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-week4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting Started with R and RStudio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-week5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Tables in R and RStudio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-week6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-week7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Data Visualization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-week8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic Inferential Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-week9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-week10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-week11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">(Different) Types of Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-week12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mixed-Effects Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-week13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Tree-Based Models, Machine Learning, and AI</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
 
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">SLAT7855 – Statistics for Linguists</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Martin Schweinberger </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 20, 2026</p>
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "white",
-    "family": "sans",
-    "size": 2
-  },
-  "edit": {
-    "link": "https://github.com/MartinSchweinberger/SLAT7855/edit/master/index.Rmd",
-    "text": "Edit"
-  },
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": "https://github.com/MartinSchweinberger/SLAT7855/blob/master/index.Rmd",
-    "text": null
-  },
-  "download": null,
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "subsection"
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="preface" class="level1 unnumbered">
+<h1 class="unnumbered">Preface</h1>
+<p>This is the online course book for <strong>SLAT7855 – Statistics for Linguists</strong>. It introduces quantitative research methods, statistics, and data analysis with R for students of linguistics and applied linguistics.</p>
+<p>Each chapter corresponds to one session of the course and combines conceptual explanations, worked examples with R code, key-concept boxes, and self-check exercises.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to use this book
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Code blocks</strong> can be copied with the clipboard button in their top-right corner.</li>
+<li><strong>Key concept</strong> boxes summarize the ideas you should be able to explain in your own words.</li>
+<li><strong>Exercises</strong> at the end of each chapter let you check your understanding immediately - answers are checked in your browser, and nothing is recorded.</li>
+</ul>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
   }
 });
-});
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./01-week1.html" class="pagination-link" aria-label="Introduction">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
 
-</body>
 
-</html>
+
+
+</body></html>

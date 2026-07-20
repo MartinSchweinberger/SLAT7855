@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.41">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>12&nbsp; Mixed-Effects Regression – SLAT7855 – Statistics for Linguists</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./13-week13.html" rel="next">
+<link href="./11-week11.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-48ffa3e5b9d089919c6712c39e5b00f2.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-baf7457b58093534c7052efdef5f4d86.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
+<script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12-week12.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mixed-Effects Regression</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">SLAT7855 – Statistics for Linguists</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-week1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-week2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Hypotheses and Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-week3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Significance, Probability and the Normal Distribution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-week4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting Started with R and RStudio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-week5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Tables in R and RStudio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-week6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-week7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Data Visualization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-week8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic Inferential Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-week9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-week10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-week11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">(Different) Types of Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-week12.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mixed-Effects Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-week13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Tree-Based Models, Machine Learning, and AI</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#linear-mixed-effects-regression" id="toc-linear-mixed-effects-regression" class="nav-link active" data-scroll-target="#linear-mixed-effects-regression"><span class="header-section-number">12.1</span> Linear Mixed-Effects Regression</a>
+  <ul class="collapse">
+  <li><a href="#random-effects" id="toc-random-effects" class="nav-link" data-scroll-target="#random-effects">Random Effects</a></li>
+  <li><a href="#example-preposition-use-across-time-by-genre" id="toc-example-preposition-use-across-time-by-genre" class="nav-link" data-scroll-target="#example-preposition-use-across-time-by-genre">Example: Preposition Use across Time by Genre</a></li>
+  <li><a href="#model-fitting" id="toc-model-fitting" class="nav-link" data-scroll-target="#model-fitting">Model Fitting</a></li>
+  <li><a href="#model-diagnostics" id="toc-model-diagnostics" class="nav-link" data-scroll-target="#model-diagnostics">Model Diagnostics</a></li>
+  <li><a href="#summarizing-the-results" id="toc-summarizing-the-results" class="nav-link" data-scroll-target="#summarizing-the-results">Summarizing the results</a></li>
+  <li><a href="#reporting-results" id="toc-reporting-results" class="nav-link" data-scroll-target="#reporting-results">Reporting Results</a></li>
+  </ul></li>
+  <li><a href="#mixed-effects-logistic-regression" id="toc-mixed-effects-logistic-regression" class="nav-link" data-scroll-target="#mixed-effects-logistic-regression"><span class="header-section-number">12.2</span> Mixed-Effects Logistic Regression</a>
+  <ul class="collapse">
+  <li><a href="#example-discourse-like-in-irish-english" id="toc-example-discourse-like-in-irish-english" class="nav-link" data-scroll-target="#example-discourse-like-in-irish-english"><span class="header-section-number">12.2.1</span> Example: Discourse LIKE in Irish English</a></li>
+  <li><a href="#model-building" id="toc-model-building" class="nav-link" data-scroll-target="#model-building"><span class="header-section-number">12.2.2</span> Model Building</a></li>
+  <li><a href="#model-fitting-1" id="toc-model-fitting-1" class="nav-link" data-scroll-target="#model-fitting-1"><span class="header-section-number">12.2.3</span> Model Fitting</a></li>
+  <li><a href="#visualizing-effects" id="toc-visualizing-effects" class="nav-link" data-scroll-target="#visualizing-effects"><span class="header-section-number">12.2.4</span> Visualizing Effects</a></li>
+  <li><a href="#extracting-model-fit-parameters" id="toc-extracting-model-fit-parameters" class="nav-link" data-scroll-target="#extracting-model-fit-parameters"><span class="header-section-number">12.2.5</span> Extracting Model Fit Parameters</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="week12" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mixed-Effects Regression</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What This Session Covers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This session introduces mixed-effects models - the standard tool for hierarchical or repeated-measures data in linguistics.</p>
+<ol type="1">
+<li><strong>Fixed vs.&nbsp;random effects</strong> - and why repeated or nested observations violate independence</li>
+<li><strong>Linear mixed-effects regression</strong> - random intercepts, ICC, model fitting, and diagnostics</li>
+<li><strong>Mixed-effects logistic regression</strong> - modeling binary outcomes with random effects</li>
+<li><strong>Model diagnostics</strong> - <code>check_model()</code>, singularity, and influential observations</li>
+<li><strong>Reporting</strong> - summarizing mixed models in tables and prose</li>
+</ol>
+</div>
+</div>
+<p>Mixed-effects models (or mixed models) have become extremely popular in the language sciences. In contrast to fixed-effects regressions, mixed models allow us to model dependency of data points and they are thus used when dealing with hierarchical data structure in which data points are grouped or nested in higher order categories (e.g.&nbsp;students within classes). Therefore, mixed models have a wide range of applications and they have the following advantages:</p>
+<ul>
+<li><p>Mixed-effects models are multivariate, i.e.&nbsp;they test the effect of several predictors simultaneously while controlling for the effect of all other predictors.</p></li>
+<li><p>Mixed models allow to statistically incorporate within-speaker variability and are thus fit to model hierarchical or nested data structures. This applies if several observations are produced by an individual speaker, for instance.</p></li>
+<li><p>Mixed-models provide a wealth of diagnostic statistics which enables us to control e.g.&nbsp;multicollinearity, i.e.&nbsp;correlations between predictors, and to test whether conditions or requirements are violated (e.g.&nbsp;homogeneity of variance, etc.).</p></li>
+</ul>
+<p>A disadvantage of mixed models is that they are prone to producing high <span class="math inline">\(\beta\)</span>-errors <span class="citation" data-cites="johnson2009getting">(see <a href="#ref-johnson2009getting" role="doc-biblioref">Johnson 2009</a>)</span> and that they require rather large data sets.</p>
+<p>In the following, we will go over mixed-effects linear regression models and mixed-effects binomial logistic regression models.</p>
+<section id="linear-mixed-effects-regression" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="linear-mixed-effects-regression"><span class="header-section-number">12.1</span> Linear Mixed-Effects Regression</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key concept: Fixed vs.&nbsp;random effects
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>Fixed effects</em> are the predictors whose specific effects we want to estimate and interpret (e.g.&nbsp;<em>Date</em>, <em>Gender</em>, <em>Priming</em>) - their levels are of direct interest and would recur in a replication. <em>Random effects</em> are grouping factors whose levels are a sample from a larger population (e.g.&nbsp;individual speakers, texts, genres, schools): we are not interested in, say, speaker 17 specifically, but we must account for the fact that observations from the same speaker are not independent. Random intercepts allow each group its own baseline; ignoring this structure (pseudoreplication) produces overconfident, anti-conservative results - one of the most common serious errors in quantitative linguistics.</p>
+</div>
+</div>
+<p>So far, the regression models that we have used only had fixed-effects which means that all data points are treated as if they are completely independent and thus on the same hierarchical level. However, it is very common that the data is nested in the sense that data points are not independent because they are, for instance, produced by the same speaker or are grouped by some other characteristic.</p>
+<p>With respect to regression modeling, hierarchical structures are incorporated by what is called <em>random effects</em>. When models only have a fixed-effects structure, then they make use of only a single intercept and/or slope (as in the left panel in the figure below), while mixed effects models have intercepts for each level of a random effect. If the random effect structure represents speakers then this would mean that a mixed-model would have a separate intercept and/or slope for each speaker (in addition to the overall intercept that is shown as an orange line in the figure below).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-week12_files/figure-html/lmm1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The equation below represents a formal representation of a mixed-effects regression with varying intercepts <span class="citation" data-cites="winter2019statistics">(see <a href="#ref-winter2019statistics" role="doc-biblioref">Winter 2019, 235</a>)</span>.</p>
+<p><span class="math display">\[\begin{equation}
+f_{(x)} = \alpha_{i} + \beta x + \epsilon
+\end{equation}\]</span></p>
+<p>In this random intercept model, each level of a random variable has a different intercept. To predict the value of a data point, we would thus take the appropriate intercept value (the model intercept + the intercept of the random effect) and add the product of the predictor coefficient and the value of x.</p>
+<p>Finally, the equation below represents a formal representation of a mixed-effects regression with varying intercepts and varying slopes <span class="citation" data-cites="winter2019statistics">(see <a href="#ref-winter2019statistics" role="doc-biblioref">Winter 2019, 235</a>)</span>.</p>
+<p><span class="math display">\[\begin{equation}
+f_{(x)} = \alpha_{i} + \beta_{i}x + \epsilon
+\end{equation}\]</span></p>
+<p>In this last model, each level of a random variable has a different intercept and a different slope. To predict the value of a data point, we would thus take the appropriate intercept value (the model intercept + the intercept of the random effect) and add the coefficient of that random effect level multiplied by the value of x.</p>
+<section id="random-effects" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="random-effects">Random Effects</h3>
+<p><em>Random Effects</em> can be visualized using two parameters: the intercept (the point where the regression line crosses the y-axis at x = 0) and the slope (the acclivity of the regression line). In contrast to fixed-effects models, that have only 1 intercept and one slope (left panel in the figure above), mixed-effects models can therefore have various <em>random intercepts</em> (center panel) or various <em>random slopes</em>, or both, various <em>random intercepts</em> and various <em>random slopes</em> (right panel).</p>
+<p>What features do distinguish random and fixed effects?</p>
+<ol type="1">
+<li><p>Random effects represent a higher level variable under which data points are grouped. This implies that random effects must be categorical (or nominal but <em>they cannot be continuous</em>!) <span class="citation" data-cites="winter2019statistics">(see <a href="#ref-winter2019statistics" role="doc-biblioref">Winter 2019, 236</a>)</span>.</p></li>
+<li><p>Random effects represent a sample of an infinite number of possible levels. For instance, speakers, trials, items, subjects, or words represent a potentially infinite pool of elements from which many different samples can be drawn. Thus, random effects represent a random sample. Fixed effects, on the other hand, typically do not represent a random sample but a fixed set of variable levels (e.g.&nbsp;Age groups, or parts-of-speech).</p></li>
+<li><p>Random effects typically represent many different levels while fixed effects typically have only a few. <span class="citation" data-cites="zuur2013beginner">Zuur, Hilbe, and Ieno (<a href="#ref-zuur2013beginner" role="doc-biblioref">2013</a>)</span> propose that a variable may be used as a fixed effect if it has less than 5 levels while it should be treated as a random effect if it has more than 10 levels. Variables with 5 to 10 levels can be used as both. However, this is a rule of thumb and ignores the theoretical reasons (random sample and nestedness) for considering something as a random effect and it also is at odds with the way that repeated measures are modeled (namely as mixed effects) although they typically only have very few levels.</p></li>
+<li><p>Fixed effects represent an effect that if we draw many samples, the effect would be consistent across samples <span class="citation" data-cites="winter2019statistics">(<a href="#ref-winter2019statistics" role="doc-biblioref">Winter 2019</a>)</span> while random effects should vary for each new sample that is drawn.</p></li>
+</ol>
+<p>In terms of general procedure, random effects are added first and only then include the fixed effects.</p>
+<p><strong>Preparation and session set up</strong></p>
+<p>For this week’s content, we need to install certain <em>packages</em> from an R <em>library</em> so that the scripts shown below are executed without errors. Hence, before turning to the code below, please install the packages by running the code below this paragraph.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"Boruta"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"flextable"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"gridExtra"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"glmulti"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"lme4"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"rms"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"sjPlot"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"performance"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"see"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that we have installed the packages, we activate them as shown below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set options</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="st">"scipen"</span> <span class="ot">=</span> <span class="dv">100</span>, <span class="st">"digits"</span> <span class="ot">=</span> <span class="dv">12</span>) <span class="co"># suppress math annotation</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmulti)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rms)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(see)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-preposition-use-across-time-by-genre" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="example-preposition-use-across-time-by-genre">Example: Preposition Use across Time by Genre</h3>
+<p>To explore how to implement a mixed-effects model in R we revisit the preposition data that contains relative frequencies of prepositions in English texts written between 1150 and 1913. As a first step, and to prepare our analysis, we load necessary R packages, specify options, and load as well as provide an overview of the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>lmmdata  <span class="ot">&lt;-</span> base<span class="sc">::</span><span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">"https://slcladal.github.io/data/lmd.rda"</span>, <span class="st">"rb"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># convert date into a numeric variable</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">as.numeric</span>(Date))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-6895b2fa{table-layout:auto;width:75%;}.cl-6881c70e{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6881c722{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6889ba54{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-6889ba68{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-688a098c{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-688a0996{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-688a09a0{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-688a09a1{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-688a09b4{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-688a09be{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-688a09c8{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-688a09c9{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-688a09ca{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-688a09d2{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-688a09dc{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-688a09dd{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-688a09e6{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-688a09f0{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-688a09fa{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-688a0a04{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-6895b2fa"><thead><tr style="overflow-wrap:break-word;"><th class="cl-688a098c"><p class="cl-6889ba54"><span class="cl-6881c70e">Date</span></p></th><th class="cl-688a0996"><p class="cl-6889ba68"><span class="cl-6881c70e">Genre</span></p></th><th class="cl-688a0996"><p class="cl-6889ba68"><span class="cl-6881c70e">Text</span></p></th><th class="cl-688a09a0"><p class="cl-6889ba54"><span class="cl-6881c70e">Prepositions</span></p></th><th class="cl-688a09a1"><p class="cl-6889ba68"><span class="cl-6881c70e">Region</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-688a09b4"><p class="cl-6889ba54"><span class="cl-6881c722">1,736</span></p></td><td class="cl-688a09be"><p class="cl-6889ba68"><span class="cl-6881c722">Science</span></p></td><td class="cl-688a09be"><p class="cl-6889ba68"><span class="cl-6881c722">albin</span></p></td><td class="cl-688a09c8"><p class="cl-6889ba54"><span class="cl-6881c722">166.01</span></p></td><td class="cl-688a09c9"><p class="cl-6889ba68"><span class="cl-6881c722">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-688a09ca"><p class="cl-6889ba54"><span class="cl-6881c722">1,711</span></p></td><td class="cl-688a09d2"><p class="cl-6889ba68"><span class="cl-6881c722">Education</span></p></td><td class="cl-688a09d2"><p class="cl-6889ba68"><span class="cl-6881c722">anon</span></p></td><td class="cl-688a09dc"><p class="cl-6889ba54"><span class="cl-6881c722">139.86</span></p></td><td class="cl-688a09dd"><p class="cl-6889ba68"><span class="cl-6881c722">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-688a09b4"><p class="cl-6889ba54"><span class="cl-6881c722">1,808</span></p></td><td class="cl-688a09be"><p class="cl-6889ba68"><span class="cl-6881c722">PrivateLetter</span></p></td><td class="cl-688a09be"><p class="cl-6889ba68"><span class="cl-6881c722">austen</span></p></td><td class="cl-688a09c8"><p class="cl-6889ba54"><span class="cl-6881c722">130.78</span></p></td><td class="cl-688a09c9"><p class="cl-6889ba68"><span class="cl-6881c722">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-688a09ca"><p class="cl-6889ba54"><span class="cl-6881c722">1,878</span></p></td><td class="cl-688a09d2"><p class="cl-6889ba68"><span class="cl-6881c722">Education</span></p></td><td class="cl-688a09d2"><p class="cl-6889ba68"><span class="cl-6881c722">bain</span></p></td><td class="cl-688a09dc"><p class="cl-6889ba54"><span class="cl-6881c722">151.29</span></p></td><td class="cl-688a09dd"><p class="cl-6889ba68"><span class="cl-6881c722">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-688a09b4"><p class="cl-6889ba54"><span class="cl-6881c722">1,743</span></p></td><td class="cl-688a09be"><p class="cl-6889ba68"><span class="cl-6881c722">Education</span></p></td><td class="cl-688a09be"><p class="cl-6889ba68"><span class="cl-6881c722">barclay</span></p></td><td class="cl-688a09c8"><p class="cl-6889ba54"><span class="cl-6881c722">145.72</span></p></td><td class="cl-688a09c9"><p class="cl-6889ba68"><span class="cl-6881c722">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-688a09ca"><p class="cl-6889ba54"><span class="cl-6881c722">1,908</span></p></td><td class="cl-688a09d2"><p class="cl-6889ba68"><span class="cl-6881c722">Education</span></p></td><td class="cl-688a09d2"><p class="cl-6889ba68"><span class="cl-6881c722">benson</span></p></td><td class="cl-688a09dc"><p class="cl-6889ba54"><span class="cl-6881c722">120.77</span></p></td><td class="cl-688a09dd"><p class="cl-6889ba68"><span class="cl-6881c722">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-688a09b4"><p class="cl-6889ba54"><span class="cl-6881c722">1,906</span></p></td><td class="cl-688a09be"><p class="cl-6889ba68"><span class="cl-6881c722">Diary</span></p></td><td class="cl-688a09be"><p class="cl-6889ba68"><span class="cl-6881c722">benson</span></p></td><td class="cl-688a09c8"><p class="cl-6889ba54"><span class="cl-6881c722">119.17</span></p></td><td class="cl-688a09c9"><p class="cl-6889ba68"><span class="cl-6881c722">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-688a09ca"><p class="cl-6889ba54"><span class="cl-6881c722">1,897</span></p></td><td class="cl-688a09d2"><p class="cl-6889ba68"><span class="cl-6881c722">Philosophy</span></p></td><td class="cl-688a09d2"><p class="cl-6889ba68"><span class="cl-6881c722">boethja</span></p></td><td class="cl-688a09dc"><p class="cl-6889ba54"><span class="cl-6881c722">132.96</span></p></td><td class="cl-688a09dd"><p class="cl-6889ba68"><span class="cl-6881c722">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-688a09b4"><p class="cl-6889ba54"><span class="cl-6881c722">1,785</span></p></td><td class="cl-688a09be"><p class="cl-6889ba68"><span class="cl-6881c722">Philosophy</span></p></td><td class="cl-688a09be"><p class="cl-6889ba68"><span class="cl-6881c722">boethri</span></p></td><td class="cl-688a09c8"><p class="cl-6889ba54"><span class="cl-6881c722">130.49</span></p></td><td class="cl-688a09c9"><p class="cl-6889ba68"><span class="cl-6881c722">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-688a09ca"><p class="cl-6889ba54"><span class="cl-6881c722">1,776</span></p></td><td class="cl-688a09d2"><p class="cl-6889ba68"><span class="cl-6881c722">Diary</span></p></td><td class="cl-688a09d2"><p class="cl-6889ba68"><span class="cl-6881c722">boswell</span></p></td><td class="cl-688a09dc"><p class="cl-6889ba54"><span class="cl-6881c722">135.94</span></p></td><td class="cl-688a09dd"><p class="cl-6889ba68"><span class="cl-6881c722">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-688a09b4"><p class="cl-6889ba54"><span class="cl-6881c722">1,905</span></p></td><td class="cl-688a09be"><p class="cl-6889ba68"><span class="cl-6881c722">Travel</span></p></td><td class="cl-688a09be"><p class="cl-6889ba68"><span class="cl-6881c722">bradley</span></p></td><td class="cl-688a09c8"><p class="cl-6889ba54"><span class="cl-6881c722">154.20</span></p></td><td class="cl-688a09c9"><p class="cl-6889ba68"><span class="cl-6881c722">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-688a09ca"><p class="cl-6889ba54"><span class="cl-6881c722">1,711</span></p></td><td class="cl-688a09d2"><p class="cl-6889ba68"><span class="cl-6881c722">Education</span></p></td><td class="cl-688a09d2"><p class="cl-6889ba68"><span class="cl-6881c722">brightland</span></p></td><td class="cl-688a09dc"><p class="cl-6889ba54"><span class="cl-6881c722">149.14</span></p></td><td class="cl-688a09dd"><p class="cl-6889ba68"><span class="cl-6881c722">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-688a09b4"><p class="cl-6889ba54"><span class="cl-6881c722">1,762</span></p></td><td class="cl-688a09be"><p class="cl-6889ba68"><span class="cl-6881c722">Sermon</span></p></td><td class="cl-688a09be"><p class="cl-6889ba68"><span class="cl-6881c722">burton</span></p></td><td class="cl-688a09c8"><p class="cl-6889ba54"><span class="cl-6881c722">159.71</span></p></td><td class="cl-688a09c9"><p class="cl-6889ba68"><span class="cl-6881c722">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-688a09ca"><p class="cl-6889ba54"><span class="cl-6881c722">1,726</span></p></td><td class="cl-688a09d2"><p class="cl-6889ba68"><span class="cl-6881c722">Sermon</span></p></td><td class="cl-688a09d2"><p class="cl-6889ba68"><span class="cl-6881c722">butler</span></p></td><td class="cl-688a09dc"><p class="cl-6889ba54"><span class="cl-6881c722">157.49</span></p></td><td class="cl-688a09dd"><p class="cl-6889ba68"><span class="cl-6881c722">North</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-688a09e6"><p class="cl-6889ba54"><span class="cl-6881c722">1,835</span></p></td><td class="cl-688a09f0"><p class="cl-6889ba68"><span class="cl-6881c722">PrivateLetter</span></p></td><td class="cl-688a09f0"><p class="cl-6889ba68"><span class="cl-6881c722">carlyle</span></p></td><td class="cl-688a09fa"><p class="cl-6889ba54"><span class="cl-6881c722">124.16</span></p></td><td class="cl-688a0a04"><p class="cl-6889ba68"><span class="cl-6881c722">North</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>The data set contains the date when the text was written (<em>Date</em>), the genre of the text (<em>Genre</em>), the name of the text (<em>Text</em>), the relative frequency of prepositions in the text (<em>Prepositions</em>), and the region in which the text was written (<em>Region</em>). We now plot the data to get a first impression of its structure.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(lmmdata, <span class="fu">aes</span>(Date, Prepositions)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"Prepositions per 1,000 words"</span>) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)  <span class="sc">+</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(lmmdata, <span class="fu">aes</span>(Region, Prepositions)) <span class="sc">+</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Region"</span>, <span class="at">y =</span> <span class="st">"Prepositions per 1,000 words"</span>) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)  <span class="sc">+</span> </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(lmmdata, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Genre, <span class="sc">-</span>Prepositions), <span class="at">y =</span> Prepositions)) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>)) <span class="sc">+</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Genre"</span>, <span class="at">y =</span> <span class="st">"Frequency</span><span class="sc">\n</span><span class="st">(Prepositions)"</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(lmmdata, <span class="fu">aes</span>(Prepositions)) <span class="sc">+</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Count"</span>, <span class="at">x =</span> <span class="st">"Frequency (Prepositions)"</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, p4, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-week12_files/figure-html/lmm4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The scatter plot in the upper panel indicates that the use of prepositions has moderately increased over time while the boxplots in the lower left panel show that the genres differ quite substantially with respect to their median frequencies of prepositions per text. Finally, the histogram in the lower right panel show that preposition use is distributed normally with a mean of 132.2 prepositions per text.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lmmdata, <span class="fu">aes</span>(Date, Prepositions)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Genre, <span class="at">nrow =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Date of composition"</span>, <span class="at">y =</span> <span class="st">"Prepositions per 1,000 words"</span>) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">220</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-week12_files/figure-html/lmm6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Centering numeric variables is useful for later interpretation of regression models: if the date variable were not centered, the regression would show the effects of variables at year 0(!). If numeric variables are centered, other variables are variables are considered relative not to 0 but to the mean of that variable (in this case the mean of years in our data). Centering simply means that the mean of the numeric variable is subtracted from each value.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lmmdata <span class="ot">&lt;-</span> lmmdata <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">DateUnscaled =</span> Date,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">Date =</span> <span class="fu">scale</span>(Date, <span class="at">scale =</span> F))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-6bf4834a{table-layout:auto;width:75%;}.cl-6beaa898{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6beaa8a2{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6bee7e6e{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-6bee7e82{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-6beea2ea{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6beea2f4{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6beea2f5{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6beea2f6{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6beea2fe{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6beea2ff{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6beea308{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6beea309{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6beea30a{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6beea312{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6beea313{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6beea314{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6beea31c{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6beea31d{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6beea31e{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6beea326{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-6bf4834a"><thead><tr style="overflow-wrap:break-word;"><th class="cl-6beea2ea"><p class="cl-6bee7e6e"><span class="cl-6beaa898">Date</span></p></th><th class="cl-6beea2f4"><p class="cl-6bee7e82"><span class="cl-6beaa898">Genre</span></p></th><th class="cl-6beea2f4"><p class="cl-6bee7e82"><span class="cl-6beaa898">Text</span></p></th><th class="cl-6beea2f5"><p class="cl-6bee7e6e"><span class="cl-6beaa898">Prepositions</span></p></th><th class="cl-6beea2f4"><p class="cl-6bee7e82"><span class="cl-6beaa898">Region</span></p></th><th class="cl-6beea2f6"><p class="cl-6bee7e6e"><span class="cl-6beaa898">DateUnscaled</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-6beea2fe"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">109.8696461825</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">Science</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">albin</span></p></td><td class="cl-6beea308"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">166.01</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">North</span></p></td><td class="cl-6beea309"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">1,736</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6beea30a"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">84.8696461825</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">Education</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">anon</span></p></td><td class="cl-6beea313"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">139.86</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">North</span></p></td><td class="cl-6beea314"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">1,711</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6beea2fe"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">181.8696461825</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">PrivateLetter</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">austen</span></p></td><td class="cl-6beea308"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">130.78</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">North</span></p></td><td class="cl-6beea309"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">1,808</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6beea30a"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">251.8696461825</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">Education</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">bain</span></p></td><td class="cl-6beea313"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">151.29</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">North</span></p></td><td class="cl-6beea314"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">1,878</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6beea2fe"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">116.8696461825</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">Education</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">barclay</span></p></td><td class="cl-6beea308"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">145.72</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">North</span></p></td><td class="cl-6beea309"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">1,743</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6beea30a"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">281.8696461825</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">Education</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">benson</span></p></td><td class="cl-6beea313"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">120.77</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">North</span></p></td><td class="cl-6beea314"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">1,908</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6beea2fe"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">279.8696461825</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">Diary</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">benson</span></p></td><td class="cl-6beea308"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">119.17</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">North</span></p></td><td class="cl-6beea309"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">1,906</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6beea30a"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">270.8696461825</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">Philosophy</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">boethja</span></p></td><td class="cl-6beea313"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">132.96</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">North</span></p></td><td class="cl-6beea314"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">1,897</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6beea2fe"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">158.8696461825</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">Philosophy</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">boethri</span></p></td><td class="cl-6beea308"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">130.49</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">North</span></p></td><td class="cl-6beea309"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">1,785</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6beea30a"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">149.8696461825</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">Diary</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">boswell</span></p></td><td class="cl-6beea313"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">135.94</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">North</span></p></td><td class="cl-6beea314"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">1,776</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6beea2fe"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">278.8696461825</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">Travel</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">bradley</span></p></td><td class="cl-6beea308"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">154.20</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">North</span></p></td><td class="cl-6beea309"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">1,905</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6beea30a"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">84.8696461825</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">Education</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">brightland</span></p></td><td class="cl-6beea313"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">149.14</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">North</span></p></td><td class="cl-6beea314"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">1,711</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6beea2fe"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">135.8696461825</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">Sermon</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">burton</span></p></td><td class="cl-6beea308"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">159.71</span></p></td><td class="cl-6beea2ff"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">North</span></p></td><td class="cl-6beea309"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">1,762</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6beea30a"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">99.8696461825</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">Sermon</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">butler</span></p></td><td class="cl-6beea313"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">157.49</span></p></td><td class="cl-6beea312"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">North</span></p></td><td class="cl-6beea314"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">1,726</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6beea31c"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">208.8696461825</span></p></td><td class="cl-6beea31d"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">PrivateLetter</span></p></td><td class="cl-6beea31d"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">carlyle</span></p></td><td class="cl-6beea31e"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">124.16</span></p></td><td class="cl-6beea31d"><p class="cl-6bee7e82"><span class="cl-6beaa8a2">North</span></p></td><td class="cl-6beea326"><p class="cl-6bee7e6e"><span class="cl-6beaa8a2">1,835</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>We now set up a mixed-effects model using the <code>lmer</code> function from the <code>lme4</code> package <span class="citation" data-cites="lme4">(<a href="#ref-lme4" role="doc-biblioref">Bates et al. 2015</a>)</span> with Genre as a random effect.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate models</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>m0.lmer <span class="ot">=</span> <span class="fu">lmer</span>(Prepositions <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Genre), <span class="at">REML =</span> T, <span class="at">data =</span> lmmdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Before we start adding fixed effects, we check whether including the random effect structure is justified. To do this, we use two functions from the <code>performance</code> package <span class="citation" data-cites="performance">(<a href="#ref-performance" role="doc-biblioref">Lüdecke et al. 2021</a>)</span>: the <code>icc</code> function, which reports the <em>intra-class correlation coefficient</em> (ICC), i.e.&nbsp;the proportion of the total variance that is accounted for by the grouping structure (here: Genre) - substantial ICC values indicate that observations within the same group are more similar to each other than to observations from other groups, which warrants the inclusion of the random effect - and the <code>check_singularity</code> function, which tests whether the random effect structure is too complex to be supported by the data (a singular fit means that the variance of (parts of) the random effect structure is estimated to be (close to) zero, which indicates that the random effect structure should be simplified).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># intra-class correlation coefficient</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">icc</span>(m0.lmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Intraclass Correlation Coefficient
+
+    Adjusted ICC: 0.409
+  Unadjusted ICC: 0.409</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check for singular fit</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_singularity</span>(m0.lmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>The ICC shows that a substantive proportion of the variance is accounted for by Genre and the model does not suffer from a singular fit. Including the random effect structure is thus justified and we can continue to fit the model to the data.</p>
+</section>
+<section id="model-fitting" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="model-fitting">Model Fitting</h3>
+<p>After having determined that including a random effect structure is justified, we can continue by fitting the model and including diagnostics as we go. Including diagnostics in the model fitting process can save time and prevent relying on models which only turn out to be unstable if we would perform the diagnostics after the fact.</p>
+<p>We begin fitting our model by adding <em>Date</em> as a fixed effect and compare this model to our mixed-effects base-line model to see if <em>Date</em> improved the model fit by explaining variance and if <em>Date</em> significantly correlates with our dependent variable (this means that the difference between the models is the effect (size) of <em>Date</em>!)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>m1.lmer <span class="ot">&lt;-</span> <span class="fu">lmer</span>(Prepositions <span class="sc">~</span> (<span class="dv">1</span><span class="sc">|</span>Genre) <span class="sc">+</span> Date, <span class="at">REML =</span> T, <span class="at">data =</span> lmmdata)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m1.lmer, m0.lmer, <span class="at">test =</span> <span class="st">"Chi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Data: lmmdata
+Models:
+m0.lmer: Prepositions ~ 1 + (1 | Genre)
+m1.lmer: Prepositions ~ (1 | Genre) + Date
+        npar         AIC         BIC       logLik   -2*log(L)  Chisq Df
+m0.lmer    3 4501.947337 4514.805331 -2247.973668 4495.947337          
+m1.lmer    4 4495.017736 4512.161728 -2243.508868 4487.017736 8.9296  1
+        Pr(&gt;Chisq)   
+m0.lmer              
+m1.lmer  0.0028059 **
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>The model with <em>Date</em> is the better model (significant p-value and lower AIC). The significant p-value shows that <em>Date</em> correlates significantly with <em>Prepositions</em> (<span class="math inline">\(\chi\)</span><sup>2</sup>(1): 8.929600937903, p = 0.00281) . The <span class="math inline">\(\chi\)</span><sup>2</sup> value here is labeled <em>Chisq</em> and the degrees of freedom are calculated by subtracting the smaller number of DFs from the larger number of DFs.</p>
+<p>We now test whether <em>Region</em> should also be part of the final minimal adequate model. The easiest way to add predictors is by using the <code>update</code> function (it saves time and typing).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate model</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>m2.lmer <span class="ot">&lt;-</span> <span class="fu">update</span>(m1.lmer, .<span class="sc">~</span>.<span class="sc">+</span> Region)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># check collinearity</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_collinearity</span>(m2.lmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Check for Multicollinearity
+
+Low Correlation
+
+   Term  VIF   VIF 95% CI adj. VIF Tolerance Tolerance 95% CI
+   Date 1.20 [1.11, 1.36]     1.10      0.83     [0.73, 0.90]
+ Region 1.20 [1.11, 1.36]     1.10      0.83     [0.73, 0.90]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare models                </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m2.lmer, m1.lmer, <span class="at">test =</span> <span class="st">"Chi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Data: lmmdata
+Models:
+m1.lmer: Prepositions ~ (1 | Genre) + Date
+m2.lmer: Prepositions ~ (1 | Genre) + Date + Region
+        npar         AIC         BIC       logLik   -2*log(L)   Chisq Df
+m1.lmer    4 4495.017736 4512.161728 -2243.508868 4487.017736           
+m2.lmer    5 4494.624343 4516.054333 -2242.312171 4484.624343 2.39339  1
+        Pr(&gt;Chisq)
+m1.lmer           
+m2.lmer    0.12185</code></pre>
+</div>
+</div>
+<p>Three things tell us that <em>Region</em> should not be included:</p>
+<ol type="1">
+<li><p>the AIC does not decrease,</p></li>
+<li><p>the BIC increases(!), and</p></li>
+<li><p>the p-value is higher than .05.</p></li>
+</ol>
+<p>This means, that we will continue fitting the model without having <em>Region</em> included. Well… not quite - just as a note on including variables: while <em>Region</em> is not significant as a main effect, it must still be included in a model if it were part of a significant interaction. To test if this is indeed the case, we fit another model with the interaction between <em>Date</em> and <em>Region</em> as predictor.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate model</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>m3.lmer <span class="ot">&lt;-</span> <span class="fu">update</span>(m1.lmer, .<span class="sc">~</span>.<span class="sc">+</span> Region<span class="sc">*</span>Date)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># check collinearity</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_collinearity</span>(m3.lmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Check for Multicollinearity
+
+Low Correlation
+
+        Term  VIF   VIF 95% CI adj. VIF Tolerance Tolerance 95% CI
+        Date 1.97 [1.75, 2.25]     1.40      0.51     [0.44, 0.57]
+      Region 1.20 [1.11, 1.36]     1.10      0.83     [0.73, 0.90]
+ Date:Region 1.78 [1.59, 2.03]     1.33      0.56     [0.49, 0.63]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare models                </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m3.lmer, m1.lmer, <span class="at">test =</span> <span class="st">"Chi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Data: lmmdata
+Models:
+m1.lmer: Prepositions ~ (1 | Genre) + Date
+m3.lmer: Prepositions ~ (1 | Genre) + Date + Region + Date:Region
+        npar         AIC         BIC       logLik   -2*log(L)   Chisq Df
+m1.lmer    4 4495.017736 4512.161728 -2243.508868 4487.017736           
+m3.lmer    6 4496.124872 4521.840861 -2242.062436 4484.124872 2.89286  2
+        Pr(&gt;Chisq)
+m1.lmer           
+m3.lmer    0.23541</code></pre>
+</div>
+</div>
+<p>Again, the high p-value and the increase in AIC and BIC show that we have found our minimal adequate model which only contains <em>Date</em> as a main effect. In a next step, we can inspect the final minimal adequate model, i.e.&nbsp;the most parsimonious (the model that explains a maximum of variance with a minimum of predictors).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect results</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1.lmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear mixed model fit by REML ['lmerMod']
+Formula: Prepositions ~ (1 | Genre) + Date
+   Data: lmmdata
+
+REML criterion at convergence: 4491.1
+
+Scaled residuals: 
+         Min           1Q       Median           3Q          Max 
+-3.734915441 -0.657038004  0.005865025  0.661298615  3.596659863 
+
+Random effects:
+ Groups   Name        Variance   Std.Dev.  
+ Genre    (Intercept) 159.021120 12.6103576
+ Residual             228.764179 15.1249522
+Number of obs: 537, groups:  Genre, 16
+
+Fixed effects:
+                   Estimate      Std. Error  t value
+(Intercept) 133.88516211469   3.24749296248 41.22724
+Date          0.01894493515   0.00632363682  2.99589
+
+Correlation of Fixed Effects:
+     (Intr)
+Date 0.005 </code></pre>
+</div>
+</div>
+</section>
+<section id="model-diagnostics" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="model-diagnostics">Model Diagnostics</h3>
+<p>We now perform the model diagnostics. What we wish to see in the residual-based diagnostic plots is a cloud of dots without any structure. What we do not want to see is a funnel-shaped cloud because this indicates an increase of the errors/residuals with an increase of the predictor(s) (because this would indicate heteroscedasticity) <span class="citation" data-cites="pinheiro2000mixedmodels">(<a href="#ref-pinheiro2000mixedmodels" role="doc-biblioref">Pinheiro and Bates 2000, 182</a>)</span>. As with fixed-effects regression models, we use the <code>check_model</code> function from the <code>performance</code> package <span class="citation" data-cites="performance">(<a href="#ref-performance" role="doc-biblioref">Lüdecke et al. 2021</a>)</span> to evaluate the goodness of fit of the model and to check if mathematical requirements and assumptions have been violated.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate diagnostic plots</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(m1.lmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-week12_files/figure-html/lmm14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The panels for linearity, homogeneity of variance, influential observations, and normality of residuals are interpreted exactly as in the previous weeks. In addition to these familiar panels, <code>check_model</code> produces a panel that is specific to mixed-effects models: the <em>Normality of Random Effects</em> panel. This panel shows whether the estimated random intercepts (here: the intercept adjustments for the individual genres) follow a normal distribution, which is an assumption of mixed-effects models - the dots should follow the reference line.</p>
+<p>We complement the visual inspection with formal checks for influential observations and singularity.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check for influential observations</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_outliers</span>(m1.lmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>OK: No outliers detected.
+- Based on the following method and threshold: cook (0.7).
+- For variable: (Whole model)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check for singular fit</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_singularity</span>(m1.lmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>The diagnostics do not show any severe violations of the model assumptions (some minor deviations in the tails of the distribution of the residuals are common when dealing with real-life data and no reason for concern here) which tells us that the model is “healthy” and that we can proceed with the interpretation of the model.</p>
+</section>
+<section id="summarizing-the-results" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="summarizing-the-results">Summarizing the results</h3>
+<p>We will now summarize the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(m1.lmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table style="border-collapse:collapse; border:none;">
+<tbody><tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">&nbsp;</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">Prepositions</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">Predictors</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">Estimates</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">CI</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">p</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">(Intercept)</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">133.89</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">127.51&nbsp;–&nbsp;140.26</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Date</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.02</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.01&nbsp;–&nbsp;0.03</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.003</strong></td>
+</tr>
+<tr>
+<td colspan="4" style="font-weight:bold; text-align:left; padding-top:.8em;">Random Effects</td>
+</tr>
+
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">σ<sup>2</sup></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">228.76</td>
+</tr>
+
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">τ<sub>00</sub> <sub>Genre</sub></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">159.02</td>
+
+</tr><tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">ICC</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">0.41</td>
+
+</tr><tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">N <sub>Genre</sub></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">16</td>
+</tr><tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">Observations</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">537</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">Marginal R<sup>2</sup> / Conditional R<sup>2</sup></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">0.012 / 0.417</td>
+</tr>
+
+</tbody></table>
+
+</div>
+</div>
+<p>The <em>marginal R<sup>2</sup></em> (marginal coefficient of determination) represents the variance explained by the fixed effects while the <em>conditional R<sup>2</sup></em> is interpreted as a variance explained by the entire model, including both fixed and random effects <span class="citation" data-cites="barton2020mumin">(<a href="#ref-barton2020mumin" role="doc-biblioref">Bartoń 2020</a>)</span>.</p>
+<p>The effects can be visualized using the <code>plot_model</code> function from the <code>sjPlot</code> package <span class="citation" data-cites="sjPlot">(<a href="#ref-sjPlot" role="doc-biblioref">Lüdecke 2021</a>)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_model</span>(m1.lmer, <span class="at">type =</span> <span class="st">"pred"</span>, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"Date"</span>)) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># show uncentered date rather than centered date</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">"Date"</span>, </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">500</span>, <span class="dv">300</span>, <span class="dv">100</span>), </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">1150</span>, <span class="dv">1950</span>, <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-week12_files/figure-html/lmm21d-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>While we have already shown that the effect of <em>Date</em> is significant, it is small which means that the number of prepositions per text does not correlate very strongly with time. This suggests that other factors that are not included in the model also impact the frequency of prepositions (and probably more meaningfully, too).</p>
+</section>
+<section id="reporting-results" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="reporting-results">Reporting Results</h3>
+<p>We can use the <code>reports</code> package <span class="citation" data-cites="report">(<a href="#ref-report" role="doc-biblioref">Makowski et al. 2021</a>)</span> to summarize the analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(m1.lmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>We fitted a linear mixed model (estimated using REML and nloptwrap optimizer)
+to predict Prepositions with Date (formula: Prepositions ~ Date). The model
+included Genre as random effect (formula: ~1 | Genre). The model's total
+explanatory power is substantial (conditional R2 = 0.42) and the part related
+to the fixed effects alone (marginal R2) is of 0.01. The model's intercept,
+corresponding to Date = 0, is at 133.89 (95% CI [127.51, 140.26], t(533) =
+41.23, p &lt; .001). Within this model:
+
+  - The effect of Date is statistically significant and positive (beta = 0.02,
+95% CI [6.52e-03, 0.03], t(533) = 3.00, p = 0.003; Std. beta = 0.11, 95% CI
+[0.04, 0.19])
+
+Standardized parameters were obtained by fitting the model on a standardized
+version of the dataset. 95% Confidence Intervals (CIs) and p-values were
+computed using a Wald t-distribution approximation.</code></pre>
+</div>
+</div>
+<p>We can use this output to write up a final report:</p>
+<p>We fitted a linear mixed model to predict the relative frequency of prepositions in historical English texts based on the year when the text was written (formula: Prepositions ~ Date). The model included the genre of the text as random effect (formula: ~1 | Genre). The model’s total explanatory power is substantial (conditional R<sup>2</sup> = 0.42) and the part related to the fixed effects alone (marginal R<sup>2</sup>) is of 0.01. The model reported that the effect of the year when the text was written is statistically significant and positive (beta = 0.02 [6.52e-03, 0.03], t(533) = 3.00, p = 0.003; Std. beta = 0.11 [0.04, 0.19]).</p>
+</section>
+</section>
+<section id="mixed-effects-logistic-regression" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="mixed-effects-logistic-regression"><span class="header-section-number">12.2</span> Mixed-Effects Logistic Regression</h2>
+<p>As is the case with linear mixed-effects models, binomial logistic mixed-effect models are multivariate analyses that treat data points as hierarchical or grouped in some way. In other words, they take into account that the data is nested in the sense that data points are produced by the same speaker or are grouped by some other characteristics. In mixed-models, hierarchical structures are modelled as <em>random effects</em>. If the random effect structure represents speakers then this means that a mixed-model would have a separate intercept and/or slope for each speaker.</p>
+<p><em>Random Effects</em> in linear models can be visualized using two parameters: the intercept (the point where the regression line crosses the y-axis at x = 0) and the slope (the acclivity of the regression line). In contrast to linear mixed-effects models, random effects differ in the position and the slope of the logistic function that is applied to the likelihood of the dependent variable. <em>random intercepts</em> (upper right panel) or various <em>random slopes</em> (lower left panel), or both, various <em>random intercepts</em> and various <em>random slopes</em> (lower right panel). In the following, we will only focus on models with random intercepts because this is the by far more common method and because including both random intercepts and random slopes requires huge amounts of data. Consider the Figure below to understand what is meant by “random intercepts”.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-week12_files/figure-html/blmm1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The upper left panel merely shows the logistic curve representing the predictions of a fixed-effects logistic regression with a single intercept and slope. The upper right panel shows the logistic curves representing the predictions of a mixed-effects logistic regression with random intercepts for each level of a grouping variable. The lower left panel shows the logistic curves representing the predictions of a mixed-effects logistic regression with one intercept but random slopes for each level of a grouping variable. The lower right panel shows the logistic curves representing the predictions of a mixed-effects logistic regression with random intercepts and random slopes for each level of a grouping variable.</p>
+<p>After adding random intercepts, predictors (or fixed effects) are added to the model (just like with multiple regression). So mixed-effects are called mixed-effects because they contain both random and fixed effects.</p>
+<p>In terms of general procedure, random effects are added first, and only after we have ascertained that including random effects is warranted, we test whether including fixed-effects is warranted <span class="citation" data-cites="field2012discovering">(<a href="#ref-field2012discovering" role="doc-biblioref">Field, Miles, and Field 2012</a>)</span>. We test whether including random effects is warranted by comparing a model, that bases its estimates of the dependent variable solely on the base intercept, with a model that bases its estimates of the dependent variable solely on the intercepts of the random effect. If the mixed-effects model explains significantly more variance than the fixed-effects model without random effect structure, then we continue with the mixed-effects model. In other words, including random effects is justified.</p>
+<section id="example-discourse-like-in-irish-english" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="example-discourse-like-in-irish-english"><span class="header-section-number">12.2.1</span> Example: Discourse LIKE in Irish English</h3>
+<p>In this example we will investigate which factors correlate with the use of <em>final discourse like</em> (e.g.&nbsp;“<em>The weather is shite, like!</em>”) in Irish English. The data set represents speech units in a corpus that were coded for the speaker who uttered a given speech unit, the gender (Gender: Men versus Women) and age of that speaker (Age: Old versus Young), whether the interlocutors were of the same or a different gender (ConversationType: SameGender versus MixedGender), and whether another <em>final discourse like</em> had been used up to three speech units before (Priming: NoPrime versus Prime), whether or not the speech unit contained a <em>final discourse like</em> (SUFlike: 1 = yes, 0 = no). To begin with, we load the data and inspect the structure of the data set,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>mblrdata  <span class="ot">&lt;-</span> base<span class="sc">::</span><span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">"https://slcladal.github.io/data/mbd.rda"</span>, <span class="st">"rb"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-7432929a{table-layout:auto;width:75%;}.cl-7420c8c6{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-7420c8ee{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-7427c1c6{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-7427c1da{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-7427f952{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7427f953{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7427f95c{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7427f966{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7427f970{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7427f97a{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7427f97b{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7427f984{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7427f98e{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7427f998{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7427f999{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7427f99a{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-7432929a"><thead><tr style="overflow-wrap:break-word;"><th class="cl-7427f952"><p class="cl-7427c1c6"><span class="cl-7420c8c6">ID</span></p></th><th class="cl-7427f953"><p class="cl-7427c1c6"><span class="cl-7420c8c6">Gender</span></p></th><th class="cl-7427f953"><p class="cl-7427c1c6"><span class="cl-7420c8c6">Age</span></p></th><th class="cl-7427f953"><p class="cl-7427c1c6"><span class="cl-7420c8c6">ConversationType</span></p></th><th class="cl-7427f953"><p class="cl-7427c1c6"><span class="cl-7420c8c6">Priming</span></p></th><th class="cl-7427f95c"><p class="cl-7427c1da"><span class="cl-7420c8c6">SUFlike</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-7427f966"><p class="cl-7427c1c6"><span class="cl-7420c8ee">S1A-061$C</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Women</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Young</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">MixedGender</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">NoPrime</span></p></td><td class="cl-7427f97a"><p class="cl-7427c1da"><span class="cl-7420c8ee">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7427f97b"><p class="cl-7427c1c6"><span class="cl-7420c8ee">S1A-023$B</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Women</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Young</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">MixedGender</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">NoPrime</span></p></td><td class="cl-7427f98e"><p class="cl-7427c1da"><span class="cl-7420c8ee">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7427f966"><p class="cl-7427c1c6"><span class="cl-7420c8ee">S1A-054$A</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Women</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Young</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">SameGender</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">NoPrime</span></p></td><td class="cl-7427f97a"><p class="cl-7427c1da"><span class="cl-7420c8ee">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7427f97b"><p class="cl-7427c1c6"><span class="cl-7420c8ee">S1A-090$B</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Women</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Young</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">MixedGender</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">NoPrime</span></p></td><td class="cl-7427f98e"><p class="cl-7427c1da"><span class="cl-7420c8ee">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7427f966"><p class="cl-7427c1c6"><span class="cl-7420c8ee">S1A-009$B</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Women</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Old</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">SameGender</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Prime</span></p></td><td class="cl-7427f97a"><p class="cl-7427c1da"><span class="cl-7420c8ee">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7427f97b"><p class="cl-7427c1c6"><span class="cl-7420c8ee">S1A-085$E</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Men</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Young</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">MixedGender</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Prime</span></p></td><td class="cl-7427f98e"><p class="cl-7427c1da"><span class="cl-7420c8ee">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7427f966"><p class="cl-7427c1c6"><span class="cl-7420c8ee">S1A-003$C</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Women</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Young</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">MixedGender</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">NoPrime</span></p></td><td class="cl-7427f97a"><p class="cl-7427c1da"><span class="cl-7420c8ee">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7427f97b"><p class="cl-7427c1c6"><span class="cl-7420c8ee">S1A-084$C</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Women</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Young</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">SameGender</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">NoPrime</span></p></td><td class="cl-7427f98e"><p class="cl-7427c1da"><span class="cl-7420c8ee">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7427f966"><p class="cl-7427c1c6"><span class="cl-7420c8ee">S1A-076$A</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Women</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Young</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">SameGender</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">NoPrime</span></p></td><td class="cl-7427f97a"><p class="cl-7427c1da"><span class="cl-7420c8ee">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7427f97b"><p class="cl-7427c1c6"><span class="cl-7420c8ee">S1A-083$D</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Men</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Old</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">MixedGender</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">NoPrime</span></p></td><td class="cl-7427f98e"><p class="cl-7427c1da"><span class="cl-7420c8ee">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7427f966"><p class="cl-7427c1c6"><span class="cl-7420c8ee">S1A-068$A</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Women</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Young</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">SameGender</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">NoPrime</span></p></td><td class="cl-7427f97a"><p class="cl-7427c1da"><span class="cl-7420c8ee">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7427f97b"><p class="cl-7427c1c6"><span class="cl-7420c8ee">S1A-066$B</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Women</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Young</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">SameGender</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">NoPrime</span></p></td><td class="cl-7427f98e"><p class="cl-7427c1da"><span class="cl-7420c8ee">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7427f966"><p class="cl-7427c1c6"><span class="cl-7420c8ee">S1A-061$A</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Men</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Old</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">MixedGender</span></p></td><td class="cl-7427f970"><p class="cl-7427c1c6"><span class="cl-7420c8ee">NoPrime</span></p></td><td class="cl-7427f97a"><p class="cl-7427c1da"><span class="cl-7420c8ee">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7427f97b"><p class="cl-7427c1c6"><span class="cl-7420c8ee">S1A-049$A</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Women</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Young</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">SameGender</span></p></td><td class="cl-7427f984"><p class="cl-7427c1c6"><span class="cl-7420c8ee">NoPrime</span></p></td><td class="cl-7427f98e"><p class="cl-7427c1da"><span class="cl-7420c8ee">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7427f998"><p class="cl-7427c1c6"><span class="cl-7420c8ee">S1A-022$B</span></p></td><td class="cl-7427f999"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Women</span></p></td><td class="cl-7427f999"><p class="cl-7427c1c6"><span class="cl-7420c8ee">Young</span></p></td><td class="cl-7427f999"><p class="cl-7427c1c6"><span class="cl-7420c8ee">MixedGender</span></p></td><td class="cl-7427f999"><p class="cl-7427c1c6"><span class="cl-7420c8ee">NoPrime</span></p></td><td class="cl-7427f99a"><p class="cl-7427c1da"><span class="cl-7420c8ee">0</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>As all variables except for the dependent variable (<code>SUFlike</code>) are character strings, we factorize the independent variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># def. variables to be factorized</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>mblrdata <span class="ot">&lt;-</span> mblrdata <span class="sc">|&gt;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(is.character, factor) <span class="sc">|&gt;</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Age =</span> <span class="fu">relevel</span>(Age, <span class="st">"Young"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(ID)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We now plot the data to inspect the relationships within the data set.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mblrdata, <span class="fu">aes</span>(Priming, SUFlike, <span class="at">color =</span> Gender)) <span class="sc">+</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>ConversationType) <span class="sc">+</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>) <span class="sc">+</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_cl_boot, <span class="at">geom =</span> <span class="st">"errorbar"</span>, <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_set</span>(<span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>) <span class="sc">+</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">"Observed Probabilty of discourse like"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-week12_files/figure-html/blmm8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The figure above indicates that men use discourse <em>like</em> more frequently than women and that priming increases the likelihood of discourse <em>like</em> being used. Speakers also appear to use discourse <em>like</em> more frequently in mixed-gender conversations. In addition, the figure suggests an interaction between gender and conversation type, as women appear to use discourse <em>like</em> less frequently in same-gender conversations while the conversation type does not seem to have an effect on men. After visualizing the data, we will now turn to the model building process.</p>
+</section>
+<section id="model-building" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="model-building"><span class="header-section-number">12.2.2</span> Model Building</h3>
+<p>In a first step, we set the options.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set options</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts  =</span><span class="fu">c</span>(<span class="st">"contr.treatment"</span>, <span class="st">"contr.poly"</span>))</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>mblrdata.dist <span class="ot">&lt;-</span> <span class="fu">datadist</span>(mblrdata)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">datadist =</span> <span class="st">"mblrdata.dist"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In a next step, we generate a base-line mixed-model using the <code>glmer</code> function with a random intercept for ID.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base-line mixed-model</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>m0.glmer <span class="ot">=</span> <span class="fu">glmer</span>(SUFlike <span class="sc">~</span> (<span class="dv">1</span><span class="sc">|</span>ID), <span class="at">data =</span> mblrdata, <span class="at">family =</span> binomial) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="model-fitting-1" class="level3" data-number="12.2.3">
+<h3 data-number="12.2.3" class="anchored" data-anchor-id="model-fitting-1"><span class="header-section-number">12.2.3</span> Model Fitting</h3>
+<p>The next step is to fit the model which means that we aim to find the “best” model, i.e.&nbsp;the minimal adequate model. In this case, we will use the <code>glmulti</code> package to find the model with the lowest <em>Bayesian Information Criterion</em> (BIC) of all possible models.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># wrapper function for linear mixed-models</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>glmer.glmulti <span class="ot">&lt;-</span> <span class="cf">function</span>(formula,data, <span class="at">random=</span><span class="st">""</span>,...){</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glmer</span>(<span class="fu">paste</span>(<span class="fu">deparse</span>(formula),random), <span class="at">family =</span> binomial, <span class="at">data=</span>data, ...)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># define formular</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>form_glmulti <span class="ot">=</span> <span class="fu">as.formula</span>(<span class="fu">paste</span>(<span class="st">"SUFlike ~ Gender + Age + ConversationType + Priming"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Extract best 5 models.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># multi selection for glmer</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>mfit <span class="ot">&lt;-</span> <span class="fu">glmulti</span>(form_glmulti,<span class="at">random=</span><span class="st">"+(1 | ID)"</span>, </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> mblrdata, <span class="at">method =</span> <span class="st">"h"</span>, <span class="at">fitfunc =</span> glmer.glmulti,</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">crit =</span> <span class="st">"bic"</span>, <span class="at">intercept =</span> <span class="cn">TRUE</span>, <span class="at">marginality =</span> <span class="cn">FALSE</span>, <span class="at">level =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Initialization...
+TASK: Exhaustive screening of candidate set.
+Fitting...</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+After 50 models:
+Best model: SUFlike~1+Gender+ConversationType+Priming
+Crit= 1696.58773399859
+Mean crit= 1753.96253326009</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-week12_files/figure-html/glmulti2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+After 100 models:
+Best model: SUFlike~1+Gender+ConversationType+Priming
+Crit= 1696.58773399859
+Mean crit= 1731.8900101622</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-week12_files/figure-html/glmulti2-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Completed.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract best models</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>top <span class="ot">&lt;-</span> <span class="fu">weightable</span>(mfit)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>top <span class="ot">&lt;-</span> top[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect top 5 models</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>top</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                          model
+1                                             SUFlike ~ 1 + Gender + ConversationType + Priming
+2                            SUFlike ~ 1 + Gender + ConversationType + Priming + Priming:Gender
+3 SUFlike ~ 1 + Gender + ConversationType + Priming + Priming:Gender + Priming:ConversationType
+4                                               SUFlike ~ 1 + Gender + Priming + Priming:Gender
+5                  SUFlike ~ 1 + Gender + ConversationType + Priming + Priming:ConversationType
+            bic         weights
+1 1696.58773400 0.2567900986201
+2 1696.76989553 0.2344349730577
+3 1696.76989553 0.2344349730577
+4 1699.62465885 0.0562494682007
+5 1699.83927869 0.0505259299057</code></pre>
+</div>
+</div>
+<p>We now define our final minimal model and check its output.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>mlr.glmer <span class="ot">&lt;-</span> <span class="fu">glmer</span>(SUFlike <span class="sc">~</span> (<span class="dv">1</span> <span class="sc">|</span> ID) <span class="sc">+</span> Gender <span class="sc">+</span> ConversationType <span class="sc">+</span> Priming, </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">family =</span> binomial, <span class="at">data =</span> mblrdata)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect final minimal adequate model</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mlr.glmer, <span class="at">corr =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Generalized linear mixed model fit by maximum likelihood (Laplace
+  Approximation) [glmerMod]
+ Family: binomial  ( logit )
+Formula: SUFlike ~ (1 | ID) + Gender + ConversationType + Priming
+   Data: mblrdata
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   1668.6    1696.6    -829.3    1658.6      1995 
+
+Scaled residuals: 
+         Min           1Q       Median           3Q          Max 
+-1.579356769 -0.415524274 -0.330409172 -0.312054871  3.247877854 
+
+Random effects:
+ Groups Name        Variance     Std.Dev.   
+ ID     (Intercept) 0.0837487102 0.289393694
+Number of obs: 2000, groups:  ID, 208
+
+Fixed effects:
+                               Estimate   Std. Error  z value
+(Intercept)                -1.067433309  0.149187449 -7.15498
+GenderWomen                -0.642882903  0.175331323 -3.66667
+ConversationTypeSameGender -0.536428992  0.148820273 -3.60454
+PrimingPrime                1.866249507  0.163248506 11.43195
+                                         Pr(&gt;|z|)    
+(Intercept)                   0.00000000000083685 ***
+GenderWomen                            0.00024573 ***
+ConversationTypeSameGender             0.00031270 ***
+PrimingPrime               &lt; 0.000000000000000222 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>We now test whether the final minimal model performs significantly better than the minimal base-line model, and print the regression summary.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># final model better than base-line model</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mlr.glmer, m0.glmer, <span class="at">test =</span> <span class="st">"Chi"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Data: mblrdata
+Models:
+m0.glmer: SUFlike ~ (1 | ID)
+mlr.glmer: SUFlike ~ (1 | ID) + Gender + ConversationType + Priming
+          npar         AIC         BIC       logLik   -2*log(L)     Chisq Df
+m0.glmer     2 1828.492271 1839.694076 -912.2461355 1824.492271             
+mlr.glmer    5 1668.583222 1696.587734 -829.2916109 1658.583222 165.90905  3
+                      Pr(&gt;Chisq)    
+m0.glmer                            
+mlr.glmer &lt; 0.000000000000000222 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="visualizing-effects" class="level3" data-number="12.2.4">
+<h3 data-number="12.2.4" class="anchored" data-anchor-id="visualizing-effects"><span class="header-section-number">12.2.4</span> Visualizing Effects</h3>
+<p>As we will see the effects in the final summary, we visualize the effects here using the <code>sjPlot</code> package <span class="citation" data-cites="sjPlot">(<a href="#ref-sjPlot" role="doc-biblioref">Lüdecke 2021</a>)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_model</span>(mlr.glmer, <span class="at">type =</span> <span class="st">"pred"</span>, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"Gender"</span>, <span class="st">"Priming"</span>, <span class="st">"ConversationType"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-week12_files/figure-html/blmm33b-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can see that discourse <em>like</em> is more likely to surface in primed contexts and among men. In same-gender conversations, speakers use discourse <em>like</em> less than in mixed-gender conversations.</p>
+</section>
+<section id="extracting-model-fit-parameters" class="level3" data-number="12.2.5">
+<h3 data-number="12.2.5" class="anchored" data-anchor-id="extracting-model-fit-parameters"><span class="header-section-number">12.2.5</span> Extracting Model Fit Parameters</h3>
+<p>We now extract model fit parameters <span class="citation" data-cites="baayen2008analyzing">(<a href="#ref-baayen2008analyzing" role="doc-biblioref">Baayen 2008, 281</a>)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>probs <span class="ot">=</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">fitted</span>(mlr.glmer)))</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>probs <span class="ot">=</span> <span class="fu">binomial</span>()<span class="sc">$</span><span class="fu">linkinv</span>(<span class="fu">fitted</span>(mlr.glmer))</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">somers2</span>(probs, <span class="fu">as.numeric</span>(mblrdata<span class="sc">$</span>SUFlike))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                C               Dxy                 n           Missing 
+   0.760226203516    0.520452407033 2000.000000000000    0.000000000000 </code></pre>
+</div>
+</div>
+<p>The two lines that start with <code>probs</code> are simply two different ways to do the same thing (you only need one of these).</p>
+<p>The model fit parameters indicate a suboptimal fit. Both the C-value (the concordance statistic) and Somers’ <span class="math inline">\(\delta\)</span> (Somers’delta) show an acceptable fit between predicted and observed occurrences of discourse <em>like</em>. If the C-value is 0.5, the predictions are random, while the predictions are perfect if the C-value is 1. C-values above 0.8 indicate real predictive capacity <span class="citation" data-cites="baayen2008analyzing">(<a href="#ref-baayen2008analyzing" role="doc-biblioref">Baayen 2008, 204</a>)</span>. Somers’ D<sub>xy</sub> is a value that represents a rank correlation between predicted probabilities and observed responses. Somers’ D<sub>xy</sub> values range between 0, which indicates complete randomness, and 1, which indicates perfect prediction <span class="citation" data-cites="baayen2008analyzing">(<a href="#ref-baayen2008analyzing" role="doc-biblioref">Baayen 2008, 204</a>)</span>. The C-value of 0.76 suggests that the model has some predictive and explanatory power, but not at an optimal level. We will now perform the model diagnostics: as with the fixed-effects binomial logistic regression, we check the binned residuals, collinearity, and influential observations, and, as with the linear mixed-effects model, we additionally check the normality of the random effects and whether the model suffers from a singular fit.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate diagnostic plots</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(mlr.glmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-week12_files/figure-html/blmm36-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check collinearity</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_collinearity</span>(mlr.glmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Check for Multicollinearity
+
+Low Correlation
+
+             Term  VIF   VIF 95% CI adj. VIF Tolerance Tolerance 95% CI
+           Gender 1.16 [1.11, 1.23]     1.08      0.86     [0.82, 0.90]
+ ConversationType 1.18 [1.13, 1.25]     1.09      0.85     [0.80, 0.88]
+          Priming 1.02 [1.00, 1.17]     1.01      0.98     [0.85, 1.00]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check for influential observations (Cook's distances; values &gt; 1 are problematic)</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(<span class="fu">cooks.distance</span>(mlr.glmer))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.253783361853</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">cooks.distance</span>(mlr.glmer) <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>named integer(0)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check for singular fit</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_singularity</span>(mlr.glmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>The diagnostics do not indicate any severe problems.</p>
+<p>In a final step, we summarize our findings in tabulated form.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize final model</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(mlr.glmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table style="border-collapse:collapse; border:none;">
+<tbody><tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">&nbsp;</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">SUFlike</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">Predictors</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">Odds Ratios</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">CI</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">p</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">(Intercept)</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.34</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.26&nbsp;–&nbsp;0.46</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Gender [Women]</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.53</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.37&nbsp;–&nbsp;0.74</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">ConversationType<br>[SameGender]</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.58</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.44&nbsp;–&nbsp;0.78</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Priming [Prime]</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">6.46</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.69&nbsp;–&nbsp;8.90</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
+</tr>
+<tr>
+<td colspan="4" style="font-weight:bold; text-align:left; padding-top:.8em;">Random Effects</td>
+</tr>
+
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">σ<sup>2</sup></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">3.29</td>
+</tr>
+
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">τ<sub>00</sub> <sub>ID</sub></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">0.08</td>
+
+</tr><tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">ICC</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">0.02</td>
+
+</tr><tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">N <sub>ID</sub></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">208</td>
+</tr><tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">Observations</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">2000</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">Marginal R<sup>2</sup> / Conditional R<sup>2</sup></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">0.131 / 0.152</td>
+</tr>
+
+</tbody></table>
+
+</div>
+</div>
+<p>We can use the <code>reports</code> package <span class="citation" data-cites="report">(<a href="#ref-report" role="doc-biblioref">Makowski et al. 2021</a>)</span> to summarize the analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(mlr.glmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>We fitted a logistic mixed model (estimated using ML and Nelder-Mead optimizer)
+to predict SUFlike with Gender, ConversationType and Priming (formula: SUFlike
+~ Gender + ConversationType + Priming). The model included ID as random effect
+(formula: ~1 | ID). The model's total explanatory power is moderate
+(conditional R2 = 0.15) and the part related to the fixed effects alone
+(marginal R2) is of 0.13. The model's intercept, corresponding to Gender = Men,
+ConversationType = MixedGender and Priming = NoPrime, is at -1.07 (95% CI
+[-1.36, -0.78], p &lt; .001). Within this model:
+
+  - The effect of Gender [Women] is statistically significant and negative (beta
+= -0.64, 95% CI [-0.99, -0.30], p &lt; .001; Std. beta = -0.64, 95% CI [-0.99,
+-0.30])
+  - The effect of ConversationType [SameGender] is statistically significant and
+negative (beta = -0.54, 95% CI [-0.83, -0.24], p &lt; .001; Std. beta = -0.54, 95%
+CI [-0.83, -0.24])
+  - The effect of Priming [Prime] is statistically significant and positive (beta
+= 1.87, 95% CI [1.55, 2.19], p &lt; .001; Std. beta = 1.87, 95% CI [1.55, 2.19])
+
+Standardized parameters were obtained by fitting the model on a standardized
+version of the dataset. 95% Confidence Intervals (CIs) and p-values were
+computed using a Wald z-distribution approximation.</code></pre>
+</div>
+</div>
+<p>We can use this output to write up a final report:</p>
+<p>We fitted a logistic mixed model to predict the use of discourse <em>like</em>. The model included speakers as random effect (formula: ~1 | ID). The model’s total explanatory power is moderate (conditional R<sup>2</sup> = 0.15) and the part related to the fixed effects alone (marginal R<sup>2</sup>) is of 0.13.</p>
+<p>Regarding fixed effects, the model reported that * women use discourse <em>like</em> statistically less compared to men (beta = -0.64 [-0.99, -0.30], p &lt; .001; Std. beta = -0.64 [-0.99, -0.30])<br>
+* speakers in conversations with other speakers of the same gender use discourse <em>like</em> significantly less compared to their use in mixed-gender conversations (beta = -0.54 [-0.83, -0.24], p &lt; .001; Std. beta = -0.54 [-0.83, -0.24])<br>
+* Priming is significantly positively correlated with the use of discourse <em>like</em> (beta = 1.87 [1.55, 2.19], p &lt; .001; Std. beta = 1.87 [1.55, 2.19])</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercises: Mixed-Effects Regression
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p><strong>Q1. You analyze 2,000 reaction times from 40 participants (50 trials each). Why is an ordinary regression on all 2,000 data points problematic?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<form name="form_W12_Q1" onsubmit="return validate_form_W12_Q1()" method="post">
+<label>
+<input type="radio" name="answer_W12_Q1" id="answer_W12_Q1_1" value="Observations from the same participant are not independent, so the model overstates the amount of independent information">
+Observations from the same participant are not independent, so the model overstates the amount of independent information
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W12_Q1" id="answer_W12_Q1_2" value="Reaction times cannot be modeled with regressions">
+Reaction times cannot be modeled with regressions
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W12_Q1" id="answer_W12_Q1_3" value="Ordinary regressions do not accept more than one predictor">
+Ordinary regressions do not accept more than one predictor
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W12_Q1" id="answer_W12_Q1_4" value="2,000 data points are too many for a regression">
+2,000 data points are too many for a regression
+</label>
+<br>
+<input type="submit" value="Check answer">
+<div id="result_W12_Q1"></div>
+</form>
+<script>function validate_form_W12_Q1() {var x, text; var x = document.forms['form_W12_Q1']['answer_W12_Q1'].value;if (x == 'Observations from the same participant are not independent, so the model overstates the amount of independent information'){text = 'Correct! The 50 trials per participant are correlated - fast participants are fast throughout. Treating them as 2,000 independent observations (pseudoreplication) deflates standard errors and produces spuriously significant results. A random intercept for participant fixes this.';} else {text = 'Are 50 measurements from the same person really 50 independent pieces of information?';} document.getElementById('result_W12_Q1').innerHTML = text; evaluate_final_score(); return false;}function evaluate_final_score(){
+         element = document.getElementById('checkdown_final_score');
+         if(element === null){return false;} else {var element, text, res1;res1 = document.getElementById('result_W12_Q1').innerText == 'Correct! The 50 trials per participant are correlated - fast participants are fast throughout. Treating them as 2,000 independent observations (pseudoreplication) deflates standard errors and produces spuriously significant results. A random intercept for participant fixes this.';text = res1;element.innerHTML = text;
+         return false;
+         }}</script>
+</div>
+</div>
+<hr>
+<p><strong>Q2. In a study of preposition use across texts from different genres, which specification treats genre correctly as a random effect?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<form name="form_W12_Q2" onsubmit="return validate_form_W12_Q2()" method="post">
+<label>
+<input type="radio" name="answer_W12_Q2" id="answer_W12_Q2_1" value="Prepositions ~ (Date | 1) + Genre">
+Prepositions ~ (Date | 1) + Genre
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W12_Q2" id="answer_W12_Q2_2" value="Prepositions ~ Date + Genre">
+Prepositions ~ Date + Genre
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W12_Q2" id="answer_W12_Q2_3" value="Prepositions ~ Date + (1 | Genre)">
+Prepositions ~ Date + (1 | Genre)
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W12_Q2" id="answer_W12_Q2_4" value="Prepositions ~ Date * Genre">
+Prepositions ~ Date * Genre
+</label>
+<br>
+<input type="submit" value="Check answer">
+<div id="result_W12_Q2"></div>
+</form>
+<script>function validate_form_W12_Q2() {var x, text; var x = document.forms['form_W12_Q2']['answer_W12_Q2'].value;if (x == 'Prepositions ~ Date + (1 | Genre)'){text = 'Correct! (1 | Genre) gives each genre its own random intercept, treating genres as a sample of grouping units whose baseline differences must be accounted for. Including Genre as a fixed effect instead would estimate a separate coefficient for every genre - a different research question.';} else {text = 'The lme4 syntax for a random intercept is (1 | grouping_factor).';} document.getElementById('result_W12_Q2').innerHTML = text; evaluate_final_score(); return false;}function evaluate_final_score(){
+         element = document.getElementById('checkdown_final_score');
+         if(element === null){return false;} else {var element, text, res1, res2;res1 = document.getElementById('result_W12_Q1').innerText == 'Correct! The 50 trials per participant are correlated - fast participants are fast throughout. Treating them as 2,000 independent observations (pseudoreplication) deflates standard errors and produces spuriously significant results. A random intercept for participant fixes this.'; res2 = document.getElementById('result_W12_Q2').innerText == 'Correct! (1 | Genre) gives each genre its own random intercept, treating genres as a sample of grouping units whose baseline differences must be accounted for. Including Genre as a fixed effect instead would estimate a separate coefficient for every genre - a different research question.';text = res1 + res2;element.innerHTML = text;
+         return false;
+         }}</script>
+</div>
+</div>
+<hr>
+<p><strong>Q3. What does a high intra-class correlation coefficient (ICC) of the null model indicate?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<form name="form_W12_Q3" onsubmit="return validate_form_W12_Q3()" method="post">
+<label>
+<input type="radio" name="answer_W12_Q3" id="answer_W12_Q3_1" value="The outcome variable is normally distributed">
+The outcome variable is normally distributed
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W12_Q3" id="answer_W12_Q3_2" value="A substantial share of the total variance is due to differences between the grouping units, so including the random effect is warranted">
+A substantial share of the total variance is due to differences between the grouping units, so including the random effect is warranted
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W12_Q3" id="answer_W12_Q3_3" value="The fixed effects are all significant">
+The fixed effects are all significant
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W12_Q3" id="answer_W12_Q3_4" value="The model suffers from collinearity">
+The model suffers from collinearity
+</label>
+<br>
+<input type="submit" value="Check answer">
+<div id="result_W12_Q3"></div>
+</form>
+<script>function validate_form_W12_Q3() {var x, text; var x = document.forms['form_W12_Q3']['answer_W12_Q3'].value;if (x == 'A substantial share of the total variance is due to differences between the grouping units, so including the random effect is warranted'){text = 'Correct! The ICC is the proportion of total variance attributable to the grouping structure. A high ICC means observations within the same group are much more similar to each other than to observations from other groups - exactly the non-independence that random effects are designed to handle.';} else {text = 'The ICC partitions the variance: how much of it lies <em>between</em> the groups?';} document.getElementById('result_W12_Q3').innerHTML = text; evaluate_final_score(); return false;}function evaluate_final_score(){
+         element = document.getElementById('checkdown_final_score');
+         if(element === null){return false;} else {var element, text, res1, res2, res3;res1 = document.getElementById('result_W12_Q1').innerText == 'Correct! The 50 trials per participant are correlated - fast participants are fast throughout. Treating them as 2,000 independent observations (pseudoreplication) deflates standard errors and produces spuriously significant results. A random intercept for participant fixes this.'; res2 = document.getElementById('result_W12_Q2').innerText == 'Correct! (1 | Genre) gives each genre its own random intercept, treating genres as a sample of grouping units whose baseline differences must be accounted for. Including Genre as a fixed effect instead would estimate a separate coefficient for every genre - a different research question.'; res3 = document.getElementById('result_W12_Q3').innerText == 'Correct! The ICC is the proportion of total variance attributable to the grouping structure. A high ICC means observations within the same group are much more similar to each other than to observations from other groups - exactly the non-independence that random effects are designed to handle.';text = res1 + res2 + res3;element.innerHTML = text;
+         return false;
+         }}</script>
+</div>
+</div>
+<p><a href="#week12">Back to top</a></p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-baayen2008analyzing" class="csl-entry" role="listitem">
+Baayen, R Harald. 2008. <em>Analyzing Linguistic Data. A Practical Introduction to Statistics Using r</em>. Cambridge: Cambridge University press.
+</div>
+<div id="ref-barton2020mumin" class="csl-entry" role="listitem">
+Bartoń, Kamil. 2020. <span>“Package MuMIn - Multi-Model Inference.”</span> The Comprehensive R Archive Network. <a href="https://cran.r-project.org/web/packages/MuMIn/MuMIn.pdf">https://cran.r-project.org/web/packages/MuMIn/MuMIn.pdf</a>.
+</div>
+<div id="ref-lme4" class="csl-entry" role="listitem">
+Bates, Douglas, Martin Mächler, Ben Bolker, and Steve Walker. 2015. <span>“Fitting Linear Mixed-Effects Models Using <span class="nocase">lme4</span>.”</span> <em>Journal of Statistical Software</em> 67 (1): 1–48. <a href="https://doi.org/10.18637/jss.v067.i01">https://doi.org/10.18637/jss.v067.i01</a>.
+</div>
+<div id="ref-field2012discovering" class="csl-entry" role="listitem">
+Field, Andy, Jeremy Miles, and Zoe Field. 2012. <em>Discovering Statistics Using r</em>. Sage.
+</div>
+<div id="ref-johnson2009getting" class="csl-entry" role="listitem">
+Johnson, Daniel Ezra. 2009. <span>“Getting Off the GoldVarb Standard: Introducing Rbrul for Mixed-Effects Variable Rule Analysis.”</span> <em>Language and Linguistics Compass</em> 3 (1): 359–83.
+</div>
+<div id="ref-sjPlot" class="csl-entry" role="listitem">
+Lüdecke, Daniel. 2021. <em>sjPlot: Data Visualization for Statistics in Social Science</em>. <a href="https://CRAN.R-project.org/package=sjPlot">https://CRAN.R-project.org/package=sjPlot</a>.
+</div>
+<div id="ref-performance" class="csl-entry" role="listitem">
+Lüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, Philip Waggoner, and Dominique Makowski. 2021. <span>“Performance: An <span>R</span> Package for Assessment, Comparison and Testing of Statistical Models.”</span> <em>Journal of Open Source Software</em> 6 (60): 3139. <a href="https://doi.org/10.21105/joss.03139">https://doi.org/10.21105/joss.03139</a>.
+</div>
+<div id="ref-report" class="csl-entry" role="listitem">
+Makowski, Dominique, Mattan S. Ben-Shachar, Indrajeet Patil, and Daniel Lüdecke. 2021. <span>“Automated Results Reporting as a Practical Tool to Improve Reproducibility and Methodological Best Practices Adoption.”</span> <em>CRAN</em>. <a href="https://github.com/easystats/report">https://github.com/easystats/report</a>.
+</div>
+<div id="ref-pinheiro2000mixedmodels" class="csl-entry" role="listitem">
+Pinheiro, J. C., and D. M. Bates. 2000. <em>Mixed-Effects Models in s and s-PLUS. Statistics and Computing</em>. New York: Springer.
+</div>
+<div id="ref-winter2019statistics" class="csl-entry" role="listitem">
+Winter, Bodo. 2019. <em>Statistics for Linguists: An Introduction Using r</em>. Routledge.
+</div>
+<div id="ref-zuur2013beginner" class="csl-entry" role="listitem">
+Zuur, Alain F., Joseph M. Hilbe, and Elena N. Ieno. 2013. <em>A Beginner’s Guide to GLM and GLMM with. R. Beginner’s Guide Series</em>. Newburgh, United Kingdom: Highland Statistics Ltd.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./11-week11.html" class="pagination-link" aria-label="(Different) Types of Regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">(Different) Types of Regression</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./13-week13.html" class="pagination-link" aria-label="Tree-Based Models, Machine Learning, and AI">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Tree-Based Models, Machine Learning, and AI</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

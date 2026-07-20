@@ -1,0 +1,13 @@
+# Preface {.unnumbered}
+
+This is the online course book for **SLAT7855 – Statistics for Linguists**. It introduces quantitative research methods, statistics, and data analysis with R for students of linguistics and applied linguistics.
+
+Each chapter corresponds to one session of the course and combines conceptual explanations, worked examples with R code, key-concept boxes, and self-check exercises.
+
+::: {.callout-note}
+## How to use this book
+
+- **Code blocks** can be copied with the clipboard button in their top-right corner.
+- **Key concept** boxes summarize the ideas you should be able to explain in your own words.
+- **Exercises** at the end of each chapter let you check your understanding immediately - answers are checked in your browser, and nothing is recorded.
+:::

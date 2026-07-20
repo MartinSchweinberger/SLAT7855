@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.41">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>8&nbsp; Basic Inferential Statistics – SLAT7855 – Statistics for Linguists</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./09-week9.html" rel="next">
+<link href="./07-week7.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-48ffa3e5b9d089919c6712c39e5b00f2.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-baf7457b58093534c7052efdef5f4d86.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
+<script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-week8.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic Inferential Statistics</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">SLAT7855 – Statistics for Linguists</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-week1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-week2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Hypotheses and Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-week3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Significance, Probability and the Normal Distribution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-week4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting Started with R and RStudio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-week5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Tables in R and RStudio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-week6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-week7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Data Visualization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-week8.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic Inferential Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-week9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-week10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-week11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">(Different) Types of Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-week12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mixed-Effects Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-week13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Tree-Based Models, Machine Learning, and AI</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#pearsonss-chi-square-test" id="toc-pearsonss-chi-square-test" class="nav-link active" data-scroll-target="#pearsonss-chi-square-test"><span class="header-section-number">8.1</span> (Pearsons’s) Chi-Square Test</a>
+  <ul class="collapse">
+  <li><a href="#effect-sizes-in-chi-square" id="toc-effect-sizes-in-chi-square" class="nav-link" data-scroll-target="#effect-sizes-in-chi-square"><span class="header-section-number">8.1.1</span> Effect Sizes in Chi-Square</a></li>
+  <li><a href="#chi-square-in-r" id="toc-chi-square-in-r" class="nav-link" data-scroll-target="#chi-square-in-r"><span class="header-section-number">8.1.2</span> Chi-Square in R</a></li>
+  <li><a href="#summarizing-chi-square-results" id="toc-summarizing-chi-square-results" class="nav-link" data-scroll-target="#summarizing-chi-square-results"><span class="header-section-number">8.1.3</span> Summarizing Chi-Square Results</a></li>
+  <li><a href="#requirements-of-chi-square" id="toc-requirements-of-chi-square" class="nav-link" data-scroll-target="#requirements-of-chi-square"><span class="header-section-number">8.1.4</span> Requirements of Chi-Square</a></li>
+  </ul></li>
+  <li><a href="#students-t-test" id="toc-students-t-test" class="nav-link" data-scroll-target="#students-t-test"><span class="header-section-number">8.2</span> Student’s t-test</a>
+  <ul class="collapse">
+  <li><a href="#theoretical-underpinnings-power-effect-size-and-variability" id="toc-theoretical-underpinnings-power-effect-size-and-variability" class="nav-link" data-scroll-target="#theoretical-underpinnings-power-effect-size-and-variability">Theoretical underpinnings: power, effect size, and variability</a></li>
+  <li><a href="#paired-t-test" id="toc-paired-t-test" class="nav-link" data-scroll-target="#paired-t-test"><span class="header-section-number">8.2.1</span> Paired t-test</a></li>
+  <li><a href="#independent-t-tests" id="toc-independent-t-tests" class="nav-link" data-scroll-target="#independent-t-tests"><span class="header-section-number">8.2.2</span> Independent t-tests</a></li>
+  </ul></li>
+  <li><a href="#mann-whitney-u-test" id="toc-mann-whitney-u-test" class="nav-link" data-scroll-target="#mann-whitney-u-test"><span class="header-section-number">8.3</span> Mann-Whitney U-Test</a>
+  <ul class="collapse">
+  <li><a href="#mann-whitney-u-tests-with-continuity-correction" id="toc-mann-whitney-u-tests-with-continuity-correction" class="nav-link" data-scroll-target="#mann-whitney-u-tests-with-continuity-correction">Mann-Whitney U tests with continuity correction</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="week8" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic Inferential Statistics</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What This Session Covers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This session introduces the first inferential statistical tests - procedures for deciding whether observed differences are likely to reflect real effects.</p>
+<ol type="1">
+<li><strong>The chi-square test</strong> - testing associations between categorical variables, assumptions, and effect sizes (Cramér’s V / phi)</li>
+<li><strong>Student’s t-test</strong> - comparing two group means, assumptions, and Cohen’s d</li>
+<li><strong>The Mann-Whitney U-test</strong> - the non-parametric alternative when t-test assumptions are violated</li>
+<li><strong>Reporting results</strong> - how to report test statistics, degrees of freedom, p-values, and effect sizes</li>
+</ol>
+</div>
+</div>
+<p>This tutorial introduces basic inferential procedures for null-hypothesis hypothesis testing. AS such, this tutorial aims at discussing basic concepts of inferential statistics, explaining the conceptual underpinnings of the most commonly used tests (such as t-tests and <span class="math inline">\(\chi^2\)</span>-tests), and showcasing how to implement these statistical tests in R.</p>
+<p>We start the tutorial by getting to know the most common test used in the language sciences to perform null-hypothesis hypothesis testing: (Pearsons’s) <span class="math inline">\(\chi\)</span><sup>2</sup> test. The next part of this tutorial then focuses on independent and dependent t-tests which are the most basic parametric test while the last part of the tutorial introduces the Mann-Whitney U -test which is a rank-based test.</p>
+<section id="pearsonss-chi-square-test" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="pearsonss-chi-square-test"><span class="header-section-number">8.1</span> (Pearsons’s) Chi-Square Test</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key concept: Test statistic, degrees of freedom, and effect size
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every significance test produces a <em>test statistic</em> (χ², <em>t</em>, <em>U</em>, …) that quantifies how far the data deviate from what the null hypothesis predicts, and the <em>degrees of freedom</em> describe how much independent information the data contain. Together they yield the <em>p</em>-value. But significance alone is not enough: with large samples, even trivially small differences become significant. Always complement the <em>p</em>-value with an <em>effect size</em> (e.g.&nbsp;Cramér’s V for chi-square, Cohen’s <em>d</em> for t-tests), which quantifies how <em>large</em> - and thus how meaningful - the effect is.</p>
+</div>
+</div>
+<p>One of the most frequently used statistical test in linguistics is the <span class="math inline">\(\chi\)</span><sup>2</sup> test (or Pearsons’s chi-square test, chi-squared test, or chi-square test). We will use a simple, practical example to explore how this test works. In this example, we will test whether speakers of American English (AmE) and speakers of British English (BrE) differ in their use of the near-synonyms <em>sort of</em> and <em>kind of</em> as in “<em>He’s sort of stupid</em>” and “<em>He’s kind of stupid</em>”. As a first step, we formulate the hypothesis that we want to test (H<sub>1</sub>) and its null hypothesis (H<sub>0</sub>). The alternative- or test hypothesis reads:</p>
+<p>H<sub>1</sub>: Speakers of AmE and BrE differ with respect to their preference for <em>sort of</em> and <em>kind of</em>.</p>
+<p>while the Null Hypothesis (H<sub>0</sub>) states</p>
+<p>H<sub>0</sub>: Speakers of AmE and BrE do not differ with respect to their preference for <em>sort of</em> and <em>kind of</em>.</p>
+<p>The H<sub>0</sub> claims the non-existence of something (which is the more conservative position) and in our example the non-existence of a correlation between variety of English and the use of <em>sort of</em> and <em>kind of</em>. The question now arises what has to be the case in order to reject the H<sub>0</sub> in favor of the H<sub>1</sub>.</p>
+<p>To answer this question, we require information about the probability of error, i.e.&nbsp;the probability that the H<sub>0</sub> does indeed hold for the entire population. Before performing the chi-square test, we follow the convention that the required significance level is 5 percent. In other words, we will reject the H<sub>0</sub> if the likelihood for the H<span class="math inline">\(_{0}\)</span> being true is less than 5 percent given the distribution of the data. In that case, i.e.&nbsp;in case that the likelihood for the H<sub>0</sub> being true is less than 5 percent, we consider the result of the chi-square test as statistically significant. This means that the observed distribution makes it very unlikely that there is no correlation between the variety of English and the use of <em>sort of</em> and <em>kind of</em>.</p>
+<p>Let us now assume that we have performed a search for <em>sort of</em> and <em>kind of</em> in two corpora representing American and British English and that we have obtained the following frequencies:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-42a0e912{table-layout:auto;width:75%;}.cl-4295968e{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-429596ac{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-429a735c{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-429a7370{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-429aaa84{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-429aaa8e{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-429aaa98{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-429aaa99{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-429aaaa2{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-429aaaa3{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-429aaaac{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-429aaaad{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-429aaab6{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-42a0e912"><thead><tr style="overflow-wrap:break-word;"><th class="cl-429aaa84"><p class="cl-429a735c"><span class="cl-4295968e">Hedge</span></p></th><th class="cl-429aaa8e"><p class="cl-429a7370"><span class="cl-4295968e">BrE</span></p></th><th class="cl-429aaa98"><p class="cl-429a7370"><span class="cl-4295968e">AmE</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-429aaa99"><p class="cl-429a735c"><span class="cl-429596ac">kindof</span></p></td><td class="cl-429aaaa2"><p class="cl-429a7370"><span class="cl-429596ac">181</span></p></td><td class="cl-429aaaa3"><p class="cl-429a7370"><span class="cl-429596ac">655</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-429aaaac"><p class="cl-429a735c"><span class="cl-429596ac">sortof</span></p></td><td class="cl-429aaaad"><p class="cl-429a7370"><span class="cl-429596ac">177</span></p></td><td class="cl-429aaab6"><p class="cl-429a7370"><span class="cl-429596ac">67</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>In a first step, we now have to calculate the row and column sums of our table.</p>
+<div class="tabwid"><style>.cl-42be7838{table-layout:auto;width:75%;}.cl-42b4381e{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-42b43828{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-42b73b68{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-42b73b72{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-42b7599a{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42b759a4{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42b759a5{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42b759ae{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42b759af{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42b759b8{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42b759b9{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42b759ba{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42b759c2{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42b759c3{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42b759cc{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42b759cd{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-42be7838"><thead><tr style="overflow-wrap:break-word;"><th class="cl-42b7599a"><p class="cl-42b73b68"><span class="cl-42b4381e">Hedge</span></p></th><th class="cl-42b759a4"><p class="cl-42b73b72"><span class="cl-42b4381e">BrE</span></p></th><th class="cl-42b759a4"><p class="cl-42b73b72"><span class="cl-42b4381e">AmE</span></p></th><th class="cl-42b759a5"><p class="cl-42b73b72"><span class="cl-42b4381e">Total</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-42b759ae"><p class="cl-42b73b68"><span class="cl-42b43828">kindof</span></p></td><td class="cl-42b759af"><p class="cl-42b73b72"><span class="cl-42b43828">181</span></p></td><td class="cl-42b759af"><p class="cl-42b73b72"><span class="cl-42b43828">655</span></p></td><td class="cl-42b759b8"><p class="cl-42b73b72"><span class="cl-42b43828">836</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42b759b9"><p class="cl-42b73b68"><span class="cl-42b43828">sortof</span></p></td><td class="cl-42b759ba"><p class="cl-42b73b72"><span class="cl-42b43828">177</span></p></td><td class="cl-42b759ba"><p class="cl-42b73b72"><span class="cl-42b43828">67</span></p></td><td class="cl-42b759c2"><p class="cl-42b73b72"><span class="cl-42b43828">244</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42b759c3"><p class="cl-42b73b68"><span class="cl-42b43828">Total</span></p></td><td class="cl-42b759cc"><p class="cl-42b73b72"><span class="cl-42b43828">358</span></p></td><td class="cl-42b759cc"><p class="cl-42b73b72"><span class="cl-42b43828">722</span></p></td><td class="cl-42b759cd"><p class="cl-42b73b72"><span class="cl-42b43828">1,080</span></p></td></tr></tbody></table></div>
+<p>Next, we calculate, the values that would have expected if there was no correlation between variety of English and the use of <em>sort of</em> and <em>kind of</em>. In order to get these <em>expected</em> frequencies, we apply the equation below to all cells in our table.</p>
+<p><span class="math display">\[\begin{equation}
+\frac{Column total*Row total}{Overall total}
+\end{equation}\]</span></p>
+<p>In our example this means that for the cell with <code>[+]BrE</code> <code>[+]kindof</code> we get:</p>
+<p><span class="math display">\[\begin{equation}
+\frac{836*358}{1080} = \frac{299288}{1080} = 277.1185
+\end{equation}\]</span></p>
+<p>For the entire table this means we get the following expected values:</p>
+<div class="tabwid"><style>.cl-4304204a{table-layout:auto;width:75%;}.cl-42f44a76{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-42f44a94{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-42fa8abc{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-42fa8ada{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-42fadb8e{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42fadb98{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42fadba2{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42fadba3{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42fadbb6{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42fadbc0{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42fadbc1{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42fadbca{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42fadbd4{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42fadbd5{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42fadbde{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-42fadbe8{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-4304204a"><thead><tr style="overflow-wrap:break-word;"><th class="cl-42fadb8e"><p class="cl-42fa8abc"><span class="cl-42f44a76">Hedge</span></p></th><th class="cl-42fadb98"><p class="cl-42fa8ada"><span class="cl-42f44a76">BrE</span></p></th><th class="cl-42fadb98"><p class="cl-42fa8ada"><span class="cl-42f44a76">AmE</span></p></th><th class="cl-42fadba2"><p class="cl-42fa8ada"><span class="cl-42f44a76">Total</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-42fadba3"><p class="cl-42fa8abc"><span class="cl-42f44a94">kindof</span></p></td><td class="cl-42fadbb6"><p class="cl-42fa8ada"><span class="cl-42f44a94">277.11850</span></p></td><td class="cl-42fadbb6"><p class="cl-42fa8ada"><span class="cl-42f44a94">558.8815</span></p></td><td class="cl-42fadbc0"><p class="cl-42fa8ada"><span class="cl-42f44a94">836</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42fadbc1"><p class="cl-42fa8abc"><span class="cl-42f44a94">sortof</span></p></td><td class="cl-42fadbca"><p class="cl-42fa8ada"><span class="cl-42f44a94">80.88148</span></p></td><td class="cl-42fadbca"><p class="cl-42fa8ada"><span class="cl-42f44a94">163.1185</span></p></td><td class="cl-42fadbd4"><p class="cl-42fa8ada"><span class="cl-42f44a94">244</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-42fadbd5"><p class="cl-42fa8abc"><span class="cl-42f44a94">Total</span></p></td><td class="cl-42fadbde"><p class="cl-42fa8ada"><span class="cl-42f44a94">358.00000</span></p></td><td class="cl-42fadbde"><p class="cl-42fa8ada"><span class="cl-42f44a94">722.0000</span></p></td><td class="cl-42fadbe8"><p class="cl-42fa8ada"><span class="cl-42f44a94">1,080</span></p></td></tr></tbody></table></div>
+<p>In a next step, we calculate the contribution of each cell to the overall <span class="math inline">\(\chi\)</span><sup>2</sup> value (<span class="math inline">\(\chi\)</span><sup>2</sup> contribution). To get <span class="math inline">\(\chi\)</span><sup>2</sup> contribution for each cell, we apply the equation below to each cell.</p>
+<p><span class="math display">\[\begin{equation}
+\frac{(observed – expected)^{2}}{expected}
+\end{equation}\]</span></p>
+<p>In our example this means that for the cell with <code>[+]BrE</code> <code>[+]kindof</code> we get:</p>
+<p><span class="math display">\[\begin{equation}
+\frac{(181 – 277.1185)^{2}}{277.1185} = \frac{-96.1185^{2}}{277.1185} = \frac{9238.766}{277.1185} = 33.33868
+\end{equation}\]</span></p>
+<p>For the entire table this means we get the following <span class="math inline">\(\chi^{2}\)</span> values:</p>
+<div class="tabwid"><style>.cl-4327f27c{table-layout:auto;width:75%;}.cl-431a4b18{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-431a4b2c{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-431f351a{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-431f3524{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-431f6f62{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-431f6f6c{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-431f6f76{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-431f6f80{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-431f6f81{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-431f6f8a{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-431f6f8b{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-431f6f94{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-431f6f95{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-431f6f9e{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-431f6f9f{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-431f6fa8{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-4327f27c"><thead><tr style="overflow-wrap:break-word;"><th class="cl-431f6f62"><p class="cl-431f351a"><span class="cl-431a4b18">Hedge</span></p></th><th class="cl-431f6f6c"><p class="cl-431f3524"><span class="cl-431a4b18">BrE</span></p></th><th class="cl-431f6f6c"><p class="cl-431f3524"><span class="cl-431a4b18">AmE</span></p></th><th class="cl-431f6f76"><p class="cl-431f3524"><span class="cl-431a4b18">Total</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-431f6f80"><p class="cl-431f351a"><span class="cl-431a4b2c">kindof</span></p></td><td class="cl-431f6f81"><p class="cl-431f3524"><span class="cl-431a4b2c">33.33869</span></p></td><td class="cl-431f6f81"><p class="cl-431f3524"><span class="cl-431a4b2c">16.53082</span></p></td><td class="cl-431f6f8a"><p class="cl-431f3524"><span class="cl-431a4b2c">49.86951</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-431f6f8b"><p class="cl-431f351a"><span class="cl-431a4b2c">sortof</span></p></td><td class="cl-431f6f94"><p class="cl-431f3524"><span class="cl-431a4b2c">114.22602</span></p></td><td class="cl-431f6f94"><p class="cl-431f3524"><span class="cl-431a4b2c">56.63839</span></p></td><td class="cl-431f6f95"><p class="cl-431f3524"><span class="cl-431a4b2c">170.86440</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-431f6f9e"><p class="cl-431f351a"><span class="cl-431a4b2c">Total</span></p></td><td class="cl-431f6f9f"><p class="cl-431f3524"><span class="cl-431a4b2c">147.56470</span></p></td><td class="cl-431f6f9f"><p class="cl-431f3524"><span class="cl-431a4b2c">73.16921</span></p></td><td class="cl-431f6fa8"><p class="cl-431f3524"><span class="cl-431a4b2c">220.73390</span></p></td></tr></tbody></table></div>
+<p>The sum of <span class="math inline">\(\chi\)</span><sup>2</sup> contributions in our example is 220.7339. To see if this value is statistically significant, we need to calculate the degrees of freedom because the <span class="math inline">\(\chi\)</span> distribution differs across degrees of freedom. Degrees of freedom are calculated according to the equation below.</p>
+<p><span class="math display">\[\begin{equation}
+DF = (rows -1) * (columns – 1) = (2-1) * (2-1) = 1 * 1 = 1
+\end{equation}\]</span></p>
+<p>In a last step, we check whether the <span class="math inline">\(\chi\)</span><sup>2</sup> value that we have calculated is higher than a critical value (in which case the correlation in our table is significant). Degrees of freedom are relevant here because the critical values are dependent upon the degrees of freedom: the more degrees of freedom, the higher the critical value, i.e.&nbsp;the harder it is to breach the level of significance.</p>
+<p><strong>But why do the degrees of freedom matter?</strong></p>
+<p>The simple answer is that the <span class="math inline">\(\chi\)</span>-distribution differs based on the degrees of freedom which then affects the probability of a <span class="math inline">\(\chi\)</span>-value. Have a look at the graph below to see how the degrees of freedom affect the shape of the <span class="math inline">\(\chi\)</span>-distribution.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-week8_files/figure-html/chidist-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Since there is only 1 degree of freedom in our case, we need to check the critical <span class="math inline">\(\chi\)</span>-value foe 1 degree of freedom and a significance level of <span class="math inline">\(\alpha\)</span> = 5 percent.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qchisq</span>(<span class="at">p=</span>.<span class="dv">05</span>, <span class="at">df=</span><span class="dv">1</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.841459</code></pre>
+</div>
+</div>
+<p>What does this critical value mean?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-week8_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The critical values shows that if we get a value higher than the critical value, we have to reject our H<sub>0</sub> and can consider our result to be statistically significant because the likelihood of obtaining our or a more extreme result is lower than 5%.</p>
+<p>You can also check the critical values in the table below. as we are dealing with 1 degree of freedom, only the first column in the table of critical values below is relevant for us.</p>
+<div class="tabwid"><style>.cl-4478c4ee{table-layout:auto;width:75%;}.cl-446c7860{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-446c7874{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-44718684{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-4471b5be{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4471b5c8{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4471b5d2{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4471b5dc{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4471b5e6{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4471b5f0{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4471b5f1{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4471b5fa{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4471b5fb{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4471b5fc{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4471b604{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4471b605{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-4478c4ee"><thead><tr style="overflow-wrap:break-word;"><th class="cl-4471b5be"><p class="cl-44718684"><span class="cl-446c7860">DF</span></p></th><th class="cl-4471b5c8"><p class="cl-44718684"><span class="cl-446c7860">p&lt;.05</span></p></th><th class="cl-4471b5c8"><p class="cl-44718684"><span class="cl-446c7860">p&lt;.01</span></p></th><th class="cl-4471b5d2"><p class="cl-44718684"><span class="cl-446c7860">p&lt;.001</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-4471b5dc"><p class="cl-44718684"><span class="cl-446c7874">1</span></p></td><td class="cl-4471b5e6"><p class="cl-44718684"><span class="cl-446c7874">3.84</span></p></td><td class="cl-4471b5e6"><p class="cl-44718684"><span class="cl-446c7874">6.64</span></p></td><td class="cl-4471b5f0"><p class="cl-44718684"><span class="cl-446c7874">10.83</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4471b5f1"><p class="cl-44718684"><span class="cl-446c7874">2</span></p></td><td class="cl-4471b5fa"><p class="cl-44718684"><span class="cl-446c7874">5.99</span></p></td><td class="cl-4471b5fa"><p class="cl-44718684"><span class="cl-446c7874">9.21</span></p></td><td class="cl-4471b5fb"><p class="cl-44718684"><span class="cl-446c7874">13.82</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4471b5dc"><p class="cl-44718684"><span class="cl-446c7874">3</span></p></td><td class="cl-4471b5e6"><p class="cl-44718684"><span class="cl-446c7874">7.82</span></p></td><td class="cl-4471b5e6"><p class="cl-44718684"><span class="cl-446c7874">11.35</span></p></td><td class="cl-4471b5f0"><p class="cl-44718684"><span class="cl-446c7874">16.27</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4471b5f1"><p class="cl-44718684"><span class="cl-446c7874">4</span></p></td><td class="cl-4471b5fa"><p class="cl-44718684"><span class="cl-446c7874">9.49</span></p></td><td class="cl-4471b5fa"><p class="cl-44718684"><span class="cl-446c7874">13.28</span></p></td><td class="cl-4471b5fb"><p class="cl-44718684"><span class="cl-446c7874">18.47</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4471b5fc"><p class="cl-44718684"><span class="cl-446c7874">5</span></p></td><td class="cl-4471b604"><p class="cl-44718684"><span class="cl-446c7874">11.07</span></p></td><td class="cl-4471b604"><p class="cl-44718684"><span class="cl-446c7874">15.09</span></p></td><td class="cl-4471b605"><p class="cl-44718684"><span class="cl-446c7874">20.52</span></p></td></tr></tbody></table></div>
+<p>Since the <span class="math inline">\(\chi\)</span><sup>2</sup> value that we have calculated is much higher than the critical value provided for p&lt;.05, we can reject the H<sub>0</sub> and may now claim that speakers of AmE and BrE differ with respect to their preference for <em>sort of</em> and <em>kind of</em>.</p>
+<p>Before we summarize the results, we will calculate the effect size which is a measure for how strong the correlations are.</p>
+<section id="effect-sizes-in-chi-square" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="effect-sizes-in-chi-square"><span class="header-section-number">8.1.1</span> Effect Sizes in Chi-Square</h3>
+<p>Effect sizes are important because they correlations may be highly significant but the effect between variables can be extremely weak. The effect size is therefore a measure how strong the correlation or the explanatory and predictive power between variables is.</p>
+<p>The effect size measure for <span class="math inline">\(\chi\)</span><sup>2</sup> tests can be either the <span class="math inline">\(\phi\)</span>-coefficient (phi-coefficient) or Cramer’s <span class="math inline">\(\phi\)</span> (Cramer’s phi). The <span class="math inline">\(\phi\)</span>-coefficient is used when dealing with 2x2 tables while Cramer’s <span class="math inline">\(\phi\)</span> is used when dealing with tables with more than 4 cells. The <span class="math inline">\(\phi\)</span> coefficient can be calculated by using the equation below (N = overall sample size).</p>
+<p><span class="math display">\[\begin{equation}
+\phi = \sqrt{\frac{\chi^{2}}{N}}
+\end{equation}\]</span></p>
+<p>In our case, this means:</p>
+<p><span class="math display">\[\begin{equation}
+\phi = \sqrt{\frac{220.7339}{1080}} = \sqrt{0.2043832} = 0.4520876
+\end{equation}\]</span></p>
+<p>The <span class="math inline">\(\phi\)</span> coefficient varies between 0 (no effect) and 1 (perfect correlation). For the division into weak, moderate and strong effects one can follow the division for <span class="math inline">\(\omega\)</span> (small omega), so that with values beginning with .1 represent weak, values between 0.3 and .5 represent moderate and values above .5 represent strong effects <span class="citation" data-cites="buehner2009statistik">(<a href="#ref-buehner2009statistik" role="doc-biblioref">Bühner and Ziegler 2009, 266</a>)</span>. So, in this example we are dealing with a medium-sized effect/correlation.</p>
+</section>
+<section id="chi-square-in-r" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="chi-square-in-r"><span class="header-section-number">8.1.2</span> Chi-Square in R</h3>
+<p>Before we summarize the results, we will see how to perform a chi-square test in R. In addition to what we have done above, we will also visualize the data. To begin with, we will have a look at the data set (which is the same data we have used above).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-44a590d2{table-layout:auto;width:75%;}.cl-4493d888{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4493d89c{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-449b1ecc{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-449b1ee0{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-449b69f4{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-449b6a08{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-449b6a12{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-449b6a13{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-449b6a1c{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-449b6a1d{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-449b6a26{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-449b6a30{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-449b6a31{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-44a590d2"><thead><tr style="overflow-wrap:break-word;"><th class="cl-449b69f4"><p class="cl-449b1ecc"><span class="cl-4493d888">Hedge</span></p></th><th class="cl-449b6a08"><p class="cl-449b1ee0"><span class="cl-4493d888">BrE</span></p></th><th class="cl-449b6a12"><p class="cl-449b1ee0"><span class="cl-4493d888">AmE</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-449b6a13"><p class="cl-449b1ecc"><span class="cl-4493d89c">kindof</span></p></td><td class="cl-449b6a1c"><p class="cl-449b1ee0"><span class="cl-4493d89c">181</span></p></td><td class="cl-449b6a1d"><p class="cl-449b1ee0"><span class="cl-4493d89c">655</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-449b6a26"><p class="cl-449b1ecc"><span class="cl-4493d89c">sortof</span></p></td><td class="cl-449b6a30"><p class="cl-449b1ee0"><span class="cl-4493d89c">177</span></p></td><td class="cl-449b6a31"><p class="cl-449b1ee0"><span class="cl-4493d89c">67</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>We will now visualize the data with an association. Bars above the dashed line indicate that a feature combination occurs more frequently than expected by chance. The width of the bars indicates the frequency of the feature combination.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">assocplot</span>(<span class="fu">as.matrix</span>(chidata))   <span class="co"># association plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-week8_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The fact that the bars are distributed complimentary (top left red and below bar; top right black above bar; bottom left black above bar; bottom right red below bar) indicates that the use of <em>sort of</em> and <em>kind of</em> differs across AmE and BrE. We will check whether the mosaic plot confirms this impression.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(chidata, <span class="at">shade =</span> <span class="cn">TRUE</span>, <span class="at">type =</span> <span class="st">"pearson"</span>, <span class="at">main =</span> <span class="st">""</span>)  <span class="co"># mosaic plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-week8_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The color contrasts in the mosaic plot substantiate the impression that the two varieties of English differ significantly. To ascertain whether the differences are statistically significant, we can now apply the chi-square test.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># perform chi square test without Yate's correction</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(chidata, <span class="at">corr =</span> F)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  chidata
+X-squared = 220.73, df = 1, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>The results reported by <code>R</code> are identical to the results we derived by hand and confirm that BrE and AmE differ significantly in their use of <em>sort of</em> and <em>kind of</em>.</p>
+<p>In a next step, we calculate the effect size.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate effect size</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">chisq.test</span>(chidata, <span class="at">corr =</span> F)<span class="sc">$</span>statistic <span class="sc">/</span> <span class="fu">sum</span>(chidata) <span class="sc">*</span> (<span class="fu">min</span>(<span class="fu">dim</span>(chidata))<span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>X-squared 
+0.4520877 </code></pre>
+</div>
+</div>
+<p>The <span class="math inline">\(\phi\)</span> coefficient of .45 shows that variety of English correlates moderately with the use of <em>sort of</em> and <em>kind of</em>. We will now summarize the results.</p>
+</section>
+<section id="summarizing-chi-square-results" class="level3" data-number="8.1.3">
+<h3 data-number="8.1.3" class="anchored" data-anchor-id="summarizing-chi-square-results"><span class="header-section-number">8.1.3</span> Summarizing Chi-Square Results</h3>
+<p>The results of our analysis can be summarized as follows: A <span class="math inline">\(\chi\)</span><sup>2</sup>-test confirms a highly significant correlation of moderate size between the variety of English and the use of the near-synonymous hedges <em>sort of</em> and <em>kind of</em> (<span class="math inline">\(\chi\)</span><sup>2</sup> = 220.73, df = 1, p &lt; .001***, <span class="math inline">\(\phi\)</span> = .452).</p>
+</section>
+<section id="requirements-of-chi-square" class="level3" data-number="8.1.4">
+<h3 data-number="8.1.4" class="anchored" data-anchor-id="requirements-of-chi-square"><span class="header-section-number">8.1.4</span> Requirements of Chi-Square</h3>
+<p>Chi-square tests depend on certain requirements that, if violated, negatively affect the reliability of the results of the test. To provide reliable results,</p>
+<ul>
+<li>80 percent of cells in a table to which the chi-square test is applied have to have expected values of 5 or higher and at most 20 percent of expected values can be smaller than 5 <span class="citation" data-cites="bortz109verteilungsfreie">(see <a href="#ref-bortz109verteilungsfreie" role="doc-biblioref">Bortz, Lienert, and Boehnke 1990, 98</a>)</span><br>
+</li>
+<li>none of the expected values can be smaller than 1 <span class="citation" data-cites="bortz109verteilungsfreie">(see <a href="#ref-bortz109verteilungsfreie" role="doc-biblioref">Bortz, Lienert, and Boehnke 1990, 136</a>)</span> because then, the estimation, which relies on the <span class="math inline">\(\chi\)</span><sup>2</sup>-distribution, becomes too imprecise to allow meaningful inferences <span class="citation" data-cites="cochran1954somemethods">(<a href="#ref-cochran1954somemethods" role="doc-biblioref">Cochran 1954</a>)</span>.</li>
+</ul>
+<p>If these requirements are violated, then the <em>Fisher’s Exact Test</em> is more reliable and offers the additional advantage that these tests can also be applied to data that represent very small sample sizes. When applying the Fisher’s Exact Test, the probabilities for all possible outcomes are calculated and the summed probability for the observed or more extreme results are determined. If this sum of probabilities exceeds five percent, then the result is deemed statistically significant.</p>
+</section>
+</section>
+<section id="students-t-test" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="students-t-test"><span class="header-section-number">8.2</span> Student’s t-test</h2>
+<p>There are two basic types of t-tests: the dependent or paired t-test and the independent t-test. Paired t-test are used when the data points are not independent, for example, because they come form the same subjects in a pre-post test design. In contrast, Independent t-tests are used when the data points are independent and come from two different groups (e.g., from learners and native speakers or from men and women).</p>
+<p>The assumptions of the Student’s t-test are that</p>
+<ul>
+<li>the dependent variable is a continuous, numeric variable;</li>
+<li>the independent variable is a nominal variable (two levels / groups)</li>
+<li>the variances within each group are approximately normal;</li>
+<li>the errors within each group are approximately normal (this implies that the distributions of the scores of each group are approximately normal).</li>
+</ul>
+<p>If the variances are not normal, then this indicates that another important variable is confounding the results. In such cases, you should go back to the data and check what other variable could cause the unequal variances. If you decide to proceed with the analysis, you can switch to a Welch t-test which does not assume equal variances within each group.</p>
+<section id="theoretical-underpinnings-power-effect-size-and-variability" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="theoretical-underpinnings-power-effect-size-and-variability">Theoretical underpinnings: power, effect size, and variability</h3>
+<p>Remember that we use t-tests to determine if two groups differ significantly. However, what determines if we find a significant difference? Let us explore this issue in a but more detail and let’s have a look at some distributions to understand what is going on…</p>
+<section id="effect-size" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="effect-size">Effect size</h4>
+<p>And let’s start with trying to understand what role effect size plays in finding a significant difference. To this end, we will create numeric vectors for two groups with varying effect size.</p>
+<p>Let us start with the distribution of two samples (N = 30) sampled from the same population.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distplot</span>(<span class="at">mean1 =</span> <span class="dv">100</span>, <span class="at">mean2 =</span> <span class="dv">100</span>, <span class="at">sd1 =</span> <span class="dv">10</span>, <span class="at">n =</span> <span class="dv">30</span>, <span class="at">pop =</span> <span class="st">"the same population"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-week8_files/figure-html/displot1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note that the means are not identical ( the blue and red dots) and we would assume that there may actually be a difference between the groups (i.e., that they are sampled from two different populations). In such cases (and assuming that we actually do not know the population parameters as we do here), we cannot determine if the insignificant result reported by the t-test is due there being no effect or that the result is insignificant because the sample(s) are too small!</p>
+<p>Now, lets have a look at at the distribution of two different groups (group has a weak effect, Cohen’s <em>d</em> = .2)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distplot</span>(<span class="at">mean1 =</span> <span class="dv">99</span>, <span class="at">mean2 =</span> <span class="dv">101</span>, <span class="at">sd1 =</span> <span class="dv">10</span>, <span class="at">n =</span> <span class="dv">30</span>, <span class="at">d =</span> .<span class="dv">2</span>, <span class="at">effect =</span> <span class="st">"weak"</span>, <span class="at">seed =</span> <span class="dv">111</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-week8_files/figure-html/weak-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here, there is actually a difference between the populations form which we have sampled the groups but the t-test fails to confirm that there is a significant difference between the groups (because of the small sample size, the weak effect size, and the variability in the data).</p>
+<p>Now, let’s have a look at at the distribution of two different groups (group has a medium effect, Cohen’s <em>d</em> = .5)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distplot</span>(<span class="at">mean1 =</span> <span class="fl">97.5</span>, <span class="at">mean2 =</span> <span class="fl">102.5</span>, <span class="at">sd1 =</span> <span class="dv">10</span>, <span class="at">n =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">effect =</span> <span class="st">"medium"</span>, <span class="at">seed =</span> <span class="dv">234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-week8_files/figure-html/medium-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here we see that the t-test is actually able to detect the difference (meaning that the sample size was sufficient to detect a medium effect <strong>in this case</strong>. However, the p-value is barely below .05 and we could ask ourselves if we just got lucky or if we would be able to detect the difference with confidence.</p>
+<p>Now, lets have a look at at the distribution of two different groups (group has a strong effect, Cohen’s <em>d</em> = .8)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distplot</span>(<span class="at">mean1 =</span> <span class="dv">96</span>, <span class="at">mean2 =</span> <span class="dv">104</span>, <span class="at">sd1 =</span> <span class="dv">10</span>, <span class="at">n =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="fl">0.8</span>, <span class="at">effect =</span> <span class="st">"strong"</span>, <span class="at">seed =</span> <span class="dv">444</span>, <span class="at">ylim =</span> <span class="fl">0.08</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-week8_files/figure-html/strong-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here the situation is pretty clear cut and given the strong effect, the t-test is able to confirm the difference. Given the substantive difference in the means, it would be very likely that a t-test would repeatedly confirm this difference if we continued to draw samples.</p>
+<p><strong>From the above, we can conclude that if variability and sample size remain constant, larger effects are easier to detect than smaller effects!</strong></p>
+</section>
+<section id="sample-size" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="sample-size">Sample size</h4>
+<p>And let’s now look at sample size. In a first example, we draw two samples of 30 observations each. The populations from which the samples are drawn differ with a medium effect size for the difference between groups.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distplot</span>(<span class="at">mean1 =</span> <span class="fl">97.5</span>, <span class="at">mean2 =</span> <span class="fl">102.5</span>, <span class="at">sd1 =</span> <span class="dv">10</span>, <span class="at">n =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">effect =</span> <span class="st">"medium"</span>, <span class="at">seed =</span> <span class="dv">555</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-week8_files/figure-html/n30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The t-test reports a non-significant result (which is wrong as we know that the populations differ!). This means that we are dealing with a <span class="math inline">\(\beta\)</span>-error (not detecting an effect although it is there).</p>
+<p>Let us now increase the sample size to N = 50.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distplot</span>(<span class="at">mean1 =</span> <span class="fl">97.5</span>, <span class="at">mean2 =</span> <span class="fl">102.5</span>, <span class="at">sd1 =</span> <span class="dv">10</span>, <span class="at">n =</span> <span class="dv">50</span>, <span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">effect =</span> <span class="st">"medium"</span>, <span class="at">seed =</span> <span class="dv">888</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-week8_files/figure-html/n50-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now the result is clearly significant which means: <strong>If variability and effect size remain constant, effects are easier to detect with increasing sample size!</strong></p>
+</section>
+<section id="variability" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="variability">Variability</h4>
+<p>And let’s now look at variability. Again, we start with a sample size of 30, a medium effect size and equal variances.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distplot</span>(<span class="at">mean1 =</span> <span class="fl">97.5</span>, <span class="at">mean2 =</span> <span class="fl">102.5</span>, <span class="at">sd1 =</span> <span class="dv">10</span>, <span class="at">n =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">effect =</span> <span class="st">"medium"</span>, <span class="at">seed =</span> <span class="dv">345</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-week8_files/figure-html/sd10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Although we are dealing with a medium effect size, the t-test tells us that the samples do not differ significantly (due to the low sample size and the high variability in the data).</p>
+<p>Let’s decrease the variability to sd = 5.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distplot</span>(<span class="at">mean1 =</span> <span class="fl">97.5</span>, <span class="at">mean2 =</span> <span class="fl">102.5</span>, <span class="at">sd1 =</span> <span class="dv">5</span>, <span class="at">n =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">effect =</span> <span class="st">"medium"</span>, <span class="at">ylim =</span> <span class="fl">0.125</span>, <span class="at">seed =</span> <span class="dv">999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-week8_files/figure-html/sd5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now, the results is significant which means: <strong>If the sample and effect size remain constant, effects are easier to detect with decreasing variability!</strong></p>
+<p><strong>In summary</strong>, there are three main factors that determine if a model finds an effect. The accuracy (i.e., the probability of finding an effect):</p>
+<ul>
+<li>the size of the effect (bigger effects are easier to detect)</li>
+<li>the variability of the effect (less variability makes it easier to detect an effect), and</li>
+<li>the sample size (the bigger the sample size, the easier it is to detect an effect);
+<ul>
+<li>number of subjects/participants</li>
+<li>number of items/questions</li>
+<li>number of observations per item within subjects/participants</li>
+</ul></li>
+</ul>
+<p>Let us now continue with implementing t-tests in R.</p>
+</section>
+</section>
+<section id="paired-t-test" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="paired-t-test"><span class="header-section-number">8.2.1</span> Paired t-test</h3>
+<p>Paired t-tests take into account that the scores (or values) come from the same individuals in two conditions (e.g.&nbsp;before and after a treatment).There are two equations for the paired t-test that are used.</p>
+<p><span class="math display">\[\begin{equation}
+t = \frac{\sum D}{\sqrt{\frac{N \sum D^2 - (\sum D)^2}{N-1}}}
+\end{equation}\]</span></p>
+<p>or</p>
+<p><span class="math display">\[\begin{equation}
+t = \frac{\bar D}{\frac{s_D}{\sqrt{N}}}
+\end{equation}\]</span></p>
+<p>To show how a paired t-tests works, we will test if a treatment (a teaching method) reduces the number of spelling errors in a long essay of 6 students. In a first step, we generate some data representing the errors in two essays of the same length written before and after the teaching method was used for 8 weeks.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Pretest <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">78</span>, <span class="dv">65</span>, <span class="dv">71</span>, <span class="dv">68</span>, <span class="dv">76</span>, <span class="dv">59</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>Posttest <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">71</span>, <span class="dv">62</span>, <span class="dv">70</span>, <span class="dv">60</span>, <span class="dv">66</span>, <span class="dv">48</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>ptd <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Pretest, Posttest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The data look like as shown in the table below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-4bfc835e{table-layout:auto;width:75%;}.cl-4be8b874{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4be8b892{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4bf03284{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-4bf090e4{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4bf090f8{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4bf09102{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4bf0910c{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4bf09116{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4bf09120{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4bf0912a{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4bf0912b{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-4bfc835e"><thead><tr style="overflow-wrap:break-word;"><th class="cl-4bf090e4"><p class="cl-4bf03284"><span class="cl-4be8b874">Pretest</span></p></th><th class="cl-4bf090f8"><p class="cl-4bf03284"><span class="cl-4be8b874">Posttest</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-4bf09102"><p class="cl-4bf03284"><span class="cl-4be8b892">78</span></p></td><td class="cl-4bf0910c"><p class="cl-4bf03284"><span class="cl-4be8b892">71</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4bf09116"><p class="cl-4bf03284"><span class="cl-4be8b892">65</span></p></td><td class="cl-4bf09120"><p class="cl-4bf03284"><span class="cl-4be8b892">62</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4bf09102"><p class="cl-4bf03284"><span class="cl-4be8b892">71</span></p></td><td class="cl-4bf0910c"><p class="cl-4bf03284"><span class="cl-4be8b892">70</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4bf09116"><p class="cl-4bf03284"><span class="cl-4be8b892">68</span></p></td><td class="cl-4bf09120"><p class="cl-4bf03284"><span class="cl-4be8b892">60</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4bf09102"><p class="cl-4bf03284"><span class="cl-4be8b892">76</span></p></td><td class="cl-4bf0910c"><p class="cl-4bf03284"><span class="cl-4be8b892">66</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4bf0912a"><p class="cl-4bf03284"><span class="cl-4be8b892">59</span></p></td><td class="cl-4bf0912b"><p class="cl-4bf03284"><span class="cl-4be8b892">48</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>Before performing the paired t-test, let us just briefly inspect the mans to see if the means of the pre- and post test differ:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ptd<span class="sc">$</span>Pretest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 69.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ptd<span class="sc">$</span>Posttest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 62.83333</code></pre>
+</div>
+</div>
+<p>The results show that the mean of the post-test is lower than the mean of the pre-test results.</p>
+<p>To perform a paired t-test in R, we use the <code>t.test</code> function and specify the argument <code>paired</code> as TRUE.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(ptd<span class="sc">$</span>Pretest,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>       ptd<span class="sc">$</span>Posttest,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired=</span><span class="cn">TRUE</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">conf.level=</span><span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  ptd$Pretest and ptd$Posttest
+t = 4.1523, df = 5, p-value = 0.00889
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+  2.539479 10.793854
+sample estimates:
+mean difference 
+       6.666667 </code></pre>
+</div>
+</div>
+<p>In addition to testing if the groups differ significantly, we also want to calculate the effect size of the difference. We can use the <code>effectsize</code> package to extract Cohen’s <span class="math inline">\(d\)</span> which is the standard effect size measure for t-tests.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(<span class="at">x =</span> ptd<span class="sc">$</span>Pretest, </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> ptd<span class="sc">$</span>Posttest,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cohen's d |       95% CI
+------------------------
+1.70      | [0.37, 2.96]</code></pre>
+</div>
+</div>
+<p>To check if the effect is small or big - that is if a Cohen’s <span class="math inline">\(d\)</span> value can be interpreted as being small or big, we can use the following overview.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-4c9ca208{table-layout:auto;width:75%;}.cl-4c8c2cde{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4c8c2cf2{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4c93c6ce{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-4c93c6e2{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-4c9425c4{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4c9425d8{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4c9425e2{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4c9425ec{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4c9425f6{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4c942600{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4c942601{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4c942614{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4c94261e{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4c942628{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4c942632{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4c942633{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-4c9ca208"><thead><tr style="overflow-wrap:break-word;"><th class="cl-4c9425c4"><p class="cl-4c93c6ce"><span class="cl-4c8c2cde">EffectSize</span></p></th><th class="cl-4c9425d8"><p class="cl-4c93c6e2"><span class="cl-4c8c2cde">d</span></p></th><th class="cl-4c9425e2"><p class="cl-4c93c6ce"><span class="cl-4c8c2cde">Reference</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-4c9425ec"><p class="cl-4c93c6ce"><span class="cl-4c8c2cf2">Very small</span></p></td><td class="cl-4c9425f6"><p class="cl-4c93c6e2"><span class="cl-4c8c2cf2">0.01</span></p></td><td class="cl-4c942600"><p class="cl-4c93c6ce"><span class="cl-4c8c2cf2">Sawilowsky (2009)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4c942601"><p class="cl-4c93c6ce"><span class="cl-4c8c2cf2">Small</span></p></td><td class="cl-4c942614"><p class="cl-4c93c6e2"><span class="cl-4c8c2cf2">0.20</span></p></td><td class="cl-4c94261e"><p class="cl-4c93c6ce"><span class="cl-4c8c2cf2">Cohen (1988)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4c9425ec"><p class="cl-4c93c6ce"><span class="cl-4c8c2cf2">Medium</span></p></td><td class="cl-4c9425f6"><p class="cl-4c93c6e2"><span class="cl-4c8c2cf2">0.50</span></p></td><td class="cl-4c942600"><p class="cl-4c93c6ce"><span class="cl-4c8c2cf2">Cohen (1988)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4c942601"><p class="cl-4c93c6ce"><span class="cl-4c8c2cf2">Large</span></p></td><td class="cl-4c942614"><p class="cl-4c93c6e2"><span class="cl-4c8c2cf2">0.80</span></p></td><td class="cl-4c94261e"><p class="cl-4c93c6ce"><span class="cl-4c8c2cf2">Cohen (1988)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4c9425ec"><p class="cl-4c93c6ce"><span class="cl-4c8c2cf2">Very large</span></p></td><td class="cl-4c9425f6"><p class="cl-4c93c6e2"><span class="cl-4c8c2cf2">1.20</span></p></td><td class="cl-4c942600"><p class="cl-4c93c6ce"><span class="cl-4c8c2cf2">Sawilowsky (2009)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4c942628"><p class="cl-4c93c6ce"><span class="cl-4c8c2cf2">Huge</span></p></td><td class="cl-4c942632"><p class="cl-4c93c6e2"><span class="cl-4c8c2cf2">2.00</span></p></td><td class="cl-4c942633"><p class="cl-4c93c6ce"><span class="cl-4c8c2cf2">Sawilowsky (2009)</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>The classification combines <span class="citation" data-cites="sawilowsky2009new">Sawilowsky (<a href="#ref-sawilowsky2009new" role="doc-biblioref">2009</a>)</span> and <span class="citation" data-cites="cohen1988statistical">Cohen (<a href="#ref-cohen1988statistical" role="doc-biblioref">1988</a>)</span>. The analysis can be summarized using the <code>reports</code> package <span class="citation" data-cites="report">(<a href="#ref-report" role="doc-biblioref">Makowski et al. 2021</a>)</span> as follows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(<span class="fu">t.test</span>(ptd<span class="sc">$</span>Pretest,ptd<span class="sc">$</span>Posttest, <span class="at">paired=</span><span class="cn">TRUE</span>, <span class="at">conf.level=</span><span class="fl">0.95</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Effect sizes were labelled following Cohen's (1988) recommendations.
+
+The Paired t-test testing the difference between ptd$Pretest and ptd$Posttest
+(mean difference = 6.67) suggests that the effect is positive, statistically
+significant, and large (difference = 6.67, 95% CI [2.54, 10.79], t(5) = 4.15, p
+= 0.009; Cohen's d = 1.70, 95% CI [0.37, 2.96])</code></pre>
+</div>
+</div>
+<p>We can use this output to write up a final report:</p>
+<p>A paired t-test test was applied to the data and it confirmed that the number of spelling errors after the 8 weeks of using the new teaching method significantly decreased (t<sub>5</sub>: 4.1523, p = .009**). The treatment had a very large, statistically significant, positive effect (Cohen’s <span class="math inline">\(d\)</span> = 1.70 [CIs: 0.41, 3.25]) <span class="citation" data-cites="sawilowsky2009new">(cf. <a href="#ref-sawilowsky2009new" role="doc-biblioref">Sawilowsky 2009</a>)</span>.</p>
+</section>
+<section id="independent-t-tests" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="independent-t-tests"><span class="header-section-number">8.2.2</span> Independent t-tests</h3>
+<p>Independent t-tests are used very widely and they determine if the means of two groups are significantly different. As such, t-tests are used when we have a normally distributed (or parametric), numeric dependent variable and a nominal predictor variable.</p>
+<p><span class="math display">\[\begin{equation}
+t = \frac{\bar X_1 - \bar X_2}{\sqrt{\frac{s^2_p}{N_1} + \frac{s^2_p}{N_2}}}
+\end{equation}\]</span></p>
+<p>where</p>
+<p><span class="math display">\[\begin{equation}
+s^2_p = \frac{(N_1 - 1)s^2_1 + (N_2 - 1)s^2_2}{N_1 + N_2 - 2}
+\end{equation}\]</span></p>
+<p>We now load some data that we can apply a t-test to. The data represents scores on a proficiency test of native speakers and learners of English. We want to use a t-test to determine if the native speakers and learners differ in their proficiency.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>tdata <span class="ot">&lt;-</span> base<span class="sc">::</span><span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">"https://slcladal.github.io/data/d03.rda"</span>, <span class="st">"rb"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">NativeSpeakers =</span> <span class="dv">1</span>,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">Learners =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">gather</span>(Group, Score, NativeSpeakers<span class="sc">:</span>Learners) <span class="sc">|&gt;</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Group =</span> <span class="fu">factor</span>(Group))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-4d235b0e{table-layout:auto;width:75%;}.cl-4d134a34{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4d134a48{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4d1a02b6{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-4d1a02c0{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-4d1a2b2e{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4d1a2b38{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4d1a2b39{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4d1a2b42{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4d1a2b4c{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4d1a2b56{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4d1a2b57{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4d1a2b60{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-4d235b0e"><thead><tr style="overflow-wrap:break-word;"><th class="cl-4d1a2b2e"><p class="cl-4d1a02b6"><span class="cl-4d134a34">Group</span></p></th><th class="cl-4d1a2b38"><p class="cl-4d1a02c0"><span class="cl-4d134a34">Score</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b39"><p class="cl-4d1a02b6"><span class="cl-4d134a48">NativeSpeakers</span></p></td><td class="cl-4d1a2b42"><p class="cl-4d1a02c0"><span class="cl-4d134a48">6</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b4c"><p class="cl-4d1a02b6"><span class="cl-4d134a48">NativeSpeakers</span></p></td><td class="cl-4d1a2b56"><p class="cl-4d1a02c0"><span class="cl-4d134a48">65</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b39"><p class="cl-4d1a02b6"><span class="cl-4d134a48">NativeSpeakers</span></p></td><td class="cl-4d1a2b42"><p class="cl-4d1a02c0"><span class="cl-4d134a48">12</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b4c"><p class="cl-4d1a02b6"><span class="cl-4d134a48">NativeSpeakers</span></p></td><td class="cl-4d1a2b56"><p class="cl-4d1a02c0"><span class="cl-4d134a48">56</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b39"><p class="cl-4d1a02b6"><span class="cl-4d134a48">NativeSpeakers</span></p></td><td class="cl-4d1a2b42"><p class="cl-4d1a02c0"><span class="cl-4d134a48">45</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b4c"><p class="cl-4d1a02b6"><span class="cl-4d134a48">NativeSpeakers</span></p></td><td class="cl-4d1a2b56"><p class="cl-4d1a02c0"><span class="cl-4d134a48">84</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b39"><p class="cl-4d1a02b6"><span class="cl-4d134a48">NativeSpeakers</span></p></td><td class="cl-4d1a2b42"><p class="cl-4d1a02c0"><span class="cl-4d134a48">38</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b4c"><p class="cl-4d1a02b6"><span class="cl-4d134a48">NativeSpeakers</span></p></td><td class="cl-4d1a2b56"><p class="cl-4d1a02c0"><span class="cl-4d134a48">46</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b39"><p class="cl-4d1a02b6"><span class="cl-4d134a48">NativeSpeakers</span></p></td><td class="cl-4d1a2b42"><p class="cl-4d1a02c0"><span class="cl-4d134a48">64</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b4c"><p class="cl-4d1a02b6"><span class="cl-4d134a48">NativeSpeakers</span></p></td><td class="cl-4d1a2b56"><p class="cl-4d1a02c0"><span class="cl-4d134a48">24</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b39"><p class="cl-4d1a02b6"><span class="cl-4d134a48">Learners</span></p></td><td class="cl-4d1a2b42"><p class="cl-4d1a02c0"><span class="cl-4d134a48">67</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b4c"><p class="cl-4d1a02b6"><span class="cl-4d134a48">Learners</span></p></td><td class="cl-4d1a2b56"><p class="cl-4d1a02c0"><span class="cl-4d134a48">16</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b39"><p class="cl-4d1a02b6"><span class="cl-4d134a48">Learners</span></p></td><td class="cl-4d1a2b42"><p class="cl-4d1a02c0"><span class="cl-4d134a48">56</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b4c"><p class="cl-4d1a02b6"><span class="cl-4d134a48">Learners</span></p></td><td class="cl-4d1a2b56"><p class="cl-4d1a02c0"><span class="cl-4d134a48">34</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b39"><p class="cl-4d1a02b6"><span class="cl-4d134a48">Learners</span></p></td><td class="cl-4d1a2b42"><p class="cl-4d1a02c0"><span class="cl-4d134a48">54</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b4c"><p class="cl-4d1a02b6"><span class="cl-4d134a48">Learners</span></p></td><td class="cl-4d1a2b56"><p class="cl-4d1a02c0"><span class="cl-4d134a48">42</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b39"><p class="cl-4d1a02b6"><span class="cl-4d134a48">Learners</span></p></td><td class="cl-4d1a2b42"><p class="cl-4d1a02c0"><span class="cl-4d134a48">36</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b4c"><p class="cl-4d1a02b6"><span class="cl-4d134a48">Learners</span></p></td><td class="cl-4d1a2b56"><p class="cl-4d1a02c0"><span class="cl-4d134a48">47</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b39"><p class="cl-4d1a02b6"><span class="cl-4d134a48">Learners</span></p></td><td class="cl-4d1a2b42"><p class="cl-4d1a02c0"><span class="cl-4d134a48">54</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d1a2b57"><p class="cl-4d1a02b6"><span class="cl-4d134a48">Learners</span></p></td><td class="cl-4d1a2b60"><p class="cl-4d1a02c0"><span class="cl-4d134a48">29</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>We now apply an independent t-test to the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Score <span class="sc">~</span> Group, </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal =</span> T,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> tdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  Score by Group
+t = -0.054589, df = 18, p-value = 0.9571
+alternative hypothesis: true difference in means between group Learners and group NativeSpeakers is not equal to 0
+95 percent confidence interval:
+ -19.74317  18.74317
+sample estimates:
+      mean in group Learners mean in group NativeSpeakers 
+                        43.5                         44.0 </code></pre>
+</div>
+</div>
+<p>As the p-value is higher than .05, we cannot reject the H<sub>0</sub> and we thus have to conclude that our evidence does not suffice to say that learners and Native Speakers differ in their proficiency. However, we still extract the effect size, again using Cohen’s <span class="math inline">\(d\)</span>. In contrast to the extraction of the effect size for paired t-tests, however, we will set the argument <code>paired</code> to <code>FALSE</code> (in fact, we could simply leave it out as the <code>paired = FALSE</code> is the default).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(tdata<span class="sc">$</span>Score <span class="sc">~</span> tdata<span class="sc">$</span>Group,</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cohen's d |        95% CI
+-------------------------
+-0.02     | [-0.90, 0.85]
+
+- Estimated using pooled SD.</code></pre>
+</div>
+</div>
+<p>The analysis can be summarized using the <code>reports</code> package <span class="citation" data-cites="report">(<a href="#ref-report" role="doc-biblioref">Makowski et al. 2021</a>)</span> as follows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(<span class="fu">t.test</span>(Score <span class="sc">~</span> Group, <span class="at">var.equal =</span> T, <span class="at">data =</span> tdata))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Effect sizes were labelled following Cohen's (1988) recommendations.
+
+The Two Sample t-test testing the difference of Score by Group (mean in group
+Learners = 43.50, mean in group NativeSpeakers = 44.00) suggests that the
+effect is negative, statistically not significant, and very small (difference =
+-0.50, 95% CI [-19.74, 18.74], t(18) = -0.05, p = 0.957; Cohen's d = -0.03, 95%
+CI [-0.95, 0.90])</code></pre>
+</div>
+</div>
+<p>We can use this output to write up a final report:</p>
+<p>An independent t-test test was applied to the data and it reported that the scores between the two groups did not differ significantly (t<sub>18</sub>: -0.0546, p = .9571). In addition to not differing significantly, the effect size of the difference between the groups was also very small (Cohen’s <span class="math inline">\(d\)</span> = -0.03 [CIs: -0.95, 0.90]) <span class="citation" data-cites="sawilowsky2009new">(cf. <a href="#ref-sawilowsky2009new" role="doc-biblioref">Sawilowsky 2009</a>)</span>.</p>
+</section>
+</section>
+<section id="mann-whitney-u-test" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="mann-whitney-u-test"><span class="header-section-number">8.3</span> Mann-Whitney U-Test</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key concept: Parametric vs.&nbsp;non-parametric tests
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>Parametric</em> tests (like the t-test) assume that the data follow a particular distribution (typically the normal distribution) and use the actual values in their calculations, which gives them more statistical power <em>when the assumptions hold</em>. <em>Non-parametric</em> tests (like the Mann-Whitney U-test) work on ranks instead of raw values and make far weaker distributional assumptions - the robust fallback when data are skewed, ordinal, or contain outliers. The price of this robustness is somewhat lower power when the parametric assumptions would in fact have been met.</p>
+</div>
+</div>
+<p>It is actually quite common that numeric depend variables need to be transformed or converted into ranks, i.e.&nbsp;ordinal variables, because the distribution of residuals does not allow the application of parametric tests such as t-tests or linear regression. In such cases, as we are dealing with rank (ordinal) data, the application of a chi-square test is unwarranted and we need to use another test. There are different alternatives depending on whether the data are paired (coming from the same individuals) or if all observations are independent.</p>
+<p>The non-parametric alternative for independent t-tests, i.e.&nbsp;for data where we are dealing with two separate groups and a numeric dependent variable that violates parametric assumptions (or an ordinal dependent variable), is the Mann-Whitney U-test. In contrast, if the groups under investigation represent identical participants that are tested under two conditions, the appropriate alternative is a Wilcoxon Signed Rank test (which is thus the alternative for paired t-test).</p>
+<p>Imagine we wanted to determine if two language families differed with respect to the size of their phoneme inventories. You have already ranked the inventory sizes and would now like to now if language family correlates with inventory size. As such, we are dealing with two independent groups and we want to implement a non-parametric alternative of a t-test. To answer this question, you create the table shown below.</p>
+<p><em>LanguageFamily</em> refers to the language family that a language belongs to and <em>Rank</em> represent the rank of language based on its phoneme inventory size (1 = largest phoneme inventory, 20 = smallest phoneme inventory).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create table</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>Rank <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">17</span>,<span class="dv">19</span>, <span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>,<span class="dv">16</span>,<span class="dv">18</span>,<span class="dv">20</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>LanguageFamily <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Kovati"</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">"Urudi"</span>, <span class="dv">10</span>))</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>lftb <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(LanguageFamily, Rank)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-4d72b028{table-layout:auto;width:75%;}.cl-4d60a5cc{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4d60a5ea{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4d682f0e{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-4d682f2c{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-4d6897e6{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4d6897fa{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4d689804{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4d68980e{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4d689818{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4d689822{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4d68982c{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4d68982d{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-4d72b028"><thead><tr style="overflow-wrap:break-word;"><th class="cl-4d6897e6"><p class="cl-4d682f0e"><span class="cl-4d60a5cc">LanguageFamily</span></p></th><th class="cl-4d6897fa"><p class="cl-4d682f2c"><span class="cl-4d60a5cc">Rank</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-4d689804"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Kovati</span></p></td><td class="cl-4d68980e"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689818"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Kovati</span></p></td><td class="cl-4d689822"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689804"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Kovati</span></p></td><td class="cl-4d68980e"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689818"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Kovati</span></p></td><td class="cl-4d689822"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">6</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689804"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Kovati</span></p></td><td class="cl-4d68980e"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689818"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Kovati</span></p></td><td class="cl-4d689822"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689804"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Kovati</span></p></td><td class="cl-4d68980e"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">10</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689818"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Kovati</span></p></td><td class="cl-4d689822"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">11</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689804"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Kovati</span></p></td><td class="cl-4d68980e"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">17</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689818"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Kovati</span></p></td><td class="cl-4d689822"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">19</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689804"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Urudi</span></p></td><td class="cl-4d68980e"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689818"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Urudi</span></p></td><td class="cl-4d689822"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689804"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Urudi</span></p></td><td class="cl-4d68980e"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">7</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689818"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Urudi</span></p></td><td class="cl-4d689822"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">12</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689804"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Urudi</span></p></td><td class="cl-4d68980e"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">13</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689818"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Urudi</span></p></td><td class="cl-4d689822"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">14</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689804"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Urudi</span></p></td><td class="cl-4d68980e"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">15</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689818"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Urudi</span></p></td><td class="cl-4d689822"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">16</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d689804"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Urudi</span></p></td><td class="cl-4d68980e"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">18</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4d68982c"><p class="cl-4d682f0e"><span class="cl-4d60a5ea">Urudi</span></p></td><td class="cl-4d68982d"><p class="cl-4d682f2c"><span class="cl-4d60a5ea">20</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>We will also briefly inspect the data visually using a box plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lftb, <span class="fu">aes</span>(<span class="at">x =</span> LanguageFamily, <span class="at">y =</span> Rank, <span class="at">fill =</span> LanguageFamily)) <span class="sc">+</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"orange"</span>, <span class="st">"darkgrey"</span>)) <span class="sc">+</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-week8_files/figure-html/mwu2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>To use the Mann-Whitney U test, the dependent variable (Rank) must be ordinal and independent variable (Group) must be a binary factor. We briefly check this by inspecting the structure of the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect structure</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(lftb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   20 obs. of  2 variables:
+ $ LanguageFamily: chr  "Kovati" "Kovati" "Kovati" "Kovati" ...
+ $ Rank          : num  1 3 5 6 8 9 10 11 17 19 ...</code></pre>
+</div>
+</div>
+<p>As the variables are what we need them to be, we can now perform the Mann-Whitney U test on the table. The null hypothesis is that there is no difference between the 2 groups.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># perform test</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(lftb<span class="sc">$</span>Rank <span class="sc">~</span> lftb<span class="sc">$</span>LanguageFamily) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum exact test
+
+data:  lftb$Rank by lftb$LanguageFamily
+W = 34, p-value = 0.2475
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+</div>
+<p>Since the p-value is greater than 0.05, we fail to reject the null hypothesis. The results of the Mann-Whitney U test tell us that the two language families do not differ significantly with respect to their phoneme inventory size.</p>
+<p>The analysis can be summarized using the <code>reports</code> package <span class="citation" data-cites="report">(<a href="#ref-report" role="doc-biblioref">Makowski et al. 2021</a>)</span> as follows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(<span class="fu">wilcox.test</span>(lftb<span class="sc">$</span>Rank <span class="sc">~</span> lftb<span class="sc">$</span>LanguageFamily))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Effect sizes were labelled following Funder's (2019) recommendations.
+
+The Wilcoxon rank sum exact test testing the difference in ranks between
+lftb$Rank and lftb$LanguageFamily suggests that the effect is negative,
+statistically not significant, and large (W = 34.00, p = 0.247; r (rank
+biserial) = -0.32, 95% CI [-0.69, 0.18])</code></pre>
+</div>
+</div>
+<p>We can use this output to write up a final report:</p>
+<p>The Wilcoxon rank sum exact test suggests that there is no statistically significant relationship between the size of phoneme inventories and being member of selected language families. Despite being statistically insignificant, the effect may be large (W = 34.00, p = 0.247; r (rank biserial) = -0.32, 95% CI [-0.69, 0.18]).</p>
+<section id="mann-whitney-u-tests-with-continuity-correction" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="mann-whitney-u-tests-with-continuity-correction">Mann-Whitney U tests with continuity correction</h3>
+<p>The Mann-Whitney U test can also be used with continuity correction. A continuity correction is necessary when both variables represent numeric values that are non-normal. This is quite handy because it means that we do not need to convert our numeric dependent variable into ranks (an ordered variable). In the following example, we want to test if the reaction time for identifying a word as real is correlated with its token frequency.</p>
+<p>For this example, we generate data is deliberately non-normal.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-4e3addf0{table-layout:auto;width:75%;}.cl-4e2adc84{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4e2adc98{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4e324870{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-4e32956e{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4e329578{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4e329579{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4e329582{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4e329596{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4e3295a0{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4e3295a1{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4e3295aa{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-4e3addf0"><thead><tr style="overflow-wrap:break-word;"><th class="cl-4e32956e"><p class="cl-4e324870"><span class="cl-4e2adc84">Frequency</span></p></th><th class="cl-4e329578"><p class="cl-4e324870"><span class="cl-4e2adc84">Reaction</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-4e329579"><p class="cl-4e324870"><span class="cl-4e2adc98">25,485.43</span></p></td><td class="cl-4e329582"><p class="cl-4e324870"><span class="cl-4e2adc98">395.2039</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4e329596"><p class="cl-4e324870"><span class="cl-4e2adc98">24,468.44</span></p></td><td class="cl-4e3295a0"><p class="cl-4e324870"><span class="cl-4e2adc98">370.9637</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4e329579"><p class="cl-4e324870"><span class="cl-4e2adc98">24,218.94</span></p></td><td class="cl-4e329582"><p class="cl-4e324870"><span class="cl-4e2adc98">412.2960</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4e329596"><p class="cl-4e324870"><span class="cl-4e2adc98">20,405.75</span></p></td><td class="cl-4e3295a0"><p class="cl-4e324870"><span class="cl-4e2adc98">425.7529</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4e329579"><p class="cl-4e324870"><span class="cl-4e2adc98">19,020.88</span></p></td><td class="cl-4e329582"><p class="cl-4e324870"><span class="cl-4e2adc98">412.9506</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4e329596"><p class="cl-4e324870"><span class="cl-4e2adc98">17,363.19</span></p></td><td class="cl-4e3295a0"><p class="cl-4e324870"><span class="cl-4e2adc98">404.0559</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4e329579"><p class="cl-4e324870"><span class="cl-4e2adc98">17,319.49</span></p></td><td class="cl-4e329582"><p class="cl-4e324870"><span class="cl-4e2adc98">401.1195</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4e329596"><p class="cl-4e324870"><span class="cl-4e2adc98">17,042.85</span></p></td><td class="cl-4e3295a0"><p class="cl-4e324870"><span class="cl-4e2adc98">434.8484</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4e329579"><p class="cl-4e324870"><span class="cl-4e2adc98">15,527.19</span></p></td><td class="cl-4e329582"><p class="cl-4e324870"><span class="cl-4e2adc98">390.0054</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4e3295a1"><p class="cl-4e324870"><span class="cl-4e2adc98">14,233.21</span></p></td><td class="cl-4e3295aa"><p class="cl-4e324870"><span class="cl-4e2adc98">456.4710</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>When we plot the data, we see that both the frequency of words (Frequency) and the reaction times that it took subjects to recognize the token as a word (Reaction) are non-normal (in this case, the distributions are negative skewed).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-week8_files/figure-html/mwu5c-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Both variables are negatively skewed (non-normally distributed) but we can use the <code>wilcox.test</code> function to perform the Mann-Whitney U test with continuity correction which takes the skewness into account.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>wxdata <span class="sc">|&gt;</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Frequency, Reaction)) <span class="sc">+</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-week8_files/figure-html/mwu6a-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The null hypothesis is that there is no correlation between token frequency and reaction time. The output states that the test that was performed is a <em>Wilcoxon rank sum test with continuity correction</em> which is just a different name for the Mann-Whitney U test - this is because the nomenclature for the tests is not unanimous.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># perform test</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(wxdata<span class="sc">$</span>Reaction <span class="sc">-</span> wxdata<span class="sc">$</span>Frequency) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon signed rank test with continuity correction
+
+data:  wxdata$Reaction - wxdata$Frequency
+V = 81, p-value &lt; 0.00000000000000022
+alternative hypothesis: true location is not equal to 0</code></pre>
+</div>
+</div>
+<p>Again, we use the <code>reports</code> package <span class="citation" data-cites="report">(<a href="#ref-report" role="doc-biblioref">Makowski et al. 2021</a>)</span> to summarize the analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report</span>(<span class="fu">wilcox.test</span>(wxdata<span class="sc">$</span>Reaction <span class="sc">-</span> wxdata<span class="sc">$</span>Frequency))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Effect sizes were labelled following Funder's (2019) recommendations.
+
+The Wilcoxon signed rank test with continuity correction testing the difference
+in rank for wxdata$Reaction - wxdata$Frequency and true location of 0 suggests
+that the effect is negative, statistically significant, and very large (W =
+81.00, p &lt; .001; r (rank biserial) = -0.99, 95% CI [-0.99, -0.99])</code></pre>
+</div>
+</div>
+<p>We can use this output to write up a final report:</p>
+<p>The Wilcoxon signed rank test with continuity correction suggests that there is a strong, negative, statistically significant relationship between the reaction time for identifying a word as real and its token frequency (W = 276.00, p &lt; .001; r (rank biserial) = -0.97, 95% CI [-0.98, -0.96]).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercises: Basic Inferential Statistics
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p><strong>Q1. You want to test whether the use of a discourse particle (yes/no) is associated with speaker gender (male/female). Which test is appropriate?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<form name="form_W8_Q1" onsubmit="return validate_form_W8_Q1()" method="post">
+<label>
+<input type="radio" name="answer_W8_Q1" id="answer_W8_Q1_1" value="Chi-square test">
+Chi-square test
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W8_Q1" id="answer_W8_Q1_2" value="Student's t-test">
+Student's t-test
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W8_Q1" id="answer_W8_Q1_3" value="Mann-Whitney U-test">
+Mann-Whitney U-test
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W8_Q1" id="answer_W8_Q1_4" value="Simple linear regression">
+Simple linear regression
+</label>
+<br>
+<input type="submit" value="Check answer">
+<div id="result_W8_Q1"></div>
+</form>
+<script>function validate_form_W8_Q1() {var x, text; var x = document.forms['form_W8_Q1']['answer_W8_Q1'].value;if (x == 'Chi-square test'){text = 'Correct! Both variables are categorical (nominal), so a chi-square test of the 2×2 frequency table is the appropriate choice. t-tests and U-tests require a numeric (or at least ordinal) outcome.';} else {text = 'Both variables are categorical - which test works on frequency tables?';} document.getElementById('result_W8_Q1').innerHTML = text; evaluate_final_score(); return false;}function evaluate_final_score(){
+         element = document.getElementById('checkdown_final_score');
+         if(element === null){return false;} else {var element, text, res1;res1 = document.getElementById('result_W8_Q1').innerText == 'Correct! Both variables are categorical (nominal), so a chi-square test of the 2×2 frequency table is the appropriate choice. t-tests and U-tests require a numeric (or at least ordinal) outcome.';text = res1;element.innerHTML = text;
+         return false;
+         }}</script>
+</div>
+</div>
+<hr>
+<p><strong>Q2. A t-test comparing essay scores of two groups yields p = .001 with n = 10,000 per group. What should you check before concluding that the difference matters?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<form name="form_W8_Q2" onsubmit="return validate_form_W8_Q2()" method="post">
+<label>
+<input type="radio" name="answer_W8_Q2" id="answer_W8_Q2_1" value="The effect size (e.g. Cohen's d) - with huge samples, even tiny, practically irrelevant differences become significant">
+The effect size (e.g. Cohen's d) - with huge samples, even tiny, practically irrelevant differences become significant
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W8_Q2" id="answer_W8_Q2_2" value="Whether the groups have identical means">
+Whether the groups have identical means
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W8_Q2" id="answer_W8_Q2_3" value="Whether the p-value can be pushed below .0001">
+Whether the p-value can be pushed below .0001
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W8_Q2" id="answer_W8_Q2_4" value="Nothing - p < .05 proves the difference is important">
+Nothing - p &lt; .05 proves the difference is important
+</label>
+<br>
+<input type="submit" value="Check answer">
+<div id="result_W8_Q2"></div>
+</form>
+<script>function validate_form_W8_Q2() {var x, text; var x = document.forms['form_W8_Q2']['answer_W8_Q2'].value;if (x == 'The effect size (e.g. Cohen's d) - with huge samples, even tiny, practically irrelevant differences become significant'){text = 'Correct! Statistical significance answers ‘is there evidence of <em>any</em> difference?’, not ‘is the difference <em>large enough to matter</em>?’. With n = 10,000 per group, a difference of a fraction of a point can be highly significant. Effect sizes quantify practical relevance.';} else {text = 'Significance depends on sample size; what quantifies the <em>magnitude</em> of a difference?';} document.getElementById('result_W8_Q2').innerHTML = text; evaluate_final_score(); return false;}function evaluate_final_score(){
+         element = document.getElementById('checkdown_final_score');
+         if(element === null){return false;} else {var element, text, res1, res2;res1 = document.getElementById('result_W8_Q1').innerText == 'Correct! Both variables are categorical (nominal), so a chi-square test of the 2×2 frequency table is the appropriate choice. t-tests and U-tests require a numeric (or at least ordinal) outcome.'; res2 = document.getElementById('result_W8_Q2').innerText == 'Correct! Statistical significance answers ‘is there evidence of any difference?’, not ‘is the difference large enough to matter?’. With n = 10,000 per group, a difference of a fraction of a point can be highly significant. Effect sizes quantify practical relevance.';text = res1 + res2;element.innerHTML = text;
+         return false;
+         }}</script>
+</div>
+</div>
+<hr>
+<p><strong>Q3. Your reaction-time data are heavily right-skewed with several extreme outliers. You want to compare two groups. What is the most defensible choice?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<form name="form_W8_Q3" onsubmit="return validate_form_W8_Q3()" method="post">
+<label>
+<input type="radio" name="answer_W8_Q3" id="answer_W8_Q3_1" value="Delete all outliers until the data look normal">
+Delete all outliers until the data look normal
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W8_Q3" id="answer_W8_Q3_2" value="Use the Mann-Whitney U-test, which works on ranks and is robust to skew and outliers">
+Use the Mann-Whitney U-test, which works on ranks and is robust to skew and outliers
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W8_Q3" id="answer_W8_Q3_3" value="Use the t-test anyway - it always works">
+Use the t-test anyway - it always works
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W8_Q3" id="answer_W8_Q3_4" value="Compare only the two largest values">
+Compare only the two largest values
+</label>
+<br>
+<input type="submit" value="Check answer">
+<div id="result_W8_Q3"></div>
+</form>
+<script>function validate_form_W8_Q3() {var x, text; var x = document.forms['form_W8_Q3']['answer_W8_Q3'].value;if (x == 'Use the Mann-Whitney U-test, which works on ranks and is robust to skew and outliers'){text = 'Correct! The U-test’s rank-based approach makes it robust to exactly these violations. (Transforming the data or using robust methods are also defensible; silently deleting inconvenient data points is not.)';} else {text = 'Which test makes the weakest assumptions about the distribution of the data?';} document.getElementById('result_W8_Q3').innerHTML = text; evaluate_final_score(); return false;}function evaluate_final_score(){
+         element = document.getElementById('checkdown_final_score');
+         if(element === null){return false;} else {var element, text, res1, res2, res3;res1 = document.getElementById('result_W8_Q1').innerText == 'Correct! Both variables are categorical (nominal), so a chi-square test of the 2×2 frequency table is the appropriate choice. t-tests and U-tests require a numeric (or at least ordinal) outcome.'; res2 = document.getElementById('result_W8_Q2').innerText == 'Correct! Statistical significance answers ‘is there evidence of any difference?’, not ‘is the difference large enough to matter?’. With n = 10,000 per group, a difference of a fraction of a point can be highly significant. Effect sizes quantify practical relevance.'; res3 = document.getElementById('result_W8_Q3').innerText == 'Correct! The U-test’s rank-based approach makes it robust to exactly these violations. (Transforming the data or using robust methods are also defensible; silently deleting inconvenient data points is not.)';text = res1 + res2 + res3;element.innerHTML = text;
+         return false;
+         }}</script>
+</div>
+</div>
+<p><a href="#week8">Back to top</a></p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-bortz109verteilungsfreie" class="csl-entry" role="listitem">
+Bortz, J, GA Lienert, and K Boehnke. 1990. <em>Verteilungsfreie Methoden in Der Biostatistik</em>. Berlin: Springer Verlag.
+</div>
+<div id="ref-buehner2009statistik" class="csl-entry" role="listitem">
+Bühner, Markus, and Matthias Ziegler. 2009. <em>Statistik f<span>ü</span>r Psychologen Und Sozialwissenschaftler</em>. M<span>ü</span>nchen: Pearson Studium.
+</div>
+<div id="ref-cochran1954somemethods" class="csl-entry" role="listitem">
+Cochran, W. G. 1954. <span>“Some Methods for Strengthening the Common $$^<span>2</span>tests.”</span> <em>Biometrics</em> 10: 417–51.
+</div>
+<div id="ref-cohen1988statistical" class="csl-entry" role="listitem">
+Cohen, Jacob. 1988. <em>Statistical Power Analysis for the Behavioral Sciences</em>. Hillsdale, NJ: Erlbaum.
+</div>
+<div id="ref-report" class="csl-entry" role="listitem">
+Makowski, Dominique, Mattan S. Ben-Shachar, Indrajeet Patil, and Daniel Lüdecke. 2021. <span>“Automated Results Reporting as a Practical Tool to Improve Reproducibility and Methodological Best Practices Adoption.”</span> <em>CRAN</em>. <a href="https://github.com/easystats/report">https://github.com/easystats/report</a>.
+</div>
+<div id="ref-sawilowsky2009new" class="csl-entry" role="listitem">
+Sawilowsky, Shlomo S. 2009. <span>“New Effect Size Rules of Thumb.”</span> <em>Journal of Modern Applied Statistical Methods</em> 8 (2): 26.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./07-week7.html" class="pagination-link" aria-label="Introduction to Data Visualization">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Data Visualization</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./09-week9.html" class="pagination-link" aria-label="Simple Linear Regression">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
