@@ -835,7 +835,7 @@ zdf |>
   flextable::fontsize(size = 12) |>
   flextable::fontsize(size = 12, part = "header") |>
   flextable::align_text_col(align = "center") |>
-  flextable::set_caption(caption = "Results of two tests at university (class1 had a maximum score of 80, class2 had a maximum score of 100.")  |>
+  flextable::set_caption(caption = "Results of two tests at university (class 1 had a maximum score of 80, class 2 had a maximum score of 100).")  |>
   flextable::border_outer()
 ```
 
@@ -847,14 +847,14 @@ The z-score for the student in class 1 (who scored 50 out of 80) would be calcul
 \end{equation}
 
 
-The z-score of student B in class 2 (who scored 70 out of 100) would be calculated as 70 minus `r mean(zdf$Score_c2)` (the mean score of class 2) divided by `r round(sd(zdf$Score_c2), 3)` (the standard deviation of class 2). This would result in a z-score of `r (70 - mean(zdf$Score_c2)) / sd(zdf$Score_c2)`  which means that student B's score is `r round((50 - mean(zdf$Score_c2)) / sd(zdf$Score_c2), 3)` standard deviations below the mean of class2.
+The z-score of student B in class 2 (who scored 70 out of 100) would be calculated as 70 minus `r mean(zdf$Score_c2)` (the mean score of class 2) divided by `r round(sd(zdf$Score_c2), 3)` (the standard deviation of class 2). This would result in a z-score of `r round((70 - mean(zdf$Score_c2)) / sd(zdf$Score_c2), 3)` which means that student B's score is `r round((70 - mean(zdf$Score_c2)) / sd(zdf$Score_c2), 3)` standard deviations *above* the mean of class 2.
 
 \begin{equation}
   z_{studentB} =\frac{70 - `r mean(zdf$Score_c2)`} {`r round(sd(zdf$Score_c2), 3)`} 
-  = `r round((50 - mean(zdf$Score_c2)) / sd(zdf$Score_c2), 3)`
+  = `r round((70 - mean(zdf$Score_c2)) / sd(zdf$Score_c2), 3)`
 \end{equation}
 
-Both students perform below average in their class (this is confirmed by the negative z-scores) and, because the z-score of student A is even lower than the z-score of student B, student A has performed worse compared to student B.
+The z-scores show that the two students differ substantially relative to their classes: student A performed below the average of class 1 (indicated by the negative z-score), while student B performed above the average of class 2 (indicated by the positive z-score). Because student A's z-score is clearly lower than student B's, student A has performed worse compared to student B - and the z-scores allow us to state this precisely, even though the two tests used different scales.
 
 We can also easily calculate the z-scores of both classes by calculating the mean of each class, then calculating the standard deviation of each class and then subtracting each score from the mean and dividing the result by the standard deviation as shown below:
 
@@ -887,7 +887,7 @@ zdf |>
   flextable::fontsize(size = 12) |>
   flextable::fontsize(size = 12, part = "header") |>
   flextable::align_text_col(align = "center") |>
-  flextable::set_caption(caption = "Scores, means, standrad deviations, and z-scores of two tests at university.")  |>
+  flextable::set_caption(caption = "Scores, means, standard deviations, and z-scores of two tests at university.")  |>
   flextable::border_outer()
 ```
 

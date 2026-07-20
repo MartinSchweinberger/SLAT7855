@@ -599,15 +599,13 @@ knitr::include_graphics("https://slcladal.github.io/images/popper.jpg")
 Sir Karl Raimund Popper was a Austrian-British academic and public figure who vigorously defended liberal democracy and the principles of social criticism that he believed made a flourishing open society possible. In the context of scientific thinking, Popper is important because he is arguably the most important philosopher of science - probably best known for his realization that nothing can be proven in the empirical sciences, but that hypotheses can and need to be falsified. This means that in contrast to the formal sciences, where statements can be proven once certain axioms are accepted, any knowledge that is produced by the empirical sciences is always, and has to be preliminary which implies that the empirical sciences represent an ongoing process.
 
 
-<br>
+
 ::: {.callout-important}
 ## Think about it
 
 What does this mean - and why can empirical sciences not *prove*?
 :::
 
-
-<br>
 
 
 Well, logically speaking, no number of observations of something can confirm a scientific theory. However, a single counterexample can be enough to show that a theory is false. Imagine someone states that all swans are white, any number of white swans cannot prove that that statement is correct, but a single black swan immediately falsifies the statement.

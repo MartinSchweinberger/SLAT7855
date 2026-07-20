@@ -244,7 +244,6 @@ There are more designs(e.g. meta-studies) and also other classifications, but in
 #| echo: false
 #| message: false
 #| warning: false
-library(tidyverse)
 Class <- c("Experimental research",
             "Observational research", 
             "Observational research",
@@ -270,20 +269,20 @@ Costs <- c("high/variable",
            "low",
            "low",
            "low")
-Ext_Validity <- c("high",
-                  "low/variable",
+Ext_Validity <- c("low",
+                  "high",
                   "low",
                   "low/variable",
                   "medium")
 Int_Validity <- c("high",
-                  "high",
+                  "low/variable",
                   "medium",
                   "high",
                   "medium")
 Access_Participants <- c("low",
                          "medium",
                          "high",
-                         "low",
+                         "high",
                          "high")
 # generate table
 designs <- data.frame(
@@ -292,9 +291,7 @@ designs <- data.frame(
 colnames(designs) <- c("Type", "Research design", "Example", "Directness of access to phenomenon", "Cost/Labor intensity", "External validity (generalizability)", "Internal validity", "Ease of data collection (e.g. access to participants)")
 # generate flextable object
 library(flextable)
-
 designs |>
-  as.data.frame() |>
   flextable() |>
   flextable::set_table_properties(width = .75, layout = "autofit") |>
   flextable::theme_zebra() |>
@@ -506,6 +503,7 @@ The visualizations below show linear positive correlations of varying strength. 
 #| echo: false
 #| message: false
 #| warning: false
+library(ggplot2)
 Height <- c(150, 155, 160, 165, 170, 175, 180, 185, 190, 195,
             150, 155, 160, 165, 170, 175, 180, 185, 190, 195,
             150, 155, 160, 165, 170, 175, 180, 185, 190, 195)
