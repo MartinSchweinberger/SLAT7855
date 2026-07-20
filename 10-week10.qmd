@@ -64,10 +64,11 @@ mlrdata  <- base::readRDS(url("https://slcladal.github.io/data/mld.rda", "rb"))
 #| message: false
 #| warning: false
 install.packages("dplyr")
+install.packages("ggplot2")
+install.packages("gridExtra")
 install.packages("flextable")
 install.packages("performance")
 install.packages("see")
-install.packages("ggplot2")
 ```
 
 
@@ -77,11 +78,11 @@ install.packages("ggplot2")
 #| message: false
 #| warning: false
 library(dplyr)
+library(ggplot2)
+library(gridExtra)
 library(flextable)
 library(performance)
 library(see)
-library(ggplot2)
-library(gridExtra)
 # inspect data
 mlrdata |>
   as.data.frame() |>

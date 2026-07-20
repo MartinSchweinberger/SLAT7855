@@ -52,11 +52,11 @@ To understand what this means, let us imagine that we have collected information
 #| message: false
 #| warning: false
 install.packages("dplyr")
+install.packages("ggplot2")
 install.packages("flextable")
 install.packages("gridExtra")
 install.packages("performance")
 install.packages("see")
-install.packages("ggplot2")
 ```
 
 
@@ -66,11 +66,11 @@ install.packages("ggplot2")
 #| message: false
 #| warning: false
 library(dplyr)
+library(ggplot2)
 library(flextable)
 library(gridExtra)
 library(performance)
 library(see)
-library(ggplot2)
 Height <- c(173, 169, 176, 166, 161, 164, 160, 158, 180, 187)
 Weight <- c(80, 68, 72, 75, 70, 65, 62, 60, 85, 92) 
 df <- data.frame(Height, Weight)

@@ -467,72 +467,109 @@ These properties are extremely useful when determining the likelihood of values 
 
 ***
 
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>EXERCISE TIME!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
+::: {.callout-tip}
+## Think Break
+:::
 
-<div class="question">` 
+**How many different outcome sequences are possible when tossing a coin 4 times?**
 
-1. Create a table with the possible outcomes and probabilities of 4 coin tosses (you can consider the table showing the outcomes of three coin tosses above as a guideline).
+```{r}
+#| echo: false
+#| label: "W3_TB1"
+checkdown::check_question("16",
+               options = c("16",
+                 "8",
+                 "4",
+                 "32"),
+               type = "radio",
+               q_id = "W3_TB1",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! Each toss has 2 outcomes and the tosses are independent, so there are 2 x 2 x 2 x 2 = 2^4 = 16 possible sequences (HHHH, HHHT, HHTH, ...). Try listing them in a table as we did for three tosses above.",
+               wrong = "Each toss doubles the number of possible sequences: 2 tosses give 4, 3 tosses give 8, and 4 tosses give ...?")
+```
 
-<details>
-  <summary>Answer</summary>
-  ```{r}
-#| message: false
-#| warning: false
-  sum(dbinom(4, 7, 0.5))
-  ```
-</details>
+---
 
-2. How likely is it for heads to show exactly 3 times when tossing a coin 7 times?
+**How likely is it for heads to show exactly 3 times when tossing a coin 7 times?**
 
-<details>
-  <summary>Answer</summary>
-  ```{r}
-#| message: false
-#| warning: false
-  sum(dbinom(3, 7, 0.5))
-  ```
-</details>
+```{r}
+#| echo: false
+#| label: "W3_TB2"
+checkdown::check_question("About 27%",
+               options = c("About 27%",
+                 "About 43% (3 out of 7)",
+                 "About 50%",
+                 "About 3%"),
+               type = "radio",
+               q_id = "W3_TB2",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! In R: sum(dbinom(3, 7, 0.5)) = 0.273. There are 35 sequences with exactly 3 heads out of 128 possible sequences: 35/128 = .273.",
+               wrong = "In R: sum(dbinom(3, 7, 0.5)). Count the sequences with exactly 3 heads and divide by all 2^7 = 128 sequences.")
+```
 
-3. How likely is it for heads to show exactly 2 or 5 times when tossing a coin 7 times?
+---
 
-<details>
-  <summary>Answer</summary>
-  ```{r}
-#| message: false
-#| warning: false
-  sum(dbinom(c(2, 5), 7, 0.5))
-  ```
-</details>
+**How likely is it for heads to show exactly 2 or exactly 5 times when tossing a coin 7 times?**
 
-4. How likely is it for heads to show 5 or more times when tossing a coin 7 times?
+```{r}
+#| echo: false
+#| label: "W3_TB3"
+checkdown::check_question("About 33%",
+               options = c("About 33%",
+                 "About 27%",
+                 "About 7%",
+                 "About 66%"),
+               type = "radio",
+               q_id = "W3_TB3",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! In R: sum(dbinom(c(2, 5), 7, 0.5)) = 0.328. Both outcomes have 21 sequences each: (21 + 21)/128 = .328.",
+               wrong = "Add the probabilities of the two outcomes. In R: sum(dbinom(c(2, 5), 7, 0.5)).")
+```
 
-<details>
-  <summary>Answer</summary>
-  ```{r}
-#| message: false
-#| warning: false
-  sum(dbinom(5:7, 7, 0.5))
-  ```
-</details>
+---
 
-5. How likely is it for heads to show between 3 and 6 times when tossing a coin 7 times?
+**How likely is it for heads to show 5 or more times when tossing a coin 7 times?**
 
-<details>
-  <summary>Answer</summary>
-  ```{r}
-#| message: false
-#| warning: false
-  sum(dbinom(3:6, 7, 0.5))
-  ```
-</details>
+```{r}
+#| echo: false
+#| label: "W3_TB4"
+checkdown::check_question("About 23%",
+               options = c("About 23%",
+                 "About 50%",
+                 "About 71% (5 out of 7)",
+                 "About 5%"),
+               type = "radio",
+               q_id = "W3_TB4",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! In R: sum(dbinom(5:7, 7, 0.5)) = 0.227. Sequences with 5, 6, or 7 heads: (21 + 7 + 1)/128 = .227.",
+               wrong = "Sum the probabilities for 5, 6, and 7 heads. In R: sum(dbinom(5:7, 7, 0.5)).")
+```
 
-</div>`
+---
+
+**How likely is it for heads to show between 3 and 6 times when tossing a coin 7 times?**
+
+```{r}
+#| echo: false
+#| label: "W3_TB5"
+checkdown::check_question("About 77%",
+               options = c("About 77%",
+                 "About 50%",
+                 "About 57% (4 out of 7)",
+                 "About 23%"),
+               type = "radio",
+               q_id = "W3_TB5",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! In R: sum(dbinom(3:6, 7, 0.5)) = 0.766. Sequences with 3, 4, 5, or 6 heads: (35 + 35 + 21 + 7)/128 = .766.",
+               wrong = "Sum the probabilities for 3, 4, 5, and 6 heads. In R: sum(dbinom(3:6, 7, 0.5)).")
+```
+
+
 
 ***
 

@@ -304,18 +304,16 @@ What This Session Covers
 </div>
 </div>
 <p>Today, we will go beyond the <code>plot</code> function and us the <code>ggplot</code> function instead.</p>
-<p>To be able to generate <code>ggplot</code> plots, you need to install and load the <code>ggplot</code> package. We also install and load the <code>vip</code> and <code>dplyr</code> packages.</p>
+<p>To be able to generate <code>ggplot</code> plots, you need to install and load the <code>ggplot2</code> package. We also install and load the <code>gridExtra</code> package (for arranging several plots in one panel) and the <code>dplyr</code> package.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install packages</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("ggplot2")</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("vip")</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("gridExtra")</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("dplyr")</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("gridExtra")</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vip)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="the-ggplot-framework" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="the-ggplot-framework"><span class="header-section-number">7.1</span> The ggplot framework</h2>
@@ -690,8 +688,8 @@ Exercises: Data Visualization
 <div class="cell-output-display">
 <form name="form_W7_Q1" onsubmit="return validate_form_W7_Q1()" method="post">
 <label>
-<input type="radio" name="answer_W7_Q1" id="answer_W7_Q1_1" value="It maps variables in the data onto visual properties such as x, y, and color">
-It maps variables in the data onto visual properties such as x, y, and color
+<input type="radio" name="answer_W7_Q1" id="answer_W7_Q1_1" value="It saves the plot to a file">
+It saves the plot to a file
 </label>
 <br>
 <label>
@@ -700,13 +698,13 @@ It filters the data before plotting
 </label>
 <br>
 <label>
-<input type="radio" name="answer_W7_Q1" id="answer_W7_Q1_3" value="It saves the plot to a file">
-It saves the plot to a file
+<input type="radio" name="answer_W7_Q1" id="answer_W7_Q1_3" value="It chooses the color palette of the plot">
+It chooses the color palette of the plot
 </label>
 <br>
 <label>
-<input type="radio" name="answer_W7_Q1" id="answer_W7_Q1_4" value="It chooses the color palette of the plot">
-It chooses the color palette of the plot
+<input type="radio" name="answer_W7_Q1" id="answer_W7_Q1_4" value="It maps variables in the data onto visual properties such as x, y, and color">
+It maps variables in the data onto visual properties such as x, y, and color
 </label>
 <br>
 <input type="submit" value="Check answer">
@@ -730,8 +728,8 @@ geom_bar()
 </label>
 <br>
 <label>
-<input type="radio" name="answer_W7_Q2" id="answer_W7_Q2_2" value="geom_point()">
-geom_point()
+<input type="radio" name="answer_W7_Q2" id="answer_W7_Q2_2" value="geom_line()">
+geom_line()
 </label>
 <br>
 <label>
@@ -740,8 +738,8 @@ geom_histogram()
 </label>
 <br>
 <label>
-<input type="radio" name="answer_W7_Q2" id="answer_W7_Q2_4" value="geom_line()">
-geom_line()
+<input type="radio" name="answer_W7_Q2" id="answer_W7_Q2_4" value="geom_point()">
+geom_point()
 </label>
 <br>
 <input type="submit" value="Check answer">
@@ -760,23 +758,23 @@ geom_line()
 <div class="cell-output-display">
 <form name="form_W7_Q3" onsubmit="return validate_form_W7_Q3()" method="post">
 <label>
-<input type="radio" name="answer_W7_Q3" id="answer_W7_Q3_1" value="The interquartile range - the middle 50% of the data, with the median as a line inside the box">
-The interquartile range - the middle 50% of the data, with the median as a line inside the box
-</label>
-<br>
-<label>
-<input type="radio" name="answer_W7_Q3" id="answer_W7_Q3_2" value="The 95% confidence interval of the mean">
-The 95% confidence interval of the mean
-</label>
-<br>
-<label>
-<input type="radio" name="answer_W7_Q3" id="answer_W7_Q3_3" value="The mean plus and minus one standard deviation">
+<input type="radio" name="answer_W7_Q3" id="answer_W7_Q3_1" value="The mean plus and minus one standard deviation">
 The mean plus and minus one standard deviation
 </label>
 <br>
 <label>
-<input type="radio" name="answer_W7_Q3" id="answer_W7_Q3_4" value="The full range from minimum to maximum">
+<input type="radio" name="answer_W7_Q3" id="answer_W7_Q3_2" value="The interquartile range - the middle 50% of the data, with the median as a line inside the box">
+The interquartile range - the middle 50% of the data, with the median as a line inside the box
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W7_Q3" id="answer_W7_Q3_3" value="The full range from minimum to maximum">
 The full range from minimum to maximum
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W7_Q3" id="answer_W7_Q3_4" value="The 95% confidence interval of the mean">
+The 95% confidence interval of the mean
 </label>
 <br>
 <input type="submit" value="Check answer">

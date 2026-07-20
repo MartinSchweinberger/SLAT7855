@@ -28,7 +28,7 @@ plot(dat$TestScores,
 
 Today, we will go beyond the `plot` function and us the `ggplot` function instead.
 
-To be able to generate `ggplot` plots, you need to install and load the  `ggplot` package. We also install and load the `vip` and `dplyr` packages.
+To be able to generate `ggplot` plots, you need to install and load the `ggplot2` package. We also install and load the `gridExtra` package (for arranging several plots in one panel) and the `dplyr` package.
 
 ```{r}
 #| label: installgg
@@ -36,14 +36,12 @@ To be able to generate `ggplot` plots, you need to install and load the  `ggplot
 #| message: false
 # install packages
 #install.packages("ggplot2")
-#install.packages("vip")
-#install.packages("dplyr")
 #install.packages("gridExtra")
+#install.packages("dplyr")
 # load packages
 library(ggplot2)
-library(vip)
-library(dplyr)
 library(gridExtra)
+library(dplyr)
 ```
 
 
@@ -86,7 +84,7 @@ p6 <- ggplot(dat, aes(x = Subject, y = TestScores)) +
   geom_smooth(color = "red", linetype = "dotted", size = .5) +
   theme_bw() +
   labs(title = "Layer 6", subtitle = "My pretty graph!")
-grid.arrange(p1, p2, p3, p4, p5, p6, nrow = 2)
+gridExtra::grid.arrange(p1, p2, p3, p4, p5, p6, nrow = 2)
 ```
 
 Thus, ggplots typically start with the function call (`ggplot`) followed by the specification of the data, then the aesthetics (`aes`), and then a specification of the type of plot that is created (`geom_line` for line graphs, `geom_box` for box plots, `geom_bar` for bar graphs, `geom_text` for text, etc.). 

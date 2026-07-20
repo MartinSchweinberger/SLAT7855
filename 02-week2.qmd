@@ -38,33 +38,29 @@ If we proposed the hypothesis *Apples always fall down.* and we find an example 
 
 ***
 
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>EXERCISE TIME!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
+::: {.callout-tip}
+## Think Break
+:::
 
-<div class="question">` 
+**The hypothesis *Apples always fall down* faces counter-examples (e.g. in space, without gravity). Which reformulation best accommodates them?**
 
-1. Can you think of cases where apples do not fall down?<br>
+```{r}
+#| echo: false
+#| label: "W2_TB1"
+checkdown::check_question("Apples always fall towards the dominant center of gravity",
+               options = c("Apples always fall towards the dominant center of gravity",
+                 "Apples usually fall down, except when they do not",
+                 "Apples always fall down on Earth, and everywhere else too",
+                 "Apples could fall in any direction"),
+               type = "radio",
+               q_id = "W2_TB1",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! This reformulation covers the counter-examples (zero gravity, competing centers of gravity) while remaining precise, testable, and falsifiable. Vague hedges like 'usually, except when not' make a statement unfalsifiable rather than better.",
+               wrong = "The improved hypothesis must cover the counter-examples while remaining falsifiable - hedging it into vagueness is not a fix.")
+```
 
-<details>
-  <summary>Answer</summary>
-    For example in space when there is no gravity or if another center of gravity were so close 
-    that it would *pull* the apple towards that more powerful center of gravity.  
-</details>
 
-2. How would we have to modify our hypothesis to accommodate potential counter-examples?<br>
-
-<details>
-  <summary>Answer</summary>
-    Instead of saying *Apples always fall down.*, you could say *Apples always fall towards* 
-    *the dominant center of gravity.*  
-</details>
-
-</div>`
 
 ***
 
@@ -96,24 +92,49 @@ Universality cannot be considered a defining feature of hypotheses, because it i
 
 ***
 
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>EXERCISE TIME!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
+::: {.callout-tip}
+## Think Break
+:::
 
-<div class="question">` 
+**Which of the following statements is a well-formed hypothesis?**
 
-1. Which of the following are hypotheses? Please provide reasons.<br>a. Smoking could have negative effects on one's health.<br>b. Alcohol is a gateway drug.<br>c. If alcohol is a gateway drug, then it should be criminalized.<br>d. If alcohol is a gateway drug but tobacco is not, then a significantly higher proportion of drug addicts have consumed alcohol compared with the proportion of drug addicts who have smoked before taking drugs.<br>e. Alcohol is a gateway drug, when/if it is illegal.<br>f.  Colorless green ideas sleep furiously.<br>g. Nightingales dream in Italian.
+```{r}
+#| echo: false
+#| label: "W2_TB2"
+checkdown::check_question("If alcohol is a gateway drug but tobacco is not, then a significantly higher proportion of drug addicts have consumed alcohol before taking drugs than have smoked",
+               options = c("If alcohol is a gateway drug but tobacco is not, then a significantly higher proportion of drug addicts have consumed alcohol before taking drugs than have smoked",
+                 "Smoking could have negative effects on one's health",
+                 "Colorless green ideas sleep furiously",
+                 "Nightingales dream in Italian"),
+               type = "radio",
+               q_id = "W2_TB2",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! This statement is falsifiable, testable, unambiguous, and inherently consistent. The others fail: 'could' makes the first ambiguous and unfalsifiable; the second is not inherently consistent; the third is not testable.",
+               wrong = "Check each statement against the four criteria: falsifiable, testable, unambiguous, inherently consistent.")
+```
 
-<details>
-  <summary>Answer</summary>
-  a. no hypothesis (ambiguous because it contains a modal: *could*)<br>b. hypothesis (all criteria are met)<br>c.  hypothesis (all criteria are met)<br>d. hypothesis (all criteria are met)<br>e.  hypothesis (all criteria are met)<br>f. no hypothesis (not inherently consistent)<br>g. no hypothesis (not testable).
-</details>
+---
 
-</div>`
+**Why is *Smoking could have negative effects on one's health* NOT a hypothesis?**
+
+```{r}
+#| echo: false
+#| label: "W2_TB3"
+checkdown::check_question("The modal 'could' makes it ambiguous and unfalsifiable - it is compatible with any observation",
+               options = c("The modal 'could' makes it ambiguous and unfalsifiable - it is compatible with any observation",
+                 "It is about health rather than language",
+                 "It has been proven true already",
+                 "It contains more than five words"),
+               type = "radio",
+               q_id = "W2_TB3",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! A statement that is true no matter what we observe ('could' covers both the presence and the absence of effects) cannot be falsified and therefore cannot function as a hypothesis.",
+               wrong = "What observation could possibly contradict a statement containing 'could'?")
+```
+
+
 
 ***
 
@@ -147,34 +168,43 @@ What does that mean and what are we testing? In non-technical terms, we test how
 
 ***
 
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>EXERCISE TIME!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
+::: {.callout-tip}
+## Think Break
+:::
 
-<div class="question">` 
+**What four characteristics do hypotheses have?**
 
-1. What four characteristics do hypotheses have?
+```{r}
+#| echo: false
+#| label: "W2_TB4"
+checkdown::check_question("They are falsifiable, testable, unambiguous, and inherently consistent",
+               options = c("They are falsifiable, testable, unambiguous, and inherently consistent",
+                 "They are proven, general, quantitative, and published",
+                 "They are directed, deterministic, numeric, and significant",
+                 "They are intuitive, plausible, popular, and safe from refutation"),
+               type = "radio",
+               q_id = "W2_TB4",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! Hypotheses are falsifiable statements about empirical reality that are testable, unambiguous, and inherently (logically) consistent.",
+               wrong = "Think back to the defining criteria discussed above - what must a statement fulfil to count as a hypothesis?")
+```
 
-<details>
-  <summary>Answer</summary>
-  They are are *falsifiable* (either true or false), they are *testable*, they are *unambiguous*, and they are *inherently consistent* (logically coherent).
-</details>
+::: {.callout-important collapse="false"}
+## Discussion tasks
 
-2. Come up with (a) three directed hypotheses and (b) three non-directed hypotheses.
+1. Come up with (a) three directed hypotheses and (b) three non-directed hypotheses.
 
 <details>
   <summary>Answer (examples)</summary>
   <br>**Directed**<br>In a 100 meter dash, Martin runs faster than Jack.<br>In informal conversations, Martin uses fewer swearwords than Michael.<br> Per minute, Martin can produce more words than Erich.<br><br>**Non-directed**<br>Martin and Michael differ in their use of swear words.<br>Martin and Erich differ in their speech speed.<br>Stefan and Martin differ in their need for sleep.<br>
 </details>
 
-3. Oftentimes, it is not that easy to differentiate between hypotheses and other types of statements. Find a partner and come with statements that are not hypotheses and discuss why these statements are not hypotheses.
+2. Oftentimes, it is not that easy to differentiate between hypotheses and other types of statements. Find a partner and come up with statements that are not hypotheses and discuss why these statements are not hypotheses.
 
-4. Find a partner and come up with statements that can be classified as both hypotheses and non-hypotheses and be prepared to explain your reasoning to the group.
-</div>`
+3. Find a partner and come up with statements that can be classified as both hypotheses and non-hypotheses and be prepared to explain your reasoning to the group.
+:::
+
 
 ***
 
@@ -396,66 +426,62 @@ The important thing is that you cannot transform a categorical variable into a n
 
 ***
 
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>EXERCISE TIME!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
+::: {.callout-tip}
+## Think Break
+:::
 
-<div class="question">` 
+::: {.callout-important}
+## Discussion task
 
-1. For each of the variables listed below, consider how you could operationalize them and what kind of variables it would be.<br>a. weather (cloudy, sunny, rainy, etc.)<br>b. citizenship<br>c. Tense of matrix verbs<br>d. Structural complexity<br>e. word length<br>f. Number of syllables in a word<br>g. The length of pauses in a sample of conversations<br>h. The appearance or non-appearance of finite verbs in a particular text<br>i. Estimation of words on an acceptability scale from 1 to 5
+For each of the variables listed below, consider how you could operationalize them and what kind of variable it would be.<br>a. weather (cloudy, sunny, rainy, etc.)<br>b. citizenship<br>c. Tense of matrix verbs<br>d. Structural complexity<br>e. word length<br>f. Number of syllables in a word<br>g. The length of pauses in a sample of conversations<br>h. The appearance or non-appearance of finite verbs in a particular text<br>i. Estimation of words on an acceptability scale from 1 to 5
 
 <details>
   <summary>Answer (examples)</summary>
-  <br>**There are other solutions so the following are just possible options!**<br>a. weather could, e.g., be operationalized as the number of sunny days or the amount of rain per year. Optimally, we would want weather to be operationalized as a *numeric* variable.<br>b).citizenship would typically be operationalized as a *categorical* variable (e.g. German or Norwegian or Australian or other).<br>c. This answer depends on the grammatical structure of the language in question. In English, we would probably operationalize the tense of matrix verbs as a *nominal* variable with the levels *present* and *non-present*.<br>d. Structural complexity can be operationalized in many different ways, e.g., as the number of syntactic nodes, sentence length, number of phrases, average phrase length, etc.  Optimally, we would want structural complexity to be operationalized as a *numeric* variable.<br>e. Word length could,e.g. be operationalized as number of letters, number of phonemes, or the time it takes to produce that word. Thus, word length would typically be operationalized as a numerically scaled variable or an integer (which, in R, would be a type of *numeric* variable).<br>f. The number of syllables per word would be operationalized as an integer (which, in R, would be a type of *numeric* variable).<br>g. The length of pauses in a sample of conversations could be operationalized as the time of the pause (numeric) or even just as an ordered factor (short, middle, long).  Optimally, however, we would want the length of pauses to be operationalized as a *numeric* variable.<br>h. The appearance or non-appearance of finite verbs in a particular text would be a *nominal* variable (present versus absent).<br>i. (The estimation of words on an acceptability scale from 1 to 5 represents judgements on a Likert scale which means that the resulting variable would represent an order factor (*ordinal* variable).<br>
+  <br>**There are other solutions so the following are just possible options!**<br>a. weather could, e.g., be operationalized as the number of sunny days or the amount of rain per year. Optimally, we would want weather to be operationalized as a *numeric* variable.<br>b. citizenship would typically be operationalized as a *categorical* variable (e.g. German or Norwegian or Australian or other).<br>c. This answer depends on the grammatical structure of the language in question. In English, we would probably operationalize the tense of matrix verbs as a *nominal* variable with the levels *present* and *non-present*.<br>d. Structural complexity can be operationalized in many different ways, e.g., as the number of syntactic nodes, sentence length, number of phrases, average phrase length, etc. Optimally, we would want structural complexity to be operationalized as a *numeric* variable.<br>e. Word length could, e.g., be operationalized as number of letters, number of phonemes, or the time it takes to produce that word - typically a *numeric* variable.<br>f. The number of syllables per word would be operationalized as an integer (in R, a type of *numeric* variable).<br>g. The length of pauses could be operationalized as the duration of the pause (numeric) or as an ordered factor (short, middle, long). Optimally a *numeric* variable.<br>h. The appearance or non-appearance of finite verbs in a particular text would be a *nominal* variable (present versus absent).<br>i. Estimations on an acceptability scale from 1 to 5 represent judgements on a Likert scale, i.e. an *ordinal* variable.<br>
 </details>
 
-3. As you have seen from the above exercise, concepts can be operationalized differently. Find a partner and imagine that you are tasked with performing a study in which age of subjects is an important variable. Discuss with a partner how you would age. What advantages and disadvantages do the different operationalizations have?
+Also: imagine you are tasked with performing a study in which the age of subjects is an important variable. Discuss with a partner how you would operationalize age. What advantages and disadvantages do the different operationalizations have?
+:::
 
-4. Example: *When it rains, more people get wet than when it's not raining. (If X, then Y)*<br>What is the dependent variable here and what is the independent variable? 
-
-<details>
-  <summary>Answer</summary>
-  <br>Dependent variable: wet people<br>
-  Independent variable: rain<br>
-</details>
-
-5. Which variable scales are *time*, *rank*, and *name* in the table below?
+***When it rains, more people get wet than when it is not raining.* What are the dependent and the independent variable?**
 
 ```{r}
 #| echo: false
-#| message: false
-#| warning: false
-variableextb <- matrix(c("Carl Lewis", "Ben Johnson", "Steve Davis", "1", "2", "3", "9.86", "9.97", "10.06"), nrow = 3, byrow = F)
-# add column and row names
-colnames(variableextb) <- c("Name", "Rank", "Time")
-# inspect data
-variableextb |>
-  as.data.frame() |>
-  flextable() |>
-  flextable::set_table_properties(width = .75, layout = "autofit") |>
-  flextable::theme_zebra() |>
-  flextable::fontsize(size = 12) |>
-  flextable::fontsize(size = 12, part = "header") |>
-  flextable::align_text_col(align = "center") |>
-  flextable::set_caption(caption = "Results of a 100 meter dash.")  |>
-  flextable::border_outer()
+#| label: "W2_TB5"
+checkdown::check_question("Dependent: (number of) wet people; independent: rain",
+               options = c("Dependent: (number of) wet people; independent: rain",
+                 "Dependent: rain; independent: wet people",
+                 "Both are dependent variables",
+                 "Both are independent variables"),
+               type = "radio",
+               q_id = "W2_TB5",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! The independent variable is the (hypothesized) cause (rain); the dependent variable is the outcome that depends on it (people getting wet).",
+               wrong = "Which of the two *depends* on the other in this if-X-then-Y statement?")
 ```
 
-<details>
-  <summary>Answer</summary>
-  <br>*Name* is categorical, *Rank* is ordinal, and *Time* is numeric.<br>
-</details>
+---
 
-6. Discuss with a partner: what obstacles might exist, so that a well operationalized variable has low extrinsic validity?
+**In a table listing sprinters' names, their ranks (1st, 2nd, 3rd), and their times (9.86s, 9.97s, 10.06s): which variable scales are *Name*, *Rank*, and *Time*?**
+
+```{r}
+#| echo: false
+#| label: "W2_TB6"
+checkdown::check_question("Name: nominal, Rank: ordinal, Time: numeric",
+               options = c("Name: nominal, Rank: ordinal, Time: numeric",
+                 "Name: ordinal, Rank: nominal, Time: numeric",
+                 "Name: nominal, Rank: numeric, Time: ordinal",
+                 "All three are numeric"),
+               type = "radio",
+               q_id = "W2_TB6",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! Names are unordered categories (nominal), ranks are ordered but the distances between them are not meaningful (ordinal), and times are measured on a continuous scale with meaningful distances (numeric).",
+               wrong = "Ask for each variable: are there categories? Is there an order? Are the distances between values meaningful?")
+```
 
 
-7. Consider the following scenario: in a large representative study, shoe size is found to be an excellent predictor of intelligence. Given this result, find a partner and discuss if intrinsic validity is necessary?
-
-</div>`
 
 ***
 

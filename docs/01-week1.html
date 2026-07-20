@@ -292,6 +292,16 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#the-monty-hall-problem" id="toc-the-monty-hall-problem" class="nav-link" data-scroll-target="#the-monty-hall-problem"><span class="header-section-number">1.2.1</span> The Monty Hall Problem</a></li>
   <li><a href="#the-birthday-conundrum" id="toc-the-birthday-conundrum" class="nav-link" data-scroll-target="#the-birthday-conundrum"><span class="header-section-number">1.2.2</span> The Birthday Conundrum</a></li>
+  <li><a href="#fast-and-slow-thinking" id="toc-fast-and-slow-thinking" class="nav-link" data-scroll-target="#fast-and-slow-thinking"><span class="header-section-number">1.2.3</span> Fast and Slow Thinking</a></li>
+  <li><a href="#randomness" id="toc-randomness" class="nav-link" data-scroll-target="#randomness"><span class="header-section-number">1.2.4</span> Randomness</a></li>
+  <li><a href="#patterns-and-matters-of-habit" id="toc-patterns-and-matters-of-habit" class="nav-link" data-scroll-target="#patterns-and-matters-of-habit"><span class="header-section-number">1.2.5</span> Patterns and Matters of Habit</a></li>
+  <li><a href="#locical-fallacies-and-biases" id="toc-locical-fallacies-and-biases" class="nav-link" data-scroll-target="#locical-fallacies-and-biases"><span class="header-section-number">1.2.6</span> Locical Fallacies and Biases</a></li>
+  </ul></li>
+  <li><a href="#what-is-science" id="toc-what-is-science" class="nav-link" data-scroll-target="#what-is-science"><span class="header-section-number">1.3</span> What is science?</a>
+  <ul class="collapse">
+  <li><a href="#clever-hans" id="toc-clever-hans" class="nav-link" data-scroll-target="#clever-hans"><span class="header-section-number">1.3.1</span> Clever Hans</a></li>
+  <li><a href="#popper-falsification-and-scientific-progress" id="toc-popper-falsification-and-scientific-progress" class="nav-link" data-scroll-target="#popper-falsification-and-scientific-progress"><span class="header-section-number">1.3.2</span> Popper, falsification, and scientific progress</a></li>
+  <li><a href="#what-is-empirical-linguistics" id="toc-what-is-empirical-linguistics" class="nav-link" data-scroll-target="#what-is-empirical-linguistics"><span class="header-section-number">1.3.3</span> What is (empirical) Linguistics?</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -460,93 +470,165 @@ Key concept: Confirmation bias
 <p><br></p>
 </section>
 <section id="the-birthday-conundrum" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored"><span class="header-section-number">1.2.2</span> The Birthday Conundrum</h3>
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="the-birthday-conundrum"><span class="header-section-number">1.2.2</span> The Birthday Conundrum</h3>
 <p>Another interesting way to show that we are not good with numbers relates to the so-called <em>Birthday Conundrum</em>. The birthday conundrum deals with exponential growth and it can best be exemplified by the following scenario: imagine you are in a class consisting of 23 students.</p>
 <hr>
-<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
-<span>
-<p style="margin-top:1em; text-align:center">
-<b>Think Break!</b>
-</p>
-<p style="margin-left:1em;">
-</p>
-<p></p>
-</span></div>
-<div class="question">
-<p>`</p>
-<ol type="1">
-<li>How likely is it that 2 students have the same birthday in a class with 23 students?</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
-<p>In a room of just 23 people there is approximately a 50-50 chance of two people having the same birthday.The vast majority of people will intuitively come up with much higher numbers of students that are required to find a pair of students that have the same birthday. But why is that?</p>
-<p>Well, we are quite good with our numeric intuition when it comes to simple addition, subtraction, and multiplication but we are really bad when it comes to exponential growth.</p>
-<p>Let us go back to our problem: What are the chances that two students in a class of 23 have their birthday on the same day?</p>
-<p>We could list all possible couples and count all the ways they could fit but that would be really labor-intensive. In fact, it would be the same as asking <em>What’s the chance to get one or more heads in 23-coin flips?</em>.</p>
-<p>Is there an easier way to solve the coin-flip and the birthday problem?</p>
-<p>Yes, there is. We can turn the problem on its head: instead of determining the likelihood of each and every path to get heads, we simply calculate the chance to get only tails (or all separate birthdays).</p>
-<p>If there’s a 1% chance of getting only tails (it is, in fact, <span class="math inline">\(.5^23\)</span> to be precise but let’s stick with 1 percent for the sake of simplicity here), there’s a 99% chance of having at least one head. We do not know if it’s only 1 head or 2 or 15 or 23: there is at least once head, and that is what matters here. If we subtract the probability of the negative of our problem from 1, we get the probability of the scenario that we are interested in.</p>
-<p>The same principle applies to birthdays. Instead of finding all possibilities, we find the chance that everyone is different (the <em>negative</em> scenario). We then determine the probability of the positive and have the chance of at least two people having the same birthday. It can be 1 pair, or 2 or 20, but at least two people have the same birthday.</p>
-<p>So let’s go over how to calculate the actual probability. If we have a class of 23 students, then there are 253 pairs (22+21+20+19+18+17+16+15+14+13+12+11+10+9+8+7+6+5+4+3+2+1).</p>
-<p>An easier way to calculate this is show below.</p>
-<p><span class="math display">\[\begin{equation}
-  \frac{23 \cdot 22}{2} = 253
-  \end{equation}\]</span></p>
-<p>The chance of 2 people having different birthdays is:</p>
-<p><span class="math display">\[\begin{equation}
-  1 - \frac{1}{365} = \frac{364}{365} = .997260
-  \end{equation}\]</span></p>
-<p>But we need to raise this probability to the power of 253 - the number of possible pairs in our class. - the number of possible pairs in our class.</p>
-<p><span class="math display">\[\begin{equation}
-  (\frac{364}{365})^{253} = .4995
-  \end{equation}\]</span></p>
-<p>The chance of getting a single miss, i.e.&nbsp;that two specific people do not have the same birthday, is very high (99.7260%), but when that chance is multiplied given all the possible pairs, the odds of two people having the same birthday decrease very fast. In fact, in a class of 23 people, the chance that two people have the same birthday is about 50 percent (as shown above).</p>
-</details>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>`</p>
-<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
-<span>
-<p style="margin-top:1em; text-align:center">
-<b>EXERCISE TIME!</b>
-</p>
-<p style="margin-left:1em;">
-</p>
-<p></p>
-</span></div>
-<div class="question">
-<p>`</p>
-<ol type="1">
-<li>What is the probability of two people having the same birthday in a class of 73 students?</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
+<div class="callout-title-container flex-fill">
+Think Break
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p><strong>How likely is it that 2 students have the same birthday in a class of 23 students?</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is a slightly different way to calculate the result :)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of students</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">73</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Total number of days in a year</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>days_in_year <span class="ot">&lt;-</span> <span class="dv">365</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the probability that all students have different birthdays</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>prob_all_different <span class="ot">&lt;-</span> <span class="fu">prod</span>((days_in_year <span class="sc">-</span> <span class="dv">0</span><span class="sc">:</span>(n<span class="dv">-1</span>)) <span class="sc">/</span> days_in_year)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the probability that at least two students share the same birthday</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>prob_at_least_one_shared <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> prob_all_different</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the result</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>prob_at_least_one_shared </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>::: {.cell-output .cell-output-stdout}</p>
-<pre><code>[1] 0.9995608</code></pre>
-<p>::: :::</p>
-The probability of 2 students having the same birthday in a class of 73 students is almost 1 (or 100 percent).
-</div></details>
+<div class="cell-output-display">
+<form name="form_W1_TB1" onsubmit="return validate_form_W1_TB1()" method="post">
+<label>
+<input type="radio" name="answer_W1_TB1" id="answer_W1_TB1_1" value="About 50%">
+About 50%
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W1_TB1" id="answer_W1_TB1_2" value="About 6% (23/365)">
+About 6% (23/365)
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W1_TB1" id="answer_W1_TB1_3" value="About 23%">
+About 23%
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W1_TB1" id="answer_W1_TB1_4" value="Practically 0%">
+Practically 0%
+</label>
+<br>
+<input type="submit" value="Check answer">
+<div id="result_W1_TB1"></div>
+</form>
+<script>function validate_form_W1_TB1() {var x, text; var x = document.forms['form_W1_TB1']['answer_W1_TB1'].value;if (x == 'About 50%'){text = 'Correct! Counter-intuitively, a class of just 23 students already gives a roughly 50-50 chance of a shared birthday. Our numeric intuition handles addition well but fails badly at compound probabilities - see the full calculation below.';} else {text = 'Most people guess far too low a probability - our intuition is poor at compound probabilities. Try the calculation in the box below.';} document.getElementById('result_W1_TB1').innerHTML = text; evaluate_final_score(); return false;}function evaluate_final_score(){
+         element = document.getElementById('checkdown_final_score');
+         if(element === null){return false;} else {var element, text, res1;res1 = document.getElementById('result_W1_TB1').innerText == 'Correct! Counter-intuitively, a class of just 23 students already gives a roughly 50-50 chance of a shared birthday. Our numeric intuition handles addition well but fails badly at compound probabilities - see the full calculation below.';text = res1;element.innerHTML = text;
+         return false;
+         }}</script>
 </div>
-<p>`</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to calculate this
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We could list all possible pairs of students and count all the ways they could match, but that would be really labor-intensive. There is an easier way: we turn the problem on its head. Instead of determining the likelihood of every path to a shared birthday, we calculate the chance that <em>everyone has a different birthday</em> (the <em>negative</em> scenario) and subtract that probability from 1.</p>
+<p>In a class of 23 students, there are 253 possible pairs:</p>
+<p><span class="math display">\[\begin{equation}
+\frac{23 \cdot 22}{2} = 253
+\end{equation}\]</span></p>
+<p>The chance of 2 people having <em>different</em> birthdays is:</p>
+<p><span class="math display">\[\begin{equation}
+1 - \frac{1}{365} = \frac{364}{365} = .997260
+\end{equation}\]</span></p>
+<p>The chance of a single miss is very high, but we need to raise this probability to the power of 253 - the number of possible pairs in the class:</p>
+<p><span class="math display">\[\begin{equation}
+(\frac{364}{365})^{253} = .4995
+\end{equation}\]</span></p>
+<p>When that near-certain single miss is compounded across all 253 pairs, the odds of <em>no</em> shared birthday drop to about 50 percent - so the chance that at least two people share a birthday is also about 50 percent. It could be 1 pair or 20 pairs; at least two people share a birthday.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Think Break
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p><strong>What is the probability of two people having the same birthday in a class of 73 students?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<form name="form_W1_TB2" onsubmit="return validate_form_W1_TB2()" method="post">
+<label>
+<input type="radio" name="answer_W1_TB2" id="answer_W1_TB2_1" value="About 50%">
+About 50%
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W1_TB2" id="answer_W1_TB2_2" value="About 73%">
+About 73%
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W1_TB2" id="answer_W1_TB2_3" value="Nearly 100%">
+Nearly 100%
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W1_TB2" id="answer_W1_TB2_4" value="About 20% (73/365)">
+About 20% (73/365)
+</label>
+<br>
+<input type="submit" value="Check answer">
+<div id="result_W1_TB2"></div>
+</form>
+<script>function validate_form_W1_TB2() {var x, text; var x = document.forms['form_W1_TB2']['answer_W1_TB2'].value;if (x == 'Nearly 100%'){text = 'Correct! With 73 students there are 2,628 possible pairs, and the probability of at least one shared birthday rises to 99.96% - effectively certain. The R calculation below shows how to compute this.';} else {text = 'Think about how many <em>pairs</em> 73 students form - the probability compounds across all of them. See the calculation below.';} document.getElementById('result_W1_TB2').innerHTML = text; evaluate_final_score(); return false;}function evaluate_final_score(){
+         element = document.getElementById('checkdown_final_score');
+         if(element === null){return false;} else {var element, text, res1, res2;res1 = document.getElementById('result_W1_TB1').innerText == 'Correct! Counter-intuitively, a class of just 23 students already gives a roughly 50-50 chance of a shared birthday. Our numeric intuition handles addition well but fails badly at compound probabilities - see the full calculation below.'; res2 = document.getElementById('result_W1_TB2').innerText == 'Correct! With 73 students there are 2,628 possible pairs, and the probability of at least one shared birthday rises to 99.96% - effectively certain. The R calculation below shows how to compute this.';text = res1 + res2;element.innerHTML = text;
+         return false;
+         }}</script>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to calculate this in R
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of students</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">73</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># total number of days in a year</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>days_in_year <span class="ot">&lt;-</span> <span class="dv">365</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># probability that all students have different birthdays:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># multiply the chances of each successive student avoiding</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># all previously taken birthdays</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>prob_all_different <span class="ot">&lt;-</span> <span class="fu">prod</span>((days_in_year <span class="sc">-</span> <span class="dv">0</span><span class="sc">:</span>(n<span class="dv">-1</span>)) <span class="sc">/</span> days_in_year)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># probability that at least two students share a birthday</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>prob_at_least_one_shared <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> prob_all_different</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># print the result</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>prob_at_least_one_shared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9995608</code></pre>
+</div>
+</div>
+<p>The probability of 2 students having the same birthday in a class of 73 students is almost 1 (or 100 percent).</p>
+</div>
+</div>
+</div>
 <hr>
 <div class="cell">
 <div class="cell-output-display">
@@ -557,6 +639,7 @@ The probability of 2 students having the same birthday in a class of 73 students
 </div>
 </div>
 </div>
+</section>
 <section id="fast-and-slow-thinking" class="level3" data-number="1.2.3">
 <h3 data-number="1.2.3" class="anchored" data-anchor-id="fast-and-slow-thinking"><span class="header-section-number">1.2.3</span> Fast and Slow Thinking</h3>
 <p>A similar point can be made by another example: assume that a ball and a bat together cost 1.10 AUD. The bat costs 1 AUD more than the ball. What does the ball cost?</p>
@@ -589,10 +672,10 @@ The probability of 2 students having the same birthday in a class of 73 students
 <p>A similar cognitive bias underlies many ghost sightings. We are prone to see faces or human figures in random patterns. For example, the famous picture of a face on Mars or faces on toasts. Similarly, if you hear leaves turning over at night, it is likely that you think that someone is following you, as you assign noises rather to agents such as people rather than natural forces.</p>
 <p>Bruce Hood, a psychologist at Cardiff University, offers a very interesting evolutionary explanation for this phenomenon. To elaborate, imagine a professor offered you 10 AUD to wear a jumper he brought along for only a minute or so. Most people would take the offer and earn the 10 AUD. However, the professor adds that the jumper belonged to a brutal psychopathic serial killer and asks again whether you would wear the jumper. While some students would still wear the jumper, some students would not wear it given this information and even students who would, state that they would feel less comfortable. The underlying mechanism is that we assume that the jumper is not merely a piece of cloth but that it has changed somehow and acquired something by having been worn by a brutal psychopathic serial killer. While this is completely natural, it is irrational as the jumper is, in fact, merely a piece of cloth. Hood explains that people often assign value to material things which goes to say that people treat objects not only as material consisting of atoms but as things that have something like an essence or a <em>soul</em>. The underlying mechanism, he hypothesizes, adds an evolutionary advantage as people who had this belief were less likely to get close to items or people suffering from diseases and were thus less likely to get infected. This goes to show that irrational thinking or responses can be grounded in rational behavior.</p>
 <p>In addition to being generally bad with numbers and assuming agents rather than natural causes, there is another bias, called confirmation bias, which is an inbuilt hindrance to accurate knowledge. Let’s turn to another example to illustrate this. This example is called the <em>Wason Selection Task</em> after Peter Wason who came up with this test. Imagine you are presented with cards that have letters on one side and numbers on the other. Four of these cards are placed on a table before you. Card 1 is an <em>A</em>, card 2 is a <em>K</em>, card 3 is a <em>2</em>, and the fourth card is a <em>7</em>. You are told that whenever a vowel is on one side of the card, the other side is an even number. Which of these four cards do you have to turn over to determine whether this rule holds true?</p>
-<div class="tabwid"><style>.cl-dc497fe4{table-layout:auto;width:50%;}.cl-dc3db60a{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-dc3db61e{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-dc424a58{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-dc42805e{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc428068{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc428069{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc428072{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc428073{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc42807c{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-dc497fe4"><thead><tr style="overflow-wrap:break-word;"><th class="cl-dc42805e"><p class="cl-dc424a58"><span class="cl-dc3db60a">Card 1</span></p></th><th class="cl-dc428068"><p class="cl-dc424a58"><span class="cl-dc3db60a">Card 2</span></p></th><th class="cl-dc428068"><p class="cl-dc424a58"><span class="cl-dc3db60a">Card 3</span></p></th><th class="cl-dc428069"><p class="cl-dc424a58"><span class="cl-dc3db60a">Card 4</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-dc428072"><p class="cl-dc424a58"><span class="cl-dc3db61e">A</span></p></td><td class="cl-dc428073"><p class="cl-dc424a58"><span class="cl-dc3db61e">K</span></p></td><td class="cl-dc428073"><p class="cl-dc424a58"><span class="cl-dc3db61e">2</span></p></td><td class="cl-dc42807c"><p class="cl-dc424a58"><span class="cl-dc3db61e">7</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-c430d872{table-layout:auto;width:50%;}.cl-c4288870{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c4288884{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c42bd502{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-c42bf5a0{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c42bf5aa{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c42bf5b4{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c42bf5b5{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c42bf5be{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c42bf5bf{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-c430d872"><thead><tr style="overflow-wrap:break-word;"><th class="cl-c42bf5a0"><p class="cl-c42bd502"><span class="cl-c4288870">Card 1</span></p></th><th class="cl-c42bf5aa"><p class="cl-c42bd502"><span class="cl-c4288870">Card 2</span></p></th><th class="cl-c42bf5aa"><p class="cl-c42bd502"><span class="cl-c4288870">Card 3</span></p></th><th class="cl-c42bf5b4"><p class="cl-c42bd502"><span class="cl-c4288870">Card 4</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-c42bf5b5"><p class="cl-c42bd502"><span class="cl-c4288884">A</span></p></td><td class="cl-c42bf5be"><p class="cl-c42bd502"><span class="cl-c4288884">K</span></p></td><td class="cl-c42bf5be"><p class="cl-c42bd502"><span class="cl-c4288884">2</span></p></td><td class="cl-c42bf5bf"><p class="cl-c42bd502"><span class="cl-c4288884">7</span></p></td></tr></tbody></table></div>
 <p>What have you guessed? The most common answer is cards 1 and 2 while the correct answer is actually cards 1 and 4 because the rule does not say whether there are even or odd numbers behind consonants; thus, turning over cards 2 and 3 does not help you in determining whether the rule holds true or not - in fact, cards 2 and 3 are irrelevant for the problem.</p>
 <p>Let us now turn to another example to further illustrate cognitive bias: Imagine that I have a rule in my mind and write down 3 numbers which are generated in accordance with my rule. Your task is to find out what the rule is that I have in mind. To help you finding out about that, you are allowed to propose a fourth number and I have to answer whether the proposed number is aligned with my rule or not. After proposing a number, you may then propose what the rule is and I have to tell you whether the proposed rule is the rule I had in mind or not. The numbers I write down are 1, 2 and 4. What do you think is the rule I have in mind and which number would you propose?</p>
-<div class="tabwid"><style>.cl-dc6b1852{table-layout:auto;width:50%;}.cl-dc63e1e0{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-dc63e1ea{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-dc66a182{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-dc66bffa{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc66c004{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc66c005{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc66c00e{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc66c00f{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc66c010{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-dc6b1852"><thead><tr style="overflow-wrap:break-word;"><th class="cl-dc66bffa"><p class="cl-dc66a182"><span class="cl-dc63e1e0">Number 1</span></p></th><th class="cl-dc66c004"><p class="cl-dc66a182"><span class="cl-dc63e1e0">Number 2</span></p></th><th class="cl-dc66c004"><p class="cl-dc66a182"><span class="cl-dc63e1e0">Nuber 3</span></p></th><th class="cl-dc66c005"><p class="cl-dc66a182"><span class="cl-dc63e1e0">Number 4</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-dc66c00e"><p class="cl-dc66a182"><span class="cl-dc63e1ea">1</span></p></td><td class="cl-dc66c00f"><p class="cl-dc66a182"><span class="cl-dc63e1ea">2</span></p></td><td class="cl-dc66c00f"><p class="cl-dc66a182"><span class="cl-dc63e1ea">4</span></p></td><td class="cl-dc66c010"><p class="cl-dc66a182"><span class="cl-dc63e1ea">?</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-c44cc2ee{table-layout:auto;width:50%;}.cl-c44506f8{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c4450702{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c4484caa{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-c448748c{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c4487496{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c44874a0{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c44874aa{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c44874ab{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c44874b4{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-c44cc2ee"><thead><tr style="overflow-wrap:break-word;"><th class="cl-c448748c"><p class="cl-c4484caa"><span class="cl-c44506f8">Number 1</span></p></th><th class="cl-c4487496"><p class="cl-c4484caa"><span class="cl-c44506f8">Number 2</span></p></th><th class="cl-c4487496"><p class="cl-c4484caa"><span class="cl-c44506f8">Nuber 3</span></p></th><th class="cl-c44874a0"><p class="cl-c4484caa"><span class="cl-c44506f8">Number 4</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-c44874aa"><p class="cl-c4484caa"><span class="cl-c4450702">1</span></p></td><td class="cl-c44874ab"><p class="cl-c4484caa"><span class="cl-c4450702">2</span></p></td><td class="cl-c44874ab"><p class="cl-c4484caa"><span class="cl-c4450702">4</span></p></td><td class="cl-c44874b4"><p class="cl-c4484caa"><span class="cl-c4450702">?</span></p></td></tr></tbody></table></div>
 <p>Typically, students first propose 8 (which is in accordance with my rule) and the rule that is typically proposed first is <em>Double the previous number</em>. Unfortunately, this is not the rule according to which I generated the numbers. The next guess is typically 16 (which is also in accordance with my rule) and students propose the rule <em>Square the previous number</em> (which is again incorrect). It is only when students propose numbers that contradict their hypothesized rule that they get closer to finding the actual rule I have in mind.</p>
 <p>Actually, the rule I have in mind is very simple as it is <em>The current number must always be bigger than the previous number</em>. This is to show that we intuitively test whether our hypothesized rule is correct, rather than testing whether it is false. A well-reasoned proposal would thus be numbers like 3 or 7 which conflict with the hypothesized rule rather than numbers which comply with it.</p>
 <p>This goes to show that we, as humans, aim to support ideas we already have rather than testing our beliefs. Science, however, does exactly the opposite: in the scientific process, ideas, hypotheses and theories are challenged. Support for Ideas or theories comes from failed attempts to disprove them rather than from findings which support them.</p>
@@ -704,38 +787,90 @@ The probability of 2 students having the same birthday in a class of 73 students
 <p>The so-called <em>sunk cost fallacy</em> occurs when someone continues doing something because of the effort they have already put in - regardless of whether the additional costs outweigh the potential benefits. <em>Sunk cost</em> is a term borrowed from economics where it refers to expenses that can no longer be recovered. An example would be if you continue watching a TV show only because you have already watched some episodes although you are actually not enjoying watching the show - you just go through with it so that the initial investment of time was not “in vain”.</p>
 <p>Falling prey to cognitive biases or logical fallacies means that we are constantly deceiving ourselves and therefore need to protect ourselves from our own wrong judgments. To protect ourselves from these natural (systematic) delusions that have been discussed so far, we have developed <em>skeptical or critical thinking skills</em>. Among these skills, the <em>hypothetic-deductive method of science</em> is known as the <em>scientific method</em>. However, these skills are not just there - they have to be learned and trained! Such skeptical skills form the basis of science because science, in its essence, is the search for answers about how the world really works. And in order to avoid being led astray, we have to safeguard ourselves from our own biases by following a methodological and careful approach. The next section will focus on the relationship between science and why it must be methodological.</p>
 <hr>
-<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
-<span>
-<p style="margin-top:1em; text-align:center">
-<b>EXERCISE TIME!</b>
-</p>
-<p style="margin-left:1em;">
-</p>
-<p></p>
-</span></div>
-<div class="question">
-<p>`</p>
-<ol type="1">
-<li>Given what you have learned in this chapter, can you come up with explanations for a belief in ghosts?</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
-<p>Experiences of ghosts (or what people experience as ghosts) can be caused by many factors, for example, <em>pareidolia</em> which can cause people to interpret random images, or patterns of light and shadow, as faces.</p>
-</details>
-<ol start="2" type="1">
-<li>Someone tells you that his grandfather smoked a pack of cigarettes and drank a bottle of whiskey every day and thus claims that smoking and drinking does not harm your health. What is problematic about the conclusion and why is anecdotal evidence not appropriate?</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
-When aiming to answer how one factor (e.g., smoking) affects another factor (e.g., developing cancer), we are typically interested in general patterns or trends rather than unusual or unrepresentative cases. As such, individual anecdotes are not useful to answer questions asking for the relationship between factors, because we do not know how common or prototypical the anecdotal case is. Even many anecdotes do not qualify as data as anecdotes are likely biased and not representative. To determine the relationship between factors, we would need systematic and unbiased observation .
-</details>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>`</p>
+<div class="callout-title-container flex-fill">
+Think Break
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p><strong>Given what you have learned in this chapter: which cognitive mechanism offers a plausible explanation for experiences of ghosts?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<form name="form_W1_TB3" onsubmit="return validate_form_W1_TB3()" method="post">
+<label>
+<input type="radio" name="answer_W1_TB3" id="answer_W1_TB3_1" value="Statistical regression to the mean">
+Statistical regression to the mean
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W1_TB3" id="answer_W1_TB3_2" value="Slow, deliberate thinking as described by Kahneman">
+Slow, deliberate thinking as described by Kahneman
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W1_TB3" id="answer_W1_TB3_3" value="Pareidolia - our tendency to perceive meaningful patterns (e.g. faces) in random stimuli">
+Pareidolia - our tendency to perceive meaningful patterns (e.g. faces) in random stimuli
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W1_TB3" id="answer_W1_TB3_4" value="The falsifiability criterion">
+The falsifiability criterion
+</label>
+<br>
+<input type="submit" value="Check answer">
+<div id="result_W1_TB3"></div>
+</form>
+<script>function validate_form_W1_TB3() {var x, text; var x = document.forms['form_W1_TB3']['answer_W1_TB3'].value;if (x == 'Pareidolia - our tendency to perceive meaningful patterns (e.g. faces) in random stimuli'){text = 'Correct! Pareidolia leads people to interpret random images or patterns of light and shadow as faces or figures - one of several pattern-seeing biases that can underlie supernatural experiences.';} else {text = 'Think of the face on Mars: which bias makes us see meaningful patterns where there are none?';} document.getElementById('result_W1_TB3').innerHTML = text; evaluate_final_score(); return false;}function evaluate_final_score(){
+         element = document.getElementById('checkdown_final_score');
+         if(element === null){return false;} else {var element, text, res1, res2, res3;res1 = document.getElementById('result_W1_TB1').innerText == 'Correct! Counter-intuitively, a class of just 23 students already gives a roughly 50-50 chance of a shared birthday. Our numeric intuition handles addition well but fails badly at compound probabilities - see the full calculation below.'; res2 = document.getElementById('result_W1_TB2').innerText == 'Correct! With 73 students there are 2,628 possible pairs, and the probability of at least one shared birthday rises to 99.96% - effectively certain. The R calculation below shows how to compute this.'; res3 = document.getElementById('result_W1_TB3').innerText == 'Correct! Pareidolia leads people to interpret random images or patterns of light and shadow as faces or figures - one of several pattern-seeing biases that can underlie supernatural experiences.';text = res1 + res2 + res3;element.innerHTML = text;
+         return false;
+         }}</script>
+</div>
+</div>
 <hr>
+<p><strong>Someone claims that smoking and drinking are harmless because his grandfather smoked a pack a day, drank daily, and lived to 95. What is the core problem with this reasoning?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<form name="form_W1_TB4" onsubmit="return validate_form_W1_TB4()" method="post">
+<label>
+<input type="radio" name="answer_W1_TB4" id="answer_W1_TB4_1" value="A single anecdote tells us nothing about the general relationship between the factors - we do not know how representative the case is">
+A single anecdote tells us nothing about the general relationship between the factors - we do not know how representative the case is
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W1_TB4" id="answer_W1_TB4_2" value="Nothing - one clear counter-example falsifies the claim that smoking is harmful">
+Nothing - one clear counter-example falsifies the claim that smoking is harmful
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W1_TB4" id="answer_W1_TB4_3" value="The claim involves two habits, but anecdotes can only cover one">
+The claim involves two habits, but anecdotes can only cover one
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W1_TB4" id="answer_W1_TB4_4" value="The grandfather's age was not verified by a doctor">
+The grandfather's age was not verified by a doctor
+</label>
+<br>
+<input type="submit" value="Check answer">
+<div id="result_W1_TB4"></div>
+</form>
+<script>function validate_form_W1_TB4() {var x, text; var x = document.forms['form_W1_TB4']['answer_W1_TB4'].value;if (x == 'A single anecdote tells us nothing about the general relationship between the factors - we do not know how representative the case is'){text = 'Correct! Questions about how one factor affects another concern general patterns, not individual cases. Anecdotes are unrepresentative and biased samples; answering such questions requires systematic, unbiased observation. (And note: ‘smoking harms health’ is a probabilistic claim, so one healthy smoker does not falsify it.)';} else {text = 'Is one unusual case informative about a general pattern? What would you need instead of an anecdote?';} document.getElementById('result_W1_TB4').innerHTML = text; evaluate_final_score(); return false;}function evaluate_final_score(){
+         element = document.getElementById('checkdown_final_score');
+         if(element === null){return false;} else {var element, text, res1, res2, res3, res4;res1 = document.getElementById('result_W1_TB1').innerText == 'Correct! Counter-intuitively, a class of just 23 students already gives a roughly 50-50 chance of a shared birthday. Our numeric intuition handles addition well but fails badly at compound probabilities - see the full calculation below.'; res2 = document.getElementById('result_W1_TB2').innerText == 'Correct! With 73 students there are 2,628 possible pairs, and the probability of at least one shared birthday rises to 99.96% - effectively certain. The R calculation below shows how to compute this.'; res3 = document.getElementById('result_W1_TB3').innerText == 'Correct! Pareidolia leads people to interpret random images or patterns of light and shadow as faces or figures - one of several pattern-seeing biases that can underlie supernatural experiences.'; res4 = document.getElementById('result_W1_TB4').innerText == 'Correct! Questions about how one factor affects another concern general patterns, not individual cases. Anecdotes are unrepresentative and biased samples; answering such questions requires systematic, unbiased observation. (And note: ‘smoking harms health’ is a probabilistic claim, so one healthy smoker does not falsify it.)';text = res1 + res2 + res3 + res4;element.innerHTML = text;
+         return false;
+         }}</script>
+</div>
+</div>
+<hr>
+</section>
 </section>
 </section>
 <section id="what-is-science" class="level2" data-number="1.3">
@@ -804,16 +939,8 @@ Key concept: The scientific method
 </div>
 </div>
 <p>Sir Karl Raimund Popper was a Austrian-British academic and public figure who vigorously defended liberal democracy and the principles of social criticism that he believed made a flourishing open society possible. In the context of scientific thinking, Popper is important because he is arguably the most important philosopher of science - probably best known for his realization that nothing can be proven in the empirical sciences, but that hypotheses can and need to be falsified. This means that in contrast to the formal sciences, where statements can be proven once certain axioms are accepted, any knowledge that is produced by the empirical sciences is always, and has to be preliminary which implies that the empirical sciences represent an ongoing process.</p>
-<br>
-<div class="warning" style="padding:0.1em; background-color:#f2f2f2; color:#51247a">
-<span>
-<p style="margin-top:1em; text-align:center">
-What does this mean and why can empirical sciences not prove?<br>
-</p>
-<p style="margin-left:1em;">
-</p>
-<p></p>
-</span></div>
+<p><br> ::: {.callout-important} ## Think about it</p>
+<p>What does this mean - and why can empirical sciences not <em>prove</em>? :::</p>
 <p><br></p>
 <p>Well, logically speaking, no number of observations of something can confirm a scientific theory. However, a single counterexample can be enough to show that a theory is false. Imagine someone states that all swans are white, any number of white swans cannot prove that that statement is correct, but a single black swan immediately falsifies the statement.</p>
 <p>It is important to note here that to say that something is <em>falsifiable</em> does not mean that it is false or wrong or fake: it simply means that it can, in principle, be shown to be false by observation or by experiment.</p>
@@ -823,15 +950,19 @@ What does this mean and why can empirical sciences not prove?<br>
 <section id="what-is-empirical-linguistics" class="level3" data-number="1.3.3">
 <h3 data-number="1.3.3" class="anchored" data-anchor-id="what-is-empirical-linguistics"><span class="header-section-number">1.3.3</span> What is (empirical) Linguistics?</h3>
 <p>Linguistics is commonly defined as the <em>the scientific study of language or individual languages</em> and linguists try to uncover the systems behind language, to describe these systems, and to theoretically explain and model them <span class="citation" data-cites="evans2006cognitive">(<a href="#ref-evans2006cognitive" role="doc-biblioref">Evans and Green 2006</a>)</span>. Linguistics who work empirically conduct research on linguistic phenomena based on observations of reality. As such, (empirical) linguistics is descriptive rather than prescriptive in nature.</p>
-<div class="warning" style="padding:0.1em; background-color:#f2f2f2; color:#51247a">
-<span>
-<p style="margin-top:1em; text-align:center">
-How does the scientific method work in linguistics?<br>
-</p>
-<p style="margin-left:1em;">
-</p>
-<p></p>
-</span></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Think about it
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How does the scientific method work in linguistics?</p>
+</div>
+</div>
 <p><br></p>
 <p>In empirical research typically follows the scheme described below. This scheme is also referred to as the <em>scientific circle</em> and we will use the example of having lost your keys to exemplify how it works.</p>
 <p>So, let’s imagine you lost your key: in a first step we make an observation (keys are not here). In a second step, we ask ourselves where the keys may be (research question). In a third step, we come up with an idea where the keys may be (hypothesis). Then, we think about where we have lost the keys before (literature review). Next, we look for the keys where we expect them to be (empirical testing), then, we evaluate the result of the test (was hypothesis correct), and finally, we either have found the keys (hypothesis was correct) or not (keys are still missing) which causes us to come up with another idea and we need to go through the same steps again.</p>
@@ -850,23 +981,22 @@ How does the scientific method work in linguistics?<br>
 <li>In case H<sub>0</sub> could not be rejected: Formulate new H<sub>1</sub>. (e.g., <em>My keys are on the kitchen table!</em>)</li>
 </ul>
 <hr>
-<div class="warning" style="padding:0.1em; background-color:#51247a; color:#f2f2f2">
-<span>
-<p style="margin-top:1em; text-align:center">
-<b>Think Break!</b>
-</p>
-<p style="margin-left:1em;">
-</p>
-<p></p>
-</span></div>
-<div class="question">
-<p>`</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Think Break - discussion
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li><p>Apply the scientific circle to a study of the existence of the Loch Ness monster.</p></li>
 <li><p>You want to investigate whether the speech of young or old people is more fluent: how could you go about testing this?</p></li>
 </ol>
 </div>
-<p>`</p>
+</div>
 <hr>
 <p>We will stop here with our introduction to quantitative reasoning. If you are interested in learning more, we highly recommend that you continue with <a href="https://slcladal.github.io/basicquant.html">our tutorial on basic concepts in quantitative research</a>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -897,13 +1027,13 @@ Her sample of children is too old
 </label>
 <br>
 <label>
-<input type="radio" name="answer_W1_Q1" id="answer_W1_Q1_3" value="She should have studied monolingual children only">
-She should have studied monolingual children only
+<input type="radio" name="answer_W1_Q1" id="answer_W1_Q1_3" value="She only looks for evidence that confirms her belief and ignores potential counter-evidence">
+She only looks for evidence that confirms her belief and ignores potential counter-evidence
 </label>
 <br>
 <label>
-<input type="radio" name="answer_W1_Q1" id="answer_W1_Q1_4" value="She only looks for evidence that confirms her belief and ignores potential counter-evidence">
-She only looks for evidence that confirms her belief and ignores potential counter-evidence
+<input type="radio" name="answer_W1_Q1" id="answer_W1_Q1_4" value="She should have studied monolingual children only">
+She should have studied monolingual children only
 </label>
 <br>
 <input type="submit" value="Check answer">
@@ -911,7 +1041,7 @@ She only looks for evidence that confirms her belief and ignores potential count
 </form>
 <script>function validate_form_W1_Q1() {var x, text; var x = document.forms['form_W1_Q1']['answer_W1_Q1'].value;if (x == 'She only looks for evidence that confirms her belief and ignores potential counter-evidence'){text = 'Correct! This is confirmation bias combined with cherry-picking: collecting only confirming cases tells us nothing about whether the claim holds in general. A proper test would systematically compare bilingual and monolingual children and actively look for disconfirming evidence.';} else {text = 'Think about what evidence she collects - and, more importantly, what evidence she never looks for.';} document.getElementById('result_W1_Q1').innerHTML = text; evaluate_final_score(); return false;}function evaluate_final_score(){
          element = document.getElementById('checkdown_final_score');
-         if(element === null){return false;} else {var element, text, res1;res1 = document.getElementById('result_W1_Q1').innerText == 'Correct! This is confirmation bias combined with cherry-picking: collecting only confirming cases tells us nothing about whether the claim holds in general. A proper test would systematically compare bilingual and monolingual children and actively look for disconfirming evidence.';text = res1;element.innerHTML = text;
+         if(element === null){return false;} else {var element, text, res1, res2, res3, res4, res5;res1 = document.getElementById('result_W1_TB1').innerText == 'Correct! Counter-intuitively, a class of just 23 students already gives a roughly 50-50 chance of a shared birthday. Our numeric intuition handles addition well but fails badly at compound probabilities - see the full calculation below.'; res2 = document.getElementById('result_W1_TB2').innerText == 'Correct! With 73 students there are 2,628 possible pairs, and the probability of at least one shared birthday rises to 99.96% - effectively certain. The R calculation below shows how to compute this.'; res3 = document.getElementById('result_W1_TB3').innerText == 'Correct! Pareidolia leads people to interpret random images or patterns of light and shadow as faces or figures - one of several pattern-seeing biases that can underlie supernatural experiences.'; res4 = document.getElementById('result_W1_TB4').innerText == 'Correct! Questions about how one factor affects another concern general patterns, not individual cases. Anecdotes are unrepresentative and biased samples; answering such questions requires systematic, unbiased observation. (And note: ‘smoking harms health’ is a probabilistic claim, so one healthy smoker does not falsify it.)'; res5 = document.getElementById('result_W1_Q1').innerText == 'Correct! This is confirmation bias combined with cherry-picking: collecting only confirming cases tells us nothing about whether the claim holds in general. A proper test would systematically compare bilingual and monolingual children and actively look for disconfirming evidence.';text = res1 + res2 + res3 + res4 + res5;element.innerHTML = text;
          return false;
          }}</script>
 </div>
@@ -922,23 +1052,23 @@ She only looks for evidence that confirms her belief and ignores potential count
 <div class="cell-output-display">
 <form name="form_W1_Q2" onsubmit="return validate_form_W1_Q2()" method="post">
 <label>
-<input type="radio" name="answer_W1_Q2" id="answer_W1_Q2_1" value="The audience deliberately deceived the researchers">
-The audience deliberately deceived the researchers
-</label>
-<br>
-<label>
-<input type="radio" name="answer_W1_Q2" id="answer_W1_Q2_2" value="Animals can learn arithmetic if trained long enough">
+<input type="radio" name="answer_W1_Q2" id="answer_W1_Q2_1" value="Animals can learn arithmetic if trained long enough">
 Animals can learn arithmetic if trained long enough
 </label>
 <br>
 <label>
-<input type="radio" name="answer_W1_Q2" id="answer_W1_Q2_3" value="Observations by multiple witnesses are always reliable">
+<input type="radio" name="answer_W1_Q2" id="answer_W1_Q2_2" value="Observations by multiple witnesses are always reliable">
 Observations by multiple witnesses are always reliable
 </label>
 <br>
 <label>
-<input type="radio" name="answer_W1_Q2" id="answer_W1_Q2_4" value="Apparent abilities can result from unintended cues, so claims must be tested under controlled conditions">
+<input type="radio" name="answer_W1_Q2" id="answer_W1_Q2_3" value="Apparent abilities can result from unintended cues, so claims must be tested under controlled conditions">
 Apparent abilities can result from unintended cues, so claims must be tested under controlled conditions
+</label>
+<br>
+<label>
+<input type="radio" name="answer_W1_Q2" id="answer_W1_Q2_4" value="The audience deliberately deceived the researchers">
+The audience deliberately deceived the researchers
 </label>
 <br>
 <input type="submit" value="Check answer">
@@ -946,7 +1076,7 @@ Apparent abilities can result from unintended cues, so claims must be tested und
 </form>
 <script>function validate_form_W1_Q2() {var x, text; var x = document.forms['form_W1_Q2']['answer_W1_Q2'].value;if (x == 'Apparent abilities can result from unintended cues, so claims must be tested under controlled conditions'){text = 'Correct! Hans was responding to subtle, unintentional cues from his questioners (posture, tension), not doing arithmetic. Only when the questioner did not know the answer did Hans fail - showing why controlled conditions are essential for testing claims.';} else {text = 'Hans succeeded when the questioner knew the answer and failed when the questioner did not. What does that tell you?';} document.getElementById('result_W1_Q2').innerHTML = text; evaluate_final_score(); return false;}function evaluate_final_score(){
          element = document.getElementById('checkdown_final_score');
-         if(element === null){return false;} else {var element, text, res1, res2;res1 = document.getElementById('result_W1_Q1').innerText == 'Correct! This is confirmation bias combined with cherry-picking: collecting only confirming cases tells us nothing about whether the claim holds in general. A proper test would systematically compare bilingual and monolingual children and actively look for disconfirming evidence.'; res2 = document.getElementById('result_W1_Q2').innerText == 'Correct! Hans was responding to subtle, unintentional cues from his questioners (posture, tension), not doing arithmetic. Only when the questioner did not know the answer did Hans fail - showing why controlled conditions are essential for testing claims.';text = res1 + res2;element.innerHTML = text;
+         if(element === null){return false;} else {var element, text, res1, res2, res3, res4, res5, res6;res1 = document.getElementById('result_W1_TB1').innerText == 'Correct! Counter-intuitively, a class of just 23 students already gives a roughly 50-50 chance of a shared birthday. Our numeric intuition handles addition well but fails badly at compound probabilities - see the full calculation below.'; res2 = document.getElementById('result_W1_TB2').innerText == 'Correct! With 73 students there are 2,628 possible pairs, and the probability of at least one shared birthday rises to 99.96% - effectively certain. The R calculation below shows how to compute this.'; res3 = document.getElementById('result_W1_TB3').innerText == 'Correct! Pareidolia leads people to interpret random images or patterns of light and shadow as faces or figures - one of several pattern-seeing biases that can underlie supernatural experiences.'; res4 = document.getElementById('result_W1_TB4').innerText == 'Correct! Questions about how one factor affects another concern general patterns, not individual cases. Anecdotes are unrepresentative and biased samples; answering such questions requires systematic, unbiased observation. (And note: ‘smoking harms health’ is a probabilistic claim, so one healthy smoker does not falsify it.)'; res5 = document.getElementById('result_W1_Q1').innerText == 'Correct! This is confirmation bias combined with cherry-picking: collecting only confirming cases tells us nothing about whether the claim holds in general. A proper test would systematically compare bilingual and monolingual children and actively look for disconfirming evidence.'; res6 = document.getElementById('result_W1_Q2').innerText == 'Correct! Hans was responding to subtle, unintentional cues from his questioners (posture, tension), not doing arithmetic. Only when the questioner did not know the answer did Hans fail - showing why controlled conditions are essential for testing claims.';text = res1 + res2 + res3 + res4 + res5 + res6;element.innerHTML = text;
          return false;
          }}</script>
 </div>
@@ -957,13 +1087,13 @@ Apparent abilities can result from unintended cues, so claims must be tested und
 <div class="cell-output-display">
 <form name="form_W1_Q3" onsubmit="return validate_form_W1_Q3()" method="post">
 <label>
-<input type="radio" name="answer_W1_Q3" id="answer_W1_Q3_1" value="/a/ is voiced, so vowels in other languages are likely voiced too">
-/a/ is voiced, so vowels in other languages are likely voiced too
+<input type="radio" name="answer_W1_Q3" id="answer_W1_Q3_1" value="Most vowels I know are voiced, so voicing is common">
+Most vowels I know are voiced, so voicing is common
 </label>
 <br>
 <label>
-<input type="radio" name="answer_W1_Q3" id="answer_W1_Q3_2" value="Most vowels I know are voiced, so voicing is common">
-Most vowels I know are voiced, so voicing is common
+<input type="radio" name="answer_W1_Q3" id="answer_W1_Q3_2" value="All vowels are voiced; /a/ is a vowel; therefore /a/ is voiced">
+All vowels are voiced; /a/ is a vowel; therefore /a/ is voiced
 </label>
 <br>
 <label>
@@ -972,8 +1102,8 @@ I have observed 50 voiced vowels, so all vowels are probably voiced
 </label>
 <br>
 <label>
-<input type="radio" name="answer_W1_Q3" id="answer_W1_Q3_4" value="All vowels are voiced; /a/ is a vowel; therefore /a/ is voiced">
-All vowels are voiced; /a/ is a vowel; therefore /a/ is voiced
+<input type="radio" name="answer_W1_Q3" id="answer_W1_Q3_4" value="/a/ is voiced, so vowels in other languages are likely voiced too">
+/a/ is voiced, so vowels in other languages are likely voiced too
 </label>
 <br>
 <input type="submit" value="Check answer">
@@ -981,17 +1111,13 @@ All vowels are voiced; /a/ is a vowel; therefore /a/ is voiced
 </form>
 <script>function validate_form_W1_Q3() {var x, text; var x = document.forms['form_W1_Q3']['answer_W1_Q3'].value;if (x == 'All vowels are voiced; /a/ is a vowel; therefore /a/ is voiced'){text = 'Correct! Deduction moves from general premises to a specific, logically necessary conclusion: if the premises are true, the conclusion must be true. The other options are inductive - they generalize from specific observations and their conclusions are only probable.';} else {text = 'Deduction moves from the general to the specific with logical necessity; induction generalizes from observations.';} document.getElementById('result_W1_Q3').innerHTML = text; evaluate_final_score(); return false;}function evaluate_final_score(){
          element = document.getElementById('checkdown_final_score');
-         if(element === null){return false;} else {var element, text, res1, res2, res3;res1 = document.getElementById('result_W1_Q1').innerText == 'Correct! This is confirmation bias combined with cherry-picking: collecting only confirming cases tells us nothing about whether the claim holds in general. A proper test would systematically compare bilingual and monolingual children and actively look for disconfirming evidence.'; res2 = document.getElementById('result_W1_Q2').innerText == 'Correct! Hans was responding to subtle, unintentional cues from his questioners (posture, tension), not doing arithmetic. Only when the questioner did not know the answer did Hans fail - showing why controlled conditions are essential for testing claims.'; res3 = document.getElementById('result_W1_Q3').innerText == 'Correct! Deduction moves from general premises to a specific, logically necessary conclusion: if the premises are true, the conclusion must be true. The other options are inductive - they generalize from specific observations and their conclusions are only probable.';text = res1 + res2 + res3;element.innerHTML = text;
+         if(element === null){return false;} else {var element, text, res1, res2, res3, res4, res5, res6, res7;res1 = document.getElementById('result_W1_TB1').innerText == 'Correct! Counter-intuitively, a class of just 23 students already gives a roughly 50-50 chance of a shared birthday. Our numeric intuition handles addition well but fails badly at compound probabilities - see the full calculation below.'; res2 = document.getElementById('result_W1_TB2').innerText == 'Correct! With 73 students there are 2,628 possible pairs, and the probability of at least one shared birthday rises to 99.96% - effectively certain. The R calculation below shows how to compute this.'; res3 = document.getElementById('result_W1_TB3').innerText == 'Correct! Pareidolia leads people to interpret random images or patterns of light and shadow as faces or figures - one of several pattern-seeing biases that can underlie supernatural experiences.'; res4 = document.getElementById('result_W1_TB4').innerText == 'Correct! Questions about how one factor affects another concern general patterns, not individual cases. Anecdotes are unrepresentative and biased samples; answering such questions requires systematic, unbiased observation. (And note: ‘smoking harms health’ is a probabilistic claim, so one healthy smoker does not falsify it.)'; res5 = document.getElementById('result_W1_Q1').innerText == 'Correct! This is confirmation bias combined with cherry-picking: collecting only confirming cases tells us nothing about whether the claim holds in general. A proper test would systematically compare bilingual and monolingual children and actively look for disconfirming evidence.'; res6 = document.getElementById('result_W1_Q2').innerText == 'Correct! Hans was responding to subtle, unintentional cues from his questioners (posture, tension), not doing arithmetic. Only when the questioner did not know the answer did Hans fail - showing why controlled conditions are essential for testing claims.'; res7 = document.getElementById('result_W1_Q3').innerText == 'Correct! Deduction moves from general premises to a specific, logically necessary conclusion: if the premises are true, the conclusion must be true. The other options are inductive - they generalize from specific observations and their conclusions are only probable.';text = res1 + res2 + res3 + res4 + res5 + res6 + res7;element.innerHTML = text;
          return false;
          }}</script>
 </div>
 </div>
 <p><a href="#week1">Back to top</a></p>
 
-
-</section>
-</section>
-</section></section></main></div>
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-dunning2008here" class="csl-entry" role="listitem">
@@ -1010,10 +1136,10 @@ Hood, Bruce M. 2009. <em>SuperSense: Why We Believe in the Unbelievable</em>. Ne
 Sagan, Carl. 2011. <em>Demon-Haunted World: Science as a Candle in the Dark</em>. Ballantine Books.
 </div>
 </div>
+</section>
+</section>
 
-
-
- <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1448,7 +1574,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav>
- <!-- /content -->
+</div> <!-- /content -->
 
 
 

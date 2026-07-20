@@ -136,104 +136,105 @@ Another interesting way to show that we are not good with numbers relates to the
 
 ***
 
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>Think Break!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
+::: {.callout-tip}
+## Think Break
+:::
 
-<div class="question">` 
+**How likely is it that 2 students have the same birthday in a class of 23 students?**
 
-1. How likely is it that 2 students have the same birthday in a class with 23 students?
+```{r}
+#| echo: false
+#| label: "W1_TB1"
+checkdown::check_question("About 50%",
+               options = c("About 50%",
+                 "About 6% (23/365)",
+                 "Practically 0%",
+                 "About 23%"),
+               type = "radio",
+               q_id = "W1_TB1",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! Counter-intuitively, a class of just 23 students already gives a roughly 50-50 chance of a shared birthday. Our numeric intuition handles addition well but fails badly at compound probabilities - see the full calculation below.",
+               wrong = "Most people guess far too low a probability - our intuition is poor at compound probabilities. Try the calculation in the box below.")
+```
 
-<details>
+::: {.callout-note collapse="true"}
+## How to calculate this
 
-  <summary>Answer</summary>
-  In a room of just 23 people there is approximately a 50-50 chance of two people having the same birthday.The vast majority of people will intuitively come up with much higher numbers of students that are required to find a pair of students that have the same birthday. But why is that?
+We could list all possible pairs of students and count all the ways they could match, but that would be really labor-intensive. There is an easier way: we turn the problem on its head. Instead of determining the likelihood of every path to a shared birthday, we calculate the chance that *everyone has a different birthday* (the *negative* scenario) and subtract that probability from 1.
 
-  Well, we are quite good with our numeric intuition when it comes to simple addition, subtraction, and multiplication but we are really bad when it comes to exponential growth. 
+In a class of 23 students, there are 253 possible pairs:
 
-  Let us go back to our problem: What are the chances that two students in a class of 23 have their birthday on the same day?
+\begin{equation}
+\frac{23 \cdot 22}{2} = 253
+\end{equation}
 
-  We could list all possible couples and count all the ways they could fit but that would be really labor-intensive. In fact, it would be the same as asking *What's the chance to get one or more heads in 23-coin flips?*.
+The chance of 2 people having *different* birthdays is:
 
-  Is there an easier way to solve the coin-flip and the birthday problem? 
+\begin{equation}
+1 - \frac{1}{365} = \frac{364}{365} = .997260
+\end{equation}
 
-  Yes, there is. We can turn the problem on its head: instead of determining the likelihood of each and every path to get heads, we simply calculate the chance to get only tails (or all separate birthdays).
+The chance of a single miss is very high, but we need to raise this probability to the power of 253 - the number of possible pairs in the class:
 
-  If there's a 1% chance of getting only tails (it is, in fact, $.5^23$ to be precise but let's stick with 1 percent for the sake of simplicity here), there's a 99% chance of having at least one head. We do not know if it's only 1 head or 2 or 15 or 23: there is at least once head, and that is what matters here. If we subtract the probability of the negative of our problem from 1, we get the probability of the scenario that we are interested in.
+\begin{equation}
+(\frac{364}{365})^{253} = .4995
+\end{equation}
 
-  The same principle applies to birthdays. Instead of finding all possibilities, we find the chance that everyone is different (the *negative* scenario). We then determine the probability of the positive and have the chance of at least two people having the same birthday. It can be 1 pair, or 2 or 20, but at least two people have the same birthday.
-
-  So let's go over how to calculate the actual probability. If we have a class of 23 students, then there are 253 pairs (22+21+20+19+18+17+16+15+14+13+12+11+10+9+8+7+6+5+4+3+2+1).
-
-  An easier way to calculate this is show below.
-
-  \begin{equation}
-  \frac{23 \cdot 22}{2} = 253
-  \end{equation}
-
-  The chance of 2 people having different birthdays is:
-
-  \begin{equation}
-  1 - \frac{1}{365} = \frac{364}{365} = .997260
-  \end{equation}
-
-  But we need to raise this probability to the power of 253 - the number of possible pairs in our class. - the number of possible pairs in our class.
-
-  \begin{equation}
-  (\frac{364}{365})^{253} = .4995
-  \end{equation}
-
-  The chance of getting a single miss, i.e. that two specific people do not have the same birthday, is very high (99.7260%), but when that chance is multiplied given all the possible pairs, the odds of two people having the same birthday decrease very fast. In fact, in a class of 23 people, the chance that two people have the same birthday is about 50 percent (as shown above).
-
-</details>
-
-</div>`
+When that near-certain single miss is compounded across all 253 pairs, the odds of *no* shared birthday drop to about 50 percent - so the chance that at least two people share a birthday is also about 50 percent. It could be 1 pair or 20 pairs; at least two people share a birthday.
+:::
 
 
 
 
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>EXERCISE TIME!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
 
-<div class="question">` 
 
-1. What is the probability of two people having the same birthday in a class of 73 students?
+::: {.callout-tip}
+## Think Break
+:::
 
-<details>
-  <summary>Answer</summary>
-  ```{r}
+**What is the probability of two people having the same birthday in a class of 73 students?**
+
+```{r}
+#| echo: false
+#| label: "W1_TB2"
+checkdown::check_question("Nearly 100%",
+               options = c("Nearly 100%",
+                 "About 73%",
+                 "About 50%",
+                 "About 20% (73/365)"),
+               type = "radio",
+               q_id = "W1_TB2",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! With 73 students there are 2,628 possible pairs, and the probability of at least one shared birthday rises to 99.96% - effectively certain. The R calculation below shows how to compute this.",
+               wrong = "Think about how many *pairs* 73 students form - the probability compounds across all of them. See the calculation below.")
+```
+
+::: {.callout-note collapse="true"}
+## How to calculate this in R
+
+```{r}
 #| message: false
 #| warning: false
-  # this is a slightly different way to calculate the result :)
-  # Number of students
-  n <- 73
-  
-  # Total number of days in a year
-  days_in_year <- 365
-  
-  # Calculate the probability that all students have different birthdays
-  prob_all_different <- prod((days_in_year - 0:(n-1)) / days_in_year)
-  
-  # Calculate the probability that at least two students share the same birthday
-  prob_at_least_one_shared <- 1 - prob_all_different
-  
-  # Print the result
-  prob_at_least_one_shared 
-  ```
-  The probability of 2 students having the same birthday in a  class of 73 students is almost `r round(prob_at_least_one_shared, 1)` (or 100 percent).
-</details>
+# number of students
+n <- 73
+# total number of days in a year
+days_in_year <- 365
+# probability that all students have different birthdays:
+# multiply the chances of each successive student avoiding
+# all previously taken birthdays
+prob_all_different <- prod((days_in_year - 0:(n-1)) / days_in_year)
+# probability that at least two students share a birthday
+prob_at_least_one_shared <- 1 - prob_all_different
+# print the result
+prob_at_least_one_shared
+```
+
+The probability of 2 students having the same birthday in a class of 73 students is almost 1 (or 100 percent).
+:::
 
 
-</div>`
 
 ***
 
@@ -477,34 +478,49 @@ nocite: |
 
 ***
 
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>EXERCISE TIME!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
+::: {.callout-tip}
+## Think Break
+:::
 
-<div class="question">` 
+**Given what you have learned in this chapter: which cognitive mechanism offers a plausible explanation for experiences of ghosts?**
 
-1. Given what you have learned in this chapter, can you come up with explanations for a belief in ghosts?
+```{r}
+#| echo: false
+#| label: "W1_TB3"
+checkdown::check_question("Pareidolia - our tendency to perceive meaningful patterns (e.g. faces) in random stimuli",
+               options = c("Pareidolia - our tendency to perceive meaningful patterns (e.g. faces) in random stimuli",
+                 "Slow, deliberate thinking as described by Kahneman",
+                 "The falsifiability criterion",
+                 "Statistical regression to the mean"),
+               type = "radio",
+               q_id = "W1_TB3",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! Pareidolia leads people to interpret random images or patterns of light and shadow as faces or figures - one of several pattern-seeing biases that can underlie supernatural experiences.",
+               wrong = "Think of the face on Mars: which bias makes us see meaningful patterns where there are none?")
+```
 
-<details>
+---
 
-  <summary>Answer</summary>
-  Experiences of ghosts (or what people experience as ghosts) can be caused by many factors, for example, *pareidolia* which can cause people to interpret random images, or patterns of light and shadow, as faces.
-  
-</details>
+**Someone claims that smoking and drinking are harmless because his grandfather smoked a pack a day, drank daily, and lived to 95. What is the core problem with this reasoning?**
+
+```{r}
+#| echo: false
+#| label: "W1_TB4"
+checkdown::check_question("A single anecdote tells us nothing about the general relationship between the factors - we do not know how representative the case is",
+               options = c("A single anecdote tells us nothing about the general relationship between the factors - we do not know how representative the case is",
+                 "The grandfather's age was not verified by a doctor",
+                 "The claim involves two habits, but anecdotes can only cover one",
+                 "Nothing - one clear counter-example falsifies the claim that smoking is harmful"),
+               type = "radio",
+               q_id = "W1_TB4",
+               random_answer_order = TRUE,
+               button_label = "Check answer",
+               right = "Correct! Questions about how one factor affects another concern general patterns, not individual cases. Anecdotes are unrepresentative and biased samples; answering such questions requires systematic, unbiased observation. (And note: 'smoking harms health' is a probabilistic claim, so one healthy smoker does not falsify it.)",
+               wrong = "Is one unusual case informative about a general pattern? What would you need instead of an anecdote?")
+```
 
 
-2. Someone tells you that his grandfather smoked a pack of cigarettes and drank a bottle of whiskey every day and thus claims that smoking and drinking does not harm your health. What is problematic about the conclusion and why is anecdotal evidence not appropriate?
-
-<details>
-  <summary>Answer</summary>
-  When aiming to answer how one factor (e.g., smoking) affects another factor (e.g., developing cancer), we are typically interested in general patterns or trends rather than unusual or unrepresentative cases. As such, individual anecdotes are not useful to answer questions asking for the relationship between factors, because we do not know how common or prototypical the anecdotal case is. Even many anecdotes do not qualify as data as anecdotes are likely biased and not representative. To determine the relationship between factors, we would need systematic and unbiased  observation .
-</details>
-
-</div>`
 
 ***
 
@@ -584,13 +600,12 @@ Sir Karl Raimund Popper was a Austrian-British academic and public figure who vi
 
 
 <br>
-<div class="warning" style='padding:0.1em; background-color:#f2f2f2; color:#51247a'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-What does this mean and why can empirical sciences not prove?<br></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
+::: {.callout-important}
+## Think about it
+
+What does this mean - and why can empirical sciences not *prove*?
+:::
+
 
 <br>
 
@@ -608,13 +623,12 @@ There is an apparent progress of scientific knowledge, meaning that our understa
 
 Linguistics is commonly defined as the *the scientific study of language or individual languages* and linguists try to uncover the systems behind language, to describe these systems, and to theoretically explain and model them [@evans2006cognitive]. Linguistics who work empirically conduct research on linguistic phenomena based on observations of reality. As such, (empirical) linguistics is descriptive rather than prescriptive in nature.
 
-<div class="warning" style='padding:0.1em; background-color:#f2f2f2; color:#51247a'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-How does the scientific method work in linguistics?<br></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
+::: {.callout-important}
+## Think about it
+
+How does the scientific method work in linguistics?
+:::
+
 
 <br>
 
@@ -640,21 +654,14 @@ A slightly more elaborate depiction of this scenario with the equivalent steps i
 
 ***
 
-<div class="warning" style='padding:0.1em; background-color:#51247a; color:#f2f2f2'>
-<span>
-<p style='margin-top:1em; text-align:center'>
-<b>Think Break!</b></p>
-<p style='margin-left:1em;'>
-</p></span>
-</div>
-
-<div class="question">` 
+::: {.callout-important}
+## Think Break - discussion
 
 1. Apply the scientific circle to a study of the existence of the Loch Ness monster.
 
 2. You want to investigate whether the speech of young or old people is more fluent: how could you go about testing this?
+:::
 
-</div>`
 
 ***
 

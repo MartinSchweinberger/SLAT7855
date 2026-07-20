@@ -913,7 +913,7 @@ p2 <- ggplot(wxdata, aes(Reaction)) +
   geom_density(fill = "lightgray", alpha = .5) +
   theme_bw() +
   labs(y="Density", x = "Reaction Time")
-grid.arrange(p1, p2, nrow = 1)             # 2 plots in one window
+gridExtra::grid.arrange(p1, p2, nrow = 1)             # 2 plots in one window
 ```
 
 Both variables are negatively skewed (non-normally distributed) but we can use the `wilcox.test` function to perform the Mann-Whitney U test with continuity correction which takes the skewness into account. 
